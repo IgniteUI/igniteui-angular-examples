@@ -1,4 +1,10 @@
-{
+  {
+    "scripts": {
+    "ng": "ng",
+    "update": "ng update",
+    "start": "node --max_old_space_size=12192 node_modules/@angular/cli/bin/ng serve -o",
+    "lint": "ng lint"
+  },
   "dependencies": {
     "@angular/animations": "10.0.14",
     "@angular/common": "10.0.14",
