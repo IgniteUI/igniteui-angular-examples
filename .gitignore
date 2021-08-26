@@ -4,14 +4,19 @@
 /samples/**/build/
 /samples/**/node_modules/
 /samples/**/package-lock.json
-/tmp/
-/tests/
+# /samples-tmp/
+/samples-tmp/**/node_modules/ 
 
 # browser auto-generated files:
+/porting/**
+/browser/**
 /browser/node_modules
 /browser/src/samples
+/browser/dist
 /browser/build
+/browser/out-tsc
 /browser/**/code-viewer/**
+/browser/package-lock.json
 
 # IDEs and editors
 /.idea
@@ -24,6 +29,8 @@
 
 # IDE - VS
 .vs/
+
+# IDE - VSCode
 .vscode/*
 **/.vs/
 **/.vscode/*
@@ -33,12 +40,26 @@
 # !.vscode/extensions.json
 
 # misc
-.DS_Store
+**/.sass-cache
+**/connect.lock
+**/coverage
+**/libpeerconnection.log
+**/npm-debug.log
+**/yarn-debug.log*
+**/yarn-error.log*
+**/testem.log
+**/typings
+
+# e2e
+**/e2e/*.js
+**/e2e/*.map
+
+# System Files
+**/.DS_Store
+**/Thumbs.db
+
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+ 
