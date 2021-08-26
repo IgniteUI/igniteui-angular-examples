@@ -1,0 +1,24 @@
+<!-- <app-pie-chart-styling></app-pie-chart-styling> -->
+
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Global Electricity Demand by Energy Use</span>
+        <igx-item-legend #legend orientation="horizontal"></igx-item-legend>
+    </div>
+    <div class="container">
+        <igx-pie-chart height="100%"
+            width="100%"
+            [legend]="legend"
+            [dataSource]="data"
+            valueMemberPath="Value"
+            labelMemberPath="Label"
+            labelsPosition="BestFit"
+            legendLabelMemberPath="Label"
+            radiusFactor="0.7"
+            labelsPosition="OutsideEnd"
+            labelExtent="30"
+            brushes="#F7D262, #A8A8B7, #E051A9, #F8A15F, #735656"
+            outlines="#FFFFFF">
+        </igx-pie-chart>
+    </div>
+</div>
