@@ -1,0 +1,42 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <label class="options-label">Chart Type: </label>
+        <select [(ngModel)]="chartType">
+            <option>Column</option>
+            <option>Area</option>
+            <option>Line</option>
+            <option>Point</option>
+            <option>Spline</option>
+            <option>SplineArea</option>
+            <option>StepArea</option>
+            <option>StepLine</option>
+        </select>
+
+        <label class="options-label">Enable Highlighting:</label>
+        <label class="options-item"><input [(ngModel)]="isSeriesHighlightingEnabled" type="checkbox" /> Series </label>
+        <label class="options-item"><input [(ngModel)]="isItemHighlightingEnabled" type="checkbox" />Item </label>
+        <label class="options-item"><input [(ngModel)]="isCategoryHighlightingEnabled" type="checkbox" />Category </label>
+    </div>
+
+    <div class="options vertical">
+        <label id="legendTitle">Olympic Medals By Country</label>
+    </div>
+    <div class="container">
+        <igx-category-chart
+            #chart
+            height="100%" width="100%"
+            [dataSource]="olympicData"
+            [isItemHighlightingEnabled]="isItemHighlightingEnabled"
+            [isCategoryHighlightingEnabled]="isCategoryHighlightingEnabled"
+            [isSeriesHighlightingEnabled]="isSeriesHighlightingEnabled"
+            [chartType]="chartType"
+
+            yAxisTitle="Total Medals"
+            yAxisTitleTextStyle="12pt Verdana"
+            yAxisTitleTextColor="gray"
+            yAxisTitleAngle="90"
+            yAxisTitleLeftMargin="5"
+            tooltipType="None">
+        </igx-category-chart>
+    </div>
+</div>
