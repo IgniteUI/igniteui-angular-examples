@@ -1,0 +1,98 @@
+
+// moved from styles.scss file:
+@import '~igniteui-angular/lib/core/styles/themes/index';
+@include igx-core();
+@include igx-theme($default-palette);
+
+// @include igx-typography();
+@include igx-theme(
+    $palette: $light-material-palette,
+    $schema: $light-material-schema,
+    $exclude: (
+        'bullet-graph',
+        'linear-gauge',
+        'radial-gauge',
+        'category-chart',
+        'data-chart',
+        'doughnut-chart',
+        'financial-chart',
+        'funnel-chart',
+        'geo-map',
+        'pie-chart',
+        'shape-chart',
+        'sparkline',
+    )
+);
+// moved from styles.scss file:
+
+
+.wrapper {
+    height: 100%;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    order: 0;
+    display: flex;
+    flex-flow: column;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    padding: 0rem;
+    margin: 0rem;
+
+    align-items: stretch;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+.content > * {
+    box-sizing: border-box;
+}
+
+.innerItem {
+    margin-left: 36px;
+}
+
+.nav-header {
+    display: flex;
+    align-items: center;
+    padding: 0.35rem 2rem;
+    background: #eee;
+    // height: 142px;
+}
+
+.logo {
+    width: 172px;
+    height: 56.666px;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .content {
+    //   padding: 0 15px;
+      justify-content: flex-start;
+    }
+  }
+
+
+
+// $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);
+
+// .fin-dark-theme {
+//     @include igx-dark-theme($green-palette);
+//      background: #333;
+
+//      ::-moz-placeholder {
+//          opacity: 1;
+//      }
+//  }
+
+// .dark-theme {
+//     background: #333;
+//     color: #fff;
+//     @include igx-dark-theme($green-palette);
+// }
