@@ -4,7 +4,7 @@
 /samples/**/build/
 /samples/**/node_modules/
 /samples/**/package-lock.json
-# /samples-tmp/
+/samples-tmp/
 /samples-tmp/**/node_modules/ 
 
 # browser auto-generated files:
