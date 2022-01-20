@@ -25,6 +25,11 @@ function isPathFile(location) {
     return location.indexOf(".") > 0;
 } exports.isPathFile = isPathFile;
 
+function fileName(filePath) {
+    var folders = filePath.split('/');
+    return folders[folders.length - 1];
+} exports.fileName = fileName;
+
 function fileRead(filePath) {
     var content = fs.readFileSync(filePath, "utf8");
     return content;
