@@ -40,6 +40,9 @@ const repoSourcePaths = [
     // repoPath + "excel-library/**/package.json",
     // repoPath + "maps/**/package.json",
     repoPath + "charts/category-chart-highlighting/package.json",
+    repoPath + "charts/category-chart-point-chart-styling/package.json",
+    repoPath + "charts/data-chart-axis-sharing/package.json",
+    repoPath + "charts/sparkline-markers/package.json",
     repoPath + "charts/pie-chart-styling/package.json",
     repoPath + "gauges/linear-gauge-labels/package.json",
     repoPath + "gauges/radial-gauge-ranges/package.json",
@@ -75,26 +78,53 @@ function getSampleGroup(dirPath) {
     return ret;
 }
 
-// C:\REPOS\igniteui-live-editing-samples\angular-demos-dv\charts\pie-chart-legend\
-// returns                                                                  legend
-function getSampleFolder(dirPath) {
-    var ret = getRelativeFolder(dirPath);
-    ret = ret.split("/")[1];
-    let words = ret.split("-");
-    return words[words.length - 1];
-}
+var controlNames = [
+    "data-chart",
+    "category-chart",
+    "doughnut-chart",
+    "pie-chart",
+    "sparkline",
+    "tree-map",
+    "zoomslider",
+    "financial-chart",
+    "linear-gauge",
+    "bullet-graph",
+    "radial-gauge",
+    "geo-map",
+    "excel-library",
+];
 
 // C:\REPOS\igniteui-live-editing-samples\angular-demos-dv\charts\pie-chart-legend\
 // returns                                                        pie-chart
 function getSampleControl(dirPath) {
     var group  = getSampleGroup(dirPath);
-    var folder = getSampleFolder(dirPath);
+    // var folder = getSampleFolder(dirPath);
     var ret = getRelativeFolder(dirPath);
     ret = ret.replace(group + "/", "");
+
+    for (const name of controlNames) {
+        if (ret.indexOf(name) >= 0) {
+            // console.log("control: " + name)
+            //var name = sample.replace(control + "-", "");
+            //console.log("name: " + name)
+            return name;
+        }
+    }
+
     ret = ret.replace("-" + folder, "");
     return ret
 }
 
+// C:\REPOS\igniteui-live-editing-samples\angular-demos-dv\charts\pie-chart-legend\
+// returns                                                                  legend
+function getSampleFolder(dirPath) {
+    var group   = getSampleGroup(dirPath);
+    var control = getSampleControl(dirPath);
+    var ret = getRelativeFolder(dirPath);
+
+    var folder  = ret.replace(group + "/", "").replace(control + "-", "");
+    return folder;
+}
 
 // C:\REPOS\igniteui-live-editing-samples\angular-demos-dv\charts\pie-chart-legend\
 // returns                                      ../samples/charts/pie-chart/legend/
@@ -102,9 +132,11 @@ function getOutputPath(dirPath) {
     var group   = getSampleGroup(dirPath);
     var control = getSampleControl(dirPath);
     var folder  = getSampleFolder(dirPath);
-    // outputPath = "../samples-tmp/" + group + "/" + control + "-" + folder + "/"; // replace
     outputPath = repoOutput + group + "/" + control + "/" + folder + "/";
-    // if (dirPath.indexOf("../../") < 0)
+
+    // console.log("getSampleGroup " + group)
+    // console.log("getSampleControl " + control)
+    // console.log("getSampleFolder " + folder)
     return outputPath;
 }
 
@@ -120,7 +152,6 @@ function exportAppComponentCSS(sample) {
     // console.log("exportAppComponentCSS: " + outputPath);
     utils.fileSave(outputPath, content);
 }
-
 
 function exportAppComponentHTML(sample, sampleFile) {
     var content = utils.fileRead(sampleFile);
@@ -143,10 +174,13 @@ function exportAppModuleTS(sample, sampleFile) {
             // console.log("importMatches: " + line);
         }
     }
-    // console.log("importClass: " + importClass);
-    content = content.replace(importLine + "\r\n", "");
+    // console.log("importClass: '" + importClass + "'");
+    content = content.replace(importLine + "", "");
     content = content.replace(importClass + ",", "");
-    content = content.replace(importClass, "");
+    content = content.replace(importClass + "", "");
+    content = content.split('\n\n').join('\n');
+    //content = content.replace(importClass, "");
+    // content = content.replace("\t", "    ");
 
     var outputPath = sample.OutputPath + "src/app/app.module.ts";
     // console.log("exportAppModuleTS: \n" + content);
@@ -162,7 +196,7 @@ function exportFile(sample, sampleFile) {
     var subFolder2 = sample.OutputGroup + "/" + sample.OutputControl + "/" + sample.OutputFolder + "/";
     outputPath = outputPath.replace(subFolder1, subFolder2);
 
-    console.log("exportFile2: " + outputPath);
+    // console.log("exportFile2: " + outputPath);
     utils.fileSave(outputPath, content);
 }
 
@@ -185,6 +219,7 @@ function exportAppComponentTS(sample, sampleFile) {
     content = content.replace(matchSelectorName, "\"app-root\",");
     content = content.replace(matchStyleUrls, "[\"./app.component.scss\"],");
     content = content.replace(matchTemplateUrl, "\"./app.component.html\"");
+    content = content.replace("../", "./");
     // content = "insert \n" + content;
     // console.log("content: \n" + content);
 
@@ -196,6 +231,7 @@ function exportAppComponentTS(sample, sampleFile) {
 
 function exportAppFiles(sample) {
     for (const filePath of sample.FilesComponent) {
+        // console.log("exportAppFiles " + filePath);
         if (filePath.indexOf(".component.ts") > 0) {
             exportAppComponentTS(sample, filePath);
         }
@@ -286,10 +322,14 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
     ])
     .pipe(es.map(function(file, fileCallback) {
         var filePath = getRelativePath(file.dirname + "/" + file.basename);
-        // console.log("filePath " + filePath);
+        //console.log("getSampleInfo " + filePath);
 
         // grouping files of a sample based on their locations
-        if (filePath.indexOf('/app/app.') >= 0) {
+        if (filePath.indexOf('/app/app.module.ts') >= 0) {
+            sample.FilesComponent.push(filePath);       // these files are replaced by sample.FilesComponent
+            // console.log("A " + filePath);
+        }
+        else if (filePath.indexOf('/app/app.') >= 0) {
             sample.FilesApp.push(filePath);       // these files are replaced by sample.FilesComponent
             // console.log("A " + filePath);
         }
