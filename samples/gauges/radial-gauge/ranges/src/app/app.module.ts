@@ -3,11 +3,8 @@ import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
-import { 
-	IgxPieChartModule,
-	IgxLegendModule,
-	IgxItemLegendModule
- } from "igniteui-angular-charts";
+import { IgxRadialGaugeModule } from "igniteui-angular-gauges";
+
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -19,9 +16,7 @@ import {
 	BrowserModule,
 	BrowserAnimationsModule,
 	FormsModule,
-	IgxPieChartModule,
-	IgxLegendModule,
-	IgxItemLegendModule
+	IgxRadialGaugeModule
 ],
   providers: [],
   entryComponents: [],

@@ -3,11 +3,7 @@ import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
-import { 
-	IgxPieChartModule,
-	IgxLegendModule,
-	IgxItemLegendModule
- } from "igniteui-angular-charts";
+import { IgxGeographicMapModule } from "igniteui-angular-maps";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -19,9 +15,7 @@ import {
 	BrowserModule,
 	BrowserAnimationsModule,
 	FormsModule,
-	IgxPieChartModule,
-	IgxLegendModule,
-	IgxItemLegendModule
+	IgxGeographicMapModule
 ],
   providers: [],
   entryComponents: [],

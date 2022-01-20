@@ -4,10 +4,15 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 import { 
-	IgxPieChartModule,
+	IgxNumericXAxisModule,
+	IgxNumericYAxisModule,
+	IgxMoneyFlowIndexIndicatorModule,
 	IgxLegendModule,
-	IgxItemLegendModule
+	IgxDataChartCoreModule,
+	IgxDataChartCategoryModule,
+	IgxFinancialPriceSeriesModule
  } from "igniteui-angular-charts";
+import { SampleFinancialData } from "./SampleFinancialData";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -19,11 +24,15 @@ import {
 	BrowserModule,
 	BrowserAnimationsModule,
 	FormsModule,
-	IgxPieChartModule,
+	IgxNumericXAxisModule,
+	IgxNumericYAxisModule,
+	IgxMoneyFlowIndexIndicatorModule,
 	IgxLegendModule,
-	IgxItemLegendModule
+	IgxDataChartCoreModule,
+	IgxDataChartCategoryModule,
+	IgxFinancialPriceSeriesModule
 ],
-  providers: [],
+  providers: [SampleFinancialData],
   entryComponents: [],
   schemas: []
 })

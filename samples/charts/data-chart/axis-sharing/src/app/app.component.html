@@ -1,0 +1,40 @@
+<div class="container sample">
+        <igx-data-chart
+            width="100%"
+            height="100%"
+            [dataSource]="data">
+
+            <igx-category-x-axis #xAxisShared label="Date" gap=0.75></igx-category-x-axis>
+            <igx-numeric-y-axis #yAxisRight
+                labelLocation="OutsideRight"
+                title="Stock Price"
+                minimumValue="400"
+                maximumValue="700">
+            </igx-numeric-y-axis>
+            <igx-numeric-y-axis #yAxisLeft
+                labelLocation="OutsideLeft"
+                title="Trade Volume"
+                minimumValue="5000"
+                maximumValue="45000"
+                abbreviateLargeNumbers=true
+                majorStrokeThickness="0">
+            </igx-numeric-y-axis>
+
+            <igx-column-series [xAxis]="xAxisShared"
+                [yAxis]="yAxisLeft"
+                valueMemberPath="Volume"
+                showDefaultTooltip=true
+                title="Trade Volume">
+            </igx-column-series>
+
+            <igx-financial-price-series
+                [xAxis]="xAxisShared"
+                [yAxis]="yAxisRight"
+                displayType="Candlestick"
+                highMemberPath="High"
+                lowMemberPath="Low"
+                closeMemberPath="Close"
+                openMemberPath="Open"
+                volumeMemberPath="Volume"></igx-financial-price-series>
+        </igx-data-chart>
+</div>

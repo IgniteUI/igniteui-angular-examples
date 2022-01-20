@@ -4,9 +4,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 import { 
-	IgxPieChartModule,
-	IgxLegendModule,
-	IgxItemLegendModule
+	IgxCategoryChartModule,
+	IgxLegendModule
  } from "igniteui-angular-charts";
 
 @NgModule({
@@ -19,9 +18,8 @@ import {
 	BrowserModule,
 	BrowserAnimationsModule,
 	FormsModule,
-	IgxPieChartModule,
-	IgxLegendModule,
-	IgxItemLegendModule
+	IgxCategoryChartModule,
+	IgxLegendModule
 ],
   providers: [],
   entryComponents: [],

@@ -1,0 +1,31 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <label class="options-item"><input id="First"    type="checkbox" checked=true (change)="onMarkerCheckboxChanged($event)" />First Markers</label>
+        <label class="options-item"><input id="High"     type="checkbox" checked=true (change)="onMarkerCheckboxChanged($event)" />High Markers</label>
+        <label class="options-item"><input id="Low"      type="checkbox" checked=true (change)="onMarkerCheckboxChanged($event)" />Low Markers</label>
+        <label class="options-item"><input id="Negative" type="checkbox" checked=true (change)="onMarkerCheckboxChanged($event)" />Negative Markers</label>
+        <label class="options-item"><input id="Last"     type="checkbox" checked=true (change)="onMarkerCheckboxChanged($event)" />Last Markers</label>
+        <label class="options-item"><input id="All"      type="checkbox" checked=true (change)="onMarkerCheckboxChanged($event)" />Other Markers</label>
+    </div>
+    <div class="container">
+        <igx-sparkline #sparkline height="100%" width="100%"
+            [dataSource]="data"
+            valueMemberPath="Value"
+            displayType="Line"
+            minimum=-3
+            maximum=8
+            markerVisibility="Visible"
+            highMarkerVisibility="Visible"
+            lowMarkerVisibility="Visible"
+            firstMarkerVisibility="Visible"
+            lastMarkerVisibility="Visible"
+            negativeMarkerVisibility="Visible"
+            markerSize=10
+            firstMarkerSize=10
+            lastMarkerSize=10
+            lowMarkerSize=10
+            highMarkerSize=10
+            negativeMarkerSize=10>
+        </igx-sparkline>
+    </div>
+</div >
