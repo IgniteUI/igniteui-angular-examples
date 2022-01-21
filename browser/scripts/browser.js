@@ -264,47 +264,42 @@ function findSamples(cb) {
 function copySamples(cb) {
     //log("copySamples");
 
-    //cleanBrowser();
-
-    log("copySamples = " + samplesDatabase.length);
-
-    // TODO for each in samplesDatabase array, copy repo/samples files to repo/browser/samples folder
-    // NOTE you need to copy only files in repo/samples/**/src/app/ folder
+    cleanSamples();
+    //log("copySamples = " + samplesDatabase.length);
 
     var samplesModules = {};
-    // exporting all samples to repo/samples folder based on gathered sample info
+    // copying all samples to repo/samples folder based on gathered sample info
     for (const info of samplesDatabase) {
 
-    // log("copying sample: " + info.SourcePath);
-
-        if (samplesModules[info.SampleControl] === undefined) {
-            samplesModules[info.SampleControl] = {}
-            samplesModules[info.SampleControl].Group = info.SampleGroup;
-            samplesModules[info.SampleControl].Control = info.ControlName;
-            samplesModules[info.SampleControl].Modules = [];
-            samplesModules[info.SampleControl].Imports = [];
-            samplesModules[info.SampleControl].Components = [];
+        //log("copying sample: " + info.SourcePath);
+        // grouping sample's modules by the control that is used in samples
+        var control = info.SampleControl;
+        if (samplesModules[control] === undefined) {
+            samplesModules[control] = {}
+            samplesModules[control].Group = info.SampleGroup;
+            samplesModules[control].Control = info.ControlName;
+            samplesModules[control].Modules = [];
+            samplesModules[control].Imports = [];
+            samplesModules[control].Components = [];
         }
 
-        samplesModules[info.SampleControl].Path = './src/samples/' + info.SampleGroup + '/' + info.SampleControl + '/samples.ts';
-        // samplesModules[info.SampleControl].Path = './src/samples/' + info.SampleGroup + '/' + info.SampleControl + '/' + info.SampleControl + 'samples.ts';
-        samplesModules[info.SampleControl].Components.push(info.SampleClassName);
+        samplesModules[control].Path = './src/samples/' + info.SampleGroup + '/' + info.SampleControl + '/samples.ts';
+        // samplesModules[control].Path = './src/samples/' + info.SampleGroup + '/' + info.SampleControl + '/' + info.SampleControl + 'samples.ts';
+        samplesModules[control].Components.push(info.SampleClassName);
 
         for (const module of info.ImportsModules) {
-            if (samplesModules[info.SampleControl].Modules.indexOf(module) < 0) {
-                samplesModules[info.SampleControl].Modules.push(module);
+            if (samplesModules[control].Modules.indexOf(module) < 0) {
+                samplesModules[control].Modules.push(module);
             }
         }
         for (const line of info.ImportsLines) {
-            if (samplesModules[info.SampleControl].Imports.indexOf(line) < 0) {
-                samplesModules[info.SampleControl].Imports.push(line);
+            if (samplesModules[control].Imports.indexOf(line) < 0) {
+                samplesModules[control].Imports.push(line);
             }
         }
         // adding import for the current sample's component
         var importComponent = 'import { ' + info.SampleClassName + ' } from ' + '"./' + info.SampleFolder + '/app.component";';
-        samplesModules[info.SampleControl].Imports.push(importComponent);
-
-        // console.log(samplesModules[info.SampleControl].Modules);
+        samplesModules[control].Imports.push(importComponent);
 
         for (const filePath of info.SourceFiles) {
 
@@ -315,6 +310,7 @@ function copySamples(cb) {
             var fileOutput  = info.OutputPath + "/" + fileName;
 
             if (filePath.indexOf('app.component.ts') > 0) {
+                log("generating sample:  " + fileOutput); // + ' from ' + filePath );
                 fileContent = fileContent.replace('class AppComponent', 'class ' + info.SampleClassName);
             }
 
@@ -323,11 +319,12 @@ function copySamples(cb) {
         }
     }
 
-    console.log(samplesModules);
+    //console.log(samplesModules);
 
     for(var key in samplesModules) {
         var data = samplesModules[key];
 
+        log('generating modules: ' + data.Path);
         var ret = "";
         ret += "/* tslint:disable */ \n\n";
 
@@ -385,7 +382,7 @@ function generateCodeViewerFiles(cb) {
 } exports.generateCodeViewerFiles = generateCodeViewerFiles;
 
 function cleanSamples() {
-    log("cleanSamples: " + sampleOutput);
+    log("clean samples in browser: " + sampleOutput);
     return del([
           sampleOutput + "*.ts",
           sampleOutput + "**/*.ts",

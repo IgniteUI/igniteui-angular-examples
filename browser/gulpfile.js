@@ -32,7 +32,6 @@ const browser = require('./scripts/browser.js')
 // NOTE you can call this series of functions in terminal: "gulp updateBrowser"
 gulp.task('updateBrowser', gulp.series(
     // browser.skipSamples,
-    browser.cleanSamples,
     browser.findSamples,
     browser.copySamples,
    // browser.generateSampleRouting,
