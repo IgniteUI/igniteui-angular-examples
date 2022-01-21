@@ -104,7 +104,7 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
     info.SampleGroup   = getSampleGroup(samplePath);    //               |charts|          |
     info.SampleControl = getSampleControl(samplePath);  //                      |data-chart|
     info.SampleFolder  = getSampleFolder(samplePath);   //                      |          |axis-sharing|
-    console.log("SamplePath " + samplePath);
+    // console.log("SamplePath " + samplePath);
     // console.log("OutputPath  " + info.OutputPath);
     console.log("SourcePath " + info.SourcePath);
     // console.log("SampleGroup   " + info.SampleGroup);
@@ -179,7 +179,6 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
     });
 }
 
-
 function getSampleModules(fileContent, info) {
     var lines = fileContent.split(';');
     info.ImportsLines = [];
@@ -231,8 +230,8 @@ function getSampleModules(fileContent, info) {
 
     }
 
-    console.log("importsModules "  + info.ImportsModules.length);
-    console.log("importsLines "  + info.ImportsLines.length);
+    // console.log("importsModules "  + info.ImportsModules.length);
+    // console.log("importsLines "  + info.ImportsLines.length);
 
     // for (const line of info.ImportsModules) {
     //     console.log(line);
@@ -261,9 +260,6 @@ function findSamples(cb) {
 
 } exports.findSamples = findSamples;
 
-function saveSamplesModules() {
-
-}
 
 function copySamples(cb) {
     //log("copySamples");
@@ -290,8 +286,8 @@ function copySamples(cb) {
             samplesModules[info.SampleControl].Components = [];
         }
 
-        samplesModules[info.SampleControl].Path = './src/samples/' + info.SampleGroup + '/' + info.SampleControl + '/sample.modules.ts';
-
+        samplesModules[info.SampleControl].Path = './src/samples/' + info.SampleGroup + '/' + info.SampleControl + '/samples.ts';
+        // samplesModules[info.SampleControl].Path = './src/samples/' + info.SampleGroup + '/' + info.SampleControl + '/' + info.SampleControl + 'samples.ts';
         samplesModules[info.SampleControl].Components.push(info.SampleClassName);
 
         for (const module of info.ImportsModules) {
@@ -299,19 +295,20 @@ function copySamples(cb) {
                 samplesModules[info.SampleControl].Modules.push(module);
             }
         }
-
         for (const line of info.ImportsLines) {
             if (samplesModules[info.SampleControl].Imports.indexOf(line) < 0) {
                 samplesModules[info.SampleControl].Imports.push(line);
             }
         }
-
+        // adding import for the current sample's component
         var importComponent = 'import { ' + info.SampleClassName + ' } from ' + '"./' + info.SampleFolder + '/app.component";';
         samplesModules[info.SampleControl].Imports.push(importComponent);
 
         // console.log(samplesModules[info.SampleControl].Modules);
 
         for (const filePath of info.SourceFiles) {
+
+            if (filePath.indexOf('app.module.ts') > 0) continue;
 
             var fileContent = utils.fileRead(filePath);
             var fileName    = utils.fileName(filePath);
@@ -321,26 +318,9 @@ function copySamples(cb) {
                 fileContent = fileContent.replace('class AppComponent', 'class ' + info.SampleClassName);
             }
 
-            if (filePath.indexOf('app.module.ts') > 0) {
-                // TODO extract name of module used by sample
-               // getSampleModules(fileContent, info);
-            } else {
-                //log("copying: " + filePath);
-
-                //.fileSave(fileOutput, fileContent);
-            }
-
-
-
+            //log("copying: " + filePath);
+            utils.fileSave(fileOutput, fileContent);
         }
-
-        //var componentHTML = utils.fileRead(info.SourceComponentHTML);
-        //var componentTS   = utils.fileRead(info.SourceComponentTS);
-
-        // modifying and exporting sample files
-        //exportAppFiles(sample);
-        // overriding rest of files with template files
-        //exportTemplateFiles(sample);
     }
 
     console.log(samplesModules);
@@ -368,7 +348,7 @@ function copySamples(cb) {
        // var className = utils.replace(key, '-')
         ret += "export class " + data.Control  + "SamplesModules {} \n";
 
-        console.log(ret);
+        // console.log(ret);
 
         utils.fileSave(data.Path, ret);
         // do something with "key" and "value" variables
@@ -405,14 +385,19 @@ function generateCodeViewerFiles(cb) {
 } exports.generateCodeViewerFiles = generateCodeViewerFiles;
 
 function cleanSamples() {
-    log("cleanSamples");
+    log("cleanSamples: " + sampleOutput);
     return del([
           sampleOutput + "*.ts",
           sampleOutput + "**/*.ts",
           sampleOutput + "**/*.html",
-          sampleOutput + "**/*.scss"
+          sampleOutput + "**/*.scss",
+          sampleOutput + "**/*.css"
     ],{force: true});
 } exports.cleanSamples = cleanSamples;
+
+function skipSamples(cb) {
+    if (cb) cb();
+} exports.skipSamples = skipSamples;
 
 function listSamples(cb) {
     var fileFormat = "package.json";

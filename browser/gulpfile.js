@@ -29,24 +29,20 @@ gulp.task('portSamples', function(cb) {
 const browser = require('./scripts/browser.js')
 
 // TODO implement these browser functions in './scripts/browser.js'
-// // NOTE you can call this series of functions in terminal: "gulp updateBrowser"
-// gulp.task('updateBrowser', gulp.series(
-//    // browser.cleanSamples,
-//     browser.findSamples,
-//     browser.copySamples,
-//    // browser.generateSampleRouting,
-//     // browser.generateAppRouting,
-//     // browser.generateCodeViewerFiles
-// ));
+// NOTE you can call this series of functions in terminal: "gulp updateBrowser"
+gulp.task('updateBrowser', gulp.series(
+    // browser.skipSamples,
+    browser.cleanSamples,
+    browser.findSamples,
+    browser.copySamples,
+   // browser.generateSampleRouting,
+   // browser.generateAppRouting,
+   // browser.generateCodeViewerFiles
+));
 
 // NOTE you can call each function in terminal: "gulp findSamples"
 gulp.task('findSamples', browser.findSamples);
 gulp.task('copySamples', gulp.series(browser.findSamples, browser.copySamples));
-
-exports.updateBrowser = updateBrowser = gulp.series(
-    browser.findSamples,
-    browser.copySamples,
-);
 
 gulp.task('generateSampleRouting', browser.generateSampleRouting);
 gulp.task('generateCodeViewerFiles', browser.generateCodeViewerFiles);
