@@ -264,42 +264,114 @@ function findSamples(cb) {
 function copySamples(cb) {
     //log("copySamples");
 
-    cleanSamples();
     //log("copySamples = " + samplesDatabase.length);
 
-    var samplesModules = {};
+    var controlsModules = {}; // storing modules per each control, e.g. data-chart
+    var groupModules = {};    // storing modules for multiple controls, e.g. charts
+
+    var routingModules = {};    // storing modules for multiple controls, e.g. charts
+    var routingData = {};    // storing modules for multiple controls, e.g. charts
+
     // copying all samples to repo/samples folder based on gathered sample info
     for (const info of samplesDatabase) {
 
         //log("copying sample: " + info.SourcePath);
-        // grouping sample's modules by the control that is used in samples
-        var control = info.SampleControl;
-        if (samplesModules[control] === undefined) {
-            samplesModules[control] = {}
-            samplesModules[control].Group = info.SampleGroup;
-            samplesModules[control].Control = info.ControlName;
-            samplesModules[control].Modules = [];
-            samplesModules[control].Imports = [];
-            samplesModules[control].Components = [];
+
+        var group = info.SampleGroup;
+
+        if (routingData[group] === undefined) {
+            routingData[group] = {}
+            routingData[group].Group = info.SampleGroup;
+            routingData[group].Control = info.ControlName;
+            routingData[group].ModuleName = "RoutingDataFor" + utils.toTitleCase(info.SampleGroup);
+            routingData[group].Samples = {};
+            routingData[group].Path = './src/samples/' + info.SampleGroup + '/routing-data.ts';
         }
 
-        samplesModules[control].Path = './src/samples/' + info.SampleGroup + '/' + info.SampleControl + '/samples.ts';
-        // samplesModules[control].Path = './src/samples/' + info.SampleGroup + '/' + info.SampleControl + '/' + info.SampleControl + 'samples.ts';
-        samplesModules[control].Components.push(info.SampleClassName);
+        var routing = info.SampleRoutePath;
+        if (routingData[group].Samples[routing] == undefined) {
+            routingData[group].Samples[routing] = {
+                displayName: info.SampleDisplayName, parentName: info.ControlName
+            };
+        }
+
+        // grouping sample's modules by group of controls, e.g. charts
+        if (groupModules[group] === undefined) {
+            groupModules[group] = {}
+            groupModules[group].Group = info.SampleGroup;
+            groupModules[group].Control = info.ControlName;
+            groupModules[group].ModuleName = "SamplesFor" + utils.toTitleCase(info.SampleGroup);
+            groupModules[group].Modules = [];
+            groupModules[group].Imports = [];
+            groupModules[group].Components = [];
+            groupModules[group].Path = './src/samples/' + info.SampleGroup + '/samples.ts';
+        }
+
+        // grouping sample's modules by the control that is used in samples
+        var control = info.SampleControl;
+        if (controlsModules[control] === undefined) {
+            controlsModules[control] = {}
+            controlsModules[control].Group = info.SampleGroup;
+            controlsModules[control].Control = info.ControlName;
+            controlsModules[control].ModuleName = "SamplesFor" + info.ControlName;
+            controlsModules[control].Modules = [];
+            controlsModules[control].Imports = [];
+            controlsModules[control].Components = [];
+            controlsModules[control].Path = './src/samples/' + info.SampleGroup + '/' + info.SampleControl + '/samples.ts';
+            // controlsModules[control].Path = './src/samples/' + info.SampleGroup + '/' + info.SampleControl + '/' + info.SampleControl + 'samples.ts';
+
+            var controlsModule = controlsModules[control].ModuleName;
+            var controlsPath = './' + info.SampleControl + '/samples';
+            var controlsImport = 'import { ' + controlsModule + ' } from "' + controlsPath + '";';
+            if (groupModules[group].Imports.indexOf(controlsImport) < 0) {
+                groupModules[group].Imports.push(controlsImport);
+            }
+
+            if (groupModules[group].Modules.indexOf(controlsModule) < 0) {
+                groupModules[group].Modules.push(controlsModule);
+            }
+
+            var commonModule = 'CommonModule';
+            var commonImport = 'import { ' + commonModule + ' } from "@angular/common";';
+            if (groupModules[group].Imports.indexOf(commonImport) < 0) {
+                groupModules[group].Imports.push(commonImport);
+            }
+
+            if (groupModules[group].Modules.indexOf(commonModule) < 0) {
+                groupModules[group].Modules.push(commonModule);
+            }
+        }
+
+        controlsModules[control].Components.push(info.SampleClassName);
 
         for (const module of info.ImportsModules) {
-            if (samplesModules[control].Modules.indexOf(module) < 0) {
-                samplesModules[control].Modules.push(module);
+            if (controlsModules[control].Modules.indexOf(module) < 0) {
+                controlsModules[control].Modules.push(module);
+            }
+
+            if (module.indexOf('BrowserModule') < 0 &&
+                module.indexOf('BrowserAnimationsModule') < 0 &&
+                module.indexOf('Component') < 0 &&
+                groupModules[group].Modules.indexOf(module) < 0) {
+                groupModules[group].Modules.push(module);
             }
         }
         for (const line of info.ImportsLines) {
-            if (samplesModules[control].Imports.indexOf(line) < 0) {
-                samplesModules[control].Imports.push(line);
+
+            if (controlsModules[control].Imports.indexOf(line) < 0) {
+                controlsModules[control].Imports.push(line);
+            }
+
+            if (line.indexOf('BrowserModule') < 0 &&
+                line.indexOf('BrowserAnimationsModule') < 0 &&
+                line.indexOf('Component') < 0 &&
+                groupModules[group].Imports.indexOf(line) < 0) {
+                groupModules[group].Imports.push(line);
             }
         }
         // adding import for the current sample's component
         var importComponent = 'import { ' + info.SampleClassName + ' } from ' + '"./' + info.SampleFolder + '/app.component";';
-        samplesModules[control].Imports.push(importComponent);
+        controlsModules[control].Imports.push(importComponent);
 
         for (const filePath of info.SourceFiles) {
 
@@ -319,15 +391,16 @@ function copySamples(cb) {
         }
     }
 
-    //console.log(samplesModules);
+    //console.log(controlsModules);
 
-    for(var key in samplesModules) {
-        var data = samplesModules[key];
+    for(var key in controlsModules) {
+        var data = controlsModules[key];
+        data.Modules.sort();
+        data.Imports.sort();
 
-        log('generating modules: ' + data.Path);
+        log("generating samples' control module: " + data.Path);
         var ret = "";
         ret += "/* tslint:disable */ \n\n";
-
         for (const line of data.Imports) {
             ret += line + "\n";
         }
@@ -336,21 +409,56 @@ function copySamples(cb) {
         ret += "   declarations: [\n";
         ret += data.Components.join(',\n');
         ret += "\n   ], \n";
-
         ret += "   imports: [\n";
         ret += data.Modules.join(',\n');
         ret += " \n   ] \n";
         ret += "}) \n\n";
-
-       // var className = utils.replace(key, '-')
-        ret += "export class " + data.Control  + "SamplesModules {} \n";
+        ret += "export class " + data.ModuleName  + " {} \n";
 
         // console.log(ret);
 
         utils.fileSave(data.Path, ret);
-        // do something with "key" and "value" variables
     }
 
+    for(var key in groupModules) {
+        var data = groupModules[key];
+        data.Modules.sort();
+        data.Imports.sort();
+
+        log("generating samples' group module: " + data.Path);
+        var ret = "/* tslint:disable */ \n\n";
+        for (const line of data.Imports) {
+            ret += line + "\n";
+        }
+        ret += "\n";
+        ret += "@NgModule({\n";
+        ret += "   imports: [\n";
+        ret += data.Modules.join(',\n');
+        ret += " \n   ] \n";
+        ret += "}) \n\n";
+        ret += "export class " + data.ModuleName  + " {} \n";
+        // console.log(ret);
+        utils.fileSave(data.Path, ret);
+    }
+
+    for(var key in routingData) {
+        var data = routingData[key];
+        var ret = "/* tslint:disable */ \n\n";
+        ret += "export const " + " = { \n";
+
+        ret += "    // " + data.ModuleName + ", \n";
+        for(var routing in data.Samples) {
+            var sample = data.Samples[routing];
+
+            ret += '    "' + routing + '": ' + JSON.stringify(sample) + ", \n";
+            //console.log(routing + ' ' + JSON.stringify(sample));
+        }
+        ret += "\n";
+        ret += "}; \n";
+        console.log(ret);
+        utils.fileSave(data.Path, ret);
+    }
+    //console.log(routingData);
 
     if (cb) cb();
 } exports.copySamples = copySamples;
