@@ -74,7 +74,7 @@ var sampleSourcePaths = [
     //sampleRoot + 'charts/data-chart/**/package.json',
     // sampleRoot + 'charts/doughnut-chart/**/package.json',
     // sampleRoot + 'charts/financial-chart/**/package.json',
-    // sampleRoot + 'charts/pie-chart/**/package.json',
+    sampleRoot + 'charts/pie-chart/**/package.json',
     // sampleRoot + 'charts/sparkline/**/package.json',
     // sampleRoot + 'charts/tree-map/**/package.json',
     // sampleRoot + 'charts/zoomslider/**/package.json',
@@ -268,9 +268,7 @@ function copySamples(cb) {
 
     var controlsModules = {}; // storing modules per each control, e.g. data-chart
     var groupModules = {};    // storing modules for multiple controls, e.g. charts
-
-    var routingModules = {};    // storing modules for multiple controls, e.g. charts
-    var routingData = {};    // storing modules for multiple controls, e.g. charts
+    var routingStorage = {};    // storing routing data for all samples
 
     // copying all samples to repo/samples folder based on gathered sample info
     for (const info of samplesDatabase) {
@@ -278,21 +276,31 @@ function copySamples(cb) {
         //log("copying sample: " + info.SourcePath);
 
         var group = info.SampleGroup;
+        var control = info.SampleControl;
+        var importComponent = 'import { ' + info.SampleClassName + ' } from ' + '"./' + info.SampleFolder + '/app.component";';
 
-        if (routingData[group] === undefined) {
-            routingData[group] = {}
-            routingData[group].Group = info.SampleGroup;
-            routingData[group].Control = info.ControlName;
-            routingData[group].ModuleName = "RoutingDataFor" + utils.toTitleCase(info.SampleGroup);
-            routingData[group].Samples = {};
-            routingData[group].Path = './src/samples/' + info.SampleGroup + '/routing-data.ts';
+        if (routingStorage[group] === undefined) {
+            routingStorage[group] = {}
+            routingStorage[group].Group = info.SampleGroup;
+            routingStorage[group].Control = info.ControlName;
+            routingStorage[group].ModuleName = "RoutingDataFor" + utils.toTitleCase(info.SampleGroup);
+            routingStorage[group].Samples = {};
+            routingStorage[group].Modules = [];
+            routingStorage[group].Imports = [];
+            routingStorage[group].Output = './src/samples/' + info.SampleGroup+ '/';
         }
 
-        var routing = info.SampleRoutePath;
-        if (routingData[group].Samples[routing] == undefined) {
-            routingData[group].Samples[routing] = {
-                displayName: info.SampleDisplayName, parentName: info.ControlName
+        var routing = info.SampleRoutePath; // '    "' + info.SampleRoutePath + '": { displayName: ' + '"' + info.SampleDisplayName + '", parentName: "' + info.ControlName + '" }';
+        if (routingStorage[group].Samples[routing] === undefined) {
+            //routingStorage[group].Samples.push(routing);
+            var data = {
+                routing: routing,
+                name: info.SampleDisplayName,
+                parent: info.ControlName,
+                componentImport: importComponent.replace('./', './' + info.SampleControl + '/'),
+                componentName: info.SampleClassName,
             };
+            routingStorage[group].Samples[routing] = data;
         }
 
         // grouping sample's modules by group of controls, e.g. charts
@@ -308,7 +316,6 @@ function copySamples(cb) {
         }
 
         // grouping sample's modules by the control that is used in samples
-        var control = info.SampleControl;
         if (controlsModules[control] === undefined) {
             controlsModules[control] = {}
             controlsModules[control].Group = info.SampleGroup;
@@ -326,7 +333,6 @@ function copySamples(cb) {
             if (groupModules[group].Imports.indexOf(controlsImport) < 0) {
                 groupModules[group].Imports.push(controlsImport);
             }
-
             if (groupModules[group].Modules.indexOf(controlsModule) < 0) {
                 groupModules[group].Modules.push(controlsModule);
             }
@@ -336,9 +342,15 @@ function copySamples(cb) {
             if (groupModules[group].Imports.indexOf(commonImport) < 0) {
                 groupModules[group].Imports.push(commonImport);
             }
-
             if (groupModules[group].Modules.indexOf(commonModule) < 0) {
                 groupModules[group].Modules.push(commonModule);
+            }
+
+            if (routingStorage[group].Imports.indexOf(controlsImport) < 0) {
+                routingStorage[group].Imports.push(controlsImport);
+            }
+            if (routingStorage[group].Modules.indexOf(controlsModule) < 0) {
+                routingStorage[group].Modules.push(controlsModule);
             }
         }
 
@@ -356,6 +368,7 @@ function copySamples(cb) {
                 groupModules[group].Modules.push(module);
             }
         }
+
         for (const line of info.ImportsLines) {
 
             if (controlsModules[control].Imports.indexOf(line) < 0) {
@@ -369,8 +382,8 @@ function copySamples(cb) {
                 groupModules[group].Imports.push(line);
             }
         }
+
         // adding import for the current sample's component
-        var importComponent = 'import { ' + info.SampleClassName + ' } from ' + '"./' + info.SampleFolder + '/app.component";';
         controlsModules[control].Imports.push(importComponent);
 
         for (const filePath of info.SourceFiles) {
@@ -441,26 +454,65 @@ function copySamples(cb) {
         utils.fileSave(data.Path, ret);
     }
 
-    for(var key in routingData) {
-        var data = routingData[key];
-        var ret = "/* tslint:disable */ \n\n";
-        ret += "export const " + " = { \n";
+    for(var key in routingStorage) {
+        var data = routingStorage[key];
 
-        ret += "    // " + data.ModuleName + ", \n";
+        var routingDataFile = 'routing-data';
+        var routingData = "/* tslint:disable */ \n\n";
+        routingData += "export const " + data.ModuleName + " = { \n";
+
+        var routingSamples = [];
+        var routingComponents = [];
+
         for(var routing in data.Samples) {
             var sample = data.Samples[routing];
-
-            ret += '    "' + routing + '": ' + JSON.stringify(sample) + ", \n";
-            //console.log(routing + ' ' + JSON.stringify(sample));
+            var str = '    "' + routing + '": { displayName: ' + '"' + sample.name + '", parentName: "' + sample.parent + '" }';
+            routingSamples.push(str);
+            var strRouting = '"' + routing + '"';
+            var strData = data.ModuleName + '[' + strRouting + ']';
+            var strComp = ' { component: ' + sample.componentName + ', path: ' + strRouting + ', data: ' + strData + ' }';
+            routingComponents.push(strComp);
+            data.Imports.push(sample.componentImport);
         }
-        ret += "\n";
-        ret += "}; \n";
-        console.log(ret);
-        utils.fileSave(data.Path, ret);
+        routingData += routingSamples.join(',\n');
+        routingData += "\n";
+        routingData += "}; \n";
+
+        //console.log(ret);
+        utils.fileSave(data.Output + routingDataFile + '.ts', routingData);
+
+        var routingExportName = 'RoutesFor' + utils.toTitleCase(key);
+        var routingModules = "/* tslint:disable */ \n\n";
+        routingModules += 'import { NgModule } from "@angular/core";\n';
+        routingModules += 'import { RouterModule, Routes } from "@angular/router";\n';
+        routingModules += "\n";
+        routingModules += "import { " + data.ModuleName + ' } from "./' + routingDataFile + '"; \n';
+        routingModules += "\n";
+        routingModules += data.Imports.join('\n');
+        routingModules += "\n\n";
+        routingModules += 'export const ' + routingExportName + ': Routes = [\n'
+        routingModules += routingComponents.join(',\n');
+        routingModules += "\n];\n\n";
+
+        var routingClassName = 'RoutingModulesFor' + utils.toTitleCase(key);
+        routingModules += "@NgModule({\n";
+        routingModules += "   exports: [\n";
+        routingModules += 'RouterModule \n';
+        routingModules += "    ], \n";
+        routingModules += "   imports: [\n";
+        routingModules += data.Modules.join(',\n') + ",\n";
+        routingModules += 'RouterModule.forChild(' + routingExportName + ') \n'
+        routingModules += "    ] \n";
+        routingModules += "}) \n\n";
+        routingModules += 'export class ' + routingClassName + ' { }\n'
+
+        utils.fileSave(data.Output + 'routing-modules.ts', routingModules);
+        console.log(routingModules);
     }
-    //console.log(routingData);
+    // console.log(routingStorage);
 
     if (cb) cb();
+
 } exports.copySamples = copySamples;
 
 function generateSampleRouting(cb) {
