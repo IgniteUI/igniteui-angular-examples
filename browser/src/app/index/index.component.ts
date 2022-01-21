@@ -2,11 +2,14 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from "
 import { NavigationStart, Route, Router } from "@angular/router";
 import { IgxNavigationDrawerComponent } from "igniteui-angular";
 import { filter } from "rxjs/operators";
-import { chartsRoutesData } from "../charts/charts-routes-data";
-import { excelLibraryRoutesData } from "../excel-library/excel-library-routes-data";
-import { gaugesRoutesData } from "../gauges/gauges-routes-data";
-import { geoMapRoutesData } from "../maps/geo-map-routes-data";
-import { spreadsheetRoutesData } from "../spreadsheet/spreadsheet-routes-data";
+// TODO-MT
+// Auto-Insert Samples Imports - Start
+// import { chartsRoutesData } from "../charts/charts-routes-data";
+// import { excelLibraryRoutesData } from "../excel-library/excel-library-routes-data";
+// import { gaugesRoutesData } from "../gauges/gauges-routes-data";
+// import { geoMapRoutesData } from "../maps/geo-map-routes-data";
+// import { spreadsheetRoutesData } from "../spreadsheet/spreadsheet-routes-data";
+// Auto-Insert Samples Imports - End
 
 @Component({
     selector: "app-index",
@@ -37,29 +40,31 @@ export class IndexComponent implements OnInit, AfterViewInit {
     };
 
     private appRoutes: any[];
-
+    // TODO-MT
+    // Auto-Insert Samples Modules - Start
     private modulesRoutes = [
-        {
-            path: "excel",
-            routesData: excelLibraryRoutesData
-        },
-        {
-            path: "gauges",
-            routesData: gaugesRoutesData
-        },
-        {
-            path: "charts",
-            routesData: chartsRoutesData
-        },
-        {
-            path: "excel",
-            routesData: spreadsheetRoutesData
-        },
-        {
-            path: "maps",
-            routesData: geoMapRoutesData
-        }
+        // {
+        //     path: "excel",
+        //     routesData: excelLibraryRoutesData
+        // },
+        // {
+        //     path: "gauges",
+        //     routesData: gaugesRoutesData
+        // },
+        // {
+        //     path: "charts",
+        //     routesData: chartsRoutesData
+        // },
+        // {
+        //     path: "excel",
+        //     routesData: spreadsheetRoutesData
+        // },
+        // {
+        //     path: "maps",
+        //     routesData: geoMapRoutesData
+        // }
     ];
+    // Auto-Insert Samples Modules - End
 
     private allNavItems: INavigationItem[] = [];
 
