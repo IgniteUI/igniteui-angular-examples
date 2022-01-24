@@ -11,7 +11,15 @@ export const samplesRoutes: Routes = [
         component: HomeComponent,
         data: { displayName: "Home" },
         path: "home"
-    }
+    },
+    // note these section is auto-generated:
+
+    // Auto-Insert-Modules-Start
+{ path: "charts", data: ["SamplesForCharts"], loadChildren: () => import("../samples/charts/samples-modules").then(m => m.SamplesForCharts) },
+{ path: "gauges", data: ["SamplesForGauges"], loadChildren: () => import("../samples/gauges/samples-modules").then(m => m.SamplesForGauges) }
+
+    // Auto-Insert-Modules-End
+
     // TODO auto-generate:
     // {
     //     data: ["ChartsModule"],

@@ -35,9 +35,20 @@ function fileRead(filePath) {
     return content;
 } exports.fileRead = fileRead;
 
+function fileCleanup(fileContent) {
+    var lines = fileContent.split('\n');
+    while (lines.indexOf('\n\n') >= 0) {
+        lines = lines.split('\n\n').join('\n');
+    }
+    return lines;
+} exports.fileCleanup = fileCleanup;
+
 // safely saves a file content and creates sub-folder if they do not exits already
-function fileSave(filePath, fileContent) {
+function fileSave(filePath, fileContent, autoCleanup) {
     fileMakeDir(filePath);
+    if (autoCleanup)
+        fileContent = fileCleanup(fileContent);
+
     var content = fs.writeFileSync(filePath, fileContent);
     return content;
 } exports.fileSave = fileSave;
