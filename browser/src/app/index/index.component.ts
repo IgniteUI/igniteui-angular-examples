@@ -2,14 +2,17 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from "
 import { NavigationStart, Route, Router } from "@angular/router";
 import { IgxNavigationDrawerComponent } from "igniteui-angular";
 import { filter } from "rxjs/operators";
-// TODO-MT
-// Auto-Insert Samples Imports - Start
+
+// note these section is auto-generated - do not change it:
+// Auto-Insert-Imports-RoutingData-Start
+
+// Auto-Insert-Imports-RoutingData-End
+
 // import { chartsRoutesData } from "../charts/charts-routes-data";
 // import { excelLibraryRoutesData } from "../excel-library/excel-library-routes-data";
 // import { gaugesRoutesData } from "../gauges/gauges-routes-data";
 // import { geoMapRoutesData } from "../maps/geo-map-routes-data";
 // import { spreadsheetRoutesData } from "../spreadsheet/spreadsheet-routes-data";
-// Auto-Insert Samples Imports - End
 
 @Component({
     selector: "app-index",

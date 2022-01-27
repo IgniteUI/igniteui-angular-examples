@@ -70,11 +70,11 @@ function getOutputPath(dirPath) {
 
 // NOTE you can comment out strings in this array to run these function only on a subset of samples
 var sampleSourcePaths = [
-    sampleRoot + 'charts/category-chart/**/package.json',
+    //sampleRoot + 'charts/category-chart/**/package.json',
     sampleRoot + 'charts/data-chart/**/package.json',
     // sampleRoot + 'charts/doughnut-chart/**/package.json',
     // sampleRoot + 'charts/financial-chart/**/package.json',
-    sampleRoot + 'charts/pie-chart/**/package.json',
+    //sampleRoot + 'charts/pie-chart/**/package.json',
     // sampleRoot + 'charts/sparkline/**/package.json',
     // sampleRoot + 'charts/tree-map/**/package.json',
     // sampleRoot + 'charts/zoomslider/**/package.json',
@@ -82,7 +82,7 @@ var sampleSourcePaths = [
     // sampleRoot + 'excel/excel-library/**/package.json',
     // sampleRoot + 'excel/spreadsheet/**/package.json',
     // sampleRoot + 'gauges/bullet-graph/**/package.json',
-    sampleRoot + 'gauges/linear-gauge/**/package.json',
+    //sampleRoot + 'gauges/linear-gauge/**/package.json',
     // sampleRoot + 'gauges/radial-gauge/**/package.json',
     // sampleRoot + 'grids/**/package.json',
     // sampleRoot + 'layouts/**/package.json',
@@ -427,8 +427,9 @@ function copySamples(cb) {
         }
     }
 
-    console.log(controlsModules);
+    //console.log(controlsModules);
 
+    // generating ./src/samples/GROUP/CONTROL/samples-modules.ts
     for(var key in controlsModules) {
         var data = controlsModules[key];
         data.Modules.sort();
@@ -469,21 +470,19 @@ function copySamples(cb) {
         }
         ret += "} \n";
 
-        // TODO IF sample has data files
-        // http://tfs.infragistics.local:8080/tfs/Engineering/IgInternalApplicationsGit/IgInternalApplicationsGit%20Team/_git/angular-samples-dv?path=%2Fsrc%2Fapp%2Fcharts%2Fdata-chart%2Fdata-chart-samples-module.ts&version=GBvnext&_a=contents&line=408&lineStyle=plain&lineEnd=409&lineStartColumn=1&lineEndColumn=1
-
         // console.log(ret);
 
         utils.fileSave(data.Path, ret);
     }
     var appModuleRoutes = [];
 
+    // generating ./src/samples/GROUP/samples-modules.ts
     for(var key in groupModules) {
         var data = groupModules[key];
         data.Modules.sort();
         data.Imports.sort();
 
-        log("generating samples' group module: " + data.Path);
+        log("generating group module:   " + data.Path);
         var ret = "/* tslint:disable */ \n\n";
         for (const line of data.Imports) {
             ret += line + "\n";
@@ -496,18 +495,14 @@ function copySamples(cb) {
         ret += "}) \n\n";
         ret += "export class " + data.ModuleName  + " {} \n";
         // console.log(ret);
-        utils.fileSave(data.Path, ret);
+        utils.fileSave(data.Path, ret); // ./src/samples/GROUP/samples-modules.ts
 
         var appRouteImport = 'import("../samples/' + key + '/samples-modules").then(m => m.' + data.ModuleName + ')';
         var appRouteInfo   = '{ path: "' + key + '", data: ["' + data.ModuleName + '"], loadChildren: () => ' + appRouteImport + ' }';
-     // {
-    //     data: ["ChartsModule"],
-    //     loadChildren: () => import("./charts/charts.module").then(m => m.ChartsModule),
-    //     path: "charts"
-    // },
         appModuleRoutes.push(appRouteInfo);
     }
 
+    var routingDataImports = [];
     for(var key in routingStorage) {
         var data = routingStorage[key];
 
@@ -515,9 +510,11 @@ function copySamples(cb) {
         var routingData = "/* tslint:disable */ \n\n";
         routingData += "export const " + data.ModuleName + " = { \n";
 
+        // generating ./src/samples/GROUP/routing-data.ts
+        var routingOutputPath = data.Output + routingDataFile + '.ts';
+        log("generating group routing data: " + routingOutputPath);
         var routingSamples = [];
         var routingComponents = [];
-
         for(var routing in data.Samples) {
             var sample = data.Samples[routing];
             var str = '    "' + routing + '": { displayName: ' + '"' + sample.name + '", parentName: "' + sample.parent + '" }';
@@ -533,14 +530,21 @@ function copySamples(cb) {
         routingData += "}; \n";
 
         //console.log(ret);
-        utils.fileSave(data.Output + routingDataFile + '.ts', routingData);
+        utils.fileSave(routingOutputPath + '.ts', routingData);
 
+        // generating ./src/samples/GROUP/routing-modules.ts
+        var routingDataImport = "import { " + data.ModuleName + ' } from "../../samples/' + key + '/' + routingDataFile + '"; \n';
+        log(routingDataImport);
+        routingDataImports.push(routingDataImport);
+
+        var routingModulePath = data.Output + 'routing-modules.ts';
+        log("generating group routing module: " + routingModulePath);
         var routingExportName = 'RoutesFor' + utils.toTitleCase(key);
         var routingModules = "/* tslint:disable */ \n\n";
         routingModules += 'import { NgModule } from "@angular/core";\n';
         routingModules += 'import { RouterModule, Routes } from "@angular/router";\n';
         routingModules += "\n";
-        routingModules += "import { " + data.ModuleName + ' } from "./' + routingDataFile + '"; \n';
+        routingModules += "import { " + data.ModuleName + ' } from "./' + routingDataFile + '"; \n';;
         routingModules += "\n";
         routingModules += data.Imports.join('\n');
         routingModules += "\n\n";
@@ -567,11 +571,11 @@ function copySamples(cb) {
     // console.log(routingStorage);
 
 
-    // updating app.routing.module.ts
+    // updating ./src/app.routing.module.ts
     var appModuleFile = './src/app/app-routing.module.ts';
     var appModuleContent = utils.fileRead(appModuleFile);
     var appModuleLines = appModuleContent.split('\n');
-    console.log('appModuleLines ' + appModuleLines.length);
+    //console.log('appModuleLines ' + appModuleLines.length);
     let autoInsertStart = -1;
     let autoInsertEnd = -1;
 
@@ -595,11 +599,38 @@ function copySamples(cb) {
             appModuleLines[i] = ""; // clearing previously auto-generated inserts
         }
         // adding latest auto-generated inserts for JS files
-        //appModuleLines[autoInsertStart + 1] = "// TODO add modules"; //appModuleRoutes.join('\n');
         appModuleLines[autoInsertStart + 1] = appModuleRoutes.join(',\n');
+        appModuleContent = appModuleLines.join('\n');
+        utils.fileSave(appModuleFile, appModuleContent);
     }
-    var appModuleContent = appModuleLines.join('\n');
-    utils.fileSave(appModuleFile, appModuleContent);
+
+    // updating ./src/app/index/index.component.ts
+    var appIndexFile = './src/app/index/index.component.ts';
+    var appIndexContent = utils.fileRead(appIndexFile);
+    var appIndexLines = appIndexContent.split('\n');
+    let appIndexImportsStart = -1;
+    let appIndexImportsEnd = -1;
+
+    for (let i = 0; i < appIndexLines.length; i++) {
+        let line = appIndexLines[i];
+        if (line.indexOf("Auto-Insert-Imports-RoutingData-Start") > 0) {
+            appIndexImportsStart = i;
+        }
+        else if (line.indexOf("Auto-Insert-Imports-RoutingData-End") > 0) {
+            appIndexImportsEnd = i;
+        }
+    }
+    if (appIndexImportsStart > 0 && appIndexImportsEnd > 0) {
+        for (let i = appIndexImportsStart+1; i < appIndexImportsEnd; i++) {
+            appIndexLines[i] = ""; // clearing previously auto-generated inserts
+        }
+        // adding latest auto-generated inserts for JS files
+        //appIndexLines[appIndexImportsStart + 1] = appModuleRoutes.join(',\n');
+        //appIndexContent = appIndexLines.join('\n');
+        //utils.fileSave(appModuleFile, appIndexContent);
+    }
+
+    console.log('appIndexLines ' + appIndexLines.length + ' ' + appIndexImportsStart);
 
     if (cb) cb();
 
