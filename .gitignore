@@ -12,6 +12,7 @@
 # browser auto-generated files:
 # /porting/**
 # /browser/**
+/browser/.angular
 /browser/node_modules
 /browser/src/samples
  /browser/src/assets/samples/*.json
