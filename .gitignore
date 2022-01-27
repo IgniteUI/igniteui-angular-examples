@@ -5,6 +5,7 @@
 /samples/**/dist/
 /samples/**/node_modules/
 /samples/**/package-lock.json
+/samples/**/.angular
 # /samples-tmp/
 # /samples-tmp/**/node_modules/ 
 
