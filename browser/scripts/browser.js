@@ -260,7 +260,8 @@ function findSamples(cb) {
 
 } exports.findSamples = findSamples;
 
-
+// this function is copying source files for individual samples to browser
+// generates modules for samples, routing data, and routing modules
 function copySamples(cb) {
     //log("copySamples");
 
@@ -603,25 +604,6 @@ function copySamples(cb) {
     if (cb) cb();
 
 } exports.copySamples = copySamples;
-
-function generateSampleRouting(cb) {
-    log("generateSampleRouting");
-    // TODO group items in samplesDatabase array by samples' group (e.g. charts) into a new array
-    // TODO generate routing data and modules for each group of samples, e.g.
-    // /src/samples/charts/charts-routes-data.ts
-    // /src/samples/charts/charts-routing.module.ts
-    // /src/samples/charts/charts.module.ts
-
-    // NOTE use /src/sample-old/ files as reference
-    if (cb) cb();
-} exports.generateSampleRouting = generateSampleRouting;
-
-function generateAppRouting(cb) {
-    log("generateAppRouting");
-    // TODO generate routing modules: src/app/app-routing.module.ts
-
-    if (cb) cb();
-} exports.generateAppRouting = generateAppRouting;
 
 function generateCodeViewerFiles(cb) {
     log("generateCodeViewerFiles");
