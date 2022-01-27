@@ -14,6 +14,9 @@
 # /browser/**
 /browser/node_modules
 /browser/src/samples
+ /browser/src/assets/samples/*.json
+!/browser/src/assets/samples/meta.json
+!/browser/src/assets/samples/shared.json
 /browser/dist
 /browser/build
 /browser/out-tsc
