@@ -40,7 +40,7 @@ function fileCleanup(fileContent) {
     while (lines.indexOf('\n\n') >= 0) {
         lines = lines.split('\n\n').join('\n');
     }
-    return lines;
+    return lines.join('\n');
 } exports.fileCleanup = fileCleanup;
 
 // safely saves a file content and creates sub-folder if they do not exits already

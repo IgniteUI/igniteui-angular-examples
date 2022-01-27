@@ -78,11 +78,11 @@ var sampleSourcePaths = [
     // sampleRoot + 'charts/sparkline/**/package.json',
     // sampleRoot + 'charts/tree-map/**/package.json',
     // sampleRoot + 'charts/zoomslider/**/package.json',
-    // sampleRoot + 'maps/**/package.json',
+    sampleRoot + 'maps/**/package.json',
     // sampleRoot + 'excel/excel-library/**/package.json',
     // sampleRoot + 'excel/spreadsheet/**/package.json',
     // sampleRoot + 'gauges/bullet-graph/**/package.json',
-    //sampleRoot + 'gauges/linear-gauge/**/package.json',
+    sampleRoot + 'gauges/linear-gauge/**/package.json',
     // sampleRoot + 'gauges/radial-gauge/**/package.json',
     // sampleRoot + 'grids/**/package.json',
     // sampleRoot + 'layouts/**/package.json',
@@ -498,13 +498,14 @@ function copySamples(cb) {
         utils.fileSave(data.Path, ret); // ./src/samples/GROUP/samples-modules.ts
 
         var appRouteImport = 'import("../samples/' + key + '/samples-modules").then(m => m.' + data.ModuleName + ')';
-        var appRouteInfo   = '{ path: "' + key + '", data: ["' + data.ModuleName + '"], loadChildren: () => ' + appRouteImport + ' }';
+        var appRouteInfo   = '    { path: "' + key + '", data: ["' + data.ModuleName + '"], loadChildren: () => ' + appRouteImport + ' }';
         appModuleRoutes.push(appRouteInfo);
     }
 
     var routingDataImports = [];
-    for(var key in routingStorage) {
-        var data = routingStorage[key];
+    var routingDataArray = [];
+    for(var group in routingStorage) {
+        var data = routingStorage[group];
 
         var routingDataFile = 'routing-data';
         var routingData = "/* tslint:disable */ \n\n";
@@ -530,16 +531,18 @@ function copySamples(cb) {
         routingData += "}; \n";
 
         //console.log(ret);
-        utils.fileSave(routingOutputPath + '.ts', routingData);
+        utils.fileSave(routingOutputPath, routingData);
 
-        // generating ./src/samples/GROUP/routing-modules.ts
-        var routingDataImport = "import { " + data.ModuleName + ' } from "../../samples/' + key + '/' + routingDataFile + '"; \n';
-        log(routingDataImport);
+        var routingDataImport = "import { " + data.ModuleName + ' } from "../../samples/' + group + '/' + routingDataFile + '";';
         routingDataImports.push(routingDataImport);
 
+        var routingDataItem = '        { path: "' + group + '", routesData: ' + data.ModuleName + ' }'
+        routingDataArray.push(routingDataItem);
+
+        // generating ./src/samples/GROUP/routing-modules.ts
         var routingModulePath = data.Output + 'routing-modules.ts';
         log("generating group routing module: " + routingModulePath);
-        var routingExportName = 'RoutesFor' + utils.toTitleCase(key);
+        var routingExportName = 'RoutesFor' + utils.toTitleCase(group);
         var routingModules = "/* tslint:disable */ \n\n";
         routingModules += 'import { NgModule } from "@angular/core";\n';
         routingModules += 'import { RouterModule, Routes } from "@angular/router";\n';
@@ -552,7 +555,7 @@ function copySamples(cb) {
         routingModules += routingComponents.join(',\n');
         routingModules += "\n];\n\n";
 
-        var routingClassName = 'RoutingModulesFor' + utils.toTitleCase(key);
+        var routingClassName = 'RoutingModulesFor' + utils.toTitleCase(group);
         routingModules += "@NgModule({\n";
         routingModules += "   exports: [\n";
         routingModules += 'RouterModule \n';
@@ -578,6 +581,7 @@ function copySamples(cb) {
     //console.log('appModuleLines ' + appModuleLines.length);
     let autoInsertStart = -1;
     let autoInsertEnd = -1;
+    log('updating ' + appModuleFile)
 
     for (let i = 0; i < appModuleLines.length; i++) {
         let line = appModuleLines[i];
@@ -608,29 +612,54 @@ function copySamples(cb) {
     var appIndexFile = './src/app/index/index.component.ts';
     var appIndexContent = utils.fileRead(appIndexFile);
     var appIndexLines = appIndexContent.split('\n');
-    let appIndexImportsStart = -1;
-    let appIndexImportsEnd = -1;
+    let appIndexRoutingImportStart = -1;
+    let appIndexRoutingImportEnd = -1;
+    log('updating ' + appIndexFile)
 
+    let appIndexRoutingArrayStart = -1;
+    let appIndexRoutingArrayEnd = -1;
     for (let i = 0; i < appIndexLines.length; i++) {
         let line = appIndexLines[i];
         if (line.indexOf("Auto-Insert-Imports-RoutingData-Start") > 0) {
-            appIndexImportsStart = i;
+            appIndexRoutingImportStart = i;
         }
         else if (line.indexOf("Auto-Insert-Imports-RoutingData-End") > 0) {
-            appIndexImportsEnd = i;
+            appIndexRoutingImportEnd = i;
+        }
+
+        if (line.indexOf("Auto-Insert-SamplesRoutingArray-Start") > 0) {
+            appIndexRoutingArrayStart = i;
+        }
+        else if (line.indexOf("Auto-Insert-SamplesRoutingArray-End") > 0) {
+            appIndexRoutingArrayEnd = i;
         }
     }
-    if (appIndexImportsStart > 0 && appIndexImportsEnd > 0) {
-        for (let i = appIndexImportsStart+1; i < appIndexImportsEnd; i++) {
+
+    var appIndexChanged = false;
+    if (appIndexRoutingImportStart > 0 && appIndexRoutingImportEnd > 0) {
+        for (let i = appIndexRoutingImportStart+1; i < appIndexRoutingImportEnd; i++) {
             appIndexLines[i] = ""; // clearing previously auto-generated inserts
         }
         // adding latest auto-generated inserts for JS files
-        //appIndexLines[appIndexImportsStart + 1] = appModuleRoutes.join(',\n');
-        //appIndexContent = appIndexLines.join('\n');
-        //utils.fileSave(appModuleFile, appIndexContent);
+        appIndexLines[appIndexRoutingImportStart + 1] = routingDataImports.join('\n');
+        appIndexChanged = true;
     }
 
-    console.log('appIndexLines ' + appIndexLines.length + ' ' + appIndexImportsStart);
+    if (appIndexRoutingArrayStart > 0 && appIndexRoutingArrayEnd > 0) {
+        for (let i = appIndexRoutingArrayStart+1; i < appIndexRoutingArrayEnd; i++) {
+            appIndexLines[i] = ""; // clearing previously auto-generated inserts
+        }
+        // adding latest auto-generated inserts for JS files
+        appIndexLines[appIndexRoutingArrayStart + 1] = routingDataArray.join(',\n');
+        appIndexChanged = true;
+    }
+
+    if (appIndexChanged) {
+        appIndexContent = appIndexLines.join('\n');
+        utils.fileSave(appIndexFile, appIndexContent, true);
+    }
+
+    console.log('appIndexLines ' + appIndexRoutingArrayStart + ' ' + appIndexRoutingImportStart);
 
     if (cb) cb();
 

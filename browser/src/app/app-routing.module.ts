@@ -14,7 +14,11 @@ export const samplesRoutes: Routes = [
     },
     // note these section is auto-generated - do not change it:
     // Auto-Insert-Modules-Start
-{ path: "charts", data: ["SamplesForCharts"], loadChildren: () => import("../samples/charts/samples-modules").then(m => m.SamplesForCharts) }
+    { path: "charts", data: ["SamplesForCharts"], loadChildren: () => import("../samples/charts/samples-modules").then(m => m.SamplesForCharts) },
+    { path: "maps", data: ["SamplesForMaps"], loadChildren: () => import("../samples/maps/samples-modules").then(m => m.SamplesForMaps) },
+    { path: "gauges", data: ["SamplesForGauges"], loadChildren: () => import("../samples/gauges/samples-modules").then(m => m.SamplesForGauges) }
+
+
 
 
 

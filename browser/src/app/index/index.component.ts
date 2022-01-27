@@ -5,6 +5,12 @@ import { filter } from "rxjs/operators";
 
 // note these section is auto-generated - do not change it:
 // Auto-Insert-Imports-RoutingData-Start
+import { RoutingDataForCharts } from "../../samples/charts/routing-data";
+import { RoutingDataForMaps } from "../../samples/maps/routing-data";
+import { RoutingDataForGauges } from "../../samples/gauges/routing-data";
+
+
+
 
 // Auto-Insert-Imports-RoutingData-End
 
@@ -43,31 +49,37 @@ export class IndexComponent implements OnInit, AfterViewInit {
     };
 
     private appRoutes: any[];
-    // TODO-MT
-    // Auto-Insert Samples Modules - Start
+
+    // note these section is auto-generated - do not change it:
     private modulesRoutes = [
-        // {
-        //     path: "excel",
-        //     routesData: excelLibraryRoutesData
-        // },
-        // {
-        //     path: "gauges",
-        //     routesData: gaugesRoutesData
-        // },
-        // {
-        //     path: "charts",
-        //     routesData: chartsRoutesData
-        // },
-        // {
-        //     path: "excel",
-        //     routesData: spreadsheetRoutesData
-        // },
-        // {
-        //     path: "maps",
-        //     routesData: geoMapRoutesData
-        // }
+        // Auto-Insert-SamplesRoutingArray-Start
+        { path: "charts", routesData: RoutingDataForCharts },
+        { path: "maps", routesData: RoutingDataForMaps },
+        { path: "gauges", routesData: RoutingDataForGauges }
+
+
+
+
+        // Auto-Insert-SamplesRoutingArray-End
     ];
-    // Auto-Insert Samples Modules - End
+
+    // private modulesRoutes = [
+        // {
+        //     path: "excel", routesData: excelLibraryRoutesData
+        // },
+        // {
+        //     path: "gauges",  routesData: gaugesRoutesData
+        // },
+        // {
+        //     path: "charts",    routesData: chartsRoutesData
+        // },
+        // {
+        //     path: "excel",    routesData: spreadsheetRoutesData
+        // },
+        // {
+        //     path: "maps",   routesData: geoMapRoutesData
+        // }
+    // ];
 
     private allNavItems: INavigationItem[] = [];
 
