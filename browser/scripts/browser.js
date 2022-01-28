@@ -70,12 +70,12 @@ function getOutputPath(dirPath) {
 
 // NOTE you can comment out strings in this array to run these function only on a subset of samples
 var sampleSourcePaths = [
-    //sampleRoot + 'charts/category-chart/**/package.json',
+    sampleRoot + 'charts/category-chart/**/package.json',
     sampleRoot + 'charts/data-chart/**/package.json',
     // sampleRoot + 'charts/doughnut-chart/**/package.json',
     // sampleRoot + 'charts/financial-chart/**/package.json',
-    //sampleRoot + 'charts/pie-chart/**/package.json',
-    // sampleRoot + 'charts/sparkline/**/package.json',
+    sampleRoot + 'charts/pie-chart/**/package.json',
+    sampleRoot + 'charts/sparkline/**/package.json',
     // sampleRoot + 'charts/tree-map/**/package.json',
     // sampleRoot + 'charts/zoomslider/**/package.json',
     sampleRoot + 'maps/**/package.json',
@@ -83,7 +83,7 @@ var sampleSourcePaths = [
     // sampleRoot + 'excel/spreadsheet/**/package.json',
     // sampleRoot + 'gauges/bullet-graph/**/package.json',
     sampleRoot + 'gauges/linear-gauge/**/package.json',
-    // sampleRoot + 'gauges/radial-gauge/**/package.json',
+    sampleRoot + 'gauges/radial-gauge/**/package.json',
     // sampleRoot + 'grids/**/package.json',
     // sampleRoot + 'layouts/**/package.json',
     // sampleRoot + 'editors/**/package.json',
@@ -106,7 +106,7 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
     info.SampleFolder  = getSampleFolder(samplePath);   //                      |          |axis-sharing|
     // console.log("SamplePath " + samplePath);
     // console.log("OutputPath  " + info.OutputPath);
-    console.log("SourcePath " + info.SourcePath);
+    // console.log("SourcePath " + info.SourcePath);
     // console.log("SampleGroup   " + info.SampleGroup);
     // console.log("SampleControl " + info.SampleControl);
     // console.log("SampleFolder  " + info.SampleFolder);
@@ -665,12 +665,61 @@ function copySamples(cb) {
 
 } exports.copySamples = copySamples;
 
-function generateCodeViewerFiles(cb) {
-    log("generateCodeViewerFiles");
-    // TODO for each in samplesDatabase array, generate code viewer .json files
-    // NOTE see existing file in src/assets/samples/*.json
+function updateCodeViewer(cb) {
+
+    // const outputFolder = "./src/assets/samples/";
+    const outputFolder = "./src/assets/code-viewer/";
+    log("cleaning up: " + outputFolder);
+    del.sync(outputFolder + "/**");
+
+    // generating code viewer files (.json) for each sample
+    for (const info of samplesDatabase) {
+        var sampleFiles = [];
+
+        var codeViewPath = outputFolder + info.SampleRoutePath + ".json";
+        log("generating: " + codeViewPath);
+
+        for (const filePath of info.SourceFiles) {
+            var codeViewItem = {
+                content: utils.fileRead(filePath),
+                path: filePath,
+                hasRelativeAssetsUrls: false,
+                isMain: true
+            };
+
+            if (filePath.indexOf(".scss") > 0) {
+                codeViewItem.fileExtension = 'scss';
+                codeViewItem.fileHeader = 'scss';
+            }
+            else if (filePath.indexOf(".module.ts") > 0) {
+                codeViewItem.fileExtension = 'ts';
+                codeViewItem.fileHeader = 'modules';
+            }
+            else if (filePath.indexOf(".component.ts") > 0) {
+                codeViewItem.fileExtension = 'ts';
+                codeViewItem.fileHeader = 'ts';
+            }
+            else if (filePath.indexOf(".ts") > 0) {
+                codeViewItem.fileExtension = 'ts';
+                codeViewItem.fileHeader = "DATA";
+            }
+            else if (filePath.indexOf(".html") > 0) {
+                codeViewItem.fileExtension = 'html';
+                codeViewItem.fileHeader = 'html';
+            }
+
+            sampleFiles.push(codeViewItem);
+        }
+
+        var codeViewContent = "{\r\n \"sampleFiles\":\r\n";
+        codeViewContent += JSON.stringify(sampleFiles, null, ' ');
+        codeViewContent += "\r\n}";
+
+        utils.fileSave(codeViewPath, codeViewContent);
+    }
+
     if (cb) cb();
-} exports.generateCodeViewerFiles = generateCodeViewerFiles;
+} exports.updateCodeViewer = updateCodeViewer;
 
 function cleanSamples() {
     log("clean samples in browser: " + sampleOutput);

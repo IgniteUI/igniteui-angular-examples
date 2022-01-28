@@ -7,7 +7,7 @@
 /samples/**/package-lock.json
 /samples/**/.angular
 # /samples-tmp/
-# /samples-tmp/**/node_modules/ 
+# /samples-tmp/**/node_modules/
 
 # browser auto-generated files:
 # /porting/**
@@ -15,7 +15,8 @@
 /browser/.angular
 /browser/node_modules
 /browser/src/samples
- /browser/src/assets/samples/*.json
+/browser/src/assets/code-viewer/*.json
+/browser/src/assets/samples/*.json
 !/browser/src/assets/samples/meta.json
 !/browser/src/assets/samples/shared.json
 /browser/dist
@@ -68,4 +69,3 @@
 .env.development.local
 .env.test.local
 .env.production.local
- 

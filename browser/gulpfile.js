@@ -34,7 +34,7 @@ gulp.task('updateBrowser', gulp.series(
     browser.cleanSamples,
     browser.findSamples,
     browser.copySamples,
-   // browser.generateCodeViewerFiles
+    browser.updateCodeViewer
 ));
 
 // NOTE you can call each function in terminal: "gulp findSamples"
@@ -42,7 +42,7 @@ gulp.task('findSamples', browser.findSamples);
 gulp.task('copySamples', gulp.series(browser.findSamples, browser.copySamples));
 
 gulp.task('generateSampleRouting', browser.generateSampleRouting);
-gulp.task('generateCodeViewerFiles', browser.generateCodeViewerFiles);
+gulp.task('updateCodeViewer', gulp.series(browser.findSamples, browser.updateCodeViewer));
 gulp.task('listSamples', browser.listSamples);
 
 gulp.task("overwrite-package-json", (done) => {
