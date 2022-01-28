@@ -8,17 +8,7 @@ import { filter } from "rxjs/operators";
 import { RoutingDataForCharts } from "../../samples/charts/routing-data";
 import { RoutingDataForMaps } from "../../samples/maps/routing-data";
 import { RoutingDataForGauges } from "../../samples/gauges/routing-data";
-
-
-
-
 // Auto-Insert-Imports-RoutingData-End
-
-// import { chartsRoutesData } from "../charts/charts-routes-data";
-// import { excelLibraryRoutesData } from "../excel-library/excel-library-routes-data";
-// import { gaugesRoutesData } from "../gauges/gauges-routes-data";
-// import { geoMapRoutesData } from "../maps/geo-map-routes-data";
-// import { spreadsheetRoutesData } from "../spreadsheet/spreadsheet-routes-data";
 
 @Component({
     selector: "app-index",
@@ -56,30 +46,8 @@ export class IndexComponent implements OnInit, AfterViewInit {
         { path: "charts", routesData: RoutingDataForCharts },
         { path: "maps", routesData: RoutingDataForMaps },
         { path: "gauges", routesData: RoutingDataForGauges }
-
-
-
-
         // Auto-Insert-SamplesRoutingArray-End
     ];
-
-    // private modulesRoutes = [
-        // {
-        //     path: "excel", routesData: excelLibraryRoutesData
-        // },
-        // {
-        //     path: "gauges",  routesData: gaugesRoutesData
-        // },
-        // {
-        //     path: "charts",    routesData: chartsRoutesData
-        // },
-        // {
-        //     path: "excel",    routesData: spreadsheetRoutesData
-        // },
-        // {
-        //     path: "maps",   routesData: geoMapRoutesData
-        // }
-    // ];
 
     private allNavItems: INavigationItem[] = [];
 
