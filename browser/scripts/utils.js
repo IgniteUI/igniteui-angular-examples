@@ -36,11 +36,13 @@ function fileRead(filePath) {
 } exports.fileRead = fileRead;
 
 function fileCleanup(fileContent) {
-    var lines = fileContent.split('\n');
-    while (lines.indexOf('\n\n') >= 0) {
-        lines = lines.split('\n\n').join('\n');
-    }
-    return lines.join('\n');
+    //var lines = fileContent.split('\n');
+    // while (lines.indexOf('\n\n') >= 0) {
+    //     lines = lines.split('\n\n').join('\n');
+    // }
+    fileContent = fileContent.replace(/[\r\n]+/g, '\n');
+    fileContent = fileContent.replace(/\t/g, '    ');
+    return fileContent; // lines.join('\n');
 } exports.fileCleanup = fileCleanup;
 
 // safely saves a file content and creates sub-folder if they do not exits already

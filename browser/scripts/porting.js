@@ -220,13 +220,76 @@ function exportAppComponentTS(sample, sampleFile) {
     content = content.replace(matchStyleUrls, "[\"./app.component.scss\"],");
     content = content.replace(matchTemplateUrl, "\"./app.component.html\"");
     content = content.replace("../", "./");
-    // content = "insert \n" + content;
-    // console.log("content: \n" + content);
+
+    var indexTemplateUrl = -1;
+    var indexStyleUrls = -1;
+    var lines = content.split('\n');
+    for (let i = 0; i < lines.length; i++) {
+        if (lines[i].indexOf("styleUrls") >= 0) {
+            indexStyleUrls = i;
+        }
+        if (lines[i].indexOf("templateUrl") >= 0) {
+            indexTemplateUrl = i;
+        }
+    }
+
+    if (indexTemplateUrl > 0 && indexTemplateUrl < indexStyleUrls) {
+        var strTemplateUrl = lines[indexTemplateUrl].replace(',','');
+        var strStyleUrls = lines[indexStyleUrls].replace(',','');
+        lines[indexStyleUrls] = strTemplateUrl;
+        lines[indexTemplateUrl] = strStyleUrls + ',';
+    }
+    content = lines.join('\n');
 
     var outputPath = sample.OutputPath + "src/app/app.component.ts";
     // console.log("exportAppComponentTS: " + outputPath);
 
     utils.fileSave(outputPath, content);
+}
+
+function exportPackage(sample, sampleFile) {
+
+    var templatePath = "../porting/templates/package.json";
+    // console.log("templatePath: " + templatePath);
+    var fileContent = utils.fileRead(templatePath);
+    var fileLines = fileContent.split('\n'); // .join('\n');
+
+    for (let i = 0; i < fileLines.length; i++) {
+
+        if (sample.OutputPath.indexOf("charts") < 0 &&
+            sample.OutputPath.indexOf("maps") < 0) {
+            if (fileLines[i].indexOf('"igniteui-angular-charts"') > 0) {
+                fileLines[i] = "";
+            }
+        }
+
+        if (sample.OutputPath.indexOf("gauges") < 0) {
+            if (fileLines[i].indexOf('"igniteui-angular-gauges"') > 0) {
+                fileLines[i] = "";
+            }
+        }
+
+        if (sample.OutputPath.indexOf("maps") < 0) {
+            if (fileLines[i].indexOf('"igniteui-angular-maps"') > 0) {
+                fileLines[i] = "";
+            }
+        }
+
+        if (sample.OutputPath.indexOf("excel") < 0) {
+            if (fileLines[i].indexOf('"igniteui-angular-excel"') > 0) {
+                fileLines[i] = "";
+            }
+            if (fileLines[i].indexOf('"igniteui-angular-spreadsheet-chart-adapter"') > 0) {
+                fileLines[i] = "";
+            }
+            if (fileLines[i].indexOf('"igniteui-angular-spreadsheet"') > 0) {
+                fileLines[i] = "";
+            }
+        }
+    }
+    fileContent = fileLines.join('\n');
+    var outputPath = sample.OutputPath + "package.json";
+    utils.fileSave(outputPath, fileContent, true);
 }
 
 function exportAppFiles(sample) {
@@ -248,6 +311,13 @@ function exportAppFiles(sample) {
             exportFile(sample, filePath);
         }
     }
+
+    for (const filePath of sample.FilesOther) {
+        if (filePath.indexOf("package.json") > 0) {
+            exportPackage(sample, filePath);
+        }
+    }
+
 }
 
 function exportTemplateFiles(sample) {
@@ -265,7 +335,7 @@ function exportTemplateFiles(sample) {
         "src/config/tsconfig-es5.app.json",
 
         "angular.json",
-        "package.json",
+        //"package.json",
         "tsconfig.json",
         "tsconfig.json"
     ];
@@ -276,6 +346,7 @@ function exportTemplateFiles(sample) {
 
         var content = utils.fileRead(templatePath);
         var outputPath = sample.OutputPath + filePath;
+
         utils.fileSave(outputPath, content);
         // console.log("templatePath: " + outputPath);
     }
