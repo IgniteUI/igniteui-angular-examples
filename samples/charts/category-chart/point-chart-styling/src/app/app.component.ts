@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: "app-root",
-    templateUrl: "./app.component.html",
     styleUrls: ["./app.component.scss"],
+    templateUrl: "./app.component.html"
 })
 export class AppComponent {
 
@@ -21,7 +21,11 @@ export class AppComponent {
             { Year: "2016", Europe: 13, China: 90, USA: 52 },
             { Year: "2017", Europe: 78, China: 132, USA: 50 },
             { Year: "2018", Europe: 40, China: 134, USA: 34 },
-            { Year: "2019", Europe: 80, China: 96, USA: 38 }
+            { Year: "2019", Europe: 80, China: 96, USA: 38 },
         ];
     }
+
+    ngOnInit(): void {
+    }
+
 }

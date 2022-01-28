@@ -10,7 +10,6 @@ import {
 	IgxLegendModule,
 	IgxDataChartCoreModule,
 	IgxDataChartCategoryModule,
-	IgxDataChartInteractivityModule,
 	IgxFinancialPriceSeriesModule
  } from "igniteui-angular-charts";
 import { SampleFinancialData } from "./SampleFinancialData";
@@ -31,7 +30,6 @@ import { SampleFinancialData } from "./SampleFinancialData";
 	IgxLegendModule,
 	IgxDataChartCoreModule,
 	IgxDataChartCategoryModule,
-	IgxDataChartInteractivityModule,
 	IgxFinancialPriceSeriesModule
 ],
   providers: [SampleFinancialData],
