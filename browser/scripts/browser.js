@@ -605,7 +605,7 @@ function copySamples(cb) {
         // adding latest auto-generated inserts for JS files
         appModuleLines[autoInsertStart + 1] = appModuleRoutes.join(',\n');
         appModuleContent = appModuleLines.join('\n');
-        utils.fileSave(appModuleFile, appModuleContent);
+        utils.fileSave(appModuleFile, appModuleContent, true);
     }
 
     // updating ./src/app/index/index.component.ts
