@@ -36,12 +36,12 @@ function fileRead(filePath) {
 } exports.fileRead = fileRead;
 
 function fileCleanup(fileContent) {
-    //var lines = fileContent.split('\n');
-    // while (lines.indexOf('\n\n') >= 0) {
-    //     lines = lines.split('\n\n').join('\n');
-    // }
-    // TODO fix
-    fileContent = fileContent.replace(/[\r\n]+/g, '\n');
+    // fileContent = fileContent.replace(/^(\s*\n){2,}/g, "\n")
+    // fileContent = fileContent.replace(/[\r\n]+/g, '\n');
+    fileContent = fileContent.replace(/[\n]+/g, '\n');
+    // var EOL = fileContent.match(/\r\n/gm) ? "\r\n": "\n";
+    // var reg = new RegExp("(" + EOL + "){3,}", "gm");
+    // fileContent = fileContent.replace(reg, EOL + EOL);
     fileContent = fileContent.replace(/\t/g, '    ');
     return fileContent; // lines.join('\n');
 } exports.fileCleanup = fileCleanup;
@@ -49,11 +49,9 @@ function fileCleanup(fileContent) {
 // safely saves a file content and creates sub-folder if they do not exits already
 function fileSave(filePath, fileContent, autoCleanup) {
     fileMakeDir(filePath);
-    // if (autoCleanup)
-    //     fileContent = fileCleanup(fileContent);
-
-    var content = fs.writeFileSync(filePath, fileContent);
-    return content;
+    if (autoCleanup === true || autoCleanup === undefined)
+        fileContent = fileCleanup(fileContent);
+    fs.writeFileSync(filePath, fileContent);
 } exports.fileSave = fileSave;
 
 function fileMakeDir(filePath) {
