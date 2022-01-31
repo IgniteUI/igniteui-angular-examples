@@ -38,7 +38,8 @@ function fileRead(filePath) {
 function fileCleanup(fileContent) {
     // fileContent = fileContent.replace(/^(\s*\n){2,}/g, "\n")
     // fileContent = fileContent.replace(/[\r\n]+/g, '\n');
-    fileContent = fileContent.replace(/[\n]+/g, '\n');
+    // fileContent = fileContent.replace(/[\n\n\n]+/g, '\n\n');
+    fileContent = fileContent.replace(/\n\n\n/g, '\n\n');
     // var EOL = fileContent.match(/\r\n/gm) ? "\r\n": "\n";
     // var reg = new RegExp("(" + EOL + "){3,}", "gm");
     // fileContent = fileContent.replace(reg, EOL + EOL);
@@ -49,8 +50,8 @@ function fileCleanup(fileContent) {
 // safely saves a file content and creates sub-folder if they do not exits already
 function fileSave(filePath, fileContent, autoCleanup) {
     fileMakeDir(filePath);
-    if (autoCleanup === true || autoCleanup === undefined)
-        fileContent = fileCleanup(fileContent);
+    // if (autoCleanup === true || autoCleanup === undefined)
+    //     fileContent = fileCleanup(fileContent);
     fs.writeFileSync(filePath, fileContent);
 } exports.fileSave = fileSave;
 
@@ -62,3 +63,11 @@ function fileMakeDir(filePath) {
     fileMakeDir(dirName);
     fs.mkdirSync(dirName);
 } exports.fileMakeDir = fileMakeDir;
+
+function uniqueFilter(value, index, self) {
+    return self.indexOf(value) === index;
+}
+
+function uniqueItems(arr) {
+    return arr.filter(uniqueFilter);
+}
