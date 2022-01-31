@@ -18,11 +18,6 @@ export const samplesRoutes: Routes = [
     { path: "maps", data: ["SamplesForMaps"], loadChildren: () => import("../samples/maps/samples-modules").then(m => m.SamplesForMaps) },
     { path: "gauges", data: ["SamplesForGauges"], loadChildren: () => import("../samples/gauges/samples-modules").then(m => m.SamplesForGauges) }
 
-
-
-
-
-
     // Auto-Insert-Modules-End
 
     // {
@@ -73,10 +68,21 @@ export const appRoutes: Routes = [
 export class AppRoutingModule {
 
     constructor(private router: Router) {
+
+        console.log("app routes = " + appRoutes.length);
+        for (const route of appRoutes) {
+            console.log("app routes patent path: " + route.path)
+            if (route.children) {
+                for (const child of route.children) {
+                    console.log("app routes child path: " + child.path)
+                }
+            }
+        }
+
         router.events
             .filter((event) => event instanceof NavigationStart)
             .subscribe((event: NavigationStart) => {
-                console.log("NAV: " + event.url)
+                console.log("app nav: " + event.url)
                 this.setOverflow(event.url);
             });
     }
