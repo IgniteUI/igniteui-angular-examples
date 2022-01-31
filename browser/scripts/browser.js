@@ -437,8 +437,7 @@ function copySamples(cb) {
         data.Modules.sort();
         data.Imports.sort();
 
-        log("generating samples' control with " + data.Modules.length + ' modules ' +  data.Imports.length + ' imports' );
-        log("generating samples' control module: " + data.Path);
+        log("generating samples' control: " + data.Path + ' ' + data.Modules.length + ' modules ' +  data.Imports.length + ' imports');
         var ret = "";
         ret += "/* tslint:disable */ \n\n";
         for (const line of data.Imports) {
@@ -490,7 +489,7 @@ function copySamples(cb) {
         data.Modules.sort();
         data.Imports.sort();
 
-        log("generating group module:   " + data.Path);
+        log("generating group module:   " + data.Path + ' ' + data.Modules.length + ' modules ' +  data.Imports.length + ' imports');
         var ret = "/* tslint:disable */ \n\n";
         for (const line of data.Imports) {
             ret += line + "\n";
