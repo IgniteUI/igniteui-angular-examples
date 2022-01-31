@@ -479,6 +479,11 @@ function copySamples(cb) {
     // generating ./src/samples/GROUP/samples-modules.ts
     for(var key in groupModules) {
         var data = groupModules[key];
+
+        var routingClass = 'RoutingModulesFor' + utils.toTitleCase(key);
+        var routingImport = 'import { ' + routingClass + ' } from "routing-module";';
+        data.Imports.push(routingImport);
+        data.Modules.push(routingClass);
         data.Modules.sort();
         data.Imports.sort();
 
