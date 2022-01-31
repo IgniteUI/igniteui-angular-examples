@@ -391,7 +391,8 @@ function copySamples(cb) {
         }
 
         // adding import for the current sample's component
-        controlsModules[control].Imports.push(importComponent);
+        if (controlsModules[control].Imports.indexOf(importComponent) < 0)
+            controlsModules[control].Imports.push(importComponent);
 
         for (const filePath of info.SourceFiles) {
 
@@ -417,7 +418,8 @@ function copySamples(cb) {
                     controlsModules[control].DataFiles.push(dataName);
 
                     var dataImport = 'import { ' + dataName + ' } from "' + dataPath + '";';
-                    controlsModules[control].Imports.push(dataImport);
+                    if (controlsModules[control].Imports.indexOf(dataImport) < 0)
+                        controlsModules[control].Imports.push(dataImport);
                 }
                 //controlsModules[control].DataFiles.push(importComponent);
             }
@@ -435,6 +437,7 @@ function copySamples(cb) {
         data.Modules.sort();
         data.Imports.sort();
 
+        log("generating samples' control with " + data.Modules.length + ' modules ' +  data.Imports.length + ' imports' );
         log("generating samples' control module: " + data.Path);
         var ret = "";
         ret += "/* tslint:disable */ \n\n";
@@ -481,7 +484,7 @@ function copySamples(cb) {
         var data = groupModules[key];
 
         var routingClass = 'RoutingModulesFor' + utils.toTitleCase(key);
-        var routingImport = 'import { ' + routingClass + ' } from "routing-module";';
+        var routingImport = 'import { ' + routingClass + ' } from "./routing-modules";';
         data.Imports.push(routingImport);
         data.Modules.push(routingClass);
         data.Modules.sort();
