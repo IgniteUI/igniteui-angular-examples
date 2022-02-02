@@ -26,11 +26,7 @@
             ],
             "scripts": [],
             "webWorkerTsConfig": "tsconfig.worker.json",
-            "sourceMap": {
-              "styles": true,
-              "scripts": true,
-              "vendor": false
-            },
+            "sourceMap": false,
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
@@ -42,10 +38,11 @@
               "budgets": [
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "12kb"
+                  "maximumWarning": "900kb"
                 }
               ],
               "optimization": true,
+              "aot": true,
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
