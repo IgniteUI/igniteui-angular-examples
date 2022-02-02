@@ -16,6 +16,8 @@ const es = require("event-stream");
 const del = require("del");
 const utils = require("./utils.js")
 
+const EOL = '\r\n';
+
 function log(msg) {
     console.log("browser.js >> " + msg);
 } exports.log = log;
@@ -180,7 +182,8 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
 }
 
 function getSampleModules(fileContent, info) {
-    var lines = fileContent.split(';');
+    var content = fileContent.replace(/\r\n/g, '').replace(/\n/g, '');
+    var lines = content.split(';');
     info.ImportsLines = [];
     info.ImportsModules = [];
 
@@ -188,7 +191,7 @@ function getSampleModules(fileContent, info) {
 
         if (line.indexOf('import ') >= 0 && line.indexOf('Module') >= 0) {
 
-            var importLine = line.replace('\n', '')
+            var importLine = line.replace('\r\n', '')
             if (importLine.indexOf(',') >= 0) {
                 //var importModules = importLine.replace('import {');
 
@@ -204,7 +207,7 @@ function getSampleModules(fileContent, info) {
 
                             var module = utils.replace(name, ' ', '');
                             module = utils.replace(module, '\t', '');
-                            module = utils.replace(module, '\n', '');
+                            module = utils.replace(module, '\r\n', '');
 
                             if (module !== 'NgModule')
                                 info.ImportsModules.push(module);
@@ -360,13 +363,15 @@ function copySamples(cb) {
 
         for (const module of info.ImportsModules) {
 
-            if (module.indexOf('BrowserModule') < 0 &&
+            if (module.trim() !== "" &&
+                module.indexOf('BrowserModule') < 0 &&
                 module.indexOf('BrowserAnimationsModule') < 0 &&
                 controlsModules[control].Modules.indexOf(module) < 0) {
                 controlsModules[control].Modules.push(module);
             }
 
-            if (module.indexOf('BrowserModule') < 0 &&
+            if (module.trim() !== "" &&
+                module.indexOf('BrowserModule') < 0 &&
                 module.indexOf('BrowserAnimationsModule') < 0 &&
                 module.indexOf('Component') < 0 &&
                 groupModules[group].Modules.indexOf(module) < 0) {
@@ -378,6 +383,7 @@ function copySamples(cb) {
 
             if (line.indexOf('BrowserModule') < 0 &&
                 line.indexOf('BrowserAnimationsModule') < 0 &&
+                line.indexOf('import {  } from') < 0 &&
                 controlsModules[control].Imports.indexOf(line) < 0) {
                 controlsModules[control].Imports.push(line);
             }
@@ -385,6 +391,7 @@ function copySamples(cb) {
             if (line.indexOf('BrowserModule') < 0 &&
                 line.indexOf('BrowserAnimationsModule') < 0 &&
                 line.indexOf('Component') < 0 &&
+                line.indexOf('import {  } from') < 0 &&
                 groupModules[group].Imports.indexOf(line) < 0) {
                 groupModules[group].Imports.push(line);
             }
@@ -429,7 +436,7 @@ function copySamples(cb) {
         }
     }
 
-    //console.log(controlsModules);
+    console.log(controlsModules);
 
     // generating ./src/samples/GROUP/CONTROL/samples-modules.ts
     for(var key in controlsModules) {
@@ -439,38 +446,38 @@ function copySamples(cb) {
 
         log("generating samples' control: " + data.Path + ' ' + data.Modules.length + ' modules ' +  data.Imports.length + ' imports');
         var ret = "";
-        ret += "/* tslint:disable */ \n\n";
+        ret += "/* tslint:disable */ \r\n\r\n";
         for (const line of data.Imports) {
             ret += line + "\n";
         }
 
         if (data.DataFiles.length > 0) {
-            ret += 'import { ModuleWithProviders } from "@angular/core";\n';
+            ret += 'import { ModuleWithProviders } from "@angular/core";\r\n';
         }
 
-        ret += "\n";
-        ret += "@NgModule({\n";
-        ret += "   declarations: [\n";
-        ret += data.Components.join(',\n');
-        ret += "\n   ], \n";
-        ret += "   imports: [\n";
-        ret += data.Modules.join(',\n');
-        ret += " \n   ] \n";
-        ret += "}) \n\n";
+        ret += "\r\n";
+        ret += "@NgModule({\r\n";
+        ret += "   declarations: [\r\n";
+        ret += data.Components.join(',\r\n');
+        ret += "\r\n   ], \r\n";
+        ret += "   imports: [\r\n";
+        ret += data.Modules.join(',\r\n');
+        ret += " \r\n   ] \r\n";
+        ret += "}) \r\n\r\n";
         ret += "export class " + data.ModuleName  + " {";
 
         if (data.DataFiles.length > 0) {
-            ret += "\n";
+            ret += "\r\n";
             ret += "    public static forRoot(): ModuleWithProviders<" + data.ModuleName + "> {\n";
-            ret += "        return {\n";
-            ret += "           ngModule: " + data.ModuleName + ",\n";
-            ret += "           providers: [\n";
-            ret += "                " + data.DataFiles.join(',\n') + "\n";
-            ret += "           ]\n";
-            ret += "        };\n";
-            ret += "    }\n";
+            ret += "        return {\r\n";
+            ret += "           ngModule: " + data.ModuleName + ",\r\n";
+            ret += "           providers: [\r\n";
+            ret += "                " + data.DataFiles.join(',\r\n') + "\r\n";
+            ret += "           ]\r\n";
+            ret += "        };\r\n";
+            ret += "    }\r\n";
         }
-        ret += "} \n";
+        ret += "} \r\n";
 
         // console.log(ret);
 
@@ -492,15 +499,15 @@ function copySamples(cb) {
         log("generating group module:   " + data.Path + ' ' + data.Modules.length + ' modules ' +  data.Imports.length + ' imports');
         var ret = "/* tslint:disable */ \n\n";
         for (const line of data.Imports) {
-            ret += line + "\n";
+            ret += line + "\r\n";
         }
-        ret += "\n";
-        ret += "@NgModule({\n";
-        ret += "   imports: [\n";
-        ret += data.Modules.join(',\n');
-        ret += " \n   ] \n";
-        ret += "}) \n\n";
-        ret += "export class " + data.ModuleName  + " {} \n";
+        ret += "\r\n";
+        ret += "@NgModule({\r\n";
+        ret += "   imports: [\r\n";
+        ret += data.Modules.join(',\r\n');
+        ret += " \r\n   ] \r\n";
+        ret += "}) \r\n\r\n";
+        ret += "export class " + data.ModuleName  + " {} \r\n";
         // console.log(ret);
         utils.fileSave(data.Path, ret); // ./src/samples/GROUP/samples-modules.ts
 
@@ -515,8 +522,8 @@ function copySamples(cb) {
         var data = routingStorage[group];
 
         var routingDataFile = 'routing-data';
-        var routingData = "/* tslint:disable */ \n\n";
-        routingData += "export const " + data.ModuleName + " = { \n";
+        var routingData = "/* tslint:disable */ \r\n\r\n";
+        routingData += "export const " + data.ModuleName + " = { \r\n";
 
         // generating ./src/samples/GROUP/routing-data.ts
         var routingOutputPath = data.Output + routingDataFile + '.ts';
@@ -533,9 +540,9 @@ function copySamples(cb) {
             routingComponents.push(strComp);
             data.Imports.push(sample.componentImport);
         }
-        routingData += routingSamples.join(',\n');
-        routingData += "\n";
-        routingData += "}; \n";
+        routingData += routingSamples.join(',\r\n');
+        routingData += "\r\n";
+        routingData += "}; \r\n";
 
         //console.log(ret);
         utils.fileSave(routingOutputPath, routingData);
@@ -550,29 +557,29 @@ function copySamples(cb) {
         var routingModulePath = data.Output + 'routing-modules.ts';
         log("generating group routing module: " + routingModulePath);
         var routingExportName = 'RoutesFor' + utils.toTitleCase(group);
-        var routingModules = "/* tslint:disable */ \n\n";
-        routingModules += 'import { NgModule } from "@angular/core";\n';
-        routingModules += 'import { RouterModule, Routes } from "@angular/router";\n';
-        routingModules += "\n";
-        routingModules += "import { " + data.ModuleName + ' } from "./' + routingDataFile + '"; \n';;
-        routingModules += "\n";
-        routingModules += data.Imports.join('\n');
-        routingModules += "\n\n";
-        routingModules += 'export const ' + routingExportName + ': Routes = [\n'
-        routingModules += routingComponents.join(',\n');
-        routingModules += "\n];\n\n";
+        var routingModules = "/* tslint:disable */ \r\n\r\n";
+        routingModules += 'import { NgModule } from "@angular/core";\r\n';
+        routingModules += 'import { RouterModule, Routes } from "@angular/router";\r\n';
+        routingModules += "\r\n";
+        routingModules += "import { " + data.ModuleName + ' } from "./' + routingDataFile + '"; \r\n';;
+        routingModules += "\r\n";
+        routingModules += data.Imports.join('\r\n');
+        routingModules += "\r\n\r\n";
+        routingModules += 'export const ' + routingExportName + ': Routes = [\r\n'
+        routingModules += routingComponents.join(',\r\n');
+        routingModules += "\r\n];\r\n\r\n";
 
         var routingClassName = 'RoutingModulesFor' + utils.toTitleCase(group);
-        routingModules += "@NgModule({\n";
-        routingModules += "   exports: [\n";
-        routingModules += 'RouterModule \n';
-        routingModules += "    ], \n";
-        routingModules += "   imports: [\n";
-        routingModules += data.Modules.join(',\n') + ",\n";
-        routingModules += 'RouterModule.forChild(' + routingExportName + ') \n'
-        routingModules += "    ] \n";
-        routingModules += "}) \n\n";
-        routingModules += 'export class ' + routingClassName + ' { }\n'
+        routingModules += "@NgModule({\r\n";
+        routingModules += "   exports: [\r\n";
+        routingModules += 'RouterModule \r\n';
+        routingModules += "    ], \r\n";
+        routingModules += "   imports: [\r\n";
+        routingModules += data.Modules.join(',\r\n') + ",\r\n";
+        routingModules += 'RouterModule.forChild(' + routingExportName + ') \r\n'
+        routingModules += "    ] \r\n";
+        routingModules += "}) \r\n\r\n";
+        routingModules += 'export class ' + routingClassName + ' { }\r\n'
 
         utils.fileSave(data.Output + 'routing-modules.ts', routingModules);
         //console.log(routingModules);
@@ -584,7 +591,7 @@ function copySamples(cb) {
     // updating ./src/app.routing.module.ts
     var appModuleFile = './src/app/app-routing.module.ts';
     var appModuleContent = utils.fileRead(appModuleFile);
-    var appModuleLines = appModuleContent.split('\n');
+    var appModuleLines = appModuleContent.split('\r\n');
     //console.log('appModuleLines ' + appModuleLines.length);
     let autoInsertStart = -1;
     let autoInsertEnd = -1;
@@ -600,25 +607,25 @@ function copySamples(cb) {
         }
     }
     if (autoInsertStart < 0 ) {
-        throw new Exception("File " + appModuleFile + "\n is missing: 'Auto-Insert-Modules-Start' ");
+        throw new Exception("File " + appModuleFile + "\r\n is missing: 'Auto-Insert-Modules-Start' ");
     }
     else if (autoInsertEnd < 0 ) {
-        throw new Exception("File " + appModuleFile + "\n is missing: 'Auto-Insert-Modules-End' ");
+        throw new Exception("File " + appModuleFile + "\r\n is missing: 'Auto-Insert-Modules-End' ");
     }
     else if (autoInsertStart > 0 && autoInsertEnd > 0) {
         for (let i = autoInsertStart+1; i < autoInsertEnd; i++) {
             appModuleLines[i] = ""; // clearing previously auto-generated inserts
         }
         // adding latest auto-generated inserts for JS files
-        appModuleLines[autoInsertStart + 1] = appModuleRoutes.join(',\n');
-        appModuleContent = appModuleLines.join('\n');
+        appModuleLines[autoInsertStart + 1] = appModuleRoutes.join(',\r\n');
+        appModuleContent = appModuleLines.join('\r\n');
         utils.fileSave(appModuleFile, appModuleContent, true);
     }
 
     // updating ./src/app/index/index.component.ts
     var appIndexFile = './src/app/index/index.component.ts';
     var appIndexContent = utils.fileRead(appIndexFile);
-    var appIndexLines = appIndexContent.split('\n');
+    var appIndexLines = appIndexContent.split('\r\n');
     let appIndexRoutingImportStart = -1;
     let appIndexRoutingImportEnd = -1;
     log('updating ' + appIndexFile)
@@ -648,7 +655,7 @@ function copySamples(cb) {
             appIndexLines[i] = ""; // clearing previously auto-generated inserts
         }
         // adding latest auto-generated inserts for JS files
-        appIndexLines[appIndexRoutingImportStart + 1] = routingDataImports.join('\n');
+        appIndexLines[appIndexRoutingImportStart + 1] = routingDataImports.join('\r\n');
         appIndexChanged = true;
     }
 
@@ -657,12 +664,12 @@ function copySamples(cb) {
             appIndexLines[i] = ""; // clearing previously auto-generated inserts
         }
         // adding latest auto-generated inserts for JS files
-        appIndexLines[appIndexRoutingArrayStart + 1] = routingDataArray.join(',\n');
+        appIndexLines[appIndexRoutingArrayStart + 1] = routingDataArray.join(',\r\n');
         appIndexChanged = true;
     }
 
     if (appIndexChanged) {
-        appIndexContent = appIndexLines.join('\n');
+        appIndexContent = appIndexLines.join('\r\n');
         utils.fileSave(appIndexFile, appIndexContent, true);
     }
 
@@ -767,7 +774,7 @@ function listSamples(cb) {
     .pipe(es.map(function(file, fileCallback) {
         // let filePath = getRelativePath(file);
         // let fileContent = file.contents.toString();
-        // let fileLines = fileContent.split('\n');
+        // let fileLines = fileContent.split('\r\n');
         // let fileStart = fileLines[0];
         // if (fileStart.indexOf("container sample") < 0) {
         //     console.log("'" + JSON.stringify(fileStart) + "' " + filePath);
@@ -784,13 +791,39 @@ function listSamples(cb) {
 
 // C:\REPOS\igniteui-angular-examples/samples\charts\data-chart-axis-sharing/
 // returns                                         ../samples/charts/data-chart-axis-sharing/
-function getRelativePath(filePath) {
-    var relativePath = filePath.split(repoName)[1];
-    relativePath = relativePath.split("\\").join("/");
+// function getRelativePath(filePath) {
+//     var relativePath = filePath.split(repoName)[1];
+//     relativePath = relativePath.split("\\").join("/");
 
-    if (relativePath.indexOf("/samples/") > 0)
-        relativePath = ".." + relativePath; // relative samples ../samples/charts/data-chart-axis-sharing/
-    else
-        relativePath = "." + relativePath;  // relative browser ./browser/src/samples/charts/data-chart-axis-sharing/
-    return relativePath;
-}
+//     if (relativePath.indexOf("/samples/") > 0)
+//         relativePath = ".." + relativePath; // relative samples ../samples/charts/data-chart-axis-sharing/
+//     else
+//         relativePath = "." + relativePath;  // relative browser ./browser/src/samples/charts/data-chart-axis-sharing/
+//     return relativePath;
+// }
+
+
+function testFileParsing(cb) {
+    const repoPath   = "../../igniteui-live-editing-samples/angular-demos-dv/";
+    var filePath = repoPath + "charts/category-chart-highlighting/src/app/app.module.ts"
+    var endLine = '\r\n';
+    //var filePath = "./src/samples/charts/samples-n-line.ts";
+    var fileContent = utils.fileRead(filePath);
+    var fileLinesR = fileContent.split('\r\n');
+    var fileLinesN = fileContent.split('\n');
+
+    var fileLinesS = utils.split(fileContent);
+
+    console.log('fileLinesR=' + fileLinesR.length);
+    console.log('fileLinesN=' + fileLinesN.length);
+    console.log('fileLinesS=' + fileLinesS.length);
+    var fileOutput = "./src/samples/charts/";
+    var r = fileLinesR.join('\r\n');
+    var n = fileLinesN.join('\n');
+
+    utils.fileSave(fileOutput + 'samples-r.ts', r );
+    utils.fileSave(fileOutput + 'samples-n.ts', n );
+
+    if (cb) cb();
+} exports.testFileParsing = testFileParsing;
+

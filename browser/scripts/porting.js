@@ -17,6 +17,7 @@ const es = require("event-stream");
 const del = require("del");
 
 const utils = require("./utils.js")
+const EOL = '\r\n';
 
 function log(msg) {
     console.log("porting.js >> " + msg);
@@ -178,7 +179,7 @@ function exportAppModuleTS(sample, sampleFile) {
     content = content.replace(importLine + "", "");
     content = content.replace(importClass + ",", "");
     content = content.replace(importClass + "", "");
-    content = content.split('\n\n').join('\n');
+
     //content = content.replace(importClass, "");
     // content = content.replace("\t", "    ");
 
@@ -223,7 +224,8 @@ function exportAppComponentTS(sample, sampleFile) {
 
     var indexTemplateUrl = -1;
     var indexStyleUrls = -1;
-    var lines = content.split('\n');
+    var lines = utils.splitLines(content);
+
     for (let i = 0; i < lines.length; i++) {
         if (lines[i].indexOf("styleUrls") >= 0) {
             indexStyleUrls = i;
@@ -239,7 +241,7 @@ function exportAppComponentTS(sample, sampleFile) {
         lines[indexStyleUrls] = strTemplateUrl;
         lines[indexTemplateUrl] = strStyleUrls + ',';
     }
-    content = lines.join('\n');
+    content = utils.joinLines(lines);
 
     var outputPath = sample.OutputPath + "src/app/app.component.ts";
     // console.log("exportAppComponentTS: " + outputPath);
@@ -252,7 +254,7 @@ function exportPackage(sample, sampleFile) {
     var templatePath = "../porting/templates/package.json";
     // console.log("templatePath: " + templatePath);
     var fileContent = utils.fileRead(templatePath);
-    var fileLines = fileContent.split('\n'); // .join('\n');
+    var fileLines = utils.splitLines(fileContent);
 
     for (let i = 0; i < fileLines.length; i++) {
 
@@ -287,7 +289,7 @@ function exportPackage(sample, sampleFile) {
             }
         }
     }
-    fileContent = fileLines.join('\n');
+    fileContent = utils.joinLines(fileLines);
     var outputPath = sample.OutputPath + "package.json";
     utils.fileSave(outputPath, fileContent, true);
 }
