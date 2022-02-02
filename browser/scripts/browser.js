@@ -436,7 +436,7 @@ function copySamples(cb) {
         }
     }
 
-    console.log(controlsModules);
+    // console.log(controlsModules);
 
     // generating ./src/samples/GROUP/CONTROL/samples-modules.ts
     for(var key in controlsModules) {
@@ -673,7 +673,7 @@ function copySamples(cb) {
         utils.fileSave(appIndexFile, appIndexContent, true);
     }
 
-    console.log('appIndexLines ' + appIndexRoutingArrayStart + ' ' + appIndexRoutingImportStart);
+    // console.log('appIndexLines ' + appIndexRoutingArrayStart + ' ' + appIndexRoutingImportStart);
 
     if (cb) cb();
 
