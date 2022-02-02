@@ -9,14 +9,14 @@ import { IgxRadialGaugeModule } from "igniteui-angular-gauges";
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-	AppComponent,
-	
+    AppComponent,
+
 ],
   imports: [
-	BrowserModule,
-	BrowserAnimationsModule,
-	FormsModule,
-	IgxRadialGaugeModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    IgxRadialGaugeModule
 ],
   providers: [],
   entryComponents: [],
