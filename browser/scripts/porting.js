@@ -40,14 +40,15 @@ const repoSourcePaths = [
     // repoPath + "gauges/**/package.json",
     // repoPath + "excel-library/**/package.json",
     // repoPath + "maps/**/package.json",
-    repoPath + "charts/category-chart-highlighting/package.json",
-    repoPath + "charts/category-chart-point-chart-styling/package.json",
-    repoPath + "charts/data-chart-axis-sharing/package.json",
-    repoPath + "charts/sparkline-markers/package.json",
-    repoPath + "charts/pie-chart-styling/package.json",
-    repoPath + "gauges/linear-gauge-labels/package.json",
-    repoPath + "gauges/radial-gauge-ranges/package.json",
-    repoPath + "maps/geo-map-overview/package.json",
+    // repoPath + "charts/category-chart-highlighting/package.json",
+    // repoPath + "charts/category-chart-point-chart-styling/package.json",
+    // repoPath + "charts/data-chart-axis-sharing/package.json",
+    repoPath + "charts/financial-chart-stock-index-chart/package.json",
+    // repoPath + "charts/sparkline-markers/package.json",
+    // repoPath + "charts/pie-chart-styling/package.json",
+    // repoPath + "gauges/linear-gauge-labels/package.json",
+    // repoPath + "gauges/radial-gauge-ranges/package.json",
+    // repoPath + "maps/geo-map-overview/package.json",
   "!" + repoPath + "**/node_modules/**/package.json" // excluding node_modules sub-folders
 ];
 
@@ -188,8 +189,8 @@ function exportAppModuleTS(sample, sampleFile) {
     utils.fileSave(outputPath, content);
 }
 
-function exportFile(sample, sampleFile) {
-    // console.log("exportFile1: " + sampleFile);
+function exportDataFile(sample, sampleFile) {
+    // console.log("exportDataFile1: " + sampleFile);
     var content = utils.fileRead(sampleFile);
     var outputPath = repoOutput + getRelativeFolder(sampleFile);
 
@@ -197,11 +198,11 @@ function exportFile(sample, sampleFile) {
     var subFolder2 = sample.OutputGroup + "/" + sample.OutputControl + "/" + sample.OutputFolder + "/";
     outputPath = outputPath.replace(subFolder1, subFolder2);
 
-    // console.log("exportFile2: " + outputPath);
+    // console.log("exportDataFile2: " + outputPath);
     utils.fileSave(outputPath, content);
 }
 
-function exportAppComponentTS(sample, sampleFile) {
+function exportAppComponentTS(sample, sampleFile, dataFiles) {
     // var sampleFile = "";
     // for (const filePath of sample.FilesComponent) {
     //     if (filePath.indexOf(".component.ts") > 0){
@@ -221,6 +222,10 @@ function exportAppComponentTS(sample, sampleFile) {
     content = content.replace(matchStyleUrls, "[\"./app.component.scss\"],");
     content = content.replace(matchTemplateUrl, "\"./app.component.html\"");
     content = content.replace("../", "./");
+
+    for (const data of dataFiles) {
+
+    }
 
     var indexTemplateUrl = -1;
     var indexStyleUrls = -1;
@@ -309,8 +314,8 @@ function exportAppFiles(sample) {
         else if (filePath.indexOf(".component.scss") > 0) {
             exportAppComponentCSS(sample, filePath);
         }
-        else {
-            exportFile(sample, filePath);
+        else { // e.g. data files
+            exportDataFile(sample, filePath);
         }
     }
 
@@ -373,10 +378,14 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
     sample.DisplayName   = utils.toTitleCase(utils.replace(sample.OutputFolder, "-", " "));  // Binding Data
     sample.FilesApp = [];           // e.g. /app/app.component.html
     sample.FilesComponent = [];     // e.g. /app/pie-chart-legend/pie-chart-legend.component.html
+    sample.FilesData = [];          // e.g. /app/data.ts
     sample.FilesOther = [];         // e.g. /app/main.ts, package.json etc.
-    sample.SandboxUrlView = "";     // https://codesandbox.io/embed/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/pie-chart/legend
-    sample.SandboxUrlEdit = "";     //     https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/pie-chart/legend
-    sample.SandboxUrlShort = "",    //     https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/pie-chart/legend
+    // sample.SandboxUrlView = "";     // https://codesandbox.io/embed/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/pie-chart/legend
+    // sample.SandboxUrlEdit = "";     //     https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/pie-chart/legend
+    // sample.SandboxUrlShort = "",    //     https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/pie-chart/legend
+
+    // C:\REPOS\GitInternalDocs\igniteui-live-editing-samples\angular-demos-dv\charts\financial-chart-stock-index-chart\src\app
+    // C:\REPOS\GitInternalDocs\igniteui-live-editing-samples\angular-demos-dv\maps\geo-map-binding-data-model\src\app\utilities
 
     // console.log("ComponentName " + sample.ComponentName);
     // console.log("DisplayName " + sample.DisplayName);
@@ -406,12 +415,29 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
             sample.FilesApp.push(filePath);       // these files are replaced by sample.FilesComponent
             // console.log("A " + filePath);
         }
-        else if (filePath.indexOf('/app/') >= 0) {
-            sample.FilesComponent.push(filePath);  // these files are save as sample.FilesApp
+        else if (filePath.indexOf('.component.') >= 0) {
+            sample.FilesComponent.push(filePath);  // e.g. sample-name.component.ts
             // console.log("C " + filePath);
         }
+        else if (filePath.indexOf('/app/') >= 0) { // data/services/utility files
+            // console.log("C " + filePath);
+            var fileName = file.basename;
+            var fileFolder = filePath.toString().split('/app/')[1];
+
+            var data = {};
+            data.folder = '../' + fileFolder.replace('/' + fileName,'');
+            data.path = filePath;
+            data.name = file.basename.replace('.ts','');
+            data.name = data.name.replace('.json','');
+            data.name = data.name.replace('.scss','');
+            data.name = data.name.replace('.css','');
+            sample.FilesData.push(data);
+
+            console.log(data);
+            // console.log('fileFolder ' + fileFolder);
+        }
         else {
-            sample.FilesOther.push(filePath);     // these files are not changed
+            //sample.FilesOther.push(filePath);     // these files are not changed
             // console.log("O " + filePath);
         }
 
@@ -420,7 +446,7 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
     .on("end", function() {
         // log("getPortSample " + location + " done");
 
-
+        // console.log(sample);
         // saving info about samples in database
         samplesDatabase.push(sample);
 
