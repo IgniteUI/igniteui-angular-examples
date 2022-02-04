@@ -36,19 +36,24 @@ const repoSourcePaths = [
     // repoPath + "charts/sparkline-chart*/**/package.json",
     // repoPath + "charts/doughnut-chart*/**/package.json",
     // repoPath + "charts/category-chart*/**/package.json",
+    // repoPath + "charts/zoomslider-overview/**/package.json",
     // repoPath + "charts/**/package.json",
     // repoPath + "gauges/**/package.json",
     // repoPath + "excel-library/**/package.json",
     // repoPath + "maps/**/package.json",
-    // repoPath + "charts/category-chart-highlighting/package.json",
-    // repoPath + "charts/category-chart-point-chart-styling/package.json",
-    // repoPath + "charts/data-chart-axis-sharing/package.json",
+    repoPath + "charts/category-chart-highlighting/package.json",
+    repoPath + "charts/category-chart-point-chart-styling/package.json",
+    repoPath + "charts/data-chart-axis-sharing/package.json",
     repoPath + "charts/financial-chart-stock-index-chart/package.json",
-    // repoPath + "charts/sparkline-markers/package.json",
-    // repoPath + "charts/pie-chart-styling/package.json",
-    // repoPath + "gauges/linear-gauge-labels/package.json",
-    // repoPath + "gauges/radial-gauge-ranges/package.json",
-    // repoPath + "maps/geo-map-overview/package.json",
+    repoPath + "charts/tree-map-overview/**/package.json",
+    repoPath + "charts/sparkline-markers/package.json",
+    repoPath + "charts/pie-chart-styling/package.json",
+    repoPath + "gauges/linear-gauge-labels/package.json",
+    repoPath + "gauges/radial-gauge-ranges/package.json",
+    repoPath + "excel-library/excel-library-overview/**/package.json",
+    repoPath + "maps/geo-map-overview/package.json",
+    repoPath + "maps/geo-map-display-esri-imagery/package.json",
+
   "!" + repoPath + "**/node_modules/**/package.json" // excluding node_modules sub-folders
 ];
 
@@ -106,9 +111,9 @@ function getSampleControl(dirPath) {
 
     for (const name of controlNames) {
         if (ret.indexOf(name) >= 0) {
-            // console.log("control: " + name)
+            // log("control: " + name)
             //var name = sample.replace(control + "-", "");
-            //console.log("name: " + name)
+            //log("name: " + name)
             return name;
         }
     }
@@ -136,29 +141,29 @@ function getOutputPath(dirPath) {
     var folder  = getSampleFolder(dirPath);
     outputPath = repoOutput + group + "/" + control + "/" + folder + "/";
 
-    // console.log("getSampleGroup " + group)
-    // console.log("getSampleControl " + control)
-    // console.log("getSampleFolder " + folder)
+    // log("getSampleGroup " + group)
+    // log("getSampleControl " + control)
+    // log("getSampleFolder " + folder)
     return outputPath;
 }
 
 function exportAppComponentCSS(sample) {
     var sampleFile = "";
     for (const filePath of sample.FilesComponent) {
-        if (filePath.indexOf(".component.scss") > 0){
+        if (filePath.indexOf("component.scss") > 0){
             sampleFile = filePath;
         }
     }
     var content = utils.fileRead(sampleFile);
     var outputPath = sample.OutputPath + "src/app/app.component.scss";
-    // console.log("exportAppComponentCSS: " + outputPath);
+    // log("exportAppComponentCSS: " + outputPath);
     utils.fileSave(outputPath, content);
 }
 
 function exportAppComponentHTML(sample, sampleFile) {
     var content = utils.fileRead(sampleFile);
     var outputPath = sample.OutputPath + "src/app/app.component.html";
-    // console.log("exportAppComponentHTML: " + outputPath);
+    // log("exportAppComponentHTML: " + outputPath);
     utils.fileSave(outputPath, content);
 }
 
@@ -173,24 +178,26 @@ function exportAppModuleTS(sample, sampleFile) {
         if (line.indexOf("AppComponent") < 0) {
             importLine = line
             importClass = line.match(/import.\{.(.*Component)(.*)/)[1];
-            // console.log("importMatches: " + line);
+            // log("importMatches: " + line);
         }
     }
-    // console.log("importClass: '" + importClass + "'");
+    // log("importClass: '" + importClass + "'");
     content = content.replace(importLine + "", "");
     content = content.replace(importClass + ",", "");
     content = content.replace(importClass + "", "");
 
     //content = content.replace(importClass, "");
     // content = content.replace("\t", "    ");
+    var lines = updateDataReference(content, sample.FilesData);
+    content = utils.joinLines(lines);
 
     var outputPath = sample.OutputPath + "src/app/app.module.ts";
-    // console.log("exportAppModuleTS: \n" + content);
+    // log("exportAppModuleTS: \n" + content);
     utils.fileSave(outputPath, content);
 }
 
-function exportDataFile(sample, sampleFile) {
-    // console.log("exportDataFile1: " + sampleFile);
+function exportSampleFile(sample, sampleFile) {
+    // log("exportSampleFile: " + sampleFile);
     var content = utils.fileRead(sampleFile);
     var outputPath = repoOutput + getRelativeFolder(sampleFile);
 
@@ -198,38 +205,63 @@ function exportDataFile(sample, sampleFile) {
     var subFolder2 = sample.OutputGroup + "/" + sample.OutputControl + "/" + sample.OutputFolder + "/";
     outputPath = outputPath.replace(subFolder1, subFolder2);
 
-    // console.log("exportDataFile2: " + outputPath);
+    // log("exportDataFile2: " + outputPath);
     utils.fileSave(outputPath, content);
 }
 
-function exportAppComponentTS(sample, sampleFile, dataFiles) {
-    // var sampleFile = "";
-    // for (const filePath of sample.FilesComponent) {
-    //     if (filePath.indexOf(".component.ts") > 0){
-    //         sampleFile = filePath;
-    //     }
-    // }
+function exportDataFile(sample, fileInfo) {
+    // log("exportDataFile: " + fileInfo.sourcePath);
+    var content = utils.fileRead(fileInfo.sourcePath);
+    var outputPath = fileInfo.outputPath; // repoOutput + getRelativeFolder(sampleFile);
+
+    var subFolder1 = sample.OutputGroup + "/" + sample.OutputControl + "-" + sample.OutputFolder + "/";
+    var subFolder2 = sample.OutputGroup + "/" + sample.OutputControl + "/" + sample.OutputFolder + "/";
+    outputPath = outputPath.replace(subFolder1, subFolder2);
+
+    // log("exportDataFile2: " + outputPath);
+    utils.fileSave(outputPath, content);
+}
+
+function updateDataReference(fileContent, dataFiles) {
+    var lines = utils.splitLines(fileContent);
+    for (let i = 0; i < lines.length; i++) {
+        if (lines[i].indexOf('import') >= 0) {
+            for (const data of dataFiles) {
+                if (lines[i].indexOf(data.sourceName) >=  0) {
+                    lines[i] = lines[i].replace('../' + data.sourceFolder, '.'); // '../services' -> '.'
+                    lines[i] = lines[i].replace('./'  + data.sourceFolder, '.');
+                    lines[i] = lines[i].replace('././', './');
+                    lines[i] = lines[i].replace(data.sourceName, data.outputName);
+                }
+            }
+        }
+    }
+    return lines;
+}
+
+function exportAppComponentTS(sample, sampleFile) {
+    // log("exportAppComponentTS: " + sampleFile);
+
     var content = utils.fileRead(sampleFile);
     var matchSelectorName = content.match(/selector:.(.*)/)[1];
     var matchStyleUrls = content.match(/styleUrls:.(.*)/)[1];
     var matchTemplateUrl = content.match(/templateUrl:.(.*)/)[1];
     var matchClassName = content.match(/class.(.*).\{/)[1];
-        // console.log("matchSelectorName: " + matchSelectorName);
-        // console.log("matchStyleUrls: " + matchStyleUrls);
-        // console.log("matchTemplateUrl: " + matchTemplateUrl);
+        // log("matchSelectorName: " + matchSelectorName);
+        // log("matchStyleUrls: " + matchStyleUrls);
+        // log("matchTemplateUrl: " + matchTemplateUrl);
     content = content.replace(matchClassName, "AppComponent");
     content = content.replace(matchSelectorName, "\"app-root\",");
     content = content.replace(matchStyleUrls, "[\"./app.component.scss\"],");
     content = content.replace(matchTemplateUrl, "\"./app.component.html\"");
-    content = content.replace("../", "./");
 
-    for (const data of dataFiles) {
-
-    }
+    // var lines = utils.splitLines(content);
+    var lines = updateDataReference(content, sample.FilesData);
+    // content = utils.joinLines(lines);
 
     var indexTemplateUrl = -1;
     var indexStyleUrls = -1;
-    var lines = utils.splitLines(content);
+    // var lines = utils.splitLines(content);
 
     for (let i = 0; i < lines.length; i++) {
         if (lines[i].indexOf("styleUrls") >= 0) {
@@ -247,17 +279,20 @@ function exportAppComponentTS(sample, sampleFile, dataFiles) {
         lines[indexTemplateUrl] = strStyleUrls + ',';
     }
     content = utils.joinLines(lines);
+    content = content.replace("../", "./");
 
     var outputPath = sample.OutputPath + "src/app/app.component.ts";
-    // console.log("exportAppComponentTS: " + outputPath);
+    // log("exportAppComponentTS: " + outputPath);
 
     utils.fileSave(outputPath, content);
+
+    // log("exportAppComponentTS: " + outputPath);
 }
 
 function exportPackage(sample, sampleFile) {
 
     var templatePath = "../porting/templates/package.json";
-    // console.log("templatePath: " + templatePath);
+    // log("templatePath: " + templatePath);
     var fileContent = utils.fileRead(templatePath);
     var fileLines = utils.splitLines(fileContent);
 
@@ -301,22 +336,26 @@ function exportPackage(sample, sampleFile) {
 
 function exportAppFiles(sample) {
     for (const filePath of sample.FilesComponent) {
-        // console.log("exportAppFiles " + filePath);
-        if (filePath.indexOf(".component.ts") > 0) {
+        // log("exportAppFiles " + filePath);
+        if (filePath.indexOf("component.ts") > 0) {
             exportAppComponentTS(sample, filePath);
         }
-        else if (filePath.indexOf(".module.ts") > 0) {
+        else if (filePath.indexOf("module.ts") > 0) {
             exportAppModuleTS(sample, filePath);
         }
-        else if (filePath.indexOf(".component.html") > 0) {
+        else if (filePath.indexOf("component.html") > 0) {
             exportAppComponentHTML(sample, filePath);
         }
-        else if (filePath.indexOf(".component.scss") > 0) {
+        else if (filePath.indexOf("component.scss") > 0) {
             exportAppComponentCSS(sample, filePath);
         }
-        else { // e.g. data files
-            exportDataFile(sample, filePath);
+        else { //
+            exportSampleFile(sample, filePath);
         }
+    }
+
+    for (const fileInfo of sample.FilesData) {
+        exportDataFile(sample, fileInfo);
     }
 
     for (const filePath of sample.FilesOther) {
@@ -341,6 +380,7 @@ function exportTemplateFiles(sample) {
         "src/config/tsconfig.worker.json",
         "src/config/tsconfig-es5.app.json",
 
+        ".stackblitzrc",
         "angular.json",
         //"package.json",
         "tsconfig.json",
@@ -349,13 +389,13 @@ function exportTemplateFiles(sample) {
 
     for (const filePath of templateFiles) {
         var templatePath = "../porting/templates/" + filePath;
-        // console.log("templatePath: " + templatePath);
+        // log("templatePath: " + templatePath);
 
         var content = utils.fileRead(templatePath);
         var outputPath = sample.OutputPath + filePath;
 
         utils.fileSave(outputPath, content);
-        // console.log("templatePath: " + outputPath);
+        // log("templatePath: " + outputPath);
     }
 }
 
@@ -387,14 +427,14 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
     // C:\REPOS\GitInternalDocs\igniteui-live-editing-samples\angular-demos-dv\charts\financial-chart-stock-index-chart\src\app
     // C:\REPOS\GitInternalDocs\igniteui-live-editing-samples\angular-demos-dv\maps\geo-map-binding-data-model\src\app\utilities
 
-    // console.log("ComponentName " + sample.ComponentName);
-    // console.log("DisplayName " + sample.DisplayName);
+    // log("ComponentName " + sample.ComponentName);
+    // log("DisplayName " + sample.DisplayName);
 
-    // console.log("SourcePath " + sample.SourcePath);
-    // console.log("OutputPath " + sample.OutputPath);
-    // console.log("OutputGroup " + sample.OutputGroup);
-    // console.log("OutputControl " + sample.OutputControl);
-    // console.log("OutputFolder " + sample.OutputFolder);
+    // log("SourcePath " + sample.SourcePath);
+    // log("OutputPath " + sample.OutputPath);
+    // log("OutputGroup " + sample.OutputGroup);
+    // log("OutputControl " + sample.OutputControl);
+    // log("OutputFolder " + sample.OutputFolder);
 
     // getting path to files in a given sample's source path:
     gulp.src([
@@ -404,41 +444,57 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
     ])
     .pipe(es.map(function(file, fileCallback) {
         var filePath = getRelativePath(file.dirname + "/" + file.basename);
-        //console.log("getSampleInfo " + filePath);
+        //log("getSampleInfo " + filePath);
 
         // grouping files of a sample based on their locations
         if (filePath.indexOf('/app/app.module.ts') >= 0) {
             sample.FilesComponent.push(filePath);       // these files are replaced by sample.FilesComponent
-            // console.log("A " + filePath);
+            // log("A " + filePath);
         }
         else if (filePath.indexOf('/app/app.') >= 0) {
             sample.FilesApp.push(filePath);       // these files are replaced by sample.FilesComponent
-            // console.log("A " + filePath);
+            // log("A " + filePath);
         }
-        else if (filePath.indexOf('.component.') >= 0) {
+        else if (filePath.indexOf('component.') >= 0) {
             sample.FilesComponent.push(filePath);  // e.g. sample-name.component.ts
-            // console.log("C " + filePath);
+            // log("C " + filePath);
         }
         else if (filePath.indexOf('/app/') >= 0) { // data/services/utility files
-            // console.log("C " + filePath);
+            // log("C " + filePath);
             var fileName = file.basename;
             var fileFolder = filePath.toString().split('/app/')[1];
 
             var data = {};
-            data.folder = '../' + fileFolder.replace('/' + fileName,'');
-            data.path = filePath;
-            data.name = file.basename.replace('.ts','');
-            data.name = data.name.replace('.json','');
-            data.name = data.name.replace('.scss','');
-            data.name = data.name.replace('.css','');
+            data.sourceFolder = fileFolder.replace('/' + fileName,'');
+            data.sourcePath = filePath;
+
+            data.sourceName = file.basename.replace('.ts','');
+            data.sourceName = data.sourceName.replace('.json','');
+            data.sourceName = data.sourceName.replace('.scss','');
+            data.sourceName = data.sourceName.replace('.css','');
+
+            data.outputName = data.sourceName;
+            if (data.outputName.indexOf('.') >= 0) {
+                data.outputName = utils.replace(data.outputName, ".", "-");
+            }
+            if (data.outputName.indexOf('-') >= 0) {
+                data.outputName = utils.replace(data.outputName, "-", " ");
+                data.outputName = utils.toTitleCase(data.outputName, " ");
+            }
+            data.outputName = utils.replace(data.outputName, " ", "");
+
+            data.outputPath = file.basename.replace(data.sourceName,  data.outputName);
+            data.outputPath = sample.OutputPath + "src/app/" + data.outputPath;
+
             sample.FilesData.push(data);
 
-            console.log(data);
-            // console.log('fileFolder ' + fileFolder);
+            // log(data);
+            // log(sample);
+            // log('fileFolder ' + fileFolder);
         }
         else {
-            //sample.FilesOther.push(filePath);     // these files are not changed
-            // console.log("O " + filePath);
+            // sample.FilesOther.push(filePath);     // these files are not changed
+            // log("O " + filePath);
         }
 
         fileCallback(null, file);
@@ -446,7 +502,7 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
     .on("end", function() {
         // log("getPortSample " + location + " done");
 
-        // console.log(sample);
+        // log(sample);
         // saving info about samples in database
         samplesDatabase.push(sample);
 
