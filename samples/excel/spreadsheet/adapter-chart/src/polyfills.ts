@@ -17,7 +17,7 @@
 /***************************************************************************************************
 * BROWSER POLYFILLS
 */
-
+    
 import 'core-js/es/array';
 
 /** IE10 and IE11 requires the following for NgClass support on SVG elements */
@@ -27,13 +27,13 @@ import "classlist.js";  // run `npm install --save classlist.js`.
  * Required to support Web Animations `@angular/platform-browser/animations`.
  * Needed for: All but Chrome, Firefox and Opera. http://caniuse.com/#feat=web-animation
  */
-import "web-animations-js";  // Run `npm install --save web-animations-js`.
+import "web-animations-js";  // run `npm install --save web-animations-js`.
 
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
 import "hammerjs/hammer";
-import "zone.js";  // Included with Angular CLI.
+import "zone.js/dist/zone";  // included with Angular CLI.
 
 /***************************************************************************************************
  * @angular/animations polyfill

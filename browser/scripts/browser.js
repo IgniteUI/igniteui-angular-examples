@@ -82,7 +82,7 @@ var sampleSourcePaths = [
     // sampleRoot + 'charts/zoomslider/**/package.json',
     sampleRoot + 'maps/**/package.json',
     // sampleRoot + 'excel/excel-library/**/package.json',
-    // sampleRoot + 'excel/spreadsheet/**/package.json',
+    sampleRoot + 'excel/spreadsheet/**/package.json',
     // sampleRoot + 'gauges/bullet-graph/**/package.json',
     sampleRoot + 'gauges/linear-gauge/**/package.json',
     sampleRoot + 'gauges/radial-gauge/**/package.json',

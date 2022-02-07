@@ -1,0 +1,9 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <input type="text" [(ngModel)]="activeCellText">
+        <button (click)="onClick()">Activate Cell</button>
+        <label class="options-item">Current Active Cell: {{spreadsheet.activeCell}}</label>
+    </div>
+
+    <igx-spreadsheet #spreadsheet height="100%" width="100%"></igx-spreadsheet>
+</div>

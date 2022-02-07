@@ -7,7 +7,9 @@ import { filter } from "rxjs/operators";
 // Auto-Insert-Imports-RoutingData-Start
 import { RoutingDataForCharts } from "../../samples/charts/routing-data";
 import { RoutingDataForMaps } from "../../samples/maps/routing-data";
+import { RoutingDataForExcel } from "../../samples/excel/routing-data";
 import { RoutingDataForGauges } from "../../samples/gauges/routing-data";
+
 
 // Auto-Insert-Imports-RoutingData-End
 
@@ -41,7 +43,9 @@ export class IndexComponent implements OnInit, AfterViewInit {
         // Auto-Insert-SamplesRoutingArray-Start
         { path: "charts", routesData: RoutingDataForCharts },
         { path: "maps", routesData: RoutingDataForMaps },
+        { path: "excel", routesData: RoutingDataForExcel },
         { path: "gauges", routesData: RoutingDataForGauges }
+
 
         // Auto-Insert-SamplesRoutingArray-End
     ];
