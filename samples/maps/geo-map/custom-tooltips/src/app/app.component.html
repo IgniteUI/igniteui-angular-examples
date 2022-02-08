@@ -1,0 +1,15 @@
+<div class="container sample">
+    <igx-geographic-map #map
+        width="100%"
+        height="100%"
+        zoomable="true" >
+    </igx-geographic-map>
+
+    <ng-template let-series="series" let-item="item" #template>
+        <div>
+            <span [style.color]="series.markerOutline">City: {{item.name}}</span><br />
+            <span>Longitude: {{item.lon}}</span><br />
+            <span>Latitude: {{item.lat}}</span>
+        </div>
+    </ng-template>
+</div>
