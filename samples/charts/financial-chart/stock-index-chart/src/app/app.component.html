@@ -1,0 +1,18 @@
+<div class="container sample">
+    <div class="options vertical" >
+        <label id="legendTitle">S&P 500 Index </label>
+    </div>
+
+    <igx-financial-chart height="100%" width="100%"
+    [dataSource]="stocksData"
+    isToolbarVisible="false"
+    chartType="Candle"
+    yAxisLabelLocation="OutsideLeft"
+    yAxisMode="Numeric"
+    yAxisTitle="Financial Prices"
+    yAxisTitleLeftMargin="10"
+    yAxisTitleRightMargin="5"
+    yAxisLabelLeftMargin="0"
+    zoomSliderType="None">
+    </igx-financial-chart>
+</div>

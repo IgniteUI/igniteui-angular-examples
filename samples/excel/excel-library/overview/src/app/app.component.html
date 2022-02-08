@@ -1,0 +1,18 @@
+<div >
+    <div class="workbookOptions">
+
+        <div class="workbookOperations">
+            <div class="workbookSelector">
+                <button class="workbookButton">
+                    <label for="workbookSelector">Load Workbook</label>
+                </button>
+                <input class="workbookButton" id="workbookSelector" type="file" style="visibility:hidden;"
+                    accept=".xls, .xlt, .xlsx, .xlsm, .xltm, .xltx"
+                    (change)='workbookLoad($event.target)' >
+            </div>
+            <button class="workbookButton" (click)="workbookSave()" [disabled]="!canSave">
+                <label>Save Workbook</label>
+            </button>
+        </div>
+    </div>
+</div>

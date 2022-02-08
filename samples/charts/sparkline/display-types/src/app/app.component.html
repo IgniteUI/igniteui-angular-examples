@@ -1,0 +1,17 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <span class="options-item">Display Type:</span>
+        <select (change)="onDisplayTypeChanged($event)">
+            <option>Area</option>
+            <option>Column</option>
+            <option>Line</option>
+            <option>WinLoss</option>
+        </select>
+    </div>
+    <div class="container">
+        <igx-sparkline #sparkline height="100%" width="100%"
+            [dataSource]="data"
+            valueMemberPath="Value"
+            displayType="Area"></igx-sparkline>
+    </div>
+</div >

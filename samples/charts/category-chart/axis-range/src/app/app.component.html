@@ -1,0 +1,32 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Renewable Electricity Generated</span>
+        <div class="legend">
+            <igx-legend #Legend orientation="horizontal"></igx-legend>
+        </div>
+
+        <div class="overlay-right" >
+            <div class="options horizontal" >
+                <label class="options-label">Y - Axis Minimum Value </label>
+                <label class="options-value"><span [textContent]="yAxisMinValue" ></span></label>
+                <input type="range" min="0" max="100" step="10" value="0" (input)="OnYAxisMinValueChanged($event)" />
+          </div>
+          <div class="options horizontal" >
+                <label class="options-label">Y - Axis Maximum Value </label>
+                <label class="options-value"><span [textContent]="yAxisMaxValue" ></span></label>
+                <input type="range" min="100" max="200" step="10" value="150" (input)="OnYAxisMaxValueChanged($event)" />
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <igx-category-chart height="100%" width="100%"
+            [dataSource]="data"
+            chartType="Line"
+            [legend]="Legend"
+            isHorizontalZoomEnabled="false"
+            isVerticalZoomEnabled="false"
+            [yAxisMinimumValue]="yAxisMinValue"
+            [yAxisMaximumValue]="yAxisMaxValue">
+        </igx-category-chart>
+    </div>
+</div>

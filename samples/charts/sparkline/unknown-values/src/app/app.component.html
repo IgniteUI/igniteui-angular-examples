@@ -1,0 +1,13 @@
+<div class="container sample">
+    <div class="options vertical">
+        <label class="options-item">
+            <input checked="true" type="checkbox" (change)="onRangeVisibilityChanged($event)"/>Plot Unknown Values
+        </label>
+    </div>
+    <div class="container">
+        <igx-sparkline #sparkline height="100%" width="100%"
+            [dataSource]="data"
+            valueMemberPath="Value"
+            displayType="Area" ></igx-sparkline>
+    </div>
+</div >

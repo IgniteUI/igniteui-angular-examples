@@ -1,0 +1,23 @@
+<div class="container sample">
+    <div class="options vertical">
+        <label id="legendTitle">Global Electricity Demand by Energy Use</label>
+        <igx-item-legend #legend></igx-item-legend>
+    </div>
+    <div class="container">
+        <igx-pie-chart #chart
+            height="100%"
+            width="100%"
+            [dataSource]="data"
+            [legend]="legend"
+            valueMemberPath="Value"
+            labelMemberPath="Label"
+            [selectionMode]="selectionType"
+            selectedSliceStroke = "white"
+            selectedSliceFill= "rgb(143,143,143)"
+            selectedSliceOpacity =1.0
+            selectedSliceStrokeThickness=2
+            labelsPosition="OutsideEnd"
+            labelExtent="30">
+        </igx-pie-chart>
+    </div>
+</div>

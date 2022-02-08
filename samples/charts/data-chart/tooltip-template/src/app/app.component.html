@@ -1,0 +1,35 @@
+<div class="container sample">
+    <div class="options vertical">
+        <label id="legendTitle">Energy Production by Source</label>
+    </div>
+    <div class="container">
+        <igx-data-chart #chart height="100%" width="100%" [dataSource]="data"
+        isHorizontalZoomEnabled="false" isVerticalZoomEnabled="false">
+
+            <igx-category-x-axis #xAxis name="xAxis" label="Country"></igx-category-x-axis>
+            <igx-numeric-y-axis #yAxis name="yAxis" minValue=0></igx-numeric-y-axis>
+
+            <igx-column-series name="series1" title="Coal" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Coal"
+              showDefaultTooltip=false [tooltipTemplate]="valueTooltip"></igx-column-series>
+            <igx-column-series name="series2" title="Hydro" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Hydro"
+              showDefaultTooltip=false [tooltipTemplate]="valueTooltip"></igx-column-series>
+            <igx-column-series name="series3" title="Nuclear" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Nuclear"
+              showDefaultTooltip=false [tooltipTemplate]="valueTooltip"></igx-column-series>
+            <igx-column-series name="series4" title="Gas" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Gas"
+              showDefaultTooltip=false [tooltipTemplate]="valueTooltip"></igx-column-series>
+            <igx-column-series name="series5" title="Oil" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Oil"
+              showDefaultTooltip=false [tooltipTemplate]="valueTooltip"></igx-column-series>
+          </igx-data-chart>
+    </div>
+
+    <ng-template let-series="series" let-item="item" #valueTooltip>
+        <div>
+            <label class=“tooltipTitle”>{{item.Country}} Production<br/></label>
+            <label class=“tooltipLbl” [style.color]="series.valueMemberPath == 'Coal' ? series.actualBrush : 'black'"> Coal: {{item.Coal | number}}<br/></label>
+            <label class=“tooltipLbl” [style.color]="series.valueMemberPath == 'Hydro' ? series.actualBrush : 'black'"> Hydro: {{item.Hydro | number}}<br/></label>
+            <label class=“tooltipLbl” [style.color]="series.valueMemberPath == 'Oil' ? series.actualBrush : 'black'"> Oil: {{item.Oil | number}}<br/></label>
+            <label class=“tooltipLbl” [style.color]="series.valueMemberPath == 'Gas' ? series.actualBrush : 'black'"> Gas: {{item.Gas | number}}<br/></label>
+            <label class=“tooltipLbl” [style.color]="series.valueMemberPath == 'Nuclear' ? series.actualBrush : 'black'"> Nuclear: {{item.Nuclear | number}}<br/></label>
+        </div>
+    </ng-template>
+</div>

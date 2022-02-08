@@ -1,0 +1,33 @@
+<div class="container sample">
+    <div class="options vertical">
+        <label id="legendTitle">Distribution of Magnetic Field</label>
+    </div>
+    <div class="container">
+        <igx-data-chart #chart
+            height="100%"
+            width="100%"
+            [dataSource]="data"
+            isHorizontalZoomEnabled=true
+            isVerticalZoomEnabled=true
+            gridMode="BeforeSeries">
+            <!-- primary axes required for scatter-contour-series -->
+            <igx-numeric-x-axis #xAxis1 labelLocation="OutsideLeft" minimumValue=-180 maximumValue=180 title="Longitude"></igx-numeric-x-axis>
+            <igx-numeric-y-axis #yAxis1 labelLocation="OutsideBottom" minimumValue=-90 maximumValue=90 title="Latitude"></igx-numeric-y-axis>
+
+            <!-- optional axes that provide more context for displayed data -->
+            <igx-numeric-x-axis #xAxis2 labelLocation="OutsideRight" minimumValue=-180 maximumValue=180 title="Longitude"></igx-numeric-x-axis>
+            <igx-numeric-y-axis #yAxis2 labelLocation="OutsideTop" minimumValue=-90 maximumValue=90 title="Latitude"></igx-numeric-y-axis>
+
+            <igx-scatter-contour-series
+                name="series"
+                [xAxis]="xAxis1"
+                [yAxis]="yAxis1"
+                xMemberPath="X"
+                yMemberPath="Y"
+                valueMemberPath="Z"
+                thickness=2
+                [fillScale]="brushScale">
+            </igx-scatter-contour-series>
+        </igx-data-chart>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="container sample">
+    <div class="options vertical">
+        <div class="options horizontal">
+        <span style="margin-left: 0.25rem;">Highlight Target:</span>
+            <select (change)=OnEnableHighlightingChange($event) style="width: 7rem; margin-right: 1rem;">
+                <option>Series</option>
+                <option>Item</option>
+                <option>Category</option>
+                <option>None</option>
+            </select>
+            <span>Mode:</span>
+                <select [(ngModel)]="highlightMode" style="width: 7rem; margin-right: 1rem;">
+                    <option>Auto</option>
+                    <option>BrightenSpecific</option>
+                    <option>Brighten</option>
+                    <option>FadeOthersSpecific</option>
+                    <option>FadeOthers</option>
+                    <option>None</option>
+                </select>
+            <span>Behavior:</span>
+                <select [(ngModel)]="highlightBehavior" style="width: 7rem; margin-right: 1rem;">
+                    <option>Auto</option>
+                    <option>DirectlyOver</option>
+                    <option>NearestItems</option>
+                    <option>NearestItemsRetainMainShapes</option>
+                    <option>NearestItemsAndSeries</option>
+                </select>
+            <span>Legend:</span>
+                <select [(ngModel)]="legendHighlightMode" style="width: 7rem; margin-right: 1rem;">
+                    <option>Auto</option>
+                    <option>None</option>
+                    <option>MatchSeries</option>
+                </select>
+            </div>
+        <span id="legendTitle">Average Temperatures in the U.S. Cities</span>
+        <div class="legend" >
+            <igx-legend #legend orientation="Horizontal"></igx-legend>
+        </div>
+
+    </div>
+
+
+    <div class="container">
+        <igx-category-chart #chart height="100%" width="100%"
+            [legend]="legend"
+            [dataSource]="data"
+            chartType="Column"
+            [isCategoryHighlightingEnabled]="isCategoryHighlightingEnabled"
+            [isItemHighlightingEnabled]="isItemHighlightingEnabled"
+            [isSeriesHighlightingEnabled]="isSeriesHighlightingEnabled"
+            [legendHighlightingMode]="legendHighlightMode"
+            [highlightingMode]="highlightMode"
+            [highlightingBehavior]="highlightBehavior"
+            yAxisTitle="Temperatures in Celsius"
+            yAxisMinimumValue="0"
+            xAxisInterval="1">
+        </igx-category-chart>
+    </div>
+</div>

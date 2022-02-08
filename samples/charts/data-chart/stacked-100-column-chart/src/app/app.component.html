@@ -1,0 +1,28 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Distribution of Online Traffic Worldwide in 2019, by Device</span>
+        <igx-legend #legend orientation="Horizontal"></igx-legend>
+    </div>
+    <div class="container">
+        <igx-data-chart height="100%" width="100%" isVerticalZoomEnabled="false"
+            isHorizontalZoomEnabled="false" [dataSource]="data">
+            <igx-category-x-axis #xAxis [dataSource]="data" label="Category" gap="0.75"></igx-category-x-axis>
+            <igx-numeric-y-axis #yAxis minimumValue="0"></igx-numeric-y-axis>
+
+            <igx-stacked-100-column-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" showDefaultTooltip="true"
+                areaFillOpacity="1" [legend]="legend">
+                <igx-stacked-fragment-series valueMemberPath="Desktop" title="Desktop"></igx-stacked-fragment-series>
+                <igx-stacked-fragment-series valueMemberPath="Mobile" title="Mobile"></igx-stacked-fragment-series>
+                <igx-stacked-fragment-series valueMemberPath="Tablet" title="Tablet"></igx-stacked-fragment-series>
+            </igx-stacked-100-column-series>
+
+            <igx-point-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" valueMemberPath="DesktopMarker"
+                [markerTemplate]="getMarker()">
+            </igx-point-series>
+            <igx-point-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" valueMemberPath="MobileMarker"
+                [markerTemplate]="getMarker()"></igx-point-series>
+            <igx-point-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" valueMemberPath="TabletMarker"
+                [markerTemplate]="getMarker()"></igx-point-series>
+        </igx-data-chart>
+    </div>
+</div>

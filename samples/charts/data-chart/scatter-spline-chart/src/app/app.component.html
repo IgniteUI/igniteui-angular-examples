@@ -1,0 +1,28 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Life Expectancy vs Health Expenditure</span>
+        <div class="legend">
+            <igx-legend #legend orientation="Horizontal"></igx-legend>
+        </div>
+    </div>
+    <div class="container">
+        <igx-data-chart height="100%" width="100%" [legend]="legend" isHorizontalZoomEnabled="false"
+            isVerticalZoomEnabled="false">
+
+            <igx-numeric-x-axis #xAxis labelFormat="${0}" title="Health Expenditure"></igx-numeric-x-axis>
+            <igx-numeric-y-axis #yAxis labelFormat="{0}" title="Life Expectancy (in years)"></igx-numeric-y-axis>
+
+            <igx-scatter-spline-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="gerData"
+                xMemberPath="HealthExpense" yMemberPath="LifeExpectancy" title="Germany" markerType="Circle">
+            </igx-scatter-spline-series>
+
+            <igx-scatter-spline-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="fraData"
+                xMemberPath="HealthExpense" yMemberPath="LifeExpectancy" title="France" markerType="Circle">
+            </igx-scatter-spline-series>
+
+            <igx-scatter-spline-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="luxData"
+                xMemberPath="HealthExpense" yMemberPath="LifeExpectancy" title="Luxembourg" markerType="Circle">
+            </igx-scatter-spline-series>
+        </igx-data-chart>
+    </div>
+</div>

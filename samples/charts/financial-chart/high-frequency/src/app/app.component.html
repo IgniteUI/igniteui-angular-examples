@@ -1,0 +1,35 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <label class="options-label" style="width: 5rem;">Data Update:</label>
+        <label class="options-value">{{refreshIntervalText}}</label>
+        <input class="options-slider" type="range" step="5"
+        [min]="5"
+        [max]="1000"
+        [value]="refreshInterval"
+        (input)="onRefreshFrequencyChanged($event)"/>
+        <button #timerButton (click)="onTimerButtonClicked()">{{timerButtonText}}</button>
+        <label class="options-label">FPS: </label>
+        <span #fpsSpan class="options-label"> 60</span>
+    </div>
+    <div class="options horizontal">
+        <label class="options-label" style="width: 5rem;">Data Points:</label>
+        <label class="options-value">{{maxPointsText}}</label>
+        <input class="options-slider" type="range" step="1000"
+        [min]="250"
+        [max]="100000"
+        [value]="maxPoints"
+        (input)="onMaxPointsChanged($event)"/>
+        <button (click)="onChangeAmountClicked()">Generate</button>
+        <label class="options-label">Optimize Scaling: </label>
+        <input class="options-checkbox" type="checkbox" (change)="onOptimizeScalingChanged($event.target.checked)"/>
+    </div>
+
+    <igx-financial-chart height="100%" width="100%"
+        [dataSource]="data"
+        [pixelScalingRatio]="scalingRatio"
+        chartType="line"
+        zoomSliderType="none"
+        thickness="2"
+        #chart>
+    </igx-financial-chart>
+</div>

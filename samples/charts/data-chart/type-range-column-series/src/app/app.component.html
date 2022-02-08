@@ -1,0 +1,20 @@
+<div class="container sample">
+    <div class="options vertical" >
+        <label id="legendTitle">Annual Temperature Changes: </label>
+    </div>
+
+        <igx-data-chart #chart
+        [dataSource]="data"
+        height="100%"
+        width="100%"
+        isHorizontalZoomEnabled=true
+        isVerticalZoomEnabled=true>
+            <igx-category-x-axis #xAxis label="Year" name="xAxis" gap=0.5></igx-category-x-axis>
+            <igx-numeric-y-axis #yAxis name="yAxis" minValue=20 title="Temperature (°C)"></igx-numeric-y-axis>
+
+            <igx-range-column-series name="series1" [xAxis]="xAxis" [yAxis]="yAxis" highMemberPath="High" lowMemberPath="Low">
+
+            </igx-range-column-series>
+
+        </igx-data-chart>
+</div>

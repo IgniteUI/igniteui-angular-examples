@@ -1,0 +1,23 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Renewable Electricity Generated</span>
+        <igx-legend #legend orientation="horizontal"></igx-legend>
+    </div>
+    <div class="container">
+        <igx-category-chart height="100%" width="100%"
+            [dataSource]="data"
+            chartType="area"
+            [legend]="legend"
+            brushes="#8ce7d9, #ee5879, #735656"
+            outlines="#8ce7d9, #ee5879, #735656"
+            markerBrushes="white"
+            markerOutlines="#8ce7d9, #ee5879, #735656"
+            markerTypes="Square"
+            toolTipType="category"
+            thickness="2"
+            yAxisTitle="TWh"
+            yAxisTitleLeftMargin="5"
+            yAxisLabelLeftMargin="0">
+        </igx-category-chart>
+    </div>
+</div>

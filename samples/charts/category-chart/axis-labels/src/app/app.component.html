@@ -1,0 +1,41 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Renewable Electricity Generated</span>
+        <div class="legend">
+            <igx-legend #Legend orientation="horizontal"></igx-legend>
+        </div>
+
+        <div class="overlay-right" >
+            <div class="options horizontal" >
+                <label class="options-label">X - Axis Label Angle </label>
+                <label class="options-value"><span [textContent]="XAxisLabelAngle" ></span></label>
+                <input type="range" min="0" max="270" step="10" value="0" (input)="onXAxisLabelAngleChange($event)" />
+          </div>
+            <div class="options horizontal" >
+                <label class="options-label">Y - Axis Label Angle </label>
+                <label class="options-value"><span [textContent]="YAxisLabelAngle" ></span></label>
+                <input type="range" min="-90" max="90" step="10" value="0" (input)="onYAxisLabelAngleChange($event)" />
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <igx-category-chart height="100%" width="100%"
+            [dataSource]="data"
+            chartType="Line"
+            [legend]="Legend"
+            isHorizontalZoomEnabled="false"
+            isVerticalZoomEnabled="false"
+            [xAxisLabelAngle]="XAxisLabelAngle"
+            [yAxisLabelAngle]="YAxisLabelAngle"
+            xAxisLabelTextColor="Gray"
+            xAxisLabelTextStyle="10pt 'Titillium Web'"
+            xAxisLabelTopMargin="5"
+            yAxisLabelTextColor="Gray"
+            yAxisLabelTextStyle="10pt 'Titillium Web'"
+            yAxisLabelRightMargin="5"
+            yAxisLabelLocation="OutsideRight"
+        >
+        </igx-category-chart>
+    </div>
+</div>

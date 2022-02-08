@@ -1,0 +1,91 @@
+<div class="container sample">
+
+    <div class="container" id="map" >
+        <igx-geographic-map #map
+            width="100%"
+            height="100%"
+            zoomable="true">
+        </igx-geographic-map>
+    </div>
+
+    <div class="overlay-left" >
+        <div class="vertical overlay-border" style="background: rgba(217, 217, 217, 0.5)" >
+            <label style="font-weight: 600" >Select Map Region</label>
+            <select [(ngModel)]="regionType" (change)="onSelectionChanged($event)">
+                <option>Australia</option>
+                <option>Caribbean</option>
+                <option>Egypt</option>
+                <option>European</option>
+                <option>Japan</option>
+                <option>Hawaii</option>
+                <option>Poland</option>
+                <option>South Africa</option>
+                <option>United States</option>
+                <option>United Kingdom</option>
+                <option>Uruguay</option>
+            </select>
+            <label style="font-weight: 600">Map Geographic Rect</label>
+
+            <div class="horizontal" >
+                <div class="vertical"  style="margin-right: 1rem">
+                    <label >{{geoT}}</label>
+                    <label >{{geoL}}</label>
+                </div>
+                <div class="vertical">
+                    <label >{{geoH}}</label>
+                    <label >{{geoW}}</label>
+                </div>
+            </div>
+
+            <label style="font-weight: 600">Map Window Rect</label>
+            <div class="horizontal">
+                <div class="vertical" style="margin-right: 1rem">
+                    <label >{{winT}}</label>
+                    <label >{{winL}}</label>
+                </div>
+                <div class="vertical">
+                    <label >{{winH}}</label>
+                    <label >{{winW}}</label>
+                </div>
+            </div>
+
+            <label style="font-weight: 600">Map Window Position</label>
+            <div class="horizontal">
+                <div class="vertical" style="margin-right: 1rem">
+                    <label >Horizontal:</label>
+                    <label >Vertical:</label>
+                    <label >Scale:</label>
+                </div>
+                <div class="vertical">
+                    <label >{{posHorizontal}}</label>
+                    <label >{{posVertical}}</label>
+                    <label >{{scale}}</label>
+                </div>
+            </div>
+
+            <label style="font-weight: 600">Map Hover Coordinates</label>
+            <div class="horizontal">
+                <div class="vertical" style="margin-right: 1rem">
+                    <label >Longitude: </label>
+                    <label >Latitude: </label>
+                    <label >Window X: </label>
+                    <label >Window Y: </label>
+                    <label >Pixel X: </label>
+                    <label >Pixel Y: </label>
+                </div>
+                <div class="vertical">
+                    <label >{{mapHoverLatitude}}</label>
+                    <label >{{mapHoverLongitude}}</label>
+                    <label >{{mapHoverX}}</label>
+                    <label >{{mapHoverY}}</label>
+                    <label >{{mapHoverPixelX}}</label>
+                    <label >{{mapHoverPixelY}}</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="overlay-bottom-right">Imagery Tiles: @ESRI/ArcGIS</div>
+
+</div>

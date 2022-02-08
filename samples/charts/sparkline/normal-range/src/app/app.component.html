@@ -1,0 +1,16 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <label class="options-item"><input checked="true" type="checkbox" (change)="onRangeVisibilityChanged($event)"/>Range Visibility</label>
+        <label class="options-item"><input type="range" min=-2 max=7 step="0.5" value=1 (input)="onMinSliderChanged($event)"/>Min Range Slider</label>
+        <label class="options-item"><input type="range" min=-2 max=7 step="0.5" value=4 (input)="onMaxSliderChanged($event)"/>Max Range Slider</label>
+    </div>
+    <div class="container">
+        <igx-sparkline #sparkline height="100%" width="100%"
+            [dataSource]="data"
+            valueMemberPath="Value"
+            displayType="Area"
+            normalRangeVisibility="Collapsed"
+            normalRangeMinimum=1
+            normalRangeMaximum=4 ></igx-sparkline>
+    </div>
+</div >

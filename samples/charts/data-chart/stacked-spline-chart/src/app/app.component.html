@@ -1,0 +1,21 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Annual Number of Births by World Region</span>
+        <igx-legend #legend orientation="horizontal"></igx-legend>
+    </div>
+    <div class="container">
+        <igx-data-chart #chart width="100%" height="100%" [dataSource]="data" [legend]="legend">
+            <igx-category-x-axis #xAxis name="xAxis" label="Year"></igx-category-x-axis>
+            <igx-numeric-y-axis #yAxis name="yAxis" title="Millions of Births" titleLeftMargin="10" label="{0}m"></igx-numeric-y-axis>
+
+            <igx-stacked-spline-series [xAxis]="xAxis" [yAxis]="yAxis" name="series1" >
+                <igx-stacked-fragment-series valueMemberPath="Asia" title="Asia"></igx-stacked-fragment-series>
+                <igx-stacked-fragment-series valueMemberPath="Africa" title="Africa"></igx-stacked-fragment-series>
+                <igx-stacked-fragment-series valueMemberPath="Europe" title="Europe"></igx-stacked-fragment-series>
+                <igx-stacked-fragment-series valueMemberPath="NorthAmerica" title="North America"></igx-stacked-fragment-series>
+                <igx-stacked-fragment-series valueMemberPath="SouthAmerica" title="South America"></igx-stacked-fragment-series>
+                <igx-stacked-fragment-series valueMemberPath="Oceania" title="Oceania"></igx-stacked-fragment-series>
+            </igx-stacked-spline-series>
+        </igx-data-chart>
+    </div>
+</div>

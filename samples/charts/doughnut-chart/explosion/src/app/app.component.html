@@ -1,0 +1,20 @@
+<div class="container sample">
+    <div class="options vertical">
+        <label id="legendTitle">Global Electricity Demand by Energy Use</label>
+        <igx-item-legend #legend orientation="horizontal"></igx-item-legend>
+    </div>
+   <div class="container">
+        <igx-doughnut-chart #chart height="100%" width="100%"
+            (sliceClick)="pieSliceClickEvent($event)">
+                <igx-ring-series [dataSource] = "data"
+                valueMemberPath="Value"
+                [legend]="legend"
+                legendMemberPath="Label"
+                labelMemberPath="Label"
+                labelsPosition="OutsideEnd"
+                labelExtent="30"
+                radiusFactor="0.7">
+                </igx-ring-series>
+        </igx-doughnut-chart>
+    </div>
+</div>

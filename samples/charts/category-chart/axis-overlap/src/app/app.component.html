@@ -1,0 +1,28 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Highest Grossing Movie Franchises</span>
+        <div class="legend">
+            <igx-legend #Legend orientation="horizontal"></igx-legend>
+        </div>
+
+        <div class="overlay-right" >
+            <div class="options horizontal" >
+                <label class="options-label">X-Axis Overlap</label>
+                <label class="options-value"><span [textContent]="AxisOverlapValue" ></span></label>
+                <input type="range" min="0" max="1" step="0.1" value="1" (input)="OnXAxisOverlapChange($event)" />
+          </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <igx-category-chart height="100%" width="100%"
+            [dataSource]="data"
+            chartType="Column"
+            [legend]="Legend"
+            isHorizontalZoomEnabled="false"
+            isVerticalZoomEnabled="false"
+            xAxisInterval="1"
+            [xAxisOverlap]="AxisOverlapValue">
+        </igx-category-chart>
+    </div>
+</div>

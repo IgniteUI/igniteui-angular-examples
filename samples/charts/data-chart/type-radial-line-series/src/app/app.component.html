@@ -1,0 +1,33 @@
+<div class="container sample">
+    <div class="options vertical">
+        <label id="legendTitle">Company Finances by Department: </label>
+        <igx-legend #legend orientation="horizontal"></igx-legend>
+    </div>
+    <div class="container">
+        <igx-data-chart #chart
+            [legend]=legend
+            width="100%"
+            height="100%"
+            gridMode="BeforeSeries"
+            [dataSource]="data">
+            <igx-category-angle-axis #angleAxis
+                name="angleAxis"
+                label="Department">
+            </igx-category-angle-axis>
+            <igx-numeric-radius-axis #radiusAxis
+                name="radiusAxis"
+                innerRadiusExtentScale="0.1"
+                minimumValue="0">
+            </igx-numeric-radius-axis>
+
+            <igx-radial-line-series name="series1" valueMemberPath="Budget" [valueAxis]="radiusAxis"
+                [angleAxis]="angleAxis" title="Budget">
+            </igx-radial-line-series>
+
+            <igx-radial-line-series name="series2" valueMemberPath="Spending" [valueAxis]="radiusAxis"
+                [angleAxis]="angleAxis" title="Spending">
+            </igx-radial-line-series>
+
+       </igx-data-chart >
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <label class="options-label">Annotations: </label>
+        <label class="options-item">
+            <input type="checkbox" checked=true (change)="OnCrosshairVisibilityChanged($event)" /> Crosshair
+        </label>
+        <label class="options-item">
+            <input type="checkbox" checked=true (change)="OnCalloutsVisibilityChanged($event)" /> Callouts
+        </label>
+        <label class="options-item">
+            <input type="checkbox" checked=true (change)="OnFinalValueVisibilityChanged($event)" /> Final Values
+        </label>
+        <label class="options-item">
+            <input type="checkbox" checked=true (change)="OnMarkersVisibilityChanged($event)" /> Markers
+        </label>
+    </div>
+
+    <div class="options vertical">
+        <label id="legendTitle">Renewable Electricity Generated</label>
+    </div>
+    <div class="container">
+        <igx-category-chart height="100%" width="100%"
+            [dataSource]="data"
+            chartType="line"
+            yAxisTitle="TWh"
+            yAxisTitleLeftMargin="5"
+            yAxisLabelLocation="OutsideRight"
+            crosshairsSnapToData="false"
+            [crosshairsDisplayMode]="crosshairsDisplay"
+            [crosshairsAnnotationEnabled]="crosshairAnnotations"
+            [finalValueAnnotationsVisible]="finalValuesVisible"
+            [calloutsVisible]="calloutsVisible"
+            [calloutsDataSource]="calloutData"
+            [markerTypes]="markerType"
+            calloutsXMemberPath="index"
+            calloutsYMemberPath="value"
+            calloutsLabelMemberPath="label">
+        </igx-category-chart>
+    </div>
+</div>

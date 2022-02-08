@@ -1,0 +1,19 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <button class="button" (click)="onClicked()" >
+            <label>{{animateChart}}</label>
+        </button>
+    </div>
+    <div class="container">
+        <igx-doughnut-chart #chart height="100%" width="100%">
+                <igx-ring-series
+                [dataSource]="data"
+                valueMemberPath="Value"
+                labelMemberPath="Label"
+                startAngle = 0
+                labelExtent = 0.6
+                radiusFactor = 0.1>
+                </igx-ring-series>
+        </igx-doughnut-chart>
+    </div>
+</div>

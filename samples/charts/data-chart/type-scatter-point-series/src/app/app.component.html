@@ -1,0 +1,24 @@
+<div class="container sample">
+    <div class="options vertical" >
+        <label id="legendTitle">GDP vs Population </label>
+    </div>
+
+            <igx-data-chart isHorizontalZoomEnabled=true isVerticalZoomEnabled=true
+            width="100%" height="100%"
+            [dataSource]="data1">
+
+                <igx-numeric-x-axis #xAxis isLogarithmic=true abbreviateLargeNumbers=true title="Population">
+                </igx-numeric-x-axis>
+                <igx-numeric-y-axis #yAxis isLogarithmic=true abbreviateLargeNumbers=true title="Total GDP ($)">
+                </igx-numeric-y-axis>
+
+                <igx-scatter-series markerType="Circle" [dataSource]="data1" [xAxis]="xAxis" [yAxis]="yAxis"
+                    xMemberPath="population" yMemberPath="gdpTotal" showDefaultTooltip={true} title="Rich Countries">
+                </igx-scatter-series>
+
+                <igx-scatter-series markerType="Circle" [dataSource]="data2" [xAxis]="xAxis" [yAxis]="yAxis"
+                    xMemberPath="population" yMemberPath="gdpTotal" showDefaultTooltip=true title="Poor Countries">
+                </igx-scatter-series>
+
+            </igx-data-chart>
+</div>

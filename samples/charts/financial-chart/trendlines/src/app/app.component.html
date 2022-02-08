@@ -1,0 +1,41 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <label class="options-label">Annotations: </label>
+        <label class="options-item">
+            <select (change)="OnTrendlineTypeChanged($event)">
+                <option>CubicFit</option>
+                <option>LinearFit</option>
+                <option>QuinticFit</option>
+                <option>QuarticFit</option>
+                <option>ExponentialFit</option>
+                <option>PowerLawFit</option>
+                <option>LogarithmicFit</option>
+                <option>CumulativeAverage</option>
+                <option>ExponentialAverage</option>
+                <option>SimpleAverage</option>
+                <option>ModifiedAverage</option>
+                <option>WeightedAverage</option>
+                <option>None</option>
+            </select>
+        </label>
+    </div>
+    <div class="options vertical" >
+        <label id="legendTitle">Microsoft Stock Trend </label>
+    </div>
+
+    <div class="container">
+        <igx-financial-chart width="100%"
+            height="100%"
+            chartType=Bar
+            thickness=2
+            [dataSource]="data"
+            [trendLineType]="trendlineType"
+            trendLineThickness=2
+            trendLinePeriod=10
+            trendLineBrushes="rgba(0, 101, 209, 1)"
+            zoomSliderType="None"
+            isHorizontalZoomEnabled="false"
+            isVerticalZoomEnabled="false">
+        </igx-financial-chart>
+    </div>
+</div>

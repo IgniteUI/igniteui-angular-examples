@@ -168,3 +168,55 @@ function uniqueFilter(value, index, self) {
 function uniqueItems(arr) {
     return arr.filter(uniqueFilter);
 }
+
+var lintPackageNames = [
+    'file-saver',
+    '@angular/common',
+    '@angular/core',
+    '@angular/forms',
+    'igniteui-angular',
+    'igniteui-angular-core',
+    'igniteui-angular-charts',
+    'igniteui-angular-excel',
+    'igniteui-angular-gauges',
+    'igniteui-angular-maps',
+    'igniteui-angular-spreadsheet',
+    'igniteui-angular-spreadsheet-chart-adapter'
+];
+function lintSourceCode(content)  {
+    for (const package of lintPackageNames) {
+        content = replace(content, "'" + package + "'", '"' + package + '"');
+    }
+    return content;
+} exports.lintSourceCode = lintSourceCode;
+
+
+function lintImportsInline(content)  {
+    var lines = content.split(';');
+
+    for (let i = 0; i < lines.length; i++) {
+        if (lines[i].indexOf('import ') >= 0) {
+            var lineEnds = lines[i].split('\r\n');
+            if (lineEnds.length > 2) {
+                var importLines = lines[i].split('import ');
+                for (let i = 0; i < importLines.length; i++) {
+                    if (importLines[i].indexOf('//') < 0) {
+                        importLines[i] = replace(importLines[i], '\r\n', '');
+                        importLines[i] = replace(importLines[i], '  ', ' ');
+                        importLines[i] = replace(importLines[i], '  ', ' ');
+                    } else if (importLines[i].indexOf('// importing IG') >= 0) {
+                        importLines[i] = '';
+                    }
+                }
+                lines[i] = importLines.join('import ');
+                // console.log('>> lintImportInline << \n' + line);
+            }
+        }
+    }
+    var content = lines.join(';');
+    content = replace(content, '} from',   ' } from');
+    content = replace(content, '  } from', ' } from');
+    content = replace(content, ';import', ';\r\nimport');
+    return content;
+} exports.lintImportsInline = lintImportsInline;
+

@@ -1,0 +1,42 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <span>Marker Type: </span>
+        <select [(ngModel)]="markerType" (change)="onMarkerSelectionChanged($event)">
+            <option>Circle</option>
+            <option>Diamond</option>
+            <option>Hexagon</option>
+            <option>Hexagram</option>
+            <option>Hidden</option>
+            <option>Pentagon</option>
+            <option>Pentagram</option>
+            <option>Pyramid</option>
+            <option>Square</option>
+            <option>Tetragram</option>
+            <option>Triangle</option>
+        </select>
+        <span>Marker Brush: </span>
+        <select [(ngModel)]="markerBrush" (change)="onBrushSelectionChanged($event)">
+            <option>White</option>
+            <option>Green</option>
+            <option>Blue</option>
+            <option>Red</option>
+            <option>Gray</option>
+            <option>DodgerBlue</option>
+        </select>
+        <span>Marker Outline: </span>
+        <select [(ngModel)]="markerOutline" (change)="onOutlineSelectionChanged($event)">
+            <option>White</option>
+            <option>Green</option>
+            <option>Blue</option>
+            <option>Red</option>
+            <option>Gray</option>
+            <option>DodgerBlue</option>
+        </select>
+    </div>
+
+    <igx-geographic-map #map
+        width="100%"
+        height="100%"
+        zoomable="true">
+    </igx-geographic-map>
+</div>
