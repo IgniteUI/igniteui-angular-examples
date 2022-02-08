@@ -8,7 +8,7 @@ import { IgxLinearGraphRangeComponent } from "igniteui-angular-gauges";
   templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     @ViewChild("bulletGraph", { static: true })
     public bulletGraph: IgxBulletGraphComponent;

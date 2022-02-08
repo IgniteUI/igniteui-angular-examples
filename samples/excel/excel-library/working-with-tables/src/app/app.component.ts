@@ -10,7 +10,7 @@ import { ExcelUtility } from "./ExcelUtility";
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     public data: any;
     public isSorted: boolean;

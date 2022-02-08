@@ -13,7 +13,7 @@ import { ExcelUtility } from "./ExcelUtility";
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     @ViewChild("grid", { read: IgxGridComponent, static: true })
     public grid: IgxGridComponent;

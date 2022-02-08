@@ -10,7 +10,7 @@ import { IgxTileGeneratorMapImagery } from "igniteui-angular-maps";
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     @ViewChild("map", { static: true })
     public map: IgxGeographicMapComponent;

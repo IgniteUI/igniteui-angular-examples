@@ -1,10 +1,10 @@
 import { Component, Injectable, ViewChild } from "@angular/core";
 import { IgxGridComponent } from "igniteui-angular";
 import { BehaviorSubject, Observable } from "rxjs";
-import { Products } from "././Products";
+import { Products } from "./Products";
 
 @Injectable()
-export class AppComponent {
+export class LocalService {
     public records: Observable<any[]>;
     private _records: BehaviorSubject<any[]>;
 
@@ -26,7 +26,7 @@ export class AppComponent {
     templateUrl: "./app.component.html"
 })
 
-export class SparklineGridComponent {
+export class AppComponent {
 
     @ViewChild("grid1", { static: true }) public grid1: IgxGridComponent;
     public data: Observable<any[]>;

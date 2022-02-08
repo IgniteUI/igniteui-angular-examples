@@ -10,9 +10,9 @@ import { DataTemplateMeasureInfo, DataTemplateRenderInfo } from "igniteui-angula
   templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
-    @ViewChild("map", {static: true})
+    @ViewChild("map", { static: true })
     public map: IgxGeographicMapComponent;
     public symbolSeries: IgxGeographicSymbolSeriesComponent;
     constructor() {

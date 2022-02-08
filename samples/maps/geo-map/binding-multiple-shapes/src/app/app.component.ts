@@ -11,27 +11,27 @@ import { IgxGeographicSymbolSeriesComponent } from "igniteui-angular-maps";
   templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
-    @ViewChild("map", {static: true})
+    @ViewChild("map", { static: true })
     public map: IgxGeographicMapComponent;
 
-    @ViewChild("shapeSeries", {static: true})
+    @ViewChild("shapeSeries", { static: true })
     public shapeSeries: IgxGeographicShapeSeriesComponent;
 
-    @ViewChild("polylineSeries", {static: true})
+    @ViewChild("polylineSeries", { static: true })
     public polylineSeries: IgxGeographicPolylineSeriesComponent;
 
-    @ViewChild("symbolSeries", {static: true})
+    @ViewChild("symbolSeries", { static: true })
     public symbolSeries: IgxGeographicSymbolSeriesComponent;
 
-    @ViewChild("polylineTooltip", {static: true})
+    @ViewChild("polylineTooltip", { static: true })
     public polylineTooltip: TemplateRef<object>;
 
-    @ViewChild("shapeTooltip", {static: true})
+    @ViewChild("shapeTooltip", { static: true })
     public shapeTooltip: TemplateRef<object>;
 
-    @ViewChild("pointTooltip", {static: true})
+    @ViewChild("pointTooltip", { static: true })
     public pointTooltip: TemplateRef<object>;
 
     constructor() {

@@ -11,13 +11,13 @@ import { WorldUtility } from "./WorldUtility";
   templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
-    @ViewChild("map", {static: true})
+    @ViewChild("map", { static: true })
     public map: IgxGeographicMapComponent;
-    @ViewChild("pointSeriesTooltipTemplate", {static: true})
+    @ViewChild("pointSeriesTooltipTemplate", { static: true })
     public pointSeriesTooltipTemplate: TemplateRef<object>;
-    @ViewChild("polylineSeriesTooltipTemplate", {static: true})
+    @ViewChild("polylineSeriesTooltipTemplate", { static: true })
     public polylineSeriesTooltipTemplate: TemplateRef<object>;
     public flights: any[];
     constructor() {

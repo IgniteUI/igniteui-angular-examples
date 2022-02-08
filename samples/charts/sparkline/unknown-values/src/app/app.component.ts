@@ -8,7 +8,7 @@ import { SharedData } from "./SharedData";
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     @ViewChild("sparkline", { static: true })
     public sparkline: IgxSparklineComponent;

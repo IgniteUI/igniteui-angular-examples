@@ -9,7 +9,7 @@ import { LinearGraphNeedleShape } from "igniteui-angular-gauges";
   templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     @ViewChild("linearGauge", { static: true })
     public linearGauge: IgxLinearGaugeComponent;

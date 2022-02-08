@@ -38,7 +38,7 @@ export class Products {
             const sales: any[] = [];
             for (let m = 0; m < 12; m++) {
                 const sale = this.getRandomNumber(20, 90);
-                sales.push({Value: sale, Month: m});
+                sales.push({ Value: sale, Month: m });
             }
             items.push({
                 CountryFlag: this.getCountryFlag(country),
@@ -68,7 +68,7 @@ export class Products {
         const sales: any[] = [];
         for (let w = 0; w < weekCount; w++) {
             const value = this.getRandomNumber(0, 100);
-            sales.push({Sold: value, Week: w});
+            sales.push({ Sold: value, Week: w });
         }
         return sales;
     }
@@ -80,7 +80,7 @@ export class Products {
         const rates: any[] = [];
         for (let w = 0; w < weekCount; w++) {
             const value = this.getRandomNumber(-100, 100);
-            rates.push({Balance: value, Week: w});
+            rates.push({ Balance: value, Week: w });
         }
         return rates;
     }

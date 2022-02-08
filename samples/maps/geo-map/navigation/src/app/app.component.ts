@@ -11,13 +11,13 @@ import { IgxRectChangedEventArgs } from "igniteui-angular-core";
   templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     public isRunning: boolean;
     public regionType: string = "United States";
-    @ViewChild("map", {static: true})
+    @ViewChild("map", { static: true })
     public geoMap: IgxGeographicMapComponent;
-    @ViewChild("template", {static: true})
+    @ViewChild("template", { static: true })
     public tooltip: TemplateRef<object>;
 
     public geoRect: any;

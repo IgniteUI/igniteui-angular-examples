@@ -17,7 +17,7 @@ import { SampleScatterStats } from "./SampleScatterStats";
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     public charts: IgxDataChartComponent[] = [];
 

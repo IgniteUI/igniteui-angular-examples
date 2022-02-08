@@ -11,7 +11,7 @@ import { ExcelUtility } from "./ExcelUtility";
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     // TODO if needed, uncomment to get access to IG control
     // @ViewChild("chart")

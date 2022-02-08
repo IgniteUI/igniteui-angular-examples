@@ -82,10 +82,10 @@ export class WorldConnections {
         // longitude lines
         for (let lon = -180; lon <= 180; lon += 30) {
 
-            const line: any[] = [{x: lon, y: -90}, {x: lon, y: 90}];
+            const line: any[] = [{ x: lon, y: -90}, { x: lon, y: 90}];
             const points: any[] = [line];
 
-            const coordinateLine = {points,
+            const coordinateLine = { points,
 // tslint:disable-next-line: object-literal-sort-keys
                                     degree: lon,
                                     direction: lon > 0 ? "E" : "W"
@@ -95,9 +95,9 @@ export class WorldConnections {
         // latitude lines
         for (let lat = -90; lat <= 90; lat += 30) {
 
-            const line: any[] = [{x: -180, y: lat}, {x: 180, y: lat}];
+            const line: any[] = [{ x: -180, y: lat }, { x: 180, y: lat }];
             const points: any[] = [line];
-            const coordinateLine = {points,
+            const coordinateLine = { points,
 // tslint:disable-next-line: object-literal-sort-keys
                                     degree: lat,
                                     direction: lat > 0 ? "N" : "S"
@@ -117,7 +117,7 @@ export class WorldConnections {
         if (this.airportsLookup.has(city.name)) {
             this.airportsLookup.get(city.name).flights += 1;
         } else {
-            const airport = Object.assign({flights: 1}, city);
+            const airport = Object.assign({ flights: 1}, city);
             this.airportsLookup.set(city.name, airport);
         }
     }

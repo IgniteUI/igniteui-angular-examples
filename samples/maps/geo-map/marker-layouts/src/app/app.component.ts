@@ -10,20 +10,20 @@ import { WorldLocations } from "./WorldLocations";
   templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     public markerType: string = "Omit";
     public markerBrush: string = "White";
     public markerOutline: string = "DodgerBlue";
     public selectionCollisionType: CollisionAvoidanceType = CollisionAvoidanceType.Omit;
 
-    @ViewChild("map", {static: true})
+    @ViewChild("map", { static: true })
     public map: IgxGeographicMapComponent;
     public symbolSeries: IgxGeographicSymbolSeriesComponent;
     constructor() {
     }
 
-    @ViewChild("template", {static: true})
+    @ViewChild("template", { static: true })
     public tooltip: TemplateRef<object>;
 
     public ngAfterViewInit(): void {

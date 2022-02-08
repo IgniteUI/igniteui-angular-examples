@@ -8,9 +8,9 @@ import { IgxOpenStreetMapImagery } from "igniteui-angular-maps";
   templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
-    @ViewChild("map", {static: true})
+    @ViewChild("map", { static: true })
     public map: IgxGeographicMapComponent;
 
     constructor() {

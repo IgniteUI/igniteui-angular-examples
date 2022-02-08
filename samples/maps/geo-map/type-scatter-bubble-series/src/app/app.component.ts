@@ -13,11 +13,11 @@ import { WorldLocations } from "./WorldLocations";
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
-    @ViewChild("map", {static: true})
+    @ViewChild("map", { static: true })
     public map: IgxGeographicMapComponent;
-    @ViewChild("template", {static: true})
+    @ViewChild("template", { static: true })
     public tooltipTemplate: TemplateRef<object>;
 
     constructor() {
@@ -44,7 +44,7 @@ export class AppComponent {
                     for (let i = 0; i < shapes.length; i++) {
                         if (i % 5 === 0) {
                             const p = shapes[i];
-                            const item = { lon: p.x, lat: p.y, value: temp};
+                            const item = { lon: p.x, lat: p.y, value: temp };
                             contourPoints.push(item);
                         }
                     }

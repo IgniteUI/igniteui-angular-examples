@@ -8,11 +8,11 @@ import { IgxGeographicMapComponent } from "igniteui-angular-maps";
   templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
-    @ViewChild("map", {static: true})
+    @ViewChild("map", { static: true })
     public map: IgxGeographicMapComponent;
-    @ViewChild("template", {static: true})
+    @ViewChild("template", { static: true })
     public tooltip: TemplateRef<object>;
     constructor() {
     }

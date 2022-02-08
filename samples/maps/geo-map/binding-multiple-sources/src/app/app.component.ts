@@ -11,15 +11,15 @@ import { WorldConnections } from "./WorldConnections";
   templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
-    @ViewChild("map", {static: true})
+    @ViewChild("map", { static: true })
     public map: IgxGeographicMapComponent;
 
-    @ViewChild("polylineTooltipTemplate", {static: true})
+    @ViewChild("polylineTooltipTemplate", { static: true })
     public polylineTooltipTemplate: TemplateRef<object>;
 
-    @ViewChild("pointTooltipTemplate", {static: true})
+    @ViewChild("pointTooltipTemplate", { static: true })
     public pointTooltipTemplate: TemplateRef<object>;
 
     public data: any;

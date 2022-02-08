@@ -7,7 +7,7 @@ import { IgxRadialGaugeComponent } from "igniteui-angular-gauges";
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     @ViewChild("radialGauge", { static: true })
     public radialGauge: IgxRadialGaugeComponent;

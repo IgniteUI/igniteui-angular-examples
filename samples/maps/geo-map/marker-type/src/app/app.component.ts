@@ -9,13 +9,13 @@ import { WorldLocations } from "./WorldLocations";
   templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     public markerType: string = "Circle";
     public markerBrush: string = "White";
     public markerOutline: string = "DodgerBlue";
 
-    @ViewChild("map", {static: true})
+    @ViewChild("map", { static: true })
     public map: IgxGeographicMapComponent;
     public symbolSeries: IgxGeographicSymbolSeriesComponent;
     constructor() {

@@ -32,7 +32,7 @@ export class WorkbookExportOptions extends IgxExporterOptionsBase {
     public startRow: number = 0;
     public startColumn: number = 0;
     public exportAsTable: boolean = true;
-    public columnOptions: {[key: string]: IColumnExportOptions};
+    public columnOptions: {[key: string]: IColumnExportOptions };
 
     constructor(filename: string) {
         super(filename, "");
