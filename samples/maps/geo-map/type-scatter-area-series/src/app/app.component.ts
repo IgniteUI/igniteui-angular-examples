@@ -1,10 +1,8 @@
 import { AfterViewInit, Component, TemplateRef, ViewChild } from "@angular/core";
-import { IgxCustomPaletteColorScaleComponent
-} from "igniteui-angular-charts";
+import { IgxCustomPaletteColorScaleComponent } from "igniteui-angular-charts";
 import { IgxShapeDataSource } from "igniteui-angular-core";
 import { IgxGeographicMapComponent } from "igniteui-angular-maps";
-import { IgxGeographicScatterAreaSeriesComponent
-} from "igniteui-angular-maps";
+import { IgxGeographicScatterAreaSeriesComponent } from "igniteui-angular-maps";
 
 @Component({
   selector: "app-root",

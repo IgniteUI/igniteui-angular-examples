@@ -1,8 +1,7 @@
 import { AfterViewInit, Component, TemplateRef, ViewChild } from "@angular/core";
 import { IgxValueBrushScaleComponent } from "igniteui-angular-charts";
 import { IgxShapeDataSource } from "igniteui-angular-core";
-import { IgxGeographicContourLineSeriesComponent
-} from "igniteui-angular-maps";
+import { IgxGeographicContourLineSeriesComponent } from "igniteui-angular-maps";
 import { IgxGeographicMapComponent } from "igniteui-angular-maps";
 
 @Component({

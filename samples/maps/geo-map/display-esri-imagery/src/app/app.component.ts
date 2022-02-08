@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ViewChild } from "@angular/core";
 import { IgxArcGISOnlineMapImagery } from "igniteui-angular-maps";
 import { IgxGeographicMapComponent } from "igniteui-angular-maps";
-
 import { EsriStyle, EsriUtility } from "./EsriUtility";
 
 @Component({

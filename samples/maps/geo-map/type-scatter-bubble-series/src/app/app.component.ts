@@ -5,9 +5,8 @@ import { MarkerType } from "igniteui-angular-charts";
 import { IgxDataContext } from "igniteui-angular-core";
 import { IgxShapeDataSource } from "igniteui-angular-core";
 import { IgxGeographicMapComponent } from "igniteui-angular-maps";
-import { IgxGeographicProportionalSymbolSeriesComponent
-} from "igniteui-angular-maps";
-import { WorldLocations } from "././utilities/WorldLocations";
+import { IgxGeographicProportionalSymbolSeriesComponent } from "igniteui-angular-maps";
+import { WorldLocations } from "./WorldLocations";
 
 @Component({
   selector: "app-root",

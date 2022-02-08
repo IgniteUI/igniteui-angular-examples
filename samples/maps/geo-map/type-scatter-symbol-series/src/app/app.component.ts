@@ -1,8 +1,7 @@
 import { AfterViewInit, Component, TemplateRef, ViewChild } from "@angular/core";
 import { MarkerType } from "igniteui-angular-charts";
 import { IgxGeographicMapComponent } from "igniteui-angular-maps";
-import { IgxGeographicSymbolSeriesComponent
-} from "igniteui-angular-maps";
+import { IgxGeographicSymbolSeriesComponent } from "igniteui-angular-maps";
 import { WorldLocations } from "./WorldLocations";
 
 @Component({

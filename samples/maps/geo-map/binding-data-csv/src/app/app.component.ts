@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, TemplateRef, ViewChild } from "@angular/core";
-import { IgxGeographicHighDensityScatterSeriesComponent
-} from "igniteui-angular-maps";
+import { IgxGeographicHighDensityScatterSeriesComponent } from "igniteui-angular-maps";
 import { IgxGeographicMapComponent } from "igniteui-angular-maps";
 
 @Component({

@@ -2,7 +2,6 @@ import { AfterViewInit, Component, ViewChild } from "@angular/core";
 import { BingMapsImageryStyle } from "igniteui-angular-maps";
 import { IgxBingMapsMapImagery } from "igniteui-angular-maps";
 import { IgxGeographicMapComponent } from "igniteui-angular-maps";
-
 import { MapUtility } from "./MapUtility";
 
 @Component({

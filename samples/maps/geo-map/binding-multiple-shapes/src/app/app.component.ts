@@ -1,8 +1,7 @@
 import { AfterViewInit, Component, TemplateRef, ViewChild } from "@angular/core";
 import { IgxShapeDataSource } from "igniteui-angular-core";
 import { IgxGeographicMapComponent } from "igniteui-angular-maps";
-import { IgxGeographicPolylineSeriesComponent
-} from "igniteui-angular-maps";
+import { IgxGeographicPolylineSeriesComponent } from "igniteui-angular-maps";
 import { IgxGeographicShapeSeriesComponent } from "igniteui-angular-maps";
 import { IgxGeographicSymbolSeriesComponent } from "igniteui-angular-maps";
 

@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, EmbeddedViewRef, TemplateRef, ViewChild} from "@angular/core";
+import { AfterViewInit, Component, EmbeddedViewRef, TemplateRef, ViewChild } from "@angular/core";
 import { IgxShapeDataSource } from "igniteui-angular-core";
 import { IgxGeographicMapComponent } from "igniteui-angular-maps";
-import { IgxGeographicPolylineSeriesComponent
-} from "igniteui-angular-maps";
+import { IgxGeographicPolylineSeriesComponent } from "igniteui-angular-maps";
 
 @Component({
   selector: "app-root",
