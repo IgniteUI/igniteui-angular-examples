@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ViewChild } from "@angular/core";
-
 import { IgxBulletGraphComponent } from "igniteui-angular-gauges";
 import { IgxLinearGraphRangeComponent } from "igniteui-angular-gauges";
 

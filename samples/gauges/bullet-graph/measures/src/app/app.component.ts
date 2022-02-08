@@ -1,5 +1,4 @@
 import { Component, ViewChild } from "@angular/core";
-
 import { IgxBulletGraphComponent } from "igniteui-angular-gauges";
 
 @Component({
