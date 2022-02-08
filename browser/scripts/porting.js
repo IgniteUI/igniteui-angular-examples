@@ -327,10 +327,16 @@ function exportPackage(sample, sampleFile) {
             if (fileLines[i].indexOf('"igniteui-angular-spreadsheet"') > 0) {
                 fileLines[i] = "";
             }
+
+            if (fileLines[i].indexOf('file-saver') > 0) {
+                fileLines[i] = "";
+            }
         }
     }
     fileContent = utils.joinLines(fileLines);
     var outputPath = sample.OutputPath + "package.json";
+
+    // log("export package: " + outputPath);
     utils.fileSave(outputPath, fileContent, true);
 }
 
@@ -493,7 +499,7 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
             // log('fileFolder ' + fileFolder);
         }
         else {
-            // sample.FilesOther.push(filePath);     // these files are not changed
+            sample.FilesOther.push(filePath);
             // log("O " + filePath);
         }
 
