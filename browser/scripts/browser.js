@@ -90,6 +90,8 @@ var sampleSourcePaths = [
     // sampleRoot + 'layouts/**/package.json',
     // sampleRoot + 'editors/**/package.json',
 
+    // sampleRoot + 'maps/geo-map/type-scatter-bubble-series/package.json',
+    // sampleRoot + 'maps/geo-map/display-heat-imagery/package.json',
     // excluding package.json in node_modules sub folders in case they are installed locally
     "!" + sampleRoot + '**/node_modules/**/package.json',
     '!' + sampleRoot + '**/node_modules/**',
@@ -270,6 +272,10 @@ function copySamples(cb) {
 
     //log("copySamples = " + samplesDatabase.length);
 
+    const outputFolder = "./src/samples/**/";
+    log("cleaning up: " + outputFolder);
+    del.sync(outputFolder + "/**");
+
     var controlsModules = {}; // storing modules per each control, e.g. data-chart
     var groupModules = {};    // storing modules for multiple controls, e.g. charts
     var routingStorage = {};    // storing routing data for all samples
@@ -421,7 +427,8 @@ function copySamples(cb) {
                 // if (controlsModules[control].DataFiles[dataPath] === undefined) {
                 //     controlsModules[control].DataFiles[dataPath] = dataName;
 
-                if (controlsModules[control].DataFiles.indexOf(dataName) < 0) {
+                if (dataName.indexOf('Worker') < 0 && // HeatmapWorker
+                    controlsModules[control].DataFiles.indexOf(dataName) < 0) {
                     controlsModules[control].DataFiles.push(dataName);
 
                     var dataImport = 'import { ' + dataName + ' } from "' + dataPath + '";';
