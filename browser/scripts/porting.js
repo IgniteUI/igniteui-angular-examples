@@ -41,20 +41,22 @@ const repoSourcePaths = [
     // repoPath + "gauges/**/package.json",
     // repoPath + "excel-library/**/package.json",
     // repoPath + "maps/**/package.json",
-    repoPath + "charts/category-chart-highlighting/package.json",
-    repoPath + "charts/category-chart-point-chart-styling/package.json",
-    repoPath + "charts/data-chart-axis-sharing/package.json",
-    repoPath + "charts/financial-chart-stock-index-chart/package.json",
-    repoPath + "charts/tree-map-overview/**/package.json",
-    repoPath + "charts/sparkline-markers/package.json",
-    repoPath + "charts/pie-chart-styling/package.json",
-    repoPath + "gauges/linear-gauge-labels/package.json",
-    repoPath + "gauges/radial-gauge-ranges/package.json",
+    // repoPath + "charts/category-chart-highlighting/package.json",
+    // repoPath + "charts/category-chart-point-chart-styling/package.json",
+    // repoPath + "charts/data-chart-axis-sharing/package.json",
+    // repoPath + "charts/financial-chart-stock-index-chart/package.json",
+    // repoPath + "charts/tree-map-overview/**/package.json",
+    // repoPath + "charts/sparkline-markers/package.json",
+    // repoPath + "charts/pie-chart-styling/package.json",
+    // repoPath + "gauges/linear-gauge-labels/package.json",
+    // repoPath + "gauges/radial-gauge-ranges/package.json",
     repoPath + "excel-library/excel-library-overview/**/package.json",
-    repoPath + "maps/geo-map-overview/package.json",
-    repoPath + "maps/geo-map-display-esri-imagery/package.json",
+    // repoPath + "excel-library/excel-library-operations-on-workbooks/**/package.json",
+    // repoPath + "maps/geo-map-navigation/package.json",
+    // repoPath + "maps/geo-map-overview/package.json",
+    // repoPath + "maps/geo-map-display-esri-imagery/package.json",
 
-  "!" + repoPath + "**/node_modules/**/package.json" // excluding node_modules sub-folders
+    "!" + repoPath + "**/node_modules/**/package.json" // excluding node_modules sub-folders
 ];
 
 //      C:\REPOS\igniteui-live-editing-samples\angular-demos-dv\charts\pie-chart-legend/
@@ -140,7 +142,7 @@ function getOutputPath(dirPath) {
     var control = getSampleControl(dirPath);
     var folder  = getSampleFolder(dirPath);
     outputPath = repoOutput + group + "/" + control + "/" + folder + "/";
-
+    outputPath = outputPath.replace('excel-library/' , 'excel/excel-library/');
     // log("getSampleGroup " + group)
     // log("getSampleControl " + control)
     // log("getSampleFolder " + folder)
@@ -169,6 +171,8 @@ function exportAppComponentHTML(sample, sampleFile) {
 
 function exportAppModuleTS(sample, sampleFile) {
     var content = utils.fileRead(sampleFile);
+    content = utils.lintImportsInline(content);
+
     var importMatches = content.match(/import.\{.(.*Component)(.*)/gm);
     var importClass = "";
     var importLine = "";
@@ -190,6 +194,7 @@ function exportAppModuleTS(sample, sampleFile) {
     // content = content.replace("\t", "    ");
     var lines = updateDataReference(content, sample.FilesData);
     content = utils.joinLines(lines);
+    content = utils.lintSourceCode(content);
 
     var outputPath = sample.OutputPath + "src/app/app.module.ts";
     // log("exportAppModuleTS: \n" + content);
@@ -199,12 +204,12 @@ function exportAppModuleTS(sample, sampleFile) {
 function exportSampleFile(sample, sampleFile) {
     // log("exportSampleFile: " + sampleFile);
     var content = utils.fileRead(sampleFile);
-    var outputPath = repoOutput + getRelativeFolder(sampleFile);
-
+    // var outputPath = repoOutput + getRelativeFolder(sampleFile);
+    var outputPath = sample.OutputPath + getRelativeFolder(sampleFile);
     var subFolder1 = sample.OutputGroup + "/" + sample.OutputControl + "-" + sample.OutputFolder + "/";
     var subFolder2 = sample.OutputGroup + "/" + sample.OutputControl + "/" + sample.OutputFolder + "/";
     outputPath = outputPath.replace(subFolder1, subFolder2);
-
+    outputPath = outputPath.replace('excel-library/' , 'excel/excel-library/');
     // log("exportDataFile2: " + outputPath);
     utils.fileSave(outputPath, content);
 }
@@ -212,6 +217,9 @@ function exportSampleFile(sample, sampleFile) {
 function exportDataFile(sample, fileInfo) {
     // log("exportDataFile: " + fileInfo.sourcePath);
     var content = utils.fileRead(fileInfo.sourcePath);
+    content = utils.lintImportsInline(content);
+    content = utils.lintSourceCode(content);
+
     var outputPath = fileInfo.outputPath; // repoOutput + getRelativeFolder(sampleFile);
 
     var subFolder1 = sample.OutputGroup + "/" + sample.OutputControl + "-" + sample.OutputFolder + "/";
@@ -228,10 +236,13 @@ function updateDataReference(fileContent, dataFiles) {
         if (lines[i].indexOf('import') >= 0) {
             for (const data of dataFiles) {
                 if (lines[i].indexOf(data.sourceName) >=  0) {
+                    var orgLine =  lines[i]
                     lines[i] = lines[i].replace('../' + data.sourceFolder, '.'); // '../services' -> '.'
                     lines[i] = lines[i].replace('./'  + data.sourceFolder, '.');
                     lines[i] = lines[i].replace('././', './');
+                    lines[i] = lines[i].replace('../', './');
                     lines[i] = lines[i].replace(data.sourceName, data.outputName);
+                    // console.log(data.outputName + " + " + data.sourceFolder + ": \n " + orgLine + " \n " + lines[i]);
                 }
             }
         }
@@ -243,6 +254,8 @@ function exportAppComponentTS(sample, sampleFile) {
     // log("exportAppComponentTS: " + sampleFile);
 
     var content = utils.fileRead(sampleFile);
+    content = utils.lintImportsInline(content);
+
     var matchSelectorName = content.match(/selector:.(.*)/)[1];
     var matchStyleUrls = content.match(/styleUrls:.(.*)/)[1];
     var matchTemplateUrl = content.match(/templateUrl:.(.*)/)[1];
@@ -279,8 +292,9 @@ function exportAppComponentTS(sample, sampleFile) {
         lines[indexTemplateUrl] = strStyleUrls + ',';
     }
     content = utils.joinLines(lines);
-    content = content.replace("../", "./");
-
+    content = utils.replace(content, "../", "./");
+    content = utils.lintSourceCode(content);
+;
     var outputPath = sample.OutputPath + "src/app/app.component.ts";
     // log("exportAppComponentTS: " + outputPath);
 
@@ -288,6 +302,7 @@ function exportAppComponentTS(sample, sampleFile) {
 
     // log("exportAppComponentTS: " + outputPath);
 }
+
 
 function exportPackage(sample, sampleFile) {
 
