@@ -32,8 +32,9 @@ const repoSourcePaths = [
     // repoPath + "**/package.json", // include all samples
     // repoPath + "charts/pie-chart*/**/package.json",
     // repoPath + "charts/data-chart*/**/package.json",
-    // repoPath + "charts/tree-map-chart*/**/package.json",
-    // repoPath + "charts/sparkline-chart*/**/package.json",
+    // repoPath + "charts/tree-map*/**/package.json",
+    // repoPath + "charts/sparkline/**/package.json",
+    // repoPath + "charts/sparkline-grid/**/package.json",
     // repoPath + "charts/doughnut-chart*/**/package.json",
     // repoPath + "charts/category-chart*/**/package.json",
     // repoPath + "charts/zoomslider-overview/**/package.json",
@@ -55,6 +56,7 @@ const repoSourcePaths = [
     // repoPath + "maps/geo-map-navigation/package.json",
     // repoPath + "maps/geo-map-overview/package.json",
     // repoPath + "maps/geo-map-display-esri-imagery/package.json",
+    // repoPath + "charts/data-chart-column-chart-styling/package.json",
 
     "!" + repoPath + "**/node_modules/**/package.json" // excluding node_modules sub-folders
 ];
@@ -229,6 +231,7 @@ function exportDataFile(sample, fileInfo) {
     var subFolder1 = sample.OutputGroup + "/" + sample.OutputControl + "-" + sample.OutputFolder + "/";
     var subFolder2 = sample.OutputGroup + "/" + sample.OutputControl + "/" + sample.OutputFolder + "/";
     outputPath = outputPath.replace(subFolder1, subFolder2);
+    outputPath = outputPath.replace('data.ts', 'Data.ts');
 
     // log("exportDataFile2: " + outputPath);
     utils.fileSave(outputPath, content);
@@ -263,14 +266,20 @@ function exportAppComponentTS(sample, sampleFile) {
     var matchSelectorName = content.match(/selector:.(.*)/)[1];
     var matchStyleUrls = content.match(/styleUrls:.(.*)/)[1];
     var matchTemplateUrl = content.match(/templateUrl:.(.*)/)[1];
-    var matchClassName = content.match(/class.(.*).\{/)[1];
+    var matchClassName = content.match(/(export\s*class\s*)([a-zA-Z]*)/gm);
         // log("matchSelectorName: " + matchSelectorName);
         // log("matchStyleUrls: " + matchStyleUrls);
         // log("matchTemplateUrl: " + matchTemplateUrl);
-    content = content.replace(matchClassName, "AppComponent");
     content = content.replace(matchSelectorName, "\"app-root\",");
     content = content.replace(matchStyleUrls, "[\"./app.component.scss\"],");
     content = content.replace(matchTemplateUrl, "\"./app.component.html\"");
+
+    for (const name of matchClassName) {
+        if (name.indexOf('LocalService') < 0) {
+            // console.log(name + "  |  " + name[0] + "  |  " + name[1])
+            content = content.replace(name, "export class AppComponent");
+        }
+    }
 
     // var lines = utils.splitLines(content);
     var lines = updateDataReference(content, sample.FilesData);
@@ -297,6 +306,7 @@ function exportAppComponentTS(sample, sampleFile) {
     }
     content = utils.joinLines(lines);
     content = utils.replace(content, "../", "./");
+    content = utils.replace(content, "././", "./");
     content = utils.lintSourceCode(content);
 ;
     var outputPath = sample.OutputPath + "src/app/app.component.ts";

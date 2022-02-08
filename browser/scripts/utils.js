@@ -217,6 +217,19 @@ function lintImportsInline(content)  {
     content = replace(content, '} from',   ' } from');
     content = replace(content, '  } from', ' } from');
     content = replace(content, ';import', ';\r\nimport');
+
+    content = content.replace(/([a-zA-Z])(\{)/gm, "$1 $2"); // space before {
+    content = content.replace(/(\{)([a-zA-Z])/gm, "$1 $2"); // space after {
+    content = content.replace(/([a-zA-Z])(\})/gm, "$1 $2"); // space before }
+    content = content.replace(/(\})([a-zA-Z])/gm, "$1 $2"); // space after }
+    content = replace(content, '\\d ', '\\d');
+
+    // content = content.replace(/([a-zA-Z]|\d)(\{)/gm, "$1 $2"); // space before {
+    // content = content.replace(/(\{)([a-zA-Z]|\d)/gm, "$1 $2"); // space after {
+    // content = content.replace(/([a-zA-Z]|\d)(\})/gm, "$1 $2"); // space before }
+    // content = content.replace(/(\})([a-zA-Z]|\d)/gm, "$1 $2"); // space after }
+
+
     return content;
 } exports.lintImportsInline = lintImportsInline;
 
