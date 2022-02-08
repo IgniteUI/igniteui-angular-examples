@@ -204,6 +204,8 @@ function lintImportsInline(content)  {
                         importLines[i] = replace(importLines[i], '\r\n', '');
                         importLines[i] = replace(importLines[i], '  ', ' ');
                         importLines[i] = replace(importLines[i], '  ', ' ');
+                    } else if (importLines[i].indexOf('// importing IG') >= 0) {
+                        importLines[i] = '';
                     }
                 }
                 lines[i] = importLines.join('import ');

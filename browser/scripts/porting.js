@@ -39,7 +39,7 @@ const repoSourcePaths = [
     // repoPath + "charts/zoomslider-overview/**/package.json",
     // repoPath + "charts/**/package.json",
     // repoPath + "gauges/**/package.json",
-    // repoPath + "excel-library/**/package.json",
+    repoPath + "excel-library/**/package.json",
     // repoPath + "maps/**/package.json",
     // repoPath + "charts/category-chart-highlighting/package.json",
     // repoPath + "charts/category-chart-point-chart-styling/package.json",
@@ -50,7 +50,7 @@ const repoSourcePaths = [
     // repoPath + "charts/pie-chart-styling/package.json",
     // repoPath + "gauges/linear-gauge-labels/package.json",
     // repoPath + "gauges/radial-gauge-ranges/package.json",
-    repoPath + "excel-library/excel-library-overview/**/package.json",
+    // repoPath + "excel-library/excel-library-overview/**/package.json",
     // repoPath + "excel-library/excel-library-operations-on-workbooks/**/package.json",
     // repoPath + "maps/geo-map-navigation/package.json",
     // repoPath + "maps/geo-map-overview/package.json",
@@ -88,6 +88,7 @@ function getSampleGroup(dirPath) {
 }
 
 var controlNames = [
+    "excel-library",
     "data-chart",
     "category-chart",
     "doughnut-chart",
@@ -100,7 +101,6 @@ var controlNames = [
     "bullet-graph",
     "radial-gauge",
     "geo-map",
-    "excel-library",
 ];
 
 // C:\REPOS\igniteui-live-editing-samples\angular-demos-dv\charts\pie-chart-legend\
@@ -142,7 +142,9 @@ function getOutputPath(dirPath) {
     var control = getSampleControl(dirPath);
     var folder  = getSampleFolder(dirPath);
     outputPath = repoOutput + group + "/" + control + "/" + folder + "/";
+    outputPath = outputPath.replace('excel-library/excel-library/' , 'excel-library/');
     outputPath = outputPath.replace('excel-library/' , 'excel/excel-library/');
+    outputPath = outputPath.replace('excel-library-', '');
     // log("getSampleGroup " + group)
     // log("getSampleControl " + control)
     // log("getSampleFolder " + folder)
@@ -209,7 +211,9 @@ function exportSampleFile(sample, sampleFile) {
     var subFolder1 = sample.OutputGroup + "/" + sample.OutputControl + "-" + sample.OutputFolder + "/";
     var subFolder2 = sample.OutputGroup + "/" + sample.OutputControl + "/" + sample.OutputFolder + "/";
     outputPath = outputPath.replace(subFolder1, subFolder2);
+    outputPath = outputPath.replace('excel-library/excel-library/' , 'excel-library/');
     outputPath = outputPath.replace('excel-library/' , 'excel/excel-library/');
+    outputPath = outputPath.replace('excel-library-', '');
     // log("exportDataFile2: " + outputPath);
     utils.fileSave(outputPath, content);
 }
