@@ -1,0 +1,23 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <button style="width: 5rem" (click)="onTimerStartStopClick()">{{timerStatusText}}</button>
+        <label class="options-label">Refresh: </label>
+        <label class="options-value">{{ refreshIntervalText }}</label>
+        <input class="options-slider" type="range" min="10" max="1000" step="10"
+        [value]="refreshInterval" (change)="onRefreshFrequencyChanged($event)"/>
+
+        <button (click)="onChangeAmountClicked()" style="margin-left: 1rem;">Generate</button>
+        <label class="options-label">Points: </label>
+        <label class="options-value">{{maxPointsText}}</label>
+        <input class="options-slider" type="range" min="1000" max="50000" step="100"
+         [value]="maxPoints" (change)="onMaxPointsChanged($event)" />
+    </div>
+
+    <div class="container">
+        <igx-category-chart height="100%"
+            [dataSource]="data"
+            yAxisLabelExtent="40"
+            #chart>
+        </igx-category-chart>
+    </div>
+</div>

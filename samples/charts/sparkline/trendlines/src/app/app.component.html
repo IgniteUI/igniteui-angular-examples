@@ -1,0 +1,30 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <span class="options-item">Trendline Type: </span>
+        <select (change)="onTrendlineChanged($event)">
+            <option>CubicFit</option>
+            <option>CumulativeAverage</option>
+            <option>ExponentialAverage</option>
+            <option>ExponentialFit</option>
+            <option>LinearFit</option>
+            <option>LogarithmicFit</option>
+            <option>ModifiedAverage</option>
+            <option>None</option>
+            <option>PowerLawFit</option>
+            <option>QuadraticFit</option>
+            <option>QuarticFit</option>
+            <option>QuinticFit</option>
+            <option>SimpleAverage</option>
+            <option>WeightedAverage</option>
+        </select>
+    </div>
+    <div class="container">
+        <igx-sparkline #sparkline height="100%" width="100%"
+            [dataSource]="data"
+            valueMemberPath="Value"
+            displayType="Area"
+            trendLineThickness=1
+            trendLineType="CubicFit">
+        </igx-sparkline>
+    </div>
+</div >

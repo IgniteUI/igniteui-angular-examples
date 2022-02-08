@@ -1,0 +1,26 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Percentage Change in Energy Generation in 2019</span>
+        <div class="legend">
+            <igx-legend #legend orientation="horizontal"></igx-legend>
+        </div>
+    </div>
+
+    <div class="container">
+             <igx-category-chart height="100%" width="100%"
+                           [legend]="legend"
+                           [dataSource]="data"
+                           chartType="Column"
+                           thickness="2"
+                           isHorizontalZoomEnabled="false"
+                           isVerticalZoomEnabled="false"
+                           isSeriesHighlightingEnabled="true"
+                           (seriesAdded)="onSeriesAdded($event)"
+                           xAxisMajorStroke="LightGray"
+                           xAxisMajorStrokeThickness="1"
+                           yAxisInterval="10"
+                           yAxisMinimumValue="-20"
+                           yAxisMaximumValue="30">
+            </igx-category-chart>
+    </div>
+</div>

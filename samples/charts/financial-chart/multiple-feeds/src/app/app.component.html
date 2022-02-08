@@ -1,0 +1,45 @@
+<div class="container sample">
+
+    <div class="options horizontal">
+        <button (click)="onFeedToggleClicked()">
+            <span #feedStatus class="options-label">Turn Off Live Data</span>
+        </button>
+        <span #fpsSpan class="options-label"></span>
+    </div>
+
+    <div class="options vertical">
+        <label id="legendTitle">Multiple Stock Data Feed from NYSE</label>
+        <igx-legend #legend class="legend" orientation="horizontal" ></igx-legend>
+    </div>
+    <igx-financial-chart height="100%" width="100%"
+        #chart
+        [dataSource]="dataFeeds"
+        [tooltipTemplate]="stockTooltip"
+        [legend]="legend"
+        chartType="line"
+        thickness="2"
+        yAxisLabelExtent="40"
+        isToolbarVisible="false"
+        (seriesAdded)="onSeriesAdded($event)">
+    </igx-financial-chart>
+
+
+    <ng-template let-series="series" let-item="item" #stockTooltip>
+        <div>
+            <div>
+                <div class="tooltipTitle" [style.color]="series.actualBrush">{{series.title}}</div>
+            </div>
+            <div class="tooltipTable">
+                <div class="tooltipRow" >
+                    <div class="tooltipLbl" style="color: rgb(92, 92, 92);">Date:</div>
+                    <div class="tooltipVal">{{item.date | date: "MMM dd, yyyy"}}</div>
+                </div>
+                <div class="tooltipRow" >
+                    <div class="tooltipLbl" [style.color]="series.actualBrush">Value:</div>
+                    <div class="tooltipVal" [style.color]="series.actualBrush">{{item.close | number:0}}</div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+</div>

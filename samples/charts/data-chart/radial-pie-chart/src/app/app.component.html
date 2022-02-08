@@ -1,0 +1,44 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Ronaldo vs. Messi Player Stats</span>
+        <igx-legend #legend orientation="Horizontal"></igx-legend>
+    </div>
+    <div class="container">
+        <igx-data-chart #chart
+                width="100%"
+                height="100%"
+                [dataSource]="data"
+                [legend]=legend>
+            <igx-category-angle-axis #angleAxis
+                    name="angleAxis"
+                    label="Attribute">
+            </igx-category-angle-axis>
+            <igx-numeric-radius-axis #radiusAxis
+                    name="radiusAxis"
+                    innerRadiusExtentScale="0.1"
+                    minimumValue="0"
+                    interval="2">
+            </igx-numeric-radius-axis>
+
+            <igx-radial-pie-series name="series1"
+                    valueMemberPath="RonaldoValue"
+                    [valueAxis]="radiusAxis"
+                    [angleAxis]="angleAxis"
+                    title="Ronaldo"
+                    thickness="3"
+                    areaFillOpacity="0.5"
+                    showDefaultTooltip="true">
+            </igx-radial-pie-series>
+
+            <igx-radial-pie-series name="series2"
+                    valueMemberPath="MessiValue"
+                    [valueAxis]="radiusAxis"
+                    [angleAxis]="angleAxis"
+                    thickness="3"
+                    areaFillOpacity="0.5"
+                    showDefaultTooltip="true"
+                    title="Messi">
+            </igx-radial-pie-series>
+        </igx-data-chart >
+    </div>
+</div>

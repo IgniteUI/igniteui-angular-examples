@@ -1,0 +1,29 @@
+<div class="container sample">
+    <div class="options vertical" >
+        <label id="legendTitle">Monthly Temperature Range </label>
+        <igx-legend #legend orientation="Horizontal"></igx-legend>
+    </div>
+
+    <igx-data-chart #chart [legend]=legend height="100%" width="100%"
+    isHorizontalZoomEnabled=true
+    isVerticalZoomEnabled=true>
+        <igx-category-x-axis #xAxis label="Month" name="xAxis" interval=1 [dataSource]="dataLA"></igx-category-x-axis>
+        <igx-numeric-y-axis #yAxis name="yAxis" title="Temperature (in Celsius)"></igx-numeric-y-axis>
+
+        <igx-range-area-series name="series1" [dataSource]="dataLA" title="LA"
+                [xAxis]="xAxis"
+                [yAxis]="yAxis"
+                highMemberPath="High"
+                lowMemberPath="Low">
+        </igx-range-area-series>
+
+        <igx-range-area-series name="series1" [dataSource]="dataNY" title="NY"
+                [xAxis]="xAxis"
+                [yAxis]="yAxis"
+                highMemberPath="High"
+                lowMemberPath="Low">
+        </igx-range-area-series>
+
+    </igx-data-chart>
+
+</div>

@@ -1,0 +1,13 @@
+<div class="container sample">
+    <div class="options vertical">
+        <label id="legendTitle">Renewable Electricity Generated</label>
+    </div>
+    <igx-data-chart height="100%" width="100%" >
+        <igx-category-x-axis #xAxis [dataSource]="data" label="Year"></igx-category-x-axis>
+        <igx-numeric-y-axis #yAxis title="TWh" labelLocation="OutsideRight"></igx-numeric-y-axis>
+
+        <igx-line-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" valueMemberPath="USA"></igx-line-series>
+
+        <igx-crosshair-layer horizontalLineVisibility="Collapsed" brush="DodgerBlue"></igx-crosshair-layer>
+    </igx-data-chart>
+</div>

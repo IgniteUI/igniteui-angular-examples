@@ -1,0 +1,17 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Annual working hours vs. GDP per capita, 2015: </span>
+    </div>
+    <div class="container">
+        <igx-data-chart height="100%" width="100%" isHorizontalZoomEnabled="true" isVerticalZoomEnabled="true">
+
+            <igx-numeric-x-axis #xAxis title="GDP Per Capita" maximumValue="100000" minimumValue="0" interval="25000" abbreviateLargeNumbers="true" ></igx-numeric-x-axis>
+            <igx-numeric-y-axis #yAxis title="Average Hours Worked" abbreviateLargeNumbers="true" minimumValue="1400.00" maximumValue="2400.00" interval="200" ></igx-numeric-y-axis>
+
+            <igx-bubble-series #series1 [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data"  xMemberPath="GDPPerCapita"
+            yMemberPath="AverageHoursWorked" radiusMemberPath="TotalPopulation" markerType="Circle">
+            </igx-bubble-series>
+
+        </igx-data-chart>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="container sample">
+    <div class="options vertical">
+        <div class="options horizontal" >
+            <label width="130px" class="options-label" >Chart Type: </label>
+            <select class="options-select" [(ngModel)]="sampleOptions.chartType">
+                <option>Column</option>
+                <option>Area</option>
+                <option>Line</option>
+                <option>Point</option>
+                <option>Spline</option>
+                <option>SplineArea</option>
+                <option>StepArea</option>
+                <option>StepLine</option>
+            </select>
+
+            <label class="options-item"><input [(ngModel)]="sampleOptions.calloutsVisible" type="checkbox" />Enable Callouts</label>
+            <label class="options-item"><input [(ngModel)]="sampleOptions.finalValuesVisible" type="checkbox" />Enable Final Value Annotations</label>
+        </div>
+        <div class="options horizontal" >
+            <label width="130px" class="options-label">Crosshairs: </label>
+            <select class="options-select" [(ngModel)]="sampleOptions.crosshairsDisplay">
+                <option>Default</option>
+                <option>None</option>
+                <option>Horizontal</option>
+                <option>Vertical</option>
+                <option>Both</option>
+            </select>
+
+            <label class="options-item"><input [(ngModel)]="sampleOptions.snapCrosshairs" type="checkbox" />Snap Crosshairs to Data</label>
+            <label class="options-item"><input [(ngModel)]="sampleOptions.crosshairAnnotations" type="checkbox" />Enable Crosshairs Annotations</label>
+        </div>
+    </div>
+    <div class="options vertical">
+        <label id="legendTitle">Weather Data</label>
+    </div>
+    <div class="container">
+        <igx-category-chart height="100%" width="100%"
+            [dataSource]="categoryData"
+            [chartType]="sampleOptions.chartType"
+            xAxisInterval="1"
+            yAxisMinimumValue="60"
+            yAxisMaximumValue="110"
+            [xAxisFormatLabel]="formatDateLabel"
+            [includedProperties]="include"
+
+            [crosshairsDisplayMode]="sampleOptions.crosshairsDisplay"
+            [crosshairsSnapToData]="sampleOptions.snapCrosshairs"
+            [crosshairsAnnotationEnabled]="sampleOptions.crosshairAnnotations"
+
+            [finalValueAnnotationsVisible]="sampleOptions.finalValuesVisible"
+
+            [calloutsVisible]="sampleOptions.calloutsVisible"
+            [calloutsDataSource]="categoryData"
+            calloutsXMemberPath="index"
+            calloutsYMemberPath="value"
+            calloutsLabelMemberPath="content">
+        </igx-category-chart>
+
+    </div>
+</div>

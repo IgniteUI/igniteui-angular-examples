@@ -1,0 +1,16 @@
+<div class="container sample">
+    <div class="options vertical" >
+        <label id="legendTitle">GDP vs Population </label>
+    </div>
+
+        <igx-data-chart #chart
+            isHorizontalZoomEnabled=true
+            isVerticalZoomEnabled=true
+            width="100%" height="100%">
+
+            <igx-numeric-x-axis #xAxis isLogarithmic=true abbreviateLargeNumbers=true title="Population">
+            </igx-numeric-x-axis>
+            <igx-numeric-y-axis #yAxis isLogarithmic=true abbreviateLargeNumbers=true title="Total GDP ($)">
+            </igx-numeric-y-axis>
+        </igx-data-chart>
+</div>

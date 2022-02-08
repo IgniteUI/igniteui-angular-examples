@@ -1,0 +1,57 @@
+<div class="container sample">
+    <div class="options vertical">
+        <label id="legendTitle">Airplane Seating Chart (Polygons)</label>
+    </div>
+
+    <div class="custom-legend">
+      <div><span style="background: DodgerBlue; "></span><label>First Class</label></div>
+      <div><span style="background: LimeGreen; "></span><label>Business Class</label></div>
+      <div><span style="background: Orange; "></span><label>Premium Class</label></div>
+      <div><span style="background: Red; "></span><label>Economy Class</label></div>
+      <div><span style="background: Gray; "></span><label>Sold Seat</label> </div>
+      <div><span style="background: LightGray; "></span><label>Airplane</label> </div>
+    </div>
+
+    <div class="container">
+        <igx-data-chart isHorizontalZoomEnabled="true" isVerticalZoomEnabled="true"
+          width="100%"
+          height="100%">
+            <igx-numeric-x-axis #xAxis name="xAxis" minimumValue="-1000" maximumValue="1000" interval="200"></igx-numeric-x-axis>
+            <igx-numeric-y-axis #yAxis name="yAxis" minimumValue="-600" maximumValue="600" interval="200"></igx-numeric-y-axis>
+
+             <igx-scatter-polygon-series name="airplaneShapeSeries" #airplaneShapeSeries
+                [xAxis]="xAxis"
+                [yAxis]="yAxis" shapeMemberPath="points" thickness="0.5"
+                title="Airplane Shape" brush="LightGray" outline="Black">
+             </igx-scatter-polygon-series>
+
+             <igx-scatter-polygon-series name="airplaneSeatSeries" #airplaneSeatSeries
+                [xAxis]="xAxis"
+                [yAxis]="yAxis" shapeMemberPath="points" thickness="0.5"
+                title="Airplane Seats"
+                (styleShape)="onStylingShape($event)">
+             </igx-scatter-polygon-series>
+
+        </igx-data-chart>
+    </div>
+
+    <div class="options horizontal">
+      <div><span style="background: dodgerblue; "></span><label>First Class</label></div>
+      <div><span style="background: LimeGreen; "></span><label>Business Class</label></div>
+      <div><span style="background: Orange; "></span><label>Premium Class</label></div>
+      <div><span style="background: red; "></span><label>Economy Class</label></div>
+      <div><span style="background: gray; "></span><label>Sold Seat</label> </div>
+    </div>
+</div>
+
+<ng-template let-series="series" let-item="item" #seatTooltip>
+  <div>
+      <span>{{item.class}} Class</span>
+      <br />
+      <span>Seat: {{item.seat}}</span>
+      <br />
+      <span>Price: ${{item.price}}</span>
+      <br />
+      <span>Status: {{item.status}}</span>
+  </div>
+</ng-template>

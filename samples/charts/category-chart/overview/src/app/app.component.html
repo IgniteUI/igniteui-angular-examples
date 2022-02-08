@@ -1,0 +1,26 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <span>Chart Type:</span>
+        <select [(ngModel)]="chartType">
+            <option>Auto</option>
+            <option>Area</option>
+            <option>Line</option>
+            <option>Column</option>
+            <option>Point</option>
+            <option>Spline</option>
+            <option>SplineArea</option>
+            <option>StepArea</option>
+            <option>StepLine</option>
+            <option>Waterfall</option>
+        </select>
+    </div>
+    <div class="options horizontal">
+        <label id="legendTitle">Olympic Medals By Country</label>
+    </div>
+    <div class="container">
+        <igx-category-chart height="100%" width="100%"
+            [dataSource]="data"
+            [chartType]="chartType">
+        </igx-category-chart>
+    </div>
+</div>

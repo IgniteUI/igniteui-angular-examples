@@ -1,0 +1,42 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <label class="options-label">Transition Type: </label>
+        <select [(ngModel)]="transitionInMode">
+            <option>AccordionFromBottom</option>
+            <option>AccordionFromCategoryAxisMaximum</option>
+            <option>AccordionFromCategoryAxisMinimum</option>
+            <option>AccordionFromLeft</option>
+            <option>AccordionFromRight</option>
+            <option>AccordionFromTop</option>
+            <option>AccordionFromValueAxisMaximum</option>
+            <option>AccordionFromValueAxisMinimum</option>
+            <option>Expand</option>
+            <option>FromZero</option>
+            <option>SweepFromBottom</option>
+            <option>SweepFromCategoryAxisMaximum</option>
+            <option>SweepFromCategoryAxisMinimum</option>
+            <option>SweepFromCenter</option>
+            <option>SweepFromLeft</option>
+            <option>SweepFromRight</option>
+            <option>SweepFromTop</option>
+            <option>SweepFromValueAxisMaximum</option>
+            <option>SweepFromValueAxisMinimum</option>
+            <option>Auto</option>
+        </select>
+        <button (click)="onChangeAmountClicked()">Reload Chart</button>
+        <input class="options-slider" type="range" min="50" max="2000" step="50"
+              [value]="transitionInInterval" (change)="OnTransitionIntervalChange($event)" />
+        <label class="options-label">{{transitionInInterval}}ms</label>
+    </div>
+    <div class="container">
+        <igx-category-chart height="100%"
+            chartType="line"
+            [dataSource]="data"
+            isTransitionInEnabled="true"
+            [transitionInMode]="transitionInMode"
+            [transitionInDuration]="transitionInInterval"
+            yAxisLabelExtent="40"
+            #chart>
+        </igx-category-chart>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="container sample">
+    <div class="options vertical">
+        <label id="legendTitle">Company Financial Projection: </label>
+        <igx-legend #legend orientation="horizontal"></igx-legend>
+    </div>
+    <div class="container" >
+        <igx-data-chart #chart
+        width="100%"
+        height="100%"
+        [dataSource]="data"
+        [legend]="legend"
+        isHorizontalZoomEnabled="true"
+        isVerticalZoomEnabled="true">
+
+        <igx-category-x-axis #xAxisYears
+        interval="12" labelLocation="OutsideBottom" overlap="1" gap="0.4"
+        label="Year"  labelTextColor="gray" tickLength="0" ></igx-category-x-axis>
+        <igx-category-x-axis #xAxisMonths overlap="1" gap="0.4"
+        interval="1"  labelLocation="OutsideBottom"
+        label="Month" labelTextColor="gray"></igx-category-x-axis>
+        <igx-numeric-y-axis  #yAxisLeft title="Expanse | Revenue" titleTextColor="gray"
+        minimumValue="-900" labelLocation="OutsideLeft"
+        maximumValue="900" labelTextColor="gray"
+        interval="300" ></igx-numeric-y-axis>
+        <igx-numeric-y-axis  #yAxisRight title="Profit (%)" titleTextColor="gray"
+        minimumValue="0"  labelLocation="OutsideRight" majorStrokeThickness="0"
+        maximumValue="100" labelTextColor="gray" labelHorizontalAlignment="left"
+        titleVerticalAlignment="center"
+        ></igx-numeric-y-axis>
+
+        <igx-column-series name="series1" title="Revenue"
+        valueMemberPath="Revenue" brush="#9b58e2" outline="#9b58e2"
+        [xAxis]="xAxisMonths" showDefaultTooltip="true"
+        [yAxis]="yAxisLeft"
+        isTransitionInEnabled="true" ></igx-column-series>
+        <igx-column-series name="series3" title="Expanse"
+        valueMemberPath="Expanse" brush="#f23030" outline="#f23030"
+        [xAxis]="xAxisMonths" showDefaultTooltip="true"
+        [yAxis]="yAxisLeft"
+        isTransitionInEnabled="true"  ></igx-column-series>
+        <igx-column-series name="series2" title="Profit"
+        valueMemberPath="Profit" brush="#48ba39" outline="#48ba39"
+        [xAxis]="xAxisYears" showDefaultTooltip="true"
+        [yAxis]="yAxisRight"
+        isTransitionInEnabled="true"  ></igx-column-series>
+
+   </igx-data-chart>
+    </div>
+</div>

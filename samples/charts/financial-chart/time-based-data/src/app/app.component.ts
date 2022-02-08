@@ -1,0 +1,54 @@
+import { ChangeDetectionStrategy, Component, ViewChild } from "@angular/core";
+import { IgxFinancialChartComponent } from "igniteui-angular-charts";
+import { FinancialDataService } from "./FinancialDataService";
+
+@Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [ FinancialDataService ],
+    selector: "app-root",
+    styleUrls: ["./app.component.scss"],
+    templateUrl: "./app.component.html"
+})
+
+export class AppComponent {
+
+    public selectedXAxisMode: string = "Ordinal";
+    public selectedYAxisMode: string = "Numeric";
+
+    public financialStocks: any;
+
+    @ViewChild("chart", { static: true })
+    public chart: IgxFinancialChartComponent;
+
+    constructor(private dataService: FinancialDataService) {
+        this.financialStocks = [
+            this.dataService.getAmzn(),
+            this.dataService.getGoog()
+        ];
+    }
+
+    public onSeriesAdded(e: any): void {
+        const seriesName: string = e.args.series.name.toString();
+        const seriesTitle: string = e.args.series.title.toString();
+
+        if (seriesName.endsWith("FinancialPrice")) {
+            // e.args.series.title = seriesTitle + " Price";
+            e.args.series.type = "price";
+        }
+
+        // if (seriesName.startsWith("volumeSeries")) {
+        //     e.args.series.title = seriesTitle.replace("Price Volume", "Volume");
+        //     e.args.series.type = "volume";
+        //     e.args.series.legendItemVisibility = 1;
+        // }
+
+        // hide legend item for series in the zoom slider
+        if (seriesName.startsWith("zoomSliderSeries")) {
+            e.args.series.title = "";
+            e.args.series.legendItemVisibility = 1;
+            e.args.series.legendItemBadgeTemplate = null;
+            e.args.series.legendItemTemplate = null;
+            e.args.series.legend = null;
+        }
+    }
+}

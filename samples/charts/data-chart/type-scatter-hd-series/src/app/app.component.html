@@ -1,0 +1,34 @@
+<div class="container sample">
+    <div class="options vertical">
+        <label id="legendTitle">Stars Distribution in Milky Way Galaxy</label>
+    </div>
+        <igx-data-chart #chart
+            isHorizontalZoomEnabled=true
+            isVerticalZoomEnabled=true
+            width="100%"
+            height="100%">
+
+            <igx-numeric-x-axis #xAxis
+                abbreviateLargeNumbers=true
+                titleBottomMargin="10"
+                title="Plane of Rotation (in Light Years)">
+            </igx-numeric-x-axis>
+            <igx-numeric-y-axis #yAxis
+                abbreviateLargeNumbers=true
+                titleLeftMargin="10"
+                title="Vertical Plane (in Light Years)">
+            </igx-numeric-y-axis>
+            <igx-high-density-scatter-series [xAxis]="xAxis"
+                [yAxis]="yAxis"
+                [dataSource]="data"
+                xMemberPath="X"
+                yMemberPath="Y"
+                progressiveLoad=true
+                heatMinimumColor="Black"
+                heatMaximumColor="Yellow"
+                heatMaximum=1
+                heatMinimum=5
+                resolution=3>
+            </igx-high-density-scatter-series>
+        </igx-data-chart>
+</div>

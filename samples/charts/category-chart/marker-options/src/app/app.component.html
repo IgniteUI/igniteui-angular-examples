@@ -1,0 +1,48 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <label class="options-label">Chart Type: </label>
+        <select [(ngModel)]="chartType">
+            <option>Auto</option>
+            <option>Area</option>
+            <option>Line</option>
+            <option>Column</option>
+            <option>Point</option>
+            <option>Spline</option>
+            <option>SplineArea</option>
+            <option>StepArea</option>
+            <option>StepLine</option>
+            <option>Waterfall</option>
+        </select>
+        <label class="options-label">Marker Type: </label>
+        <select [(ngModel)]="markerType">
+            <option>Circle</option>
+            <option>Automatic</option>
+            <option>Triangle</option>
+            <option>Pyramid</option>
+            <option>Square</option>
+            <option>Diamond</option>
+            <option>Pentagon</option>
+            <option>Hexagon</option>
+            <option>Tetragram</option>
+            <option>Pentagram</option>
+            <option>Hexagram</option>
+            <option>None</option>
+        </select>
+    </div>
+    <div class="container">
+        <igx-category-chart height="100%" width="100%"
+            [dataSource]="data"
+            [chartType]="chartType"
+            yAxisMinimumValue="0"
+            yAxisMaximumValue="150"
+            yAxisTitle="TWh"
+            xAxisOverlap="0"
+            brushes="#4286f4, #e8b220, #11c111"
+            outlines="#4286f4, #e8b220, #11c111"
+            markerOutlines="#4286f4, #e8b220, #11c111"
+            markerBrushes="White"
+            [markerTypes]="markerType"
+            isTransitionInEnabled="true">
+        </igx-category-chart>
+    </div>
+</div>

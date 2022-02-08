@@ -1,0 +1,20 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Highest Grossing Movie Franchises</span>
+        <igx-legend #legend orientation="Horizontal"></igx-legend>
+    </div>
+    <div class="container">
+        <igx-category-chart height="100%" width="100%"
+                    [legend]="legend"
+                    [dataSource]="data"
+                    chartType="Column"
+                    xAxisInterval="1"
+                    yAxisTitle="Billions of U.S. Dollars"
+                    yAxisTitleLeftMargin="10"
+                    yAxisTitleRightMargin="5"
+                    yAxisLabelLeftMargin="0"
+                    isHorizontalZoomEnabled="false"
+                    isVerticalZoomEnabled="false">
+        </igx-category-chart>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="container sample">
+    <div class="options vertical" >
+        <label id="legendTitle">Stock Changes: Amazon vs Google </label>
+    </div>
+
+    <igx-financial-chart #chart
+        [dataSource]="financialStocks"
+        [xAxisMode]="selectedXAxisMode"
+        [yAxisMode]="selectedYAxisMode"
+        [tooltipTemplate]="stockTooltip"
+        [legend]="legend"
+        (seriesAdded)="onSeriesAdded($event)"
+        chartType="candle"
+        isToolbarVisible="false"
+        isWindowSyncedToVisibleRange="true">
+    </igx-financial-chart>
+
+    <div class="options vertical">
+        <igx-legend #legend class="legend" orientation="horizontal" ></igx-legend>
+    </div>
+
+    <ng-template let-series="series" let-item="item" #stockTooltip>
+        <div>
+            <div>
+                <div class="tooltipTitle" [style.color]="series.actualBrush">{{series.title}}</div>
+            </div>
+            <div class="tooltipTable" *ngIf="series.type == 'price'">
+                <div class="tooltipRow" >
+                    <div class="tooltipLbl" style="color: rgb(92, 92, 92);">Date:</div>
+                    <div class="tooltipVal">{{item.time | date: "MMM dd, yyyy"}}</div>
+                </div>
+                <div class="tooltipRow" >
+                    <div class="tooltipLbl" [style.color]="series.actualBrush">Open:</div>
+                    <div class="tooltipVal" [style.color]="series.actualBrush">{{item.open}}</div>
+                </div>
+                <div class="tooltipRow" >
+                    <div class="tooltipLbl" [style.color]="series.negativeBrush">Close:</div>
+                    <div class="tooltipVal" [style.color]="series.negativeBrush">{{item.close}}</div>
+                </div>
+                <div class="tooltipRow" >
+                    <div class="tooltipLbl">High:</div>
+                    <div class="tooltipVal">{{item.high}}</div>
+                </div>
+                <div class="tooltipRow" >
+                    <div class="tooltipLbl">Low:</div>
+                    <div class="tooltipVal">{{item.low}}</div>
+                </div>
+            </div>
+            <div class="tooltipTable" *ngIf="series.type == 'volume'">
+                <div class="tooltipRow" >
+                    <div class="tooltipLbl" style="color: rgb(92, 92, 92);">Date:</div>
+                    <div class="tooltipVal">{{item.time | date: "MMM dd, yyyy"}}</div>
+                </div>
+                <div class="tooltipRow" >
+                    <div class="tooltipLbl" [style.color]="series.actualBrush">Volume:</div>
+                    <div class="tooltipVal" [style.color]="series.actualBrush">{{item.volume | number:0}}</div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <!-- <div class="options horizontal">  style="color: rgb(92, 92, 92);"
+        <span class="optionsLabel">X-Axis Mode:</span>
+        <select [(ngModel)]="selectedXAxisMode">
+            <option>Time</option>
+            <option>Ordinal</option>
+        </select>
+        <span class="optionsLabel">Y-Axis Mode:</span>
+        <select [(ngModel)]="selectedYAxisMode">
+            <option>PercentChange</option>
+            <option>Numeric</option>
+        </select>
+    </div> -->
+</div>

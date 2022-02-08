@@ -1,0 +1,16 @@
+<div class="container sample">
+        <igx-data-chart
+            width="100%"
+            height="100%"
+            [dataSource]="data">
+            <igx-category-x-axis #xAxis name="xAxis" label="Label" interval="1">
+            </igx-category-x-axis>
+            <igx-numeric-y-axis #yAxis name="yAxis" minimumValue="20" maximumValue="120">
+            </igx-numeric-y-axis >
+            <igx-column-series #series name="series"
+                valueMemberPath="Value"
+                [xAxis]=xAxis
+                [yAxis]=yAxis>
+            </igx-column-series>
+        </igx-data-chart>
+</div>

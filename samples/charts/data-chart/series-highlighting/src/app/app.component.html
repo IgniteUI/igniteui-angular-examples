@@ -1,0 +1,32 @@
+<div class="container sample">
+    <div class="options horizontal">
+        <label class="options-item">Enable Highlighting: </label>
+        <label class="options-item"> Series  <input type="checkbox" [(ngModel)]="enableSeriesHighlight" /></label>
+        <label class="options-item"> Item  <input type="checkbox" [(ngModel)]="enableItemHighlight" (change)="enableItemHighlightChanged($event)"/></label>
+        <label class="options-item"> Category  <input type="checkbox" [(ngModel)]="enableCategoryHighlight" (change)="enableCategoryHighlightChanged($event)"/></label>
+      </div>
+
+    <div class="container">
+      <igx-data-chart #chart height="100%" width="100%" [dataSource]="data">
+
+        <igx-category-x-axis #xAxis name="xAxis" label="Country"></igx-category-x-axis>
+        <igx-numeric-y-axis #yAxis name="yAxis" minValue=0></igx-numeric-y-axis>
+
+        <igx-column-series name="series1" title="Coal"
+        [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Coal"
+        [isHighlightingEnabled]="enableSeriesHighlight"></igx-column-series>
+        <igx-column-series name="series2" title="Hydro"
+        [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Hydro"
+        [isHighlightingEnabled]="enableSeriesHighlight"></igx-column-series>
+        <igx-column-series name="series3" title="Nuclear"
+        [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Nuclear"
+        [isHighlightingEnabled]="enableSeriesHighlight"></igx-column-series>
+        <igx-column-series name="series4" title="Gas"
+        [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Gas"
+        [isHighlightingEnabled]="enableSeriesHighlight"></igx-column-series>
+        <igx-column-series name="series5" title="Oil"
+        [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Oil"
+        [isHighlightingEnabled]="enableSeriesHighlight"></igx-column-series>
+      </igx-data-chart>
+    </div>
+  </div>

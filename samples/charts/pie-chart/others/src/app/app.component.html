@@ -1,0 +1,18 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Global Electricity Demand by Energy Use</span>
+        <igx-item-legend #legend></igx-item-legend>
+    </div>
+    <div class="container">
+        <igx-pie-chart height="100%" width="100%"
+            [dataSource]="data"
+            [legend]="legend"
+            valueMemberPath="Value"
+            labelMemberPath="Label"
+            labelsPosition="OutsideEnd"
+            labelExtent="30"
+            othersCategoryText="Others"
+            othersCategoryType="Number">
+        </igx-pie-chart>
+    </div>
+</div>

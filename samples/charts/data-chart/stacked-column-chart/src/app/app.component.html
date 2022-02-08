@@ -1,0 +1,31 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Electricity Production from Renewables</span>
+        <igx-legend #legend orientation="Horizontal"></igx-legend>
+    </div>
+    <div class="container">
+        <igx-data-chart height="100%" width="100%" isVerticalZoomEnabled="false"
+            isHorizontalZoomEnabled="false">
+            <igx-category-x-axis #xAxis [dataSource]="data" label="Year" gap="0.75"></igx-category-x-axis>
+            <igx-numeric-y-axis #yAxis minimumValue="0" maximumValue=300 title="TWh" titleLeftMargin=10></igx-numeric-y-axis>
+
+            <igx-stacked-column-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" showDefaultTooltip="true"
+                areaFillOpacity="1" [legend]="legend">
+                <igx-stacked-fragment-series valueMemberPath="USA" title="USA"></igx-stacked-fragment-series>
+                <igx-stacked-fragment-series valueMemberPath="Europe" title="Europe"></igx-stacked-fragment-series>
+                <igx-stacked-fragment-series valueMemberPath="China" title="China"></igx-stacked-fragment-series>
+            </igx-stacked-column-series>
+
+            <igx-point-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" valueMemberPath="USAMarker"
+                [markerTemplate]="getMarker()">
+            </igx-point-series>
+            <igx-point-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" valueMemberPath="EuropeMarker"
+                [markerTemplate]="getMarker()"></igx-point-series>
+            <igx-point-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" valueMemberPath="ChinaMarker"
+                [markerTemplate]="getMarker()"></igx-point-series>
+            <igx-callout-layer [dataSource]="calloutDataSource" xMemberPath="X" yMemberPath="Y" labelMemberPath="Label"
+                calloutBackground="Transparent" calloutLeaderBrush="Transparent" calloutTextColor="Black">
+            </igx-callout-layer>
+        </igx-data-chart>
+    </div>
+</div>
