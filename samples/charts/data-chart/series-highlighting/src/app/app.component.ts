@@ -2,13 +2,8 @@ import { Component, ViewChild } from "@angular/core";
 import { IgxCategoryXAxisComponent } from "igniteui-angular-charts";
 import { IgxDataChartComponent } from "igniteui-angular-charts";
 import { IgxNumericYAxisComponent } from "igniteui-angular-charts";
-
-import {
-    IgxCategoryHighlightLayerComponent
-} from "igniteui-angular-charts";
-import {
-    IgxCategoryItemHighlightLayerComponent
-} from "igniteui-angular-charts";
+import { IgxCategoryHighlightLayerComponent } from "igniteui-angular-charts";
+import { IgxCategoryItemHighlightLayerComponent } from "igniteui-angular-charts";
 
 @Component({
     selector: "app-root",

@@ -11,7 +11,6 @@ import { IgxRadialAreaSeriesComponent } from "igniteui-angular-charts";
 import { IgxRadialColumnSeriesComponent } from "igniteui-angular-charts";
 import { IgxRadialLineSeriesComponent } from "igniteui-angular-charts";
 import { IgxRadialPieSeriesComponent } from "igniteui-angular-charts";
-
 import { SampleRadialData } from "./SampleRadialData";
 
 @Component({

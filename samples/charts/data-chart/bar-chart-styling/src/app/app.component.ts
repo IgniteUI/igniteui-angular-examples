@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { IgxDataChartComponent } from "igniteui-angular-charts";
-import { IgxCalloutLayerComponent} from "igniteui-angular-charts";
+import { IgxCalloutLayerComponent } from "igniteui-angular-charts";
 import { IgxSeriesComponent } from "igniteui-angular-charts";
 
 @Component({

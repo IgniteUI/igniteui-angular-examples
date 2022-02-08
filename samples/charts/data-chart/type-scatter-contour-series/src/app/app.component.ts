@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { IgxDataChartComponent } from "igniteui-angular-charts";
 import { SampleScatterData } from "./SampleScatterData";
-
-import { IgxLinearContourValueResolverComponent
-} from "igniteui-angular-charts";
+import { IgxLinearContourValueResolverComponent } from "igniteui-angular-charts";
 import { IgxNumericXAxisComponent } from "igniteui-angular-charts";
 import { IgxNumericYAxisComponent } from "igniteui-angular-charts";
 import { IgxScatterContourSeriesComponent } from "igniteui-angular-charts";

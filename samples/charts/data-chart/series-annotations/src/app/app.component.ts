@@ -2,12 +2,10 @@ import { Component, ViewChild } from "@angular/core";
 import { IgxCategoryXAxisComponent } from "igniteui-angular-charts";
 import { IgxDataChartComponent } from "igniteui-angular-charts";
 import { IgxNumericYAxisComponent } from "igniteui-angular-charts";
-
-import { IgxCalloutLayerComponent} from "igniteui-angular-charts";
-import { IgxCrosshairLayerComponent} from "igniteui-angular-charts";
-import { IgxFinalValueLayerComponent} from "igniteui-angular-charts";
+import { IgxCalloutLayerComponent } from "igniteui-angular-charts";
+import { IgxCrosshairLayerComponent } from "igniteui-angular-charts";
+import { IgxFinalValueLayerComponent } from "igniteui-angular-charts";
 import { IgxSeriesComponent } from "igniteui-angular-charts";
-
 import { FinalValueSelectionMode } from "igniteui-angular-charts";
 
 @Component({

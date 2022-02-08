@@ -1,17 +1,14 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-
 import { IgxCategoryXAxisComponent } from "igniteui-angular-charts";
 import { IgxCategoryYAxisComponent } from "igniteui-angular-charts";
 import { IgxDataChartComponent } from "igniteui-angular-charts";
 import { IgxNumericXAxisComponent } from "igniteui-angular-charts";
 import { IgxNumericYAxisComponent } from "igniteui-angular-charts";
-
 import { IgxStacked100AreaSeriesComponent } from "igniteui-angular-charts";
 import { IgxStacked100BarSeriesComponent } from "igniteui-angular-charts";
 import { IgxStacked100ColumnSeriesComponent } from "igniteui-angular-charts";
 import { IgxStacked100LineSeriesComponent } from "igniteui-angular-charts";
 import { IgxStacked100SplineSeriesComponent } from "igniteui-angular-charts";
-
 import { IgxStackedAreaSeriesComponent } from "igniteui-angular-charts";
 import { IgxStackedBarSeriesComponent } from "igniteui-angular-charts";
 import { IgxStackedColumnSeriesComponent } from "igniteui-angular-charts";

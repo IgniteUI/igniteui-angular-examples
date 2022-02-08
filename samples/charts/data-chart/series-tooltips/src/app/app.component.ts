@@ -1,9 +1,7 @@
 import { Component, ViewChild } from "@angular/core";
-
 import { IgxCategoryXAxisComponent } from "igniteui-angular-charts";
 import { IgxDataChartComponent } from "igniteui-angular-charts";
 import { IgxNumericYAxisComponent } from "igniteui-angular-charts";
-
 import { IgxCategoryToolTipLayerComponent } from "igniteui-angular-charts";
 import { IgxItemToolTipLayerComponent } from "igniteui-angular-charts";
 

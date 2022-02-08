@@ -1,13 +1,4 @@
-import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    Input,
-    NgZone,
-    OnDestroy,
-    ViewChild
-} from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, NgZone, OnDestroy, ViewChild } from "@angular/core";
 import { FinancialChartType } from "igniteui-angular-charts";
 import { FinancialChartVolumeType } from "igniteui-angular-charts";
 import { FinancialChartZoomSliderType } from "igniteui-angular-charts";

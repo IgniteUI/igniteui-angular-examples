@@ -1,11 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { SampleRangeData } from "./SampleRangeData";
-
 import { IgxDataChartComponent } from "igniteui-angular-charts";
-
 import { IgxCategoryXAxisComponent } from "igniteui-angular-charts";
 import { IgxNumericYAxisComponent } from "igniteui-angular-charts";
-
 import { IgxRangeAreaSeriesComponent } from "igniteui-angular-charts";
 import { IgxRangeColumnSeriesComponent } from "igniteui-angular-charts";
 

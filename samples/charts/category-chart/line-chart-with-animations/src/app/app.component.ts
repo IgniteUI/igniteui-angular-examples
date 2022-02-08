@@ -1,8 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ViewChild
-} from "@angular/core";
+import { ChangeDetectionStrategy, Component, ViewChild } from "@angular/core";
 import { IgxCategoryChartComponent } from "igniteui-angular-charts";
 
 @Component({

@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ColorScaleInterpolationMode } from "igniteui-angular-charts";
-import { IgxCustomPaletteColorScaleComponent
-} from "igniteui-angular-charts";
+import { IgxCustomPaletteColorScaleComponent } from "igniteui-angular-charts";
 import { IgxDataChartComponent } from "igniteui-angular-charts";
 import { IgxScatterAreaSeriesComponent } from "igniteui-angular-charts";
-
 import { SampleScatterData } from "./SampleScatterData";
 
 @Component({

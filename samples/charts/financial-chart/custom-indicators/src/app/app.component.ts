@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
-import {
-    FinancialChartCustomIndicatorArgs
-} from "igniteui-angular-charts";
+import { FinancialChartCustomIndicatorArgs } from "igniteui-angular-charts";
 import { IgxFinancialEventArgs } from "igniteui-angular-charts";
 import { FinancialDataService } from "./FinancialDataService";
 

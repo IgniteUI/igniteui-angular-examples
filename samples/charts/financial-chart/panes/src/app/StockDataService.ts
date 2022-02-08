@@ -1,6 +1,4 @@
-/* tslint:disable:max-line-length */
-
-import { Injectable } from "@angular/core";
+/* tslint:disable:max-line-length */import { Injectable } from "@angular/core";
 
 @Injectable()
 export class StockDataService {

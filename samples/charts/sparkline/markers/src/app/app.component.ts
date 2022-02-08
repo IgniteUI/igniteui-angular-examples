@@ -1,7 +1,6 @@
 import { Component, ViewChild } from "@angular/core";
 import { IgxSparklineComponent } from "igniteui-angular-charts";
 import { Visibility } from "igniteui-angular-core";
-
 import { SharedData } from "./SharedData";
 
 @Component({

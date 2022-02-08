@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { SampleFinancialData } from "./SampleFinancialData";
-
 import { IgxBollingerBandsOverlayComponent } from "igniteui-angular-charts";
 import { IgxPriceChannelOverlayComponent } from "igniteui-angular-charts";
 import { IgxNumericYAxisComponent } from "igniteui-angular-charts";

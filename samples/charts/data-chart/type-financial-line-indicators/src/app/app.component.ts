@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { SampleFinancialData } from "./SampleFinancialData";
-
 import { IgxAbsoluteVolumeOscillatorIndicatorComponent } from "igniteui-angular-charts";
 import { IgxAccumulationDistributionIndicatorComponent } from "igniteui-angular-charts";
 import { IgxAverageDirectionalIndexIndicatorComponent } from "igniteui-angular-charts";

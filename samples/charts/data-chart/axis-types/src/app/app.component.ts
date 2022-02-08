@@ -1,18 +1,15 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { IgxDataChartComponent } from "igniteui-angular-charts";
-
 import { IgxCategoryXAxisComponent } from "igniteui-angular-charts";
 import { IgxCategoryYAxisComponent } from "igniteui-angular-charts";
 import { IgxNumericXAxisComponent } from "igniteui-angular-charts";
 import { IgxNumericYAxisComponent } from "igniteui-angular-charts";
 import { IgxTimeXAxisComponent } from "igniteui-angular-charts";
-
 import { IgxBarSeriesComponent } from "igniteui-angular-charts";
 import { IgxColumnSeriesComponent } from "igniteui-angular-charts";
 import { IgxFinancialPriceSeriesComponent } from "igniteui-angular-charts";
 import { IgxScatterSeriesComponent } from "igniteui-angular-charts";
 import { MarkerType } from "igniteui-angular-charts";
-
 import { SampleCategoryData } from "./SampleCategoryData";
 import { SampleFinancialData } from "./SampleFinancialData";
 import { SampleScatterData } from "./SampleScatterData";

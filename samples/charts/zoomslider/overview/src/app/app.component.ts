@@ -1,6 +1,5 @@
 // tslint:disable:max-line-length
 import { AfterViewInit, Component, TemplateRef, ViewChild } from "@angular/core";
-
 import { IgxBubbleSeriesComponent } from "igniteui-angular-charts";
 import { IgxDataChartComponent } from "igniteui-angular-charts";
 import { IgxNumericXAxisComponent } from "igniteui-angular-charts";
@@ -10,7 +9,6 @@ import { IgxZoomSliderComponent } from "igniteui-angular-charts";
 import { MarkerType } from "igniteui-angular-charts";
 import { IgRect } from "igniteui-angular-core";
 import { IgxRectChangedEventArgs } from "igniteui-angular-core";
-
 import { SampleScatterStats } from "./SampleScatterStats";
 
 @Component({

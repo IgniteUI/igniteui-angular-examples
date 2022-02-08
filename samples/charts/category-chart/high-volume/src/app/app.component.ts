@@ -1,20 +1,8 @@
-import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    Input,
-    NgZone,
-    OnDestroy,
-    ViewChild
-} from "@angular/core";
-
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, NgZone, OnDestroy, ViewChild } from "@angular/core";
 import { IgxAssigningCategoryStyleEventArgs } from "igniteui-angular-charts";
 import { IgxCategoryChartComponent } from "igniteui-angular-charts";
 import { IgxChartSeriesEventArgs } from "igniteui-angular-charts";
-import {
-    IgxHorizontalAnchoredCategorySeriesComponent
-} from "igniteui-angular-charts";
+import { IgxHorizontalAnchoredCategorySeriesComponent } from "igniteui-angular-charts";
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,12 +1,4 @@
-import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    NgZone,
-    OnDestroy,
-    ViewChild
-} from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, NgZone, OnDestroy, ViewChild } from "@angular/core";
 import { IgxFinancialChartComponent } from "igniteui-angular-charts";
 import { IgxLegendComponent } from "igniteui-angular-charts";
 

@@ -18,7 +18,6 @@ import { IgxWaterfallSeriesComponent } from "igniteui-angular-charts";
 // importing data datachart's modules:
 import { IgxDataChartComponent } from "igniteui-angular-charts";
 import { MarkerType } from "igniteui-angular-charts";
-
 import { IgxLegendComponent } from "igniteui-angular-charts";
 
 @Component({

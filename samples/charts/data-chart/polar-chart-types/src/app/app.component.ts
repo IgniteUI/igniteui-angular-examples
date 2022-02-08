@@ -10,12 +10,9 @@ import { IgxPolarLineSeriesComponent } from "igniteui-angular-charts";
 import { IgxPolarScatterSeriesComponent } from "igniteui-angular-charts";
 import { IgxPolarSplineAreaSeriesComponent } from "igniteui-angular-charts";
 import { IgxPolarSplineSeriesComponent } from "igniteui-angular-charts";
-
 import { IgxDataChartComponent } from "igniteui-angular-charts";
 import { MarkerType } from "igniteui-angular-charts";
-
 import { IgxLegendComponent } from "igniteui-angular-charts";
-
 import { SamplePolarData } from "./SamplePolarData";
 
 @Component({

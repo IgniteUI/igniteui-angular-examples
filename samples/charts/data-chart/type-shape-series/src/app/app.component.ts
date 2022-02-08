@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-
 import { IgxDataChartComponent } from "igniteui-angular-charts";
 import { IgxNumericXAxisComponent } from "igniteui-angular-charts";
 import { IgxNumericYAxisComponent } from "igniteui-angular-charts";

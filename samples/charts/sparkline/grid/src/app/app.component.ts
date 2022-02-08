@@ -1,5 +1,4 @@
 import { Component, Injectable, ViewChild } from "@angular/core";
-
 import { IgxGridComponent } from "igniteui-angular";
 import { BehaviorSubject, Observable } from "rxjs";
 import { Products } from "././Products";

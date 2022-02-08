@@ -1,9 +1,4 @@
-import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    ViewChild
-} from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, Component, ViewChild } from "@angular/core";
 import { IgxCategoryChartComponent } from "igniteui-angular-charts";
 import { ToolTipType } from "igniteui-angular-charts";
 

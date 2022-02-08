@@ -4,13 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
-import {
-    IgxDataChartCoreModule,
-    IgxLegendModule,
-    IgxDataChartRadialModule,
-    IgxDataChartRadialCoreModule,
-    IgxDataChartInteractivityModule
- } from "igniteui-angular-charts";
+import { IgxDataChartCoreModule, IgxLegendModule, IgxDataChartRadialModule, IgxDataChartRadialCoreModule, IgxDataChartInteractivityModule } from "igniteui-angular-charts";
 import { SampleRadialData } from "./SampleRadialData";
 
 

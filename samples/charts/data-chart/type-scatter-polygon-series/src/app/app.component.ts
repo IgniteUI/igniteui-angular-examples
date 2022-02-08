@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, TemplateRef, ViewChild } from "@angular/core";
-
 import { IgxStyleShapeEventArgs } from "igniteui-angular-charts";
 import { IgxScatterPolygonSeriesComponent } from "igniteui-angular-charts";
 

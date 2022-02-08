@@ -4,14 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
-import {
-    IgxDataChartCoreModule,
-    IgxDataChartScatterCoreModule,
-    IgxDataChartScatterModule,
-    IgxLegendModule,
-    IgxNumberAbbreviatorModule,
-    IgxDataChartInteractivityModule
- } from "igniteui-angular-charts";
+import { IgxDataChartCoreModule, IgxDataChartScatterCoreModule, IgxDataChartScatterModule, IgxLegendModule, IgxNumberAbbreviatorModule, IgxDataChartInteractivityModule } from "igniteui-angular-charts";
 import { SampleScatterStats } from "./SampleScatterStats";
 
 

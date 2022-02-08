@@ -12,17 +12,12 @@ import { IgxScatterSplineSeriesComponent } from "igniteui-angular-charts";
 
 // elements of scatter series:
 import { BrushSelectionMode } from "igniteui-angular-charts";
-import {
-    IgxCustomPaletteBrushScaleComponent
-} from "igniteui-angular-charts";
+import { IgxCustomPaletteBrushScaleComponent } from "igniteui-angular-charts";
 import { IgxSizeScaleComponent } from "igniteui-angular-charts";
 import { IgxValueBrushScaleComponent } from "igniteui-angular-charts";
-
 import { IgxDataChartComponent } from "igniteui-angular-charts";
 import { MarkerType } from "igniteui-angular-charts";
-
 import { IgxLegendComponent } from "igniteui-angular-charts";
-
 import { SampleScatterStats } from "./SampleScatterStats";
 
 @Component({
