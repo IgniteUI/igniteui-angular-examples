@@ -1,0 +1,65 @@
+<div class="container sample">
+    <div class="options vertical">
+        <div class="options horizontal">
+            <label class="options-label">Layout</label>
+            <select (change)=onTreemapLayoutChanged($event)>
+                <option>Squarified</option>
+                <option>Stripped</option>
+                <option>SliceAndDice</option>
+            </select>
+
+            <label class="options-label">Orientation</label>
+            <select title="Works only with Stripped and SliceAndDice layouts" (change)=onTreemapOrientationChanged($event)>
+                <option>Horizontal</option>
+                <option>Vertical</option>
+            </select>
+
+            <label class="options-label">Headers</label>
+            <select (change)=onTreemapHeadersChanged($event)>
+                <option>Overlay</option>
+                <option>Outside</option>
+            </select>
+
+            <label class="options-label">Labels</label>
+            <select (change)=onTreemapLabelAlignmentChanged($event)>
+                <option>Center</option>
+                <option>Left</option>
+                <option>Right</option>
+                <option>Top Center</option>
+                <option>Top Left</option>
+                <option>Top Right</option>
+                <option>Bottom Center</option>
+                <option>Bottom Left</option>
+                <option>Bottom Right</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="options vertical">
+        <span id="legendTitle">Comparing Population of Countries</span>
+    </div>
+
+    <div class="container" style="padding: 0.75rem; width: calc(100% - 1.5rem); height: calc(100% - 1.5rem)">
+        <igx-treemap height="100%" width="100%"
+                 [dataSource]="data"
+                 rootTitle="Countries"
+                 parentIdMemberPath="Parent"
+                 idMemberPath="Name"
+                 labelMemberPath="Name"
+                 valueMemberPath="Pop"
+
+                 [layoutType]="TreeLayout"
+                 [layoutOrientation]="TreeOrientation"
+                 [headerDisplayMode]="HeaderMode"
+                 [labelHorizontalAlignment]="LabelHorizontalAlign"
+                 [labelVerticalAlignment]="LabelVerticalAlign"
+
+                 fillBrushes="#299e41, #4e62cf, #5e359c"
+                 isFillScaleLogarithmic="true"
+                 parentNodeBottomPadding="0"
+                 parentNodeLeftPadding="0"
+                 parentNodeRightPadding="0"
+                 parentNodeTopPadding="0">
+        </igx-treemap>
+    </div>
+</div>

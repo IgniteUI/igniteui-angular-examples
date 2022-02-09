@@ -6,7 +6,7 @@ import { SampleScatterStats } from "./SampleScatterStats";
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     public data1: any[];
     public data2: any[];

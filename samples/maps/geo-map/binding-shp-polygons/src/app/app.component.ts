@@ -30,7 +30,7 @@ export class AppComponent implements AfterViewInit {
 
     public onDataLoaded(sds: IgxShapeDataSource, e: any) {
         const shapeRecords = sds.getPointData();
-        console.log("loaded /Shapes/WorldCountries.shp " + shapeRecords.length);
+        // console.log("loaded /Shapes/WorldCountries.shp " + shapeRecords.length);
 
         const geoPolygons: any[] = [];
         // parsing shapefile data and creating geo-polygons

@@ -12,7 +12,7 @@ import { IgxValueBrushScaleComponent } from "igniteui-angular-charts";
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     public data: any[];
 

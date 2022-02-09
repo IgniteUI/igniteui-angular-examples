@@ -8,7 +8,7 @@ import { IgxSeriesComponent } from "igniteui-angular-charts";
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     @ViewChild("chart", { static: true })
     public chart: IgxDataChartComponent;
@@ -31,14 +31,14 @@ export class AppComponent {
         this.addCalloutLayer(this.calloutLayer);
         this.data = [
 
-            {Shop: "Amazon",                      Percent: 63},
-            {Shop: "Search Engines",              Percent: 48},
-            {Shop: "Retailer Sites",              Percent: 33},
-            {Shop: "Other Marketplaces",          Percent: 25},
-            {Shop: "At the Website of the Brand", Percent: 21},
-            {Shop: "Comparison Sites",            Percent: 10},
-            {Shop: "Social Media",                Percent: 8 },
-            {Shop: "Other",                       Percent: 2 }
+            { Shop: "Amazon",                      Percent: 63},
+            { Shop: "Search Engines",              Percent: 48},
+            { Shop: "Retailer Sites",              Percent: 33},
+            { Shop: "Other Marketplaces",          Percent: 25},
+            { Shop: "At the Website of the Brand", Percent: 21},
+            { Shop: "Comparison Sites",            Percent: 10},
+            { Shop: "Social Media",                Percent: 8 },
+            { Shop: "Other",                       Percent: 2 }
         ];
 
         let idx: number = 0;

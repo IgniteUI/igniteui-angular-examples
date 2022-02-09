@@ -1,0 +1,55 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Facebook Statement of Income 2019-2020</span>
+        <div class="legend">
+            <igx-legend #legend orientation="horizontal"></igx-legend>
+        </div>
+    </div>
+    <div class="container">
+        <igx-data-chart height="100%" width="100%" [legend]="legend"
+                   isHorizontalZoomEnabled="false"
+                   isVerticalZoomEnabled="false">
+
+            <igx-category-x-axis #xAxis [dataSource]="data" label="Date"></igx-category-x-axis>
+            <igx-numeric-y-axis #yAxis1 abbreviateLargeNumbers="true" title="In Millions of U.S. Dollars"
+                          minimumValue="0" maximumValue="30000" titleLeftMargin="5" titleRightMargin="0">
+            </igx-numeric-y-axis>
+            <igx-numeric-y-axis #yAxis2 abbreviateLargeNumbers="true" title="Percentage" majorStrokeThickness="0"
+                          minimumValue="0" maximumValue="160" labelLocation="OutsideRight"
+                          labelHorizontalAlignment="Left">
+            </igx-numeric-y-axis>
+
+            <igx-column-series #revenueSeries [xAxis]="xAxis" [yAxis]="yAxis1" [dataSource]="data"
+                          valueMemberPath="Revenue"
+                          title="Revenue" markerType="Hidden">
+            </igx-column-series>
+            <igx-column-series #expenseSeries [xAxis]="xAxis" [yAxis]="yAxis1" [dataSource]="data"
+                          valueMemberPath="Expenses"
+                          title="Expenses" markerType="Hidden">
+            </igx-column-series>
+
+            <igx-spline-area-series #incomeSeries [xAxis]="xAxis" [yAxis]="yAxis2" [dataSource]="data"
+                              valueMemberPath="IncomePerRevenue"
+                              title="Income / Revenue %" markerType="Hidden">
+            </igx-spline-area-series>
+
+            <igx-callout-layer isAutoCalloutBehaviorEnabled="true" [targetSeries]="revenueSeries"
+                          useValueForAutoCalloutLabels="true"
+                          calloutLeaderBrush="Transparent" calloutTextColor="Black"
+                          calloutBackground = "Transparent">
+            </igx-callout-layer>
+
+            <igx-callout-layer isAutoCalloutBehaviorEnabled="true" [targetSeries]="expenseSeries"
+                          useValueForAutoCalloutLabels="true"
+                          calloutLeaderBrush="Transparent" calloutTextColor="Black"
+                          calloutBackground="Transparent">
+            </igx-callout-layer>
+
+            <igx-callout-layer isAutoCalloutBehaviorEnabled="true" [targetSeries]="incomeSeries"
+                          useValueForAutoCalloutLabels="true" contentMemberPath="IncomePerRevenue"
+                          calloutLeaderBrush="Transparent" calloutTextColor="Black"
+                          calloutBackground = "LightGray" autoCalloutLabelPrecision="1">
+            </igx-callout-layer>
+        </igx-data-chart>
+    </div>
+</div>

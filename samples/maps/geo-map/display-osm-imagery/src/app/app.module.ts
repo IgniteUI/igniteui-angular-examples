@@ -8,7 +8,7 @@ import { IgxGeographicMapModule } from "igniteui-angular-maps";
 
 
 @NgModule({
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     MapDisplayImageryOSM

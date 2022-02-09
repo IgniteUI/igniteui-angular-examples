@@ -7,7 +7,11 @@ import { DataTemplateMeasureInfo, DataTemplateRenderInfo } from "igniteui-angula
   templateUrl: "./app.component.html"
 })
 export class AppComponent implements OnInit {
+
     public data: any[];
+
+    constructor() {
+    }
 
     public ngOnInit() {
         this.data = [
@@ -17,8 +21,7 @@ export class AppComponent implements OnInit {
             { Location: "EU", Solar: 11, Coal: -12, Hydro: -2, Wind: 14, Nuclear: -1 }
         ];
     }
-    constructor() {
-    }
+
     public getMarker() : any {
         const style = { outline: "#8B5BB1", fill: "white", text: "black" };
         const size = 12;

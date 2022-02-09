@@ -1,0 +1,31 @@
+<div class="container sample">
+    <div class="options vertical">
+        <igx-legend #legend orientation="horizontal"></igx-legend>
+    </div>
+    <div class="container">
+        <igx-category-chart height="100%" width="100%"
+            [dataSource]="data"
+            [legend]="legend"
+            chartType="line"
+            yAxisTitle="TWh"
+            yAxisTitleLeftMargin="5"
+            chartTitle="Renewable Electricity Generated"
+            titleTextColor="Black"
+            titleAlignment="Center"
+            titleTextStyle="16pt Verdana"
+            titleTopMargin="5"
+            titleLeftMargin="5"
+            titleRightMargin="5"
+            titleBottomMargin="5"
+            subtitle="Results over a ten year period"
+            subtitleTextColor="Gray"
+            subtitleAlignment="Center"
+            subtitleTextStyle="Italic 12pt Verdana"
+            subtitleTopMargin="5"
+            subtitleLeftMargin="5"
+            subtitleRightMargin="5"
+            subtitleBottomMargin="5"
+        >
+        </igx-category-chart>
+    </div>
+</div>

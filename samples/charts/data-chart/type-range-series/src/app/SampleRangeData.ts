@@ -10,7 +10,7 @@ export class SampleRangeData {
             temperature += (Math.random() - 0.475) * 0.5;
             const high = this.round(temperature + (Math.random() * 2));
             const low  = this.round(temperature - (Math.random() * 2));
-            data.push({High: high, Low: low, Year: i});
+            data.push({ High: high, Low: low, Year: i });
         }
         return data;
     }

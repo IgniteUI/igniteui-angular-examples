@@ -5,7 +5,7 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     public gerData: any[];
     public fraData: any[];

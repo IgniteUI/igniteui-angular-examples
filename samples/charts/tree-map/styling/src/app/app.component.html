@@ -1,0 +1,27 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Comparing Population of Countries</span>
+    </div>
+
+    <div class="container" style="padding: 0.75rem; padding-top: 0.5rem;">
+        <igx-treemap height="100%" width="100%" #treemap
+                 rootTitle="Countries"
+                 [dataSource]="data"
+                 parentIdMemberPath="Parent"
+                 customValueMemberPath="Parent"
+                 idMemberPath="Name"
+                 labelMemberPath="Name"
+                 valueMemberPath="Pop"
+                 headerDisplayMode="Overlay"
+                 overlayHeaderBackground="#3f403f"
+                 headerHoverBackground="#3f403f"
+                 headerBackground="#3f403f"
+                 parentNodeBottomPadding="0"
+                 parentNodeLeftPadding="0"
+                 parentNodeRightPadding="0"
+                 parentNodeTopPadding="0"
+                 outline="black"
+                 strokeThickness="1">
+        </igx-treemap>
+    </div>
+</div>

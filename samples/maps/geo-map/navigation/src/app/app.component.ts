@@ -59,7 +59,7 @@ export class AppComponent implements AfterViewInit {
         this.componentDidMount();
 
         if (this.geoMap !== undefined) {
-            console.log("ngAfterViewInit map");
+            // console.log("ngAfterViewInit map");
             this.geoMap.actualWindowRectChanged.subscribe((e: IgxRectChangedEventArgs) =>
                 this.onMapWindowRectChanged(this.geoMap, e)
             );

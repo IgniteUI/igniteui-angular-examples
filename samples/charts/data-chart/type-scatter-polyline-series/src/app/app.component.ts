@@ -7,15 +7,15 @@ import { IgxScatterPolylineSeriesComponent } from "igniteui-angular-charts";
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
-    @ViewChild('airplaneShapeSeries', {static: true})
+    @ViewChild('airplaneShapeSeries', { static: true })
     public airplaneShapeSeries: IgxScatterPolylineSeriesComponent;
 
-    @ViewChild('airplaneSeatSeries', {static: true})
+    @ViewChild('airplaneSeatSeries', { static: true })
     public airplaneSeatSeries: IgxScatterPolylineSeriesComponent;
 
-    @ViewChild('seatTooltip', {static: true})
+    @ViewChild('seatTooltip', { static: true })
     public seatTooltip: TemplateRef<object>;
 
     constructor() {
@@ -33,12 +33,12 @@ export class AppComponent {
     }
 
     public onLoadedJsonShape(jsonData: any[]) {
-        console.log('airplane-shape.json ' + jsonData.length);
+        // console.log('airplane-shape.json ' + jsonData.length);
         this.airplaneShapeSeries.dataSource = jsonData;
     }
 
     public onLoadedJsonSeats(jsonData: any[]) {
-      console.log('airplane-seats.json ' + jsonData.length);
+      // console.log('airplane-seats.json ' + jsonData.length);
       this.airplaneSeatSeries.dataSource = jsonData;
       this.airplaneSeatSeries.showDefaultTooltip = true;
       this.airplaneSeatSeries.tooltipTemplate = this.seatTooltip;

@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { DefaultSortingStrategy, IgxGridComponent, SortingDirection } from "igniteui-angular";
 import { FormatConditionIconSet } from "igniteui-angular-excel";
-import { IWorkbookExportEndedEventArgs, WorkbookExportOptions, WorkbookExportService } from "./ExcelExporter";
+import { WorkbookExportService } from "./ExcelExporter";
+import { WorkbookExportOptions } from "./ExcelExporter";
+import { IWorkbookExportEndedEventArgs } from "./ExcelExporter";
 import { ExcelUtility } from "./ExcelUtility";
 
 @Component({

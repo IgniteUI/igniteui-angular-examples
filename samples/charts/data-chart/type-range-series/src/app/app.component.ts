@@ -11,7 +11,7 @@ import { IgxRangeColumnSeriesComponent } from "igniteui-angular-charts";
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     public data: any[];
     public seriesType: string = "Column";

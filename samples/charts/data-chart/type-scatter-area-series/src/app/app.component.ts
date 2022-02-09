@@ -10,7 +10,7 @@ import { SampleScatterData } from "./SampleScatterData";
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     @ViewChild("chart", { static: true })
     public chart: IgxDataChartComponent;

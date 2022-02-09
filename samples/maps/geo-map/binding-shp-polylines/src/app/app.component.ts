@@ -29,7 +29,7 @@ export class AppComponent implements AfterViewInit {
 
     public onDataLoaded(sds: IgxShapeDataSource, e: any) {
         const shapeRecords = sds.getPointData();
-        console.log("loaded /Shapes/WorldCableRoutes.shp " + shapeRecords.length);
+        // console.log("loaded /Shapes/WorldCableRoutes.shp " + shapeRecords.length);
 
         const geoPolylines: any[] = [];
         // parsing shapefile data and creating geo-polygons

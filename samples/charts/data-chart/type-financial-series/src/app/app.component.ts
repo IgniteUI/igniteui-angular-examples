@@ -6,7 +6,7 @@ import { SampleFinancialData } from "./SampleFinancialData";
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     public data: any = SampleFinancialData.create();
     public displayTypeSeries: string = "Candlestick";

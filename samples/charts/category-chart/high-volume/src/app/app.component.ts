@@ -10,7 +10,7 @@ import { IgxHorizontalAnchoredCategorySeriesComponent } from "igniteui-angular-c
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit, OnDestroy {
     @Input()
     public scalingRatio: number = 1;
 

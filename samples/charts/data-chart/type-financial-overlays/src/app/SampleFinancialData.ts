@@ -20,7 +20,7 @@ export class SampleFinancialData {
             const date = time.toDateString();
             // const date = this.getDate(time);
             // adding new data item
-            data.push({Time: time, Date: date, Close: c, Open: o, High: h, Low: l, Volume: v});
+            data.push({ Time: time, Date: date, Close: c, Open: o, High: h, Low: l, Volume: v });
             // generating new values
             const mod = Math.random() - 0.4;
             o = o + (mod * 5 * 2);

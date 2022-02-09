@@ -58,7 +58,8 @@ export class AppComponent implements AfterViewInit {
             gen.useLogarithmicScale = true;
             gen.useWebWorkers = true;
             // gen.webWorkerInstance = new Worker();
-            gen.webWorkerInstance = new Worker("./HeatmapWorker", { type: "module" });
+            // gen.webWorkerInstance = new Worker("./HeatmapWorker", { type: "module" });
+            gen.webWorkerInstance = new Worker(new URL('./HeatmapWorker', import.meta.url), { type: "module" });
 
             gen.scaleColors = [
                 "rgba(0, 0, 255, .251)", "rgba(0, 255, 255, .3765)",

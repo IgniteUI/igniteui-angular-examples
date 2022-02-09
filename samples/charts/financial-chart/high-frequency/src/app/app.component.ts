@@ -7,7 +7,7 @@ import { IgxFinancialChartComponent } from "igniteui-angular-charts";
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit, OnDestroy {
 
     @Input()
     public scalingRatio: number = 1;
@@ -119,7 +119,7 @@ export class AppComponent {
         this._timerButtonText = v;
     }
 
-    public get timerButtonText(): string{
+    public get timerButtonText(): string {
         return this._timerButtonText;
     }
 
@@ -171,7 +171,7 @@ export class AppComponent {
         const h = this.currValue + (Math.random() * 2);
         const l = this.currValue - (Math.random() * 2);
         const c = this.currValue + ((Math.random() - 0.5) * 2);
-        const newVal = { Date: this.currDate, Open: o, High: h, Low: l, Close: c};
+        const newVal = { Date: this.currDate, Open: o, High: h, Low: l, Close: c };
         return newVal;
     }
 

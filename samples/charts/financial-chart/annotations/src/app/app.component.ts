@@ -1,6 +1,6 @@
 import { AfterViewInit, ViewChild, ChangeDetectionStrategy, Component } from "@angular/core";
 import { IgxFinancialChartComponent } from "igniteui-angular-charts";
-import { StocksUtility } from "././StocksUtility";
+import { StocksUtility } from "./StocksUtility";
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -9,7 +9,7 @@ import { StocksUtility } from "././StocksUtility";
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     @ViewChild("financialChart", { static: true })
     public chart: IgxFinancialChartComponent;
@@ -43,8 +43,8 @@ export class AppComponent {
         for (const stock of stocks) {
             const intervalSplit = Math.floor(Math.random() * (300 - 280)) + 280;
             const intervalDiv = Math.floor(Math.random() * (400 - 360)) + 360;
-            const calloutMin = new CalloutDataItem({label: "MIN"});
-            const calloutMax = new CalloutDataItem({label: "MAX"});
+            const calloutMin = new CalloutDataItem({ label: "MIN"});
+            const calloutMax = new CalloutDataItem({ label: "MAX"});
             // initalizing values for min/max callouts
             calloutMin.value = Number.MAX_VALUE;
             calloutMax.value = Number.MIN_VALUE;
@@ -61,7 +61,7 @@ export class AppComponent {
                     calloutMax.index = idx;
                 }
                 const offset = idx + 10;
-                const calloutEvent = new CalloutDataItem({index: idx });
+                const calloutEvent = new CalloutDataItem({ index: idx });
                 // creating SPLIT/DIVIDEND events at specific intervals
                 if (offset % intervalSplit === 5) {
                     calloutEvent.value = item.close;

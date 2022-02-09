@@ -6,7 +6,7 @@ import { DataTemplateMeasureInfo, DataTemplateRenderInfo } from "igniteui-angula
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     public data: any[];
     public calloutDataSource : any[];

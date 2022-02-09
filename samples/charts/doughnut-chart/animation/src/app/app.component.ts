@@ -6,7 +6,7 @@ import { IgxDoughnutChartComponent, IgxRingSeriesComponent } from "igniteui-angu
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     public data: any;
     @ViewChild("chart", { static: true })

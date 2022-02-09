@@ -42,10 +42,6 @@
             <igx-numeric-x-axis #xAxis1 labelLocation="OutsideLeft" minimumValue=-180 maximumValue=180 title="Longitude"></igx-numeric-x-axis>
             <igx-numeric-y-axis #yAxis1 labelLocation="OutsideBottom" minimumValue=-90 maximumValue=90 title="Latitude"></igx-numeric-y-axis>
 
-            <!-- optional axes that provide more context for displayed data -->
-            <igx-numeric-x-axis #xAxis2 labelLocation="OutsideRight" minimumValue=-180 maximumValue=180 title="Longitude"></igx-numeric-x-axis>
-            <igx-numeric-y-axis #yAxis2 labelLocation="OutsideTop" minimumValue=-90 maximumValue=90 title="Latitude"></igx-numeric-y-axis>
-
             <igx-scatter-area-series #series
                 name="series"
                 [xAxis]=xAxis1

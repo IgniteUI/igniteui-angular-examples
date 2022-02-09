@@ -17,7 +17,7 @@ import { StockDataService } from "./StockDataService";
     templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     public data: any[];
     @ViewChild("chart", { static: true })

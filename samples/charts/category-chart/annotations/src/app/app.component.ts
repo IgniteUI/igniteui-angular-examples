@@ -36,7 +36,7 @@ export class AppComponent {
     }
 
     public formatDateLabel(item: any): string {
-        return item.date.toLocaleDateString(undefined, {month: "short"}).toUpperCase();
+        return item.date.toLocaleDateString(undefined, { month: "short"}).toUpperCase();
     }
 }
 

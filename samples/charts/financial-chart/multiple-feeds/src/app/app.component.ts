@@ -9,7 +9,7 @@ import { IgxLegendComponent } from "igniteui-angular-charts";
     templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit, OnDestroy {
 
     @ViewChild("chart", { static: true })
     public chart: IgxFinancialChartComponent;
@@ -61,7 +61,7 @@ export class AppComponent {
         const l = o - (Math.random() * 5);
         const c = l + (Math.random() * (h - l));
 
-        return { date: t, open: o, high: h, low: l, close: c};
+        return { date: t, open: o, high: h, low: l, close: c };
     }
 
     public GenerateData(startDate: Date, startPrice: number, stockName: string): any[] {

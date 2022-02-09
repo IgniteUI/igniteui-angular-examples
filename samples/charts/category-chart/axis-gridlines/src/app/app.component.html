@@ -1,0 +1,38 @@
+<div class="container sample">
+    <div class="options vertical">
+        <span id="legendTitle">Renewable Electricity Generated</span>
+        <div class="legend">
+            <igx-legend #legend orientation="horizontal"></igx-legend>
+        </div>
+        <div class="overlay-right">
+            <div class="options horizontal">
+                <label>Y-Axis Line </label><input type="color" [value]="AxisMainStroke"  (change)="OnAxisMainStrokeChange($event)" />
+                <label>Major</label><input type="color" [value]="AxisMajorStroke" (change)="OnAxisMajorStrokeChange($event)"  />
+                <label>Minor</label><input type="color" [value]="AxisMinorStroke" (change)="OnAxisMinorStrokeChange($event)"  />
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <igx-category-chart height="100%" width="100%"
+                       [legend]="legend"
+                       [dataSource]="data"
+                       chartType="Line"
+                       isHorizontalZoomEnabled="false"
+                       isVerticalZoomEnabled="false"
+                       xAxisStroke="#919191"
+                       xAxisStrokeThickness="2"
+                       xAxisInterval="1"
+                       xAxisMajorStroke="#474747"
+                       xAxisMajorStrokeThickness="0.5"
+                       [yAxisStroke]="AxisMainStroke"
+                       yAxisStrokeThickness="2"
+                       yAxisInterval="20"
+                       [yAxisMajorStroke]="AxisMajorStroke"
+                       yAxisMajorStrokeThickness="1"
+                       yAxisMinorInterval="5"
+                       [yAxisMinorStroke]="AxisMinorStroke"
+                       yAxisMinorStrokeThickness="0.5"
+                       thickness="2">
+        </igx-category-chart>
+    </div>
+</div>

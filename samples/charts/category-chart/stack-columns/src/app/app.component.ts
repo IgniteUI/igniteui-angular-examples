@@ -9,7 +9,7 @@ import { IgxLegendComponent } from "igniteui-angular-charts";
     templateUrl: "./app.component.html"
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
     @ViewChild("chart", { static: true })
     public chart: IgxCategoryChartComponent;

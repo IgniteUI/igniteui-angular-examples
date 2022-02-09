@@ -63,7 +63,7 @@ export class AppComponent implements AfterViewInit {
     public ngAfterViewInit(): void {
 
         if (this.mainChart !== undefined || this.container !== undefined) {
-            console.log("ngAfterViewInit mainChart");
+            // console.log("ngAfterViewInit mainChart");
 
             this.createSeries(this.mainChart);
 
@@ -74,12 +74,12 @@ export class AppComponent implements AfterViewInit {
         }
 
         if (this.zoomChart !== undefined) {
-            console.log("ngAfterViewInit zoomChart");
+            // console.log("ngAfterViewInit zoomChart");
             this.createSeries(this.zoomChart);
         }
 
         if (this.zoomSlider !== undefined) {
-            console.log("ngAfterViewInit zoomSlider");
+            // console.log("ngAfterViewInit zoomSlider");
             this.zoomSlider.windowRectChanged.subscribe((e: IgxRectChangedEventArgs) =>
                 this.onZoomSliderWindowChanged(this.zoomSlider, e)
             );
@@ -159,7 +159,7 @@ export class AppComponent implements AfterViewInit {
 
     public onZoomSliderResolveAxisValue(slider: IgxZoomSliderComponent, args: any) {
 
-        console.log("onZoomSliderResolveAxisValue");
+        // console.log("onZoomSliderResolveAxisValue");
         const index = Math.round(args.position * (this.countriesAll.length - 1));
         const item = this.countriesAll[index];
         if (item) {

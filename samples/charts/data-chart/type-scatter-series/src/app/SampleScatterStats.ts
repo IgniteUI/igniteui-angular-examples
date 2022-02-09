@@ -83,32 +83,32 @@ export class SampleScatterStats {
     }
 
     public static sortByPopAscending(a: Country, b: Country) {
-        if (a.population > b.population) {return -1; }
-        if (a.population < b.population) {return 1; }
+        if (a.population > b.population) { return -1; }
+        if (a.population < b.population) { return 1; }
         return 0;
     }
 
     public static sortByGdpAscending(a: Country, b: Country) {
-        if (a.gdpPerCapita > b.gdpPerCapita) {return -1; }
-        if (a.gdpPerCapita < b.gdpPerCapita) {return 1; }
+        if (a.gdpPerCapita > b.gdpPerCapita) { return -1; }
+        if (a.gdpPerCapita < b.gdpPerCapita) { return 1; }
         return 0;
     }
 
     public static sortByGdpDescending(a: Country, b: Country) {
-        if (a.gdpPerCapita > b.gdpPerCapita) {return 1; }
-        if (a.gdpPerCapita < b.gdpPerCapita) {return -1; }
+        if (a.gdpPerCapita > b.gdpPerCapita) { return 1; }
+        if (a.gdpPerCapita < b.gdpPerCapita) { return -1; }
         return 0;
     }
 
     public static sortByDepDescending(a: Country, b: Country) {
-        if (a.dptPerCapita > b.dptPerCapita) {return 1; }
-        if (a.dptPerCapita < b.dptPerCapita) {return -1; }
+        if (a.dptPerCapita > b.dptPerCapita) { return 1; }
+        if (a.dptPerCapita < b.dptPerCapita) { return -1; }
         return 0;
     }
 
     public static sortByDptAscending(a: Country, b: Country) {
-        if (a.dptPerCapita > b.dptPerCapita) {return -1; }
-        if (a.dptPerCapita < b.dptPerCapita) {return 1; }
+        if (a.dptPerCapita > b.dptPerCapita) { return -1; }
+        if (a.dptPerCapita < b.dptPerCapita) { return 1; }
         return 0;
     }
 
