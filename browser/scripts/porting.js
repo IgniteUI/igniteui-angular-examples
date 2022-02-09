@@ -45,6 +45,8 @@ const repoSourcePaths = [
     // repoPath + "charts/category-chart-highlighting/package.json",
     // repoPath + "charts/category-chart-point-chart-styling/package.json",
     // repoPath + "charts/data-chart-axis-sharing/package.json",
+    // repoPath + "charts/data-chart-stacked-100-area-chart/package.json",
+
     // repoPath + "charts/financial-chart-stock-index-chart/package.json",
     // repoPath + "charts/tree-map-overview/**/package.json",
     // repoPath + "charts/sparkline-markers/package.json",
@@ -178,8 +180,8 @@ function exportAppModuleTS(sample, sampleFile) {
     content = utils.lintImportsInline(content);
 
     var importMatches = content.match(/import.\{.(.*Component)(.*)/gm);
-    var importClass = "";
-    var importLine = "";
+    var importClass = null;
+    var importLine = null;
 
     for (const line of importMatches) {
         // skip AppComponent
@@ -190,13 +192,15 @@ function exportAppModuleTS(sample, sampleFile) {
         }
     }
     // log("importClass: '" + importClass + "'");
-    content = content.replace(importLine + "", "");
-    content = content.replace(importClass + ",", "");
-    content = content.replace(importClass + "", "");
+    if (importClass !== null) {
+        content = content.replace(importLine + "", "");
+        content = content.replace(importClass + ",", "");
+        content = content.replace(importClass + "", "");
+    }
 
     //content = content.replace(importClass, "");
     // content = content.replace("\t", "    ");
-    var lines = updateDataReference(content, sample.FilesData);
+    var lines = updateDataReference(content, sampleFile, sample.FilesData);
     content = utils.joinLines(lines);
     content = utils.lintSourceCode(content);
 
@@ -237,10 +241,13 @@ function exportDataFile(sample, fileInfo) {
     utils.fileSave(outputPath, content);
 }
 
-function updateDataReference(fileContent, dataFiles) {
+function updateDataReference(fileContent, filePath, dataFiles) {
     var lines = utils.splitLines(fileContent);
+    var importLines = "";
     for (let i = 0; i < lines.length; i++) {
-        if (lines[i].indexOf('import') >= 0) {
+        if (lines[i].indexOf('import') >= 0 &&
+            lines[i].indexOf('./') > 0) {
+            importLines += lines[i] + '\n';
             for (const data of dataFiles) {
                 if (lines[i].indexOf(data.sourceName) >=  0) {
                     var orgLine =  lines[i]
@@ -248,11 +255,25 @@ function updateDataReference(fileContent, dataFiles) {
                     lines[i] = lines[i].replace('./'  + data.sourceFolder, '.');
                     lines[i] = lines[i].replace('././', './');
                     lines[i] = lines[i].replace('../', './');
+                    // lines[i] = lines[i].replace('utilities/', '/');
                     lines[i] = lines[i].replace(data.sourceName, data.outputName);
                     // console.log(data.outputName + " + " + data.sourceFolder + ": \n " + orgLine + " \n " + lines[i]);
                 }
             }
         }
+    }
+    var content = lines.join('\n');
+    if (content.indexOf('utilities') >= 0) {
+        var msg = "\n>>> ERROR in: ";
+        msg += filePath + "\n";
+        msg += ">>> Could not resolve import statements: \n";
+        msg += importLines + "\n";
+        if (dataFiles === undefined || dataFiles.length === 0){
+            msg += ">>> because sample has no local data files.";
+        } else {
+            msg += ">>> probably sample has miss-matching data files: \n" + dataFiles;
+        }
+        throw new Error(msg);
     }
     return lines;
 }
@@ -266,7 +287,7 @@ function exportAppComponentTS(sample, sampleFile) {
     var matchSelectorName = content.match(/selector:.(.*)/)[1];
     var matchStyleUrls = content.match(/styleUrls:.(.*)/)[1];
     var matchTemplateUrl = content.match(/templateUrl:.(.*)/)[1];
-    var matchClassName = content.match(/(export\s*class\s*)([a-zA-Z]*)/gm);
+    var matchClassName = content.match(/(export\s*class\s*)([a-zA-Z\d]*)/gm);
         // log("matchSelectorName: " + matchSelectorName);
         // log("matchStyleUrls: " + matchStyleUrls);
         // log("matchTemplateUrl: " + matchTemplateUrl);
@@ -282,7 +303,7 @@ function exportAppComponentTS(sample, sampleFile) {
     }
 
     // var lines = utils.splitLines(content);
-    var lines = updateDataReference(content, sample.FilesData);
+    var lines = updateDataReference(content, sampleFile, sample.FilesData);
     // content = utils.joinLines(lines);
 
     var indexTemplateUrl = -1;
@@ -307,12 +328,16 @@ function exportAppComponentTS(sample, sampleFile) {
     content = utils.joinLines(lines);
     content = utils.replace(content, "../", "./");
     content = utils.replace(content, "././", "./");
+    content = utils.replace(content, "staging.infragistics", "www.infragistics");
     content = utils.lintSourceCode(content);
-;
+
     var outputPath = sample.OutputPath + "src/app/app.component.ts";
     // log("exportAppComponentTS: " + outputPath);
-
     utils.fileSave(outputPath, content);
+
+    if (content.indexOf(' class AppComponent ') < 0) {
+        throw new Error("missing 'class AppComponent' in " + outputPath);
+    }
 
     // log("exportAppComponentTS: " + outputPath);
 }
@@ -547,6 +572,11 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
 
 // importing samples form igniteui-live-editing-samples repo
 function importSamples(cb) {
+
+    // del.sync("../samples/charts/**/",{force: true});
+    // del.sync("../samples/gauges/**/",{force: true});
+    // del.sync("../samples/maps/**/",{force: true});
+    // del.sync("../samples/excel/excel-library/**/",{force: true});
 
     samplesDatabase = []
     // log("importSamples... ");
