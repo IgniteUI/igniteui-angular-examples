@@ -8,46 +8,48 @@
     <div class="container">
         <igx-data-chart height="100%" width="100%" [legend]="legend"
                    isHorizontalZoomEnabled="false"
-                   isVerticalZoomEnabled="false">
+                   isVerticalZoomEnabled="false" [dataSource]="data">
 
-            <igx-category-x-axis #xAxis [dataSource]="data" label="Date"></igx-category-x-axis>
+            <igx-category-x-axis #xAxis label="Date" overlap="0" gap="0.1" useClusteringMode="true"></igx-category-x-axis>
             <igx-numeric-y-axis #yAxis1 abbreviateLargeNumbers="true" title="In Millions of U.S. Dollars"
-                          minimumValue="0" maximumValue="30000" titleLeftMargin="5" titleRightMargin="0">
+                          titleLeftMargin="5" titleRightMargin="0" 
+                          minimumValue="0" maximumValue="30000000">
             </igx-numeric-y-axis>
             <igx-numeric-y-axis #yAxis2 abbreviateLargeNumbers="true" title="Percentage" majorStrokeThickness="0"
                           minimumValue="0" maximumValue="160" labelLocation="OutsideRight"
                           labelHorizontalAlignment="Left">
             </igx-numeric-y-axis>
 
-            <igx-column-series #revenueSeries [xAxis]="xAxis" [yAxis]="yAxis1" [dataSource]="data"
+            <igx-column-series #revenueSeries [xAxis]="xAxis" [yAxis]="yAxis1"
                           valueMemberPath="Revenue"
                           title="Revenue" markerType="Hidden">
             </igx-column-series>
-            <igx-column-series #expenseSeries [xAxis]="xAxis" [yAxis]="yAxis1" [dataSource]="data"
+            <igx-column-series #expenseSeries [xAxis]="xAxis" [yAxis]="yAxis1"
                           valueMemberPath="Expenses"
                           title="Expenses" markerType="Hidden">
             </igx-column-series>
 
-            <igx-spline-area-series #incomeSeries [xAxis]="xAxis" [yAxis]="yAxis2" [dataSource]="data"
+            <igx-spline-area-series #incomeSeries [xAxis]="xAxis" [yAxis]="yAxis2"
                               valueMemberPath="IncomePerRevenue"
-                              title="Income / Revenue %" markerType="Hidden">
+                              title="Income / Revenue %" markerType="Circle">
             </igx-spline-area-series>
 
-            <igx-callout-layer isAutoCalloutBehaviorEnabled="true" [targetSeries]="revenueSeries"
-                          useValueForAutoCalloutLabels="true"
+            <igx-callout-layer isAutoCalloutBehaviorEnabled="false" [targetSeries]="revenueSeries"
+                          useValueForAutoCalloutLabels="false"
                           calloutLeaderBrush="Transparent" calloutTextColor="Black"
-                          calloutBackground = "Transparent">
+                          calloutBackground = "Transparent" calloutPositionPadding="-5" 
+                          xMemberPath="RevenueX" yMemberPath="Revenue" labelMemberPath="FormattedRevenue">
             </igx-callout-layer>
 
-            <igx-callout-layer isAutoCalloutBehaviorEnabled="true" [targetSeries]="expenseSeries"
-                          useValueForAutoCalloutLabels="true"
+            <igx-callout-layer isAutoCalloutBehaviorEnabled="false" [targetSeries]="expenseSeries"
+                          useValueForAutoCalloutLabels="false"
                           calloutLeaderBrush="Transparent" calloutTextColor="Black"
-                          calloutBackground="Transparent">
+                          calloutBackground="Transparent"  xMemberPath="ExpensesX" yMemberPath="Expenses" 
+                          labelMemberPath="FormattedExpenses" calloutPositionPadding="-5">
             </igx-callout-layer>
 
             <igx-callout-layer isAutoCalloutBehaviorEnabled="true" [targetSeries]="incomeSeries"
-                          useValueForAutoCalloutLabels="true" contentMemberPath="IncomePerRevenue"
-                          calloutLeaderBrush="Transparent" calloutTextColor="Black"
+                          useValueForAutoCalloutLabels="true" calloutLeaderBrush="Transparent" calloutTextColor="Black"
                           calloutBackground = "LightGray" autoCalloutLabelPrecision="1">
             </igx-callout-layer>
         </igx-data-chart>
