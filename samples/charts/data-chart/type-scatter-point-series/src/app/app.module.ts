@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
 import { IgxDataChartCoreModule, IgxDataChartScatterModule, IgxDataChartScatterCoreModule, IgxLegendModule, IgxDataChartInteractivityModule } from "igniteui-angular-charts";
-import { SampleScatterData } from "./SampleScatterData";
+import { SampleScatterData } from "./SampleScatterStats";
 
 
 @NgModule({
