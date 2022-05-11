@@ -1,0 +1,22 @@
+<div class="container sample">
+    <div class="container">
+        <igx-data-chart #chart [dataSource]="data"
+            width="100%"
+            height="100%"
+            isHorizontalZoomEnabled="true"
+            isVerticalZoomEnabled="true"
+            defaultInteraction="DragPan"
+            horizontalViewScrollbarMode="Persistent"
+            verticalViewScrollbarMode="Persistent">
+            <igx-numeric-x-axis #xAxis
+                isLogarithmic=true
+                abbreviateLargeNumbers=true
+                title="Population">
+            </igx-numeric-x-axis>
+            <igx-numeric-y-axis #yAxis
+                isLogarithmic=true
+                abbreviateLargeNumbers=true
+                title="Total GDP ($)">
+            </igx-numeric-y-axis>
+        </igx-data-chart>
+</div>
