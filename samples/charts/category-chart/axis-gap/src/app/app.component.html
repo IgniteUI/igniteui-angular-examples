@@ -5,7 +5,7 @@
             <div class="options horizontal" >
                 <label class="options-label" >X-Axis Gap</label>
                 <label class="options-value" >{{xAxisGapValue}}</label>
-                <input class="options-slider" type="range" min="0" max="1" step="0.05" value="1" (input)="OnXAxisGapSliderChange($event)"/>
+                <input class="options-slider" type="range" min="0.5" [max]="xAxisMaximumGap" step="0.05" value="1" (input)="OnXAxisGapSliderChange($event)"/>
             </div>
         </div>
     </div>
@@ -18,7 +18,9 @@
                        isHorizontalZoomEnabled="false"
                        isVerticalZoomEnabled="false"
                        xAxisInterval="1"
-                       [xAxisGap]="xAxisGapValue">
+                       crosshairsDisplayMode="None"
+                       [xAxisGap]="xAxisGapValue"
+                       [xAxisMaximumGap]="xAxisMaximumGap">
         </igx-category-chart>
     </div>
 </div>

@@ -9,6 +9,7 @@ export class AppComponent {
 
     public data: any[];
     public xAxisGapValue: number = 1;
+    public xAxisMaximumGap: number = 1.5;
 
     constructor() {
         this.initData();
