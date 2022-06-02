@@ -83,7 +83,7 @@ var sampleSourcePaths = [
     sampleRoot + 'maps/**/package.json',
     // sampleRoot + 'excel/excel-library/**/package.json',
     sampleRoot + 'excel/spreadsheet/**/package.json',
-    // sampleRoot + 'gauges/bullet-graph/**/package.json',
+    sampleRoot + 'gauges/bullet-graph/**/package.json',
     sampleRoot + 'gauges/linear-gauge/**/package.json',
     sampleRoot + 'gauges/radial-gauge/**/package.json',
     // sampleRoot + 'grids/**/package.json',
@@ -151,7 +151,7 @@ function getSampleInfo(samplePath, sampleCallback, sampleFile) {
     "!" + info.SourcePath + "/node_modules/**",
     ])
     .pipe(es.map(function(file, fileCallback) {
-        console.log("getSampleInfo " + file.dirname + "/" + file.basename);
+        // console.log("getSampleInfo " + file.dirname + "/" + file.basename);
         var filePath = getSamplePath(file.dirname + "/" + file.basename);
         //log("getSampleInfo " + filePath);
 
@@ -256,7 +256,7 @@ function findSamples(cb) {
     .pipe(es.map(function(file, fileCallback) {
         //log("getting: " + file.dirname);
         // saving info for each samples in samplesDatabase
-        log("sample: " + file.dirname);
+        // log("sample: " + file.dirname);
         getSampleInfo(file.dirname, fileCallback, file);
     }))
     .on("end", function() {
