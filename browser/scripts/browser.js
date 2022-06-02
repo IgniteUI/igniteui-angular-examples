@@ -101,7 +101,7 @@ var sampleSourcePaths = [
 // stores info about each sample: folder path, file paths, routing path, etc
 var samplesDatabase = [];
 
-function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
+function getSampleInfo(samplePath, sampleCallback, sampleFile) {
     var info = {};
     info.SourcePath    = getSamplePath(samplePath);     //     ../samples/charts/data-chart/axis-sharing/
     info.OutputPath    = getOutputPath(samplePath);     //  ./src/samples/charts/data-chart/axis-sharing/
@@ -151,7 +151,7 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
     "!" + info.SourcePath + "/node_modules/**",
     ])
     .pipe(es.map(function(file, fileCallback) {
-        // console.log("getSampleInfo " + file.dirname + "/" + file.basename);
+        console.log("getSampleInfo " + file.dirname + "/" + file.basename);
         var filePath = getSamplePath(file.dirname + "/" + file.basename);
         //log("getSampleInfo " + filePath);
 
@@ -179,7 +179,7 @@ function getSampleInfo(samplePath, sampleCallback, sampleDirector) {
     .on("end", function() {
         // saving info about samples in database
         samplesDatabase.push(info);
-        sampleCallback(null, sampleDirector);
+        sampleCallback(null, sampleFile);
     });
 }
 
