@@ -256,6 +256,7 @@ function findSamples(cb) {
     .pipe(es.map(function(file, fileCallback) {
         //log("getting: " + file.dirname);
         // saving info for each samples in samplesDatabase
+        log("sample: " + file.dirname);
         getSampleInfo(file.dirname, fileCallback, file);
     }))
     .on("end", function() {
