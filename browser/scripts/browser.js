@@ -834,3 +834,15 @@ function testFileParsing(cb) {
     if (cb) cb();
 } exports.testFileParsing = testFileParsing;
 
+
+function logRoutes(cb) {
+    let routes = [];
+    for (const sample of samplesDatabase) {
+        routes.push("/" + sample.SampleGroup + "/" + sample.SampleRoutePath)
+    }
+    routes.sort();
+    for (const route of routes) {
+        console.log(route);
+    }
+    cb();
+} exports.logRoutes = logRoutes;

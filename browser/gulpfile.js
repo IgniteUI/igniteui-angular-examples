@@ -62,3 +62,7 @@ gulp.task("overwrite-package-json", (done) => {
 });
 
 
+gulp.task('logRoutes', gulp.series(
+    browser.findSamples,
+    browser.logRoutes
+));
