@@ -1,0 +1,30 @@
+<div class="container sample">
+
+  
+  
+  <div class="legend">
+      <igx-data-legend
+      includedColumns="Close, Change"
+      excludedColumns="High, Low, Open, Volume"
+      valueFormatMode="Currency"
+      valueFormatCulture="en-GB"
+      [target]="chart"
+      labelDisplayMode="Hidden"
+      name="Legend"
+      #legend>
+      </igx-data-legend>
+  </div>
+  <div class="container fill">
+      <igx-financial-chart
+      chartType="Line"
+      zoomSliderType="None"
+      dataToolTipIncludedColumns="Close, Change"
+      dataToolTipValueFormatMode="Currency"
+      dataToolTipValueFormatCulture="en-GB"
+      dataToolTipLabelDisplayMode="Hidden"
+      [dataSource]="multipleStocks"
+      name="chart"
+      #chart>
+      </igx-financial-chart>
+  </div>
+</div>
