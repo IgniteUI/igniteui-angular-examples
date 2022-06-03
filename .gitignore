@@ -26,6 +26,9 @@
 /browser/package-lock.json
 
 /porting/samples-old
+/porting/*.txt
+
+
 
 # IDEs and editors
 /.idea
