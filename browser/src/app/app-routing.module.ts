@@ -84,7 +84,7 @@ export class AppRoutingModule {
         router.events
             .filter((event) => event instanceof NavigationStart)
             .subscribe((event: NavigationStart) => {
-                console.log("app nav: " + event.url)
+                // console.log("app nav: " + event.url)
                 this.setOverflow(event.url);
             });
     }

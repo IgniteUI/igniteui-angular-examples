@@ -53,12 +53,13 @@ export class IndexComponent implements OnInit, AfterViewInit {
     private allNavItems: INavigationItem[] = [];
 
     constructor(private router: Router, private cdr: ChangeDetectorRef) {
+        console.log("index new");
         this.appRoutes = this.getAllSampleRoutes("/samples",
             router.config.filter((c) => c.path === "samples")[0].children, this.modulesRoutes);
     }
 
     public ngOnInit() {
-        console.log("ngOnInit IndexComponent");
+        console.log("index ngOnInit");
         const loadedRouteItem = this.appRoutes.filter(
             (route: any) => route.path === this.router.url)[0];
         if (loadedRouteItem) {
@@ -184,7 +185,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
         // Create all navigation items (headers)
         for (const appRoute of this.appRoutes) {
             const controlName = appRoute.parentName;
-            console.log("index nav item control: " + controlName);
+            // console.log("index nav item control: " + controlName);
             if (this.allNavItems.filter((item) => item.name === controlName).length <= 0) {
                 this.allNavItems.push({ name: controlName, children: [] });
             }
@@ -195,7 +196,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
         // Create children route items for each navigation item
         for (const appRoute of this.appRoutes) {
-            console.log("index nav item path: " + appRoute.path);
+            console.log("index nav item: " + appRoute.path);
             const controlName = appRoute.parentName;
             const navItem = this.allNavItems.filter((item) => item.name === controlName)[0];
             navItem.children.push({ path: appRoute.path, displayName: appRoute.displayName });
