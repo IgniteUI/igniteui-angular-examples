@@ -247,7 +247,7 @@ class WorkbookExportHelper extends ExportHelper {
             }
         }
         // only include the filter if we"re exporting all the data. if the data is filtered then
-        // it doesn"t make sense to export the filter
+        // it does not make sense to export the filter
         if (grid.filteringExpressionsTree && options.ignoreFiltering) {
             this.GetFilterExpressions(grid.filteringExpressionsTree as IFilteringExpressionsTree);
         }
