@@ -17,6 +17,7 @@ import { IgxLegendModule, IgxDoughnutChartModule } from 'igniteui-angular-charts
     BrowserAnimationsModule,
     FormsModule,
     IgxLegendModule,
+    IgxDoughnutChartModule
 ],
   providers: [],
   entryComponents: [],
