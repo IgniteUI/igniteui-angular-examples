@@ -1,10 +1,23 @@
 <div class="container sample">
-    <div class="container">
-        <igx-doughnut-chart height="100%" width="100%" >
-            <igx-ring-series [dataSource] = "data"
-                valueMemberPath="MarketShare"
-                labelMemberPath="Company">
-            </igx-ring-series>
-        </igx-doughnut-chart>
-    </div>
+
+  
+  <div class="legend-title">
+      Market Share of Tech Companies
+  </div>
+  
+  <div class="container fill">
+      <igx-doughnut-chart
+      name="chart"
+      #chart>
+          <igx-ring-series
+          [dataSource]="companyMarketShares"
+          valueMemberPath="value"
+          labelMemberPath="summary"
+          legendLabelMemberPath="category"
+          outlines="white"
+          name="series"
+          #series>
+          </igx-ring-series>
+      </igx-doughnut-chart>
+  </div>
 </div>

@@ -1,37 +1,36 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { CalendarSeasonsItem, CalendarSeasons } from './CalendarSeasons';
+import { CalendarMonthsItem, CalendarMonths } from './CalendarMonths';
+
+
 
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 
-    public months: any[];
-    public seasons: any[];
-
-    constructor() {
-
-        this.months = [
-            { Value: 1, Label: "December" },
-            { Value: 1, Label: "January" },
-            { Value: 1, Label: "February" },
-            { Value: 1, Label: "March" },
-            { Value: 1, Label: "April" },
-            { Value: 1, Label: "May" },
-            { Value: 1, Label: "June" },
-            { Value: 1, Label: "July" },
-            { Value: 1, Label: "August" },
-            { Value: 1, Label: "September" },
-            { Value: 1, Label: "October" },
-            { Value: 1, Label: "November" }
-        ];
-        this.seasons = [
-            { Value: 4, Label: "Winter" },
-            { Value: 4, Label: "Spring" },
-            { Value: 4, Label: "Summer" },
-            { Value: 4, Label: "Fall" }
-        ];
+    private _calendarSeasons: CalendarSeasons = null;
+    public get calendarSeasons(): CalendarSeasons {
+        if (this._calendarSeasons == null)
+        {
+            this._calendarSeasons = new CalendarSeasons();
+        }
+        return this._calendarSeasons;
     }
+    
+    private _calendarMonths: CalendarMonths = null;
+    public get calendarMonths(): CalendarMonths {
+        if (this._calendarMonths == null)
+        {
+            this._calendarMonths = new CalendarMonths();
+        }
+        return this._calendarMonths;
+    }
+    
+
 
 }
+
