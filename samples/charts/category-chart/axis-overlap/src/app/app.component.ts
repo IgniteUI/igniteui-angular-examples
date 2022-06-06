@@ -1,28 +1,39 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
+import { HighestGrossingMoviesItem, HighestGrossingMovies } from './HighestGrossingMovies';
 
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
+import { defineAllComponents } from 'igniteui-webcomponents';
+defineAllComponents();
 @Component({
-    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 
-    public data: any;
-    public AxisOverlapValue : number =1 ;
+    private _highestGrossingMovies: HighestGrossingMovies = null;
+    public get highestGrossingMovies(): HighestGrossingMovies {
+        if (this._highestGrossingMovies == null)
+        {
+            this._highestGrossingMovies = new HighestGrossingMovies();
+        }
+        return this._highestGrossingMovies;
+    }
+    
 
-    public OnXAxisOverlapChange(e : any) {
-        this.AxisOverlapValue = e.target.value;
+    private _componentRenderer: ComponentRenderer = null;
+    public get renderer(): ComponentRenderer {
+        if (this._componentRenderer == null) {
+            this._componentRenderer = new ComponentRenderer();
+            var context = this._componentRenderer.context;
+            PropertyEditorPanelDescriptionModule.register(context);
+            LegendDescriptionModule.register(context);
+            CategoryChartDescriptionModule.register(context);
+        }
+        return this._componentRenderer
     }
 
-    constructor() {
-        this.data = [
-            { Franchise: "Marvel Universe All Films", TotalWorldBoxOfficeRevenue: 22.55, HighestGrossingMovieInSeries: 2.8 },
-            { Franchise: "Star Wars", TotalWorldBoxOfficeRevenue: 10.32, HighestGrossingMovieInSeries: 2.07 },
-            { Franchise: "Harry Potter", TotalWorldBoxOfficeRevenue: 9.19, HighestGrossingMovieInSeries: 1.34 },
-            { Franchise: "Avengers", TotalWorldBoxOfficeRevenue: 7.76, HighestGrossingMovieInSeries: 2.8 },
-            { Franchise: "Spider Man", TotalWorldBoxOfficeRevenue: 7.22, HighestGrossingMovieInSeries: 1.28 },
-            { Franchise: "James Bond", TotalWorldBoxOfficeRevenue: 7.12, HighestGrossingMovieInSeries: 1.11 }
-        ];
-    }
 }
+

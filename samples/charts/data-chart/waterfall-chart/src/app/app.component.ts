@@ -1,23 +1,26 @@
-import { Component } from "@angular/core";
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { CompanyIncomeDataItem, CompanyIncomeData } from './CompanyIncomeData';
+
+
 
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 
-    public data = [
-        { Category: "Revenue", Value: 55, NetIncome: Number.NaN },
-        { Category: "Fixed Cost", Value: 45, NetIncome: Number.NaN },
-        { Category: "Research", Value: 35, NetIncome: Number.NaN },
-        { Category: "Marketing", Value: 30, NetIncome: Number.NaN },
-        { Category: "Sales", Value: 25, NetIncome: Number.NaN },
-        { Category: "Administration", Value: 20, NetIncome: Number.NaN },
-        { Category: "Total Costs", Value: 55, NetIncome: Number.NaN },
-        { Category: "Net Income", Value: Number.NaN, NetIncome: 20 }
-    ];
+    private _companyIncomeData: CompanyIncomeData = null;
+    public get companyIncomeData(): CompanyIncomeData {
+        if (this._companyIncomeData == null)
+        {
+            this._companyIncomeData = new CompanyIncomeData();
+        }
+        return this._companyIncomeData;
+    }
+    
 
-    constructor() { }
 
 }
+

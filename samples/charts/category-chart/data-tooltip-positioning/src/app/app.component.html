@@ -1,0 +1,25 @@
+<div class="container sample">
+
+  
+  <div class="legend-title">
+      Highest Grossing Movie Franchises
+  </div>
+  
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Column"
+      xAxisInterval="1"
+      yAxisLabelLeftMargin="0"
+      yAxisTitleLeftMargin="10"
+      yAxisTitleRightMargin="5"
+      yAxisTitle="Billions of U.S. Dollars"
+      dataToolTipGroupedPositionModeX="PinRight"
+      dataToolTipGroupedPositionModeY="PinTop"
+      [dataSource]="highestGrossingMovies"
+      toolTipType="Data"
+      crosshairsDisplayMode="None"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
+</div>

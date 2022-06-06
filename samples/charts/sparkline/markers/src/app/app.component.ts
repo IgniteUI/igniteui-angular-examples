@@ -1,59 +1,38 @@
-import { Component, ViewChild } from "@angular/core";
-import { IgxSparklineComponent } from "igniteui-angular-charts";
-import { Visibility } from "igniteui-angular-core";
-import { SharedData } from "./SharedData";
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ComponentRenderer, PropertyEditorPanelDescriptionModule, SparklineDescriptionModule } from 'igniteui-angular-core';
+import { SparklineMixedDataItem, SparklineMixedData } from './SparklineMixedData';
 
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
+import { defineAllComponents } from 'igniteui-webcomponents';
+defineAllComponents();
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 
-    public data: any[];
+    private _sparklineMixedData: SparklineMixedData = null;
+    public get sparklineMixedData(): SparklineMixedData {
+        if (this._sparklineMixedData == null)
+        {
+            this._sparklineMixedData = new SparklineMixedData();
+        }
+        return this._sparklineMixedData;
+    }
+    
 
-    @ViewChild("sparkline", { static: true })
-    public sparkline: IgxSparklineComponent;
-
-    constructor() {
-        this.data = SharedData.getPaddedDataForMarkers();
+    private _componentRenderer: ComponentRenderer = null;
+    public get renderer(): ComponentRenderer {
+        if (this._componentRenderer == null) {
+            this._componentRenderer = new ComponentRenderer();
+            var context = this._componentRenderer.context;
+            PropertyEditorPanelDescriptionModule.register(context);
+            SparklineDescriptionModule.register(context);
+        }
+        return this._componentRenderer
     }
 
-    public onMarkerCheckboxChanged(e: any) {
-        const selection = e.target.checked as boolean;
-
-        let visibility: Visibility;
-        if (selection) {
-            visibility = Visibility.Visible;
-        } else {
-            visibility = Visibility.Collapsed;
-        }
-
-        switch (e.target.id) {
-            case "High": {
-                this.sparkline.highMarkerVisibility = visibility;
-                break;
-            }
-            case "Low": {
-                this.sparkline.lowMarkerVisibility = visibility;
-                break;
-            }
-            case "First": {
-                this.sparkline.firstMarkerVisibility = visibility;
-                break;
-            }
-            case "Last": {
-                this.sparkline.lastMarkerVisibility = visibility;
-                break;
-            }
-            case "Negative": {
-                this.sparkline.negativeMarkerVisibility = visibility;
-                break;
-            }
-            case "All": {
-                this.sparkline.markerVisibility = visibility;
-                break;
-            }
-        }
-    }
 }
+

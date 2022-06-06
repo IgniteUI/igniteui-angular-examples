@@ -1,28 +1,59 @@
 <div class="container sample">
-    <div class="options vertical">
-        <span id="legendTitle">Distribution of Online Traffic Worldwide in 2019, by Device</span>
-        <igx-legend #legend orientation="Horizontal"></igx-legend>
-    </div>
-    <div class="container">
-        <igx-data-chart height="100%" width="100%" isVerticalZoomEnabled="false"
-            isHorizontalZoomEnabled="false" [dataSource]="data">
-            <igx-category-x-axis #xAxis [dataSource]="data" label="Category" gap="0.75"></igx-category-x-axis>
-            <igx-numeric-y-axis #yAxis minimumValue="0"></igx-numeric-y-axis>
 
-            <igx-stacked-100-column-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" showDefaultTooltip="true"
-                areaFillOpacity="1" [legend]="legend">
-                <igx-stacked-fragment-series valueMemberPath="Desktop" title="Desktop"></igx-stacked-fragment-series>
-                <igx-stacked-fragment-series valueMemberPath="Mobile" title="Mobile"></igx-stacked-fragment-series>
-                <igx-stacked-fragment-series valueMemberPath="Tablet" title="Tablet"></igx-stacked-fragment-series>
-            </igx-stacked-100-column-series>
-
-            <igx-point-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" valueMemberPath="DesktopMarker"
-                [markerTemplate]="getMarker()">
-            </igx-point-series>
-            <igx-point-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" valueMemberPath="MobileMarker"
-                [markerTemplate]="getMarker()"></igx-point-series>
-            <igx-point-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" valueMemberPath="TabletMarker"
-                [markerTemplate]="getMarker()"></igx-point-series>
-        </igx-data-chart>
-    </div>
+  
+  <div class="legend-title">
+      Distribution of Online Traffic Worldwide, by Device
+  </div>
+  <div class="legend">
+      <igx-legend
+      orientation="Horizontal"
+      name="legend"
+      #legend>
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      [legend]="legend"
+      name="chart"
+      #chart>
+          <igx-category-x-axis
+          [dataSource]="onlineTrafficByDevice"
+          gap="0.75"
+          label="category"
+          name="xAxis"
+          #xAxis>
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          minimumValue="0"
+          name="yAxis"
+          #yAxis>
+          </igx-numeric-y-axis>
+          <igx-stacked-100-column-series
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="onlineTrafficByDevice"
+          areaFillOpacity="1"
+          showDefaultTooltip="true"
+          name="Stacked100ColumnSeries"
+          #stacked100ColumnSeries>
+              <igx-stacked-fragment-series
+              name="s1"
+              #s1
+              valueMemberPath="desktop">
+              </igx-stacked-fragment-series>
+              <igx-stacked-fragment-series
+              name="s2"
+              #s2
+              valueMemberPath="mobile">
+              </igx-stacked-fragment-series>
+              <igx-stacked-fragment-series
+              name="s3"
+              #s3
+              valueMemberPath="tablet">
+              </igx-stacked-fragment-series>
+          </igx-stacked-100-column-series>
+      </igx-data-chart>
+  </div>
 </div>

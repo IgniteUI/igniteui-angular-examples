@@ -4,25 +4,26 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
-import { IgxDataChartCoreModule, IgxDataChartVerticalCategoryModule, IgxDataChartAnnotationModule, IgxLegendModule, IgxDataChartInteractivityModule, IgxCalloutLayerModule } from "igniteui-angular-charts";
 
+import { IgxDataChartCoreModule, IgxDataChartCategoryModule, IgxDataChartCategoryCoreModule, IgxDataChartInteractivityModule, IgxDataChartVerticalCategoryModule, IgxAnnotationLayerProxyModule, IgxCalloutLayerModule, IgxDataChartAnnotationModule } from 'igniteui-angular-charts';
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-
 ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     IgxDataChartCoreModule,
-    IgxDataChartVerticalCategoryModule,
-    IgxDataChartAnnotationModule,
-    IgxLegendModule,
+    IgxDataChartCategoryModule,
+    IgxDataChartCategoryCoreModule,
     IgxDataChartInteractivityModule,
-    IgxCalloutLayerModule
+    IgxDataChartVerticalCategoryModule,
+    IgxAnnotationLayerProxyModule,
+    IgxCalloutLayerModule,
+    IgxDataChartAnnotationModule
 ],
   providers: [],
   entryComponents: [],

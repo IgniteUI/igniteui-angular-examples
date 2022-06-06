@@ -1,30 +1,45 @@
 <div class="container sample">
-    <div class="options vertical">
-        <span id="legendTitle">Renewable Electricity Generated</span>
-        <div class="legend">
-            <igx-legend #Legend orientation="horizontal"></igx-legend>
-        </div>
 
-        <div class="overlay-right" >
-            <div class="options horizontal" >
-                <label class="options-label">Y - Axis Location </label>
-                <select class="options-select" selectedIndex=0 (change)=OnLabelsLocationChange($event) >
-                    <option>Outside Left</option>
-                    <option>Outside Right</option>
-                    <option>Inside Left</option>
-                    <option>Inside Right</option>
-                </select>
-          </div>
-        </div>
-    </div>
-    <div class="container">
-        <igx-category-chart height="100%" width="100%"
-            [dataSource]="data"
-            chartType="Line"
-            [legend]="Legend"
-            isHorizontalZoomEnabled="false"
-            isVerticalZoomEnabled="false"
-            [yAxisLabelLocation]="LabelsLocation">
-        </igx-category-chart>
-    </div>
+  <div class="options vertical">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="false"
+      name="propertyEditorPanel1"
+      #propertyEditorPanel1>
+          <igx-property-editor-property-description
+          propertyPath="YAxisLabelLocation"
+          label="Y Axis - Label Location"
+          primitiveValue="OutsideRight">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  <div class="legend">
+      <igx-legend
+      orientation="Horizontal"
+      name="Legend"
+      #legend>
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Line"
+      xAxisInterval="1"
+      yAxisTitle="Labels Location"
+      yAxisLabelLocation="OutsideRight"
+      [dataSource]="countryRenewableElectricity"
+      includedProperties="Year, Europe, China, USA"
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      computedPlotAreaMarginMode="Series"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
 </div>

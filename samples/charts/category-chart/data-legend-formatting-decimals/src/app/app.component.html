@@ -1,0 +1,35 @@
+<div class="container sample">
+
+  
+  <div class="legend-title">
+      Highest Grossing Movie Franchises
+  </div>
+  <div class="legend">
+      <igx-data-legend
+      valueFormatMinFractions="2"
+      valueFormatMode="Decimal"
+      [target]="chart"
+      unitsText="B"
+      name="Legend"
+      #legend>
+      </igx-data-legend>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Column"
+      xAxisInterval="1"
+      isCategoryHighlightingEnabled="true"
+      yAxisLabelLeftMargin="0"
+      yAxisTitleLeftMargin="10"
+      yAxisTitleRightMargin="5"
+      yAxisTitle="Billions of U.S. Dollars"
+      [dataSource]="highestGrossingMovies"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      toolTipType="None"
+      crosshairsDisplayMode="None"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
+</div>

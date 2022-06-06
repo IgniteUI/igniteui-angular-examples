@@ -1,21 +1,34 @@
 <div class="container sample">
-    <div class="options vertical">
-        <span id="legendTitle">Renewable Electricity Generated</span>
-        <igx-legend #legend orientation="horizontal"></igx-legend>
-    </div>
-    <div class="container">
-        <igx-category-chart height="100%" width="100%"
-            [dataSource]="data"
-            [legend]="legend"
-            chartType="line"
-            outlines = "#ee5879, #c4c4c4, #9af2e4"
-            brushes="#ee5879, #c4c4c4, #9af2e4"
-            markerBrushes =  "white"
-            markerOutlines="#ee5879, #c4c4c4, #9af2e4"
-            markerTypes="Circle"
-            yAxisTitle="TWh"
-            yAxisTitleLeftMargin="5"
-			computedPlotAreaMarginMode="series">
-        </igx-category-chart>
-    </div>
+
+  
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  <div class="legend">
+      <igx-legend
+      orientation="Horizontal"
+      name="Legend"
+      #legend>
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Line"
+      yAxisLabelLeftMargin="0"
+      yAxisTitleLeftMargin="10"
+      yAxisTitle="TWh"
+      [dataSource]="countryRenewableElectricity"
+      brushes="rgba(238, 88, 121, 1) rgba(196, 196, 196, 1) rgba(154, 242, 228, 1)"
+      outlines="rgba(238, 88, 121, 1) rgba(196, 196, 196, 1) rgba(154, 242, 228, 1)"
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      thickness="2"
+      markerBrushes="rgba(238, 88, 121, 1) rgba(196, 196, 196, 1) rgba(154, 242, 228, 1)"
+      markerOutlines="white"
+      computedPlotAreaMarginMode="Series"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
 </div>

@@ -1,46 +1,39 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ComponentRenderer, PropertyEditorPanelModel, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
+import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
 
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
+import { defineAllComponents } from 'igniteui-webcomponents';
+defineAllComponents();
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-    public data: any[];
+    private _countryRenewableElectricity: CountryRenewableElectricity = null;
+    public get countryRenewableElectricity(): CountryRenewableElectricity {
+        if (this._countryRenewableElectricity == null)
+        {
+            this._countryRenewableElectricity = new CountryRenewableElectricity();
+        }
+        return this._countryRenewableElectricity;
+    }
+    
 
-    public AxisMainStroke :  string = "#919191";
-    public AxisMajorStroke : string = "#474747";
-    public AxisMinorStroke : string = "#919191";
-
-    constructor() {
+    private _componentRenderer: ComponentRenderer = null;
+    public get renderer(): ComponentRenderer {
+        if (this._componentRenderer == null) {
+            this._componentRenderer = new ComponentRenderer();
+            var context = this._componentRenderer.context;
+            PropertyEditorPanelModel.register(context);
+            LegendDescriptionModule.register(context);
+            CategoryChartDescriptionModule.register(context);
+        }
+        return this._componentRenderer
     }
 
-    ngOnInit(): void {
-        this.data = [
-            { Year: "2009", Europe: 31, China: 21, USA: 19 },
-            { Year: "2010", Europe: 43, China: 26, USA: 24 },
-            { Year: "2011", Europe: 66, China: 29, USA: 28 },
-            { Year: "2012", Europe: 69, China: 32, USA: 26 },
-            { Year: "2013", Europe: 58, China: 47, USA: 38 },
-            { Year: "2014", Europe: 40, China: 46, USA: 31 },
-            { Year: "2015", Europe: 78, China: 50, USA: 19 },
-            { Year: "2016", Europe: 13, China: 90, USA: 52 },
-            { Year: "2017", Europe: 78, China: 132, USA: 50 },
-            { Year: "2018", Europe: 40, China: 134, USA: 34 },
-            { Year: "2019", Europe: 80, China: 96, USA: 38 }
-        ];
-    }
-
-    public OnAxisMainStrokeChange(e: any) {
-        this.AxisMainStroke = e.target.value;
-    }
-
-    public OnAxisMajorStrokeChange(e: any) {
-        this.AxisMajorStroke = e.target.value;
-    }
-
-    public OnAxisMinorStrokeChange(e: any) {
-        this.AxisMinorStroke = e.target.value;
-    }
 }
+

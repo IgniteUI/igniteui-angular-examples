@@ -1,21 +1,61 @@
 <div class="container sample">
-    <div class="options vertical" >
-        <label id="legendTitle">Where Online Shoppers Start Their Search</label>
-    </div>
 
-    <div class="container">
-        <igx-data-chart #chart isHorizontalZoomEnabled="false" isVerticalZoomEnabled="false" width="100%"
-            height="100%" [dataSource]="data" >
-
-            <igx-numeric-x-axis #xAxis interval=20 labelFormat="{0}%">
-            </igx-numeric-x-axis>
-            <igx-category-y-axis #yAxis label="Shop" [dataSource]="data" isInverted="true" gap="0.75">
-            </igx-category-y-axis>
-
-            <igx-bar-series [dataSource]="data" valueMemberPath="Percent" [xAxis]="xAxis" [yAxis]="yAxis" showDefaultTooltip="true"
-            isTransitionInEnabled="true"
-            isHighlightingEnabled="true">
-            </igx-bar-series>
-        </igx-data-chart>
-   </div>
+  
+  <div class="legend-title">
+      Where Online Shoppers Start Their Search
+  </div>
+  
+  <div class="container fill">
+      <igx-data-chart
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      name="Chart"
+      #chart>
+          <igx-category-y-axis
+          [dataSource]="onlineShoppingSearches"
+          gap="0.75"
+          isInverted="true"
+          label="shop"
+          name="yAxis"
+          #yAxis>
+          </igx-category-y-axis>
+          <igx-numeric-x-axis
+          interval="20"
+          labelFormat="{0}%"
+          name="xAxis"
+          #xAxis>
+          </igx-numeric-x-axis>
+          <igx-category-highlight-layer
+          name="CategoryHighlightLayer"
+          #categoryHighlightLayer>
+          </igx-category-highlight-layer>
+          <igx-bar-series
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          valueMemberPath="percent"
+          isTransitionInEnabled="true"
+          [dataSource]="onlineShoppingSearches"
+          isHighlightingEnabled="true"
+          showDefaultTooltip="true"
+          name="BarSeries1"
+          #barSeries1>
+          </igx-bar-series>
+          <igx-callout-layer
+          labelMemberPath="label"
+          xMemberPath="x"
+          yMemberPath="y"
+          contentMemberPath="label"
+          calloutTextColor="black"
+          calloutBackground="rgba(0, 0, 0, 0)"
+          calloutLeaderBrush="rgba(0, 0, 0, 0)"
+          [dataSource]="onlineShoppingSearches"
+          name="CalloutLayer1"
+          #calloutLayer1>
+          </igx-callout-layer>
+          <igx-data-tool-tip-layer
+          name="Tooltips"
+          #tooltips>
+          </igx-data-tool-tip-layer>
+      </igx-data-chart>
+  </div>
 </div>

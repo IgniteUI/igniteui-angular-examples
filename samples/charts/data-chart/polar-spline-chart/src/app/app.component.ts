@@ -1,13 +1,26 @@
-import { Component } from "@angular/core";
-import { SamplePolarData } from "./SamplePolarData";
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { BoatSailingDataItem, BoatSailingData } from './BoatSailingData';
+
+
 
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 
-    public data: any[] = SamplePolarData.create();
-    constructor() { }
+    private _boatSailingData: BoatSailingData = null;
+    public get boatSailingData(): BoatSailingData {
+        if (this._boatSailingData == null)
+        {
+            this._boatSailingData = new BoatSailingData();
+        }
+        return this._boatSailingData;
+    }
+    
+
+
 }
+

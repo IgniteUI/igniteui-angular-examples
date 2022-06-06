@@ -1,35 +1,38 @@
-import { Component, ViewChild, AfterViewInit } from "@angular/core";
-import { IgxSparklineComponent } from "igniteui-angular-charts";
-import { UnknownValuePlotting } from "igniteui-angular-core";
-import { SharedData } from "./SharedData";
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ComponentRenderer, PropertyEditorPanelDescriptionModule, SparklineDescriptionModule } from 'igniteui-angular-core';
+import { SparklineUnknownDataItem, SparklineUnknownData } from './SparklineUnknownData';
 
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
+import { defineAllComponents } from 'igniteui-webcomponents';
+defineAllComponents();
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
 
-    @ViewChild("sparkline", { static: true })
-    public sparkline: IgxSparklineComponent;
-
-    public data: any[];
-
-    constructor() {
-        this.data = SharedData.getSharedDataWithNullValues();
-    }
-
-    public onRangeVisibilityChanged(e: any) {
-        const selection = e.target.checked as boolean;
-
-        if (selection) {
-            this.sparkline.unknownValuePlotting = UnknownValuePlotting.LinearInterpolate;
-        } else {
-            this.sparkline.unknownValuePlotting = UnknownValuePlotting.DontPlot;
+    private _sparklineUnknownData: SparklineUnknownData = null;
+    public get sparklineUnknownData(): SparklineUnknownData {
+        if (this._sparklineUnknownData == null)
+        {
+            this._sparklineUnknownData = new SparklineUnknownData();
         }
+        return this._sparklineUnknownData;
+    }
+    
+
+    private _componentRenderer: ComponentRenderer = null;
+    public get renderer(): ComponentRenderer {
+        if (this._componentRenderer == null) {
+            this._componentRenderer = new ComponentRenderer();
+            var context = this._componentRenderer.context;
+            PropertyEditorPanelDescriptionModule.register(context);
+            SparklineDescriptionModule.register(context);
+        }
+        return this._componentRenderer
     }
 
-    public ngAfterViewInit(): void {
-        this.sparkline.unknownValuePlotting = UnknownValuePlotting.LinearInterpolate;
-    }
 }
+

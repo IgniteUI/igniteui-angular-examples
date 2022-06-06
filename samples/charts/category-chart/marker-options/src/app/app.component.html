@@ -1,49 +1,47 @@
 <div class="container sample">
-    <div class="options horizontal">
-        <label class="options-label">Chart Type: </label>
-        <select [(ngModel)]="chartType">
-            <option>Auto</option>
-            <option>Area</option>
-            <option>Line</option>
-            <option>Column</option>
-            <option>Point</option>
-            <option>Spline</option>
-            <option>SplineArea</option>
-            <option>StepArea</option>
-            <option>StepLine</option>
-            <option>Waterfall</option>
-        </select>
-        <label class="options-label">Marker Type: </label>
-        <select [(ngModel)]="markerType">
-            <option>Circle</option>
-            <option>Automatic</option>
-            <option>Triangle</option>
-            <option>Pyramid</option>
-            <option>Square</option>
-            <option>Diamond</option>
-            <option>Pentagon</option>
-            <option>Hexagon</option>
-            <option>Tetragram</option>
-            <option>Pentagram</option>
-            <option>Hexagram</option>
-            <option>None</option>
-        </select>
-    </div>
-    <div class="container">
-        <igx-category-chart height="100%" width="100%"
-            [dataSource]="data"
-            [chartType]="chartType"
-            yAxisMinimumValue="0"
-            yAxisMaximumValue="150"
-            yAxisTitle="TWh"
-            xAxisOverlap="0"
-            brushes="#4286f4, #e8b220, #11c111"
-            outlines="#4286f4, #e8b220, #11c111"
-            markerOutlines="#4286f4, #e8b220, #11c111"
-            markerBrushes="White"
-            [markerTypes]="markerType"
-            isTransitionInEnabled="true"
-			computedPlotAreaMarginMode="series">
-        </igx-category-chart>
-    </div>
+
+  <div class="options vertical">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="PropertyEditor"
+      #propertyEditor>
+          <igx-property-editor-property-description
+          propertyPath="ChartType"
+          label="Chart Type"
+          primitiveValue="Line"
+          name="ChartTypeEditor"
+          #chartTypeEditor>
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          dropDownNames="Circle, Automatic, Triangle, Pyramid, Square, Diamond, Pentagon, Hexagon, Tetragram, Pentagram, Hexagram, None"
+          primitiveValue="Circle"
+          [changed]="this.editorChangeUpdateMarkerType($event)"
+          propertyPath="MarkerTypeHandler"
+          label="Marker Type"
+          valueType="EnumValue"
+          shouldOverrideDefaultEditor="true"
+          dropDownValues="Circle, Automatic, Triangle, Pyramid, Square, Diamond, Pentagon, Hexagon, Tetragram, Pentagram, Hexagram, None"
+          name="MarkerTypeEditor"
+          #markerTypeEditor>
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Line"
+      [dataSource]="countryRenewableElectricity"
+      isSeriesHighlightingEnabled="true"
+      computedPlotAreaMarginMode="Series"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
 </div>

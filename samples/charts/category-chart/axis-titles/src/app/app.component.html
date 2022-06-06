@@ -1,27 +1,36 @@
 <div class="container sample">
-    <div class="options vertical">
-        <span id="legendTitle">Renewable Electricity Generated</span>
-        <div class="legend">
-            <igx-legend #Legend orientation="horizontal"></igx-legend>
-        </div>
 
-    </div>
-    <div class="container">
-        <igx-category-chart height="100%" width="100%"
-            [dataSource]="data"
-            chartType="Line"
-            [legend]="Legend"
-            isHorizontalZoomEnabled="false"
-            isVerticalZoomEnabled="false"
-            xAxisTitle="Year"
-            xAxisTitleTextColor="Gray"
-            xAxisTitleTextStyle="12pt Verdana"
-            xAxisTitleAngle="0"
-            yAxisTitle="Trillions of Watt-hours (Twh)"
-            yAxisTitleTextColor="Gray"
-            yAxisTitleTextStyle="12pt Verdana"
-            yAxisTitleAngle="90"
-            yAxisTitleLeftMargin="5"        >
-        </igx-category-chart>
-    </div>
+  
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  <div class="legend">
+      <igx-legend
+      orientation="Horizontal"
+      name="Legend"
+      #legend>
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Line"
+      yAxisTitleLeftMargin="5"
+      xAxisTitleTextColor="gray"
+      yAxisTitleTextColor="gray"
+      xAxisTitleTextStyle="10pt 'Titillium Web'"
+      yAxisTitleTextStyle="10pt 'Titillium Web'"
+      xAxisTitle="Year"
+      yAxisTitle="Trillions of Watt-hours (Twh)"
+      xAxisTitleAngle="0"
+      yAxisTitleAngle="90"
+      [dataSource]="countryRenewableElectricity"
+      includedProperties="Year, Europe, China, USA"
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      computedPlotAreaMarginMode="Series"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
 </div>

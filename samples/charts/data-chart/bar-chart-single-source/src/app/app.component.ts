@@ -1,23 +1,26 @@
-import { Component } from "@angular/core";
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { OnlineShoppingSearchesItem, OnlineShoppingSearches } from './OnlineShoppingSearches';
+
+
 
 @Component({
-  selector: "app-root",
-  styleUrls: ["./app.component.scss"],
-  templateUrl: "./app.component.html"
+    selector: "app-root",
+    styleUrls: ["./app.component.scss"],
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 
-    public data = [
+    private _onlineShoppingSearches: OnlineShoppingSearches = null;
+    public get onlineShoppingSearches(): OnlineShoppingSearches {
+        if (this._onlineShoppingSearches == null)
+        {
+            this._onlineShoppingSearches = new OnlineShoppingSearches();
+        }
+        return this._onlineShoppingSearches;
+    }
+    
 
-        { Shop: "Amazon",                      Percent: 63},
-        { Shop: "Search Engines",              Percent: 48},
-        { Shop: "Retailer Sites",              Percent: 33},
-        { Shop: "Other Marketplaces",          Percent: 25},
-        { Shop: "At the Website of the Brand", Percent: 21},
-        { Shop: "Comparison Sites",            Percent: 10},
-        { Shop: "Social Media",                Percent: 8 },
-        { Shop: "Other",                       Percent: 2 }
-    ];
 
-    constructor() { }
 }
+

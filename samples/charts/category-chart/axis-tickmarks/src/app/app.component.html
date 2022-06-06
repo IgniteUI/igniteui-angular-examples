@@ -1,31 +1,52 @@
 <div class="container sample">
-    <div class="options vertical">
-        <span id="legendTitle">Renewable Electricity Generated</span>
-        <div class="legend">
-            <igx-legend #legend orientation="horizontal"></igx-legend>
-        </div>
 
-        <div class="overlay-right" >
-            <div class="options horizontal" >
-                <label class="options-label" >X-Axis Tick Length</label>
-                <label class="options-value" >{{AxisTickLength}}</label>
-                <input class="options-slider" type="range" min="0" max="20" step="1" value="10" (input)="OnAxisTickLengthChange($event)"/>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <igx-category-chart height="100%" width="100%"
-                       legend="Legend"
-                       [dataSource]="data"
-                       chartType="Line"
-                       isHorizontalZoomEnabled="false"
-                       isVerticalZoomEnabled="false"
-                       [xAxisTickLength]="AxisTickLength"
-                       xAxisTickStrokeThickness="1"
-                       xAxisTickStroke="Gray"
-                       yAxisTickLength="0"
-                       yAxisTickStrokeThickness="0"
-                       yAxisTickStroke="Transparent">
-        </igx-category-chart>
-    </div>
+  <div class="options vertical">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="propertyEditorPanel1"
+      #propertyEditorPanel1>
+          <igx-property-editor-property-description
+          propertyPath="XAxisTickLength"
+          label="X Axis Tick Length"
+          valueType="Slider"
+          shouldOverrideDefaultEditor="true"
+          primitiveValue="10"
+          min="0"
+          max="20">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  <div class="legend">
+      <igx-legend
+      orientation="Horizontal"
+      name="Legend"
+      #legend>
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Line"
+      xAxisTickLength="10"
+      yAxisTickLength="0"
+      xAxisTickStroke="gray"
+      yAxisTickStroke="rgba(0, 0, 0, 0)"
+      xAxisTickStrokeThickness="1"
+      yAxisTickStrokeThickness="0"
+      [dataSource]="countryRenewableElectricity"
+      includedProperties="Year, Europe, China, USA"
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      computedPlotAreaMarginMode="Series"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
 </div>

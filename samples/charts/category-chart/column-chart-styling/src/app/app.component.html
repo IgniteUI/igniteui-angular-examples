@@ -1,28 +1,37 @@
 <div class="container sample">
-    <div class="options vertical">
-        <span id="legendTitle">Percentage Change in Energy Generation in 2019</span>
-        <div class="legend">
-            <igx-legend #legend orientation="horizontal" ></igx-legend>
-        </div>
-    </div>
 
-    <div class="container">
-             <igx-category-chart height="100%" width="100%"
-                           [legend]="legend"
-                           [dataSource]="data"
-                           chartType="Column"
-                           brushes  ="#9de772 #8b5bb1 #6db1ff #ee5879 #f8a15f"
-                           outlines ="white"
-                           thickness="2"
-                           isHorizontalZoomEnabled="false"
-                           isVerticalZoomEnabled="false"
-                           isSeriesHighlightingEnabled="true"
-                           (seriesAdded)="onSeriesAdded($event)"
-                           xAxisGap=".5"
-                           xAxisMajorStroke="LightGray"
-                           yAxisInterval="10"
-                           yAxisMinimumValue="-20"
-                           yAxisMaximumValue="30">
-            </igx-category-chart>
-    </div>
+  
+  <div class="legend-title">
+      Percentage Change in Energy Generation
+  </div>
+  <div class="legend">
+      <igx-legend
+      orientation="Horizontal"
+      name="Legend"
+      #legend>
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Column"
+      xAxisGap="0.5"
+      yAxisInterval="10"
+      yAxisMinimumValue="-20"
+      yAxisMaximumValue="30"
+      isCategoryHighlightingEnabled="true"
+      xAxisMajorStroke="lightgray"
+      [dataSource]="energyRenewableConsumption"
+      brushes="rgba(157, 231, 114, 1) rgba(139, 91, 177, 1) rgba(109, 177, 255, 1) rgba(238, 88, 121, 1) rgba(248, 161, 95, 1)"
+      outlines="white"
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      isSeriesHighlightingEnabled="true"
+      highlightingMode="FadeOthersSpecific"
+      highlightingBehavior="NearestItemsAndSeries"
+      crosshairsDisplayMode="None"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
 </div>

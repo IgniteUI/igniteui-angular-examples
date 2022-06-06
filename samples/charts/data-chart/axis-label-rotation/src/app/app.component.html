@@ -1,0 +1,63 @@
+<div class="container sample">
+
+  <div class="options vertical">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="DataChart"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="propertyEditorPanel1"
+      #propertyEditorPanel1>
+          <igx-property-editor-property-description
+          propertyPath="ShouldConsiderAutoRotationForInitialLabels"
+          label="Rotate Labels?"
+          shouldOverrideDefaultEditor="true"
+          primitiveValue="True">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          dropDownValues="None, SizeChanging, SizeChangingAndZoom"
+          primitiveValue="SizeChangingAndZoom"
+          propertyPath="autoMarginAndAngleUpdateMode"
+          label="AutoMarginAndAngleUpdateMode:"
+          valueType="EnumValue"
+          shouldOverrideDefaultEditor="true"
+          dropDownNames="None, SizeChanging, SizeChangingAndZoom">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  
+  
+  <div class="container fill">
+      <igx-data-chart
+      isHorizontalZoomEnabled="true"
+      isVerticalZoomEnabled="true"
+      shouldAutoExpandMarginForInitialLabels="true"
+      shouldConsiderAutoRotationForInitialLabels="true"
+      autoMarginAndAngleUpdateMode="SizeChangingAndZoom"
+      name="chart"
+      #chart>
+          <igx-category-x-axis
+          [dataSource]="temperatureAverageData"
+          useEnhancedIntervalManagement="true"
+          enhancedIntervalPreferMoreCategoryLabels="true"
+          labelExtent="60"
+          label="month"
+          name="xAxis"
+          #xAxis>
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis>
+          </igx-numeric-y-axis>
+          <igx-column-series
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          valueMemberPath="temperature"
+          [dataSource]="temperatureAverageData"
+          name="colSeries1"
+          #colSeries1>
+          </igx-column-series>
+      </igx-data-chart>
+  </div>
+</div>

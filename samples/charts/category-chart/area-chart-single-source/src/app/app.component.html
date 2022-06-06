@@ -1,16 +1,24 @@
 <div class="container sample">
 
-    <div class="options vertical">
-        <label id="legendTitle">Renewable Electricity Generated</label>
-    </div>
-        <igx-category-chart height="100%" width="100%"
-            [dataSource]="data"
-            chartType="area"
-            yAxisTitle="TWh"
-            yAxisTitleLeftMargin="10"
-            yAxisTitleRightMargin="5"
-            yAxisLabelLeftMargin="0"
-			computedPlotAreaMarginMode="series">
-        </igx-category-chart>
-
+  
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Area"
+      yAxisLabelLeftMargin="0"
+      yAxisTitleLeftMargin="10"
+      yAxisTitleRightMargin="5"
+      yAxisTitle="TWh"
+      [dataSource]="countryRenewableElectricity"
+      includedProperties="Year, Europe"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      computedPlotAreaMarginMode="Series"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
 </div>

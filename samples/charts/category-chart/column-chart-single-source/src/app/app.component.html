@@ -1,18 +1,26 @@
 <div class="container sample">
-    <div class="options vertical">
-        <span id="legendTitle">NYC Average Temperature</span>
-    </div>
-    <div class="container">
-        <igx-category-chart height="100%" width="100%"
-                [dataSource]="data"
-                chartType="Column"
-                xAxisInterval="1"
-                yAxisTitle="Temperature in Degrees Celsius"
-                yAxisTitleLeftMargin="10"
-                yAxisTitleRightMargin="5"
-                yAxisLabelLeftMargin="0"
-                isHorizontalZoomEnabled="false"
-                isVerticalZoomEnabled="false">
-        </igx-category-chart>
-    </div>
+
+  
+  <div class="legend-title">
+      Average Temperature Range in New York
+  </div>
+  
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Column"
+      isCategoryHighlightingEnabled="true"
+      yAxisLabelLeftMargin="0"
+      yAxisTitleLeftMargin="10"
+      yAxisTitleRightMargin="5"
+      yAxisTitle="Temperature in Degrees Celsius"
+      [dataSource]="temperatureAverageData"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      highlightingMode="FadeOthersSpecific"
+      highlightingBehavior="NearestItemsAndSeries"
+      crosshairsDisplayMode="None"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
 </div>

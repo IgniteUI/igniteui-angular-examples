@@ -1,39 +1,39 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
+import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
 
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
+import { defineAllComponents } from 'igniteui-webcomponents';
+defineAllComponents();
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 
-    public data: any[];
-    public xAxisGapValue: number = 1;
-    public xAxisMaximumGap: number = 1.5;
+    private _countryRenewableElectricity: CountryRenewableElectricity = null;
+    public get countryRenewableElectricity(): CountryRenewableElectricity {
+        if (this._countryRenewableElectricity == null)
+        {
+            this._countryRenewableElectricity = new CountryRenewableElectricity();
+        }
+        return this._countryRenewableElectricity;
+    }
+    
 
-    constructor() {
-        this.initData();
+    private _componentRenderer: ComponentRenderer = null;
+    public get renderer(): ComponentRenderer {
+        if (this._componentRenderer == null) {
+            this._componentRenderer = new ComponentRenderer();
+            var context = this._componentRenderer.context;
+            PropertyEditorPanelDescriptionModule.register(context);
+            LegendDescriptionModule.register(context);
+            CategoryChartDescriptionModule.register(context);
+        }
+        return this._componentRenderer
     }
 
-    public initData() {
-        this.data = [
-            { Month: "JAN", Temperature: 3 },
-            { Month: "FEB", Temperature: 4 },
-            { Month: "MAR", Temperature: 9 },
-            { Month: "APR", Temperature: 15 },
-            { Month: "MAY", Temperature: 21 },
-            { Month: "JUN", Temperature: 26 },
-            { Month: "JUL", Temperature: 29 },
-            { Month: "AUG", Temperature: 28 },
-            { Month: "SEP", Temperature: 24 },
-            { Month: "OCT", Temperature: 18 },
-            { Month: "NOV", Temperature: 11 },
-            { Month: "DEC", Temperature: 5 }
-        ];
-    }
-
-    public OnXAxisGapSliderChange(e: any) {
-        const value = e.target.value;
-        this.xAxisGapValue = Number.parseFloat(value);
-    }
 }
+

@@ -1,46 +1,63 @@
 <div class="container sample">
-    <div class="options vertical">
-        <span id="legendTitle">Ronaldo vs. Messi Player Stats</span>
-        <igx-legend #legend orientation="Horizontal"></igx-legend>
-    </div>
-    <div class="container">
-        <igx-data-chart #chart
-                width="100%"
-                height="100%"
-                [dataSource]="data"
-                [legend]=legend>
-            <igx-category-angle-axis #angleAxis
-                    name="angleAxis"
-                    label="Attribute">
-            </igx-category-angle-axis>
-            <igx-numeric-radius-axis #radiusAxis
-                    name="radiusAxis"
-                    innerRadiusExtentScale="0.1"
-                    minimumValue="0"
-                    interval="2">
-            </igx-numeric-radius-axis>
 
-            <igx-radial-line-series name="series1"
-                    valueMemberPath="RonaldoValue"
-                    [valueAxis]="radiusAxis"
-                    [angleAxis]="angleAxis"
-                    title="Ronaldo"
-                    thickness="3"
-                    areaFillOpacity="0.5"
-                    showDefaultTooltip="true"
-                    markerType="Circle">
-            </igx-radial-line-series>
-
-            <igx-radial-line-series name="series2"
-                    valueMemberPath="MessiValue"
-                    [valueAxis]="radiusAxis"
-                    [angleAxis]="angleAxis"
-                    thickness="3"
-                    areaFillOpacity="0.5"
-                    showDefaultTooltip="true"
-                    title="Messi"
-                    markerType="Circle">
-            </igx-radial-line-series>
-        </igx-data-chart >
-    </div>
+  
+  <div class="legend-title">
+      Ronaldo vs Messi Player Stats
+  </div>
+  <div class="legend">
+      <igx-legend
+      orientation="Horizontal"
+      name="Legend"
+      #legend>
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      [legend]="legend"
+      name="chart"
+      #chart>
+          <igx-category-angle-axis
+          [dataSource]="footballPlayerStats"
+          label="attribute"
+          name="angleAxis"
+          #angleAxis>
+          </igx-category-angle-axis>
+          <igx-numeric-radius-axis
+          innerRadiusExtentScale="0.1"
+          minimumValue="0"
+          maximumValue="10"
+          interval="2"
+          name="radiusAxis"
+          #radiusAxis>
+          </igx-numeric-radius-axis>
+          <igx-radial-line-series
+          valueMemberPath="ronaldoValue"
+          [angleAxis]="angleAxis"
+          [valueAxis]="radiusAxis"
+          markerType="Circle"
+          [dataSource]="footballPlayerStats"
+          thickness="3"
+          areaFillOpacity="0.8"
+          showDefaultTooltip="true"
+          title="Ronaldo"
+          name="RadialLineSeries1"
+          #radialLineSeries1>
+          </igx-radial-line-series>
+          <igx-radial-line-series
+          [dataSource]="footballPlayerStats"
+          [angleAxis]="angleAxis"
+          [valueAxis]="radiusAxis"
+          valueMemberPath="messiValue"
+          showDefaultTooltip="true"
+          areaFillOpacity="0.8"
+          thickness="3"
+          title="Messi"
+          markerType="Circle"
+          name="RadialLineSeries2"
+          #radialLineSeries2>
+          </igx-radial-line-series>
+      </igx-data-chart>
+  </div>
 </div>

@@ -1,32 +1,57 @@
 <div class="container sample">
-    <div class="options vertical">
-        <span id="legendTitle">Renewable Electricity Generated</span>
-        <div class="legend">
-            <igx-legend #Legend orientation="horizontal"></igx-legend>
-        </div>
 
-        <div class="overlay-right" >
-            <div class="options horizontal" >
-                <label class="options-label">Y - Axis Minimum Value </label>
-                <label class="options-value"><span [textContent]="yAxisMinValue" ></span></label>
-                <input type="range" min="0" max="100" step="10" value="0" (input)="OnYAxisMinValueChanged($event)" />
-          </div>
-          <div class="options horizontal" >
-                <label class="options-label">Y - Axis Maximum Value </label>
-                <label class="options-value"><span [textContent]="yAxisMaxValue" ></span></label>
-                <input type="range" min="100" max="200" step="10" value="150" (input)="OnYAxisMaxValueChanged($event)" />
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <igx-category-chart height="100%" width="100%"
-            [dataSource]="data"
-            chartType="Line"
-            [legend]="Legend"
-            isHorizontalZoomEnabled="false"
-            isVerticalZoomEnabled="false"
-            [yAxisMinimumValue]="yAxisMinValue"
-            [yAxisMaximumValue]="yAxisMaxValue">
-        </igx-category-chart>
-    </div>
+  <div class="options vertical">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="propertyEditorPanel1"
+      #propertyEditorPanel1>
+          <igx-property-editor-property-description
+          propertyPath="YAxisMinimumValue"
+          label="Y Axis Minimum Value"
+          valueType="EnumValue"
+          shouldOverrideDefaultEditor="true"
+          dropDownNames="0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100"
+          dropDownValues="0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100"
+          primitiveValue="0">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          dropDownValues="100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200"
+          primitiveValue="150"
+          propertyPath="YAxisMaximumValue"
+          label="Y Axis Maximum Value"
+          valueType="EnumValue"
+          shouldOverrideDefaultEditor="true"
+          dropDownNames="100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Highest Grossing Movie Franchises
+  </div>
+  <div class="legend">
+      <igx-legend
+      orientation="Horizontal"
+      name="Legend"
+      #legend>
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Line"
+      yAxisMinimumValue="0"
+      yAxisMaximumValue="150"
+      [dataSource]="countryRenewableElectricity"
+      includedProperties="Year, Europe, China, USA"
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      computedPlotAreaMarginMode="Series"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
 </div>

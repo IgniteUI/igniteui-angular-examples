@@ -1,42 +1,38 @@
-import { Component, ViewChild, AfterViewInit } from "@angular/core";
-import { IgxSparklineComponent } from "igniteui-angular-charts";
-import { Visibility } from "igniteui-angular-core";
-import { SharedData } from "./SharedData";
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ComponentRenderer, PropertyEditorPanelDescriptionModule, SparklineDescriptionModule } from 'igniteui-angular-core';
+import { SparklineMixedDataItem, SparklineMixedData } from './SparklineMixedData';
 
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
+import { defineAllComponents } from 'igniteui-webcomponents';
+defineAllComponents();
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
 
-    public data: any[];
-
-    @ViewChild("sparkline", { static: true })
-    public sparkline: IgxSparklineComponent;
-    constructor() {
-        this.data = SharedData.getSharedData();
-    }
-
-    public onRangeVisibilityChanged(e: any) {
-        const selection = e.target.checked as boolean;
-
-        if (selection) {
-            this.sparkline.normalRangeVisibility = Visibility.Visible;
-        } else {
-            this.sparkline.normalRangeVisibility = Visibility.Collapsed;
+    private _sparklineMixedData: SparklineMixedData = null;
+    public get sparklineMixedData(): SparklineMixedData {
+        if (this._sparklineMixedData == null)
+        {
+            this._sparklineMixedData = new SparklineMixedData();
         }
+        return this._sparklineMixedData;
+    }
+    
+
+    private _componentRenderer: ComponentRenderer = null;
+    public get renderer(): ComponentRenderer {
+        if (this._componentRenderer == null) {
+            this._componentRenderer = new ComponentRenderer();
+            var context = this._componentRenderer.context;
+            PropertyEditorPanelDescriptionModule.register(context);
+            SparklineDescriptionModule.register(context);
+        }
+        return this._componentRenderer
     }
 
-    public onMinSliderChanged(e: any) {
-        this.sparkline.normalRangeMinimum = e.target.value;
-    }
-
-    public onMaxSliderChanged(e: any) {
-        this.sparkline.normalRangeMaximum = e.target.value;
-    }
-
-    public ngAfterViewInit(): void {
-        this.sparkline.normalRangeVisibility = Visibility.Visible;
-    }
 }
+

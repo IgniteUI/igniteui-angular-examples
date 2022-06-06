@@ -1,0 +1,54 @@
+<div class="container sample">
+
+  
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart>
+          <igx-category-x-axis
+          [dataSource]="countryRenewableElectricity"
+          label="year"
+          name="xAxis"
+          #xAxis>
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          title="TWh"
+          name="yAxis"
+          #yAxis>
+          </igx-numeric-y-axis>
+          <igx-line-series
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          valueMemberPath="uSA"
+          [dataSource]="countryRenewableElectricity"
+          name="LineSeries1"
+          #lineSeries1>
+          </igx-line-series>
+          <igx-callout-layer
+          labelMemberPath="label"
+          xMemberPath="index"
+          yMemberPath="value"
+          calloutCornerRadius="10"
+          [dataSource]="countryRenewableCallouts"
+          name="CalloutLayer1"
+          #calloutLayer1>
+          </igx-callout-layer>
+          <igx-final-value-layer
+          axisAnnotationBackgroundCornerRadius="100">
+          </igx-final-value-layer>
+          <igx-crosshair-layer
+          isAxisAnnotationEnabled="true"
+          xAxisAnnotationBackgroundCornerRadius="100"
+          yAxisAnnotationBackgroundCornerRadius="100">
+          </igx-crosshair-layer>
+          <igx-data-tool-tip-layer
+          name="Tooltips"
+          #tooltips>
+          </igx-data-tool-tip-layer>
+      </igx-data-chart>
+  </div>
+</div>

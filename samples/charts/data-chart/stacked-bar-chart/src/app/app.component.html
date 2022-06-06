@@ -1,22 +1,65 @@
 <div class="container sample">
-    <div class="options vertical">
-        <span id="legendTitle">Renewable Energy Consumption</span>
-        <igx-legend #legend orientation="horizontal"></igx-legend>
-    </div>
 
-    <div class="container">
-        <igx-data-chart #chart width="100%" height="100%" [dataSource]="data">
-
-            <igx-numeric-x-axis #xAxis name="yAxis" title="TWh"></igx-numeric-x-axis>
-            <igx-category-y-axis #yAxis name="xAxis" label="Location" isInverted=true></igx-category-y-axis>
-
-            <igx-stacked-bar-series [xAxis]="xAxis" [yAxis]="yAxis" name="series1">
-                <igx-stacked-fragment-series valueMemberPath="Hydro" title="Hydro"></igx-stacked-fragment-series>
-                <igx-stacked-fragment-series valueMemberPath="Wind" title="Wind"></igx-stacked-fragment-series>
-                <igx-stacked-fragment-series valueMemberPath="Solar" title="Solar"></igx-stacked-fragment-series>
-                <igx-stacked-fragment-series valueMemberPath="Other" title="Other"></igx-stacked-fragment-series>
-            </igx-stacked-bar-series>
-
-        </igx-data-chart>
-    </div>
+  
+  <div class="legend-title">
+      Renewable Energy Consumption
+  </div>
+  <div class="legend">
+      <igx-legend
+      orientation="Horizontal"
+      name="legend"
+      #legend>
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      name="chart"
+      #chart>
+          <igx-category-y-axis
+          [dataSource]="energyRenewableConsumption"
+          gap="0.75"
+          isInverted="true"
+          label="location"
+          name="yAxis"
+          #yAxis>
+          </igx-category-y-axis>
+          <igx-numeric-x-axis
+          minimumValue="0"
+          title="TWh"
+          name="xAxis"
+          #xAxis>
+          </igx-numeric-x-axis>
+          <igx-stacked-bar-series
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="energyRenewableConsumption"
+          areaFillOpacity="1"
+          showDefaultTooltip="true"
+          name="StackedBarSeries"
+          #stackedBarSeries>
+              <igx-stacked-fragment-series
+              name="s1"
+              #s1
+              valueMemberPath="hydro">
+              </igx-stacked-fragment-series>
+              <igx-stacked-fragment-series
+              name="s2"
+              #s2
+              valueMemberPath="wind">
+              </igx-stacked-fragment-series>
+              <igx-stacked-fragment-series
+              name="s3"
+              #s3
+              valueMemberPath="solar">
+              </igx-stacked-fragment-series>
+              <igx-stacked-fragment-series
+              name="s4"
+              #s4
+              valueMemberPath="other">
+              </igx-stacked-fragment-series>
+          </igx-stacked-bar-series>
+      </igx-data-chart>
+  </div>
 </div>

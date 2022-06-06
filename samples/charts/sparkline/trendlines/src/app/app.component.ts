@@ -1,25 +1,38 @@
-import { Component, ViewChild } from "@angular/core";
-import { IgxSparklineComponent } from "igniteui-angular-charts";
-import { SharedData } from "./SharedData";
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ComponentRenderer, PropertyEditorPanelDescriptionModule, SparklineDescriptionModule } from 'igniteui-angular-core';
+import { SparklineMixedDataItem, SparklineMixedData } from './SparklineMixedData';
 
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
+import { defineAllComponents } from 'igniteui-webcomponents';
+defineAllComponents();
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 
-    public data: any[];
+    private _sparklineMixedData: SparklineMixedData = null;
+    public get sparklineMixedData(): SparklineMixedData {
+        if (this._sparklineMixedData == null)
+        {
+            this._sparklineMixedData = new SparklineMixedData();
+        }
+        return this._sparklineMixedData;
+    }
+    
 
-    @ViewChild("sparkline", { static: true })
-    public sparkline: IgxSparklineComponent;
-
-    constructor() {
-        this.data = SharedData.getSharedData();
+    private _componentRenderer: ComponentRenderer = null;
+    public get renderer(): ComponentRenderer {
+        if (this._componentRenderer == null) {
+            this._componentRenderer = new ComponentRenderer();
+            var context = this._componentRenderer.context;
+            PropertyEditorPanelDescriptionModule.register(context);
+            SparklineDescriptionModule.register(context);
+        }
+        return this._componentRenderer
     }
 
-    public onTrendlineChanged(e: any) {
-        const selection = e.target.value.toString();
-        this.sparkline.trendLineType = selection;
-    }
 }
+

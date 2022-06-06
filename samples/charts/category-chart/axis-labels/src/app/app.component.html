@@ -1,41 +1,75 @@
 <div class="container sample">
-    <div class="options vertical">
-        <span id="legendTitle">Renewable Electricity Generated</span>
-        <div class="legend">
-            <igx-legend #Legend orientation="horizontal"></igx-legend>
-        </div>
 
-        <div class="overlay-right" >
-            <div class="options horizontal" >
-                <label class="options-label">X - Axis Label Angle </label>
-                <label class="options-value"><span [textContent]="XAxisLabelAngle" ></span></label>
-                <input type="range" min="0" max="270" step="10" value="0" (input)="onXAxisLabelAngleChange($event)" />
-          </div>
-            <div class="options horizontal" >
-                <label class="options-label">Y - Axis Label Angle </label>
-                <label class="options-value"><span [textContent]="YAxisLabelAngle" ></span></label>
-                <input type="range" min="-90" max="90" step="10" value="0" (input)="onYAxisLabelAngleChange($event)" />
-
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <igx-category-chart height="100%" width="100%"
-            [dataSource]="data"
-            chartType="Line"
-            [legend]="Legend"
-            isHorizontalZoomEnabled="false"
-            isVerticalZoomEnabled="false"
-            [xAxisLabelAngle]="XAxisLabelAngle"
-            [yAxisLabelAngle]="YAxisLabelAngle"
-            xAxisLabelTextColor="Gray"
-            xAxisLabelTextStyle="10pt 'Titillium Web'"
-            xAxisLabelTopMargin="5"
-            yAxisLabelTextColor="Gray"
-            yAxisLabelTextStyle="10pt 'Titillium Web'"
-            yAxisLabelRightMargin="5"
-            yAxisLabelLocation="OutsideRight"
-        >
-        </igx-category-chart>
-    </div>
+  <div class="options vertical">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="propertyEditorPanel1"
+      #propertyEditorPanel1>
+          <igx-property-editor-property-description
+          propertyPath="XAxisLabelAngle"
+          label="X Axis Label Angle"
+          valueType="EnumValue"
+          shouldOverrideDefaultEditor="true"
+          dropDownNames="0, 45, 90, 135, 180, 225, 270"
+          dropDownValues="0, 45, 90, 135, 180, 225, 270"
+          primitiveValue="0">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          dropDownValues="-90, -45, 0, 45, 90"
+          primitiveValue="0"
+          propertyPath="YAxisLabelAngle"
+          label="Y Axis Label Angle"
+          valueType="EnumValue"
+          shouldOverrideDefaultEditor="true"
+          dropDownNames="-90, -45, 0, 45, 90">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          dropDownValues="red, green"
+          primitiveValue="red"
+          propertyPath="XAxisLabelTextColor"
+          label="Y Axis Label Color"
+          valueType="EnumValue"
+          shouldOverrideDefaultEditor="true"
+          dropDownNames="red, green">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  <div class="legend">
+      <igx-legend
+      orientation="Horizontal"
+      name="Legend"
+      #legend>
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Line"
+      xAxisLabelTopMargin="5"
+      yAxisLabelRightMargin="5"
+      xAxisLabelTextColor="gray"
+      yAxisLabelTextColor="gray"
+      xAxisLabelTextStyle="10pt 'Titillium Web'"
+      yAxisLabelTextStyle="10pt 'Titillium Web'"
+      xAxisLabelAngle="0"
+      yAxisLabelAngle="0"
+      yAxisLabelLocation="OutsideRight"
+      titleTopMargin="10"
+      topMargin="20"
+      [dataSource]="countryRenewableElectricity"
+      includedProperties="Year, Europe, China, USA"
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      computedPlotAreaMarginMode="Series"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
 </div>

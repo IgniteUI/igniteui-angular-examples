@@ -1,16 +1,47 @@
 <div class="container sample">
-    <div class="options vertical">
-        <label id="legendTitle">Renewable Electricity Generated</label>
-    </div>
-    <igx-data-chart height="100%" width="100%" >
-        <igx-category-x-axis #xAxis [dataSource]="data" label="Year"></igx-category-x-axis>
-        <igx-numeric-y-axis #yAxis title="TWh" labelLocation="OutsideRight"></igx-numeric-y-axis>
 
-        <igx-line-series [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data" valueMemberPath="USA">
-        </igx-line-series>
-
-        <igx-callout-layer [dataSource]="calloutDataSource" xMemberPath="Index" yMemberPath="Value"
-            labelMemberPath="Label" calloutLeaderBrush="Black" calloutOutline="Black" calloutBackground="Orange"
-            calloutTextColor="Black" calloutStrokeThickness="2"></igx-callout-layer>
-    </igx-data-chart>
+  
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart>
+          <igx-category-x-axis
+          [dataSource]="countryRenewableElectricity"
+          label="year"
+          name="xAxis"
+          #xAxis>
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          title="TWh"
+          labelLocation="OutsideRight"
+          name="yAxis"
+          #yAxis>
+          </igx-numeric-y-axis>
+          <igx-line-series
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          valueMemberPath="uSA"
+          [dataSource]="countryRenewableElectricity"
+          name="LineSeries1"
+          #lineSeries1>
+          </igx-line-series>
+          <igx-callout-layer
+          labelMemberPath="label"
+          xMemberPath="index"
+          yMemberPath="value"
+          calloutTextColor="black"
+          calloutBackground="orange"
+          calloutOutline="black"
+          calloutLeaderBrush="black"
+          calloutStrokeThickness="2"
+          [dataSource]="countryRenewableCallouts"
+          name="CalloutLayer1"
+          #calloutLayer1>
+          </igx-callout-layer>
+      </igx-data-chart>
+  </div>
 </div>

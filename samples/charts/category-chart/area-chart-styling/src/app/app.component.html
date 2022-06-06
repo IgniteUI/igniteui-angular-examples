@@ -1,24 +1,36 @@
 <div class="container sample">
-    <div class="options vertical">
-        <span id="legendTitle">Renewable Electricity Generated</span>
-        <igx-legend #legend orientation="horizontal"></igx-legend>
-    </div>
-    <div class="container">
-        <igx-category-chart height="100%" width="100%"
-            [dataSource]="data"
-            chartType="area"
-            [legend]="legend"
-            brushes="#8ce7d9, #ee5879, #735656"
-            outlines="#8ce7d9, #ee5879, #735656"
-            markerBrushes="white"
-            markerOutlines="#8ce7d9, #ee5879, #735656"
-            markerTypes="Square"
-            toolTipType="category"
-            thickness="2"
-            yAxisTitle="TWh"
-            yAxisTitleLeftMargin="5"
-            yAxisLabelLeftMargin="0"
-			computedPlotAreaMarginMode="series">
-        </igx-category-chart>
-    </div>
+
+  
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  <div class="legend">
+      <igx-legend
+      orientation="Horizontal"
+      name="Legend"
+      #legend>
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Area"
+      yAxisLabelLeftMargin="0"
+      yAxisTitleLeftMargin="10"
+      yAxisTitle="TWh"
+      [dataSource]="countryRenewableElectricity"
+      includedProperties="Year, Europe, China, USA"
+      brushes="rgba(140, 231, 217, 1) rgba(238, 88, 121, 1) rgba(115, 86, 86, 1)"
+      outlines="rgba(140, 231, 217, 1) rgba(238, 88, 121, 1) rgba(115, 86, 86, 1)"
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      thickness="2"
+      markerBrushes="white"
+      markerOutlines="rgba(140, 231, 217, 1) rgba(238, 88, 121, 1) rgba(115, 86, 86, 1)"
+      computedPlotAreaMarginMode="Series"
+      toolTipType="Category"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
 </div>

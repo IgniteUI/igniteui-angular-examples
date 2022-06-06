@@ -1,31 +1,89 @@
 <div class="container sample">
-    <div class="options horizontal">
-        <label class="options-item"><input id="First"    type="checkbox" checked=true (change)="onMarkerCheckboxChanged($event)" />First Markers</label>
-        <label class="options-item"><input id="High"     type="checkbox" checked=true (change)="onMarkerCheckboxChanged($event)" />High Markers</label>
-        <label class="options-item"><input id="Low"      type="checkbox" checked=true (change)="onMarkerCheckboxChanged($event)" />Low Markers</label>
-        <label class="options-item"><input id="Negative" type="checkbox" checked=true (change)="onMarkerCheckboxChanged($event)" />Negative Markers</label>
-        <label class="options-item"><input id="Last"     type="checkbox" checked=true (change)="onMarkerCheckboxChanged($event)" />Last Markers</label>
-        <label class="options-item"><input id="All"      type="checkbox" checked=true (change)="onMarkerCheckboxChanged($event)" />Other Markers</label>
-    </div>
-    <div class="container">
-        <igx-sparkline #sparkline height="100%" width="100%"
-            [dataSource]="data"
-            valueMemberPath="Value"
-            displayType="Line"
-            minimum=-3
-            maximum=8
-            markerVisibility="Visible"
-            highMarkerVisibility="Visible"
-            lowMarkerVisibility="Visible"
-            firstMarkerVisibility="Visible"
-            lastMarkerVisibility="Visible"
-            negativeMarkerVisibility="Visible"
-            markerSize=10
-            firstMarkerSize=10
-            lastMarkerSize=10
-            lowMarkerSize=10
-            highMarkerSize=10
-            negativeMarkerSize=10>
-        </igx-sparkline>
-    </div>
-</div >
+
+  <div class="options vertical">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="Sparkline"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="propertyEditorPanel1"
+      #propertyEditorPanel1>
+          <igx-property-editor-property-description
+          propertyPath="FirstMarkerVisibility"
+          label="First Markers"
+          valueType="EnumValue"
+          shouldOverrideDefaultEditor="true"
+          dropDownNames="Visible, Collapsed"
+          dropDownValues="Visible, Collapsed"
+          primitiveValue="Visible">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          dropDownValues="Visible, Collapsed"
+          primitiveValue="Visible"
+          propertyPath="HighMarkerVisibility"
+          label="High Markers"
+          valueType="EnumValue"
+          dropDownNames="Visible, Collapsed">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          dropDownValues="Visible, Collapsed"
+          primitiveValue="Visible"
+          propertyPath="LowMarkerVisibility"
+          label="Low Markers"
+          valueType="EnumValue"
+          dropDownNames="Visible, Collapsed">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          dropDownValues="Visible, Collapsed"
+          primitiveValue="Visible"
+          propertyPath="NegativeMarkerVisibility"
+          label="Negative Markers"
+          valueType="EnumValue"
+          dropDownNames="Visible, Collapsed">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          dropDownValues="Visible, Collapsed"
+          primitiveValue="Visible"
+          propertyPath="LastMarkerVisibility"
+          label="Last Markers"
+          valueType="EnumValue"
+          dropDownNames="Visible, Collapsed">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          dropDownValues="Visible, Collapsed"
+          primitiveValue="Visible"
+          propertyPath="MarkerVisibility"
+          label="All Markers"
+          valueType="EnumValue"
+          dropDownNames="Visible, Collapsed">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  
+  
+  <div class="container fill">
+      <igx-sparkline
+      markerVisibility="Visible"
+      negativeMarkerVisibility="Visible"
+      firstMarkerVisibility="Visible"
+      lastMarkerVisibility="Visible"
+      lowMarkerVisibility="Visible"
+      highMarkerVisibility="Visible"
+      markerSize="10"
+      firstMarkerSize="10"
+      lastMarkerSize="10"
+      highMarkerSize="10"
+      lowMarkerSize="10"
+      negativeMarkerSize="10"
+      minimum="-3"
+      maximum="8"
+      [dataSource]="sparklineMixedData"
+      valueMemberPath="value"
+      labelMemberPath="label"
+      displayType="Line"
+      name="chart"
+      #chart>
+      </igx-sparkline>
+  </div>
+</div>

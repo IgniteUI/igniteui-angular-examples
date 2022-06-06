@@ -1,32 +1,26 @@
-import { Component } from "@angular/core";
-import { SamplePolarData } from "./SamplePolarData";
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { BoatSailingDataItem, BoatSailingData } from './BoatSailingData';
+
+
 
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 
-    public data: any[] ;
-
-    constructor() {
-
-        this.initData();
+    private _boatSailingData: BoatSailingData = null;
+    public get boatSailingData(): BoatSailingData {
+        if (this._boatSailingData == null)
+        {
+            this._boatSailingData = new BoatSailingData();
+        }
+        return this._boatSailingData;
     }
+    
 
-    public initData(){
 
-        this.data = [
-            { Direction: 0,   BoatSpeed: 70,  WindSpeed: 90 },
-            { Direction: 45,  BoatSpeed: 35,  WindSpeed: 65 },
-            { Direction: 90,  BoatSpeed: 25,  WindSpeed: 45 },
-            { Direction: 135, BoatSpeed: 15,  WindSpeed: 25 },
-            { Direction: 180, BoatSpeed:  0,  WindSpeed: 0  },
-            { Direction: 225, BoatSpeed: 15,  WindSpeed: 25 },
-            { Direction: 270, BoatSpeed: 25,  WindSpeed: 45 },
-            { Direction: 315, BoatSpeed: 35,  WindSpeed: 65 },
-            { Direction: 360, BoatSpeed: 70,  WindSpeed: 90 }
-        ];
-    }
 }
+
