@@ -1,21 +1,26 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { EnergyGlobalDemandItem, EnergyGlobalDemand } from './EnergyGlobalDemand';
+
+
 
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 
-    public data: any;
-
-    constructor() {
-        this.data = [
-            { Value: 25, Label: "Residential" },
-            { Value: 12, Label: "Heating" },
-            { Value: 11, Label: "Lighting" },
-            { Value: 18, Label: "Other" },
-            { Value: 37, Label: "Cooling" }
-        ];
+    private _energyGlobalDemand: EnergyGlobalDemand = null;
+    public get energyGlobalDemand(): EnergyGlobalDemand {
+        if (this._energyGlobalDemand == null)
+        {
+            this._energyGlobalDemand = new EnergyGlobalDemand();
+        }
+        return this._energyGlobalDemand;
     }
+    
+
+
 }
+
