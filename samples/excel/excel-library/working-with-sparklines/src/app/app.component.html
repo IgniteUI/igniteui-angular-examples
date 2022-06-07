@@ -1,7 +1,6 @@
 <div class="sample-wrapper container">
     <div class="options">
         <input type="checkbox" id="exportAsTable" [(ngModel)]="exportAsTable">
-        <label for="exportAsTable">Export As Table </label>
         <button (click)="exportGrid()">Export to Excel</button>
     </div>
     <igx-grid #grid [data]="data" [autoGenerate]="false" height="500px" width="100%">

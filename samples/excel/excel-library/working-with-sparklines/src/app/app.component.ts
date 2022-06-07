@@ -3,12 +3,10 @@ import { IgxGridComponent } from "igniteui-angular";
 import { WorkbookFormat } from "igniteui-angular-excel";
 import { SparklineType } from "igniteui-angular-excel";
 import { Workbook } from "igniteui-angular-excel";
-import { WorkbookExportService } from "./ExcelExporter";
 import { ExcelUtility } from "./ExcelUtility";
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ WorkbookExportService ],
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
@@ -18,7 +16,6 @@ export class AppComponent implements OnInit {
     @ViewChild("grid", { read: IgxGridComponent, static: true })
     public grid: IgxGridComponent;
     public data: any[];
-    public exportAsTable: boolean = true;
 
     constructor() {
     }

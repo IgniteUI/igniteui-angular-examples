@@ -1,26 +1,19 @@
 import { Component, ComponentFactoryResolver, Injector, OnInit } from "@angular/core";
-import { IgxGridComponent } from "igniteui-angular";
-import { TextFormatMode } from "igniteui-angular-excel";
 import { Workbook } from "igniteui-angular-excel";
 import { WorkbookFormat } from "igniteui-angular-excel";
-import { WorksheetTable } from "igniteui-angular-excel";
-import { WorkbookExportService } from "./ExcelExporter";
 import { ExcelUtility } from "./ExcelUtility";
 
 @Component({
-    providers: [ WorkbookExportService ],
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
 })
 export class AppComponent implements OnInit {
 
-    // openPlaceholder = "Choose Excel File:";
     public canSave = false;
     public wb: Workbook;
     public worksheetTables: string[];
     public selectedTable: string;
-    // public data: any[];
 
     constructor(private resolver: ComponentFactoryResolver, private injector: Injector) {
     }

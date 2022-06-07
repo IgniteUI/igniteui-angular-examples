@@ -24,8 +24,6 @@ export class AppComponent implements AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        // TODO bind excel data to the chart
-        // this.chart.dataSource = this.data;
     }
 
     public initData(): void {

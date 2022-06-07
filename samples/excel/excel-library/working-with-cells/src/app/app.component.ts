@@ -7,11 +7,9 @@ import { Workbook } from "igniteui-angular-excel";
 import { WorkbookFormat } from "igniteui-angular-excel";
 import { Worksheet } from "igniteui-angular-excel";
 import { WorksheetCellComment } from "igniteui-angular-excel";
-import { WorkbookExportService } from "./ExcelExporter";
 import { ExcelUtility } from "./ExcelUtility";
 
 @Component({
-    providers: [ WorkbookExportService ],
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"
