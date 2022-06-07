@@ -63,7 +63,7 @@ function getSampleFolder(dirPath) {
     return ret;
 }
 // C:\REPOS\GitInternalDocs\igniteui-angular-examples\samples\charts\data-chart\axis-sharing/
-// returns                                         ../src/app/charts/data-chart/axis-sharing/
+// returns                                     ../src/samples/charts/data-chart/axis-sharing/
 function getOutputPath(dirPath) {
     var ret = getSamplePath(dirPath);
     ret = ret.replace("../samples/", "./src/samples/")
@@ -72,6 +72,9 @@ function getOutputPath(dirPath) {
 
 // NOTE you can comment out strings in this array to run these function only on a subset of samples
 var sampleSourcePaths = [
+    // sampleRoot + 'charts/doughnut-chart/overview/package.json',
+    // sampleRoot + 'charts/category-chart/area-chart-multiple-sources/package.json',
+
     sampleRoot + 'charts/category-chart/**/package.json',
     sampleRoot + 'charts/data-chart/**/package.json',
     sampleRoot + 'charts/doughnut-chart/**/package.json',
@@ -138,16 +141,23 @@ function getSampleInfo(samplePath, sampleCallback, sampleFile) {
     // info.SandboxUrlEdit = "";     //     https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/data-chart/axis-sharing
     // info.SandboxUrlShort = "",    //     https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/data-chart/axis-sharing
 
-    info.SourceComponentHTML = "";        // e.g. ./samples/charts/data-chart/axis-sharing/src/app/app.component.html
-    info.SourceComponentSCSS = "";        // e.g. ./samples/charts/data-chart/axis-sharing/src/app/app.component.scss
-    info.SourceComponentTS = "";          // e.g. ./samples/charts/data-chart/axis-sharing/src/app/app.component.ts
-    info.SourceModuleTS = "";             // e.g. ./samples/charts/data-chart/axis-sharing/src/app/app.module.ts
-    info.SourceDataFiles = [];            // e.g. ./samples/charts/data-chart/axis-sharing/src/app/SampleFinancialData.ts
+    info.SourceComponentHTML = "";        // e.g. ./samples/charts/data-chart/axis-sharing/src/app.component.html
+    info.SourceComponentSCSS = "";        // e.g. ./samples/charts/data-chart/axis-sharing/src/app.component.scss
+    info.SourceComponentTS = "";          // e.g. ./samples/charts/data-chart/axis-sharing/src/app.component.ts
+    info.SourceModuleTS = "";             // e.g. ./samples/charts/data-chart/axis-sharing/src/app.module.ts
+    info.SourceDataFiles = [];            // e.g. ./samples/charts/data-chart/axis-sharing/src/SampleFinancialData.ts
     info.SourceFiles = [];  // all above
 
     // getting path to files in a given sample's source path:
     gulp.src([
+          info.SourcePath + "/src/*.*",
           info.SourcePath + "/src/app/*.*",
+    "!" + info.SourcePath + "/src/index.html",
+    "!" + info.SourcePath + "/src/main.ts",
+    "!" + info.SourcePath + "/src/polyfills.ts",
+    "!" + info.SourcePath + "/src/styles.scss",
+    "!" + info.SourcePath + "/src/typings.d.ts",
+    "!" + info.SourcePath + "/src/config/*.*",
     "!" + info.SourcePath + "/node_modules/**",
     ])
     .pipe(es.map(function(file, fileCallback) {
@@ -155,18 +165,18 @@ function getSampleInfo(samplePath, sampleCallback, sampleFile) {
         var filePath = getSamplePath(file.dirname + "/" + file.basename);
         //log("getSampleInfo " + filePath);
 
-        if (filePath.indexOf('/app/app.module.ts') >= 0) {
+        if (filePath.indexOf('/app.module.ts') >= 0) {
             info.SourceModuleTS = filePath;
             var fileContent = file.contents.toString();
             getSampleModules(fileContent, info);
         }
-        else if (filePath.indexOf('/app/app.component.html') >= 0) {
+        else if (filePath.indexOf('/app.component.html') >= 0) {
             info.SourceComponentHTML = filePath;
         }
-        else if (filePath.indexOf('/app/app.component.ts') >= 0) {
+        else if (filePath.indexOf('/app.component.ts') >= 0) {
             info.SourceComponentTS = filePath;
         }
-        else if (filePath.indexOf('/app/app.component.scss') >= 0) {
+        else if (filePath.indexOf('/app.component.scss') >= 0) {
             info.SourceComponentSCSS = filePath;
         }
         else { // data files, .e.g. SampleFinancialData.ts
@@ -289,6 +299,8 @@ function copySamples(cb) {
         var group = info.SampleGroup;
         var control = info.SampleControl;
         var importComponent = 'import { ' + info.SampleClassName + ' } from ' + '"./' + info.SampleFolder + '/app.component";';
+
+        // log("copySamples " + importComponent);
 
         if (routingStorage[group] === undefined) {
             routingStorage[group] = {}
@@ -452,7 +464,7 @@ function copySamples(cb) {
         data.Modules.sort();
         data.Imports.sort();
 
-        log("generating samples' control: " + data.Path + ' ' + data.Modules.length + ' modules ' +  data.Imports.length + ' imports');
+        // log("generating samples' control: " + data.Path + ' ' + data.Modules.length + ' modules ' +  data.Imports.length + ' imports');
         var ret = "";
         ret += "/* tslint:disable */ \r\n\r\n";
         for (const line of data.Imports) {
@@ -504,7 +516,7 @@ function copySamples(cb) {
         data.Modules.sort();
         data.Imports.sort();
 
-        log("generating group module:   " + data.Path + ' ' + data.Modules.length + ' modules ' +  data.Imports.length + ' imports');
+        // log("generating group module:   " + data.Path + ' ' + data.Modules.length + ' modules ' +  data.Imports.length + ' imports');
         var ret = "/* tslint:disable */ \n\n";
         for (const line of data.Imports) {
             ret += line + "\r\n";
@@ -535,7 +547,7 @@ function copySamples(cb) {
 
         // generating ./src/samples/GROUP/routing-data.ts
         var routingOutputPath = data.Output + routingDataFile + '.ts';
-        log("generating group routing data: " + routingOutputPath);
+        // log("generating group routing data: " + routingOutputPath);
         var routingSamples = [];
         var routingComponents = [];
         for(var routing in data.Samples) {
@@ -563,7 +575,7 @@ function copySamples(cb) {
 
         // generating ./src/samples/GROUP/routing-modules.ts
         var routingModulePath = data.Output + 'routing-modules.ts';
-        log("generating group routing module: " + routingModulePath);
+        // log("generating group routing module: " + routingModulePath);
         var routingExportName = 'RoutesFor' + utils.toTitleCase(group);
         var routingModules = "/* tslint:disable */ \r\n\r\n";
         routingModules += 'import { NgModule } from "@angular/core";\r\n';
@@ -603,7 +615,7 @@ function copySamples(cb) {
     //console.log('appModuleLines ' + appModuleLines.length);
     let autoInsertStart = -1;
     let autoInsertEnd = -1;
-    log('updating ' + appModuleFile)
+    // log('updating ' + appModuleFile)
 
     for (let i = 0; i < appModuleLines.length; i++) {
         let line = appModuleLines[i];
@@ -636,7 +648,7 @@ function copySamples(cb) {
     var appIndexLines = appIndexContent.split('\r\n');
     let appIndexRoutingImportStart = -1;
     let appIndexRoutingImportEnd = -1;
-    log('updating ' + appIndexFile)
+    // log('updating ' + appIndexFile)
 
     let appIndexRoutingArrayStart = -1;
     let appIndexRoutingArrayEnd = -1;
@@ -699,7 +711,7 @@ function updateCodeViewer(cb) {
         var sampleFiles = [];
 
         var codeViewPath = outputFolder + info.SampleRoutePath + ".json";
-        log("generating: " + codeViewPath);
+        // log("generating: " + codeViewPath);
 
         for (const filePath of info.SourceFiles) {
             var codeViewItem = {
@@ -813,7 +825,7 @@ function listSamples(cb) {
 
 function testFileParsing(cb) {
     const repoPath   = "../../igniteui-live-editing-samples/angular-demos-dv/";
-    var filePath = repoPath + "charts/category-chart-highlighting/src/app/app.module.ts"
+    var filePath = repoPath + "charts/category-chart-highlighting/src/app.module.ts"
     var endLine = '\r\n';
     //var filePath = "./src/samples/charts/samples-n-line.ts";
     var fileContent = utils.fileRead(filePath);
