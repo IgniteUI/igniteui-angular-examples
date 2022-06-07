@@ -1,0 +1,209 @@
+// CSS Reset, comment out if not required or using a different module
+// @import '~minireset.css/minireset';
+
+@import '~igniteui-angular/lib/core/styles/themes/index';
+@include igx-core();
+@include igx-theme(
+    $default-palette,
+    $exclude: (
+        'bullet-graph',
+        'linear-gauge',
+        'radial-gauge',
+        'category-chart',
+        'data-chart',
+        'doughnut-chart',
+        'financial-chart',
+        'funnel-chart',
+        'geo-map',
+        'pie-chart',
+        'shape-chart',
+        'sparkline'));
+
+/* autoprefixer grid: on */
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.sample-wrapper {
+    // width: inherit;
+    width: 100%;
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+    background: transparent;
+}
+
+.sample-content {
+    display: flex;
+    flex-grow: 1;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding: 0;
+    -webkit-animation: fade-in .3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    -moz-animation: fade-in .3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in .3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.sample-column {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1 0 25%;
+    align-content: flex-start;
+    margin: 16px;
+    min-width: 280px;
+}
+
+.sample-title {
+    color: #0375be;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.sample-title .light {
+    font-weight: 400;
+}
+
+.sample-description {
+    font-size: 14px;
+    font-weight: normal;
+    color: #717171;
+}
+
+@-webkit-keyframes color-change-2x {
+    0% {
+        background: #fdf8f0;
+    }
+    100% {
+        background: #f6e7ec;
+    }
+}
+
+@keyframes color-change-2x {
+    0% {
+        background: #fdf8f0;
+    }
+    100% {
+        background: #f6e7ec;
+    }
+}
+
+@-webkit-keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.headerAlignStyle {
+    text-align: right !important;
+}
+
+// $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);
+
+// .fin-dark-theme {
+//     @include igx-dark-theme($green-palette);
+//      background: #333;
+
+//      ::-moz-placeholder {
+//          opacity: 1;
+//      }
+//  }
+
+// .dark-theme {
+//     background: #333;
+//     color: #fff;
+//     @include igx-dark-theme($green-palette);
+// }
+
+// added to fix SB layout:
+.nav-bar {
+    background: #09f;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-bar > div {
+    // background: #c300ff;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-bar > nav {
+    // background: #ff0000;
+    display: flex;
+    flex-direction: row;
+}
+
+.igx-navbar__left {
+    // background: rgb(255, 136, 0);
+    display: flex;
+    flex-direction: row;
+}
+
+.igx-navbar__left > igx-icon {
+    align-self: center;
+    padding-right: 1rem;
+}
+
+.igx-navbar__left > h1 {
+    margin-block-start: 0.3em;
+    margin-block-end: 0.3em;
+}
+
+.nav-sidebar {
+    // max-height: 500px;
+    // height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+// .sample {
+//     box-sizing: border-box;
+// }
+
+.nav-bar-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: 0.009375rem;
+    text-transform: none;
+    line-height: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-bottom: 0;
+}
+
+.igx-input-group__bundle {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-search-box {
+    padding: 1rem;
+    max-width: 260px;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-search-box > * {
+    display: flex;
+    flex-direction: row;
+    padding-left: 1rem;
+}
