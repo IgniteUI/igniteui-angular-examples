@@ -47,6 +47,7 @@
     "@infragistics/igniteui-angular-maps": "22.1.0-dev.30",
     "@infragistics/igniteui-angular-spreadsheet": "22.1.0-dev.30",
     "@infragistics/igniteui-angular-spreadsheet-chart-adapter": "22.1.0-dev.30",
+    "igniteui-webcomponents": "^3.2.0",
     "intl": "1.2.5",
     "jszip": "3.7.1",
     "minireset.css": "0.0.6",
