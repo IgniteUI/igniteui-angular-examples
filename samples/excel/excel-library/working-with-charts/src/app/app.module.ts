@@ -3,10 +3,9 @@ import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
-import { IgxButtonModule } from "igniteui-angular";
+import { IgxGridModule } from "igniteui-angular";
 import { IgxCategoryChartModule } from "igniteui-angular-charts";
-import { ExcelUtility } from "./ExcelUtility";
-
+import { IgxExcelModule } from "igniteui-angular-excel";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -18,8 +17,9 @@ import { ExcelUtility } from "./ExcelUtility";
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    IgxButtonModule,
-    IgxCategoryChartModule
+    IgxGridModule,
+    IgxCategoryChartModule,
+    IgxExcelModule
 ],
   providers: [],
   entryComponents: [],
