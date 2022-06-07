@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ComponentRenderer, PropertyEditorPanelModel, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
+import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
 
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
@@ -32,7 +32,7 @@ export class AppComponent {
         if (this._componentRenderer == null) {
             this._componentRenderer = new ComponentRenderer();
             var context = this._componentRenderer.context;
-            PropertyEditorPanelModel.register(context);
+            PropertyEditorPanelDescriptionModule.register(context);
             LegendDescriptionModule.register(context);
             CategoryChartDescriptionModule.register(context);
         }
