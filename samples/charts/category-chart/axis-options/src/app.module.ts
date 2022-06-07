@@ -6,7 +6,6 @@ import { AppComponent } from "./app.component";
 
 
 import { IgxCategoryChartModule } from 'igniteui-angular-charts';
-import { IgxPropertyEditorPanelModule } from 'igniteui-angular-layouts';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -17,8 +16,7 @@ import { IgxPropertyEditorPanelModule } from 'igniteui-angular-layouts';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    IgxCategoryChartModule,
-    IgxPropertyEditorPanelModule
+    IgxCategoryChartModule
 ],
   providers: [],
   entryComponents: [],

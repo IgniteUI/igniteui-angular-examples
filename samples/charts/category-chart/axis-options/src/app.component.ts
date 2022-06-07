@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { PropertyEditorPanelDescriptionModule } from 'igniteui-angular-core';
 import { OlympicMedalsTopCountriesItem, OlympicMedalsTopCountries } from './OlympicMedalsTopCountries';
 
 
@@ -26,10 +25,6 @@ export class AppComponent {
     }
     
 
-    PropertyEditorPanelDescriptionModule.register(context);
-    }
-    return this._componentRenderer
-    }
 
 }
 
