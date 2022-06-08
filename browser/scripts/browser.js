@@ -89,6 +89,7 @@ var sampleSourcePaths = [
     sampleRoot + 'gauges/bullet-graph/**/package.json',
     sampleRoot + 'gauges/linear-gauge/**/package.json',
     sampleRoot + 'gauges/radial-gauge/**/package.json',
+
     // sampleRoot + 'grids/**/package.json',
     // sampleRoot + 'layouts/**/package.json',
     // sampleRoot + 'editors/**/package.json',
@@ -203,7 +204,9 @@ function getSampleModules(fileContent, info) {
 
         if (line.indexOf('import ') >= 0 && line.indexOf('Module') >= 0) {
 
-            var importLine = line.replace('\r\n', '')
+            var importLine = line.replace('\r\n', '');
+            importLine = importLine.split('\'').join('"');
+
             if (importLine.indexOf(',') >= 0) {
                 //var importModules = importLine.replace('import {');
 
