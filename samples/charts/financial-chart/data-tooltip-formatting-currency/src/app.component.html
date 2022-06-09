@@ -1,0 +1,21 @@
+<div class="container sample">
+
+  
+  
+  
+  <div class="container fill">
+      <igx-financial-chart
+      chartType="Line"
+      zoomSliderType="None"
+      dataToolTipIncludedColumns="Close, Change"
+      dataToolTipExcludedColumns="High, Low, Open, Volume"
+      dataToolTipValueFormatMode="Currency"
+      dataToolTipValueFormatCulture="en-GB"
+      dataToolTipLabelDisplayMode="Hidden"
+      [dataSource]="multipleStocks"
+      toolTipType="Data"
+      name="chart"
+      #chart>
+      </igx-financial-chart>
+  </div>
+</div>

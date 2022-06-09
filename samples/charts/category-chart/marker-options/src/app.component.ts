@@ -43,7 +43,7 @@ export class AppComponent {
     }
 
     
-    public editorChangeUpdateMarkerType(sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs): void {
+    public editorChangeUpdateMarkerType({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
         var item = sender as IgxPropertyEditorPropertyDescriptionComponent;
         var chart = this.chart;
             

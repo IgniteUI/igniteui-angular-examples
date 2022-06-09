@@ -46,15 +46,15 @@
           #radialAreaSeries1>
           </igx-radial-area-series>
           <igx-radial-area-series
-          valueMemberPath="messiValue"
+          [dataSource]="footballPlayerStats"
           [angleAxis]="angleAxis"
           [valueAxis]="radiusAxis"
-          markerType="Circle"
-          [dataSource]="footballPlayerStats"
-          thickness="3"
-          areaFillOpacity="0.5"
+          valueMemberPath="messiValue"
           showDefaultTooltip="true"
+          areaFillOpacity="0.5"
+          thickness="3"
           title="Messi"
+          markerType="Circle"
           name="RadialAreaSeries2"
           #radialAreaSeries2>
           </igx-radial-area-series>

@@ -19,7 +19,7 @@
           <igx-property-editor-property-description
           dropDownNames="Circle, Automatic, Triangle, Pyramid, Square, Diamond, Pentagon, Hexagon, Tetragram, Pentagram, Hexagram, None"
           primitiveValue="Circle"
-          [changed]="this.editorChangeUpdateMarkerType($event)"
+          (changed)="this.editorChangeUpdateMarkerType($event)"
           propertyPath="MarkerTypeHandler"
           label="Marker Type"
           valueType="EnumValue"

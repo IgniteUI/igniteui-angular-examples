@@ -1,0 +1,19 @@
+<div class="container sample">
+
+  
+  
+  
+  <div class="container fill">
+      <igx-financial-chart
+      isHorizontalZoomEnabled="true"
+      chartType="Candle"
+      zoomSliderType="None"
+      isVerticalZoomEnabled="true"
+      dataToolTipIncludedColumns="Open, Close, High, Low, Change"
+      [dataSource]="multipleStocks"
+      toolTipType="Data"
+      name="chart"
+      #chart>
+      </igx-financial-chart>
+  </div>
+</div>

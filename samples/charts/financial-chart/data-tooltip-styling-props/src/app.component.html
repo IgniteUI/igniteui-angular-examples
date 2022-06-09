@@ -1,0 +1,26 @@
+<div class="container sample">
+
+  
+  
+  
+  <div class="container fill">
+      <igx-financial-chart
+      isHorizontalZoomEnabled="true"
+      zoomSliderType="None"
+      isVerticalZoomEnabled="true"
+      yAxisTitle="Thousands of Dollars ($)"
+      dataToolTipIncludedColumns="Open, Close, High, Low, Change"
+      dataToolTipValueFormatMode="Currency"
+      dataToolTipValueTextColor="rgba(0, 173, 3, 1)"
+      dataToolTipValueTextStyle="normal bold 14px Verdana"
+      dataToolTipUnitsText="K"
+      dataToolTipUnitsTextColor="rgba(0, 173, 3, 1)"
+      dataToolTipUnitsTextStyle="normal bold 14px Verdana"
+      dataToolTipLabelTextColor="rgba(74, 74, 74, 1)"
+      [dataSource]="stockGoogle"
+      toolTipType="Data"
+      name="chart"
+      #chart>
+      </igx-financial-chart>
+  </div>
+</div>
