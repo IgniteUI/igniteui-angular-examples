@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDet
 import { HealthDataForGermanyItem, HealthDataForGermany } from './HealthDataForGermany';
 import { HealthDataForFranceItem, HealthDataForFrance } from './HealthDataForFrance';
 import { HealthDataForNorwayItem, HealthDataForNorway } from './HealthDataForNorway';
+import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxScatterLineSeriesComponent } from 'igniteui-angular-charts';
 
 
 
@@ -16,6 +17,21 @@ export class AppComponent {
     public constructor(private _detector: ChangeDetectorRef) {
 
     }
+
+    @ViewChild("legend", { static: true } )
+    private legend: IgxLegendComponent
+    @ViewChild("chart", { static: true } )
+    private chart: IgxDataChartComponent
+    @ViewChild("xAxis", { static: true } )
+    private xAxis: IgxNumericXAxisComponent
+    @ViewChild("yAxis", { static: true } )
+    private yAxis: IgxNumericYAxisComponent
+    @ViewChild("scatterLineSeries1", { static: true } )
+    private scatterLineSeries1: IgxScatterLineSeriesComponent
+    @ViewChild("scatterLineSeries2", { static: true } )
+    private scatterLineSeries2: IgxScatterLineSeriesComponent
+    @ViewChild("scatterLineSeries3", { static: true } )
+    private scatterLineSeries3: IgxScatterLineSeriesComponent
 
     private _healthDataForGermany: HealthDataForGermany = null;
     public get healthDataForGermany(): HealthDataForGermany {

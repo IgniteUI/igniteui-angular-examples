@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CompanyMarketSharesItem, CompanyMarketShares } from './CompanyMarketShares';
+import { IgxDoughnutChartComponent, IgxRingSeriesComponent } from 'igniteui-angular-charts';
 
 
 
@@ -14,6 +15,11 @@ export class AppComponent {
     public constructor(private _detector: ChangeDetectorRef) {
 
     }
+
+    @ViewChild("chart", { static: true } )
+    private chart: IgxDoughnutChartComponent
+    @ViewChild("series", { static: true } )
+    private series: IgxRingSeriesComponent
 
     private _companyMarketShares: CompanyMarketShares = null;
     public get companyMarketShares(): CompanyMarketShares {

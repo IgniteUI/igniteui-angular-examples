@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MultipleStocks } from './MultipleStocks';
+import { IgxDataLegendComponent, IgxFinancialChartComponent } from 'igniteui-angular-charts';
 
 
 
@@ -14,6 +15,11 @@ export class AppComponent {
     public constructor(private _detector: ChangeDetectorRef) {
 
     }
+
+    @ViewChild("legend", { static: true } )
+    private legend: IgxDataLegendComponent
+    @ViewChild("chart", { static: true } )
+    private chart: IgxFinancialChartComponent
 
     private _multipleStocks: MultipleStocks = null;
     private _multipleStocks_fetching: boolean = false;

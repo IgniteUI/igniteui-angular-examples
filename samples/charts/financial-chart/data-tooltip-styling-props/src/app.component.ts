@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { StockGoogleItem, StockGoogle } from './StockGoogle';
+import { IgxFinancialChartComponent } from 'igniteui-angular-charts';
 
 
 
@@ -14,6 +15,9 @@ export class AppComponent {
     public constructor(private _detector: ChangeDetectorRef) {
 
     }
+
+    @ViewChild("chart", { static: true } )
+    private chart: IgxFinancialChartComponent
 
     private _stockGoogle: StockGoogle = null;
     public get stockGoogle(): StockGoogle {

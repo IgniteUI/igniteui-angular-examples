@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, SparklineDescriptionModule } from 'igniteui-angular-core';
 import { SparklineMixedDataItem, SparklineMixedData } from './SparklineMixedData';
+import { IgxSparklineComponent } from 'igniteui-angular-charts';
 
 
 
@@ -15,6 +16,9 @@ export class AppComponent {
     public constructor(private _detector: ChangeDetectorRef) {
 
     }
+
+    @ViewChild("chart", { static: true } )
+    private chart: IgxSparklineComponent
 
     private _sparklineMixedData: SparklineMixedData = null;
     public get sparklineMixedData(): SparklineMixedData {

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FootballPlayerStatsItem, FootballPlayerStats } from './FootballPlayerStats';
+import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryAngleAxisComponent, IgxNumericRadiusAxisComponent, IgxRadialColumnSeriesComponent } from 'igniteui-angular-charts';
 
 
 
@@ -14,6 +15,19 @@ export class AppComponent {
     public constructor(private _detector: ChangeDetectorRef) {
 
     }
+
+    @ViewChild("legend", { static: true } )
+    private legend: IgxLegendComponent
+    @ViewChild("chart", { static: true } )
+    private chart: IgxDataChartComponent
+    @ViewChild("angleAxis", { static: true } )
+    private angleAxis: IgxCategoryAngleAxisComponent
+    @ViewChild("radiusAxis", { static: true } )
+    private radiusAxis: IgxNumericRadiusAxisComponent
+    @ViewChild("radialColumnSeries1", { static: true } )
+    private radialColumnSeries1: IgxRadialColumnSeriesComponent
+    @ViewChild("radialColumnSeries2", { static: true } )
+    private radialColumnSeries2: IgxRadialColumnSeriesComponent
 
     private _footballPlayerStats: FootballPlayerStats = null;
     public get footballPlayerStats(): FootballPlayerStats {

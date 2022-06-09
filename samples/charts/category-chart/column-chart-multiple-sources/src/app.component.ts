@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { HighestGrossingMoviesItem, HighestGrossingMovies } from './HighestGrossingMovies';
+import { IgxLegendComponent, IgxCategoryChartComponent } from 'igniteui-angular-charts';
 
 
 
@@ -14,6 +15,11 @@ export class AppComponent {
     public constructor(private _detector: ChangeDetectorRef) {
 
     }
+
+    @ViewChild("legend", { static: true } )
+    private legend: IgxLegendComponent
+    @ViewChild("chart", { static: true } )
+    private chart: IgxCategoryChartComponent
 
     private _highestGrossingMovies: HighestGrossingMovies = null;
     public get highestGrossingMovies(): HighestGrossingMovies {

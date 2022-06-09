@@ -4,6 +4,7 @@ import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './
 import { IgxPropertyEditorPropertyDescriptionChangedEventArgs, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxCategoryChartComponent, MarkerType, MarkerType_$type } from 'igniteui-angular-charts';
 import { EnumUtil } from 'igniteui-angular-core';
+import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
 
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 import { defineAllComponents } from 'igniteui-webcomponents';
@@ -19,6 +20,15 @@ export class AppComponent {
     public constructor(private _detector: ChangeDetectorRef) {
 
     }
+
+    @ViewChild("propertyEditor", { static: true } )
+    private propertyEditor: IgxPropertyEditorPanelComponent
+    @ViewChild("chartTypeEditor", { static: true } )
+    private chartTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
+    @ViewChild("markerTypeEditor", { static: true } )
+    private markerTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
+    @ViewChild("chart", { static: true } )
+    private chart: IgxCategoryChartComponent
 
     private _countryRenewableElectricity: CountryRenewableElectricity = null;
     public get countryRenewableElectricity(): CountryRenewableElectricity {

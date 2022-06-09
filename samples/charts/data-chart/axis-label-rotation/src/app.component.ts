@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, DataChartCategoryDescriptionModule, DataChartInteractivityDescriptionModule } from 'igniteui-angular-core';
 import { TemperatureAverageDataItem, TemperatureAverageData } from './TemperatureAverageData';
+import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
+import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxColumnSeriesComponent } from 'igniteui-angular-charts';
 
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 import { defineAllComponents } from 'igniteui-webcomponents';
@@ -16,6 +18,17 @@ export class AppComponent {
     public constructor(private _detector: ChangeDetectorRef) {
 
     }
+
+    @ViewChild("propertyEditorPanel1", { static: true } )
+    private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+    @ViewChild("chart", { static: true } )
+    private chart: IgxDataChartComponent
+    @ViewChild("xAxis", { static: true } )
+    private xAxis: IgxCategoryXAxisComponent
+    @ViewChild("yAxis", { static: true } )
+    private yAxis: IgxNumericYAxisComponent
+    @ViewChild("colSeries1", { static: true } )
+    private colSeries1: IgxColumnSeriesComponent
 
     private _temperatureAverageData: TemperatureAverageData = null;
     public get temperatureAverageData(): TemperatureAverageData {

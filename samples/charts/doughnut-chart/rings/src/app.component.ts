@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CalendarSeasonsItem, CalendarSeasons } from './CalendarSeasons';
 import { CalendarMonthsItem, CalendarMonths } from './CalendarMonths';
+import { IgxDoughnutChartComponent, IgxRingSeriesComponent } from 'igniteui-angular-charts';
 
 
 
@@ -15,6 +16,13 @@ export class AppComponent {
     public constructor(private _detector: ChangeDetectorRef) {
 
     }
+
+    @ViewChild("chart", { static: true } )
+    private chart: IgxDoughnutChartComponent
+    @ViewChild("series1", { static: true } )
+    private series1: IgxRingSeriesComponent
+    @ViewChild("series2", { static: true } )
+    private series2: IgxRingSeriesComponent
 
     private _calendarSeasons: CalendarSeasons = null;
     public get calendarSeasons(): CalendarSeasons {

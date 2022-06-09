@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CountyHierarchicalDataItem, CountyHierarchicalData } from './CountyHierarchicalData';
+import { IgxTreemapComponent } from 'igniteui-angular-charts';
 
 
 
@@ -14,6 +15,9 @@ export class AppComponent {
     public constructor(private _detector: ChangeDetectorRef) {
 
     }
+
+    @ViewChild("treemap", { static: true } )
+    private treemap: IgxTreemapComponent
 
     private _countyHierarchicalData: CountyHierarchicalData = null;
     public get countyHierarchicalData(): CountyHierarchicalData {

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { OlympicMedalsTopCountriesItem, OlympicMedalsTopCountries } from './OlympicMedalsTopCountries';
+import { IgxCategoryChartComponent } from 'igniteui-angular-charts';
 
 
 
@@ -14,6 +15,9 @@ export class AppComponent {
     public constructor(private _detector: ChangeDetectorRef) {
 
     }
+
+    @ViewChild("chart", { static: true } )
+    private chart: IgxCategoryChartComponent
 
     private _olympicMedalsTopCountries: OlympicMedalsTopCountries = null;
     public get olympicMedalsTopCountries(): OlympicMedalsTopCountries {

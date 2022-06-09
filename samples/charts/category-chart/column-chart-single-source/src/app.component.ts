@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { TemperatureAverageDataItem, TemperatureAverageData } from './TemperatureAverageData';
+import { IgxCategoryChartComponent } from 'igniteui-angular-charts';
 
 
 
@@ -14,6 +15,9 @@ export class AppComponent {
     public constructor(private _detector: ChangeDetectorRef) {
 
     }
+
+    @ViewChild("chart", { static: true } )
+    private chart: IgxCategoryChartComponent
 
     private _temperatureAverageData: TemperatureAverageData = null;
     public get temperatureAverageData(): TemperatureAverageData {
