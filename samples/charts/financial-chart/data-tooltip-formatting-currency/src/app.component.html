@@ -5,12 +5,13 @@
   
   <div class="container fill">
       <igx-financial-chart
-      chartType="Line"
+      chartType="Candle"
       zoomSliderType="None"
-      dataToolTipIncludedColumns="Close, Change"
+      dataToolTipIncludedColumns="Close, Change, Value"
       dataToolTipExcludedColumns="High, Low, Open, Volume"
       dataToolTipValueFormatMode="Currency"
       dataToolTipValueFormatCulture="en-GB"
+      dataToolTipHeaderFormatTime="None"
       dataToolTipLabelDisplayMode="Hidden"
       [dataSource]="multipleStocks"
       toolTipType="Data"

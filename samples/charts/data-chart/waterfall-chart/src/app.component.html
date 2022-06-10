@@ -40,12 +40,12 @@
           <igx-waterfall-series
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          valueMemberPath="netIncome"
-          isTransitionInEnabled="true"
           [dataSource]="companyIncomeData"
+          valueMemberPath="netIncome"
+          showDefaultTooltip="true"
+          isTransitionInEnabled="true"
           brush="rgba(116, 70, 185, 1)"
           outline="rgba(116, 70, 185, 1)"
-          showDefaultTooltip="true"
           name="WaterfallSeries2"
           #waterfallSeries2>
           </igx-waterfall-series>
