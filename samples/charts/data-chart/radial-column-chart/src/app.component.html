@@ -33,7 +33,7 @@
           #radiusAxis>
           </igx-numeric-radius-axis>
           <igx-radial-column-series
-          valueMemberPath="ronaldoValue"
+          valueMemberPath="ronaldo"
           [angleAxis]="angleAxis"
           [valueAxis]="radiusAxis"
           [dataSource]="footballPlayerStats"
@@ -45,13 +45,13 @@
           #radialColumnSeries1>
           </igx-radial-column-series>
           <igx-radial-column-series
-          valueMemberPath="messiValue"
+          [dataSource]="footballPlayerStats"
           [angleAxis]="angleAxis"
           [valueAxis]="radiusAxis"
-          [dataSource]="footballPlayerStats"
-          thickness="3"
-          areaFillOpacity="0.8"
+          valueMemberPath="messi"
           showDefaultTooltip="true"
+          areaFillOpacity="0.8"
+          thickness="3"
           title="Messi"
           name="RadialColumnSeries2"
           #radialColumnSeries2>

@@ -49,15 +49,15 @@
           #polarLineSeries1>
           </igx-polar-line-series>
           <igx-polar-line-series
-          angleMemberPath="direction"
-          radiusMemberPath="boatSpeed"
+          [dataSource]="boatSailingData"
           [angleAxis]="angleAxis"
           [radiusAxis]="radiusAxis"
-          markerType="Circle"
-          [dataSource]="boatSailingData"
-          thickness="1"
+          angleMemberPath="direction"
+          radiusMemberPath="boatSpeed"
           showDefaultTooltip="true"
+          thickness="1"
           title="Boat Speed"
+          markerType="Circle"
           name="PolarLineSeries2"
           #polarLineSeries2>
           </igx-polar-line-series>

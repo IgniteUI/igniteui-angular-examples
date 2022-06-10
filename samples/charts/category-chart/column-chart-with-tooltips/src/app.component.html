@@ -1,0 +1,47 @@
+<div class="container sample">
+
+  <div class="options vertical">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="PropertyEditor"
+      #propertyEditor>
+          <igx-property-editor-property-description
+          propertyPath="ToolTipType"
+          label="ToolTip Type:"
+          primitiveValue="Data"
+          name="ToolTipTypeEditor"
+          #toolTipTypeEditor>
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Highest Grossing Movie Franchises
+  </div>
+  <div class="legend">
+      <igx-legend
+      name="Legend"
+      #legend>
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Column"
+      xAxisInterval="1"
+      yAxisLabelLeftMargin="0"
+      yAxisTitleLeftMargin="10"
+      yAxisTitleRightMargin="5"
+      yAxisTitle="Billions of U.S. Dollars"
+      [dataSource]="highestGrossingMovies"
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      crosshairsSnapToData="true"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
+</div>
