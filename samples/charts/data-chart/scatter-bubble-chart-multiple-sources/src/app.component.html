@@ -1,0 +1,59 @@
+<div class="container sample">
+
+  
+  <div class="legend-title">
+      Total Population of Selected Countries
+  </div>
+  <div class="legend">
+      <igx-legend
+      orientation="Horizontal"
+      name="Legend"
+      #legend>
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      [legend]="legend"
+      name="chart"
+      #chart>
+          <igx-numeric-x-axis
+          title="Hours Worked per Week"
+          name="xAxis"
+          #xAxis>
+          </igx-numeric-x-axis>
+          <igx-numeric-y-axis
+          isLogarithmic="true"
+          abbreviateLargeNumbers="true"
+          title="GDP per Capita"
+          name="yAxis"
+          #yAxis>
+          </igx-numeric-y-axis>
+          <igx-bubble-series
+          radiusMemberPath="population"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          xMemberPath="workedHours"
+          yMemberPath="gDP"
+          markerType="Circle"
+          [dataSource]="countryDemographicAfrican"
+          showDefaultTooltip="true"
+          title="African Countries"
+          name="BubbleSeries1"
+          #bubbleSeries1>
+          </igx-bubble-series>
+          <igx-bubble-series
+          title="European Countries"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          xMemberPath="workedHours"
+          yMemberPath="gDP"
+          radiusMemberPath="population"
+          [dataSource]="countryDemographicEurope"
+          markerType="Circle"
+          showDefaultTooltip="true"
+          name="BubbleSeries2"
+          #bubbleSeries2>
+          </igx-bubble-series>
+      </igx-data-chart>
+  </div>
+</div>

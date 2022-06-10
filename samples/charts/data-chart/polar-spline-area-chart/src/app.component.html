@@ -43,16 +43,16 @@
           #polarSplineAreaSeries1>
           </igx-polar-spline-area-series>
           <igx-polar-spline-area-series
-          angleMemberPath="direction"
-          radiusMemberPath="boatSpeed"
+          [dataSource]="boatSailingData"
           [angleAxis]="angleAxis"
           [radiusAxis]="radiusAxis"
-          markerType="Circle"
-          [dataSource]="boatSailingData"
-          thickness="1"
-          areaFillOpacity="0.8"
+          angleMemberPath="direction"
+          radiusMemberPath="boatSpeed"
           showDefaultTooltip="true"
+          areaFillOpacity="0.8"
+          thickness="1"
           title="Boat Speed"
+          markerType="Circle"
           name="PolarSplineAreaSeries2"
           #polarSplineAreaSeries2>
           </igx-polar-spline-area-series>
