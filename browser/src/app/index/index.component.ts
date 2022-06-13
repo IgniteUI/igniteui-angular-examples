@@ -33,7 +33,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
         pin: false,
         pinThreshold: 768,
         position: "left",
-        width: "300px"
+        width: "220px"
     };
 
     private appRoutes: any[];
