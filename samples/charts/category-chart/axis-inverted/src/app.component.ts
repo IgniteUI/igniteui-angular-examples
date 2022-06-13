@@ -42,7 +42,7 @@ export class AppComponent {
             PropertyEditorPanelDescriptionModule.register(context);
             CategoryChartDescriptionModule.register(context);
         }
-        return this._componentRenderer
+        return this._componentRenderer;
     }
 
 }

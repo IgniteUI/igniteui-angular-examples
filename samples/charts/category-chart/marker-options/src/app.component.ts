@@ -49,7 +49,7 @@ export class AppComponent {
             CategoryChartDescriptionModule.register(context);
             DataChartInteractivityDescriptionModule.register(context);
         }
-        return this._componentRenderer
+        return this._componentRenderer;
     }
 
     

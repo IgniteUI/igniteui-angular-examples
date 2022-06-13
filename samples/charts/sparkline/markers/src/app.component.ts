@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, SparklineDescriptionModule } from 'igniteui-angular-core';
-import { SparklineMixedDataItem, SparklineMixedData } from './SparklineMixedData';
+import { SparklineProfitDataItem, SparklineProfitData } from './SparklineProfitData';
 import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
 import { IgxSparklineComponent } from 'igniteui-angular-charts';
 
@@ -24,13 +24,13 @@ export class AppComponent {
     @ViewChild("chart", { static: true } )
     private chart: IgxSparklineComponent
 
-    private _sparklineMixedData: SparklineMixedData = null;
-    public get sparklineMixedData(): SparklineMixedData {
-        if (this._sparklineMixedData == null)
+    private _sparklineProfitData: SparklineProfitData = null;
+    public get sparklineProfitData(): SparklineProfitData {
+        if (this._sparklineProfitData == null)
         {
-            this._sparklineMixedData = new SparklineMixedData();
+            this._sparklineProfitData = new SparklineProfitData();
         }
-        return this._sparklineMixedData;
+        return this._sparklineProfitData;
     }
     
 
@@ -42,7 +42,7 @@ export class AppComponent {
             PropertyEditorPanelDescriptionModule.register(context);
             SparklineDescriptionModule.register(context);
         }
-        return this._componentRenderer
+        return this._componentRenderer;
     }
 
 }

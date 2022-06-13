@@ -55,7 +55,7 @@ export class AppComponent {
             DataChartCoreDescriptionModule.register(context);
             DataChartCategoryDescriptionModule.register(context);
         }
-        return this._componentRenderer
+        return this._componentRenderer;
     }
 
     

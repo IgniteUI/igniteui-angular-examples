@@ -42,7 +42,7 @@ export class AppComponent {
             PropertyEditorPanelDescriptionModule.register(context);
             SparklineDescriptionModule.register(context);
         }
-        return this._componentRenderer
+        return this._componentRenderer;
     }
 
 }
