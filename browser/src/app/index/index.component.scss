@@ -53,9 +53,28 @@
     box-sizing: border-box;
 }
 
-.innerItem {
-    margin-left: 36px;
+.nav-childItem {
+    padding: 0px;
+    padding-left: 0.25rem;
 }
+
+.nav-headerSpan {
+    padding: 0px;
+}
+
+.nav-headerText {
+    vertical-align: middle;
+}
+
+.nav-headerButton {
+    vertical-align: middle;
+    height: 1.25rem;
+    width: 1.25rem;
+    padding: 0px;
+    padding-right: 0.75rem;
+    padding-left: 0.5rem;
+}
+
 
 .nav-header {
     display: flex;

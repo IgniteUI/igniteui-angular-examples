@@ -28,16 +28,17 @@
 
                 <span *ngFor="let navItem of currentNavItems">
                     <!-- Header -->
-                    <span igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" (click)="toggleParent('header' + navItem.name)">
-                        <button igxButton="icon" igxRipple igxRippleCentered="true" style="vertical-align: middle">
+                    <span igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" (click)="toggleParent('header' + navItem.name)"
+                        class="nav-headerSpan" >
+                        <button igxButton="icon" igxRipple igxRippleCentered="true" class="nav-headerButton">
                             <igx-icon fontSet="material">{{convertNodeStateToIcon('header' + navItem.name)}}</igx-icon>
                         </button>
-                        <span style="vertical-align: middle">{{navItem.name}}</span>
+                        <span class="nav-headerText">{{navItem.name}}</span>
                     </span>
                     <!-- Children -->
                     <span [id]="'header' + navItem.name" style="display:none">
-                        <span [id]="'child' + routeItem.displayName" class="innerItem" *ngFor="let routeItem of navItem.children" igxDrawerItem igxRipple
-                            routerLink="{{routeItem.path}}" routerLinkActive="igx-nav-drawer__item--active">
+                        <span [id]="'child' + routeItem.displayName" *ngFor="let routeItem of navItem.children" igxDrawerItem igxRipple
+                            routerLink="{{routeItem.path}}" routerLinkActive="igx-nav-drawer__item--active" class="nav-childItem">
                             {{routeItem.displayName}}
                         </span>
                     </span>
