@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { SizeScaleItem } from './SampleData';
-import { CountryDemographicAfricanItem, CountryDemographicAfrican } from './CountryDemographicAfrican';
-import { CountryDemographicEuropeItem, CountryDemographicEurope } from './CountryDemographicEurope';
+import { CountryStatsAfricaItem, CountryStatsAfrica } from './CountryStatsAfrica';
+import { CountryStatsEuropeItem, CountryStatsEurope } from './CountryStatsEurope';
 import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent } from 'igniteui-angular-charts';
 
 
@@ -31,38 +30,24 @@ export class AppComponent {
     @ViewChild("bubbleSeries2", { static: true } )
     private bubbleSeries2: IgxBubbleSeriesComponent
 
-    private _sizeScale: SizeScaleItem = null;
-    public get sizeScale(): SizeScaleItem {
-        if (this._sizeScale == null)
+    private _countryStatsAfrica: CountryStatsAfrica = null;
+    public get countryStatsAfrica(): CountryStatsAfrica {
+        if (this._countryStatsAfrica == null)
         {
-            this._sizeScale = 
-            new SizeScaleItem(
-            {
-                type: `SizeScale`,
-                minimumValue: 10,
-                maximumValue: 50
-            })}
-            return this._sizeScale;
+            this._countryStatsAfrica = new CountryStatsAfrica();
         }
-        
-        private _countryDemographicAfrican: CountryDemographicAfrican = null;
-        public get countryDemographicAfrican(): CountryDemographicAfrican {
-            if (this._countryDemographicAfrican == null)
-            {
-                this._countryDemographicAfrican = new CountryDemographicAfrican();
-            }
-            return this._countryDemographicAfrican;
+        return this._countryStatsAfrica;
+    }
+    
+    private _countryStatsEurope: CountryStatsEurope = null;
+    public get countryStatsEurope(): CountryStatsEurope {
+        if (this._countryStatsEurope == null)
+        {
+            this._countryStatsEurope = new CountryStatsEurope();
         }
-        
-        private _countryDemographicEurope: CountryDemographicEurope = null;
-        public get countryDemographicEurope(): CountryDemographicEurope {
-            if (this._countryDemographicEurope == null)
-            {
-                this._countryDemographicEurope = new CountryDemographicEurope();
-            }
-            return this._countryDemographicEurope;
-        }
-        
+        return this._countryStatsEurope;
+    }
+    
 
 
 }

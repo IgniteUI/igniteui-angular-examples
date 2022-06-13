@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { HealthDataForGermanyItem, HealthDataForGermany } from './HealthDataForGermany';
 import { HealthDataForFranceItem, HealthDataForFrance } from './HealthDataForFrance';
-import { HealthDataForNorwayItem, HealthDataForNorway } from './HealthDataForNorway';
 import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxScatterLineSeriesComponent } from 'igniteui-angular-charts';
 
 
@@ -30,8 +29,6 @@ export class AppComponent {
     private scatterLineSeries1: IgxScatterLineSeriesComponent
     @ViewChild("scatterLineSeries2", { static: true } )
     private scatterLineSeries2: IgxScatterLineSeriesComponent
-    @ViewChild("scatterLineSeries3", { static: true } )
-    private scatterLineSeries3: IgxScatterLineSeriesComponent
 
     private _healthDataForGermany: HealthDataForGermany = null;
     public get healthDataForGermany(): HealthDataForGermany {
@@ -49,15 +46,6 @@ export class AppComponent {
             this._healthDataForFrance = new HealthDataForFrance();
         }
         return this._healthDataForFrance;
-    }
-    
-    private _healthDataForNorway: HealthDataForNorway = null;
-    public get healthDataForNorway(): HealthDataForNorway {
-        if (this._healthDataForNorway == null)
-        {
-            this._healthDataForNorway = new HealthDataForNorway();
-        }
-        return this._healthDataForNorway;
     }
     
 

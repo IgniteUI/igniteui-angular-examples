@@ -2,7 +2,7 @@
 
   
   <div class="legend-title">
-      GDP per Capita vs Hours Worked per Week
+      GDP per Capita vs Population
   </div>
   
   <div class="container fill">
@@ -10,7 +10,9 @@
       name="chart"
       #chart>
           <igx-numeric-x-axis
-          title="Hours Worked per Week"
+          isLogarithmic="true"
+          abbreviateLargeNumbers="true"
+          title="Population"
           name="xAxis"
           #xAxis>
           </igx-numeric-x-axis>
@@ -25,10 +27,10 @@
           radiusMemberPath="population"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          xMemberPath="workedHours"
+          xMemberPath="population"
           yMemberPath="gDP"
           markerType="Circle"
-          [dataSource]="countryDemographicEurope"
+          [dataSource]="countryStatsEurope"
           showDefaultTooltip="true"
           title="European Countries"
           name="BubbleSeries1"

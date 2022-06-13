@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { SizeScaleItem } from './SampleData';
-import { CountryDemographicEuropeItem, CountryDemographicEurope } from './CountryDemographicEurope';
+import { CountryStatsEuropeItem, CountryStatsEurope } from './CountryStatsEurope';
 import { IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent } from 'igniteui-angular-charts';
 
 
@@ -26,29 +25,15 @@ export class AppComponent {
     @ViewChild("bubbleSeries1", { static: true } )
     private bubbleSeries1: IgxBubbleSeriesComponent
 
-    private _sizeScale: SizeScaleItem = null;
-    public get sizeScale(): SizeScaleItem {
-        if (this._sizeScale == null)
+    private _countryStatsEurope: CountryStatsEurope = null;
+    public get countryStatsEurope(): CountryStatsEurope {
+        if (this._countryStatsEurope == null)
         {
-            this._sizeScale = 
-            new SizeScaleItem(
-            {
-                type: `SizeScale`,
-                minimumValue: 10,
-                maximumValue: 50
-            })}
-            return this._sizeScale;
+            this._countryStatsEurope = new CountryStatsEurope();
         }
-        
-        private _countryDemographicEurope: CountryDemographicEurope = null;
-        public get countryDemographicEurope(): CountryDemographicEurope {
-            if (this._countryDemographicEurope == null)
-            {
-                this._countryDemographicEurope = new CountryDemographicEurope();
-            }
-            return this._countryDemographicEurope;
-        }
-        
+        return this._countryStatsEurope;
+    }
+    
 
 
 }

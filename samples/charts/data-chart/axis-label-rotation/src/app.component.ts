@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, DataChartCategoryDescriptionModule, DataChartInteractivityDescriptionModule } from 'igniteui-angular-core';
-import { TemperatureAverageDataItem, TemperatureAverageData } from './TemperatureAverageData';
+import { TemperatureAverageDataLongLabelsItem, TemperatureAverageDataLongLabels } from './TemperatureAverageDataLongLabels';
 import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
 import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxColumnSeriesComponent } from 'igniteui-angular-charts';
 
@@ -30,13 +30,13 @@ export class AppComponent {
     @ViewChild("colSeries1", { static: true } )
     private colSeries1: IgxColumnSeriesComponent
 
-    private _temperatureAverageData: TemperatureAverageData = null;
-    public get temperatureAverageData(): TemperatureAverageData {
-        if (this._temperatureAverageData == null)
+    private _temperatureAverageDataLongLabels: TemperatureAverageDataLongLabels = null;
+    public get temperatureAverageDataLongLabels(): TemperatureAverageDataLongLabels {
+        if (this._temperatureAverageDataLongLabels == null)
         {
-            this._temperatureAverageData = new TemperatureAverageData();
+            this._temperatureAverageDataLongLabels = new TemperatureAverageDataLongLabels();
         }
-        return this._temperatureAverageData;
+        return this._temperatureAverageDataLongLabels;
     }
     
 

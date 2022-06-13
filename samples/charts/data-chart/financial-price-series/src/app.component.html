@@ -7,6 +7,8 @@
       <igx-data-chart
       isHorizontalZoomEnabled="true"
       isVerticalZoomEnabled="true"
+      shouldAutoExpandMarginForInitialLabels="true"
+      computedPlotAreaMarginMode="Series"
       name="chart"
       #chart>
           <igx-category-x-axis
@@ -19,11 +21,12 @@
           #xAxis>
           </igx-category-x-axis>
           <igx-numeric-y-axis
-          labelLocation="OutsideBottom"
+          labelLocation="OutsideRight"
           name="yAxis"
           #yAxis>
           </igx-numeric-y-axis>
           <igx-financial-price-series
+          displayType="Candlestick"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           openMemberPath="open"
@@ -37,6 +40,10 @@
           name="Series1"
           #series1>
           </igx-financial-price-series>
+          <igx-data-tool-tip-layer
+          name="Tooltip"
+          #tooltip>
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>

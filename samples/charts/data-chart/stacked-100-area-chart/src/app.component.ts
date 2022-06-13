@@ -36,8 +36,6 @@ export class AppComponent {
     private s4: IgxStackedFragmentSeriesComponent
     @ViewChild("s5", { static: true } )
     private s5: IgxStackedFragmentSeriesComponent
-    @ViewChild("s6", { static: true } )
-    private s6: IgxStackedFragmentSeriesComponent
 
     private _continentsBirthRate: ContinentsBirthRate = null;
     public get continentsBirthRate(): ContinentsBirthRate {

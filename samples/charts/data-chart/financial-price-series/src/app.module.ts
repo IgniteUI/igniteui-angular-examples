@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
 
-import { IgxDataChartCoreModule, IgxDataChartCategoryModule, IgxDataChartCategoryCoreModule, IgxDataChartFinancialCoreModule, IgxDataChartFinancialModule, IgxDataChartFinancialOverlaysModule, IgxDataChartInteractivityModule } from 'igniteui-angular-charts';
+import { IgxDataChartCoreModule, IgxDataChartCategoryModule, IgxDataChartCategoryCoreModule, IgxDataChartFinancialCoreModule, IgxDataChartFinancialModule, IgxDataChartFinancialOverlaysModule, IgxDataChartInteractivityModule, IgxDataChartAnnotationModule } from 'igniteui-angular-charts';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -22,7 +22,8 @@ import { IgxDataChartCoreModule, IgxDataChartCategoryModule, IgxDataChartCategor
     IgxDataChartFinancialCoreModule,
     IgxDataChartFinancialModule,
     IgxDataChartFinancialOverlaysModule,
-    IgxDataChartInteractivityModule
+    IgxDataChartInteractivityModule,
+    IgxDataChartAnnotationModule
 ],
   providers: [],
   entryComponents: [],

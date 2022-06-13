@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Stock2YearsItem, Stock2Years } from './Stock2Years';
-import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxFinancialPriceSeriesComponent } from 'igniteui-angular-charts';
+import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxFinancialPriceSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 
 
@@ -24,6 +24,8 @@ export class AppComponent {
     private yAxis: IgxNumericYAxisComponent
     @ViewChild("series1", { static: true } )
     private series1: IgxFinancialPriceSeriesComponent
+    @ViewChild("tooltip", { static: true } )
+    private tooltip: IgxDataToolTipLayerComponent
 
     private _stock2Years: Stock2Years = null;
     public get stock2Years(): Stock2Years {

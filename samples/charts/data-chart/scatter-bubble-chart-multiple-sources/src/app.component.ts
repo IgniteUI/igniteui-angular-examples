@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { SizeScale1Item, SizeScale2Item } from './SampleData';
-import { CountryDemographicAfricanItem, CountryDemographicAfrican } from './CountryDemographicAfrican';
-import { CountryDemographicEuropeItem, CountryDemographicEurope } from './CountryDemographicEurope';
+import { CountryStatsAfricaItem, CountryStatsAfrica } from './CountryStatsAfrica';
+import { CountryStatsEuropeItem, CountryStatsEurope } from './CountryStatsEurope';
 import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent } from 'igniteui-angular-charts';
 
 
@@ -31,52 +30,24 @@ export class AppComponent {
     @ViewChild("bubbleSeries2", { static: true } )
     private bubbleSeries2: IgxBubbleSeriesComponent
 
-    private _sizeScale1: SizeScale1Item = null;
-    public get sizeScale1(): SizeScale1Item {
-        if (this._sizeScale1 == null)
+    private _countryStatsAfrica: CountryStatsAfrica = null;
+    public get countryStatsAfrica(): CountryStatsAfrica {
+        if (this._countryStatsAfrica == null)
         {
-            this._sizeScale1 = 
-            new SizeScale1Item(
-            {
-                type: `SizeScale`,
-                minimumValue: 10,
-                maximumValue: 50
-            })}
-            return this._sizeScale1;
+            this._countryStatsAfrica = new CountryStatsAfrica();
         }
-        
-        private _sizeScale2: SizeScale2Item = null;
-        public get sizeScale2(): SizeScale2Item {
-            if (this._sizeScale2 == null)
-            {
-                this._sizeScale2 = 
-                new SizeScale2Item(
-                {
-                    type: `SizeScale`,
-                    minimumValue: 10,
-                    maximumValue: 50
-                })}
-                return this._sizeScale2;
-            }
-            
-            private _countryDemographicAfrican: CountryDemographicAfrican = null;
-            public get countryDemographicAfrican(): CountryDemographicAfrican {
-                if (this._countryDemographicAfrican == null)
-                {
-                    this._countryDemographicAfrican = new CountryDemographicAfrican();
-                }
-                return this._countryDemographicAfrican;
-            }
-            
-            private _countryDemographicEurope: CountryDemographicEurope = null;
-            public get countryDemographicEurope(): CountryDemographicEurope {
-                if (this._countryDemographicEurope == null)
-                {
-                    this._countryDemographicEurope = new CountryDemographicEurope();
-                }
-                return this._countryDemographicEurope;
-            }
-            
+        return this._countryStatsAfrica;
+    }
+    
+    private _countryStatsEurope: CountryStatsEurope = null;
+    public get countryStatsEurope(): CountryStatsEurope {
+        if (this._countryStatsEurope == null)
+        {
+            this._countryStatsEurope = new CountryStatsEurope();
+        }
+        return this._countryStatsEurope;
+    }
+    
 
 
 }

@@ -25,6 +25,7 @@
           [yAxis]="yAxis"
           valueMemberPath="america"
           [dataSource]="countryRenewableElectricity"
+          title="Electricity"
           name="LineSeries1"
           #lineSeries1>
           </igx-line-series>
@@ -32,18 +33,27 @@
           labelMemberPath="label"
           xMemberPath="index"
           yMemberPath="value"
-          calloutCornerRadius="10"
+          calloutCornerRadius="5"
+          calloutPaddingLeft="20"
+          calloutPaddingTop="10"
+          calloutPaddingRight="20"
+          calloutPaddingBottom="10"
           [dataSource]="countryRenewableCallouts"
           name="CalloutLayer1"
           #calloutLayer1>
           </igx-callout-layer>
           <igx-final-value-layer
-          axisAnnotationBackgroundCornerRadius="100">
+          axisAnnotationBackgroundCornerRadius="10"
+          axisAnnotationPaddingLeft="10"
+          axisAnnotationPaddingTop="10"
+          axisAnnotationPaddingRight="10"
+          axisAnnotationPaddingBottom="10">
           </igx-final-value-layer>
           <igx-crosshair-layer
           isAxisAnnotationEnabled="true"
-          xAxisAnnotationBackgroundCornerRadius="100"
-          yAxisAnnotationBackgroundCornerRadius="100">
+          xAxisAnnotationBackgroundCornerRadius="10"
+          yAxisAnnotationBackgroundCornerRadius="10"
+          yAxisAnnotationInterpolatedValuePrecision="0">
           </igx-crosshair-layer>
           <igx-data-tool-tip-layer
           name="Tooltips"

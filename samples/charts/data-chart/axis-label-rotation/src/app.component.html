@@ -38,10 +38,9 @@
       name="chart"
       #chart>
           <igx-category-x-axis
-          [dataSource]="temperatureAverageData"
+          [dataSource]="temperatureAverageDataLongLabels"
           useEnhancedIntervalManagement="true"
           enhancedIntervalPreferMoreCategoryLabels="true"
-          labelExtent="60"
           label="month"
           name="xAxis"
           #xAxis>
@@ -54,7 +53,7 @@
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           valueMemberPath="temperature"
-          [dataSource]="temperatureAverageData"
+          [dataSource]="temperatureAverageDataLongLabels"
           name="colSeries1"
           #colSeries1>
           </igx-column-series>

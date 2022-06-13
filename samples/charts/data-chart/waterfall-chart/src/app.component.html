@@ -23,6 +23,7 @@
           minimumValue="0"
           maximumValue="60"
           title="Millions of Dollars"
+          titleAngle="90"
           titleLeftMargin="10"
           name="yAxis"
           #yAxis>
@@ -34,18 +35,20 @@
           isTransitionInEnabled="true"
           [dataSource]="companyIncomeData"
           showDefaultTooltip="true"
+          title="Value"
           name="WaterfallSeries1"
           #waterfallSeries1>
           </igx-waterfall-series>
           <igx-waterfall-series
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          [dataSource]="companyIncomeData"
           valueMemberPath="netIncome"
-          showDefaultTooltip="true"
           isTransitionInEnabled="true"
+          [dataSource]="companyIncomeData"
           brush="rgba(116, 70, 185, 1)"
           outline="rgba(116, 70, 185, 1)"
+          showDefaultTooltip="true"
+          title="Value"
           name="WaterfallSeries2"
           #waterfallSeries2>
           </igx-waterfall-series>

@@ -42,15 +42,15 @@
           #polarSplineSeries1>
           </igx-polar-spline-series>
           <igx-polar-spline-series
-          [dataSource]="boatSailingData"
-          [angleAxis]="angleAxis"
-          [radiusAxis]="radiusAxis"
           angleMemberPath="direction"
           radiusMemberPath="boatSpeed"
-          showDefaultTooltip="true"
-          thickness="1"
-          title="Boat Speed"
+          [angleAxis]="angleAxis"
+          [radiusAxis]="radiusAxis"
           markerType="Circle"
+          [dataSource]="boatSailingData"
+          thickness="1"
+          showDefaultTooltip="true"
+          title="Boat Speed"
           name="PolarSplineSeries2"
           #polarSplineSeries2>
           </igx-polar-spline-series>

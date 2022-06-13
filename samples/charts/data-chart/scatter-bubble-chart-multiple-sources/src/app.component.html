@@ -17,7 +17,9 @@
       name="chart"
       #chart>
           <igx-numeric-x-axis
-          title="Hours Worked per Week"
+          isLogarithmic="true"
+          abbreviateLargeNumbers="true"
+          title="Population"
           name="xAxis"
           #xAxis>
           </igx-numeric-x-axis>
@@ -32,10 +34,10 @@
           radiusMemberPath="population"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          xMemberPath="workedHours"
+          xMemberPath="population"
           yMemberPath="gDP"
           markerType="Circle"
-          [dataSource]="countryDemographicAfrican"
+          [dataSource]="countryStatsAfrica"
           showDefaultTooltip="true"
           title="African Countries"
           name="BubbleSeries1"
@@ -45,10 +47,10 @@
           title="European Countries"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          xMemberPath="workedHours"
+          xMemberPath="population"
           yMemberPath="gDP"
           radiusMemberPath="population"
-          [dataSource]="countryDemographicEurope"
+          [dataSource]="countryStatsEurope"
           markerType="Circle"
           showDefaultTooltip="true"
           name="BubbleSeries2"
