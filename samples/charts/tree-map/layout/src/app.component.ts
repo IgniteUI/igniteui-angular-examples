@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, TreemapDescriptionModule } from 'igniteui-angular-core';
 import { CountyHierarchicalDataItem, CountyHierarchicalData } from './CountyHierarchicalData';
-import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
+import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxTreemapComponent } from 'igniteui-angular-charts';
 
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
@@ -21,6 +21,14 @@ export class AppComponent {
 
     @ViewChild("propertyEditorPanel1", { static: true } )
     private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+    @ViewChild("layoutTypeEditor", { static: true } )
+    private layoutTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
+    @ViewChild("layoutOrientationEditor", { static: true } )
+    private layoutOrientationEditor: IgxPropertyEditorPropertyDescriptionComponent
+    @ViewChild("headerDisplayModeEditor", { static: true } )
+    private headerDisplayModeEditor: IgxPropertyEditorPropertyDescriptionComponent
+    @ViewChild("labelVerticalAlignmentEditor", { static: true } )
+    private labelVerticalAlignmentEditor: IgxPropertyEditorPropertyDescriptionComponent
     @ViewChild("treemap", { static: true } )
     private treemap: IgxTreemapComponent
 

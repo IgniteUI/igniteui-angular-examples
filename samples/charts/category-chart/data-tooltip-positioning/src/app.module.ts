@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
 
+import { IgxPropertyEditorPaneModule } from 'igniteui-angular-layouts';
 import { IgxLegendModule, IgxCategoryChartModule } from 'igniteui-angular-charts';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { IgxLegendModule, IgxCategoryChartModule } from 'igniteui-angular-charts
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    IgxPropertyEditorPaneModule,
     IgxLegendModule,
     IgxCategoryChartModule
 ],

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
 import { CountryRenewableCalloutsItem, CountryRenewableCallouts } from './CountryRenewableCallouts';
-import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxLineSeriesComponent, IgxCalloutLayerComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
+import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxLineSeriesComponent, IgxCalloutLayerComponent, IgxFinalValueLayerComponent, IgxCrosshairLayerComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 
 
@@ -27,6 +27,10 @@ export class AppComponent {
     private lineSeries1: IgxLineSeriesComponent
     @ViewChild("calloutLayer1", { static: true } )
     private calloutLayer1: IgxCalloutLayerComponent
+    @ViewChild("finalValueLayer", { static: true } )
+    private finalValueLayer: IgxFinalValueLayerComponent
+    @ViewChild("crosshairLayer", { static: true } )
+    private crosshairLayer: IgxCrosshairLayerComponent
     @ViewChild("tooltips", { static: true } )
     private tooltips: IgxDataToolTipLayerComponent
 

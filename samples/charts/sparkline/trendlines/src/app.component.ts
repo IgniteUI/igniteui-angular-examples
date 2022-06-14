@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, SparklineDescriptionModule } from 'igniteui-angular-core';
 import { SparklineMixedDataItem, SparklineMixedData } from './SparklineMixedData';
-import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
+import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxSparklineComponent } from 'igniteui-angular-charts';
 
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
@@ -21,6 +21,8 @@ export class AppComponent {
 
     @ViewChild("propertyEditorPanel1", { static: true } )
     private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+    @ViewChild("trendLineTypeEditor", { static: true } )
+    private trendLineTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
     @ViewChild("chart", { static: true } )
     private chart: IgxSparklineComponent
 

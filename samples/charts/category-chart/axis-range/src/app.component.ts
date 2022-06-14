@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDet
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
 import { IgxLegendComponent, IgxCategoryChartComponent } from 'igniteui-angular-charts';
-import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
+import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 import { defineAllComponents } from 'igniteui-webcomponents';
@@ -23,6 +23,10 @@ export class AppComponent {
     private legend: IgxLegendComponent
     @ViewChild("propertyEditorPanel1", { static: true } )
     private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+    @ViewChild("yAxisMinimumValue", { static: true } )
+    private yAxisMinimumValue: IgxPropertyEditorPropertyDescriptionComponent
+    @ViewChild("yAxisMaximumValue", { static: true } )
+    private yAxisMaximumValue: IgxPropertyEditorPropertyDescriptionComponent
     @ViewChild("chart", { static: true } )
     private chart: IgxCategoryChartComponent
 

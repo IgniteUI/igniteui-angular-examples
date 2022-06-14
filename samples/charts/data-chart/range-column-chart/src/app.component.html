@@ -35,8 +35,8 @@
           <igx-range-column-series
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          lowMemberPath="lA_Low"
-          highMemberPath="lA_High"
+          lowMemberPath="lowLA"
+          highMemberPath="highLA"
           [dataSource]="temperatureRangeData"
           title="Los Angeles"
           name="series1"
@@ -45,10 +45,10 @@
           <igx-range-column-series
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          lowMemberPath="nY_Low"
-          highMemberPath="nY_High"
-          [dataSource]="temperatureRangeData"
           title="New York City"
+          lowMemberPath="lowNY"
+          highMemberPath="highNY"
+          [dataSource]="temperatureRangeData"
           name="series2"
           #series2>
           </igx-range-column-series>

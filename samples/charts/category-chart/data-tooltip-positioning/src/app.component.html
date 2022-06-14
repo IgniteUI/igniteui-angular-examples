@@ -1,6 +1,34 @@
 <div class="container sample">
 
-  
+  <div class="options vertical">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="PropertyEditor"
+      #propertyEditor>
+          <igx-property-editor-property-description
+          propertyPath="dataToolTipGroupedPositionModeX"
+          label="Grouped X Position:"
+          name="GroupedPositionXEditor"
+          #groupedPositionXEditor>
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          propertyPath="dataToolTipGroupedPositionModeY"
+          label="Grouped Y Position:"
+          name="GroupedPositionYEditor"
+          #groupedPositionYEditor>
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          propertyPath="dataToolTipGroupingMode"
+          label="Grouping Mode:"
+          name="GroupingModeEditor"
+          #groupingModeEditor>
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
   <div class="legend-title">
       Highest Grossing Movie Franchises
   </div>
