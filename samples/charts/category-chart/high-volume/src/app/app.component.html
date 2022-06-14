@@ -8,7 +8,13 @@
             (input)="onMaxPointsChanged($event)"/>
     </div>
     <div class="container">
-        <igx-category-chart height="100%" yAxisLabelExtent="40" #chart>
+        <igx-category-chart height="100%" yAxisLabelExtent="40" 
+        markerType="None"
+        toolTipType="Default"
+        xAxisEnhancedIntervalPreferMoreCategoryLabels="false"
+        shouldAutoExpandMarginForInitialLabels="false"
+        crosshairsDisplayMode="None" 
+        #chart>
         </igx-category-chart>
     </div>
 </div>
