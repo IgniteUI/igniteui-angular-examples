@@ -10,19 +10,22 @@
       name="PropertyEditor"
       #propertyEditor>
           <igx-property-editor-property-description
-          propertyPath="dataToolTipGroupedPositionModeX"
+          propertyPath="DataToolTipGroupedPositionModeX"
           label="Grouped X Position:"
+          primitiveValue="PinRight"
           name="GroupedPositionXEditor"
           #groupedPositionXEditor>
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
-          propertyPath="dataToolTipGroupedPositionModeY"
+          propertyPath="DataToolTipGroupedPositionModeY"
+          primitiveValue="PinTop"
           label="Grouped Y Position:"
           name="GroupedPositionYEditor"
           #groupedPositionYEditor>
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
-          propertyPath="dataToolTipGroupingMode"
+          propertyPath="DataToolTipGroupingMode"
+          primitiveValue="Grouped"
           label="Grouping Mode:"
           name="GroupingModeEditor"
           #groupingModeEditor>
@@ -41,6 +44,7 @@
       yAxisTitleLeftMargin="10"
       yAxisTitleRightMargin="5"
       yAxisTitle="Billions of U.S. Dollars"
+      dataToolTipGroupingMode="Grouped"
       dataToolTipGroupedPositionModeX="PinRight"
       dataToolTipGroupedPositionModeY="PinTop"
       [dataSource]="highestGrossingMovies"
