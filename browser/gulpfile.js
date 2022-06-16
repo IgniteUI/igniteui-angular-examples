@@ -66,3 +66,8 @@ gulp.task('logRoutes', gulp.series(
     browser.findSamples,
     browser.logRoutes
 ));
+
+gulp.task('updateReadme', gulp.series(
+    browser.findSamples,
+    browser.updateReadme
+));
