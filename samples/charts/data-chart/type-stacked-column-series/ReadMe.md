@@ -15,7 +15,7 @@ This folder contains Angular application with example of Type Stacked Column Ser
         <a target="_blank" href="https://infragistics.com/angular-demos-dv/samples/charts/data-chart-type-stacked-column-series" rel="noopener noreferrer">
             <img height="40px" style="border-radius: 0rem; max-width: 100%;" alt="Run Sample" src="https://github.com/IgniteUI/igniteui-blazor-examples/raw/vnext/templates/sample/images/button-run.png"/>
         </a>
-        <a target="_blank" href="https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/data-chart/type-stacked-column-series?fontsize=14&hidenavigation=1&theme=dark&view=preview&file=/src/app/app.component.html" rel="noopener noreferrer">
+        <a target="_blank" href="https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/data-chart/type-stacked-column-series?fontsize=14&hidenavigation=1&theme=dark&view=preview&file=/src/app.component.html" rel="noopener noreferrer">
             <img height="40px" style="border-radius: 0rem; max-width: 100%;" alt="Run Sample" src="https://github.com/IgniteUI/igniteui-blazor-examples/raw/vnext/templates/sample/images/button-sandbox.png"/>
         </a>
     </body>

@@ -881,7 +881,7 @@ function updateReadme(cb) {
     for (const sample of samplesDatabase) {
         let sampleRoute = sample.SampleGroup + '/' + sample.SampleControl + "-" + sample.SampleFolder;
         let sandboxURL = sandboxRoot + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder;
-        sandboxURL += "?fontsize=14&hidenavigation=1&theme=dark&view=preview&file=/src/app/app.component.html"
+        sandboxURL += "?fontsize=14&hidenavigation=1&theme=dark&view=preview&file=/src/app.component.html"
 
         let readmeFile = readmeTemplate + "";
         readmeFile = readmeFile.replace("{ComponentName}", sample.ControlName);
