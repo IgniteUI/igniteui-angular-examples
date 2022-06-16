@@ -67,6 +67,11 @@ gulp.task('logRoutes', gulp.series(
     browser.logRoutes
 ));
 
+gulp.task('logSandboxUrls', gulp.series(
+    browser.findSamples,
+    browser.logSandboxUrls,
+));
+
 gulp.task('updateReadme', gulp.series(
     browser.findSamples,
     browser.updateReadme

@@ -863,6 +863,24 @@ function logRoutes(cb) {
     cb();
 } exports.logRoutes = logRoutes;
 
+function logSandboxUrls (cb) {
+
+    let content = "";
+    var sandboxRoot = "https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/"
+    for (const sample of samplesDatabase) {
+        let sampleRoute = sample.SampleGroup + '/' + sample.SampleControl + "-" + sample.SampleFolder;
+        let sandboxURL = sandboxRoot + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder;
+        // sandboxURL += "?fontsize=14&hidenavigation=1&theme=dark&view=preview&file=/src/app.component.html"
+        content += sandboxURL + "\n";
+        console.log(sandboxURL);
+    }
+
+    let output = "./sandbox-angular.txt";
+    fs.writeFileSync(output, content);
+
+    cb();
+} exports.logSandboxUrls  = logSandboxUrls ;
+
 function updateReadme(cb) {
 
     log('updating readme files... ');
