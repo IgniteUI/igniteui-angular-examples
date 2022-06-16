@@ -862,3 +862,37 @@ function logRoutes(cb) {
     }
     cb();
 } exports.logRoutes = logRoutes;
+
+function updateReadme(cb) {
+
+    log('updating readme files... ');
+    // var sandboxTemplate = fs.readFileSync("../samples/templates/sandbox.config.json", "utf8");
+    // for (const sample of samplesDatabase) {
+    //     let sandboxOutput = '../samples/' + sample.SampleGroup + '/' + sample.SampleControl + '/' + sample.SampleFolder + "/sandbox.config.json";
+    //     fs.writeFileSync(sandboxOutput, sandboxTemplate);
+    //     console.log(sandboxOutput)
+    // }
+
+    // "https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/category-chart/annotations?fontsize=14&hidenavigation=1&theme=dark&view=preview&file=/src/app/app.component.html"
+    // "https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/category-chart/annotations"
+
+    var sandboxRoot = "https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/"
+    var readmeTemplate = fs.readFileSync("../samples/templates/ReadMe.md", "utf8");
+    for (const sample of samplesDatabase) {
+        let sampleRoute = sample.SampleGroup + '/' + sample.SampleControl + "-" + sample.SampleFolder;
+        let sandboxURL = sandboxRoot + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder;
+        sandboxURL += "?fontsize=14&hidenavigation=1&theme=dark&view=preview&file=/src/app/app.component.html"
+
+        let readmeFile = readmeTemplate + "";
+        readmeFile = readmeFile.replace("{ComponentName}", sample.ControlName);
+        readmeFile = readmeFile.replace("{SandboxUrlEdit}", sandboxURL);
+        readmeFile = readmeFile.replace("{SampleDisplayName}", sample.SampleDisplayName);
+        readmeFile = readmeFile.replace("{SampleFolderPath}", sample.SourcePath);
+        readmeFile = readmeFile.replace("{SampleRoute}", sampleRoute);
+
+        let readmeOutput = '../samples/' + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder + "/ReadMe.md";
+        fs.writeFileSync(readmeOutput, readmeFile);
+        // break;
+    }
+    cb();
+} exports.updateReadme = updateReadme;
