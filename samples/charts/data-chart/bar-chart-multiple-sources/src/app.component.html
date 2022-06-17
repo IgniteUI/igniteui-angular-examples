@@ -1,6 +1,4 @@
 <div class="container sample">
-
-  
   <div class="legend-title">
       Highest Grossing Movie Franchises
   </div>
@@ -51,12 +49,12 @@
           <igx-bar-series
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          valueMemberPath="highestGrossing"
-          isTransitionInEnabled="true"
-          [dataSource]="highestGrossingMovies"
-          isHighlightingEnabled="true"
-          showDefaultTooltip="true"
           title="Highest Grossing Movie in Series"
+          valueMemberPath="highestGrossing"
+          [dataSource]="highestGrossingMovies"
+          showDefaultTooltip="true"
+          isTransitionInEnabled="true"
+          isHighlightingEnabled="true"
           name="BarSeries2"
           #barSeries2>
           </igx-bar-series>

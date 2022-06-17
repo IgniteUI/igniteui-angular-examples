@@ -3,8 +3,6 @@ import { CountryStatsAfricaItem, CountryStatsAfrica } from './CountryStatsAfrica
 import { CountryStatsEuropeItem, CountryStatsEurope } from './CountryStatsEurope';
 import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent } from 'igniteui-angular-charts';
 
-
-
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],

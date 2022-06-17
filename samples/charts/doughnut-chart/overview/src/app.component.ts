@@ -2,8 +2,6 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDet
 import { CompanyMarketSharesItem, CompanyMarketShares } from './CompanyMarketShares';
 import { IgxDoughnutChartComponent, IgxRingSeriesComponent } from 'igniteui-angular-charts';
 
-
-
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],

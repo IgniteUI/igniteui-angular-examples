@@ -3,8 +3,6 @@ import { ComponentRenderer, PropertyEditorPanelDescriptionModule, SparklineDescr
 import { SparklineMixedDataItem, SparklineMixedData } from './SparklineMixedData';
 import { IgxSparklineComponent } from 'igniteui-angular-charts';
 
-
-
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
