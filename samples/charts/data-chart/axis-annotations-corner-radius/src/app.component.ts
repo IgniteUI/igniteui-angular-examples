@@ -3,8 +3,6 @@ import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './
 import { CountryRenewableCalloutsItem, CountryRenewableCallouts } from './CountryRenewableCallouts';
 import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxLineSeriesComponent, IgxCalloutLayerComponent, IgxFinalValueLayerComponent, IgxCrosshairLayerComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
-
-
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
