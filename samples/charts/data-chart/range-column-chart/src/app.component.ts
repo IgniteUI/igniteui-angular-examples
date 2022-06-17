@@ -2,6 +2,8 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDet
 import { TemperatureRangeDataItem, TemperatureRangeData } from './TemperatureRangeData';
 import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxRangeColumnSeriesComponent } from 'igniteui-angular-charts';
 
+
+
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],

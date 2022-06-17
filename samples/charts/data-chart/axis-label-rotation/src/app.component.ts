@@ -6,7 +6,9 @@ import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisCompon
 
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 import { defineAllComponents } from 'igniteui-webcomponents';
+
 defineAllComponents();
+
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],

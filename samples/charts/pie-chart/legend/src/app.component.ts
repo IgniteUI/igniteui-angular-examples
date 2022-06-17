@@ -2,6 +2,8 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDet
 import { EnergyGlobalDemandItem, EnergyGlobalDemand } from './EnergyGlobalDemand';
 import { IgxItemLegendComponent, IgxPieChartComponent } from 'igniteui-angular-charts';
 
+
+
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],

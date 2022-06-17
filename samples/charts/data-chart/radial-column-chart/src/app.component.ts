@@ -2,6 +2,8 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDet
 import { FootballPlayerStatsItem, FootballPlayerStats } from './FootballPlayerStats';
 import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryAngleAxisComponent, IgxNumericRadiusAxisComponent, IgxRadialColumnSeriesComponent } from 'igniteui-angular-charts';
 
+
+
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],

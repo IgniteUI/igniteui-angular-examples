@@ -3,6 +3,8 @@ import { HealthDataForGermanyItem, HealthDataForGermany } from './HealthDataForG
 import { HealthDataForFranceItem, HealthDataForFrance } from './HealthDataForFrance';
 import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxScatterLineSeriesComponent } from 'igniteui-angular-charts';
 
+
+
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
