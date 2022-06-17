@@ -25,22 +25,22 @@
           <igx-range-area-series
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          lowMemberPath="lowNY"
-          highMemberPath="highNY"
+          lowMemberPath="lowLA"
+          highMemberPath="highLA"
           [dataSource]="temperatureRangeData"
-          title="New York"
-          name="series"
-          #series>
+          title="Los Angeles"
+          name="RangeAreaSeries1"
+          #rangeAreaSeries1>
           </igx-range-area-series>
           <igx-range-area-series
           [xAxis]="xAxis"
           [yAxis]="yAxis"
+          title="New York"
           lowMemberPath="lowNY"
           highMemberPath="highNY"
           [dataSource]="temperatureRangeData"
-          title="New York"
-          name="series"
-          #series>
+          name="RangeAreaSeries2"
+          #rangeAreaSeries2>
           </igx-range-area-series>
       </igx-data-chart>
   </div>

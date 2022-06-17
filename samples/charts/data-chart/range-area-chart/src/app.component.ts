@@ -20,8 +20,10 @@ export class AppComponent {
     private xAxis: IgxCategoryXAxisComponent
     @ViewChild("yAxis", { static: true } )
     private yAxis: IgxNumericYAxisComponent
-    @ViewChild("series", { static: true } )
-    private series: IgxRangeAreaSeriesComponent
+    @ViewChild("rangeAreaSeries1", { static: true } )
+    private rangeAreaSeries1: IgxRangeAreaSeriesComponent
+    @ViewChild("rangeAreaSeries2", { static: true } )
+    private rangeAreaSeries2: IgxRangeAreaSeriesComponent
 
     private _temperatureRangeData: TemperatureRangeData = null;
     public get temperatureRangeData(): TemperatureRangeData {
