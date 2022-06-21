@@ -1,29 +1,4 @@
 
-// moved from styles.scss file:
-@import '~igniteui-angular/lib/core/styles/themes/index';
-@include igx-core();
-@include igx-theme($default-palette);
-
-// @include igx-typography();
-@include igx-theme(
-    $palette: $light-material-palette,
-    $schema: $light-material-schema,
-    $exclude: (
-        'bullet-graph',
-        'linear-gauge',
-        'radial-gauge',
-        'category-chart',
-        'data-chart',
-        'doughnut-chart',
-        'financial-chart',
-        'funnel-chart',
-        'geo-map',
-        'pie-chart',
-        'shape-chart',
-        'sparkline',
-    )
-);
-// moved from styles.scss file:
 
 
 .wrapper {

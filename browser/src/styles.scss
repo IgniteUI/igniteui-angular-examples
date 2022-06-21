@@ -1,30 +1,29 @@
 // CSS Reset, comment out if not required or using a different module
 // @import '~minireset.css/minireset';
 
-// NOTE moved to index.component.scss file
-// @import '~igniteui-angular/lib/core/styles/themes/index';
-// @include igx-core();
-// @include igx-theme($default-palette);
+@import '~igniteui-angular/lib/core/styles/themes/index';
+@include igx-core();
+@include igx-theme($default-palette);
 
 // @include igx-typography();
-// @include igx-theme(
-//     $palette: $light-material-palette,
-//     $schema: $light-material-schema,
-//     $exclude: (
-//         'bullet-graph',
-//         'linear-gauge',
-//         'radial-gauge',
-//         'category-chart',
-//         'data-chart',
-//         'doughnut-chart',
-//         'financial-chart',
-//         'funnel-chart',
-//         'geo-map',
-//         'pie-chart',
-//         'shape-chart',
-//         'sparkline',
-//     )
-// );
+@include igx-theme(
+    $palette: $light-material-palette,
+    $schema: $light-material-schema,
+    $exclude: (
+        'bullet-graph',
+        'linear-gauge',
+        'radial-gauge',
+        'category-chart',
+        'data-chart',
+        'doughnut-chart',
+        'financial-chart',
+        'funnel-chart',
+        'geo-map',
+        'pie-chart',
+        'shape-chart',
+        'sparkline',
+    )
+);
 
 // $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);
 
