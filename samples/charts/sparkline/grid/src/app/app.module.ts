@@ -7,14 +7,12 @@ import { AppComponent } from "./app.component";
 
 import { IgxSparklineModule } from "igniteui-angular-charts";
 import { IgxGridModule } from "igniteui-angular";
-import { Products } from "./Products.ts";
-
+import { Products } from "./Products";
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-
 ],
   imports: [
     BrowserModule,

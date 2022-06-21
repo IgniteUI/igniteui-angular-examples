@@ -5,5 +5,9 @@ body {
     width: 100%;
     overflow: hidden;
     margin: 0;
-    box-sizing: border-box;
+    // box-sizing: border-box;
 }
+
+@import '~igniteui-angular/lib/core/styles/themes/index';
+@include igx-core();
+@include igx-theme($default-palette);

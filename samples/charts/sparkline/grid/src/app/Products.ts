@@ -24,20 +24,20 @@ export class Products {
             count = 20;
         }
         const items: any[] = [];
-        for (let i = 0; i < count; i++) {
-            const id = this.pad(count - i, count.toString().length);
-            const price = this.getRandomNumber(10000, 90000) / 100;
-            const orderCount = this.getRandomNumber(4, 30);
-            const orderValue = Math.round(price * orderCount);
-            const orderShipped = this.getRandomNumber(30, 100);
-            const margin = this.getRandomNumber(5, 10);
-            const profit = Math.round(orderValue * (margin / 100));
-            const country = this.getRandomItem(this.countries);
+        for (let i: number = 0; i < count; i++) {
+            const id: string = this.pad(count - i, count.toString().length);
+            const price: number = this.getRandomNumber(10000, 90000) / 100;
+            const orderCount: number = this.getRandomNumber(4, 30);
+            const orderValue: number = Math.round(price * orderCount);
+            const orderShipped: number = this.getRandomNumber(30, 100);
+            const margin: number = this.getRandomNumber(5, 10);
+            const profit: number = Math.round(orderValue * (margin / 100));
+            const country: string = this.getRandomItem(this.countries);
 
             // sales per month for sparkline chart
             const sales: any[] = [];
-            for (let m = 0; m < 12; m++) {
-                const sale = this.getRandomNumber(20, 90);
+            for (let m: number = 0; m < 12; m++) {
+                const sale: number = this.getRandomNumber(20, 90);
                 sales.push({ Value: sale, Month: m });
             }
             items.push({
@@ -66,8 +66,8 @@ export class Products {
             weekCount = 52;
         }
         const sales: any[] = [];
-        for (let w = 0; w < weekCount; w++) {
-            const value = this.getRandomNumber(0, 100);
+        for (let w: number = 0; w < weekCount; w++) {
+            const value: number = this.getRandomNumber(0, 100);
             sales.push({ Sold: value, Week: w });
         }
         return sales;
@@ -78,16 +78,15 @@ export class Products {
             weekCount = 52;
         }
         const rates: any[] = [];
-        for (let w = 0; w < weekCount; w++) {
-            const value = this.getRandomNumber(-100, 100);
+        for (let w: number = 0; w < weekCount; w++) {
+            const value: number = this.getRandomNumber(-100, 100);
             rates.push({ Balance: value, Week: w });
         }
         return rates;
     }
 
     public static getCountryFlag(country: string): string {
-        const flag = "https://github.com/HUSSAR-mtrela/geo-data/raw/master/flags/" + country + ".png";
-        return flag;
+        return "https://github.com/HUSSAR-mtrela/geo-data/raw/master/flags/" + country + ".png";
     }
 
     public static getRandomDate(): Date {
@@ -103,7 +102,7 @@ export class Products {
     }
 
     public static getRandomItem(array: any[]): any {
-        const index = Math.round(this.getRandomNumber(0, array.length - 1));
+        const index: number = Math.round(this.getRandomNumber(0, array.length - 1));
         return array[index];
     }
 
@@ -111,7 +110,7 @@ export class Products {
         if (char === undefined) {
             char = "0";
         }
-        let s = num + "";
+        let s: string = num + "";
         while (s.length < size) {
             s = char + s;
         }
