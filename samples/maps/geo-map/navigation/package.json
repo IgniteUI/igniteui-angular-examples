@@ -3,6 +3,7 @@
     "ng": "ng",
     "update": "ng update",
     "start": "node --max_old_space_size=12192 node_modules/@angular/cli/bin/ng serve -o",
+    "build": "node --max_old_space_size=12192 node_modules/@angular/cli/bin/ng build --configuration production",
     "lint": "ng lint"
   },
   "dependencies": {
