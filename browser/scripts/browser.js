@@ -914,3 +914,35 @@ function updateReadme(cb) {
     }
     cb();
 } exports.updateReadme = updateReadme;
+
+
+function makeDirectoryFor(filePath) {
+    var dirname = path.dirname(filePath);
+    if (fs.existsSync(dirname)) {
+      return true;
+    }
+    makeDirectoryFor(dirname);
+    fs.mkdirSync(dirname);
+    // fs.mkdir(sampleOutputFolder + 'src', { recursive: true }, (err) => { if (err) throw err; });
+}
+
+function updateEnvironmentFiles(cb) {
+
+    log('updating environment files... ');
+
+    var source1 = fs.readFileSync("../samples/templates/src/environments/environment.ts", "utf8");
+    var source2 = fs.readFileSync("../samples/templates/src/environments/environment.prod.ts", "utf8");
+
+    for (const sample of samplesDatabase) {
+        let samplePath = '../samples/' + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder;
+
+        let output1 =samplePath + "/src/environments/environment.ts";
+        makeDirectoryFor(output1)
+
+        fs.writeFileSync(output1, source1);
+        let output2 = samplePath + "/src/environments/environment.prod.ts";
+        fs.writeFileSync(output2, source2);
+        // break;
+    }
+    cb();
+} exports.updateEnvironmentFiles = updateEnvironmentFiles;
