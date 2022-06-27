@@ -82,3 +82,7 @@ gulp.task('updateEnvironmentFiles', gulp.series(
     browser.updateEnvironmentFiles
 ));
 
+
+gulp.task('updateIG', gulp.series(
+    browser.updateIG
+));
