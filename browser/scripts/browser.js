@@ -991,7 +991,6 @@ function updateIG(cb) {
         '!../samples/**/node_modules',
     ];
 
-
     // creating package mapping without proget prefix so we can upgrade to/from proget packages
     let packageMappings = {};
     for (const item of packageUpgrades) {
@@ -1001,7 +1000,6 @@ function updateIG(cb) {
     }
 
     // console.log(packageMappings);
-    // console.log(packageMappings["igniteui-angular-maps"]);
 
     let updatedPackages = 0;
     // gulp all package.json files in samples/browser
@@ -1012,6 +1010,7 @@ function updateIG(cb) {
         var fileContent = file.contents.toString();
         var fileLines = fileContent.split('\n');
 
+        var fileChanged = false;
         for (let i = 0; i < fileLines.length; i++) {
             const line = fileLines[i];
             let words = line.split(":");
@@ -1021,14 +1020,16 @@ function updateIG(cb) {
                 let packageInfo = packageMappings[packageName];
                 if (packageInfo !== undefined) {
                     let newLine = '    "' + packageInfo.name + '": "' + packageInfo.version + '",';
-                    // console.log(line.trim() + " ----- " +  newLine );
-                    fileLines[i] = newLine;
+                    if (fileLines[i].trim() !== newLine.trim()) {
+                        fileLines[i] = newLine;
+                        fileChanged = true;
+                    }
                 }
             }
         }
-        let newContent = fileLines.join('\n');
-        if (newContent !== fileContent) {
-            //log("saving: " + filePath);
+
+        if (fileChanged) {
+            let newContent = fileLines.join('\n'); // newContent !== fileContent
             updatedPackages++;
             fs.writeFileSync(filePath, newContent);
             log("updated: " + filePath);
