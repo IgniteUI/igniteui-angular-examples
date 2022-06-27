@@ -4,7 +4,6 @@ import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
-import { DataChartTypeScatterShapeSeriesComponent } from "./data-chart-type-scatter-shape-series/data-chart-type-scatter-shape-series.component";
 import { IgxDataChartCoreModule, IgxDataChartShapeModule, IgxDataChartShapeCoreModule, IgxLegendModule, IgxDataChartScatterModule } from "igniteui-angular-charts";
 
 import { SampleShapeData } from "./SampleShapeData";
@@ -13,8 +12,7 @@ import { SampleShapeData } from "./SampleShapeData";
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-    AppComponent,
-    DataChartTypeScatterShapeSeriesComponent
+    AppComponent
 ],
   imports: [
     BrowserModule,
