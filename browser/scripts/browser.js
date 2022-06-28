@@ -954,15 +954,15 @@ function updateIG(cb) {
     // "@infragistics/igniteui-angular-charts" instead of "igniteui-angular-charts"
     let packageUpgrades = [
         // these IG packages are often updated:
-        { name: "igniteui-angular-core"                     , version: "13.2.0" },
-        { name: "igniteui-angular-charts"                   , version: "13.2.0" },
-        { name: "igniteui-angular-excel"                    , version: "13.2.0" },
-        { name: "igniteui-angular-gauges"                   , version: "13.2.0" },
-        { name: "igniteui-angular-layouts"                  , version: "13.2.0" },
-        { name: "igniteui-angular-maps"                     , version: "13.2.0" },
-        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "13.2.0" },
-        { name: "igniteui-angular-spreadsheet"              , version: "13.2.0" },
-        { name: "igniteui-angular-datasources"              , version: "13.2.0", },
+        { name: "@infragistics/igniteui-angular-core"                     , version: "22.1.60" },
+        { name: "@infragistics/igniteui-angular-charts"                   , version: "22.1.60" },
+        { name: "@infragistics/igniteui-angular-excel"                    , version: "22.1.60" },
+        { name: "@infragistics/igniteui-angular-gauges"                   , version: "22.1.60" },
+        { name: "@infragistics/igniteui-angular-layouts"                  , version: "22.1.60" },
+        { name: "@infragistics/igniteui-angular-maps"                     , version: "22.1.60" },
+        { name: "@infragistics/igniteui-angular-spreadsheet-chart-adapter", version: "22.1.60" },
+        { name: "@infragistics/igniteui-angular-spreadsheet"              , version: "22.1.60" },
+        { name: "@infragistics/igniteui-angular-datasources"              , version: "22.1.60", },
         // these IG packages are sometimes updated:
         { name: "igniteui-angular", version: "13.0.11",  },
         { name: "igniteui-webcomponents", version: "^3.2.0",  },
