@@ -30,6 +30,7 @@ const browser = require('./scripts/browser.js')
 
 // NOTE you can call this series of functions in terminal: "gulp updateBrowser"
 gulp.task('updateBrowser', gulp.series(
+    browser.logVersionIgniteUI,
     // browser.skipSamples,
     browser.cleanSamples,
     browser.findSamples,
@@ -70,6 +71,10 @@ gulp.task('logRoutes', gulp.series(
 gulp.task('logSandboxUrls', gulp.series(
     browser.findSamples,
     browser.logSandboxUrls,
+));
+
+gulp.task('logVersionIgniteUI', gulp.series(
+    browser.logVersionIgniteUI,
 ));
 
 gulp.task('updateReadme', gulp.series(

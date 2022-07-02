@@ -1044,3 +1044,40 @@ function updateIG(cb) {
 
 } exports.updateIG = updateIG;
 
+
+
+function logVersionIgniteUI(cb) {
+    let packageFile = fs.readFileSync("./package.json");
+    let packageJson = JSON.parse(packageFile.toString());
+    let packageData = JSON.stringify(packageJson.dependencies, null, ' ');
+
+    let igPackages = [];
+    for (const line of packageData.split('\n')) {
+        if (line.indexOf('igniteui-') > 0) {
+            let packageLine = line.replace(',', '')
+            packageLine = packageLine.split('"').join('');
+            packageLine = packageLine.replace('@infragistics/', '');
+            let packagePair = packageLine.split(':');
+            let packageVersion = packagePair[1].trim();
+            let packageName = packagePair[0].trim();
+
+            console.log('>> using package: ' + packageVersion + ' ' + packageName);
+            let package = { ver: packageVersion, name: packageName };
+            igPackages.push(package);
+        }
+    }
+
+    let outputText = '[\r\n';
+    for (let i = 0; i < igPackages.length; i++) {
+        outputText += JSON.stringify(igPackages[i]);
+        if (i < igPackages.length - 1)
+            outputText += ',';
+        outputText += '\r\n';
+    }
+    outputText += "]";
+
+    const outputPath = "./src/browser-info.json";
+
+    fs.writeFileSync(outputPath, outputText);
+    cb();
+} exports.logVersionIgniteUI = logVersionIgniteUI;
