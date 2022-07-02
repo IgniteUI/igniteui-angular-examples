@@ -1,0 +1,11 @@
+[
+{"ver":"14.1.0","name":"igniteui-angular-core"},
+{"ver":"14.1.0","name":"igniteui-angular-charts"},
+{"ver":"14.1.0","name":"igniteui-angular-excel"},
+{"ver":"14.1.0","name":"igniteui-angular-gauges"},
+{"ver":"14.1.0","name":"igniteui-angular-layouts"},
+{"ver":"14.1.0","name":"igniteui-angular-maps"},
+{"ver":"14.1.0","name":"igniteui-angular-spreadsheet"},
+{"ver":"14.1.0","name":"igniteui-angular-spreadsheet-chart-adapter"},
+{"ver":"^3.2.0","name":"igniteui-webcomponents"}
+]
