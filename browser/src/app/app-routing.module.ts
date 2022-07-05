@@ -71,15 +71,15 @@ export class AppRoutingModule {
 
     constructor(private router: Router) {
 
-        console.log("app routes = " + appRoutes.length);
-        for (const route of appRoutes) {
-            console.log("app routes patent path: " + route.path)
-            if (route.children) {
-                for (const child of route.children) {
-                    console.log("app routes child path: " + child.path)
-                }
-            }
-        }
+        // console.log("app routes = " + appRoutes.length);
+        // for (const route of appRoutes) {
+        //     console.log("app routes patent path: " + route.path)
+        //     if (route.children) {
+        //         for (const child of route.children) {
+        //             console.log("app routes child path: " + child.path)
+        //         }
+        //     }
+        // }
 
         router.events
             .filter((event) => event instanceof NavigationStart)

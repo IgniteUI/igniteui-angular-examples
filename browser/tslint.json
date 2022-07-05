@@ -22,6 +22,7 @@
     "prefer-conditional-expression": false,
     "prefer-for-of": false,
     "arrow-parens": false,
+    "disable-next-line:space-within-parens": false,
     "object-literal-sort-keys": false
   }
 }

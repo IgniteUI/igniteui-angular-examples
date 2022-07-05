@@ -1,5 +1,6 @@
-<div class="wrapper" igxLayout>
-    <igx-nav-drawer class="nav-sidebar" #navdrawer [enableGestures]="drawerState.enableGestures" [isOpen]="drawerState.open" [(pin)]="drawerState.pin"
+<div class="container horizontal" >
+
+    <!-- <igx-nav-drawer class="nav-sidebar" #navdrawer [enableGestures]="drawerState.enableGestures" [isOpen]="drawerState.open" [(pin)]="drawerState.pin"
         [position]="drawerState.position" [width]="drawerState.width" (opened)="refresh()" (closed)="refresh()">
         <ng-template igxDrawer>
             <nav>
@@ -7,15 +8,13 @@
                     <img class="logo" src="assets/images/rsrcs/igniteui-angular_logo.svg" alt="Ignite UI for Angular Logo">
                 </div>
 
-                <!-- Home -->
                 <span igxDrawerItem igxRipple routerLink="{{homeRouteItem.path}}" routerLinkActive="igx-nav-drawer__item--active">
                     <button igxButton="icon" igxRipple igxRippleCentered="true">
                         <igx-icon fontSet="material">home</igx-icon>
                     </button>
                     {{homeRouteItem.displayName}}
-                </span>
-
-                <!-- Search -->
+                </span> -->
+<!--
                 <igx-input-group type="search" class="nav-search-box">
                     <igx-prefix>
                         <igx-icon>search</igx-icon>
@@ -24,10 +23,9 @@
                     <igx-suffix *ngIf="search.value.length > 0" (click)="clearSearchValue()">
                         <igx-icon>clear</igx-icon>
                     </igx-suffix>
-                </igx-input-group>
+                </igx-input-group> -->
 
-                <span *ngFor="let navItem of currentNavItems">
-                    <!-- Header -->
+                <!-- <span *ngFor="let navItem of currentNavItems">
                     <span igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" (click)="toggleParent('header' + navItem.name)"
                         class="nav-headerSpan" >
                         <button igxButton="icon" igxRipple igxRippleCentered="true" class="nav-headerButton">
@@ -35,7 +33,6 @@
                         </button>
                         <span class="nav-headerText">{{navItem.name}}</span>
                     </span>
-                    <!-- Children -->
                     <span [id]="'header' + navItem.name" style="display:none">
                         <span [id]="'child' + routeItem.displayName" *ngFor="let routeItem of navItem.children" igxDrawerItem igxRipple
                             routerLink="{{routeItem.path}}" routerLinkActive="igx-nav-drawer__item--active" class="nav-childItem">
@@ -45,14 +42,44 @@
                 </span>
             </nav>
         </ng-template>
-    </igx-nav-drawer>
+    </igx-nav-drawer> -->
 
-    <div class="main">
-        <igx-navbar class="nav-bar horizontal" [title]="selectedDisplayName" actionButtonIcon="menu" (onAction)="navdrawer.toggle()"></igx-navbar>
-        <!-- <div class="nav-bar horizontal">
-            <button (click)="onToggleSidebar()">MENU</button>
+
+    <div class="nav-sidebar vertical" id="sidebar">
+
+        <div class="nav-sidebar-header" >
+            <img  class="nav-sidebar-logo" src="assets/images/nav/logo-ignite-white.svg" alt="Ignite UI for Angular Logo">
+            <span class="nav-sidebar-platform">Angular</span>
+        </div>
+
+        <div class="nav-sidebar-list no-selection">
+            <span *ngFor="let navItem of currentNavItems" >
+                <div (click)="toggleParent('header' + navItem.name)" class="sbNavigation-control horizontal" >
+                    <div class='sbNavigation-link-symbol'>&#10148;</div>
+                    <span class="nav-headerText">{{navItem.name}}</span>
+                </div>
+                <span [id]="'header' + navItem.name" style="display:none" class="vertical">
+                    <span [id]="'child' + routeItem.displayName" *ngFor="let routeItem of navItem.children"
+                        routerLink="{{routeItem.path}}"
+                        class="sbNavigation-link horizontal">
+
+                        <div class='sbNavigation-link-symbol'>&#11044;</div>
+                        <!-- <div class='sbNavigation-link-symbol'>&#x25CF;</div> -->
+                        <!-- <div class='sbNavigation-link-symbol'>&#x2605;</div> -->
+                        <span>{{routeItem.displayName}}</span>
+                    </span>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <div class="container vertical">
+        <!-- <igx-navbar class="nav-bar horizontal" [title]="selectedDisplayName" actionButtonIcon="menu" (onAction)="navdrawer.toggle()"></igx-navbar> -->
+        <div class="nav-bar horizontal">
+            <div class='nav-bar-menu no-selection' (click)="onToggleSidebar()">&#x2630;</div>
             <label class="nav-bar-title"> {{selectedDisplayName}} </label>
-        </div> -->
+            <label class="nav-bar-version"> {{igVersion}} </label>
+        </div>
         <div class="content">
             <router-outlet></router-outlet>
         </div>

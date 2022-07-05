@@ -35,7 +35,8 @@ gulp.task('updateBrowser', gulp.series(
     browser.cleanSamples,
     browser.findSamples,
     browser.copySamples,
-    browser.updateCodeViewer
+    browser.updateCodeViewer,
+    browser.copyBootstrapCss,
 ));
 
 // NOTE you can call each function in terminal: "gulp findSamples"
@@ -88,6 +89,8 @@ gulp.task('updateEnvironmentFiles', gulp.series(
 ));
 
 
-gulp.task('updateIG', gulp.series(
-    browser.updateIG
-));
+gulp.task('updateIG', browser.updateIG);
+gulp.task('copyBootstrapCss', browser.copyBootstrapCss);
+
+gulp.task('updateBootstrap', browser.updateBootstrap);
+

@@ -1044,6 +1044,73 @@ function updateIG(cb) {
 
 } exports.updateIG = updateIG;
 
+function copyBootstrapCss(cb) {
+    let file = fs.readFileSync("./node_modules/igniteui-webcomponents/themes/light/bootstrap.css");
+    let filePath = "./src/assets/css/bootstrap.css";
+    fs.writeFileSync(filePath, file.toString());
+    cb();
+} exports.copyBootstrapCss = copyBootstrapCss;
+
+function updateBootstrap(cb) {
+    let template = fs.readFileSync("./node_modules/igniteui-webcomponents/themes/light/bootstrap.css");
+    var filePaths = [
+        '../samples/**/app.component.ts',
+        '../samples/**/styles.scss',
+        '../samples/**/app.component.scss',
+        '!../samples/**/node_modules/**',
+        '!../samples/**/node_modules',
+    ];
+    gulp.src(filePaths, {allowEmpty: false})
+    .pipe(es.map(function(file, fileCallback) {
+        let filePath = file.dirname + "\\" + file.basename;
+        var fileContent = file.contents.toString();
+        var fileLines = fileContent.split('\n');
+        var fileChanged = false;
+
+        var bootstrap = "igniteui-webcomponents/themes/light/bootstrap.css";
+        if (fileContent.indexOf(bootstrap) > 0) {
+            fileContent = fileContent.replace("import 'igniteui-webcomponents/themes/light/bootstrap.css';", "");
+            fileContent = fileContent.replace("@import url('../node_modules/igniteui-webcomponents/themes/light/bootstrap.css');", "");
+            fs.writeFileSync(filePath, fileContent);
+
+            // let scssPath = file.dirname.replace("\\app","") + "\\styles.scss"
+            // let scssContent = fs.readFileSync(scssPath).toString();
+            // scssContent = scssContent.replace("@import url('../node_modules/igniteui-webcomponents/themes/light/bootstrap.css');", "");
+            // fs.writeFileSync(scssPath, scssContent);
+
+            let htmlPath = file.dirname.replace("\\app","") + "\\index.html"
+            let htmlContent = fs.readFileSync(htmlPath).toString();
+            let oldLink = '<link href="https://static.infragistics.com/xplatform/css/samples/shared.v6.css" rel="stylesheet">'
+            let newLink = '<link href="https://static.infragistics.com/xplatform/css/samples/wc-styles/bootstrap.css" rel="stylesheet">'
+
+            let newContent = htmlContent.replace(oldLink, oldLink + "\n  " + newLink);
+            newContent = newContent.replace('<link href="https://static.infragistics.com/xplatform/css/samples/wc-styles/bootstrap.css" rel="stylesheet">"\n', "");
+            newContent = newContent.replace('<link href="https://static.infragistics.com/xplatform/css/samples/bootstrap.css" rel="stylesheet">"\n', "");
+
+            newContent = newContent.replace(newLink + "\n  " + newLink, newLink);
+            newContent = newContent.replace(newLink + "\n    " + newLink, newLink);
+            newContent = newContent.replace("    ", "  ");
+
+            fs.writeFileSync(htmlPath, newContent);
+
+            log("updated: " + filePath);
+        }
+
+
+        let htmlPath = file.dirname.replace("\\app","") + "\\index.html"
+        let htmlContent = fs.readFileSync(htmlPath).toString();
+        let oldLink = '<link href="https://static.infragistics.com/xplatform/css/samples/wc-styles/bootstrap.css" rel="stylesheet">'
+        let newLink = '<link href="https://static.infragistics.com/xplatform/css/samples/wc-styles/bootstrap-v1.css" rel="stylesheet">'
+        let newContent = htmlContent.replace(oldLink, newLink);
+        fs.writeFileSync(htmlPath, newContent);
+
+        fileCallback(null, file);
+    }))
+    .on("end", function() {
+        cb();
+    });
+    cb();
+} exports.updateBootstrap = updateBootstrap;
 
 
 function logVersionIgniteUI(cb) {

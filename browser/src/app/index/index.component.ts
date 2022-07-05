@@ -1,7 +1,10 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from "@angular/core";
 import { NavigationStart, Route, Router } from "@angular/router";
-import { IgxNavigationDrawerComponent } from "igniteui-angular";
+// import { IgxNavigationDrawerComponent } from "igniteui-angular";
 import { filter } from "rxjs/operators";
+
+// const BrowserInfo = require("./assets/BrowserInfo.json"); // auto-generated
+import BrowserInfo  from "../../browser-info.json";
 
 // note these section is auto-generated - do not change it:
 // Auto-Insert-Imports-RoutingData-Start
@@ -20,8 +23,8 @@ import { RoutingDataForGauges } from "../../samples/gauges/routing-data";
 })
 export class IndexComponent implements OnInit, AfterViewInit {
 
-    @ViewChild("navdrawer", { read: IgxNavigationDrawerComponent, static: true })
-    public navdrawer: IgxNavigationDrawerComponent;
+    // @ViewChild("navdrawer", { read: IgxNavigationDrawerComponent, static: true })
+    // public navdrawer: IgxNavigationDrawerComponent;
     public homeRouteItem: IRouteItem;
     public currentNavItems: INavigationItem[] = [];
     public selectedDisplayName: string;
@@ -51,11 +54,13 @@ export class IndexComponent implements OnInit, AfterViewInit {
     ];
 
     private allNavItems: INavigationItem[] = [];
+    public igVersion: string = "";
 
     constructor(private router: Router, private cdr: ChangeDetectorRef) {
         console.log("index new");
         this.appRoutes = this.getAllSampleRoutes("/samples",
             router.config.filter((c) => c.path === "samples")[0].children, this.modulesRoutes);
+
     }
 
     public ngOnInit() {
@@ -76,13 +81,22 @@ export class IndexComponent implements OnInit, AfterViewInit {
                 this.selectedDisplayName = routeItem.displayName;
             }
 
-            if (event.url !== "/" && !this.navdrawer.pin) {
-                // Close drawer when selecting a view on mobile (unpinned)
-                this.navdrawer.close();
-            }
+            // if (event.url !== "/" && !this.navdrawer.pin) {
+            //     // Close drawer when selecting a view on mobile (unpinned)
+            //     this.navdrawer.close();
+            // }
         });
 
         this.createAllNavItems();
+
+        // logging versions of IG packages
+        for (const item of BrowserInfo) {
+            // console.log('SB uses v' + item.ver + ' ' + item.name);
+            if (item.name.indexOf('igniteui-angular-core') >= 0) {
+                this.igVersion = "v" + item.ver;
+                console.log('SB uses v' + item.ver + ' ' + item.name);
+            }
+        }
     }
 
     public ngAfterViewInit() {
@@ -146,24 +160,25 @@ export class IndexComponent implements OnInit, AfterViewInit {
     private getAllSampleRoutes(basePath: string, appModuleRoutes: Route[], modulesRoutes: any[]): any[] {
         const routes = [];
         const pushRoute = (route: Route, baseRoutePath: string) => {
-            if (route.data && route.data.displayName && route.data.parentName) {
+            const data = route.data as any;
+            if (data && data.displayName && data.parentName) {
                 const routePath = baseRoutePath + "/" + route.path;
-                console.log("index route: " + routePath);
+                // console.log("index route: " + routePath);
                 routes.push({
-                    displayName: route.data.displayName,
-                    parentName: route.data.parentName,
+                    displayName: data.displayName,
+                    parentName: data.parentName,
                     path: routePath
                 });
             }
         };
 
         appModuleRoutes.forEach((route: Route) => {
-            console.log("index route app: ");
+            // console.log("index route app: ");
             pushRoute(route, basePath);
         });
 
         modulesRoutes.forEach((moduleRoutes: any) => {
-            console.log("index route modules: ");
+            // console.log("index route modules: ");
             // tslint:disable-next-line:forin
             for (const key in moduleRoutes.routesData) {
                 const route: Route = {
@@ -178,7 +193,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
     }
 
     private createAllNavItems() {
-        console.log("index nav items: ");
+        // console.log("index nav items: ");
         // Create home route item
         this.homeRouteItem = { path: "/samples/home", displayName: "Home" };
 
@@ -196,7 +211,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
         // Create children route items for each navigation item
         for (const appRoute of this.appRoutes) {
-            console.log("index nav item: " + appRoute.path);
+            // console.log("index nav item: " + appRoute.path);
             const controlName = appRoute.parentName;
             const navItem = this.allNavItems.filter((item) => item.name === controlName)[0];
             navItem.children.push({ path: appRoute.path, displayName: appRoute.displayName });
@@ -229,8 +244,19 @@ export class IndexComponent implements OnInit, AfterViewInit {
         return filteredNavItems;
     }
 
+    private sidebarExpanded: boolean = true;
     public onToggleSidebar(): void {
         console.log("onToggleSidebar");
+        const sidebar = document.getElementById("sidebar");
+        if (sidebar != null) {
+            // const sidebarDisplay = sidebar.style.display;
+            if (this.sidebarExpanded) {
+                sidebar.style.display = "none";
+            } else { // if (sidebar.style.display === "none") {
+                sidebar.style.display = "flex";
+            }
+            this.sidebarExpanded = !this.sidebarExpanded;
+        }
     }
 }
 
