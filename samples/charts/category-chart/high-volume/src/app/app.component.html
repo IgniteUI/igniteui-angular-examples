@@ -1,4 +1,4 @@
-<div class="container sample">
+<div class="container vertical">
     <div class="options horizontal">
         <button (click)="onGenerateDataClicked()">Generate Data</button>
         <button (click)="onAssignDataClicked()">AssignData</button>
@@ -8,12 +8,12 @@
             (input)="onMaxPointsChanged($event)"/>
     </div>
     <div class="container">
-        <igx-category-chart height="100%" yAxisLabelExtent="40" 
+        <igx-category-chart height="100%" yAxisLabelExtent="40"
         markerTypes="None"
         toolTipType="Default"
         xAxisEnhancedIntervalPreferMoreCategoryLabels="false"
         shouldAutoExpandMarginForInitialLabels="false"
-        crosshairsDisplayMode="None" 
+        crosshairsDisplayMode="None"
         #chart>
         </igx-category-chart>
     </div>

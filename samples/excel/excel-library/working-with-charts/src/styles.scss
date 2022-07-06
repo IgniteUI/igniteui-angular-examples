@@ -1,24 +1,3 @@
-// CSS Reset, comment out if not required or using a different module
-// @import '~minireset.css/minireset';
-
-@import '~igniteui-angular/lib/core/styles/themes/index';
-@include igx-core();
-@include igx-theme(
-    $default-palette,
-    $exclude: (
-        'bullet-graph',
-        'linear-gauge',
-        'radial-gauge',
-        'category-chart',
-        'data-chart',
-        'doughnut-chart',
-        'financial-chart',
-        'funnel-chart',
-        'geo-map',
-        'pie-chart',
-        'shape-chart',
-        'sparkline'));
-
 /* autoprefixer grid: on */
 html,
 body {
@@ -29,48 +8,3 @@ body {
     box-sizing: border-box;
 }
 
-.headerAlignStyle {
-    text-align: right !important;
-}
-
-// $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);
-
-// .fin-dark-theme {
-//     @include igx-dark-theme($green-palette);
-//      background: #333;
-
-//      ::-moz-placeholder {
-//          opacity: 1;
-//      }
-//  }
-
-// .dark-theme {
-//     background: #333;
-//     color: #fff;
-//     @include igx-dark-theme($green-palette);
-// }
-
-.igx-navbar__left {
-    // background: rgb(255, 136, 0);
-    display: flex;
-    flex-direction: row;
-}
-
-.igx-navbar__left > igx-icon {
-    align-self: center;
-    padding-right: 1rem;
-}
-
-.igx-navbar__left > h1 {
-    margin-block-start: 0.3em;
-    margin-block-end: 0.3em;
-}
-
-// .sample {
-//     box-sizing: border-box;
-// }
-
-.igx-input-group__bundle {
-    display: flex;
-    flex-direction: row;
-}

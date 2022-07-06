@@ -1,4 +1,4 @@
-<div class="container sample">
+<div class="container vertical">
     <div class="options vertical">
         <span id="legendTitle">Facebook Statement of Income 2019-2020</span>
         <div class="legend">
@@ -12,7 +12,7 @@
 
             <igx-category-x-axis #xAxis label="Date" overlap="0" gap="0.1" useClusteringMode="true"></igx-category-x-axis>
             <igx-numeric-y-axis #yAxis1 abbreviateLargeNumbers="true" title="In Millions of U.S. Dollars"
-                          titleLeftMargin="5" titleRightMargin="0" 
+                          titleLeftMargin="5" titleRightMargin="0"
                           minimumValue="0" maximumValue="30000000">
             </igx-numeric-y-axis>
             <igx-numeric-y-axis #yAxis2 abbreviateLargeNumbers="true" title="Percentage" majorStrokeThickness="0"
@@ -37,14 +37,14 @@
             <igx-callout-layer isAutoCalloutBehaviorEnabled="false" [targetSeries]="revenueSeries"
                           useValueForAutoCalloutLabels="false"
                           calloutLeaderBrush="Transparent" calloutTextColor="Black"
-                          calloutBackground = "Transparent" calloutPositionPadding="-5" 
+                          calloutBackground = "Transparent" calloutPositionPadding="-5"
                           xMemberPath="RevenueX" yMemberPath="Revenue" labelMemberPath="FormattedRevenue">
             </igx-callout-layer>
 
             <igx-callout-layer isAutoCalloutBehaviorEnabled="false" [targetSeries]="expenseSeries"
                           useValueForAutoCalloutLabels="false"
                           calloutLeaderBrush="Transparent" calloutTextColor="Black"
-                          calloutBackground="Transparent"  xMemberPath="ExpensesX" yMemberPath="Expenses" 
+                          calloutBackground="Transparent"  xMemberPath="ExpensesX" yMemberPath="Expenses"
                           labelMemberPath="FormattedExpenses" calloutPositionPadding="-5">
             </igx-callout-layer>
 
