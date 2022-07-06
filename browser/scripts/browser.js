@@ -954,19 +954,32 @@ function updateIG(cb) {
     // "@infragistics/igniteui-angular-charts" instead of "igniteui-angular-charts"
     let packageUpgrades = [
         // these IG packages are often updated:
-        { name: "@infragistics/igniteui-angular-core"                     , version: "22.1.60" },
-        { name: "@infragistics/igniteui-angular-charts"                   , version: "22.1.60" },
-        { name: "@infragistics/igniteui-angular-excel"                    , version: "22.1.60" },
-        { name: "@infragistics/igniteui-angular-gauges"                   , version: "22.1.60" },
-        { name: "@infragistics/igniteui-angular-layouts"                  , version: "22.1.60" },
-        { name: "@infragistics/igniteui-angular-maps"                     , version: "22.1.60" },
-        { name: "@infragistics/igniteui-angular-spreadsheet-chart-adapter", version: "22.1.60" },
-        { name: "@infragistics/igniteui-angular-spreadsheet"              , version: "22.1.60" },
-        { name: "@infragistics/igniteui-angular-datasources"              , version: "22.1.60", },
+        { name: "igniteui-angular-core"                     , version: "14.1.0" },
+        { name: "igniteui-angular-charts"                   , version: "14.1.0" },
+        { name: "igniteui-angular-excel"                    , version: "14.1.0" },
+        { name: "igniteui-angular-gauges"                   , version: "14.1.0" },
+        { name: "igniteui-angular-layouts"                  , version: "14.1.0" },
+        { name: "igniteui-angular-maps"                     , version: "14.1.0" },
+        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "14.1.0" },
+        { name: "igniteui-angular-spreadsheet"              , version: "14.1.0" },
+        { name: "igniteui-angular-datasources"              , version: "14.1.0" },
         // these IG packages are sometimes updated:
-        { name: "igniteui-angular", version: "13.0.11",  },
-        { name: "igniteui-webcomponents", version: "^3.2.0",  },
-        { name: "igniteui-dockmanager", version: "1.6.0-beta.1" },
+        { name: "igniteui-webcomponents",            version: "^3.2.0" },
+        { name: "igniteui-angular",                  version: "14.0.4" },
+        { name: "@angular/animations",               version: "14.0.4" },
+        { name: "@angular/common",                   version: "14.0.4" },
+        { name: "@angular/compiler",                 version: "14.0.4" },
+        { name: "@angular/core",                     version: "14.0.4" },
+        { name: "@angular/forms",                    version: "14.0.4" },
+        { name: "@angular/platform-browser",         version: "14.0.4" },
+        { name: "@angular/platform-browser-dynamic", version: "14.0.4" },
+        { name: "core-js", version: "3.21.0"},
+        //  dev packages:
+        { name: "@angular-devkit/build-angular", version: "14.0.4"},
+        { name: "@angular/cli", version: "14.0.4"},
+        { name: "@angular/compiler-cli", version: "14.0.4"},
+        { name: "@angular/language-service", version: "14.0.4"},
+        { name: "typescript", version: "4.7.4"},
     ];
 
     // NOTE you can comment out strings in this array to run these function only on a subset of samples
