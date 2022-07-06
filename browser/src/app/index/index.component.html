@@ -55,7 +55,7 @@
         <div class="nav-sidebar-list no-selection">
             <span *ngFor="let navItem of currentNavItems" >
                 <div (click)="toggleParent('header' + navItem.name)" class="sbNavigation-control horizontal" >
-                    <div class='sbNavigation-link-symbol'>&#10148;</div>
+                    <div class='sbNavigation-link-expand'>&#10148;</div>
                     <span class="nav-headerText">{{navItem.name}}</span>
                 </div>
                 <span [id]="'header' + navItem.name" style="display:none" class="vertical">
@@ -63,7 +63,7 @@
                         routerLink="{{routeItem.path}}"
                         class="sbNavigation-link horizontal">
 
-                        <div class='sbNavigation-link-symbol'>&#11044;</div>
+                        <div class='sbNavigation-link-sample'>-</div>
                         <!-- <div class='sbNavigation-link-symbol'>&#x25CF;</div> -->
                         <!-- <div class='sbNavigation-link-symbol'>&#x2605;</div> -->
                         <span>{{routeItem.displayName}}</span>

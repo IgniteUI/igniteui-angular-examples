@@ -110,12 +110,15 @@
     transition: "all 0.0s";
 }
 
-.sbNavigation-link-symbol {
+.sbNavigation-link-expand {
     padding-left: .25rem;
     padding-right: .25rem;
-    /* color: #272727 !important; */
-    /* color: dodgerblue; */
-    /* color: #dbdbdb; */
+}
+
+.sbNavigation-link-sample {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-weight: bold;
 }
 
 .sbNavigation-list {
