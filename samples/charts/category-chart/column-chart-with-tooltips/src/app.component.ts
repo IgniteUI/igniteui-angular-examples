@@ -4,7 +4,6 @@ import { HighestGrossingMoviesItem, HighestGrossingMovies } from './HighestGross
 import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxLegendComponent, IgxCategoryChartComponent } from 'igniteui-angular-charts';
 
-
 import { defineAllComponents } from 'igniteui-webcomponents';
 
 defineAllComponents();

@@ -6,7 +6,6 @@ import { IgxDataChartComponent } from 'igniteui-angular-charts';
 import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxWaterfallSeriesComponent } from 'igniteui-angular-charts';
 
-
 import { defineAllComponents } from 'igniteui-webcomponents';
 
 defineAllComponents();
