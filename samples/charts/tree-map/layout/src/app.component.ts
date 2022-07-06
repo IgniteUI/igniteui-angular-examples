@@ -4,7 +4,7 @@ import { CountyHierarchicalDataItem, CountyHierarchicalData } from './CountyHier
 import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxTreemapComponent } from 'igniteui-angular-charts';
 
-import 'igniteui-webcomponents/themes/light/bootstrap.css';
+
 import { defineAllComponents } from 'igniteui-webcomponents';
 
 defineAllComponents();
