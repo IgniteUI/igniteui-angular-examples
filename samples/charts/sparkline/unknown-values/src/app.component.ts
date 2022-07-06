@@ -4,7 +4,7 @@ import { SparklineUnknownDataItem, SparklineUnknownData } from './SparklineUnkno
 import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxSparklineComponent } from 'igniteui-angular-charts';
 
-
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
 import { defineAllComponents } from 'igniteui-webcomponents';
 
 defineAllComponents();

@@ -4,7 +4,7 @@ import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './
 import { IgxLegendComponent, IgxCategoryChartComponent } from 'igniteui-angular-charts';
 import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 
-
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
 import { defineAllComponents } from 'igniteui-webcomponents';
 
 defineAllComponents();

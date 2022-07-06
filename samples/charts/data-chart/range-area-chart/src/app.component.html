@@ -1,4 +1,4 @@
-<div class="container vertical">
+<div class="container vertical sample">
   <div class="legend-title">
       Monthly Temperature Range in Los Angeles
   </div>
@@ -35,10 +35,10 @@
           <igx-range-area-series
           [xAxis]="xAxis"
           [yAxis]="yAxis"
+          title="New York"
           lowMemberPath="lowNY"
           highMemberPath="highNY"
           [dataSource]="temperatureRangeData"
-          title="New York"
           name="RangeAreaSeries2"
           #rangeAreaSeries2>
           </igx-range-area-series>

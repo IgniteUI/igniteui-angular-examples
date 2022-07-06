@@ -1,0 +1,44 @@
+<div class="container vertical sample">
+  <div class="options horizontal">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="PropertyEditor"
+      #propertyEditor>
+          <igx-property-editor-property-description
+          propertyPath="CalloutsVisible"
+          label="Callouts Visible"
+          shouldOverrideDefaultEditor="true"
+          primitiveValue="True"
+          name="CalloutsVisibleEditor"
+          #calloutsVisibleEditor>
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Average Temperature in Sedney
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Column"
+      yAxisMaximumValue="35"
+      yAxisLabelLocation="OutsideRight"
+      [dataSource]="temperatureAnnotatedData"
+      includedProperties="month, temperature"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      computedPlotAreaMarginMode="Series"
+      crosshairsAnnotationYAxisPrecision="0"
+      calloutsVisible="true"
+      [calloutsDataSource]="temperatureAnnotatedData"
+      calloutsXMemberPath="index"
+      calloutsYMemberPath="temperature"
+      calloutsLabelMemberPath="tempInfo"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
+</div>

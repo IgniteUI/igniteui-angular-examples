@@ -1,0 +1,53 @@
+<div class="container vertical sample">
+  <div class="options horizontal">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="PropertyEditor"
+      #propertyEditor>
+          <igx-property-editor-property-description
+          propertyPath="CrosshairsDisplayMode"
+          label="Crosshairs Display Mode:"
+          primitiveValue="Both"
+          name="CrosshairsDisplayModeEditor"
+          #crosshairsDisplayModeEditor>
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          propertyPath="CrosshairsSnapToData"
+          label="Crosshairs Snap to Data"
+          primitiveValue="True"
+          shouldOverrideDefaultEditor="true"
+          name="CrosshairsSnapToDataEditor"
+          #crosshairsSnapToDataEditor>
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Average Temperature in Sedney
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Column"
+      yAxisMaximumValue="35"
+      yAxisLabelLocation="OutsideRight"
+      [dataSource]="temperatureAnnotatedData"
+      includedProperties="month, temperature"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      computedPlotAreaMarginMode="Series"
+      crosshairsDisplayMode="Both"
+      crosshairsSnapToData="true"
+      crosshairsLineVerticalStroke="black"
+      crosshairsLineThickness="2"
+      crosshairsLineHorizontalStroke="dodgerblue"
+      crosshairsAnnotationXAxisBackground="black"
+      crosshairsAnnotationYAxisBackground="dodgerblue"
+      crosshairsAnnotationYAxisPrecision="0"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
+</div>

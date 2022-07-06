@@ -6,7 +6,7 @@ import { IgxCategoryChartComponent, MarkerType, MarkerType_$type } from 'igniteu
 import { EnumUtil } from 'igniteui-angular-core';
 import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
 
-
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
 import { defineAllComponents } from 'igniteui-webcomponents';
 
 defineAllComponents();
