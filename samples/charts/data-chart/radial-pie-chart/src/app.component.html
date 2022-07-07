@@ -43,13 +43,13 @@
           #radialPieSeries1>
           </igx-radial-pie-series>
           <igx-radial-pie-series
-          valueMemberPath="messi"
+          [dataSource]="footballPlayerStats"
           [angleAxis]="angleAxis"
           [valueAxis]="radiusAxis"
-          [dataSource]="footballPlayerStats"
-          thickness="3"
-          areaFillOpacity="0.8"
+          valueMemberPath="messi"
           showDefaultTooltip="true"
+          areaFillOpacity="0.8"
+          thickness="3"
           title="Messi"
           name="RadialPieSeries2"
           #radialPieSeries2>

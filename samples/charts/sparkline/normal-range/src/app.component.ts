@@ -4,7 +4,6 @@ import { SparklineMixedDataItem, SparklineMixedData } from './SparklineMixedData
 import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxSparklineComponent } from 'igniteui-angular-charts';
 
-
 import { defineAllComponents } from 'igniteui-webcomponents';
 
 defineAllComponents();

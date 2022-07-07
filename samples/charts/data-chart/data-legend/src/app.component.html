@@ -50,16 +50,16 @@
               </igx-size-scale>
           </igx-bubble-series>
           <igx-bubble-series
+          radiusMemberPath="population"
+          radiusMemberAsLegendLabel="Population:"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          [dataSource]="countryDemographicEurope"
           xMemberPath="deathRate"
           yMemberPath="birthRate"
-          radiusMemberPath="population"
-          title="Europe"
-          radiusMemberAsLegendLabel="Population:"
           xMemberAsLegendLabel="Death Rate:"
           yMemberAsLegendLabel="Birth Rate:"
+          [dataSource]="countryDemographicEurope"
+          title="Europe"
           name="BubbleSeries2"
           #bubbleSeries2>
               <igx-size-scale
