@@ -106,15 +106,6 @@ body {
     transition: "all 0.0s";
 }
 
-.no-selection {
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-      -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-        -o-user-select: none;
-            user-select: none; /* Non-prefixed version, currently*/
-}
 
 .nav-sidebar {
     background: rgb(58, 58, 58);
@@ -130,9 +121,13 @@ body {
 }
 
 /* scrollbar styles */
+.nav-sidebar-list::-webkit-scrollbar-corner {
+    background: #4543ad;
+}
 .nav-sidebar-list::-webkit-scrollbar
 {
-    width: 10px;
+    height: 10px; /* height of horizontal scrollbar */
+    width: 10px;  /* width of vertical scrollbar */
     background: #4543ad;
     margin-top: 4px;
 }
@@ -188,20 +183,3 @@ body {
     padding-left: 1rem;
 }
 
-
-// .options > * {
-//     /* font-family: 'Titillium Web', Verdana, Tahoma, sans-serif; */
-//     font-size: 0.75rem;
-//     margin: 0rem;
-//     padding: 0rem;
-//     /* margin-bottom: 0.25rem; */
-//     /* margin-top: 0.25rem; */
-//     /* margin-left: 0.25rem; */
-//     /* margin-right: 0.25rem; */
-//     vertical-align: middle;
-//     /* padding-right: 0.5rem; */
-//     border-radius: 0.2rem;
-//     outline: none;
-//     cursor: pointer;
-//     background: rgb(246, 153, 153);
-// }

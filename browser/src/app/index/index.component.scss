@@ -39,11 +39,9 @@
 
 // .nav-headerSpan {
 //     padding: 0px;
-
 //     align-content: center;
 //     align-items: center;
 // }
-
 
 // .nav-headerButton {
 //     vertical-align: middle;
@@ -54,17 +52,12 @@
 //     padding-left: 0.5rem;
 // }
 
-
-
 // @media only screen and (max-width: 1024px) {
 //     .content {
 //     //   padding: 0 15px;
 //       justify-content: flex-start;
 //     }
 //   }
-
-
-
 
 .sbNavigation-control {
     // display: block;
@@ -91,11 +84,10 @@
     text-transform: capitalize;
     white-space: nowrap;
     display: block;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
     padding-left: .25rem;
     padding-right: 0px;
-    /* color: #272727 !important; */
     color: #dbdbdb;
     display: flex;
     flex-direction: row;

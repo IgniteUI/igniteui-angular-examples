@@ -57,14 +57,14 @@ export class IndexComponent implements OnInit, AfterViewInit {
     public igVersion: string = "";
 
     constructor(private router: Router, private cdr: ChangeDetectorRef) {
-        console.log("index new");
+        // console.log("index new");
         this.appRoutes = this.getAllSampleRoutes("/samples",
             router.config.filter((c) => c.path === "samples")[0].children, this.modulesRoutes);
 
     }
 
     public ngOnInit() {
-        console.log("index ngOnInit");
+        // console.log("index ngOnInit");
         const loadedRouteItem = this.appRoutes.filter(
             (route: any) => route.path === this.router.url)[0];
         if (loadedRouteItem) {
@@ -74,7 +74,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
         this.router.events.pipe(
             filter((x) => x instanceof NavigationStart)
         ).subscribe((event: NavigationStart) => {
-            console.log("index NAV: " + event.url)
+            console.log("NAV: " + event.url)
             const routeItem = this.appRoutes.filter(
                 (route: any) => route.path === event.url)[0];
             if (routeItem) {
@@ -100,7 +100,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
     }
 
     public ngAfterViewInit() {
-        console.log("index routes = " + this.appRoutes.length);
+        // console.log("index routes = " + this.appRoutes.length);
         const loadedRouteItem = this.appRoutes.filter(
             (route: any) => route.path === this.router.url)[0];
 
