@@ -951,18 +951,20 @@ function updateEnvironmentFiles(cb) {
 function updateIG(cb) {
 
     // NOTE: change this array with new version of packages and optionally use "@infragistics/" proget prefix, e.g.
-    // "@infragistics/igniteui-angular-charts" instead of "igniteui-angular-charts"
+    // "@infragistics/igniteui-angular-charts" instead of "igniteui-angular-charts" e.g.
+    // { name: "@infragistics/igniteui-angular-charts", version: "22.1.68" }, // proget
+    // { name:               "igniteui-angular-charts", version: "14.1.0" },  // npm
     let packageUpgrades = [
         // these IG packages are often updated:
-        { name: "igniteui-angular-core"                     , version: "14.1.0" },
-        { name: "igniteui-angular-charts"                   , version: "14.1.0" },
-        { name: "igniteui-angular-excel"                    , version: "14.1.0" },
-        { name: "igniteui-angular-gauges"                   , version: "14.1.0" },
-        { name: "igniteui-angular-layouts"                  , version: "14.1.0" },
-        { name: "igniteui-angular-maps"                     , version: "14.1.0" },
-        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "14.1.0" },
-        { name: "igniteui-angular-spreadsheet"              , version: "14.1.0" },
-        { name: "igniteui-angular-datasources"              , version: "14.1.0" },
+        { name: "@infragistics/igniteui-angular-core"                     , version: "22.1.68" },
+        { name: "@infragistics/igniteui-angular-charts"                   , version: "22.1.68" },
+        { name: "@infragistics/igniteui-angular-excel"                    , version: "22.1.68" },
+        { name: "@infragistics/igniteui-angular-gauges"                   , version: "22.1.68" },
+        { name: "@infragistics/igniteui-angular-layouts"                  , version: "22.1.68" },
+        { name: "@infragistics/igniteui-angular-maps"                     , version: "22.1.68" },
+        { name: "@infragistics/igniteui-angular-spreadsheet-chart-adapter", version: "22.1.68" },
+        { name: "@infragistics/igniteui-angular-spreadsheet"              , version: "22.1.68" },
+        { name: "@infragistics/igniteui-angular-datasources"              , version: "22.1.68" },
         // these IG packages are sometimes updated:
         { name: "igniteui-webcomponents",            version: "^3.2.0" },
         { name: "igniteui-angular",                  version: "14.0.4" },
