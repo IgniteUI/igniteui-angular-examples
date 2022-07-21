@@ -1,4 +1,8 @@
-/* autoprefixer grid: on */
+@use "igniteui-angular/theming" as *;
+@include core();
+/* autoprefixer grid:on */
+@include theme($default-palette);
+
 html,
 body {
     height: 100%;
