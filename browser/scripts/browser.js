@@ -74,6 +74,7 @@ function getOutputPath(dirPath) {
 var sampleSourcePaths = [
     // sampleRoot + 'charts/doughnut-chart/overview/package.json',
     // sampleRoot + 'charts/category-chart/area-chart-multiple-sources/package.json',
+    // sampleRoot + 'maps/**/display-heat-imagery/package.json',
 
     sampleRoot + 'charts/category-chart/**/package.json',
     sampleRoot + 'charts/data-chart/**/package.json',
@@ -84,7 +85,7 @@ var sampleSourcePaths = [
     sampleRoot + 'charts/tree-map/**/package.json',
     sampleRoot + 'charts/zoomslider/**/package.json',
     sampleRoot + 'maps/**/package.json',
-    // sampleRoot + 'excel/excel-library/**/package.json',
+    sampleRoot + 'excel/excel-library/**/package.json',
     sampleRoot + 'excel/spreadsheet/**/package.json',
     sampleRoot + 'gauges/bullet-graph/**/package.json',
     sampleRoot + 'gauges/linear-gauge/**/package.json',
