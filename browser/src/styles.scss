@@ -1,4 +1,26 @@
+@use "igniteui-angular/theming" as *;
+@include core();
+/* autoprefixer grid:on */
+// @include theme($default-palette);
+@include theme(
+    $palette: $default-palette,
+    //     $schema: $default-schema,
+    $exclude: (
+        'bullet-graph',
+        'linear-gauge',
+        'radial-gauge',
+        'category-chart',
+        'data-chart',
+        'doughnut-chart',
+        'financial-chart',
+        'funnel-chart',
+        'geo-map',
+        'pie-chart',
+        'shape-chart',
+        'sparkline',
+    ));
 
+// IMPORTANT: Prior to Ignite UI for Angular version 13 use:
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 // @include igx-core();
 // @include igx-theme($default-palette);

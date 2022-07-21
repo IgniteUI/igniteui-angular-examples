@@ -1,3 +1,8 @@
+@use "igniteui-angular/theming" as *;
+@include core();
+/* autoprefixer grid:on */
+@include theme($default-palette);
+
 // CSS Reset, comment out if not required or using a different module
 // @import '~minireset.css/minireset';
 

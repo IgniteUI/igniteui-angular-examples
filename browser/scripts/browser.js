@@ -74,7 +74,10 @@ function getOutputPath(dirPath) {
 var sampleSourcePaths = [
     // sampleRoot + 'charts/doughnut-chart/overview/package.json',
     // sampleRoot + 'charts/category-chart/area-chart-multiple-sources/package.json',
+    // sampleRoot + 'gauges/**/measures/package.json',
+    // sampleRoot + 'charts/sparkline/grid/package.json',
     // sampleRoot + 'maps/**/display-heat-imagery/package.json',
+    // sampleRoot + 'excel/**/operations-on-workbooks/package.json',
 
     sampleRoot + 'charts/category-chart/**/package.json',
     sampleRoot + 'charts/data-chart/**/package.json',
