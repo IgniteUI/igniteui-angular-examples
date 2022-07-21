@@ -990,7 +990,8 @@ function updateIG(cb) {
 
     // NOTE you can comment out strings in this array to run these function only on a subset of samples
     var packagePaths = [
-        './package.json', // browser
+        // './package.json', // browser
+        // '../samples/gauges/bullet-graph/animation/package.json',
         '../samples/**/package.json',
         // '../samples/charts/**/package.json',
         // '../samples/editors/**/package.json',
@@ -1046,10 +1047,17 @@ function updateIG(cb) {
                     }
                 }
             }
+            // remove a comma from the last item in a list of dependencies
+            let next = i + 1 < fileLines.length ? i + 1 : i;
+            if (fileLines[next].indexOf('}') >= 0 &&
+                fileLines[i].indexOf(',') > 0) {
+                fileLines[i] = fileLines[i].replace(',','');
+                fileChanged = true;
+            }
         }
 
         if (fileChanged) {
-            let newContent = fileLines.join('\n'); // newContent !== fileContent
+            let newContent = fileLines.join('\n');
             updatedPackages++;
             fs.writeFileSync(filePath, newContent);
             log("updated: " + filePath);
