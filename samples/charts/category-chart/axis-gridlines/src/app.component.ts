@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
 import { IgxLegendComponent, IgxCategoryChartComponent } from 'igniteui-angular-charts';
@@ -11,14 +11,9 @@ defineAllComponents();
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html",
-    changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: "./app.component.html"
 })
 export class AppComponent {
-
-    public constructor(private _detector: ChangeDetectorRef) {
-
-    }
 
     @ViewChild("legend", { static: true } )
     private legend: IgxLegendComponent
