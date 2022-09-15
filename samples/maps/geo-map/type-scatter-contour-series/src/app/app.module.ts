@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
 import { IgxGeographicMapModule } from "igniteui-angular-maps";
+import { IgxDataChartInteractivityModule } from "igniteui-angular-charts";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { IgxGeographicMapModule } from "igniteui-angular-maps";
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
-    IgxGeographicMapModule
+    IgxGeographicMapModule,
+    IgxDataChartInteractivityModule
 ],
   providers: [],
   entryComponents: [],
