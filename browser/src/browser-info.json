@@ -8,5 +8,5 @@
 {"ver":"22.1.79","name":"igniteui-angular-maps"},
 {"ver":"22.1.79","name":"igniteui-angular-spreadsheet"},
 {"ver":"22.1.79","name":"igniteui-angular-spreadsheet-chart-adapter"},
-{"ver":"^3.2.0","name":"igniteui-webcomponents"}
+{"ver":"^3.4.0","name":"igniteui-webcomponents"}
 ]
