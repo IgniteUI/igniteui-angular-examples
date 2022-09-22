@@ -15,11 +15,11 @@ export class AppComponent implements AfterViewInit {
 
     constructor() {
         this.data = [
-            { MarketShare : 25, Company : "Residential" },
-            { MarketShare : 12, Company : "Heating" },
-            { MarketShare : 8,  Company : "Lighting" },
-            { MarketShare : 18, Company : "Other" },
-            { MarketShare : 37, Company : "Cooling" }
+            { MarketShare: 37, Company: "Cooling", Summary: "Cooling 37%" },
+            { MarketShare: 25, Company: "Residential", Summary: "Residential 25%"  },
+            { MarketShare: 12, Company: "Heating", Summary: "Heating 12%" },
+            { MarketShare: 8, Company: "Lighting", Summary: "Lighting 8%" },
+            { MarketShare: 18, Company: "Other", Summary: "Other 18%" }
         ];
     }
 
