@@ -16,11 +16,11 @@ export class AppComponent implements AfterViewInit {
 
     constructor() {
         this.data = [
-            { Value: 25, Label: "Residential" },
-            { Value: 12, Label: "Heating" },
-            { Value: 11, Label: "Lighting" },
-            { Value: 18, Label: "Other" },
-            { Value: 37, Label: "Cooling" }
+            { MarketShare: 37, Company: "Cooling", Summary: "Cooling 37%" },
+            { MarketShare: 25, Company: "Residential", Summary: "Residential 25%"  },
+            { MarketShare: 12, Company: "Heating", Summary: "Heating 12%" },
+            { MarketShare: 8, Company: "Lighting", Summary: "Lighting 8%" },
+            { MarketShare: 18, Company: "Other", Summary: "Other 18%" }
         ];
 
         this.selectionType = "Single";
