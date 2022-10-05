@@ -940,26 +940,31 @@ function makeDirectoryFor(filePath) {
     // fs.mkdir(sampleOutputFolder + 'src', { recursive: true }, (err) => { if (err) throw err; });
 }
 
-function updateEnvironmentFiles(cb) {
+function updateSamples(cb) {
 
-    log('updating environment files... ');
+    log('updating samples files... ');
 
-    var source1 = fs.readFileSync("../samples/templates/src/environments/environment.ts", "utf8");
-    var source2 = fs.readFileSync("../samples/templates/src/environments/environment.prod.ts", "utf8");
+    var templateFiles = [
+        "/.stackblitzrc",
+        // "/src/environments/environment.ts",
+        // "/src/environments/environment.prod.ts"
+    ];
 
-    for (const sample of samplesDatabase) {
-        let samplePath = '../samples/' + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder;
+    for (const templatePath of templateFiles) {
 
-        let output1 =samplePath + "/src/environments/environment.ts";
-        makeDirectoryFor(output1)
+        var templateFile = fs.readFileSync("../samples/templates" + templatePath, "utf8");
 
-        fs.writeFileSync(output1, source1);
-        let output2 = samplePath + "/src/environments/environment.prod.ts";
-        fs.writeFileSync(output2, source2);
-        // break;
+        for (const sample of samplesDatabase) {
+            let samplePath = '../samples/' + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder;
+
+            let outputPath = samplePath + templatePath;
+            makeDirectoryFor(outputPath)
+
+            fs.writeFileSync(outputPath, templateFile);
+        }
     }
     cb();
-} exports.updateEnvironmentFiles = updateEnvironmentFiles;
+} exports.updateSamples = updateSamples;
 
 
 function updateIG(cb) {

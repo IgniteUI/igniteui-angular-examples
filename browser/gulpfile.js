@@ -83,9 +83,9 @@ gulp.task('updateReadme', gulp.series(
     browser.updateReadme
 ));
 
-gulp.task('updateEnvironmentFiles', gulp.series(
+gulp.task('updateSamples', gulp.series(
     browser.findSamples,
-    browser.updateEnvironmentFiles
+    browser.updateSamples
 ));
 
 
