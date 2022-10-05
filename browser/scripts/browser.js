@@ -78,6 +78,7 @@ var sampleSourcePaths = [
     // sampleRoot + 'charts/sparkline/grid/package.json',
     // sampleRoot + 'maps/**/display-heat-imagery/package.json',
     // sampleRoot + 'excel/**/operations-on-workbooks/package.json',
+    // sampleRoot + 'charts/zoomslider/overview/package.json',
 
     sampleRoot + 'charts/category-chart/**/package.json',
     sampleRoot + 'charts/data-chart/**/package.json',
@@ -716,16 +717,14 @@ function updateCodeViewer(cb) {
     // generating code viewer files (.json) for each sample
     for (const info of samplesDatabase) {
         var sampleFiles = [];
-
+        // console.log(info);
         var codeViewPath = outputFolder + info.SampleRoutePath + ".json";
         // log("generating: " + codeViewPath);
 
         for (const filePath of info.SourceFiles) {
             var codeViewItem = {
-                content: utils.fileRead(filePath),
-                path: filePath,
                 hasRelativeAssetsUrls: false,
-                isMain: true
+                isMain: true,
             };
 
             if (filePath.indexOf(".scss") > 0) {
@@ -749,12 +748,23 @@ function updateCodeViewer(cb) {
                 codeViewItem.fileHeader = 'html';
             }
 
+            codeViewItem.path = filePath;
+            codeViewItem.content = utils.fileRead(filePath);
+
             sampleFiles.push(codeViewItem);
         }
 
-        var codeViewContent = "{\r\n \"sampleFiles\":\r\n";
+        var packageInfo = {};
+        packageInfo.hasRelativeAssetsUrls = false;
+        packageInfo.path = "package.json";
+        packageInfo.content = utils.fileRead(info.SourcePath + "/package.json");
+        sampleFiles.push(packageInfo);
+
+        var codeViewContent = '{\r\n';
+        codeViewContent += '"addTsConfig": false,\r\n';
+        codeViewContent += '"sampleFiles":\r\n';
         codeViewContent += JSON.stringify(sampleFiles, null, ' ');
-        codeViewContent += "\r\n}";
+        codeViewContent += '\r\n}';
 
         utils.fileSave(codeViewPath, codeViewContent);
     }
