@@ -25,8 +25,7 @@
 /browser/**/code-viewer/**
 /browser/package-lock.json
 
-/porting/samples-old
-/porting/*.txt
+/porting/*.*
 
 
 
