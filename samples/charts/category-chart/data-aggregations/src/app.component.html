@@ -1,0 +1,19 @@
+<div class="container vertical sample">
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      chartType="Column"
+      initialGroups="country"
+      initialSummaries="Sum(sales) as Sales"
+      groupSorts="Sales Desc"
+      [dataSource]="salesData"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      crosshairsDisplayMode="None"
+      name="chart"
+      #chart>
+      </igx-category-chart>
+  </div>
+</div>
