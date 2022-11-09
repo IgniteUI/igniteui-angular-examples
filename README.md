@@ -1,37 +1,36 @@
-<link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+
 <div style="display: flex; flex-flow: row; font-family: 'Titillium Web'">
-    <!-- <div style="font-size: 2.5rem; align-self: start; justify-content: start; margin: 0px; margin-left: 0.5rem; margin-right: 0.5rem; ">Examples</div> -->
-    <img height="70px" style="border-radius: 0.25rem" alt="ignite-ui" src="./browser/src/assets/images/rsrcs/logo-ignite-ui.svg"/>
-    <!-- <div style="font-size: 2.5rem; margin: 0px; margin-left: 0.5rem; margin-right: 0.5rem; color: white; "> for Angular </div> -->
+    <img style="border-radius: 0.25rem" alt="ignite-ui" src="https://raw.githubusercontent.com/IgniteUI/igniteui-xplat-docs/vnext/doc/en/images/readme/ig-banner.png"/>>
 </div>
+
 
 # Examples of Ignite UI for Angular Components
 
-This repository contains over 240 examples on how to use [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-Angular/Angular/components/general-getting-started.html) components:
+This repository contains over 400 examples on how to use [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-Angular/Angular/components/general-getting-started.html) components:
 
 - Charts:
-[Area](https://www.infragistics.com/Angularsite/components/charts/types/area-chart),
-[Bar](https://www.infragistics.com/Angularsite/components/charts/types/bar-chart),
-[Column](https://www.infragistics.com/Angularsite/components/charts/types/column-chart),
-[Composite](https://www.infragistics.com/Angularsite/components/charts/types/composite-chart),
-[Donut](https://www.infragistics.com/Angularsite/components/charts/types/donut-chart),
-[Financial/Stock](https://www.infragistics.com/Angularsite/components/charts/types/stock-chart),
-[Line](https://www.infragistics.com/Angularsite/components/charts/types/line-chart),
-[Pie](https://www.infragistics.com/Angularsite/components/charts/types/pie-chart),
-[Polar](https://www.infragistics.com/Angularsite/components/charts/types/polar-chart),
-[Radial](https://www.infragistics.com/Angularsite/components/charts/types/radial-chart),
-[Scatter](https://www.infragistics.com/Angularsite/components/charts/types/scatter-chart),
-[Shape](https://www.infragistics.com/Angularsite/components/charts/types/shape-chart),
-[Sparkline](https://www.infragistics.com/Angularsite/components/charts/types/sparkline-chart),
-[Stacked](https://www.infragistics.com/Angularsite/components/charts/types/stacked-chart),
-[Step](https://www.infragistics.com/Angularsite/components/charts/types/step-chart),
+[Area](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/area-chart),
+[Bar](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/bar-chart),
+[Column](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/column-chart),
+[Composite](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/composite-chart),
+[Donut](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/donut-chart),
+[Financial/Stock](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/stock-chart),
+[Line](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/line-chart),
+[Pie](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/pie-chart),
+[Polar](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/polar-chart),
+[Radial](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/radial-chart),
+[Scatter](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/scatter-chart),
+[Shape](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/shape-chart),
+[Sparkline](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/sparkline-chart),
+[Stacked](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/stacked-chart),
+[Step](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/step-chart),
 - Maps:
-[Geographic Map](https://www.infragistics.com/Angularsite/components/geo-map.html),
-[Treemap](https://www.infragistics.com/Angularsite/components/treemap-overview.html),
+[Geographic Map](https://www.infragistics.com/products/ignite-ui-angular/angular/components/geo-map.html),
+[Treemap](https://www.infragistics.com/products/ignite-ui-angular/angular/components/treemap-overview.html),
 - Gauges:
-[Bullet Graph](https://www.infragistics.com/Angularsite/components/bullet-graph),
-[Linear Gauge](https://www.infragistics.com/Angularsite/components/linear-gauge.html),
-[Radial Gauges](https://www.infragistics.com/Angularsite/components/radial-gauge.html)
+[Bullet Graph](https://www.infragistics.com/products/ignite-ui-angular/angular/components/bullet-graph),
+[Linear Gauge](https://www.infragistics.com/products/ignite-ui-angular/angular/components/linear-gauge.html),
+[Radial Gauges](https://www.infragistics.com/products/ignite-ui-angular/angular/components/radial-gauge.html)
 
 ## Preview
 
