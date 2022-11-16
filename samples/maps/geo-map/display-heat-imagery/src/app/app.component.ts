@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ChangeDetectionStrategy, ViewChild } from "@angular/core";
 import { IgxHeatTileGenerator } from "igniteui-angular-core";
 import { IgxShapeDataSource } from "igniteui-angular-core";
 import { IgxGeographicMapComponent } from "igniteui-angular-maps";
@@ -8,7 +8,8 @@ import { IgxTileGeneratorMapImagery } from "igniteui-angular-maps";
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements AfterViewInit {
 
