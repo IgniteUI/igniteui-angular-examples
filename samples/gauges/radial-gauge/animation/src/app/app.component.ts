@@ -18,14 +18,18 @@ export class AppComponent implements AfterViewInit {
     @ViewChild("radialGauge", { static: true })
     public radialGauge: IgxRadialGaugeComponent;
 
+    private shouldAnimate: boolean = false;
+
     public ngAfterViewInit(): void {
 
-        // enabling animation duration (in milliseconds)
-        this.radialGauge.transitionDuration = 500;
         this.AnimateToGauge3();
     }
 
     public AnimateToGauge4(): void {
+
+        if(this.shouldAnimate){
+            this.radialGauge.transitionDuration = 500;
+        }
 
         this.radialGauge.height = "330px";
         this.radialGauge.width = "100%";
@@ -78,9 +82,14 @@ export class AppComponent implements AfterViewInit {
         this.radialGauge.minorTickCount = 6;
 
         this.radialGauge.ranges.clear();
+        this.shouldAnimate = true;
     }
 
     public AnimateToGauge3(): void {
+
+        if(this.shouldAnimate){
+            this.radialGauge.transitionDuration = 500;
+        }
 
         this.radialGauge.height = "330px";
         this.radialGauge.width = "100%";
@@ -159,9 +168,15 @@ export class AppComponent implements AfterViewInit {
             range.outerStartExtent = 0.57;
             range.outerEndExtent = 0.57;
         }
+
+        this.shouldAnimate = true;
     }
 
     public AnimateToGauge2(): void {
+
+        if(this.shouldAnimate){
+            this.radialGauge.transitionDuration = 500;
+        }
 
         this.radialGauge.height = "330px";
         this.radialGauge.width = "100%";
@@ -219,9 +234,15 @@ export class AppComponent implements AfterViewInit {
             range.outerStartExtent = 0.9;
             range.outerEndExtent = 0.9;
         }
+
+        this.shouldAnimate = true;
     }
 
     public AnimateToGauge1(): void {
+
+        if(this.shouldAnimate){
+            this.radialGauge.transitionDuration = 500;
+        }
 
         this.radialGauge.height = "330px";
         this.radialGauge.width = "100%";
@@ -279,6 +300,7 @@ export class AppComponent implements AfterViewInit {
             range.outerStartExtent = 0.9;
             range.outerEndExtent = 0.9;
         }
-    }
 
+        this.shouldAnimate = true;
+    }
 }
