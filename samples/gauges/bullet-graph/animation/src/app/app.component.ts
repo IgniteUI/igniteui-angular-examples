@@ -13,14 +13,19 @@ export class AppComponent implements AfterViewInit {
     @ViewChild("bulletGraph", { static: true })
     public bulletGraph: IgxBulletGraphComponent;
 
+    private shouldAnimate: boolean = false;
+
     public ngAfterViewInit(): void {
 
-        // enabling animation duration (in milliseconds)
-        this.bulletGraph.transitionDuration = 500;
-        this.AnimateToGauge3();
+        // enabling animation duration (in milliseconds)        
+        this.AnimateToGauge3();        
     }
 
     public AnimateToGauge3(): void {
+
+        if(this.shouldAnimate){
+            this.bulletGraph.transitionDuration = 500;
+        }
 
         this.bulletGraph.minimumValue = 0;
         this.bulletGraph.maximumValue = 120;
@@ -89,9 +94,14 @@ export class AppComponent implements AfterViewInit {
         this.bulletGraph.backingOutline = "#d1d1d1";
         this.bulletGraph.backingStrokeThickness = 0;
 
+        this.shouldAnimate = true;
     }
 
     public AnimateToGauge2(): void {
+
+        if(this.shouldAnimate){
+            this.bulletGraph.transitionDuration = 500;
+        }
 
         this.bulletGraph.minimumValue = 100;
         this.bulletGraph.maximumValue = 200;
@@ -163,9 +173,15 @@ export class AppComponent implements AfterViewInit {
         this.bulletGraph.backingBrush = "#f7f7f7";
         this.bulletGraph.backingOutline = "#d1d1d1";
         this.bulletGraph.backingStrokeThickness = 0;
+
+        this.shouldAnimate = true;
     }
 
     public AnimateToGauge1(): void {
+
+        if(this.shouldAnimate){
+            this.bulletGraph.transitionDuration = 500;
+        }
 
         this.bulletGraph.minimumValue = 0;
         this.bulletGraph.maximumValue = 80;
@@ -230,6 +246,6 @@ export class AppComponent implements AfterViewInit {
         this.bulletGraph.backingOutline = "#d1d1d1";
         this.bulletGraph.backingStrokeThickness = 0;
 
+        this.shouldAnimate = true;
     }
-
 }
