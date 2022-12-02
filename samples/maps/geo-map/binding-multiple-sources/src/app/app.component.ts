@@ -27,7 +27,8 @@ export class AppComponent implements AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-      this.map.windowRect = { left: 0.195, top: 0.1, width: 0.5, height: 0.5 };
+            
+      this.map.updateZoomWindow({ left: 0.195, top: 0.1, width: 0.5, height: 0.5 });
 
       const worldFlights = WorldConnections.getFlights();
       const worldAirports = WorldConnections.getAirports();

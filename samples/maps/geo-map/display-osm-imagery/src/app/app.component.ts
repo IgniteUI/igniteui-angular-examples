@@ -18,8 +18,7 @@ export class AppComponent implements AfterViewInit {
 
     public ngAfterViewInit(): void {
         const tileSource = new IgxOpenStreetMapImagery();
-        this.map.backgroundContent = tileSource;
-
-        this.map.windowRect = { left: 0.2, top: 0.1, width: 0.7, height: 0.7 };
+        this.map.backgroundContent = tileSource;        
+        this.map.updateZoomWindow({ left: 0.2, top: 0.1, width: 0.7, height: 0.7});
     }
 }

@@ -23,7 +23,7 @@ export class AppComponent implements AfterViewInit {
         // or
         // tileSource.mapServerUri = "https://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer";
         this.map.backgroundContent = tileSource;
-
-        this.map.windowRect = { left: 0.2, top: 0.1, width: 0.7, height: 0.7 };
+        
+        this.map.updateZoomWindow({ left: 0.2, top: 0.1, width: 0.7, height: 0.7});
     }
 }
