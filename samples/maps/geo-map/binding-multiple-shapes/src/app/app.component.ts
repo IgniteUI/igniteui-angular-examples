@@ -38,8 +38,8 @@ export class AppComponent implements AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-
-        this.map.windowRect = { left: 0.2, top: 0.1, width: 0.6, height: 0.6 };
+        
+        this.map.updateZoomWindow({ left: 0.2, top: 0.1, width: 0.7, height: 0.7});
         this.map.backgroundContent = null;
 
         // loading a shapefile with geographic polygons

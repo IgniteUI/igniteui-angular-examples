@@ -21,7 +21,8 @@ export class AppComponent implements AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
-    this.map.windowRect = { left: 0.195, top: 0.325, width: 0.2, height: 0.1 };
+    
+    this.map.updateZoomWindow({ left: 0.195, top: 0.325, width: 0.2, height: 0.1});
 
     const sds = new IgxShapeDataSource();
     sds.importCompleted.subscribe(() => this.onDataLoaded(sds, ""));
