@@ -25,6 +25,9 @@
               "src/styles.scss"
             ],
             "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules"]
+            },
             "webWorkerTsConfig": "tsconfig.worker.json",
             "sourceMap": false,
             "vendorChunk": true,
