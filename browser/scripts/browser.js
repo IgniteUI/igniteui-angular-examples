@@ -124,8 +124,12 @@ function getSampleInfo(samplePath, sampleCallback, sampleFile) {
     // console.log("SampleControl " + info.SampleControl);
     // console.log("SampleFolder  " + info.SampleFolder);
 
-    info.SampleRoutePath = info.SampleControl + "-" + info.SampleFolder;  // data-chart-axis-sharing
-    //console.log("SampleRoutePath  " + info.SampleRoutePath);
+    // for backward comparability:
+    // using old routing that uses "-" between ComponentFolder and sample SampleFolderName
+    // using new routing that uses "/" between ComponentFolder and sample SampleFolderName
+    // new routing path matches exactly sample path this makes it easier to use in docs since routing and github source are the same
+    info.SampleRoutePathOld = info.SampleControl + "-" + info.SampleFolder;  // data-chart-axis-sharing
+    info.SampleRoutePathNew = info.SampleControl + "/" + info.SampleFolder;  // data-chart/axis-sharing
 
     info.ControlDisplayName = utils.toTitleCase(utils.replace(info.SampleControl, "-", " ")); // Data Chart
     info.ControlName = utils.replace(info.ControlDisplayName, " ", "");                       // DataChart
@@ -321,10 +325,10 @@ function copySamples(cb) {
             routingStorage[group].Output = './src/samples/' + info.SampleGroup+ '/';
         }
 
-        var routing = info.SampleRoutePath; // '    "' + info.SampleRoutePath + '": { displayName: ' + '"' + info.SampleDisplayName + '", parentName: "' + info.ControlName + '" }';
+        var routing = info.SampleRoutePathNew;
         if (routingStorage[group].Samples[routing] === undefined) {
-            //routingStorage[group].Samples.push(routing);
             var data = {
+                showLink: true,
                 routing: routing,
                 name: info.SampleDisplayName,
                 parent: info.ControlName,
@@ -334,6 +338,19 @@ function copySamples(cb) {
             routingStorage[group].Samples[routing] = data;
         }
 
+        // TODO remove in 23.2 release
+        routing = info.SampleRoutePathOld;
+        if (routingStorage[group].Samples[routing] === undefined) {
+            var data = {
+                showLink: false,
+                routing: routing,
+                name: info.SampleDisplayName,
+                parent: info.ControlName,
+                componentImport: importComponent.replace('./', './' + info.SampleControl + '/'),
+                componentName: info.SampleClassName,
+            };
+            routingStorage[group].Samples[routing] = data;
+        }
         // grouping sample's modules by group of controls, e.g. charts
         if (groupModules[group] === undefined) {
             groupModules[group] = {}
@@ -560,13 +577,15 @@ function copySamples(cb) {
         var routingComponents = [];
         for(var routing in data.Samples) {
             var sample = data.Samples[routing];
-            var str = '    "' + routing + '": { displayName: ' + '"' + sample.name + '", parentName: "' + sample.parent + '" }';
+            var str = '    "' + routing + '": { displayName: ' + '"' + sample.name + '", parentName: "' + sample.parent + '", showLink: ' + sample.showLink + ' }';
             routingSamples.push(str);
             var strRouting = '"' + routing + '"';
             var strData = data.ModuleName + '[' + strRouting + ']';
             var strComp = ' { component: ' + sample.componentName + ', path: ' + strRouting + ', data: ' + strData + ' }';
             routingComponents.push(strComp);
-            data.Imports.push(sample.componentImport);
+            if (sample.showLink) {
+                data.Imports.push(sample.componentImport);
+            }
         }
         routingData += routingSamples.join(',\r\n');
         routingData += "\r\n";
@@ -709,7 +728,6 @@ function copySamples(cb) {
 
 function updateCodeViewer(cb) {
 
-    // const outputFolder = "./src/assets/samples/";
     const outputFolder = "./src/assets/code-viewer/";
     log("cleaning up: " + outputFolder);
     del.sync(outputFolder + "/**");
@@ -718,8 +736,15 @@ function updateCodeViewer(cb) {
     for (const info of samplesDatabase) {
         var sampleFiles = [];
         // console.log(info);
-        var codeViewPath = outputFolder + info.SampleRoutePath + ".json";
-        // log("generating: " + codeViewPath);
+
+        // https://staging.infragistics.com/angular-demos-dv/assets/code-viewer/
+        // zoomslider-overview.json OLD
+        // zoomslider/overview.json NEW
+        // charts/zoomslider/overview.json NEW with group
+
+        var codeViewPath = outputFolder + info.SampleRoutePathNew + ".json";
+        //var codeViewPath = outputFolder + info.SampleGroup + "/" + info.SampleRoutePathNew + ".json";
+        log("generating: " + codeViewPath);
 
         for (const filePath of info.SourceFiles) {
             var codeViewItem = {
@@ -868,7 +893,7 @@ function testFileParsing(cb) {
 function logRoutes(cb) {
     let routes = [];
     for (const sample of samplesDatabase) {
-        routes.push("/" + sample.SampleGroup + "/" + sample.SampleRoutePath)
+        routes.push("/" + sample.SampleGroup + "/" + sample.SampleRoutePathNew)
     }
     routes.sort();
     for (const route of routes) {

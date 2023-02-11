@@ -167,7 +167,8 @@ export class IndexComponent implements OnInit, AfterViewInit {
                 routes.push({
                     displayName: data.displayName,
                     parentName: data.parentName,
-                    path: routePath
+                    path: routePath,
+                    showLink: data.showLink
                 });
             }
         };
@@ -201,6 +202,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
         for (const appRoute of this.appRoutes) {
             const controlName = appRoute.parentName;
             // console.log("index nav item control: " + controlName);
+
             if (this.allNavItems.filter((item) => item.name === controlName).length <= 0) {
                 this.allNavItems.push({ name: controlName, children: [] });
             }
@@ -214,7 +216,11 @@ export class IndexComponent implements OnInit, AfterViewInit {
             // console.log("index nav item: " + appRoute.path);
             const controlName = appRoute.parentName;
             const navItem = this.allNavItems.filter((item) => item.name === controlName)[0];
-            navItem.children.push({ path: appRoute.path, displayName: appRoute.displayName });
+
+            if (appRoute.showLink) {
+                navItem.children.push({ path: appRoute.path, displayName: appRoute.displayName });
+            }
+
         }
 
         this.currentNavItems = this.allNavItems;
