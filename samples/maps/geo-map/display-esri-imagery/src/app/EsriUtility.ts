@@ -13,7 +13,7 @@ export enum EsriStyle {
     WorldStreetMap = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
     WorldTopographicMap = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
     WorldImageryMap = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-    WorldOceansMap = "https://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer",
+    WorldOceansMap = "https://services.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer",
     WorldNationalGeoMap = "https://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer",
     WorldTerrainMap = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer",
     WorldDeLormesMap = "https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer",
@@ -63,7 +63,7 @@ export class EsriUtility {
         // resolving Esri Server uri based on hosting website
         let uri: string = style;
         if (!isHttpSecured) {
-            uri = uri.replace("https:", "http:");
+            // uri = uri.replace("https:", "http:");
         }
         return uri;
     }
