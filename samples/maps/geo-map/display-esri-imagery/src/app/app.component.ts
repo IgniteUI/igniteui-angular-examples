@@ -21,7 +21,7 @@ export class AppComponent implements AfterViewInit {
         const tileSource = new IgxArcGISOnlineMapImagery();
         tileSource.mapServerUri = EsriUtility.getUri(EsriStyle.WorldOceansMap);
         // or
-        // tileSource.mapServerUri = "https://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer";
+        // tileSource.mapServerUri = "https://services.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer";
         this.map.backgroundContent = tileSource;
         
         this.map.updateZoomWindow({ left: 0.2, top: 0.1, width: 0.7, height: 0.7});
