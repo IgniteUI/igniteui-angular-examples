@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
 import { IgxZoomSliderDynamicModule, IgxNumericYAxisModule, IgxNumericXAxisModule, IgxCrosshairLayerModule, IgxDataChartScatterModule, IgxDataChartScatterCoreModule, IgxDataChartCoreModule, IgxDataChartCategoryModule, IgxDataChartCategoryCoreModule, IgxDataChartAnnotationModule, IgxDataChartInteractivityModule, IgxBubbleSeriesModule } from "igniteui-angular-charts";
+import { IgxNumberAbbreviatorModule  } from "igniteui-angular-charts";
 import { SampleScatterStats } from "./SampleScatterStats";
 
 
@@ -21,6 +22,7 @@ import { SampleScatterStats } from "./SampleScatterStats";
     CommonModule,
     FormsModule,
     IgxZoomSliderDynamicModule,
+    IgxNumberAbbreviatorModule,
     IgxNumericYAxisModule,
     IgxNumericXAxisModule,
     IgxCrosshairLayerModule,
