@@ -215,6 +215,7 @@ function getSampleModules(fileContent, info) {
 
             var importLine = line.replace('\r\n', '');
             importLine = importLine.split('\'').join('"');
+            importLine = importLine.split('  ').join(' ');
 
             if (importLine.indexOf(',') >= 0) {
                 //var importModules = importLine.replace('import {');
@@ -232,6 +233,7 @@ function getSampleModules(fileContent, info) {
                             var module = utils.replace(name, ' ', '');
                             module = utils.replace(module, '\t', '');
                             module = utils.replace(module, '\r\n', '');
+                            module = module.trim();
 
                             if (module !== 'NgModule')
                                 info.ImportsModules.push(module);
@@ -239,15 +241,14 @@ function getSampleModules(fileContent, info) {
 
                             info.ImportsLines.push('import { ' + module + ' } from ' + package + ';');
                         }
-
                     }
                 }
-
             } else {
                importLine += ';';
                info.ImportsLines.push(importLine);
 
                var module = importLine.split(' from ')[0].replace('import { ', '').replace(' }', '');
+               module = module.trim();
                if (module !== 'NgModule')
                    info.ImportsModules.push(module);
 
@@ -376,7 +377,7 @@ function copySamples(cb) {
             controlsModules[control].Path = './src/samples/' + info.SampleGroup + '/' + info.SampleControl + '/samples-modules.ts';
             // controlsModules[control].Path = './src/samples/' + info.SampleGroup + '/' + info.SampleControl + '/' + info.SampleControl + 'samples-modules.ts';
 
-            var controlsModule = controlsModules[control].ModuleName;
+            var controlsModule = controlsModules[control].ModuleName.trim();
             var controlsPath = './' + info.SampleControl + '/samples-modules';
             var controlsImport = 'import { ' + controlsModule + ' } from "' + controlsPath + '";';
             if (groupModules[group].Imports.indexOf(controlsImport) < 0) {
@@ -743,7 +744,7 @@ function updateCodeViewer(cb) {
         // charts/zoomslider/overview.json NEW with group
 
      // var codeViewPath = outputFolder + info.SampleRoutePathOld + ".json";
-        var codeViewPath = outputFolder + "/" + info.SampleGroup + "/" + info.SampleRoutePathNew + ".json";
+        var codeViewPath = outputFolder + info.SampleGroup + "/" + info.SampleRoutePathNew + ".json";
         //var codeViewPath = outputFolder + info.SampleGroup + "/" + info.SampleRoutePathNew + ".json";
         log("generating: " + codeViewPath);
 
