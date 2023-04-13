@@ -1,18 +1,10 @@
 <div class="container vertical sample">
   <div class="container fill">
-      <igx-financial-chart
-      chartType="Candle"
-      zoomSliderType="None"
-      dataToolTipIncludedColumns="Close, Change, Value"
-      dataToolTipExcludedColumns="High, Low, Open, Volume"
-      dataToolTipValueFormatMode="Currency"
-      dataToolTipValueFormatCulture="en-GB"
-      dataToolTipHeaderFormatTime="None"
-      dataToolTipLabelDisplayMode="Hidden"
-      [dataSource]="multipleStocks"
-      toolTipType="Data"
-      name="chart"
-      #chart>
-      </igx-financial-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

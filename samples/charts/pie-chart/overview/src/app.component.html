@@ -2,23 +2,12 @@
   <div class="legend-title">
       Global Electricity Demand by Energy Use
   </div>
-  <div class="legend">
-      <igx-item-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-item-legend>
-  </div>
   <div class="container fill">
-      <igx-pie-chart
-      [dataSource]="energyGlobalDemand"
-      valueMemberPath="value"
-      labelMemberPath="category"
-      labelsPosition="BestFit"
-      radiusFactor="0.7"
-      [legend]="legend"
-      name="chart"
-      #chart>
-      </igx-pie-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

@@ -2,31 +2,12 @@
   <div class="legend-title">
       Renewable Electricity Generated
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
+      <!-- insert content -->
       <igx-category-chart
-      chartType="StepArea"
-      isTransitionInEnabled="true"
-      isCategoryHighlightingEnabled="true"
-      yAxisTitle="TWh"
-      titleLeftMargin="25"
-      titleTopMargin="10"
-      titleBottomMargin="10"
-      [dataSource]="countryRenewableElectricity"
-      [legend]="legend"
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      isSeriesHighlightingEnabled="true"
-      titleAlignment="Left"
-      crosshairsSnapToData="true"
-      name="chart"
-      #chart>
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
       </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

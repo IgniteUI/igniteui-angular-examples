@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { BoatSailingDataItem, BoatSailingData } from './BoatSailingData';
-import { IgxDataChartComponent, IgxNumericAngleAxisComponent, IgxNumericRadiusAxisComponent, IgxPolarSplineAreaSeriesComponent } from 'igniteui-angular-charts';
+//insert bindingImports
+//end bindingImports
 
 
 
@@ -16,26 +16,9 @@ export class AppComponent {
 
     }
 
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("angleAxis", { static: true } )
-    private angleAxis: IgxNumericAngleAxisComponent
-    @ViewChild("radiusAxis", { static: true } )
-    private radiusAxis: IgxNumericRadiusAxisComponent
-    @ViewChild("polarSplineAreaSeries1", { static: true } )
-    private polarSplineAreaSeries1: IgxPolarSplineAreaSeriesComponent
-    @ViewChild("polarSplineAreaSeries2", { static: true } )
-    private polarSplineAreaSeries2: IgxPolarSplineAreaSeriesComponent
+    //insert bindingFields
+    //end bindingFields
 
-    private _boatSailingData: BoatSailingData = null;
-    public get boatSailingData(): BoatSailingData {
-        if (this._boatSailingData == null)
-        {
-            this._boatSailingData = new BoatSailingData();
-        }
-        return this._boatSailingData;
-    }
-    
 
 
 }

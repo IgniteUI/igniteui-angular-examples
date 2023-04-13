@@ -1,47 +1,13 @@
 <div class="container vertical sample">
   <div class="legend-title">
-      Monthly Temperature Range in Los Angeles
+      Monthly Temperature Range in LA and NYC
   </div>
   <div class="container fill">
-      <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      name="chart"
-      #chart>
-          <igx-category-x-axis
-          interval="1"
-          [dataSource]="temperatureRangeData"
-          label="month"
-          name="xAxis"
-          #xAxis>
-          </igx-category-x-axis>
-          <igx-numeric-y-axis
-          title="Temperature (in Celsius)"
-          titleAngle="-90"
-          titleLeftMargin="10"
-          name="yAxis"
-          #yAxis>
-          </igx-numeric-y-axis>
-          <igx-range-area-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          lowMemberPath="lowLA"
-          highMemberPath="highLA"
-          [dataSource]="temperatureRangeData"
-          title="Los Angeles"
-          name="RangeAreaSeries1"
-          #rangeAreaSeries1>
-          </igx-range-area-series>
-          <igx-range-area-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          title="New York"
-          lowMemberPath="lowNY"
-          highMemberPath="highNY"
-          [dataSource]="temperatureRangeData"
-          name="RangeAreaSeries2"
-          #rangeAreaSeries2>
-          </igx-range-area-series>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

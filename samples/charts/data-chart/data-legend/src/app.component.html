@@ -2,77 +2,12 @@
   <div class="legend-title">
       Total Population of Selected Countries
   </div>
-  <div class="legend">
-      <igx-data-legend
-      [target]="chart"
-      name="Legend"
-      #legend>
-      </igx-data-legend>
-  </div>
   <div class="container fill">
-      <igx-data-chart
-      name="chart"
-      #chart>
-          <igx-numeric-x-axis
-          minimumValue="4"
-          maximumValue="16"
-          interval="1"
-          title="Death Rate"
-          name="xAxis"
-          #xAxis>
-          </igx-numeric-x-axis>
-          <igx-numeric-y-axis
-          minimumValue="0"
-          maximumValue="60"
-          interval="10"
-          title="Birth Rate"
-          name="yAxis"
-          #yAxis>
-          </igx-numeric-y-axis>
-          <igx-bubble-series
-          radiusMemberPath="population"
-          radiusMemberAsLegendLabel="Population:"
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          xMemberPath="deathRate"
-          yMemberPath="birthRate"
-          xMemberAsLegendLabel="Death Rate:"
-          yMemberAsLegendLabel="Birth Rate:"
-          [dataSource]="countryDemographicAfrican"
-          title="Africa"
-          name="BubbleSeries1"
-          #bubbleSeries1>
-              <igx-size-scale
-              minimumValue="10"
-              maximumValue="100"
-              name="SizeScale1"
-              #sizeScale1>
-              </igx-size-scale>
-          </igx-bubble-series>
-          <igx-bubble-series
-          radiusMemberPath="population"
-          radiusMemberAsLegendLabel="Population:"
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          xMemberPath="deathRate"
-          yMemberPath="birthRate"
-          xMemberAsLegendLabel="Death Rate:"
-          yMemberAsLegendLabel="Birth Rate:"
-          [dataSource]="countryDemographicEurope"
-          title="Europe"
-          name="BubbleSeries2"
-          #bubbleSeries2>
-              <igx-size-scale
-              minimumValue="10"
-              maximumValue="100"
-              name="SizeScale2"
-              #sizeScale2>
-              </igx-size-scale>
-          </igx-bubble-series>
-          <igx-crosshair-layer
-          name="CrosshairLayer"
-          #crosshairLayer>
-          </igx-crosshair-layer>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

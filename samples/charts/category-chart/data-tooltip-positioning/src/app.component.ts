@@ -1,12 +1,9 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
-import { HighestGrossingMoviesItem, HighestGrossingMovies } from './HighestGrossingMovies';
-import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
-import { IgxCategoryChartComponent } from 'igniteui-angular-charts';
+//insert bindingImports
+//end bindingImports
 
-import { defineAllComponents } from 'igniteui-webcomponents';
 
-defineAllComponents();
 
 @Component({
     selector: "app-root",
@@ -20,26 +17,9 @@ export class AppComponent {
 
     }
 
-    @ViewChild("propertyEditor", { static: true } )
-    private propertyEditor: IgxPropertyEditorPanelComponent
-    @ViewChild("groupedPositionXEditor", { static: true } )
-    private groupedPositionXEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("groupedPositionYEditor", { static: true } )
-    private groupedPositionYEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("groupingModeEditor", { static: true } )
-    private groupingModeEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
+    //insert bindingFields
+    //end bindingFields
 
-    private _highestGrossingMovies: HighestGrossingMovies = null;
-    public get highestGrossingMovies(): HighestGrossingMovies {
-        if (this._highestGrossingMovies == null)
-        {
-            this._highestGrossingMovies = new HighestGrossingMovies();
-        }
-        return this._highestGrossingMovies;
-    }
-    
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {

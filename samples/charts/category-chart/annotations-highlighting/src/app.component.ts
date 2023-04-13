@@ -1,12 +1,9 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
-import { TemperatureAnnotatedDataItem, TemperatureAnnotatedData } from './TemperatureAnnotatedData';
-import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
-import { IgxCategoryChartComponent } from 'igniteui-angular-charts';
+//insert bindingImports
+//end bindingImports
 
-import { defineAllComponents } from 'igniteui-webcomponents';
 
-defineAllComponents();
 
 @Component({
     selector: "app-root",
@@ -20,24 +17,9 @@ export class AppComponent {
 
     }
 
-    @ViewChild("propertyEditor", { static: true } )
-    private propertyEditor: IgxPropertyEditorPanelComponent
-    @ViewChild("highlightingModeEditor", { static: true } )
-    private highlightingModeEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("highlightingBehaviorEditor", { static: true } )
-    private highlightingBehaviorEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
+    //insert bindingFields
+    //end bindingFields
 
-    private _temperatureAnnotatedData: TemperatureAnnotatedData = null;
-    public get temperatureAnnotatedData(): TemperatureAnnotatedData {
-        if (this._temperatureAnnotatedData == null)
-        {
-            this._temperatureAnnotatedData = new TemperatureAnnotatedData();
-        }
-        return this._temperatureAnnotatedData;
-    }
-    
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {

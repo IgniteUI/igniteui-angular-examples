@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { StockGoogleItem, StockGoogle } from './StockGoogle';
-import { IgxDataLegendComponent, IgxFinancialChartComponent } from 'igniteui-angular-charts';
+//insert bindingImports
+//end bindingImports
 
 
 
@@ -16,20 +16,9 @@ export class AppComponent {
 
     }
 
-    @ViewChild("legend", { static: true } )
-    private legend: IgxDataLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxFinancialChartComponent
+    //insert bindingFields
+    //end bindingFields
 
-    private _stockGoogle: StockGoogle = null;
-    public get stockGoogle(): StockGoogle {
-        if (this._stockGoogle == null)
-        {
-            this._stockGoogle = new StockGoogle();
-        }
-        return this._stockGoogle;
-    }
-    
 
 
 }

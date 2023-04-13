@@ -1,83 +1,13 @@
 <div class="container vertical sample">
-  <div class="options vertical">
-      <igx-property-editor-panel
-      [componentRenderer]="renderer"
-      [target]="chart"
-      descriptionType="CategoryChart"
-      isHorizontal="true"
-      isWrappingEnabled="true"
-      name="propertyEditorPanel1"
-      #propertyEditorPanel1>
-          <igx-property-editor-property-description
-          propertyPath="YAxisStroke"
-          label="Y Axis Stroke"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="gray, darkslategray, salmon, cornflowerblue, darkgreen"
-          dropDownValues="gray, darkslategray, salmon, cornflowerblue, darkgreen"
-          primitiveValue="gray"
-          name="YAxisStroke"
-          #yAxisStroke>
-          </igx-property-editor-property-description>
-          <igx-property-editor-property-description
-          dropDownValues="gray, darkslategray, salmon, cornflowerblue, darkgreen"
-          primitiveValue="darkslategray"
-          propertyPath="YAxisMajorStroke"
-          label="Y Axis Major Stroke"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="gray, darkslategray, salmon, cornflowerblue, darkgreen"
-          name="YAxisMajorStroke"
-          #yAxisMajorStroke>
-          </igx-property-editor-property-description>
-          <igx-property-editor-property-description
-          dropDownValues="gray, darkslategray, salmon, cornflowerblue, darkgreen"
-          primitiveValue="gray"
-          propertyPath="YAxisMinorStroke"
-          label="Y Axis Minor Stroke"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="gray, darkslategray, salmon, cornflowerblue, darkgreen"
-          name="YAxisMinorStroke"
-          #yAxisMinorStroke>
-          </igx-property-editor-property-description>
-      </igx-property-editor-panel>
-  </div>
   <div class="legend-title">
       Renewable Electricity Generated
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
+      <!-- insert content -->
       <igx-category-chart
-      chartType="Line"
-      xAxisInterval="1"
-      yAxisInterval="20"
-      yAxisMinorInterval="5"
-      xAxisMajorStroke="rgba(71, 71, 71, 1)"
-      yAxisMajorStroke="darkslategray"
-      xAxisMajorStrokeThickness="0.5"
-      yAxisMajorStrokeThickness="1"
-      yAxisMinorStrokeThickness="0.5"
-      xAxisStroke="rgba(145, 145, 145, 1)"
-      yAxisStroke="gray"
-      xAxisStrokeThickness="2"
-      yAxisStrokeThickness="2"
-      yAxisMinorStroke="gray"
-      [dataSource]="countryRenewableElectricity"
-      includedProperties="year, europe, china, america"
-      [legend]="legend"
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      thickness="2"
-      computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
       </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

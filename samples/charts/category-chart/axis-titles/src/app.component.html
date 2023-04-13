@@ -2,33 +2,12 @@
   <div class="legend-title">
       Renewable Electricity Generated
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
+      <!-- insert content -->
       <igx-category-chart
-      chartType="Line"
-      yAxisTitleLeftMargin="5"
-      xAxisTitleTextColor="gray"
-      yAxisTitleTextColor="gray"
-      xAxisTitleTextStyle="10pt 'Titillium Web'"
-      yAxisTitleTextStyle="10pt 'Titillium Web'"
-      xAxisTitle="Year"
-      yAxisTitle="Trillions of Watt-hours (Twh)"
-      xAxisTitleAngle="0"
-      yAxisTitleAngle="90"
-      [dataSource]="countryRenewableElectricity"
-      includedProperties="year, europe, china, america"
-      [legend]="legend"
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
       </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

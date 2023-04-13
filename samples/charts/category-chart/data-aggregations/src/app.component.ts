@@ -1,7 +1,9 @@
-import { Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { SalesData } from './SalesData';
-import { ComponentRenderer, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
-import {IgxCategoryChartComponent} from 'igniteui-angular-charts';
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
+//insert bindingImports
+//end bindingImports
+
+
 
 @Component({
     selector: "app-root",
@@ -15,27 +17,21 @@ export class AppComponent {
 
     }
 
-    @ViewChild("chart", { static: true } ) 
-    private chart: IgxCategoryChartComponent
+    //insert bindingFields
+    //end bindingFields
 
-    private _salesData: SalesData = null;
-    public get salesData(): SalesData {
-        if (this._salesData == null)
-        {
-            this._salesData = new SalesData();
-        }
-        return this._salesData;
-    }
-    
+
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {
         if (this._componentRenderer == null) {
             this._componentRenderer = new ComponentRenderer();
             var context = this._componentRenderer.context;
+            PropertyEditorPanelDescriptionModule.register(context);
             LegendDescriptionModule.register(context);
             CategoryChartDescriptionModule.register(context);
         }
         return this._componentRenderer;
     }
+
 }
 

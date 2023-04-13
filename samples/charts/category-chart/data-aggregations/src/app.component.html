@@ -3,17 +3,11 @@
       Renewable Electricity Generated
   </div>
   <div class="container fill">
+      <!-- insert content -->
       <igx-category-chart
-      chartType="Column"
-      initialGroups="country"
-      initialSummaries="Sum(sales) as Sales"
-      groupSorts="Sales Desc"
-      [dataSource]="salesData"
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      crosshairsDisplayMode="None"
-      name="chart"
-      #chart>
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
       </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

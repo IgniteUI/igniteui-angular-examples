@@ -3,46 +3,11 @@
       Where Online Shoppers Start Their Search
   </div>
   <div class="container fill">
-      <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      name="Chart"
-      #chart>
-          <igx-category-y-axis
-          [dataSource]="onlineShoppingSearches"
-          gap="0.5"
-          overlap="-0.1"
-          isInverted="true"
-          useEnhancedIntervalManagement="true"
-          enhancedIntervalPreferMoreCategoryLabels="true"
-          label="shop"
-          name="yAxis"
-          #yAxis>
-          </igx-category-y-axis>
-          <igx-numeric-x-axis
-          labelFormat="{0}%"
-          name="xAxis"
-          #xAxis>
-          </igx-numeric-x-axis>
-          <igx-category-highlight-layer
-          name="CategoryHighlightLayer"
-          #categoryHighlightLayer>
-          </igx-category-highlight-layer>
-          <igx-bar-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          valueMemberPath="percent"
-          isTransitionInEnabled="true"
-          [dataSource]="onlineShoppingSearches"
-          isHighlightingEnabled="true"
-          showDefaultTooltip="true"
-          name="BarSeries1"
-          #barSeries1>
-          </igx-bar-series>
-          <igx-data-tool-tip-layer
-          name="Tooltips"
-          #tooltips>
-          </igx-data-tool-tip-layer>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

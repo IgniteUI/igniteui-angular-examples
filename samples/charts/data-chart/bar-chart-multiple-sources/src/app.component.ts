@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { HighestGrossingMoviesItem, HighestGrossingMovies } from './HighestGrossingMovies';
-import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryYAxisComponent, IgxNumericXAxisComponent, IgxCategoryHighlightLayerComponent, IgxBarSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
+//insert bindingImports
+//end bindingImports
 
 
 
@@ -16,32 +16,9 @@ export class AppComponent {
 
     }
 
-    @ViewChild("legend", { static: true } )
-    private legend: IgxLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("yAxis", { static: true } )
-    private yAxis: IgxCategoryYAxisComponent
-    @ViewChild("xAxis", { static: true } )
-    private xAxis: IgxNumericXAxisComponent
-    @ViewChild("categoryHighlightLayer", { static: true } )
-    private categoryHighlightLayer: IgxCategoryHighlightLayerComponent
-    @ViewChild("barSeries1", { static: true } )
-    private barSeries1: IgxBarSeriesComponent
-    @ViewChild("barSeries2", { static: true } )
-    private barSeries2: IgxBarSeriesComponent
-    @ViewChild("tooltips", { static: true } )
-    private tooltips: IgxDataToolTipLayerComponent
+    //insert bindingFields
+    //end bindingFields
 
-    private _highestGrossingMovies: HighestGrossingMovies = null;
-    public get highestGrossingMovies(): HighestGrossingMovies {
-        if (this._highestGrossingMovies == null)
-        {
-            this._highestGrossingMovies = new HighestGrossingMovies();
-        }
-        return this._highestGrossingMovies;
-    }
-    
 
 
 }

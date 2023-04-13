@@ -3,62 +3,11 @@
       Where Online Shoppers Start Their Search
   </div>
   <div class="container fill">
-      <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      name="Chart"
-      #chart>
-          <igx-category-y-axis
-          [dataSource]="onlineShoppingSearches"
-          gap="0.75"
-          isInverted="true"
-          label="shop"
-          name="yAxis"
-          #yAxis>
-          </igx-category-y-axis>
-          <igx-numeric-x-axis
-          minimumValue="0"
-          maximumValue="80"
-          interval="20"
-          labelFormat="{0}%"
-          name="xAxis"
-          #xAxis>
-          </igx-numeric-x-axis>
-          <igx-category-highlight-layer
-          name="CategoryHighlightLayer"
-          #categoryHighlightLayer>
-          </igx-category-highlight-layer>
-          <igx-bar-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          valueMemberPath="percent"
-          isTransitionInEnabled="true"
-          [dataSource]="onlineShoppingSearches"
-          brush="rgba(134, 6, 138, 0.654901960784314)"
-          outline="rgba(133, 6, 138, 1)"
-          thickness="2"
-          isHighlightingEnabled="true"
-          areaFillOpacity="0.5"
-          showDefaultTooltip="true"
-          name="BarSeries1"
-          #barSeries1>
-          </igx-bar-series>
-          <igx-callout-layer
-          labelMemberPath="label"
-          xMemberPath="x"
-          yMemberPath="y"
-          contentMemberPath="label"
-          calloutTextColor="rgba(133, 6, 138, 1)"
-          calloutBackground="rgba(0, 0, 0, 0)"
-          calloutLeaderBrush="rgba(0, 0, 0, 0)"
-          [dataSource]="onlineShoppingSearches"
-          name="CalloutLayer1"
-          #calloutLayer1>
-          </igx-callout-layer>
-          <igx-data-tool-tip-layer
-          name="Tooltips"
-          #tooltips>
-          </igx-data-tool-tip-layer>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

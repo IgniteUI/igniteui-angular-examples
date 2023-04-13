@@ -2,63 +2,12 @@
   <div class="legend-title">
       Wind Speed vs Boat Speed
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
-      <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      [legend]="legend"
-      name="chart"
-      #chart>
-          <igx-numeric-angle-axis
-          startAngleOffset="-90"
-          minimumValue="0"
-          maximumValue="360"
-          interval="30"
-          name="angleAxis"
-          #angleAxis>
-          </igx-numeric-angle-axis>
-          <igx-numeric-radius-axis
-          radiusExtentScale="0.9"
-          innerRadiusExtentScale="0.1"
-          minimumValue="0"
-          maximumValue="100"
-          interval="25"
-          name="radiusAxis"
-          #radiusAxis>
-          </igx-numeric-radius-axis>
-          <igx-polar-line-series
-          angleMemberPath="direction"
-          radiusMemberPath="windSpeed"
-          [angleAxis]="angleAxis"
-          [radiusAxis]="radiusAxis"
-          markerType="Circle"
-          [dataSource]="boatSailingData"
-          thickness="1"
-          showDefaultTooltip="true"
-          title="Wind Speed"
-          name="PolarLineSeries1"
-          #polarLineSeries1>
-          </igx-polar-line-series>
-          <igx-polar-line-series
-          [dataSource]="boatSailingData"
-          [angleAxis]="angleAxis"
-          [radiusAxis]="radiusAxis"
-          angleMemberPath="direction"
-          radiusMemberPath="boatSpeed"
-          showDefaultTooltip="true"
-          thickness="1"
-          title="Boat Speed"
-          markerType="Circle"
-          name="PolarLineSeries2"
-          #polarLineSeries2>
-          </igx-polar-line-series>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

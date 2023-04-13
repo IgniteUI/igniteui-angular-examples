@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { TemperatureRangeDataItem, TemperatureRangeData } from './TemperatureRangeData';
-import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxRangeColumnSeriesComponent } from 'igniteui-angular-charts';
+//insert bindingImports
+//end bindingImports
 
 
 
@@ -16,28 +16,9 @@ export class AppComponent {
 
     }
 
-    @ViewChild("legend", { static: true } )
-    private legend: IgxLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("xAxis", { static: true } )
-    private xAxis: IgxCategoryXAxisComponent
-    @ViewChild("yAxis", { static: true } )
-    private yAxis: IgxNumericYAxisComponent
-    @ViewChild("series1", { static: true } )
-    private series1: IgxRangeColumnSeriesComponent
-    @ViewChild("series2", { static: true } )
-    private series2: IgxRangeColumnSeriesComponent
+    //insert bindingFields
+    //end bindingFields
 
-    private _temperatureRangeData: TemperatureRangeData = null;
-    public get temperatureRangeData(): TemperatureRangeData {
-        if (this._temperatureRangeData == null)
-        {
-            this._temperatureRangeData = new TemperatureRangeData();
-        }
-        return this._temperatureRangeData;
-    }
-    
 
 
 }

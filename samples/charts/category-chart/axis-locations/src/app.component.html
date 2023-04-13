@@ -1,46 +1,13 @@
 <div class="container vertical sample">
-  <div class="options vertical">
-      <igx-property-editor-panel
-      [componentRenderer]="renderer"
-      [target]="chart"
-      descriptionType="CategoryChart"
-      isHorizontal="true"
-      isWrappingEnabled="false"
-      name="propertyEditorPanel1"
-      #propertyEditorPanel1>
-          <igx-property-editor-property-description
-          propertyPath="YAxisLabelLocation"
-          label="Y Axis - Label Location"
-          primitiveValue="OutsideRight"
-          name="YAxisLabelLocation"
-          #yAxisLabelLocation>
-          </igx-property-editor-property-description>
-      </igx-property-editor-panel>
-  </div>
   <div class="legend-title">
       Renewable Electricity Generated
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
+      <!-- insert content -->
       <igx-category-chart
-      chartType="Line"
-      xAxisInterval="1"
-      yAxisTitle="Labels Location"
-      yAxisLabelLocation="OutsideRight"
-      [dataSource]="countryRenewableElectricity"
-      includedProperties="year, europe, china, america"
-      [legend]="legend"
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
       </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

@@ -1,48 +1,13 @@
 <div class="container vertical sample">
-  <div class="options vertical">
-      <igx-property-editor-panel
-      [componentRenderer]="renderer"
-      [target]="chart"
-      descriptionType="CategoryChart"
-      isHorizontal="true"
-      isWrappingEnabled="true"
-      name="PropertyEditor"
-      #propertyEditor>
-          <igx-property-editor-property-description
-          propertyPath="HighlightingMode"
-          label="Highlighting Mode:"
-          primitiveValue="FadeOthersSpecific"
-          name="HighlightingModeEditor"
-          #highlightingModeEditor>
-          </igx-property-editor-property-description>
-          <igx-property-editor-property-description
-          propertyPath="HighlightingBehavior"
-          label="Highlighting Behavior:"
-          primitiveValue="NearestItemsAndSeries"
-          name="HighlightingBehaviorEditor"
-          #highlightingBehaviorEditor>
-          </igx-property-editor-property-description>
-      </igx-property-editor-panel>
-  </div>
   <div class="legend-title">
-      Average Temperature in Sedney
+      Average Temperature in Sydney
   </div>
   <div class="container fill">
+      <!-- insert content -->
       <igx-category-chart
-      chartType="Column"
-      yAxisMaximumValue="35"
-      isCategoryHighlightingEnabled="true"
-      yAxisLabelLocation="OutsideRight"
-      [dataSource]="temperatureAnnotatedData"
-      includedProperties="month, temperature"
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      computedPlotAreaMarginMode="Series"
-      highlightingMode="FadeOthersSpecific"
-      highlightingBehavior="NearestItemsAndSeries"
-      crosshairsAnnotationYAxisPrecision="0"
-      name="chart"
-      #chart>
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
       </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

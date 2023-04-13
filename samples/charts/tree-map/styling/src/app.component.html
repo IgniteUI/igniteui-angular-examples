@@ -3,82 +3,11 @@
       Comparing Population of Countries
   </div>
   <div class="container fill">
-      <igx-treemap
-      valueMemberPath="population"
-      rootTitle="Countries"
-      parentIdMemberPath="parent"
-      labelMemberPath="name"
-      customValueMemberPath="parent"
-      idMemberPath="name"
-      [dataSource]="countyHierarchicalData"
-      headerHoverBackground="rgba(63, 64, 63, 1)"
-      headerBackground="rgba(63, 64, 63, 1)"
-      overlayHeaderBackground="rgba(63, 64, 63, 1)"
-      headerDisplayMode="Overlay"
-      parentNodeLeftPadding="0"
-      parentNodeTopPadding="0"
-      parentNodeRightPadding="0"
-      parentNodeBottomPadding="0"
-      outline="black"
-      strokeThickness="1"
-      name="treemap"
-      #treemap>
-          <igx-treemap-node-style-mapping
-          value="Africa"
-          mappingMode="CustomValue"
-          fill="rgba(115, 86, 86, 1)"
-          name="styling1"
-          #styling1>
-          </igx-treemap-node-style-mapping>
-          <igx-treemap-node-style-mapping
-          value="Europe"
-          fill="rgba(97, 171, 55, 1)"
-          mappingMode="CustomValue"
-          name="styling2"
-          #styling2>
-          </igx-treemap-node-style-mapping>
-          <igx-treemap-node-style-mapping
-          value="Asia"
-          fill="rgba(139, 91, 177, 1)"
-          mappingMode="CustomValue"
-          name="styling3"
-          #styling3>
-          </igx-treemap-node-style-mapping>
-          <igx-treemap-node-style-mapping
-          value="North America"
-          fill="rgba(95, 186, 172, 1)"
-          mappingMode="CustomValue"
-          name="styling4"
-          #styling4>
-          </igx-treemap-node-style-mapping>
-          <igx-treemap-node-style-mapping
-          value="South America"
-          fill="rgba(238, 88, 121, 1)"
-          mappingMode="CustomValue"
-          name="styling5"
-          #styling5>
-          </igx-treemap-node-style-mapping>
-          <igx-treemap-node-style-mapping
-          value="Middle East"
-          fill="rgba(109, 177, 255, 1)"
-          mappingMode="CustomValue"
-          name="styling6"
-          #styling6>
-          </igx-treemap-node-style-mapping>
-          <igx-treemap-node-style-mapping
-          value="Central America"
-          fill="rgba(247, 210, 98, 1)"
-          mappingMode="CustomValue"
-          name="styling7"
-          #styling7>
-          </igx-treemap-node-style-mapping>
-          <igx-treemap-node-style-mapping
-          value="Oceania"
-          fill="rgba(168, 168, 183, 1)"
-          mappingMode="CustomValue"
-          name="styling8"
-          #styling8>
-          </igx-treemap-node-style-mapping>
-      </igx-treemap>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

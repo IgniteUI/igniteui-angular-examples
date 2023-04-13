@@ -3,38 +3,11 @@
       Average Temperature Range in New York
   </div>
   <div class="container fill">
-      <igx-data-chart
-      name="chart"
-      #chart>
-          <igx-category-x-axis
-          [dataSource]="temperatureAverageData"
-          minimumGapSize="25"
-          useEnhancedIntervalManagement="true"
-          enhancedIntervalPreferMoreCategoryLabels="true"
-          label="month"
-          name="xAxis"
-          #xAxis>
-          </igx-category-x-axis>
-          <igx-numeric-y-axis
-          name="yAxis"
-          #yAxis>
-          </igx-numeric-y-axis>
-          <igx-category-highlight-layer
-          name="CategoryHighlightLayer"
-          #categoryHighlightLayer>
-          </igx-category-highlight-layer>
-          <igx-column-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          valueMemberPath="temperature"
-          [dataSource]="temperatureAverageData"
-          name="columnSeries1"
-          #columnSeries1>
-          </igx-column-series>
-          <igx-data-tool-tip-layer
-          name="Tooltips"
-          #tooltips>
-          </igx-data-tool-tip-layer>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>
