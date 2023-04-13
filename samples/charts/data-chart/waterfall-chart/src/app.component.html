@@ -3,52 +3,11 @@
       Facebook Consolidated Statements of Income
   </div>
   <div class="container fill">
-      <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      name="chart"
-      #chart>
-          <igx-category-x-axis
-          interval="1"
-          [dataSource]="companyIncomeData"
-          overlap="1"
-          label="category"
-          name="xAxis"
-          #xAxis>
-          </igx-category-x-axis>
-          <igx-numeric-y-axis
-          minimumValue="0"
-          maximumValue="60"
-          title="Millions of Dollars"
-          titleAngle="90"
-          titleLeftMargin="10"
-          name="yAxis"
-          #yAxis>
-          </igx-numeric-y-axis>
-          <igx-waterfall-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          valueMemberPath="costs"
-          isTransitionInEnabled="true"
-          [dataSource]="companyIncomeData"
-          showDefaultTooltip="true"
-          title="Value"
-          name="WaterfallSeries1"
-          #waterfallSeries1>
-          </igx-waterfall-series>
-          <igx-waterfall-series
-          title="Value"
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          [dataSource]="companyIncomeData"
-          valueMemberPath="netIncome"
-          showDefaultTooltip="true"
-          isTransitionInEnabled="true"
-          brush="rgba(116, 70, 185, 1)"
-          outline="rgba(116, 70, 185, 1)"
-          name="WaterfallSeries2"
-          #waterfallSeries2>
-          </igx-waterfall-series>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

@@ -2,57 +2,12 @@
   <div class="legend-title">
       Population Statistics for Selected Continents
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
-      <igx-data-chart
-      [legend]="legend"
-      name="chart"
-      #chart>
-          <igx-numeric-x-axis
-          minimumValue="5"
-          maximumValue="15"
-          title="Death Rate (per 1,000 people)"
-          name="xAxis"
-          #xAxis>
-          </igx-numeric-x-axis>
-          <igx-numeric-y-axis
-          minimumValue="0"
-          maximumValue="50"
-          interval="10"
-          title="Birth Rate (per 1,000 people)"
-          name="yAxis"
-          #yAxis>
-          </igx-numeric-y-axis>
-          <igx-scatter-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          xMemberPath="deathRate"
-          yMemberPath="birthRate"
-          markerType="Circle"
-          [dataSource]="countryDemographicEurope"
-          showDefaultTooltip="true"
-          title="Europe"
-          name="ScatterSeries1"
-          #scatterSeries1>
-          </igx-scatter-series>
-          <igx-scatter-series
-          title="Africa"
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          xMemberPath="deathRate"
-          yMemberPath="birthRate"
-          [dataSource]="countryDemographicAfrican"
-          markerType="Circle"
-          showDefaultTooltip="true"
-          name="ScatterSeries2"
-          #scatterSeries2>
-          </igx-scatter-series>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

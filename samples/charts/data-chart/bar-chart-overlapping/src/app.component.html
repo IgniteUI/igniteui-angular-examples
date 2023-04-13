@@ -2,107 +2,12 @@
   <div class="legend-title">
       Roadblocks Critical to Success of the Data & Analytics Team
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
-      <igx-data-chart
-      [legend]="legend"
-      name="Chart"
-      #chart>
-          <igx-category-y-axis
-          [dataSource]="roadblocksToSuccess"
-          gap="0.25"
-          labelExtent="0"
-          label="category"
-          name="yAxis1"
-          #yAxis1>
-          </igx-category-y-axis>
-          <igx-category-y-axis
-          label="category"
-          [dataSource]="roadblocksToSuccess"
-          gap="1"
-          labelHorizontalAlignment="Right"
-          name="yAxis2"
-          #yAxis2>
-          </igx-category-y-axis>
-          <igx-numeric-x-axis
-          minimumValue="0"
-          maximumValue="50"
-          stroke="gray"
-          strokeThickness="2"
-          tickLength="5"
-          useEnhancedIntervalManagement="true"
-          labelFormat="{0}%"
-          name="xAxis"
-          #xAxis>
-          </igx-numeric-x-axis>
-          <igx-category-highlight-layer
-          name="CategoryHighlightLayer"
-          #categoryHighlightLayer>
-          </igx-category-highlight-layer>
-          <igx-bar-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis1"
-          valueMemberPath="topChoices"
-          isTransitionInEnabled="true"
-          [dataSource]="roadblocksToSuccess"
-          isHighlightingEnabled="true"
-          showDefaultTooltip="true"
-          title="Sum of Top 3 Choices"
-          name="BarSeries1"
-          #barSeries1>
-          </igx-bar-series>
-          <igx-bar-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis2"
-          title="Top Choice"
-          valueMemberPath="firstChoice"
-          [dataSource]="roadblocksToSuccess"
-          showDefaultTooltip="true"
-          isTransitionInEnabled="true"
-          isHighlightingEnabled="true"
-          name="BarSeries2"
-          #barSeries2>
-          </igx-bar-series>
-          <igx-callout-layer
-          labelMemberPath="firstChoiceLabel"
-          xMemberPath="firstChoice"
-          yMemberPath="index"
-          calloutTextColor="black"
-          calloutBackground="rgba(0, 0, 0, 0)"
-          calloutOutline="rgba(0, 0, 0, 0)"
-          calloutLeaderBrush="rgba(0, 0, 0, 0)"
-          calloutPaddingTop="0"
-          calloutPositionPadding="0"
-          calloutStrokeThickness="2"
-          [dataSource]="roadblocksToSuccess"
-          name="CalloutLayer1"
-          #calloutLayer1>
-          </igx-callout-layer>
-          <igx-callout-layer
-          [dataSource]="roadblocksToSuccess"
-          yMemberPath="index"
-          xMemberPath="topChoices"
-          labelMemberPath="topChoicesLabel"
-          calloutLeaderBrush="rgba(0, 0, 0, 0)"
-          calloutOutline="rgba(0, 0, 0, 0)"
-          calloutBackground="rgba(0, 0, 0, 0)"
-          calloutTextColor="black"
-          calloutStrokeThickness="2"
-          calloutPaddingTop="0"
-          calloutPositionPadding="0"
-          name="CalloutLayer2"
-          #calloutLayer2>
-          </igx-callout-layer>
-          <igx-data-tool-tip-layer
-          name="Tooltips"
-          #tooltips>
-          </igx-data-tool-tip-layer>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

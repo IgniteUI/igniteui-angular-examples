@@ -3,44 +3,11 @@
       Renewable Electricity Generated
   </div>
   <div class="container fill">
-      <igx-data-chart
-      shouldAutoExpandMarginForInitialLabels="true"
-      computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
-          <igx-category-x-axis
-          [dataSource]="countryRenewableElectricity"
-          label="year"
-          name="xAxis"
-          #xAxis>
-          </igx-category-x-axis>
-          <igx-numeric-y-axis
-          title="TWh"
-          labelLocation="OutsideRight"
-          name="yAxis"
-          #yAxis>
-          </igx-numeric-y-axis>
-          <igx-line-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          valueMemberPath="america"
-          [dataSource]="countryRenewableElectricity"
-          name="LineSeries1"
-          #lineSeries1>
-          </igx-line-series>
-          <igx-callout-layer
-          labelMemberPath="label"
-          xMemberPath="index"
-          yMemberPath="value"
-          calloutTextColor="black"
-          calloutBackground="orange"
-          calloutOutline="black"
-          calloutLeaderBrush="black"
-          calloutStrokeThickness="2"
-          [dataSource]="countryRenewableCallouts"
-          name="CalloutLayer1"
-          #calloutLayer1>
-          </igx-callout-layer>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

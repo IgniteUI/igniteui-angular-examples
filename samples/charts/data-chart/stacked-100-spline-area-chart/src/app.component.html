@@ -2,72 +2,12 @@
   <div class="legend-title">
       Annual Birth Rates by World Region
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
-      <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      [legend]="legend"
-      name="chart"
-      #chart>
-          <igx-category-x-axis
-          [dataSource]="continentsBirthRate"
-          label="year"
-          name="xAxis"
-          #xAxis>
-          </igx-category-x-axis>
-          <igx-numeric-y-axis
-          interval="20"
-          titleLeftMargin="10"
-          labelFormat="{0}%"
-          name="yAxis"
-          #yAxis>
-          </igx-numeric-y-axis>
-          <igx-stacked-100-spline-area-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          markerType="Circle"
-          [dataSource]="continentsBirthRate"
-          showDefaultTooltip="false"
-          name="Stacked100SplineAreaSeries"
-          #stacked100SplineAreaSeries>
-              <igx-stacked-fragment-series
-              name="s1"
-              #s1
-              title="Asia"
-              valueMemberPath="asia">
-              </igx-stacked-fragment-series>
-              <igx-stacked-fragment-series
-              name="s2"
-              #s2
-              valueMemberPath="africa"
-              title="Africa">
-              </igx-stacked-fragment-series>
-              <igx-stacked-fragment-series
-              name="s3"
-              #s3
-              valueMemberPath="europe"
-              title="Europe">
-              </igx-stacked-fragment-series>
-              <igx-stacked-fragment-series
-              name="s4"
-              #s4
-              valueMemberPath="northAmerica"
-              title="North America">
-              </igx-stacked-fragment-series>
-              <igx-stacked-fragment-series
-              name="s5"
-              #s5
-              valueMemberPath="southAmerica"
-              title="South America">
-              </igx-stacked-fragment-series>
-          </igx-stacked-100-spline-area-series>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

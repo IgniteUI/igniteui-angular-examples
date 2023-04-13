@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Stock2YearsItem, Stock2Years } from './Stock2Years';
-import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxFinancialPriceSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
-
-
+//insert bindingImports
+//end bindingImports
 
 @Component({
     selector: "app-root",
@@ -16,27 +14,8 @@ export class AppComponent {
 
     }
 
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("xAxis", { static: true } )
-    private xAxis: IgxCategoryXAxisComponent
-    @ViewChild("yAxis", { static: true } )
-    private yAxis: IgxNumericYAxisComponent
-    @ViewChild("series1", { static: true } )
-    private series1: IgxFinancialPriceSeriesComponent
-    @ViewChild("tooltip", { static: true } )
-    private tooltip: IgxDataToolTipLayerComponent
-
-    private _stock2Years: Stock2Years = null;
-    public get stock2Years(): Stock2Years {
-        if (this._stock2Years == null)
-        {
-            this._stock2Years = new Stock2Years();
-        }
-        return this._stock2Years;
-    }
-    
-
+    //insert bindingFields
+    //end bindingFields
 
 }
 

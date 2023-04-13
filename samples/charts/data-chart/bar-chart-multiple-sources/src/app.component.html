@@ -2,66 +2,12 @@
   <div class="legend-title">
       Highest Grossing Movie Franchises
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
-      <igx-data-chart
-      [legend]="legend"
-      name="Chart"
-      #chart>
-          <igx-category-y-axis
-          [dataSource]="highestGrossingMovies"
-          gap="0.5"
-          overlap="-0.1"
-          isInverted="true"
-          useEnhancedIntervalManagement="true"
-          enhancedIntervalPreferMoreCategoryLabels="true"
-          label="franchise"
-          name="yAxis"
-          #yAxis>
-          </igx-category-y-axis>
-          <igx-numeric-x-axis
-          title="Billions of U.S. Dollars"
-          name="xAxis"
-          #xAxis>
-          </igx-numeric-x-axis>
-          <igx-category-highlight-layer
-          name="CategoryHighlightLayer"
-          #categoryHighlightLayer>
-          </igx-category-highlight-layer>
-          <igx-bar-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          valueMemberPath="totalRevenue"
-          isTransitionInEnabled="true"
-          [dataSource]="highestGrossingMovies"
-          isHighlightingEnabled="true"
-          showDefaultTooltip="true"
-          title="Total Revenue of Franchise"
-          name="BarSeries1"
-          #barSeries1>
-          </igx-bar-series>
-          <igx-bar-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          title="Highest Grossing Movie in Series"
-          valueMemberPath="highestGrossing"
-          [dataSource]="highestGrossingMovies"
-          showDefaultTooltip="true"
-          isTransitionInEnabled="true"
-          isHighlightingEnabled="true"
-          name="BarSeries2"
-          #barSeries2>
-          </igx-bar-series>
-          <igx-data-tool-tip-layer
-          name="Tooltips"
-          #tooltips>
-          </igx-data-tool-tip-layer>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>
