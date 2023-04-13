@@ -1,59 +1,10 @@
 <div class="container vertical sample">
-  <div class="options vertical">
-      <igx-property-editor-panel
-      [componentRenderer]="renderer"
-      [target]="chart"
-      descriptionType="Sparkline"
-      isHorizontal="true"
-      isWrappingEnabled="true"
-      name="propertyEditorPanel1"
-      #propertyEditorPanel1>
-          <igx-property-editor-property-description
-          propertyPath="NormalRangeVisibility"
-          label="Normal Range Visibility"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="Visible, Collapsed"
-          dropDownValues="Visible, Collapsed"
-          primitiveValue="Visible"
-          name="NormalRangeVisibilityEditor"
-          #normalRangeVisibilityEditor>
-          </igx-property-editor-property-description>
-          <igx-property-editor-property-description
-          dropDownValues="0, 10, 15, 20, 25, 30"
-          primitiveValue="25"
-          propertyPath="NormalRangeMinimum"
-          label="Normal Range Minimum"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="0, 10, 15, 20, 25, 30"
-          name="NormalRangeMinimumEditor"
-          #normalRangeMinimumEditor>
-          </igx-property-editor-property-description>
-          <igx-property-editor-property-description
-          dropDownValues="0, 10, 15, 20, 25, 30"
-          primitiveValue="25"
-          propertyPath="NormalRangeMaximum"
-          label="Normal Range Maximum"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="0, 10, 15, 20, 25, 30"
-          name="NormalRangeMaximumEditor"
-          #normalRangeMaximumEditor>
-          </igx-property-editor-property-description>
-      </igx-property-editor-panel>
-  </div>
   <div class="container fill">
-      <igx-sparkline
-      normalRangeVisibility="Visible"
-      [dataSource]="sparklineMixedData"
-      valueMemberPath="value"
-      labelMemberPath="label"
-      normalRangeMinimum="15"
-      normalRangeMaximum="25"
-      displayType="Area"
-      name="chart"
-      #chart>
-      </igx-sparkline>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>
