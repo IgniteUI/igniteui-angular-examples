@@ -1,12 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
-import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
-import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
-import { IgxCategoryChartComponent } from 'igniteui-angular-charts';
-
-import { defineAllComponents } from 'igniteui-webcomponents';
-
-defineAllComponents();
+//insert bindingImports
+//end bindingImports
 
 @Component({
     selector: "app-root",
@@ -20,24 +15,8 @@ export class AppComponent {
 
     }
 
-    @ViewChild("propertyEditorPanel1", { static: true } )
-    private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-    @ViewChild("xAxisInvertedEditor", { static: true } )
-    private xAxisInvertedEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("yAxisInvertedEditor", { static: true } )
-    private yAxisInvertedEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
-
-    private _countryRenewableElectricity: CountryRenewableElectricity = null;
-    public get countryRenewableElectricity(): CountryRenewableElectricity {
-        if (this._countryRenewableElectricity == null)
-        {
-            this._countryRenewableElectricity = new CountryRenewableElectricity();
-        }
-        return this._countryRenewableElectricity;
-    }
-    
+    //insert bindingFields
+    //end bindingFields
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {

@@ -1,12 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, TreemapDescriptionModule } from 'igniteui-angular-core';
-import { CountyHierarchicalDataItem, CountyHierarchicalData } from './CountyHierarchicalData';
-import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
-import { IgxTreemapComponent } from 'igniteui-angular-charts';
-
-import { defineAllComponents } from 'igniteui-webcomponents';
-
-defineAllComponents();
+//insert bindingImports
+//end bindingImports
 
 @Component({
     selector: "app-root",
@@ -20,28 +15,8 @@ export class AppComponent {
 
     }
 
-    @ViewChild("propertyEditorPanel1", { static: true } )
-    private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-    @ViewChild("layoutTypeEditor", { static: true } )
-    private layoutTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("layoutOrientationEditor", { static: true } )
-    private layoutOrientationEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("headerDisplayModeEditor", { static: true } )
-    private headerDisplayModeEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("labelVerticalAlignmentEditor", { static: true } )
-    private labelVerticalAlignmentEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("treemap", { static: true } )
-    private treemap: IgxTreemapComponent
-
-    private _countyHierarchicalData: CountyHierarchicalData = null;
-    public get countyHierarchicalData(): CountyHierarchicalData {
-        if (this._countyHierarchicalData == null)
-        {
-            this._countyHierarchicalData = new CountyHierarchicalData();
-        }
-        return this._countyHierarchicalData;
-    }
-    
+    //insert bindingFields
+    //end bindingFields
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {

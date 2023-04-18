@@ -2,54 +2,12 @@
   <div class="legend-title">
       Monthly Temperature Range in LA and NYC
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
-      <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      [legend]="legend"
-      name="chart"
-      #chart>
-          <igx-category-x-axis
-          interval="1"
-          [dataSource]="temperatureRangeData"
-          label="month"
-          name="xAxis"
-          #xAxis>
-          </igx-category-x-axis>
-          <igx-numeric-y-axis
-          title="Temperature (in Celsius)"
-          titleAngle="90"
-          titleLeftMargin="10"
-          name="yAxis"
-          #yAxis>
-          </igx-numeric-y-axis>
-          <igx-range-column-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          lowMemberPath="lowLA"
-          highMemberPath="highLA"
-          [dataSource]="temperatureRangeData"
-          title="Los Angeles"
-          name="series1"
-          #series1>
-          </igx-range-column-series>
-          <igx-range-column-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          title="New York City"
-          lowMemberPath="lowNY"
-          highMemberPath="highNY"
-          [dataSource]="temperatureRangeData"
-          name="series2"
-          #series2>
-          </igx-range-column-series>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

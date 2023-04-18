@@ -3,52 +3,11 @@
       Wind Speed vs Boat Speed
   </div>
   <div class="container fill">
-      <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      name="chart"
-      #chart>
-          <igx-numeric-angle-axis
-          startAngleOffset="-90"
-          minimumValue="0"
-          maximumValue="360"
-          interval="30"
-          name="angleAxis"
-          #angleAxis>
-          </igx-numeric-angle-axis>
-          <igx-numeric-radius-axis
-          radiusExtentScale="0.9"
-          innerRadiusExtentScale="0.1"
-          minimumValue="0"
-          maximumValue="100"
-          interval="25"
-          name="radiusAxis"
-          #radiusAxis>
-          </igx-numeric-radius-axis>
-          <igx-polar-scatter-series
-          angleMemberPath="direction"
-          radiusMemberPath="windSpeed"
-          [angleAxis]="angleAxis"
-          [radiusAxis]="radiusAxis"
-          markerType="Circle"
-          [dataSource]="boatSailingData"
-          showDefaultTooltip="true"
-          title="Wind Speed"
-          name="PolarScatterSeries1"
-          #polarScatterSeries1>
-          </igx-polar-scatter-series>
-          <igx-polar-scatter-series
-          [dataSource]="boatSailingData"
-          [angleAxis]="angleAxis"
-          [radiusAxis]="radiusAxis"
-          angleMemberPath="direction"
-          radiusMemberPath="boatSpeed"
-          showDefaultTooltip="true"
-          title="Boat Speed"
-          markerType="Circle"
-          name="PolarScatterSeries2"
-          #polarScatterSeries2>
-          </igx-polar-scatter-series>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

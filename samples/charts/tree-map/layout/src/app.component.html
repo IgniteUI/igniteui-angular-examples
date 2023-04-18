@@ -1,63 +1,13 @@
 <div class="container vertical sample">
-  <div class="options vertical">
-      <igx-property-editor-panel
-      [componentRenderer]="renderer"
-      [target]="treemap"
-      descriptionType="Treemap"
-      isHorizontal="true"
-      isWrappingEnabled="true"
-      name="propertyEditorPanel1"
-      #propertyEditorPanel1>
-          <igx-property-editor-property-description
-          propertyPath="LayoutType"
-          label="Layout"
-          primitiveValue="Squarified"
-          name="LayoutTypeEditor"
-          #layoutTypeEditor>
-          </igx-property-editor-property-description>
-          <igx-property-editor-property-description
-          propertyPath="LayoutOrientation"
-          primitiveValue="Vertical"
-          label="Orientation"
-          name="LayoutOrientationEditor"
-          #layoutOrientationEditor>
-          </igx-property-editor-property-description>
-          <igx-property-editor-property-description
-          propertyPath="HeaderDisplayMode"
-          primitiveValue="Overlay"
-          label="Headers"
-          name="HeaderDisplayModeEditor"
-          #headerDisplayModeEditor>
-          </igx-property-editor-property-description>
-          <igx-property-editor-property-description
-          propertyPath="LabelVerticalAlignment"
-          primitiveValue="Center"
-          label="Labels"
-          name="LabelVerticalAlignmentEditor"
-          #labelVerticalAlignmentEditor>
-          </igx-property-editor-property-description>
-      </igx-property-editor-panel>
-  </div>
   <div class="legend-title">
       Comparing Population of Countries
   </div>
   <div class="container fill">
-      <igx-treemap
-      valueMemberPath="population"
-      rootTitle="Countries"
-      parentIdMemberPath="parent"
-      labelMemberPath="name"
-      idMemberPath="name"
-      [dataSource]="countyHierarchicalData"
-      fillBrushes="rgba(41, 158, 65, 1) rgba(78, 98, 207, 1) rgba(94, 53, 156, 1)"
-      isFillScaleLogarithmic="true"
-      headerDisplayMode="Overlay"
-      parentNodeLeftPadding="0"
-      parentNodeTopPadding="0"
-      parentNodeRightPadding="0"
-      parentNodeBottomPadding="0"
-      name="treemap"
-      #treemap>
-      </igx-treemap>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

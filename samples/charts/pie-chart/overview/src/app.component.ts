@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { EnergyGlobalDemandItem, EnergyGlobalDemand } from './EnergyGlobalDemand';
-import { IgxItemLegendComponent, IgxPieChartComponent } from 'igniteui-angular-charts';
-
-
+//insert bindingImports
+//end bindingImports
 
 @Component({
     selector: "app-root",
@@ -16,21 +14,8 @@ export class AppComponent {
 
     }
 
-    @ViewChild("legend", { static: true } )
-    private legend: IgxItemLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxPieChartComponent
-
-    private _energyGlobalDemand: EnergyGlobalDemand = null;
-    public get energyGlobalDemand(): EnergyGlobalDemand {
-        if (this._energyGlobalDemand == null)
-        {
-            this._energyGlobalDemand = new EnergyGlobalDemand();
-        }
-        return this._energyGlobalDemand;
-    }
-    
-
+    //insert bindingFields
+    //end bindingFields
 
 }
 

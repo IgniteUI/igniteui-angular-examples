@@ -3,27 +3,11 @@
       Comparing Population of Countries
   </div>
   <div class="container fill">
-      <igx-treemap
-      valueMemberPath="population"
-      rootTitle="Countries"
-      parentIdMemberPath="parent"
-      labelMemberPath="name"
-      idMemberPath="name"
-      [dataSource]="countyHierarchicalData"
-      fillBrushes="rgba(78, 98, 207, 1) rgba(138, 88, 214, 1)"
-      fillScaleMode="Value"
-      isFillScaleLogarithmic="true"
-      fillScaleMinimumValue="0"
-      fillScaleMaximumValue="1500000000"
-      headerDisplayMode="Overlay"
-      parentNodeLeftPadding="0"
-      parentNodeTopPadding="0"
-      parentNodeRightPadding="0"
-      parentNodeBottomPadding="0"
-      outline="black"
-      strokeThickness="1"
-      name="treemap"
-      #treemap>
-      </igx-treemap>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

@@ -1,35 +1,10 @@
 <div class="container vertical sample">
-  <div class="options vertical">
-      <igx-property-editor-panel
-      [componentRenderer]="renderer"
-      [target]="chart"
-      descriptionType="Sparkline"
-      isHorizontal="true"
-      isWrappingEnabled="true"
-      name="propertyEditorPanel1"
-      #propertyEditorPanel1>
-          <igx-property-editor-property-description
-          propertyPath="UnknownValuePlotting"
-          label="Unknown Value Plotting"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="LinearInterpolate, DontPlot"
-          dropDownValues="LinearInterpolate, DontPlot"
-          primitiveValue="LinearInterpolate"
-          name="UnknownValuePlottingEditor"
-          #unknownValuePlottingEditor>
-          </igx-property-editor-property-description>
-      </igx-property-editor-panel>
-  </div>
   <div class="container fill">
-      <igx-sparkline
-      [dataSource]="sparklineUnknownData"
-      valueMemberPath="value"
-      labelMemberPath="label"
-      displayType="Area"
-      unknownValuePlotting="LinearInterpolate"
-      name="chart"
-      #chart>
-      </igx-sparkline>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

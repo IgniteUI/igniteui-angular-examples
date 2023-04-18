@@ -5,7 +5,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
-
 import { IgxPropertyEditorPanelModule } from 'igniteui-angular-layouts';
 import { IgxTreemapModule } from 'igniteui-angular-charts';
 

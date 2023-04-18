@@ -2,70 +2,12 @@
   <div class="legend-title">
       Wind Speed vs Boat Speed
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
-      <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      brushes="rgba(140, 231, 217, 1) rgba(238, 88, 121, 1)"
-      outlines="rgba(140, 231, 217, 1) rgba(238, 88, 121, 1)"
-      markerBrushes="white"
-      markerOutlines="rgba(140, 231, 217, 1) rgba(238, 88, 121, 1)"
-      [legend]="legend"
-      name="chart"
-      #chart>
-          <igx-numeric-angle-axis
-          startAngleOffset="-90"
-          minimumValue="0"
-          maximumValue="360"
-          interval="30"
-          labelTextStyle="normal bold 14px Verdana"
-          name="angleAxis"
-          #angleAxis>
-          </igx-numeric-angle-axis>
-          <igx-numeric-radius-axis
-          radiusExtentScale="0.9"
-          innerRadiusExtentScale="0.1"
-          minimumValue="0"
-          maximumValue="100"
-          interval="25"
-          name="radiusAxis"
-          #radiusAxis>
-          </igx-numeric-radius-axis>
-          <igx-polar-area-series
-          angleMemberPath="direction"
-          radiusMemberPath="windSpeed"
-          [angleAxis]="angleAxis"
-          [radiusAxis]="radiusAxis"
-          markerType="Circle"
-          [dataSource]="boatSailingData"
-          thickness="1"
-          areaFillOpacity="0.3"
-          showDefaultTooltip="true"
-          title="Wind Speed"
-          name="PolarAreaSeries1"
-          #polarAreaSeries1>
-          </igx-polar-area-series>
-          <igx-polar-area-series
-          [dataSource]="boatSailingData"
-          [angleAxis]="angleAxis"
-          [radiusAxis]="radiusAxis"
-          angleMemberPath="direction"
-          radiusMemberPath="boatSpeed"
-          showDefaultTooltip="true"
-          areaFillOpacity="0.3"
-          thickness="1"
-          title="Boat Speed"
-          markerType="Circle"
-          name="PolarAreaSeries2"
-          #polarAreaSeries2>
-          </igx-polar-area-series>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

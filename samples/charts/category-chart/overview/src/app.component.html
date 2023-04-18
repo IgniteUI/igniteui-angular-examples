@@ -2,22 +2,12 @@
   <div class="legend-title">
       Olympic Medals By Country
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
+      <!-- insert content -->
       <igx-category-chart
-      chartType="Line"
-      yAxisTitle="TWh"
-      [dataSource]="countryRenewableElectricity"
-      [legend]="legend"
-      computedPlotAreaMarginMode="Series"
-      name="Chart"
-      #chart>
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
       </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

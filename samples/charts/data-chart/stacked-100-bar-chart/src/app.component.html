@@ -2,66 +2,12 @@
   <div class="legend-title">
       Renewable Energy Consumption
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
-      <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      [legend]="legend"
-      name="chart"
-      #chart>
-          <igx-category-y-axis
-          [dataSource]="energyRenewableConsumption"
-          isInverted="true"
-          label="location"
-          name="yAxis"
-          #yAxis>
-          </igx-category-y-axis>
-          <igx-numeric-x-axis
-          minimumValue="0"
-          title="TWh"
-          name="xAxis"
-          #xAxis>
-          </igx-numeric-x-axis>
-          <igx-stacked-100-bar-series
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          [dataSource]="energyRenewableConsumption"
-          areaFillOpacity="1"
-          showDefaultTooltip="true"
-          name="Stacked100BarSeries"
-          #stacked100BarSeries>
-              <igx-stacked-fragment-series
-              name="s1"
-              #s1
-              title="Hydro"
-              valueMemberPath="hydro">
-              </igx-stacked-fragment-series>
-              <igx-stacked-fragment-series
-              name="s2"
-              #s2
-              valueMemberPath="wind"
-              title="Wind">
-              </igx-stacked-fragment-series>
-              <igx-stacked-fragment-series
-              name="s3"
-              #s3
-              valueMemberPath="solar"
-              title="Solar">
-              </igx-stacked-fragment-series>
-              <igx-stacked-fragment-series
-              name="s4"
-              #s4
-              valueMemberPath="other"
-              title="Other">
-              </igx-stacked-fragment-series>
-          </igx-stacked-100-bar-series>
-      </igx-data-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

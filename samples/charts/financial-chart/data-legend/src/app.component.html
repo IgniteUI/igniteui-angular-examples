@@ -1,22 +1,10 @@
 <div class="container vertical sample">
-  <div class="legend">
-      <igx-data-legend
-      includedColumns="Open, Close, High, Low, Change"
-      [target]="chart"
-      name="Legend"
-      #legend>
-      </igx-data-legend>
-  </div>
   <div class="container fill">
-      <igx-financial-chart
-      isHorizontalZoomEnabled="true"
-      chartType="Candle"
-      zoomSliderType="None"
-      isVerticalZoomEnabled="true"
-      dataToolTipHeaderFormatTime="None"
-      [dataSource]="multipleStocks"
-      name="chart"
-      #chart>
-      </igx-financial-chart>
+      <!-- insert content -->
+      <igx-category-chart
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
+      </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

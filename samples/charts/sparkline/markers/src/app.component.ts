@@ -1,12 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, SparklineDescriptionModule } from 'igniteui-angular-core';
-import { SparklineProfitDataItem, SparklineProfitData } from './SparklineProfitData';
-import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
-import { IgxSparklineComponent } from 'igniteui-angular-charts';
-
-import { defineAllComponents } from 'igniteui-webcomponents';
-
-defineAllComponents();
+//insert bindingImports
+//end bindingImports
 
 @Component({
     selector: "app-root",
@@ -20,32 +15,8 @@ export class AppComponent {
 
     }
 
-    @ViewChild("propertyEditorPanel1", { static: true } )
-    private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-    @ViewChild("firstMarkerVisibilityEditor", { static: true } )
-    private firstMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("highMarkerVisibilityEditor", { static: true } )
-    private highMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("lowMarkerVisibilityEditor", { static: true } )
-    private lowMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("negativeMarkerVisibilityEditor", { static: true } )
-    private negativeMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("lastMarkerVisibilityEditor", { static: true } )
-    private lastMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("markerVisibilityEditor", { static: true } )
-    private markerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxSparklineComponent
-
-    private _sparklineProfitData: SparklineProfitData = null;
-    public get sparklineProfitData(): SparklineProfitData {
-        if (this._sparklineProfitData == null)
-        {
-            this._sparklineProfitData = new SparklineProfitData();
-        }
-        return this._sparklineProfitData;
-    }
-    
+    //insert bindingFields
+    //end bindingFields
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {

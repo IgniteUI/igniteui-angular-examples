@@ -1,12 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
-import { HighestGrossingMoviesItem, HighestGrossingMovies } from './HighestGrossingMovies';
-import { IgxLegendComponent, IgxCategoryChartComponent } from 'igniteui-angular-charts';
-import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
-
-import { defineAllComponents } from 'igniteui-webcomponents';
-
-defineAllComponents();
+//insert bindingImports
+//end bindingImports
 
 @Component({
     selector: "app-root",
@@ -20,24 +15,8 @@ export class AppComponent {
 
     }
 
-    @ViewChild("legend", { static: true } )
-    private legend: IgxLegendComponent
-    @ViewChild("propertyEditorPanel1", { static: true } )
-    private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-    @ViewChild("xAxisOverlap", { static: true } )
-    private xAxisOverlap: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
-
-    private _highestGrossingMovies: HighestGrossingMovies = null;
-    public get highestGrossingMovies(): HighestGrossingMovies {
-        if (this._highestGrossingMovies == null)
-        {
-            this._highestGrossingMovies = new HighestGrossingMovies();
-        }
-        return this._highestGrossingMovies;
-    }
-    
+    //insert bindingFields
+    //end bindingFields
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {

@@ -1,48 +1,13 @@
 <div class="container vertical sample">
-  <div class="options vertical">
-      <igx-property-editor-panel
-      [componentRenderer]="renderer"
-      [target]="chart"
-      descriptionType="CategoryChart"
-      isHorizontal="true"
-      isWrappingEnabled="true"
-      name="propertyEditorPanel1"
-      #propertyEditorPanel1>
-          <igx-property-editor-property-description
-          propertyPath="XAxisOverlap"
-          label="X Axis - Overlap"
-          valueType="Slider"
-          shouldOverrideDefaultEditor="true"
-          primitiveValue="0"
-          min="0"
-          max="1"
-          step="0.1"
-          name="XAxisOverlap"
-          #xAxisOverlap>
-          </igx-property-editor-property-description>
-      </igx-property-editor-panel>
-  </div>
   <div class="legend-title">
       Highest Grossing Movie Franchises
   </div>
-  <div class="legend">
-      <igx-legend
-      orientation="Horizontal"
-      name="Legend"
-      #legend>
-      </igx-legend>
-  </div>
   <div class="container fill">
+      <!-- insert content -->
       <igx-category-chart
-      chartType="Column"
-      xAxisInterval="1"
-      xAxisOverlap="1"
-      [dataSource]="highestGrossingMovies"
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      crosshairsSnapToData="true"
-      name="chart"
-      #chart>
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
       </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

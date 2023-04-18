@@ -3,17 +3,11 @@
       Renewable Electricity Generated
   </div>
   <div class="container fill">
+      <!-- insert content -->
       <igx-category-chart
-      chartType="StepLine"
-      isCategoryHighlightingEnabled="true"
-      yAxisTitle="TWh"
-      [dataSource]="countryRenewableElectricity"
-      includedProperties="year, europe"
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      crosshairsSnapToData="true"
-      name="chart"
-      #chart>
+        yAxisMinimumValue="0"
+        [dataSource]="data" >
       </igx-category-chart>
+      <!-- end content -->
   </div>
 </div>

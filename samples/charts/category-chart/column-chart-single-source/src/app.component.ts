@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { TemperatureAverageDataItem, TemperatureAverageData } from './TemperatureAverageData';
-import { IgxCategoryChartComponent } from 'igniteui-angular-charts';
-
-
+//insert bindingImports
+//end bindingImports
 
 @Component({
     selector: "app-root",
@@ -16,19 +14,8 @@ export class AppComponent {
 
     }
 
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
-
-    private _temperatureAverageData: TemperatureAverageData = null;
-    public get temperatureAverageData(): TemperatureAverageData {
-        if (this._temperatureAverageData == null)
-        {
-            this._temperatureAverageData = new TemperatureAverageData();
-        }
-        return this._temperatureAverageData;
-    }
-    
-
+    //insert bindingFields
+    //end bindingFields
 
 }
 

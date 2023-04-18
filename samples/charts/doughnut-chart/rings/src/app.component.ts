@@ -1,9 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { CalendarSeasonsItem, CalendarSeasons } from './CalendarSeasons';
-import { CalendarMonthsItem, CalendarMonths } from './CalendarMonths';
-import { IgxDoughnutChartComponent, IgxRingSeriesComponent } from 'igniteui-angular-charts';
-
-
+//insert bindingImports
+//end bindingImports
 
 @Component({
     selector: "app-root",
@@ -17,32 +14,8 @@ export class AppComponent {
 
     }
 
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDoughnutChartComponent
-    @ViewChild("series1", { static: true } )
-    private series1: IgxRingSeriesComponent
-    @ViewChild("series2", { static: true } )
-    private series2: IgxRingSeriesComponent
-
-    private _calendarSeasons: CalendarSeasons = null;
-    public get calendarSeasons(): CalendarSeasons {
-        if (this._calendarSeasons == null)
-        {
-            this._calendarSeasons = new CalendarSeasons();
-        }
-        return this._calendarSeasons;
-    }
-    
-    private _calendarMonths: CalendarMonths = null;
-    public get calendarMonths(): CalendarMonths {
-        if (this._calendarMonths == null)
-        {
-            this._calendarMonths = new CalendarMonths();
-        }
-        return this._calendarMonths;
-    }
-    
-
+    //insert bindingFields
+    //end bindingFields
 
 }
 

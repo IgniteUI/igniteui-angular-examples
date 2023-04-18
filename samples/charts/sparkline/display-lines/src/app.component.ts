@@ -1,9 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, SparklineDescriptionModule } from 'igniteui-angular-core';
-import { SparklineMixedDataItem, SparklineMixedData } from './SparklineMixedData';
-import { IgxSparklineComponent } from 'igniteui-angular-charts';
-
-
+//insert bindingImports
+//end bindingImports
 
 @Component({
     selector: "app-root",
@@ -17,18 +15,8 @@ export class AppComponent {
 
     }
 
-    @ViewChild("chart", { static: true } )
-    private chart: IgxSparklineComponent
-
-    private _sparklineMixedData: SparklineMixedData = null;
-    public get sparklineMixedData(): SparklineMixedData {
-        if (this._sparklineMixedData == null)
-        {
-            this._sparklineMixedData = new SparklineMixedData();
-        }
-        return this._sparklineMixedData;
-    }
-    
+    //insert bindingFields
+    //end bindingFields
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {
