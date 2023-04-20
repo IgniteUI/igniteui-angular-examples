@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { NavigationStart, Router, RouterModule, Routes } from "@angular/router";
 import "rxjs/add/operator/filter";
 import { HomeComponent } from "./home/home.component";
+import { FallbackComponent } from "./fallback/fallback.component";
 import { DocsLayoutComponent } from "./index/docs-layout.component";
 import { IndexComponent } from "./index/index.component";
 
@@ -61,6 +62,10 @@ export const appRoutes: Routes = [
         children: samplesRoutes,
         component: IndexComponent,
         path: "samples"
+    },
+    {
+        path: '**',
+        component: FallbackComponent
     }
 ];
 @NgModule({

@@ -12,6 +12,7 @@ import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { DocsLayoutComponent } from "./index/docs-layout.component";
 import { IndexComponent } from "./index/index.component";
+import { FallbackComponent } from './fallback/fallback.component';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -19,7 +20,8 @@ import { IndexComponent } from "./index/index.component";
         AppComponent,
         HomeComponent,
         DocsLayoutComponent,
-        IndexComponent
+        IndexComponent,
+        FallbackComponent
     ],
     imports: [
         AppRoutingModule,
