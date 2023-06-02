@@ -72,6 +72,9 @@ function getOutputPath(dirPath) {
 
 // NOTE you can comment out strings in this array to run these function only on a subset of samples
 var sampleSourcePaths = [
+    // include samples for all components
+    sampleRoot + '**/package.json',
+
     // sampleRoot + 'charts/doughnut-chart/overview/package.json',
     // sampleRoot + 'charts/category-chart/area-chart-multiple-sources/package.json',
     // sampleRoot + 'gauges/**/measures/package.json',
@@ -80,20 +83,21 @@ var sampleSourcePaths = [
     // sampleRoot + 'excel/**/operations-on-workbooks/package.json',
     // sampleRoot + 'charts/zoomslider/overview/package.json',
 
-    sampleRoot + 'charts/category-chart/**/package.json',
-    sampleRoot + 'charts/data-chart/**/package.json',
-    sampleRoot + 'charts/doughnut-chart/**/package.json',
-    sampleRoot + 'charts/financial-chart/**/package.json',
-    sampleRoot + 'charts/pie-chart/**/package.json',
-    sampleRoot + 'charts/sparkline/**/package.json',
-    sampleRoot + 'charts/tree-map/**/package.json',
-    sampleRoot + 'charts/zoomslider/**/package.json',
-    sampleRoot + 'maps/**/package.json',
-    sampleRoot + 'excel/excel-library/**/package.json',
-    sampleRoot + 'excel/spreadsheet/**/package.json',
-    sampleRoot + 'gauges/bullet-graph/**/package.json',
-    sampleRoot + 'gauges/linear-gauge/**/package.json',
-    sampleRoot + 'gauges/radial-gauge/**/package.json',
+    // include samples for specific components
+    // sampleRoot + 'charts/category-chart/**/package.json',
+    // sampleRoot + 'charts/data-chart/**/package.json',
+    // sampleRoot + 'charts/doughnut-chart/**/package.json',
+    // sampleRoot + 'charts/financial-chart/**/package.json',
+    // sampleRoot + 'charts/pie-chart/**/package.json',
+    // sampleRoot + 'charts/sparkline/**/package.json',
+    // sampleRoot + 'charts/tree-map/**/package.json',
+    // sampleRoot + 'charts/zoomslider/**/package.json',
+    // sampleRoot + 'maps/**/package.json',
+    // sampleRoot + 'excel/excel-library/**/package.json',
+    // sampleRoot + 'excel/spreadsheet/**/package.json',
+    // sampleRoot + 'gauges/bullet-graph/**/package.json',
+    // sampleRoot + 'gauges/linear-gauge/**/package.json',
+    // sampleRoot + 'gauges/radial-gauge/**/package.json',
 
     // sampleRoot + 'grids/**/package.json',
     // sampleRoot + 'layouts/**/package.json',
