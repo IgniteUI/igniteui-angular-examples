@@ -1,0 +1,67 @@
+/* this CSS defines dark theme for Infragistics Financial Chart */
+.ui-zoomslider-container,
+.financialChartZoomSlider {
+    --color_001: #FFFFFF;
+    --color_002: #1E1E1E;
+    --color_003: #333333;
+    --color_004: red;
+    --color_005: #444444;
+    --color_006: #888888;
+    --color_007: #212121;
+    --color_008: #272727;
+    --color_009: #1B1B1B;
+    --color_010: #4F4F4F;
+    --color_012: #777777;
+    --color_014: #2D2D2D;
+    --color_015: #3C3C3E;
+    --color_016: #DDDDDD;
+    --color_017: #666666;
+    --color_018: #191919;
+    /* Whites with transparency */
+    --color_040: rgba(255, 255, 255, 0.90); /* 90% White */
+    --color_041: rgba(255, 255, 255, 0.75); /* 75% White */
+    --color_042: rgba(255, 255, 255, 0.60); /* 60% White */
+    --color_043: rgba(255, 255, 255, 0.45); /* 45% White */
+    --color_044: rgba(255, 255, 255, 0.30); /* 30% White */
+    --color_045: rgba(255, 255, 255, 0.05); /*  5% White */
+    --color_046: rgba(255, 255, 255, 0.00); /*  0% White */
+    --color_047: rgba(255, 255, 255, 0.15); /* 30% White */
+
+    /* Blacks with transparency */
+    --color_050: rgba(0, 0, 0, 0.90); /*90% Black */
+    --color_051: rgba(0, 0, 0, 0.75); /*75% Black */
+    --color_052: rgba(0, 0, 0, 0.60); /*60% Black */
+    --color_053: rgba(0, 0, 0, 0.45); /*45% Black */
+    --color_054: rgba(0, 0, 0, 0.30); /*30% Black */
+    --color_055: rgba(0, 0, 0, 0.15); /*15% Black */
+    --color_056: rgba(0, 0, 0, 0.10); /*10% Black */
+
+    color: #FFFFFF;
+    background: transparent;
+    --bar-brush:   var(--color_047);
+    --bar-outline: var(--color_047);
+
+    --range-thumb-brush:   var(--color_003);
+    --range-thumb-outline: var(--color_008);
+    --range-thumb-ridges-brush: var(--color_004);
+
+     --lower-shade-brush: var(--color_047);
+    --higher-shade-brush: var(--color_047);
+     --lower-shade-outline: var(--color_047);
+    --higher-shade-outline: var(--color_047);
+
+     --lower-thumb-brush: var(--color_003);
+    --higher-thumb-brush: var(--color_003);
+     --lower-thumb-outline: var(--color_003);
+    --higher-thumb-outline: var(--color_003);
+     --lower-thumb-ridges-brush: var(--color_004);
+    --higher-thumb-ridges-brush: var(--color_004);
+
+     --lower-callout-brush: var(--color_002);
+    --higher-callout-brush: var(--color_002);
+     --lower-callout-outline: var(--color_003);
+    --higher-callout-outline: var(--color_003);
+     --lower-callout-textColor: var(--color_004);
+    --higher-callout-textColor: var(--color_004);
+
+}
