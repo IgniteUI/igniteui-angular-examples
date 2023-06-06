@@ -106,6 +106,7 @@ var sampleSourcePaths = [
     // sampleRoot + 'maps/geo-map/type-scatter-bubble-series/package.json',
     // sampleRoot + 'maps/geo-map/display-heat-imagery/package.json',
     // excluding package.json in node_modules sub folders in case they are installed locally
+    // "!" + sampleRoot + '**/charts/financial-chart/theming/package.json',
     "!" + sampleRoot + '**/node_modules/**/package.json',
     '!' + sampleRoot + '**/node_modules/**',
     '!' + sampleRoot + '**/node_modules',
@@ -193,6 +194,7 @@ function getSampleInfo(samplePath, sampleCallback, sampleFile) {
         else if (filePath.indexOf('/app.component.scss') >= 0) {
             info.SourceComponentSCSS = filePath;
         }
+        // else if (filePath.indexOf('.css') < 0) {
         else { // data files, .e.g. SampleFinancialData.ts
             info.SourceDataFiles.push(filePath);
             //console.log("getSampleInfo " + filePath);
@@ -471,6 +473,7 @@ function copySamples(cb) {
                 //     controlsModules[control].DataFiles[dataPath] = dataName;
 
                 if (dataName.indexOf('Worker') < 0 && // HeatmapWorker
+                    dataName.indexOf('.css') < 0 &&
                     controlsModules[control].DataFiles.indexOf(dataName) < 0) {
                     controlsModules[control].DataFiles.push(dataName);
 
@@ -522,7 +525,7 @@ function copySamples(cb) {
             ret += "        return {\r\n";
             ret += "           ngModule: " + data.ModuleName + ",\r\n";
             ret += "           providers: [\r\n";
-            ret += "                " + data.DataFiles.join(',\r\n') + "\r\n";
+            ret += "                " + data.DataFiles.join(',\r\n                ') + "\r\n";
             ret += "           ]\r\n";
             ret += "        };\r\n";
             ret += "    }\r\n";
@@ -554,7 +557,7 @@ function copySamples(cb) {
         ret += "\r\n";
         ret += "@NgModule({\r\n";
         ret += "   imports: [\r\n";
-        ret += data.Modules.join(',\r\n');
+        ret += "" + data.Modules.join(',\r\n');
         ret += " \r\n   ] \r\n";
         ret += "}) \r\n\r\n";
         ret += "export class " + data.ModuleName  + " {} \r\n";
