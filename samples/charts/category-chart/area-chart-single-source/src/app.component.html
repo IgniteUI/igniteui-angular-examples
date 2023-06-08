@@ -4,18 +4,18 @@
   </div>
   <div class="container fill">
       <igx-category-chart
-      chartType="Area"
-      yAxisLabelLeftMargin="0"
-      yAxisTitleLeftMargin="10"
-      yAxisTitleRightMargin="5"
-      yAxisTitle="TWh"
+      name="chart"
+      #chart
       [dataSource]="countryRenewableElectricity"
       includedProperties="year, europe"
+      chartType="Area"
+      yAxisTitle="TWh"
+      yAxisTitleLeftMargin="10"
+      yAxisTitleRightMargin="5"
+      yAxisLabelLeftMargin="0"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
+      computedPlotAreaMarginMode="Series">
       </igx-category-chart>
   </div>
 </div>

@@ -41,7 +41,6 @@ export class AppComponent {
         }
         return this._countryRenewableElectricity;
     }
-    
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {

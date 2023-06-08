@@ -7,54 +7,54 @@
       name="chart"
       #chart>
           <igx-category-x-axis
-          [dataSource]="countryRenewableElectricity"
-          label="year"
           name="xAxis"
-          #xAxis>
+          #xAxis
+          [dataSource]="countryRenewableElectricity"
+          label="year">
           </igx-category-x-axis>
           <igx-numeric-y-axis
-          title="TWh"
           name="yAxis"
-          #yAxis>
+          #yAxis
+          title="TWh">
           </igx-numeric-y-axis>
           <igx-line-series
+          name="LineSeries1"
+          #lineSeries1
+          title="Electricity"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          valueMemberPath="america"
           [dataSource]="countryRenewableElectricity"
-          title="Electricity"
-          name="LineSeries1"
-          #lineSeries1>
+          valueMemberPath="america">
           </igx-line-series>
           <igx-callout-layer
-          labelMemberPath="label"
+          name="CalloutLayer1"
+          #calloutLayer1
+          [dataSource]="countryRenewableCallouts"
           xMemberPath="index"
           yMemberPath="value"
-          calloutCornerRadius="5"
+          labelMemberPath="label"
           calloutPaddingLeft="20"
-          calloutPaddingTop="10"
           calloutPaddingRight="20"
           calloutPaddingBottom="10"
-          [dataSource]="countryRenewableCallouts"
-          name="CalloutLayer1"
-          #calloutLayer1>
+          calloutPaddingTop="10"
+          calloutCornerRadius="5">
           </igx-callout-layer>
           <igx-final-value-layer
-          axisAnnotationBackgroundCornerRadius="10"
-          axisAnnotationPaddingLeft="10"
-          axisAnnotationPaddingTop="10"
-          axisAnnotationPaddingRight="10"
-          axisAnnotationPaddingBottom="10"
           name="FinalValueLayer"
-          #finalValueLayer>
+          #finalValueLayer
+          axisAnnotationBackgroundCornerRadius="10"
+          axisAnnotationPaddingBottom="10"
+          axisAnnotationPaddingTop="10"
+          axisAnnotationPaddingLeft="10"
+          axisAnnotationPaddingRight="10">
           </igx-final-value-layer>
           <igx-crosshair-layer
-          isAxisAnnotationEnabled="true"
-          xAxisAnnotationBackgroundCornerRadius="10"
-          yAxisAnnotationBackgroundCornerRadius="10"
-          yAxisAnnotationInterpolatedValuePrecision="0"
           name="CrosshairLayer"
-          #crosshairLayer>
+          #crosshairLayer
+          isAxisAnnotationEnabled="true"
+          yAxisAnnotationInterpolatedValuePrecision="0"
+          xAxisAnnotationBackgroundCornerRadius="10"
+          yAxisAnnotationBackgroundCornerRadius="10">
           </igx-crosshair-layer>
           <igx-data-tool-tip-layer
           name="Tooltips"

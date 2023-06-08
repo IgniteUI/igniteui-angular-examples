@@ -4,40 +4,40 @@
   </div>
   <div class="container fill">
       <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
       name="Chart"
-      #chart>
+      #chart
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false">
           <igx-category-y-axis
-          [dataSource]="onlineShoppingSearches"
-          gap="0.5"
-          overlap="-0.1"
-          isInverted="true"
+          name="yAxis"
+          #yAxis
+          label="shop"
           useEnhancedIntervalManagement="true"
           enhancedIntervalPreferMoreCategoryLabels="true"
-          label="shop"
-          name="yAxis"
-          #yAxis>
+          [dataSource]="onlineShoppingSearches"
+          isInverted="true"
+          gap="0.5"
+          overlap="-0.1">
           </igx-category-y-axis>
           <igx-numeric-x-axis
-          labelFormat="{0}%"
           name="xAxis"
-          #xAxis>
+          #xAxis
+          labelFormat="{0}%">
           </igx-numeric-x-axis>
           <igx-category-highlight-layer
           name="CategoryHighlightLayer"
           #categoryHighlightLayer>
           </igx-category-highlight-layer>
           <igx-bar-series
+          name="BarSeries1"
+          #barSeries1
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           valueMemberPath="percent"
-          isTransitionInEnabled="true"
           [dataSource]="onlineShoppingSearches"
-          isHighlightingEnabled="true"
           showDefaultTooltip="true"
-          name="BarSeries1"
-          #barSeries1>
+          isTransitionInEnabled="true"
+          isHighlightingEnabled="true">
           </igx-bar-series>
           <igx-data-tool-tip-layer
           name="Tooltips"

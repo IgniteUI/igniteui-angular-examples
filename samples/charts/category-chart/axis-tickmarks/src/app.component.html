@@ -10,14 +10,14 @@
       #propertyEditorPanel1>
           <igx-property-editor-property-description
           propertyPath="XAxisTickLength"
+          name="XAxisTickLength"
+          #xAxisTickLength
           label="X Axis Tick Length"
-          valueType="Slider"
           shouldOverrideDefaultEditor="true"
-          primitiveValue="10"
+          valueType="Slider"
           min="0"
           max="20"
-          name="XAxisTickLength"
-          #xAxisTickLength>
+          primitiveValue="10">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
@@ -26,28 +26,28 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-category-chart
-      chartType="Line"
-      xAxisTickLength="10"
-      yAxisTickLength="0"
-      xAxisTickStroke="gray"
-      yAxisTickStroke="rgba(0, 0, 0, 0)"
-      xAxisTickStrokeThickness="1"
-      yAxisTickStrokeThickness="0"
+      name="chart"
+      #chart
       [dataSource]="countryRenewableElectricity"
       includedProperties="year, europe, china, america"
       [legend]="legend"
+      chartType="Line"
+      computedPlotAreaMarginMode="Series"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
+      xAxisTickLength="10"
+      xAxisTickStrokeThickness="1"
+      xAxisTickStroke="gray"
+      yAxisTickLength="0"
+      yAxisTickStrokeThickness="0"
+      yAxisTickStroke="rgba(0, 0, 0, 0)">
       </igx-category-chart>
   </div>
 </div>

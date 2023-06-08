@@ -7,13 +7,13 @@
       name="chart"
       #chart>
           <igx-ring-series
-          [dataSource]="companyMarketShares"
-          valueMemberPath="value"
+          name="series"
+          #series
           labelMemberPath="summary"
+          valueMemberPath="value"
           legendLabelMemberPath="category"
           outlines="white"
-          name="series"
-          #series>
+          [dataSource]="companyMarketShares">
           </igx-ring-series>
       </igx-doughnut-chart>
   </div>

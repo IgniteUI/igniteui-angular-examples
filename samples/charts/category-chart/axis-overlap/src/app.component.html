@@ -10,15 +10,15 @@
       #propertyEditorPanel1>
           <igx-property-editor-property-description
           propertyPath="XAxisOverlap"
+          name="XAxisOverlap"
+          #xAxisOverlap
           label="X Axis - Overlap"
-          valueType="Slider"
           shouldOverrideDefaultEditor="true"
-          primitiveValue="0"
+          valueType="Slider"
           min="0"
           max="1"
           step="0.1"
-          name="XAxisOverlap"
-          #xAxisOverlap>
+          primitiveValue="0">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
@@ -27,22 +27,22 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-category-chart
-      chartType="Column"
-      xAxisInterval="1"
-      xAxisOverlap="1"
+      name="chart"
+      #chart
       [dataSource]="highestGrossingMovies"
+      chartType="Column"
+      crosshairsSnapToData="true"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      crosshairsSnapToData="true"
-      name="chart"
-      #chart>
+      xAxisInterval="1"
+      xAxisOverlap="1">
       </igx-category-chart>
   </div>
 </div>

@@ -1,7 +1,12 @@
-import { Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
 import { SalesData } from './SalesData';
-import { ComponentRenderer, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
-import {IgxCategoryChartComponent} from 'igniteui-angular-charts';
+import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
+import { IgxCategoryChartComponent } from 'igniteui-angular-charts';
+
+import { defineAllComponents } from 'igniteui-webcomponents';
+
+defineAllComponents();
 
 @Component({
     selector: "app-root",
@@ -15,7 +20,15 @@ export class AppComponent {
 
     }
 
-    @ViewChild("chart", { static: true } ) 
+    @ViewChild("propertyEditorPanel1", { static: true } )
+    private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+    @ViewChild("initialGroups", { static: true } )
+    private initialGroups: IgxPropertyEditorPropertyDescriptionComponent
+    @ViewChild("initialSummaries", { static: true } )
+    private initialSummaries: IgxPropertyEditorPropertyDescriptionComponent
+    @ViewChild("groupSorts", { static: true } )
+    private groupSorts: IgxPropertyEditorPropertyDescriptionComponent
+    @ViewChild("chart", { static: true } )
     private chart: IgxCategoryChartComponent
 
     private _salesData: SalesData = null;
@@ -26,16 +39,18 @@ export class AppComponent {
         }
         return this._salesData;
     }
-    
+
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {
         if (this._componentRenderer == null) {
             this._componentRenderer = new ComponentRenderer();
             var context = this._componentRenderer.context;
+            PropertyEditorPanelDescriptionModule.register(context);
             LegendDescriptionModule.register(context);
             CategoryChartDescriptionModule.register(context);
         }
         return this._componentRenderer;
     }
+
 }
 

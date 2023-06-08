@@ -3,8 +3,6 @@ import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './
 import { CountryRenewableCalloutsItem, CountryRenewableCallouts } from './CountryRenewableCallouts';
 import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxLineSeriesComponent, IgxCalloutLayerComponent } from 'igniteui-angular-charts';
 
-
-
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
@@ -36,7 +34,7 @@ export class AppComponent {
         }
         return this._countryRenewableElectricity;
     }
-    
+
     private _countryRenewableCallouts: CountryRenewableCallouts = null;
     public get countryRenewableCallouts(): CountryRenewableCallouts {
         if (this._countryRenewableCallouts == null)
@@ -45,8 +43,6 @@ export class AppComponent {
         }
         return this._countryRenewableCallouts;
     }
-    
-
 
 }
 

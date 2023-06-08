@@ -1,53 +1,53 @@
 <div class="container vertical sample">
   <div class="options vertical">
       <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
       [componentRenderer]="renderer"
       [target]="chart"
       descriptionType="CategoryChart"
       isHorizontal="true"
-      isWrappingEnabled="true"
-      name="PropertyEditor"
-      #propertyEditor>
+      isWrappingEnabled="true">
           <igx-property-editor-property-description
           propertyPath="CrosshairsDisplayMode"
-          label="Crosshairs Display Mode:"
-          primitiveValue="Both"
           name="CrosshairsDisplayModeEditor"
-          #crosshairsDisplayModeEditor>
+          #crosshairsDisplayModeEditor
+          label="Crosshairs Display Mode: "
+          primitiveValue="Both">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
           propertyPath="CrosshairsSnapToData"
-          label="Crosshairs Snap to Data"
-          primitiveValue="True"
-          shouldOverrideDefaultEditor="true"
           name="CrosshairsSnapToDataEditor"
-          #crosshairsSnapToDataEditor>
+          #crosshairsSnapToDataEditor
+          label="Crosshairs Snap to Data"
+          shouldOverrideDefaultEditor="true"
+          primitiveValue="True">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
   <div class="legend-title">
-      Average Temperature in Sedney
+      Average Temperature in Sydney
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
       chartType="Column"
-      yAxisMaximumValue="35"
-      yAxisLabelLocation="OutsideRight"
-      [dataSource]="temperatureAnnotatedData"
-      includedProperties="month, temperature"
+      computedPlotAreaMarginMode="Series"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      computedPlotAreaMarginMode="Series"
+      includedProperties="month, temperature"
+      [dataSource]="temperatureAnnotatedData"
       crosshairsDisplayMode="Both"
-      crosshairsSnapToData="true"
-      crosshairsLineVerticalStroke="black"
-      crosshairsLineThickness="2"
-      crosshairsLineHorizontalStroke="dodgerblue"
+      crosshairsAnnotationYAxisPrecision="0"
       crosshairsAnnotationXAxisBackground="black"
       crosshairsAnnotationYAxisBackground="dodgerblue"
-      crosshairsAnnotationYAxisPrecision="0"
-      name="chart"
-      #chart>
+      crosshairsLineHorizontalStroke="dodgerblue"
+      crosshairsLineVerticalStroke="black"
+      crosshairsLineThickness="2"
+      crosshairsSnapToData="true"
+      yAxisMaximumValue="35"
+      yAxisLabelLocation="OutsideRight">
       </igx-category-chart>
   </div>
 </div>

@@ -10,36 +10,36 @@
       #propertyEditorPanel1>
           <igx-property-editor-property-description
           propertyPath="XAxisLabelAngle"
+          name="XAxisLabelAngleEditor"
+          #xAxisLabelAngleEditor
           label="X Axis Label Angle"
-          valueType="EnumValue"
           shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
           dropDownNames="0, 45, 90, 135, 180, 225, 270"
           dropDownValues="0, 45, 90, 135, 180, 225, 270"
-          primitiveValue="0"
-          name="XAxisLabelAngleEditor"
-          #xAxisLabelAngleEditor>
+          primitiveValue="0">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
-          dropDownValues="-90, -45, 0, 45, 90"
-          primitiveValue="0"
           propertyPath="YAxisLabelAngle"
-          label="Y Axis Label Angle"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="-90, -45, 0, 45, 90"
           name="YAxisLabelAngleEditor"
-          #yAxisLabelAngleEditor>
+          #yAxisLabelAngleEditor
+          label="Y Axis Label Angle"
+          shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
+          dropDownNames="-90, -45, 0, 45, 90"
+          dropDownValues="-90, -45, 0, 45, 90"
+          primitiveValue="0">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
-          dropDownValues="red, green"
-          primitiveValue="red"
           propertyPath="XAxisLabelTextColor"
+          name="XAxisLabelTextColorEditor"
+          #xAxisLabelTextColorEditor
           label="Y Axis Label Color"
           valueType="EnumValue"
           shouldOverrideDefaultEditor="true"
           dropDownNames="red, green"
-          name="XAxisLabelTextColorEditor"
-          #xAxisLabelTextColorEditor>
+          dropDownValues="red, green"
+          primitiveValue="red">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
@@ -48,33 +48,33 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-category-chart
-      chartType="Line"
-      xAxisLabelTopMargin="5"
-      yAxisLabelRightMargin="5"
-      xAxisLabelTextColor="gray"
-      yAxisLabelTextColor="gray"
-      xAxisLabelTextStyle="10pt 'Titillium Web'"
-      yAxisLabelTextStyle="10pt 'Titillium Web'"
-      xAxisLabelAngle="0"
-      yAxisLabelAngle="0"
-      yAxisLabelLocation="OutsideRight"
-      titleTopMargin="10"
-      topMargin="20"
+      name="chart"
+      #chart
       [dataSource]="countryRenewableElectricity"
       includedProperties="year, europe, china, america"
+      chartType="Line"
+      computedPlotAreaMarginMode="Series"
       [legend]="legend"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
+      topMargin="20"
+      xAxisLabelAngle="0"
+      xAxisLabelTextColor="gray"
+      xAxisLabelTextStyle="10pt 'Titillium Web'"
+      xAxisLabelTopMargin="5"
+      yAxisLabelAngle="0"
+      yAxisLabelTextColor="gray"
+      yAxisLabelTextStyle="10pt 'Titillium Web'"
+      yAxisLabelRightMargin="5"
+      yAxisLabelLocation="OutsideRight"
+      titleTopMargin="10">
       </igx-category-chart>
   </div>
 </div>

@@ -39,7 +39,6 @@ export class AppComponent {
         }
         return this._countryRenewableElectricity;
     }
-    
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {
@@ -53,14 +52,13 @@ export class AppComponent {
         return this._componentRenderer;
     }
 
-    
     public editorChangeUpdateMarkerType({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
         var item = sender as IgxPropertyEditorPropertyDescriptionComponent;
         var chart = this.chart;
-            
+
         var markerVal = item.primitiveValue;
-        chart.markerTypes = markerVal;   
+        chart.markerTypes = markerVal;
     }
-        
+
 }
 

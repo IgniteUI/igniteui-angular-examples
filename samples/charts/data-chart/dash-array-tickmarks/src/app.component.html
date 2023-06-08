@@ -1,0 +1,35 @@
+<div class="container vertical sample">
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart
+      computedPlotAreaMarginMode="Series">
+          <igx-category-x-axis
+          name="xAxis"
+          #xAxis
+          [dataSource]="countryRenewableElectricity"
+          label="year"
+          tickLength="20"
+          tickStroke="darkslategray"
+          interval="1">
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
+          tickLength="20"
+          tickStroke="darkslategray"
+          minimumValue="0">
+          </igx-numeric-y-axis>
+          <igx-column-series
+          name="columnSeries1"
+          #columnSeries1
+          title="China"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="countryRenewableElectricity"
+          valueMemberPath="china"
+          showDefaultTooltip="true">
+          </igx-column-series>
+      </igx-data-chart>
+  </div>
+</div>

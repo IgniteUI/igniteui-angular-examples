@@ -4,9 +4,9 @@
   </div>
   <div class="legend">
       <igx-data-legend
-      [target]="chart"
       name="Legend"
-      #legend>
+      #legend
+      [target]="chart">
       </igx-data-legend>
   </div>
   <div class="container fill">
@@ -14,59 +14,59 @@
       name="chart"
       #chart>
           <igx-numeric-x-axis
-          minimumValue="4"
-          maximumValue="16"
-          interval="1"
-          title="Death Rate"
           name="xAxis"
-          #xAxis>
+          #xAxis
+          title="Death Rate"
+          interval="1"
+          minimumValue="4"
+          maximumValue="16">
           </igx-numeric-x-axis>
           <igx-numeric-y-axis
-          minimumValue="0"
-          maximumValue="60"
-          interval="10"
-          title="Birth Rate"
           name="yAxis"
-          #yAxis>
+          #yAxis
+          title="Birth Rate"
+          interval="10"
+          minimumValue="0"
+          maximumValue="60">
           </igx-numeric-y-axis>
           <igx-bubble-series
-          radiusMemberPath="population"
-          radiusMemberAsLegendLabel="Population:"
+          name="BubbleSeries1"
+          #bubbleSeries1
           [xAxis]="xAxis"
           [yAxis]="yAxis"
+          [dataSource]="countryDemographicAfrican"
           xMemberPath="deathRate"
           yMemberPath="birthRate"
-          xMemberAsLegendLabel="Death Rate:"
-          yMemberAsLegendLabel="Birth Rate:"
-          [dataSource]="countryDemographicAfrican"
+          radiusMemberPath="population"
           title="Africa"
-          name="BubbleSeries1"
-          #bubbleSeries1>
+          radiusMemberAsLegendLabel="Population: "
+          xMemberAsLegendLabel="Death Rate: "
+          yMemberAsLegendLabel="Birth Rate: ">
               <igx-size-scale
-              minimumValue="10"
-              maximumValue="100"
               name="SizeScale1"
-              #sizeScale1>
+              #sizeScale1
+              minimumValue="10"
+              maximumValue="100">
               </igx-size-scale>
           </igx-bubble-series>
           <igx-bubble-series
-          radiusMemberPath="population"
-          radiusMemberAsLegendLabel="Population:"
+          name="BubbleSeries2"
+          #bubbleSeries2
           [xAxis]="xAxis"
           [yAxis]="yAxis"
+          [dataSource]="countryDemographicEurope"
           xMemberPath="deathRate"
           yMemberPath="birthRate"
-          xMemberAsLegendLabel="Death Rate:"
-          yMemberAsLegendLabel="Birth Rate:"
-          [dataSource]="countryDemographicEurope"
+          radiusMemberPath="population"
           title="Europe"
-          name="BubbleSeries2"
-          #bubbleSeries2>
+          radiusMemberAsLegendLabel="Population: "
+          xMemberAsLegendLabel="Death Rate: "
+          yMemberAsLegendLabel="Birth Rate: ">
               <igx-size-scale
-              minimumValue="10"
-              maximumValue="100"
               name="SizeScale2"
-              #sizeScale2>
+              #sizeScale2
+              minimumValue="10"
+              maximumValue="100">
               </igx-size-scale>
           </igx-bubble-series>
           <igx-crosshair-layer

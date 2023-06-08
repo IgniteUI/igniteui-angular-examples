@@ -10,19 +10,19 @@
       #propertyEditorPanel1>
           <igx-property-editor-property-description
           propertyPath="XAxisInverted"
+          name="XAxisInvertedEditor"
+          #xAxisInvertedEditor
           label="X Axis - Inverted"
           shouldOverrideDefaultEditor="true"
-          primitiveValue="True"
-          name="XAxisInvertedEditor"
-          #xAxisInvertedEditor>
+          primitiveValue="True">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
           propertyPath="YAxisInverted"
+          name="YAxisInvertedEditor"
+          #yAxisInvertedEditor
           label="Y Axis - Inverted"
           shouldOverrideDefaultEditor="true"
-          primitiveValue="True"
-          name="YAxisInvertedEditor"
-          #yAxisInvertedEditor>
+          primitiveValue="True">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
@@ -31,20 +31,20 @@
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
       chartType="Line"
-      yAxisLabelLeftMargin="0"
-      yAxisTitleLeftMargin="10"
-      yAxisTitleRightMargin="5"
-      yAxisTitle="TWh"
-      xAxisInverted="true"
-      yAxisInverted="true"
-      [dataSource]="countryRenewableElectricity"
-      includedProperties="year, europe"
+      computedPlotAreaMarginMode="Series"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
+      [dataSource]="countryRenewableElectricity"
+      includedProperties="year, europe"
+      yAxisTitle="TWh"
+      yAxisTitleLeftMargin="10"
+      yAxisTitleRightMargin="5"
+      yAxisLabelLeftMargin="0"
+      xAxisInverted="true"
+      yAxisInverted="true">
       </igx-category-chart>
   </div>
 </div>

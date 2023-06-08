@@ -4,26 +4,26 @@
   </div>
   <div class="legend">
       <igx-data-legend
-      [target]="chart"
-      unitsText="B"
       name="Legend"
-      #legend>
+      #legend
+      unitsText="B"
+      [target]="chart">
       </igx-data-legend>
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
       chartType="Column"
+      [dataSource]="highestGrossingMovies"
       xAxisInterval="1"
-      yAxisLabelLeftMargin="0"
+      yAxisTitle="Billions of U.S. Dollars"
       yAxisTitleLeftMargin="10"
       yAxisTitleRightMargin="5"
-      yAxisTitle="Billions of U.S. Dollars"
-      [dataSource]="highestGrossingMovies"
+      yAxisLabelLeftMargin="0"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      crosshairsSnapToData="true"
-      name="chart"
-      #chart>
+      crosshairsSnapToData="true">
       </igx-category-chart>
   </div>
 </div>

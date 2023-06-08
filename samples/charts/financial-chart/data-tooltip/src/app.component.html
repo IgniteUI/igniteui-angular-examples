@@ -1,16 +1,16 @@
 <div class="container vertical sample">
   <div class="container fill">
       <igx-financial-chart
-      isHorizontalZoomEnabled="true"
+      name="chart"
+      #chart
       chartType="Candle"
-      zoomSliderType="None"
       isVerticalZoomEnabled="true"
-      dataToolTipIncludedColumns="Open, Close, High, Low, Change"
-      dataToolTipHeaderFormatTime="None"
+      isHorizontalZoomEnabled="true"
       [dataSource]="multipleStocks"
       toolTipType="Data"
-      name="chart"
-      #chart>
+      dataToolTipIncludedColumns="Open, Close, High, Low, Change"
+      dataToolTipHeaderFormatTime="None"
+      zoomSliderType="None">
       </igx-financial-chart>
   </div>
 </div>

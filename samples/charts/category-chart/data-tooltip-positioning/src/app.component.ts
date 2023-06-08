@@ -39,7 +39,6 @@ export class AppComponent {
         }
         return this._highestGrossingMovies;
     }
-    
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {

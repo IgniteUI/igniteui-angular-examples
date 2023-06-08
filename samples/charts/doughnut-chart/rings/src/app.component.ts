@@ -3,8 +3,6 @@ import { CalendarSeasonsItem, CalendarSeasons } from './CalendarSeasons';
 import { CalendarMonthsItem, CalendarMonths } from './CalendarMonths';
 import { IgxDoughnutChartComponent, IgxRingSeriesComponent } from 'igniteui-angular-charts';
 
-
-
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
@@ -32,7 +30,7 @@ export class AppComponent {
         }
         return this._calendarSeasons;
     }
-    
+
     private _calendarMonths: CalendarMonths = null;
     public get calendarMonths(): CalendarMonths {
         if (this._calendarMonths == null)
@@ -41,8 +39,6 @@ export class AppComponent {
         }
         return this._calendarMonths;
     }
-    
-
 
 }
 

@@ -10,53 +10,53 @@
       #propertyEditorPanel1>
           <igx-property-editor-property-description
           propertyPath="ShouldConsiderAutoRotationForInitialLabels"
+          name="ShouldConsiderAutoRotationForInitialLabels"
+          #shouldConsiderAutoRotationForInitialLabels
           label="Rotate Labels?"
           shouldOverrideDefaultEditor="true"
-          primitiveValue="True"
-          name="ShouldConsiderAutoRotationForInitialLabels"
-          #shouldConsiderAutoRotationForInitialLabels>
+          primitiveValue="True">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
           propertyPath="AutoMarginAndAngleUpdateMode"
-          label="AutoMarginAndAngleUpdateMode:"
-          valueType="EnumValue"
+          name="AutoMarginAndAngleUpdateMode"
+          #autoMarginAndAngleUpdateMode
+          label="AutoMarginAndAngleUpdateMode: "
           shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
           dropDownNames="None, SizeChanging, SizeChangingAndZoom"
           dropDownValues="None, SizeChanging, SizeChangingAndZoom"
-          primitiveValue="SizeChangingAndZoom"
-          name="AutoMarginAndAngleUpdateMode"
-          #autoMarginAndAngleUpdateMode>
+          primitiveValue="SizeChangingAndZoom">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
   <div class="container fill">
       <igx-data-chart
+      name="chart"
+      #chart
       isHorizontalZoomEnabled="true"
       isVerticalZoomEnabled="true"
-      shouldAutoExpandMarginForInitialLabels="true"
-      shouldConsiderAutoRotationForInitialLabels="true"
       autoMarginAndAngleUpdateMode="SizeChangingAndZoom"
-      name="chart"
-      #chart>
+      shouldConsiderAutoRotationForInitialLabels="true"
+      shouldAutoExpandMarginForInitialLabels="true">
           <igx-category-x-axis
-          [dataSource]="temperatureAverageDataLongLabels"
-          useEnhancedIntervalManagement="true"
-          enhancedIntervalPreferMoreCategoryLabels="true"
-          label="month"
           name="xAxis"
-          #xAxis>
+          #xAxis
+          [dataSource]="temperatureAverageDataLongLabels"
+          enhancedIntervalPreferMoreCategoryLabels="true"
+          useEnhancedIntervalManagement="true"
+          label="month">
           </igx-category-x-axis>
           <igx-numeric-y-axis
           name="yAxis"
           #yAxis>
           </igx-numeric-y-axis>
           <igx-column-series
+          name="colSeries1"
+          #colSeries1
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          valueMemberPath="temperature"
           [dataSource]="temperatureAverageDataLongLabels"
-          name="colSeries1"
-          #colSeries1>
+          valueMemberPath="temperature">
           </igx-column-series>
       </igx-data-chart>
   </div>

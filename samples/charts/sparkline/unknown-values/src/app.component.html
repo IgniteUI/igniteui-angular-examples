@@ -10,26 +10,26 @@
       #propertyEditorPanel1>
           <igx-property-editor-property-description
           propertyPath="UnknownValuePlotting"
+          name="UnknownValuePlottingEditor"
+          #unknownValuePlottingEditor
           label="Unknown Value Plotting"
-          valueType="EnumValue"
           shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
           dropDownNames="LinearInterpolate, DontPlot"
           dropDownValues="LinearInterpolate, DontPlot"
-          primitiveValue="LinearInterpolate"
-          name="UnknownValuePlottingEditor"
-          #unknownValuePlottingEditor>
+          primitiveValue="LinearInterpolate">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
   <div class="container fill">
       <igx-sparkline
-      [dataSource]="sparklineUnknownData"
-      valueMemberPath="value"
-      labelMemberPath="label"
-      displayType="Area"
-      unknownValuePlotting="LinearInterpolate"
       name="chart"
-      #chart>
+      #chart
+      [dataSource]="sparklineUnknownData"
+      displayType="Area"
+      labelMemberPath="label"
+      valueMemberPath="value"
+      unknownValuePlotting="LinearInterpolate">
       </igx-sparkline>
   </div>
 </div>

@@ -4,29 +4,29 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-category-chart
-      chartType="Line"
-      yAxisLabelLeftMargin="0"
-      yAxisTitleLeftMargin="10"
-      yAxisTitle="TWh"
+      name="chart"
+      #chart
       [dataSource]="countryRenewableElectricity"
-      brushes="rgba(238, 88, 121, 1) rgba(196, 196, 196, 1) rgba(154, 242, 228, 1)"
-      outlines="rgba(238, 88, 121, 1) rgba(196, 196, 196, 1) rgba(154, 242, 228, 1)"
+      chartType="Line"
       [legend]="legend"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      thickness="2"
       markerBrushes="rgba(238, 88, 121, 1) rgba(196, 196, 196, 1) rgba(154, 242, 228, 1)"
       markerOutlines="white"
-      computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
+      brushes="rgba(238, 88, 121, 1) rgba(196, 196, 196, 1) rgba(154, 242, 228, 1)"
+      outlines="rgba(238, 88, 121, 1) rgba(196, 196, 196, 1) rgba(154, 242, 228, 1)"
+      yAxisTitle="TWh"
+      yAxisTitleLeftMargin="10"
+      yAxisLabelLeftMargin="0"
+      thickness="2"
+      computedPlotAreaMarginMode="Series">
       </igx-category-chart>
   </div>
 </div>

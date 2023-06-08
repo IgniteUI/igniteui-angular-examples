@@ -10,31 +10,31 @@
       #propertyEditorPanel1>
           <igx-property-editor-property-description
           propertyPath="LayoutType"
-          label="Layout"
-          primitiveValue="Squarified"
           name="LayoutTypeEditor"
-          #layoutTypeEditor>
+          #layoutTypeEditor
+          primitiveValue="Squarified"
+          label="Layout">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
           propertyPath="LayoutOrientation"
-          primitiveValue="Vertical"
-          label="Orientation"
           name="LayoutOrientationEditor"
-          #layoutOrientationEditor>
+          #layoutOrientationEditor
+          primitiveValue="Vertical"
+          label="Orientation">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
           propertyPath="HeaderDisplayMode"
-          primitiveValue="Overlay"
-          label="Headers"
           name="HeaderDisplayModeEditor"
-          #headerDisplayModeEditor>
+          #headerDisplayModeEditor
+          primitiveValue="Overlay"
+          label="Headers">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
           propertyPath="LabelVerticalAlignment"
-          primitiveValue="Center"
-          label="Labels"
           name="LabelVerticalAlignmentEditor"
-          #labelVerticalAlignmentEditor>
+          #labelVerticalAlignmentEditor
+          primitiveValue="Center"
+          label="Labels">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
@@ -43,21 +43,21 @@
   </div>
   <div class="container fill">
       <igx-treemap
-      valueMemberPath="population"
+      name="treemap"
+      #treemap
+      [dataSource]="countyHierarchicalData"
       rootTitle="Countries"
       parentIdMemberPath="parent"
-      labelMemberPath="name"
       idMemberPath="name"
-      [dataSource]="countyHierarchicalData"
+      labelMemberPath="name"
+      valueMemberPath="population"
       fillBrushes="rgba(41, 158, 65, 1) rgba(78, 98, 207, 1) rgba(94, 53, 156, 1)"
       isFillScaleLogarithmic="true"
       headerDisplayMode="Overlay"
-      parentNodeLeftPadding="0"
-      parentNodeTopPadding="0"
-      parentNodeRightPadding="0"
       parentNodeBottomPadding="0"
-      name="treemap"
-      #treemap>
+      parentNodeLeftPadding="0"
+      parentNodeRightPadding="0"
+      parentNodeTopPadding="0">
       </igx-treemap>
   </div>
 </div>

@@ -4,20 +4,20 @@
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
       chartType="SplineArea"
-      isTransitionInEnabled="true"
-      yAxisLabelLeftMargin="0"
-      yAxisTitleLeftMargin="10"
-      yAxisTitleRightMargin="5"
-      yAxisTitle="TWh"
       [dataSource]="countryRenewableElectricity"
       includedProperties="year, europe"
+      yAxisTitle="TWh"
+      yAxisTitleLeftMargin="10"
+      yAxisTitleRightMargin="5"
+      yAxisLabelLeftMargin="0"
+      toolTipType="Category"
+      isTransitionInEnabled="true"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      computedPlotAreaMarginMode="Series"
-      toolTipType="Category"
-      name="chart"
-      #chart>
+      computedPlotAreaMarginMode="Series">
       </igx-category-chart>
   </div>
 </div>

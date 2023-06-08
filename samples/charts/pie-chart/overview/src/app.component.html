@@ -4,21 +4,22 @@
   </div>
   <div class="legend">
       <igx-item-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-item-legend>
   </div>
   <div class="container fill">
       <igx-pie-chart
-      [dataSource]="energyGlobalDemand"
-      valueMemberPath="value"
-      labelMemberPath="category"
-      labelsPosition="BestFit"
-      radiusFactor="0.7"
-      [legend]="legend"
       name="chart"
-      #chart>
+      #chart
+      legendLabelMemberPath="category"
+      labelMemberPath="summary"
+      labelsPosition="BestFit"
+      valueMemberPath="value"
+      radiusFactor="0.7"
+      [dataSource]="energyGlobalDemand"
+      [legend]="legend">
       </igx-pie-chart>
   </div>
 </div>

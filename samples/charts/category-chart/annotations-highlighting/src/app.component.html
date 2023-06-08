@@ -1,48 +1,48 @@
 <div class="container vertical sample">
   <div class="options vertical">
       <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
       [componentRenderer]="renderer"
       [target]="chart"
       descriptionType="CategoryChart"
       isHorizontal="true"
-      isWrappingEnabled="true"
-      name="PropertyEditor"
-      #propertyEditor>
+      isWrappingEnabled="true">
           <igx-property-editor-property-description
           propertyPath="HighlightingMode"
-          label="Highlighting Mode:"
-          primitiveValue="FadeOthersSpecific"
           name="HighlightingModeEditor"
-          #highlightingModeEditor>
+          #highlightingModeEditor
+          label="Highlighting Mode: "
+          primitiveValue="FadeOthersSpecific">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
           propertyPath="HighlightingBehavior"
-          label="Highlighting Behavior:"
-          primitiveValue="NearestItemsAndSeries"
           name="HighlightingBehaviorEditor"
-          #highlightingBehaviorEditor>
+          #highlightingBehaviorEditor
+          label="Highlighting Behavior: "
+          primitiveValue="NearestItemsAndSeries">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
   <div class="legend-title">
-      Average Temperature in Sedney
+      Average Temperature in Sydney
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
       chartType="Column"
-      yAxisMaximumValue="35"
-      isCategoryHighlightingEnabled="true"
-      yAxisLabelLocation="OutsideRight"
-      [dataSource]="temperatureAnnotatedData"
-      includedProperties="month, temperature"
+      computedPlotAreaMarginMode="Series"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      computedPlotAreaMarginMode="Series"
+      includedProperties="month, temperature"
+      [dataSource]="temperatureAnnotatedData"
+      isCategoryHighlightingEnabled="true"
       highlightingMode="FadeOthersSpecific"
       highlightingBehavior="NearestItemsAndSeries"
       crosshairsAnnotationYAxisPrecision="0"
-      name="chart"
-      #chart>
+      yAxisMaximumValue="35"
+      yAxisLabelLocation="OutsideRight">
       </igx-category-chart>
   </div>
 </div>

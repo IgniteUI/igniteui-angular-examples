@@ -1,9 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { HealthDataForGermanyItem, HealthDataForGermany } from './HealthDataForGermany';
 import { HealthDataForFranceItem, HealthDataForFrance } from './HealthDataForFrance';
-import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxScatterSplineSeriesComponent } from 'igniteui-angular-charts';
-
-
+import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxScatterSplineSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
     selector: "app-root",
@@ -29,6 +27,8 @@ export class AppComponent {
     private scatterSplineSeries1: IgxScatterSplineSeriesComponent
     @ViewChild("scatterSplineSeries2", { static: true } )
     private scatterSplineSeries2: IgxScatterSplineSeriesComponent
+    @ViewChild("dataToolTipLayer", { static: true } )
+    private dataToolTipLayer: IgxDataToolTipLayerComponent
 
     private _healthDataForGermany: HealthDataForGermany = null;
     public get healthDataForGermany(): HealthDataForGermany {
@@ -38,7 +38,7 @@ export class AppComponent {
         }
         return this._healthDataForGermany;
     }
-    
+
     private _healthDataForFrance: HealthDataForFrance = null;
     public get healthDataForFrance(): HealthDataForFrance {
         if (this._healthDataForFrance == null)
@@ -47,8 +47,6 @@ export class AppComponent {
         }
         return this._healthDataForFrance;
     }
-    
-
 
 }
 

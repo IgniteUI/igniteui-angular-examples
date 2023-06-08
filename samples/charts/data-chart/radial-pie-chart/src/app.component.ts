@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FootballPlayerStatsItem, FootballPlayerStats } from './FootballPlayerStats';
-import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryAngleAxisComponent, IgxNumericRadiusAxisComponent, IgxRadialPieSeriesComponent } from 'igniteui-angular-charts';
-
-
+import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryAngleAxisComponent, IgxNumericRadiusAxisComponent, IgxRadialPieSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
     selector: "app-root",
@@ -28,6 +26,8 @@ export class AppComponent {
     private radialPieSeries1: IgxRadialPieSeriesComponent
     @ViewChild("radialPieSeries2", { static: true } )
     private radialPieSeries2: IgxRadialPieSeriesComponent
+    @ViewChild("dataToolTipLayer", { static: true } )
+    private dataToolTipLayer: IgxDataToolTipLayerComponent
 
     private _footballPlayerStats: FootballPlayerStats = null;
     public get footballPlayerStats(): FootballPlayerStats {
@@ -37,8 +37,6 @@ export class AppComponent {
         }
         return this._footballPlayerStats;
     }
-    
-
 
 }
 

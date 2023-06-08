@@ -4,26 +4,26 @@
   </div>
   <div class="container fill">
       <igx-treemap
-      valueMemberPath="population"
-      rootTitle="Countries"
-      parentIdMemberPath="parent"
-      labelMemberPath="name"
-      idMemberPath="name"
+      name="treemap"
+      #treemap
       [dataSource]="countyHierarchicalData"
-      fillBrushes="rgba(78, 98, 207, 1) rgba(138, 88, 214, 1)"
+      parentIdMemberPath="parent"
+      idMemberPath="name"
+      labelMemberPath="name"
+      valueMemberPath="population"
       fillScaleMode="Value"
-      isFillScaleLogarithmic="true"
       fillScaleMinimumValue="0"
       fillScaleMaximumValue="1500000000"
+      fillBrushes="rgba(78, 98, 207, 1) rgba(138, 88, 214, 1)"
+      isFillScaleLogarithmic="true"
+      rootTitle="Countries"
       headerDisplayMode="Overlay"
-      parentNodeLeftPadding="0"
-      parentNodeTopPadding="0"
-      parentNodeRightPadding="0"
       parentNodeBottomPadding="0"
+      parentNodeLeftPadding="0"
+      parentNodeRightPadding="0"
+      parentNodeTopPadding="0"
       outline="black"
-      strokeThickness="1"
-      name="treemap"
-      #treemap>
+      strokeThickness="1">
       </igx-treemap>
   </div>
 </div>

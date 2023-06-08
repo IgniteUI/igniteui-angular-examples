@@ -1,19 +1,51 @@
 <div class="container vertical sample">
+  <div class="options vertical">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="propertyEditorPanel1"
+      #propertyEditorPanel1>
+          <igx-property-editor-property-description
+          propertyPath="InitialGroups"
+          name="InitialGroups"
+          #initialGroups
+          label="Initial Groups"
+          valueType="StringValue">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          propertyPath="InitialSummaries"
+          name="InitialSummaries"
+          #initialSummaries
+          label="Initial Summaries"
+          valueType="StringValue">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          propertyPath="GroupSorts"
+          name="GroupSorts"
+          #groupSorts
+          label="Sort Groups"
+          valueType="StringValue">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
   <div class="legend-title">
       Renewable Electricity Generated
   </div>
   <div class="container fill">
       <igx-category-chart
-      chartType="Column"
-      initialGroups="country"
-      initialSummaries="Sum(sales) as Sales"
-      groupSorts="Sales Desc"
+      name="chart"
+      #chart
       [dataSource]="salesData"
+      chartType="Column"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
       crosshairsDisplayMode="None"
-      name="chart"
-      #chart>
+      initialGroups="Country"
+      initialSummaries="Sum(Sales) as Sales"
+      groupSorts="Sales Desc">
       </igx-category-chart>
   </div>
 </div>

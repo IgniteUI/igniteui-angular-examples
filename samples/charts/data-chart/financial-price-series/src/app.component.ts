@@ -2,8 +2,6 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDet
 import { Stock2YearsItem, Stock2Years } from './Stock2Years';
 import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxFinancialPriceSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
-
-
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
@@ -35,8 +33,6 @@ export class AppComponent {
         }
         return this._stock2Years;
     }
-    
-
 
 }
 

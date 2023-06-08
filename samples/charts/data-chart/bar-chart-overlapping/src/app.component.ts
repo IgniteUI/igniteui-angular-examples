@@ -2,8 +2,6 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDet
 import { RoadblocksToSuccessItem, RoadblocksToSuccess } from './RoadblocksToSuccess';
 import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryYAxisComponent, IgxNumericXAxisComponent, IgxCategoryHighlightLayerComponent, IgxBarSeriesComponent, IgxCalloutLayerComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
-
-
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
@@ -47,8 +45,6 @@ export class AppComponent {
         }
         return this._roadblocksToSuccess;
     }
-    
-
 
 }
 

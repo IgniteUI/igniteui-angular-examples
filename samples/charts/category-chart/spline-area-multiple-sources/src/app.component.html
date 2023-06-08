@@ -4,23 +4,23 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
       chartType="SplineArea"
-      isTransitionInEnabled="true"
-      yAxisTitle="TWh"
       [dataSource]="countryRenewableElectricity"
       [legend]="legend"
+      yAxisTitle="TWh"
+      isTransitionInEnabled="true"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
+      computedPlotAreaMarginMode="Series">
       </igx-category-chart>
   </div>
 </div>

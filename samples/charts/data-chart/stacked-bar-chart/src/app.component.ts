@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { EnergyRenewableConsumptionItem, EnergyRenewableConsumption } from './EnergyRenewableConsumption';
-import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryYAxisComponent, IgxNumericXAxisComponent, IgxStackedBarSeriesComponent, IgxStackedFragmentSeriesComponent } from 'igniteui-angular-charts';
-
-
+import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryYAxisComponent, IgxNumericXAxisComponent, IgxStackedBarSeriesComponent, IgxStackedFragmentSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
     selector: "app-root",
@@ -34,6 +32,8 @@ export class AppComponent {
     private s3: IgxStackedFragmentSeriesComponent
     @ViewChild("s4", { static: true } )
     private s4: IgxStackedFragmentSeriesComponent
+    @ViewChild("dataToolTipLayer", { static: true } )
+    private dataToolTipLayer: IgxDataToolTipLayerComponent
 
     private _energyRenewableConsumption: EnergyRenewableConsumption = null;
     public get energyRenewableConsumption(): EnergyRenewableConsumption {
@@ -43,8 +43,6 @@ export class AppComponent {
         }
         return this._energyRenewableConsumption;
     }
-    
-
 
 }
 

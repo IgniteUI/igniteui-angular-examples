@@ -1,0 +1,57 @@
+<div class="container vertical sample">
+  <div class="options vertical">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="toolbar"
+      descriptionType="Toolbar"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="propertyEditorPanel1"
+      #propertyEditorPanel1>
+          <igx-property-editor-property-description
+          propertyPath="BaseTheme"
+          name="BaseTheme"
+          #baseTheme
+          label="Theme"
+          shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
+          primitiveValue="SlingshotDark">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="aboveContent">
+    <igx-toolbar
+    name="Toolbar"
+    #toolbar
+    [target]="chart"
+    orientation="Horizontal">
+    </igx-toolbar>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      isHorizontalZoomEnabled="true"
+      name="chart"
+      #chart>
+          <igx-category-x-axis
+          name="xAxis"
+          #xAxis
+          [dataSource]="countryRenewableElectricity"
+          label="year">
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
+          title="TWh">
+          </igx-numeric-y-axis>
+          <igx-line-series
+          name="LineSeries1"
+          #lineSeries1
+          title="Electricity"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="countryRenewableElectricity"
+          valueMemberPath="america">
+          </igx-line-series>
+      </igx-data-chart>
+  </div>
+</div>

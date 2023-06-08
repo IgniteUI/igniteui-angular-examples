@@ -4,55 +4,59 @@
   </div>
   <div class="container fill">
       <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
       name="chart"
-      #chart>
+      #chart
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false">
           <igx-numeric-angle-axis
-          startAngleOffset="-90"
-          minimumValue="0"
-          maximumValue="360"
-          interval="30"
           name="angleAxis"
-          #angleAxis>
+          #angleAxis
+          startAngleOffset="-90"
+          interval="30"
+          minimumValue="0"
+          maximumValue="360">
           </igx-numeric-angle-axis>
           <igx-numeric-radius-axis
+          name="radiusAxis"
+          #radiusAxis
           radiusExtentScale="0.9"
           innerRadiusExtentScale="0.1"
-          minimumValue="0"
-          maximumValue="100"
           interval="25"
-          name="radiusAxis"
-          #radiusAxis>
+          minimumValue="0"
+          maximumValue="100">
           </igx-numeric-radius-axis>
           <igx-polar-spline-area-series
-          angleMemberPath="direction"
-          radiusMemberPath="windSpeed"
+          name="PolarSplineAreaSeries1"
+          #polarSplineAreaSeries1
+          [dataSource]="boatSailingData"
           [angleAxis]="angleAxis"
           [radiusAxis]="radiusAxis"
-          markerType="Circle"
-          [dataSource]="boatSailingData"
-          thickness="1"
+          angleMemberPath="direction"
+          radiusMemberPath="windSpeed"
+          showDefaultTooltip="false"
           areaFillOpacity="0.8"
-          showDefaultTooltip="true"
+          thickness="1"
           title="Wind Speed"
-          name="PolarSplineAreaSeries1"
-          #polarSplineAreaSeries1>
+          markerType="Circle">
           </igx-polar-spline-area-series>
           <igx-polar-spline-area-series
+          name="PolarSplineAreaSeries2"
+          #polarSplineAreaSeries2
           [dataSource]="boatSailingData"
           [angleAxis]="angleAxis"
           [radiusAxis]="radiusAxis"
           angleMemberPath="direction"
           radiusMemberPath="boatSpeed"
-          showDefaultTooltip="true"
+          showDefaultTooltip="false"
           areaFillOpacity="0.8"
           thickness="1"
           title="Boat Speed"
-          markerType="Circle"
-          name="PolarSplineAreaSeries2"
-          #polarSplineAreaSeries2>
+          markerType="Circle">
           </igx-polar-spline-area-series>
+          <igx-data-tool-tip-layer
+          name="DataToolTipLayer"
+          #dataToolTipLayer>
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>

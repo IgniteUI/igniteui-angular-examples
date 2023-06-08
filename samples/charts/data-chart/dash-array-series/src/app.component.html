@@ -1,0 +1,63 @@
+<div class="container vertical sample">
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  <div class="legend">
+      <igx-legend
+      name="Legend"
+      #legend
+      orientation="Horizontal">
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart
+      computedPlotAreaMarginMode="Series"
+      [legend]="legend">
+          <igx-category-x-axis
+          name="xAxis"
+          #xAxis
+          [dataSource]="countryRenewableElectricity"
+          label="year">
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis>
+          </igx-numeric-y-axis>
+          <igx-line-series
+          name="LineSeries1"
+          #lineSeries1
+          title="Europe"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          markerType="Circle"
+          [dataSource]="countryRenewableElectricity"
+          valueMemberPath="europe"
+          showDefaultTooltip="true">
+          </igx-line-series>
+          <igx-line-series
+          name="LineSeries2"
+          #lineSeries2
+          title="China"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          markerType="Circle"
+          [dataSource]="countryRenewableElectricity"
+          valueMemberPath="china"
+          showDefaultTooltip="true">
+          </igx-line-series>
+          <igx-line-series
+          name="LineSeries3"
+          #lineSeries3
+          title="America"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          markerType="Circle"
+          [dataSource]="countryRenewableElectricity"
+          valueMemberPath="america"
+          showDefaultTooltip="true">
+          </igx-line-series>
+      </igx-data-chart>
+  </div>
+</div>

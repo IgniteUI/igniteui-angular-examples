@@ -10,36 +10,36 @@
       #propertyEditorPanel1>
           <igx-property-editor-property-description
           propertyPath="YAxisStroke"
-          label="Y Axis Stroke"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="gray, darkslategray, salmon, cornflowerblue, darkgreen"
-          dropDownValues="gray, darkslategray, salmon, cornflowerblue, darkgreen"
-          primitiveValue="gray"
           name="YAxisStroke"
-          #yAxisStroke>
+          #yAxisStroke
+          label="Y Axis Stroke"
+          shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
+          dropDownNames="gray, darkslategray, salmon, cornflowerblue, darkgreen"
+          dropDownValues="gray, darkslategray, salmon, cornflowerblue, darkgreen"
+          primitiveValue="gray">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
-          dropDownValues="gray, darkslategray, salmon, cornflowerblue, darkgreen"
-          primitiveValue="darkslategray"
           propertyPath="YAxisMajorStroke"
-          label="Y Axis Major Stroke"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="gray, darkslategray, salmon, cornflowerblue, darkgreen"
           name="YAxisMajorStroke"
-          #yAxisMajorStroke>
+          #yAxisMajorStroke
+          label="Y Axis Major Stroke"
+          shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
+          dropDownNames="gray, darkslategray, salmon, cornflowerblue, darkgreen"
+          dropDownValues="gray, darkslategray, salmon, cornflowerblue, darkgreen"
+          primitiveValue="darkslategray">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
-          dropDownValues="gray, darkslategray, salmon, cornflowerblue, darkgreen"
-          primitiveValue="gray"
           propertyPath="YAxisMinorStroke"
-          label="Y Axis Minor Stroke"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="gray, darkslategray, salmon, cornflowerblue, darkgreen"
           name="YAxisMinorStroke"
-          #yAxisMinorStroke>
+          #yAxisMinorStroke
+          label="Y Axis Minor Stroke"
+          shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
+          dropDownNames="gray, darkslategray, salmon, cornflowerblue, darkgreen"
+          dropDownValues="gray, darkslategray, salmon, cornflowerblue, darkgreen"
+          primitiveValue="gray">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
@@ -48,36 +48,36 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-category-chart
-      chartType="Line"
-      xAxisInterval="1"
-      yAxisInterval="20"
-      yAxisMinorInterval="5"
-      xAxisMajorStroke="rgba(71, 71, 71, 1)"
-      yAxisMajorStroke="darkslategray"
-      xAxisMajorStrokeThickness="0.5"
-      yAxisMajorStrokeThickness="1"
-      yAxisMinorStrokeThickness="0.5"
-      xAxisStroke="rgba(145, 145, 145, 1)"
-      yAxisStroke="gray"
-      xAxisStrokeThickness="2"
-      yAxisStrokeThickness="2"
-      yAxisMinorStroke="gray"
+      name="chart"
+      #chart
+      computedPlotAreaMarginMode="Series"
       [dataSource]="countryRenewableElectricity"
       includedProperties="year, europe, china, america"
+      chartType="Line"
       [legend]="legend"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      thickness="2"
-      computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
+      xAxisStroke="rgba(145, 145, 145, 1)"
+      xAxisStrokeThickness="2"
+      xAxisInterval="1"
+      xAxisMajorStroke="rgba(71, 71, 71, 1)"
+      xAxisMajorStrokeThickness="0.5"
+      yAxisStroke="gray"
+      yAxisStrokeThickness="2"
+      yAxisInterval="20"
+      yAxisMajorStroke="darkslategray"
+      yAxisMajorStrokeThickness="1"
+      yAxisMinorInterval="5"
+      yAxisMinorStroke="gray"
+      yAxisMinorStrokeThickness="0.5"
+      thickness="2">
       </igx-category-chart>
   </div>
 </div>

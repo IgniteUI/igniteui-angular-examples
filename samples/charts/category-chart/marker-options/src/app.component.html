@@ -1,31 +1,31 @@
 <div class="container vertical sample">
   <div class="options vertical">
       <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
       [componentRenderer]="renderer"
       [target]="chart"
       descriptionType="CategoryChart"
       isHorizontal="true"
-      isWrappingEnabled="true"
-      name="PropertyEditor"
-      #propertyEditor>
+      isWrappingEnabled="true">
           <igx-property-editor-property-description
           propertyPath="ChartType"
-          label="Chart Type"
-          primitiveValue="Line"
           name="ChartTypeEditor"
-          #chartTypeEditor>
+          #chartTypeEditor
+          label="Chart Type"
+          primitiveValue="Line">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
+          propertyPath="MarkerTypeHandler"
+          name="MarkerTypeEditor"
+          #markerTypeEditor
+          label="Marker Type"
+          shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
+          dropDownValues="Circle, Automatic, Triangle, Pyramid, Square, Diamond, Pentagon, Hexagon, Tetragram, Pentagram, Hexagram, None"
           dropDownNames="Circle, Automatic, Triangle, Pyramid, Square, Diamond, Pentagon, Hexagon, Tetragram, Pentagram, Hexagram, None"
           primitiveValue="Circle"
-          (changed)="this.editorChangeUpdateMarkerType($event)"
-          propertyPath="MarkerTypeHandler"
-          label="Marker Type"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownValues="Circle, Automatic, Triangle, Pyramid, Square, Diamond, Pentagon, Hexagon, Tetragram, Pentagram, Hexagram, None"
-          name="MarkerTypeEditor"
-          #markerTypeEditor>
+          (changed)="this.editorChangeUpdateMarkerType($event)">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
@@ -34,12 +34,12 @@
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
+      isSeriesHighlightingEnabled="true"
       chartType="Line"
       [dataSource]="countryRenewableElectricity"
-      isSeriesHighlightingEnabled="true"
-      computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
+      computedPlotAreaMarginMode="Series">
       </igx-category-chart>
   </div>
 </div>

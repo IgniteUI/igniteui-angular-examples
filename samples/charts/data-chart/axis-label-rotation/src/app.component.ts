@@ -43,7 +43,6 @@ export class AppComponent {
         }
         return this._temperatureAverageDataLongLabels;
     }
-    
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {

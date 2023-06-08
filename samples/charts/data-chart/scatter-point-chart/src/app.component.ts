@@ -3,8 +3,6 @@ import { CountryDemographicEuropeItem, CountryDemographicEurope } from './Countr
 import { CountryDemographicAfricanItem, CountryDemographicAfrican } from './CountryDemographicAfrican';
 import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxScatterSeriesComponent } from 'igniteui-angular-charts';
 
-
-
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
@@ -38,7 +36,7 @@ export class AppComponent {
         }
         return this._countryDemographicEurope;
     }
-    
+
     private _countryDemographicAfrican: CountryDemographicAfrican = null;
     public get countryDemographicAfrican(): CountryDemographicAfrican {
         if (this._countryDemographicAfrican == null)
@@ -47,8 +45,6 @@ export class AppComponent {
         }
         return this._countryDemographicAfrican;
     }
-    
-
 
 }
 

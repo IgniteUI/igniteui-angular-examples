@@ -1,29 +1,29 @@
 <div class="container vertical sample">
   <div class="legend">
       <igx-data-legend
-      includedColumns="Open, Close, High, Low, Change"
-      valueFormatMode="Currency"
-      valueTextColor="rgba(0, 173, 3, 1)"
-      valueTextStyle="normal bold 14px Verdana"
+      name="Legend"
+      #legend
       [target]="chart"
+      includedColumns="Open, Close, High, Low, Change"
+      labelTextColor="rgba(74, 74, 74, 1)"
       unitsText="K"
       unitsTextColor="rgba(0, 173, 3, 1)"
       unitsTextStyle="normal bold 14px Verdana"
-      labelTextColor="rgba(74, 74, 74, 1)"
-      name="Legend"
-      #legend>
+      valueFormatMode="Currency"
+      valueTextColor="rgba(0, 173, 3, 1)"
+      valueTextStyle="normal bold 14px Verdana">
       </igx-data-legend>
   </div>
   <div class="container fill">
       <igx-financial-chart
-      isHorizontalZoomEnabled="true"
-      zoomSliderType="None"
+      name="chart"
+      #chart
       isVerticalZoomEnabled="true"
-      yAxisTitle="Thousands of Dollars ($)"
+      isHorizontalZoomEnabled="true"
       [dataSource]="stockGoogle"
       toolTipType="None"
-      name="chart"
-      #chart>
+      yAxisTitle="Thousands of Dollars ($)"
+      zoomSliderType="None">
       </igx-financial-chart>
   </div>
 </div>

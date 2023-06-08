@@ -4,16 +4,16 @@
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
       chartType="StepLine"
-      isCategoryHighlightingEnabled="true"
-      yAxisTitle="TWh"
       [dataSource]="countryRenewableElectricity"
       includedProperties="year, europe"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      crosshairsSnapToData="true"
-      name="chart"
-      #chart>
+      yAxisTitle="TWh"
+      isCategoryHighlightingEnabled="true"
+      crosshairsSnapToData="true">
       </igx-category-chart>
   </div>
 </div>

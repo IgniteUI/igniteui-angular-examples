@@ -4,23 +4,23 @@
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
       chartType="Column"
+      [dataSource]="highestGrossingMovies"
+      toolTipType="Data"
+      dataToolTipUnitsText="B"
+      dataToolTipValueFormatMode="Decimal"
+      dataToolTipValueFormatMinFractions="2"
       xAxisInterval="1"
-      isCategoryHighlightingEnabled="true"
-      yAxisLabelLeftMargin="0"
+      yAxisTitle="Billions of U.S. Dollars"
       yAxisTitleLeftMargin="10"
       yAxisTitleRightMargin="5"
-      yAxisTitle="Billions of U.S. Dollars"
-      dataToolTipValueFormatMinFractions="2"
-      dataToolTipValueFormatMode="Decimal"
-      dataToolTipUnitsText="B"
-      [dataSource]="highestGrossingMovies"
-      highlightingMode="FadeOthersSpecific"
-      highlightingBehavior="NearestItemsAndSeries"
-      toolTipType="Data"
+      yAxisLabelLeftMargin="0"
+      isCategoryHighlightingEnabled="true"
       crosshairsDisplayMode="None"
-      name="chart"
-      #chart>
+      highlightingMode="FadeOthersSpecific"
+      highlightingBehavior="NearestItemsAndSeries">
       </igx-category-chart>
   </div>
 </div>

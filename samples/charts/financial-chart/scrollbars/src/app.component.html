@@ -1,16 +1,16 @@
 <div class="container vertical sample">
   <div class="container fill">
       <igx-financial-chart
-      isHorizontalZoomEnabled="true"
-      isToolbarVisible="false"
-      zoomSliderType="None"
-      isVerticalZoomEnabled="true"
-      [dataSource]="multipleStocks"
-      windowRect="0, 0, 0.5, 1"
-      horizontalViewScrollbarMode="Persistent"
-      verticalViewScrollbarMode="Fading"
       name="chart"
-      #chart>
+      #chart
+      isToolbarVisible="false"
+      isVerticalZoomEnabled="true"
+      isHorizontalZoomEnabled="true"
+      [dataSource]="multipleStocks"
+      verticalViewScrollbarMode="Fading"
+      horizontalViewScrollbarMode="Persistent"
+      zoomSliderType="None"
+      windowRect="0, 0, 0.5, 1">
       </igx-financial-chart>
   </div>
 </div>

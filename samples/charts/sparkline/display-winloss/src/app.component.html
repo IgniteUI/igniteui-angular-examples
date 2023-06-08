@@ -1,12 +1,12 @@
 <div class="container vertical sample">
   <div class="container fill">
       <igx-sparkline
-      [dataSource]="sparklineMixedData"
-      valueMemberPath="value"
-      labelMemberPath="label"
-      displayType="WinLoss"
       name="chart"
-      #chart>
+      #chart
+      [dataSource]="sparklineMixedData"
+      displayType="WinLoss"
+      labelMemberPath="label"
+      valueMemberPath="value">
       </igx-sparkline>
   </div>
 </div>

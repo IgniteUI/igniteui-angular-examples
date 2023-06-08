@@ -4,60 +4,62 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-data-chart
-      [legend]="legend"
       name="Chart"
-      #chart>
+      #chart
+      [legend]="legend">
           <igx-category-y-axis
+          name="yAxis1"
+          #yAxis1
+          label="category"
           [dataSource]="roadblocksToSuccess"
           gap="0.25"
-          labelExtent="0"
-          label="category"
-          name="yAxis1"
-          #yAxis1>
+          labelExtent="0">
           </igx-category-y-axis>
           <igx-category-y-axis
+          name="yAxis2"
+          #yAxis2
           label="category"
           [dataSource]="roadblocksToSuccess"
           gap="1"
-          labelHorizontalAlignment="Right"
-          name="yAxis2"
-          #yAxis2>
+          labelHorizontalAlignment="Right">
           </igx-category-y-axis>
           <igx-numeric-x-axis
+          name="xAxis"
+          #xAxis
           minimumValue="0"
           maximumValue="50"
-          stroke="gray"
-          strokeThickness="2"
-          tickLength="5"
           useEnhancedIntervalManagement="true"
           labelFormat="{0}%"
-          name="xAxis"
-          #xAxis>
+          strokeThickness="2"
+          stroke="gray"
+          tickLength="5">
           </igx-numeric-x-axis>
           <igx-category-highlight-layer
           name="CategoryHighlightLayer"
           #categoryHighlightLayer>
           </igx-category-highlight-layer>
           <igx-bar-series
+          name="BarSeries1"
+          #barSeries1
           [xAxis]="xAxis"
           [yAxis]="yAxis1"
-          valueMemberPath="topChoices"
-          isTransitionInEnabled="true"
-          [dataSource]="roadblocksToSuccess"
-          isHighlightingEnabled="true"
-          showDefaultTooltip="true"
           title="Sum of Top 3 Choices"
-          name="BarSeries1"
-          #barSeries1>
+          valueMemberPath="topChoices"
+          [dataSource]="roadblocksToSuccess"
+          showDefaultTooltip="true"
+          isTransitionInEnabled="true"
+          isHighlightingEnabled="true">
           </igx-bar-series>
           <igx-bar-series
+          name="BarSeries2"
+          #barSeries2
           [xAxis]="xAxis"
           [yAxis]="yAxis2"
           title="Top Choice"
@@ -65,26 +67,26 @@
           [dataSource]="roadblocksToSuccess"
           showDefaultTooltip="true"
           isTransitionInEnabled="true"
-          isHighlightingEnabled="true"
-          name="BarSeries2"
-          #barSeries2>
+          isHighlightingEnabled="true">
           </igx-bar-series>
           <igx-callout-layer
-          labelMemberPath="firstChoiceLabel"
-          xMemberPath="firstChoice"
-          yMemberPath="index"
-          calloutTextColor="black"
-          calloutBackground="rgba(0, 0, 0, 0)"
-          calloutOutline="rgba(0, 0, 0, 0)"
-          calloutLeaderBrush="rgba(0, 0, 0, 0)"
-          calloutPaddingTop="0"
-          calloutPositionPadding="0"
-          calloutStrokeThickness="2"
-          [dataSource]="roadblocksToSuccess"
           name="CalloutLayer1"
-          #calloutLayer1>
+          #calloutLayer1
+          [dataSource]="roadblocksToSuccess"
+          yMemberPath="index"
+          xMemberPath="firstChoice"
+          labelMemberPath="firstChoiceLabel"
+          calloutLeaderBrush="rgba(0, 0, 0, 0)"
+          calloutOutline="rgba(0, 0, 0, 0)"
+          calloutBackground="rgba(0, 0, 0, 0)"
+          calloutTextColor="black"
+          calloutStrokeThickness="2"
+          calloutPaddingTop="0"
+          calloutPositionPadding="0">
           </igx-callout-layer>
           <igx-callout-layer
+          name="CalloutLayer2"
+          #calloutLayer2
           [dataSource]="roadblocksToSuccess"
           yMemberPath="index"
           xMemberPath="topChoices"
@@ -95,9 +97,7 @@
           calloutTextColor="black"
           calloutStrokeThickness="2"
           calloutPaddingTop="0"
-          calloutPositionPadding="0"
-          name="CalloutLayer2"
-          #calloutLayer2>
+          calloutPositionPadding="0">
           </igx-callout-layer>
           <igx-data-tool-tip-layer
           name="Tooltips"

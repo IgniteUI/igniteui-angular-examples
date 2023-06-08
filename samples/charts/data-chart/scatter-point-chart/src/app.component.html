@@ -4,44 +4,46 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-data-chart
-      [legend]="legend"
       name="chart"
-      #chart>
+      #chart
+      [legend]="legend">
           <igx-numeric-x-axis
-          minimumValue="5"
-          maximumValue="15"
-          title="Death Rate (per 1,000 people)"
           name="xAxis"
-          #xAxis>
+          #xAxis
+          title="Death Rate (per 1,000 people)"
+          minimumValue="5"
+          maximumValue="15">
           </igx-numeric-x-axis>
           <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
+          title="Birth Rate (per 1,000 people)"
           minimumValue="0"
           maximumValue="50"
-          interval="10"
-          title="Birth Rate (per 1,000 people)"
-          name="yAxis"
-          #yAxis>
+          interval="10">
           </igx-numeric-y-axis>
           <igx-scatter-series
+          name="ScatterSeries1"
+          #scatterSeries1
+          title="Europe"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           xMemberPath="deathRate"
           yMemberPath="birthRate"
-          markerType="Circle"
           [dataSource]="countryDemographicEurope"
-          showDefaultTooltip="true"
-          title="Europe"
-          name="ScatterSeries1"
-          #scatterSeries1>
+          markerType="Circle"
+          showDefaultTooltip="true">
           </igx-scatter-series>
           <igx-scatter-series
+          name="ScatterSeries2"
+          #scatterSeries2
           title="Africa"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
@@ -49,9 +51,7 @@
           yMemberPath="birthRate"
           [dataSource]="countryDemographicAfrican"
           markerType="Circle"
-          showDefaultTooltip="true"
-          name="ScatterSeries2"
-          #scatterSeries2>
+          showDefaultTooltip="true">
           </igx-scatter-series>
       </igx-data-chart>
   </div>

@@ -45,7 +45,6 @@ export class AppComponent {
         }
         return this._companyIncomeData;
     }
-    
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {
@@ -59,13 +58,12 @@ export class AppComponent {
         return this._componentRenderer;
     }
 
-    
     public editorButtonReplayTransitionIn({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionButtonClickEventArgs }): void {
         var series = this.chart.actualSeries;
         for (var i = 0; i < series.length; i++) {
             series[i].replayTransitionIn();
         }
     }
-        
+
 }
 

@@ -4,52 +4,58 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-data-chart
+      name="chart"
+      #chart
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      [legend]="legend"
-      name="chart"
-      #chart>
+      [legend]="legend">
           <igx-category-x-axis
-          interval="1"
-          [dataSource]="temperatureRangeData"
-          label="month"
           name="xAxis"
-          #xAxis>
+          #xAxis
+          label="month"
+          interval="1"
+          [dataSource]="temperatureRangeData">
           </igx-category-x-axis>
           <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
           title="Temperature (in Celsius)"
           titleAngle="90"
-          titleLeftMargin="10"
-          name="yAxis"
-          #yAxis>
+          titleLeftMargin="10">
           </igx-numeric-y-axis>
           <igx-range-column-series
+          name="RangeColumnSeries1"
+          #rangeColumnSeries1
           [xAxis]="xAxis"
           [yAxis]="yAxis"
+          title="Los Angeles"
           lowMemberPath="lowLA"
           highMemberPath="highLA"
-          [dataSource]="temperatureRangeData"
-          title="Los Angeles"
-          name="series1"
-          #series1>
+          showDefaultTooltip="false"
+          [dataSource]="temperatureRangeData">
           </igx-range-column-series>
           <igx-range-column-series
+          name="RangeColumnSeries2"
+          #rangeColumnSeries2
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          title="New York City"
+          title="New York"
           lowMemberPath="lowNY"
           highMemberPath="highNY"
-          [dataSource]="temperatureRangeData"
-          name="series2"
-          #series2>
+          showDefaultTooltip="false"
+          [dataSource]="temperatureRangeData">
           </igx-range-column-series>
+          <igx-data-tool-tip-layer
+          name="DataToolTipLayer"
+          #dataToolTipLayer>
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>

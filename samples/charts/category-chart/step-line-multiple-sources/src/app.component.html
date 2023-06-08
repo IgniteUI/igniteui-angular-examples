@@ -4,26 +4,26 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
+      [legend]="legend"
       chartType="StepLine"
-      xAxisInterval="1"
-      isCategoryHighlightingEnabled="true"
-      yAxisTitle="TWh"
       [dataSource]="countryRenewableElectricity"
       includedProperties="year, europe, china, america"
-      [legend]="legend"
+      isCategoryHighlightingEnabled="true"
+      isSeriesHighlightingEnabled="true"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      isSeriesHighlightingEnabled="true"
-      crosshairsSnapToData="true"
-      name="chart"
-      #chart>
+      xAxisInterval="1"
+      yAxisTitle="TWh"
+      crosshairsSnapToData="true">
       </igx-category-chart>
   </div>
 </div>

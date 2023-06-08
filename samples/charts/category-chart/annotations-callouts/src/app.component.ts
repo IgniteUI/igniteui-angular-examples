@@ -35,7 +35,6 @@ export class AppComponent {
         }
         return this._temperatureAnnotatedData;
     }
-    
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {

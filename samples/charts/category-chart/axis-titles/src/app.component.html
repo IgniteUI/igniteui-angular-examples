@@ -4,31 +4,31 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-category-chart
-      chartType="Line"
-      yAxisTitleLeftMargin="5"
-      xAxisTitleTextColor="gray"
-      yAxisTitleTextColor="gray"
-      xAxisTitleTextStyle="10pt 'Titillium Web'"
-      yAxisTitleTextStyle="10pt 'Titillium Web'"
-      xAxisTitle="Year"
-      yAxisTitle="Trillions of Watt-hours (Twh)"
-      xAxisTitleAngle="0"
-      yAxisTitleAngle="90"
+      name="chart"
+      #chart
       [dataSource]="countryRenewableElectricity"
       includedProperties="year, europe, china, america"
+      chartType="Line"
       [legend]="legend"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
       computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
+      xAxisTitle="Year"
+      xAxisTitleTextColor="gray"
+      xAxisTitleTextStyle="10pt 'Titillium Web'"
+      xAxisTitleAngle="0"
+      yAxisTitle="Trillions of Watt-hours (Twh)"
+      yAxisTitleTextColor="gray"
+      yAxisTitleTextStyle="10pt 'Titillium Web'"
+      yAxisTitleAngle="90"
+      yAxisTitleLeftMargin="5">
       </igx-category-chart>
   </div>
 </div>

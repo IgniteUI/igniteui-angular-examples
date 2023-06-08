@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { BoatSailingDataItem, BoatSailingData } from './BoatSailingData';
-import { IgxDataChartComponent, IgxNumericAngleAxisComponent, IgxNumericRadiusAxisComponent, IgxPolarScatterSeriesComponent } from 'igniteui-angular-charts';
-
-
+import { IgxDataChartComponent, IgxNumericAngleAxisComponent, IgxNumericRadiusAxisComponent, IgxPolarScatterSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
     selector: "app-root",
@@ -26,6 +24,8 @@ export class AppComponent {
     private polarScatterSeries1: IgxPolarScatterSeriesComponent
     @ViewChild("polarScatterSeries2", { static: true } )
     private polarScatterSeries2: IgxPolarScatterSeriesComponent
+    @ViewChild("dataToolTipLayer", { static: true } )
+    private dataToolTipLayer: IgxDataToolTipLayerComponent
 
     private _boatSailingData: BoatSailingData = null;
     public get boatSailingData(): BoatSailingData {
@@ -35,8 +35,6 @@ export class AppComponent {
         }
         return this._boatSailingData;
     }
-    
-
 
 }
 

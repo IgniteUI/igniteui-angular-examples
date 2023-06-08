@@ -4,30 +4,30 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-category-chart
-      chartType="StepArea"
-      isTransitionInEnabled="true"
-      isCategoryHighlightingEnabled="true"
-      yAxisTitle="TWh"
       [dataSource]="countryRenewableElectricity"
       includedProperties="year, europe, china, america"
-      brushes="rgba(140, 231, 217, 1) rgba(238, 88, 121, 1) rgba(115, 86, 86, 1)"
-      outlines="rgba(140, 231, 217, 1) rgba(238, 88, 121, 1) rgba(115, 86, 86, 1)"
       [legend]="legend"
+      name="chart"
+      #chart
+      chartType="StepArea"
+      yAxisTitle="TWh"
+      isCategoryHighlightingEnabled="true"
+      isSeriesHighlightingEnabled="true"
+      isTransitionInEnabled="true"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      isSeriesHighlightingEnabled="true"
       markerBrushes="white"
       markerOutlines="rgba(140, 231, 217, 1) rgba(238, 88, 121, 1) rgba(115, 86, 86, 1)"
-      crosshairsSnapToData="true"
-      name="chart"
-      #chart>
+      brushes="rgba(140, 231, 217, 1) rgba(238, 88, 121, 1) rgba(115, 86, 86, 1)"
+      outlines="rgba(140, 231, 217, 1) rgba(238, 88, 121, 1) rgba(115, 86, 86, 1)"
+      crosshairsSnapToData="true">
       </igx-category-chart>
   </div>
 </div>

@@ -4,56 +4,60 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      [legend]="legend"
       name="chart"
-      #chart>
+      #chart
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false">
           <igx-category-angle-axis
-          [dataSource]="footballPlayerStats"
-          label="attribute"
           name="angleAxis"
-          #angleAxis>
+          #angleAxis
+          [dataSource]="footballPlayerStats"
+          label="attribute">
           </igx-category-angle-axis>
           <igx-numeric-radius-axis
-          innerRadiusExtentScale="0.1"
-          minimumValue="0"
-          maximumValue="10"
-          interval="2"
           name="radiusAxis"
-          #radiusAxis>
+          #radiusAxis
+          innerRadiusExtentScale="0.1"
+          interval="2"
+          minimumValue="0"
+          maximumValue="10">
           </igx-numeric-radius-axis>
           <igx-radial-column-series
-          valueMemberPath="ronaldo"
+          name="RadialColumnSeries1"
+          #radialColumnSeries1
+          [dataSource]="footballPlayerStats"
           [angleAxis]="angleAxis"
           [valueAxis]="radiusAxis"
-          [dataSource]="footballPlayerStats"
-          thickness="3"
+          valueMemberPath="ronaldo"
+          showDefaultTooltip="false"
           areaFillOpacity="0.8"
-          showDefaultTooltip="true"
-          title="Ronaldo"
-          name="RadialColumnSeries1"
-          #radialColumnSeries1>
+          thickness="3"
+          title="Ronaldo">
           </igx-radial-column-series>
           <igx-radial-column-series
+          name="RadialColumnSeries2"
+          #radialColumnSeries2
           [dataSource]="footballPlayerStats"
           [angleAxis]="angleAxis"
           [valueAxis]="radiusAxis"
           valueMemberPath="messi"
-          showDefaultTooltip="true"
+          showDefaultTooltip="false"
           areaFillOpacity="0.8"
           thickness="3"
-          title="Messi"
-          name="RadialColumnSeries2"
-          #radialColumnSeries2>
+          title="Messi">
           </igx-radial-column-series>
+          <igx-data-tool-tip-layer
+          name="DataToolTipLayer"
+          #dataToolTipLayer>
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>

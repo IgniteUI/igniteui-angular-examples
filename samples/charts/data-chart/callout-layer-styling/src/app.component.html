@@ -9,37 +9,37 @@
       name="chart"
       #chart>
           <igx-category-x-axis
-          [dataSource]="countryRenewableElectricity"
-          label="year"
           name="xAxis"
-          #xAxis>
+          #xAxis
+          [dataSource]="countryRenewableElectricity"
+          label="year">
           </igx-category-x-axis>
           <igx-numeric-y-axis
-          title="TWh"
-          labelLocation="OutsideRight"
           name="yAxis"
-          #yAxis>
+          #yAxis
+          title="TWh"
+          labelLocation="OutsideRight">
           </igx-numeric-y-axis>
           <igx-line-series
+          name="LineSeries1"
+          #lineSeries1
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          valueMemberPath="america"
           [dataSource]="countryRenewableElectricity"
-          name="LineSeries1"
-          #lineSeries1>
+          valueMemberPath="america">
           </igx-line-series>
           <igx-callout-layer
-          labelMemberPath="label"
+          name="CalloutLayer1"
+          #calloutLayer1
+          [dataSource]="countryRenewableCallouts"
           xMemberPath="index"
           yMemberPath="value"
-          calloutTextColor="black"
-          calloutBackground="orange"
-          calloutOutline="black"
+          labelMemberPath="label"
           calloutLeaderBrush="black"
-          calloutStrokeThickness="2"
-          [dataSource]="countryRenewableCallouts"
-          name="CalloutLayer1"
-          #calloutLayer1>
+          calloutOutline="black"
+          calloutBackground="orange"
+          calloutTextColor="black"
+          calloutStrokeThickness="2">
           </igx-callout-layer>
       </igx-data-chart>
   </div>

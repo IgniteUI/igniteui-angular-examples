@@ -4,43 +4,43 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      [legend]="legend"
       name="chart"
-      #chart>
+      #chart
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false">
           <igx-category-x-axis
-          [dataSource]="continentsBirthRate"
-          label="year"
           name="xAxis"
-          #xAxis>
+          #xAxis
+          [dataSource]="continentsBirthRate"
+          label="year">
           </igx-category-x-axis>
           <igx-numeric-y-axis
-          interval="20"
-          labelFormat="{0}%"
           name="yAxis"
-          #yAxis>
+          #yAxis
+          interval="20"
+          labelFormat="{0}%">
           </igx-numeric-y-axis>
           <igx-stacked-100-spline-series
+          name="Stacked100SplineSeries"
+          #stacked100SplineSeries
+          [dataSource]="continentsBirthRate"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          markerType="Circle"
-          [dataSource]="continentsBirthRate"
           showDefaultTooltip="false"
-          name="Stacked100SplineSeries"
-          #stacked100SplineSeries>
+          markerType="Circle">
               <igx-stacked-fragment-series
               name="s1"
               #s1
-              title="Asia"
-              valueMemberPath="asia">
+              valueMemberPath="asia"
+              title="Asia">
               </igx-stacked-fragment-series>
               <igx-stacked-fragment-series
               name="s2"
@@ -67,6 +67,10 @@
               title="South America">
               </igx-stacked-fragment-series>
           </igx-stacked-100-spline-series>
+          <igx-data-tool-tip-layer
+          name="DataToolTipLayer"
+          #dataToolTipLayer>
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>

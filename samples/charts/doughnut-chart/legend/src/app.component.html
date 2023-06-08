@@ -4,29 +4,29 @@
   </div>
   <div class="legend">
       <igx-item-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-item-legend>
   </div>
   <div class="container fill">
       <igx-doughnut-chart
-      allowSliceExplosion="true"
       name="chart"
-      #chart>
+      #chart
+      allowSliceExplosion="true">
           <igx-ring-series
-          [dataSource]="energyGlobalDemand"
-          valueMemberPath="value"
+          name="series"
+          #series
           labelMemberPath="summary"
-          legendLabelMemberPath="category"
           labelsPosition="OutsideEnd"
-          [legend]="legend"
           labelExtent="30"
-          startAngle="30"
+          valueMemberPath="value"
+          legendLabelMemberPath="category"
           outlines="white"
           radiusFactor="0.6"
-          name="series"
-          #series>
+          startAngle="30"
+          [dataSource]="energyGlobalDemand"
+          [legend]="legend">
           </igx-ring-series>
       </igx-doughnut-chart>
   </div>

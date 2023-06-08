@@ -4,31 +4,31 @@
   </div>
   <div class="container fill">
       <igx-doughnut-chart
-      allowSliceSelection="false"
-      allowSliceExplosion="false"
       name="chart"
-      #chart>
+      #chart
+      allowSliceExplosion="false"
+      allowSliceSelection="false">
           <igx-ring-series
-          [dataSource]="calendarSeasons"
-          valueMemberPath="value"
-          labelMemberPath="label"
-          labelsPosition="Center"
-          brushes="rgba(60, 189, 201, 1) rgba(159, 179, 40, 1) rgba(249, 98, 50, 1) rgba(138, 88, 214, 1)"
-          outlines="white"
-          radiusFactor="0.9"
           name="series1"
-          #series1>
+          #series1
+          labelMemberPath="label"
+          valueMemberPath="value"
+          labelsPosition="Center"
+          radiusFactor="0.9"
+          outlines="white"
+          brushes="rgba(60, 189, 201, 1) rgba(159, 179, 40, 1) rgba(249, 98, 50, 1) rgba(138, 88, 214, 1)"
+          [dataSource]="calendarSeasons">
           </igx-ring-series>
           <igx-ring-series
-          brushes="rgba(60, 189, 201, 1) rgba(60, 189, 201, 1) rgba(60, 189, 201, 1) rgba(159, 179, 40, 1) rgba(159, 179, 40, 1) rgba(159, 179, 40, 1) rgba(249, 98, 50, 1) rgba(249, 98, 50, 1) rgba(249, 98, 50, 1) rgba(138, 88, 214, 1) rgba(138, 88, 214, 1) rgba(138, 88, 214, 1)"
-          [dataSource]="calendarMonths"
-          valueMemberPath="value"
-          labelMemberPath="label"
-          labelsPosition="Center"
-          outlines="white"
-          radiusFactor="0.9"
           name="series2"
-          #series2>
+          #series2
+          labelMemberPath="label"
+          valueMemberPath="value"
+          labelsPosition="Center"
+          radiusFactor="0.9"
+          outlines="white"
+          brushes="rgba(60, 189, 201, 1) rgba(60, 189, 201, 1) rgba(60, 189, 201, 1) rgba(159, 179, 40, 1) rgba(159, 179, 40, 1) rgba(159, 179, 40, 1) rgba(249, 98, 50, 1) rgba(249, 98, 50, 1) rgba(249, 98, 50, 1) rgba(138, 88, 214, 1) rgba(138, 88, 214, 1) rgba(138, 88, 214, 1)"
+          [dataSource]="calendarMonths">
           </igx-ring-series>
       </igx-doughnut-chart>
   </div>

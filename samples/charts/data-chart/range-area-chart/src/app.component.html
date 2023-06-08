@@ -1,47 +1,61 @@
 <div class="container vertical sample">
   <div class="legend-title">
-      Monthly Temperature Range in Los Angeles
+      Monthly Temperature Range in LA and NYC
+  </div>
+  <div class="legend">
+      <igx-legend
+      name="Legend"
+      #legend
+      orientation="Horizontal">
+      </igx-legend>
   </div>
   <div class="container fill">
       <igx-data-chart
+      name="chart"
+      #chart
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      name="chart"
-      #chart>
+      [legend]="legend">
           <igx-category-x-axis
-          interval="1"
-          [dataSource]="temperatureRangeData"
-          label="month"
           name="xAxis"
-          #xAxis>
+          #xAxis
+          label="month"
+          interval="1"
+          [dataSource]="temperatureRangeData">
           </igx-category-x-axis>
           <igx-numeric-y-axis
-          title="Temperature (in Celsius)"
-          titleAngle="-90"
-          titleLeftMargin="10"
           name="yAxis"
-          #yAxis>
+          #yAxis
+          title="Temperature (in Celsius)"
+          titleAngle="90"
+          titleLeftMargin="10">
           </igx-numeric-y-axis>
           <igx-range-area-series
+          name="RangeAreaSeries1"
+          #rangeAreaSeries1
           [xAxis]="xAxis"
           [yAxis]="yAxis"
+          title="Los Angeles"
           lowMemberPath="lowLA"
           highMemberPath="highLA"
-          [dataSource]="temperatureRangeData"
-          title="Los Angeles"
-          name="RangeAreaSeries1"
-          #rangeAreaSeries1>
+          showDefaultTooltip="false"
+          [dataSource]="temperatureRangeData">
           </igx-range-area-series>
           <igx-range-area-series
+          name="RangeAreaSeries2"
+          #rangeAreaSeries2
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           title="New York"
           lowMemberPath="lowNY"
           highMemberPath="highNY"
-          [dataSource]="temperatureRangeData"
-          name="RangeAreaSeries2"
-          #rangeAreaSeries2>
+          showDefaultTooltip="false"
+          [dataSource]="temperatureRangeData">
           </igx-range-area-series>
+          <igx-data-tool-tip-layer
+          name="DataToolTipLayer"
+          #dataToolTipLayer>
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>

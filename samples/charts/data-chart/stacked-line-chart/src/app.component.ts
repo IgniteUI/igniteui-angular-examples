@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ContinentsBirthRateItem, ContinentsBirthRate } from './ContinentsBirthRate';
-import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxStackedLineSeriesComponent, IgxStackedFragmentSeriesComponent } from 'igniteui-angular-charts';
-
-
+import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxStackedLineSeriesComponent, IgxStackedFragmentSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
     selector: "app-root",
@@ -36,6 +34,8 @@ export class AppComponent {
     private s4: IgxStackedFragmentSeriesComponent
     @ViewChild("s5", { static: true } )
     private s5: IgxStackedFragmentSeriesComponent
+    @ViewChild("dataToolTipLayer", { static: true } )
+    private dataToolTipLayer: IgxDataToolTipLayerComponent
 
     private _continentsBirthRate: ContinentsBirthRate = null;
     public get continentsBirthRate(): ContinentsBirthRate {
@@ -45,8 +45,6 @@ export class AppComponent {
         }
         return this._continentsBirthRate;
     }
-    
-
 
 }
 

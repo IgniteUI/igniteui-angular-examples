@@ -4,57 +4,61 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-data-chart
-      [legend]="legend"
       name="chart"
-      #chart>
+      #chart
+      [legend]="legend">
           <igx-numeric-x-axis
+          name="xAxis"
+          #xAxis
+          title="Life Expectancy (in years)"
           minimumValue="72"
           maximumValue="84"
-          interval="2"
-          title="Life Expectancy (in years)"
-          name="xAxis"
-          #xAxis>
+          interval="2">
           </igx-numeric-x-axis>
           <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
+          title="Health Expenditure per Capita"
+          abbreviateLargeNumbers="true"
           minimumValue="1000"
           maximumValue="6000"
-          interval="1000"
-          abbreviateLargeNumbers="true"
-          title="Health Expenditure per Capita"
-          name="yAxis"
-          #yAxis>
+          interval="1000">
           </igx-numeric-y-axis>
           <igx-scatter-line-series
+          name="ScatterLineSeries1"
+          #scatterLineSeries1
+          title="Germany"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           xMemberPath="lifeExpectancy"
           yMemberPath="healthExpense"
-          markerType="Circle"
           [dataSource]="healthDataForGermany"
-          showDefaultTooltip="true"
-          title="Germany"
-          name="ScatterLineSeries1"
-          #scatterLineSeries1>
+          markerType="Circle"
+          showDefaultTooltip="true">
           </igx-scatter-line-series>
           <igx-scatter-line-series
+          name="ScatterLineSeries2"
+          #scatterLineSeries2
+          title="France"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           xMemberPath="lifeExpectancy"
           yMemberPath="healthExpense"
-          markerType="Circle"
           [dataSource]="healthDataForFrance"
-          showDefaultTooltip="true"
-          title="France"
-          name="ScatterLineSeries2"
-          #scatterLineSeries2>
+          markerType="Circle"
+          showDefaultTooltip="true">
           </igx-scatter-line-series>
+          <igx-data-tool-tip-layer
+          name="DataToolTipLayer"
+          #dataToolTipLayer>
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>

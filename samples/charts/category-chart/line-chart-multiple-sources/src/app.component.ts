@@ -2,8 +2,6 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDet
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
 import { IgxLegendComponent, IgxCategoryChartComponent } from 'igniteui-angular-charts';
 
-
-
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
@@ -29,8 +27,6 @@ export class AppComponent {
         }
         return this._countryRenewableElectricity;
     }
-    
-
 
 }
 

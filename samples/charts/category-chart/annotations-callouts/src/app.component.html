@@ -1,44 +1,44 @@
 <div class="container vertical sample">
   <div class="options vertical">
       <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
       [componentRenderer]="renderer"
       [target]="chart"
       descriptionType="CategoryChart"
       isHorizontal="true"
-      isWrappingEnabled="true"
-      name="PropertyEditor"
-      #propertyEditor>
+      isWrappingEnabled="true">
           <igx-property-editor-property-description
           propertyPath="CalloutsVisible"
+          name="CalloutsVisibleEditor"
+          #calloutsVisibleEditor
           label="Callouts Visible"
           shouldOverrideDefaultEditor="true"
-          primitiveValue="True"
-          name="CalloutsVisibleEditor"
-          #calloutsVisibleEditor>
+          primitiveValue="True">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
   <div class="legend-title">
-      Average Temperature in Sedney
+      Average Temperature in Sydney
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
       chartType="Column"
-      yAxisMaximumValue="35"
-      yAxisLabelLocation="OutsideRight"
-      [dataSource]="temperatureAnnotatedData"
-      includedProperties="month, temperature"
+      computedPlotAreaMarginMode="Series"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      computedPlotAreaMarginMode="Series"
-      crosshairsAnnotationYAxisPrecision="0"
-      calloutsVisible="true"
+      includedProperties="month, temperature"
+      [dataSource]="temperatureAnnotatedData"
       [calloutsDataSource]="temperatureAnnotatedData"
+      calloutsVisible="true"
       calloutsXMemberPath="index"
       calloutsYMemberPath="temperature"
       calloutsLabelMemberPath="tempInfo"
-      name="chart"
-      #chart>
+      crosshairsAnnotationYAxisPrecision="0"
+      yAxisMaximumValue="35"
+      yAxisLabelLocation="OutsideRight">
       </igx-category-chart>
   </div>
 </div>

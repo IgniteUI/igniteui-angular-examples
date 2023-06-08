@@ -45,7 +45,6 @@ export class AppComponent {
         }
         return this._sparklineProfitData;
     }
-    
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {

@@ -4,45 +4,45 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
-      [legend]="legend"
       name="chart"
-      #chart>
+      #chart
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false">
           <igx-category-y-axis
-          [dataSource]="energyRenewableConsumption"
-          gap="0.75"
-          isInverted="true"
-          label="location"
           name="yAxis"
-          #yAxis>
+          #yAxis
+          [dataSource]="energyRenewableConsumption"
+          label="location"
+          isInverted="true"
+          gap="0.75">
           </igx-category-y-axis>
           <igx-numeric-x-axis
-          minimumValue="0"
-          title="TWh"
           name="xAxis"
-          #xAxis>
+          #xAxis
+          minimumValue="0"
+          title="TWh">
           </igx-numeric-x-axis>
           <igx-stacked-bar-series
+          name="StackedBarSeries"
+          #stackedBarSeries
+          [dataSource]="energyRenewableConsumption"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          [dataSource]="energyRenewableConsumption"
-          areaFillOpacity="1"
           showDefaultTooltip="true"
-          name="StackedBarSeries"
-          #stackedBarSeries>
+          areaFillOpacity="1">
               <igx-stacked-fragment-series
               name="s1"
               #s1
-              title="Hydro"
-              valueMemberPath="hydro">
+              valueMemberPath="hydro"
+              title="Hydro">
               </igx-stacked-fragment-series>
               <igx-stacked-fragment-series
               name="s2"
@@ -63,6 +63,10 @@
               title="Other">
               </igx-stacked-fragment-series>
           </igx-stacked-bar-series>
+          <igx-data-tool-tip-layer
+          name="DataToolTipLayer"
+          #dataToolTipLayer>
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>

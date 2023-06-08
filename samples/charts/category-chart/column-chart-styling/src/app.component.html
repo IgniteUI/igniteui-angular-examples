@@ -4,29 +4,29 @@
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-category-chart
-      chartType="Column"
-      xAxisGap="0.5"
-      isCategoryHighlightingEnabled="true"
-      xAxisMajorStroke="lightgray"
+      name="chart"
+      #chart
       [dataSource]="energyRenewableConsumption"
-      brushes="rgba(157, 231, 114, 1) rgba(139, 91, 177, 1) rgba(109, 177, 255, 1) rgba(238, 88, 121, 1) rgba(248, 161, 95, 1)"
-      outlines="white"
+      chartType="Column"
       [legend]="legend"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
       isSeriesHighlightingEnabled="true"
-      highlightingMode="FadeOthersSpecific"
-      highlightingBehavior="NearestItemsAndSeries"
+      brushes="rgba(157, 231, 114, 1) rgba(139, 91, 177, 1) rgba(109, 177, 255, 1) rgba(238, 88, 121, 1) rgba(248, 161, 95, 1)"
+      outlines="white"
+      xAxisMajorStroke="lightgray"
+      xAxisGap="0.5"
       crosshairsDisplayMode="None"
-      name="chart"
-      #chart>
+      isCategoryHighlightingEnabled="true"
+      highlightingMode="FadeOthersSpecific"
+      highlightingBehavior="NearestItemsAndSeries">
       </igx-category-chart>
   </div>
 </div>

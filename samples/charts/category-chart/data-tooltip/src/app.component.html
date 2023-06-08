@@ -4,22 +4,22 @@
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
       chartType="Column"
+      [dataSource]="highestGrossingMovies"
+      toolTipType="Data"
       xAxisInterval="1"
-      isCategoryHighlightingEnabled="true"
-      yAxisLabelLeftMargin="0"
+      yAxisTitle="Billions of U.S. Dollars"
       yAxisTitleLeftMargin="10"
       yAxisTitleRightMargin="5"
-      yAxisTitle="Billions of U.S. Dollars"
-      [dataSource]="highestGrossingMovies"
+      yAxisLabelLeftMargin="0"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      highlightingMode="FadeOthersSpecific"
-      highlightingBehavior="NearestItemsAndSeries"
-      toolTipType="Data"
       crosshairsDisplayMode="None"
-      name="chart"
-      #chart>
+      isCategoryHighlightingEnabled="true"
+      highlightingMode="FadeOthersSpecific"
+      highlightingBehavior="NearestItemsAndSeries">
       </igx-category-chart>
   </div>
 </div>

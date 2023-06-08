@@ -1,40 +1,40 @@
 <div class="container vertical sample">
   <div class="container fill">
       <igx-data-chart
-      isHorizontalZoomEnabled="true"
-      isVerticalZoomEnabled="true"
+      name="chart"
+      #chart
       shouldAutoExpandMarginForInitialLabels="true"
       computedPlotAreaMarginMode="Series"
-      name="chart"
-      #chart>
+      isVerticalZoomEnabled="true"
+      isHorizontalZoomEnabled="true">
           <igx-category-x-axis
-          interval="1"
+          name="xAxis"
+          #xAxis
           [dataSource]="stock2Years"
           labelLocation="OutsideBottom"
-          labelExtent="30"
           label="month"
-          name="xAxis"
-          #xAxis>
+          interval="1"
+          labelExtent="30">
           </igx-category-x-axis>
           <igx-numeric-y-axis
-          labelLocation="OutsideRight"
           name="yAxis"
-          #yAxis>
+          #yAxis
+          labelLocation="OutsideRight">
           </igx-numeric-y-axis>
           <igx-financial-price-series
+          name="Series1"
+          #series1
+          title="Stock Price"
           displayType="Candlestick"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
+          [dataSource]="stock2Years"
           openMemberPath="open"
           highMemberPath="high"
           lowMemberPath="low"
           closeMemberPath="close"
           volumeMemberPath="volume"
-          [dataSource]="stock2Years"
-          showDefaultTooltip="true"
-          title="Stock Price"
-          name="Series1"
-          #series1>
+          showDefaultTooltip="true">
           </igx-financial-price-series>
           <igx-data-tool-tip-layer
           name="Tooltip"

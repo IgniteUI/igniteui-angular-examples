@@ -1,19 +1,19 @@
 <div class="container vertical sample">
   <div class="options vertical">
       <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
       [componentRenderer]="renderer"
       [target]="chart"
       descriptionType="CategoryChart"
       isHorizontal="true"
-      isWrappingEnabled="true"
-      name="PropertyEditor"
-      #propertyEditor>
+      isWrappingEnabled="true">
           <igx-property-editor-property-description
           propertyPath="ToolTipType"
-          label="ToolTip Type:"
-          primitiveValue="Data"
           name="ToolTipTypeEditor"
-          #toolTipTypeEditor>
+          #toolTipTypeEditor
+          label="ToolTip Type: "
+          primitiveValue="Data">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
@@ -28,19 +28,19 @@
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
       chartType="Column"
+      [legend]="legend"
+      [dataSource]="highestGrossingMovies"
       xAxisInterval="1"
-      yAxisLabelLeftMargin="0"
+      yAxisTitle="Billions of U.S. Dollars"
       yAxisTitleLeftMargin="10"
       yAxisTitleRightMargin="5"
-      yAxisTitle="Billions of U.S. Dollars"
-      [dataSource]="highestGrossingMovies"
-      [legend]="legend"
+      yAxisLabelLeftMargin="0"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
-      crosshairsSnapToData="true"
-      name="chart"
-      #chart>
+      crosshairsSnapToData="true">
       </igx-category-chart>
   </div>
 </div>

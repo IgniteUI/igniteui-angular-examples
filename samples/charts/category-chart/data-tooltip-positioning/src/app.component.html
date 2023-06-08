@@ -1,33 +1,33 @@
 <div class="container vertical sample">
   <div class="options vertical">
       <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
       [componentRenderer]="renderer"
       [target]="chart"
       descriptionType="CategoryChart"
       isHorizontal="true"
-      isWrappingEnabled="true"
-      name="PropertyEditor"
-      #propertyEditor>
+      isWrappingEnabled="true">
           <igx-property-editor-property-description
           propertyPath="DataToolTipGroupedPositionModeX"
-          label="Grouped X Position:"
           primitiveValue="PinRight"
           name="GroupedPositionXEditor"
-          #groupedPositionXEditor>
+          #groupedPositionXEditor
+          label="Grouped X Position: ">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
           propertyPath="DataToolTipGroupedPositionModeY"
           primitiveValue="PinTop"
-          label="Grouped Y Position:"
           name="GroupedPositionYEditor"
-          #groupedPositionYEditor>
+          #groupedPositionYEditor
+          label="Grouped Y Position: ">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
           propertyPath="DataToolTipGroupingMode"
           primitiveValue="Grouped"
-          label="Grouping Mode:"
           name="GroupingModeEditor"
-          #groupingModeEditor>
+          #groupingModeEditor
+          label="Grouping Mode: ">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
@@ -36,20 +36,20 @@
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
       chartType="Column"
-      xAxisInterval="1"
-      yAxisLabelLeftMargin="0"
-      yAxisTitleLeftMargin="10"
-      yAxisTitleRightMargin="5"
-      yAxisTitle="Billions of U.S. Dollars"
-      dataToolTipGroupingMode="Grouped"
-      dataToolTipGroupedPositionModeX="PinRight"
-      dataToolTipGroupedPositionModeY="PinTop"
       [dataSource]="highestGrossingMovies"
       toolTipType="Data"
-      crosshairsDisplayMode="None"
-      name="chart"
-      #chart>
+      dataToolTipGroupedPositionModeX="PinRight"
+      dataToolTipGroupedPositionModeY="PinTop"
+      dataToolTipGroupingMode="Grouped"
+      xAxisInterval="1"
+      yAxisTitle="Billions of U.S. Dollars"
+      yAxisTitleLeftMargin="10"
+      yAxisTitleRightMargin="5"
+      yAxisLabelLeftMargin="0"
+      crosshairsDisplayMode="None">
       </igx-category-chart>
   </div>
 </div>

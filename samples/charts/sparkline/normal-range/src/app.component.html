@@ -10,50 +10,50 @@
       #propertyEditorPanel1>
           <igx-property-editor-property-description
           propertyPath="NormalRangeVisibility"
+          name="NormalRangeVisibilityEditor"
+          #normalRangeVisibilityEditor
           label="Normal Range Visibility"
-          valueType="EnumValue"
           shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
           dropDownNames="Visible, Collapsed"
           dropDownValues="Visible, Collapsed"
-          primitiveValue="Visible"
-          name="NormalRangeVisibilityEditor"
-          #normalRangeVisibilityEditor>
+          primitiveValue="Visible">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
-          dropDownValues="0, 10, 15, 20, 25, 30"
-          primitiveValue="25"
           propertyPath="NormalRangeMinimum"
-          label="Normal Range Minimum"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="0, 10, 15, 20, 25, 30"
           name="NormalRangeMinimumEditor"
-          #normalRangeMinimumEditor>
+          #normalRangeMinimumEditor
+          label="Normal Range Minimum"
+          shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
+          dropDownNames="0, 10, 15, 20, 25, 30"
+          dropDownValues="0, 10, 15, 20, 25, 30"
+          primitiveValue="25">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
-          dropDownValues="0, 10, 15, 20, 25, 30"
-          primitiveValue="25"
           propertyPath="NormalRangeMaximum"
-          label="Normal Range Maximum"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="0, 10, 15, 20, 25, 30"
           name="NormalRangeMaximumEditor"
-          #normalRangeMaximumEditor>
+          #normalRangeMaximumEditor
+          label="Normal Range Maximum"
+          shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
+          dropDownNames="0, 10, 15, 20, 25, 30"
+          dropDownValues="0, 10, 15, 20, 25, 30"
+          primitiveValue="25">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
   <div class="container fill">
       <igx-sparkline
-      normalRangeVisibility="Visible"
-      [dataSource]="sparklineMixedData"
-      valueMemberPath="value"
-      labelMemberPath="label"
-      normalRangeMinimum="15"
-      normalRangeMaximum="25"
-      displayType="Area"
       name="chart"
-      #chart>
+      #chart
+      [dataSource]="sparklineMixedData"
+      displayType="Area"
+      labelMemberPath="label"
+      valueMemberPath="value"
+      normalRangeVisibility="Visible"
+      normalRangeMinimum="15"
+      normalRangeMaximum="25">
       </igx-sparkline>
   </div>
 </div>

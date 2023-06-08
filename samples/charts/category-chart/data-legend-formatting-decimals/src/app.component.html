@@ -4,30 +4,30 @@
   </div>
   <div class="legend">
       <igx-data-legend
-      valueFormatMinFractions="1"
-      valueFormatMode="Decimal"
-      [target]="chart"
-      unitsText="B"
       name="Legend"
-      #legend>
+      #legend
+      [target]="chart"
+      valueFormatMode="Decimal"
+      valueFormatMinFractions="1"
+      unitsText="B">
       </igx-data-legend>
   </div>
   <div class="container fill">
       <igx-category-chart
+      name="chart"
+      #chart
       chartType="Column"
+      [dataSource]="highestGrossingMovies"
       xAxisInterval="1"
-      isCategoryHighlightingEnabled="true"
-      yAxisLabelLeftMargin="0"
+      yAxisTitle="Billions of U.S. Dollars"
       yAxisTitleLeftMargin="10"
       yAxisTitleRightMargin="5"
-      yAxisTitle="Billions of U.S. Dollars"
-      [dataSource]="highestGrossingMovies"
+      yAxisLabelLeftMargin="0"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
       toolTipType="None"
       crosshairsDisplayMode="None"
-      name="chart"
-      #chart>
+      isCategoryHighlightingEnabled="true">
       </igx-category-chart>
   </div>
 </div>

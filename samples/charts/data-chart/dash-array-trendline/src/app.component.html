@@ -1,0 +1,43 @@
+<div class="container vertical sample">
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart
+      shouldAutoExpandMarginForInitialLabels="true"
+      computedPlotAreaMarginMode="Series"
+      isVerticalZoomEnabled="true"
+      isHorizontalZoomEnabled="true">
+          <igx-category-x-axis
+          name="xAxis"
+          #xAxis
+          [dataSource]="stock2Years"
+          labelLocation="OutsideBottom"
+          label="month"
+          interval="1"
+          labelExtent="30">
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
+          labelLocation="OutsideRight">
+          </igx-numeric-y-axis>
+          <igx-financial-price-series
+          name="Series1"
+          #series1
+          title="Stock Price"
+          displayType="Candlestick"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="stock2Years"
+          openMemberPath="open"
+          highMemberPath="high"
+          lowMemberPath="low"
+          closeMemberPath="close"
+          volumeMemberPath="volume"
+          showDefaultTooltip="true"
+          trendLineType="QuarticFit"
+          trendLineBrush="dodgerblue">
+          </igx-financial-price-series>
+      </igx-data-chart>
+  </div>
+</div>

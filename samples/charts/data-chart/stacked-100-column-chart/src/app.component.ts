@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { OnlineTrafficByDeviceItem, OnlineTrafficByDevice } from './OnlineTrafficByDevice';
-import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxStacked100ColumnSeriesComponent, IgxStackedFragmentSeriesComponent } from 'igniteui-angular-charts';
-
-
+import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxStacked100ColumnSeriesComponent, IgxStackedFragmentSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
     selector: "app-root",
@@ -32,6 +30,8 @@ export class AppComponent {
     private s2: IgxStackedFragmentSeriesComponent
     @ViewChild("s3", { static: true } )
     private s3: IgxStackedFragmentSeriesComponent
+    @ViewChild("dataToolTipLayer", { static: true } )
+    private dataToolTipLayer: IgxDataToolTipLayerComponent
 
     private _onlineTrafficByDevice: OnlineTrafficByDevice = null;
     public get onlineTrafficByDevice(): OnlineTrafficByDevice {
@@ -41,8 +41,6 @@ export class AppComponent {
         }
         return this._onlineTrafficByDevice;
     }
-    
-
 
 }
 

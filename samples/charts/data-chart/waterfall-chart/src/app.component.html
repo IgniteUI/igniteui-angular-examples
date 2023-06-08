@@ -4,50 +4,50 @@
   </div>
   <div class="container fill">
       <igx-data-chart
-      isHorizontalZoomEnabled="false"
-      isVerticalZoomEnabled="false"
       name="chart"
-      #chart>
+      #chart
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false">
           <igx-category-x-axis
+          name="xAxis"
+          #xAxis
+          label="category"
           interval="1"
           [dataSource]="companyIncomeData"
-          overlap="1"
-          label="category"
-          name="xAxis"
-          #xAxis>
+          overlap="1">
           </igx-category-x-axis>
           <igx-numeric-y-axis
-          minimumValue="0"
-          maximumValue="60"
+          name="yAxis"
+          #yAxis
           title="Millions of Dollars"
           titleAngle="90"
           titleLeftMargin="10"
-          name="yAxis"
-          #yAxis>
+          minimumValue="0"
+          maximumValue="60">
           </igx-numeric-y-axis>
           <igx-waterfall-series
+          name="WaterfallSeries1"
+          #waterfallSeries1
+          title="Value"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          valueMemberPath="costs"
-          isTransitionInEnabled="true"
           [dataSource]="companyIncomeData"
+          valueMemberPath="costs"
           showDefaultTooltip="true"
-          title="Value"
-          name="WaterfallSeries1"
-          #waterfallSeries1>
+          isTransitionInEnabled="true">
           </igx-waterfall-series>
           <igx-waterfall-series
+          name="WaterfallSeries2"
+          #waterfallSeries2
           title="Value"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           [dataSource]="companyIncomeData"
-          valueMemberPath="netIncome"
-          showDefaultTooltip="true"
-          isTransitionInEnabled="true"
           brush="rgba(116, 70, 185, 1)"
           outline="rgba(116, 70, 185, 1)"
-          name="WaterfallSeries2"
-          #waterfallSeries2>
+          valueMemberPath="netIncome"
+          showDefaultTooltip="true"
+          isTransitionInEnabled="true">
           </igx-waterfall-series>
       </igx-data-chart>
   </div>
