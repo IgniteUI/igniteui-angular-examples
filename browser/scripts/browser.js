@@ -1009,19 +1009,20 @@ function updateIG(cb) {
     // { name:               "igniteui-angular-charts", version: "14.1.0" },  // npm
     let packageUpgrades = [
         // these IG packages are often updated:
-        { name: "igniteui-angular-core"                     , version: "16.1.0-beta.1" },
-        { name: "igniteui-angular-charts"                   , version: "16.1.0-beta.1" },
-        { name: "igniteui-angular-excel"                    , version: "16.1.0-beta.1" },
-        { name: "igniteui-angular-gauges"                   , version: "16.1.0-beta.1" },
-        { name: "igniteui-angular-layouts"                  , version: "16.1.0-beta.1" },
-        { name: "igniteui-angular-maps"                     , version: "16.1.0-beta.1" },
-        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "16.1.0-beta.1" },
-        { name: "igniteui-angular-spreadsheet"              , version: "16.1.0-beta.1" },
-        { name: "igniteui-angular-datasources"              , version: "16.1.0-beta.1" },
+        { name: "igniteui-angular-core"                     , version: "16.1.0-beta.2" },
+        { name: "igniteui-angular-charts"                   , version: "16.1.0-beta.2" },
+        { name: "igniteui-angular-excel"                    , version: "16.1.0-beta.2" },
+        { name: "igniteui-angular-gauges"                   , version: "16.1.0-beta.2" },
+        { name: "igniteui-angular-inputs"                   , version: "16.1.0-beta.2" },
+        { name: "igniteui-angular-layouts"                  , version: "16.1.0-beta.2" },
+        { name: "igniteui-angular-maps"                     , version: "16.1.0-beta.2" },
+        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "16.1.0-beta.2" },
+        { name: "igniteui-angular-spreadsheet"              , version: "16.1.0-beta.2" },
+        { name: "igniteui-angular-datasources"              , version: "16.1.0-beta.2" },
         // these IG packages are sometimes updated:
-        { name: "igniteui-webcomponents",            version: "4.2.3" },
-        { name: "igniteui-theming",                  version: "1.4.5" },
-        { name: "igniteui-angular",                  version: "16.0.4" },
+        { name: "igniteui-webcomponents",            version: "4.3.0-beta.0" },
+        { name: "igniteui-theming",                  version: "1.4.12" },
+        { name: "igniteui-angular",                  version: "16.0.6" },
         // { name: "@angular/animations",               version: "14.0.4" },
         // { name: "@angular/common",                   version: "14.0.4" },
         // { name: "@angular/compiler",                 version: "14.0.4" },
@@ -1040,7 +1041,7 @@ function updateIG(cb) {
 
     // NOTE you can comment out strings in this array to run these function only on a subset of samples
     var packagePaths = [
-        // './package.json', // browser
+        './package.json', // browser
         // '../samples/gauges/bullet-graph/animation/package.json',
         '../samples/**/package.json',
         // '../samples/charts/**/package.json',
