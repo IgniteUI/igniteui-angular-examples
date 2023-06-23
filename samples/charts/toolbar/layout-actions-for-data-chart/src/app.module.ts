@@ -5,7 +5,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
-
 import { IgxToolbarModule } from 'igniteui-angular-layouts';
 import { IgxDataChartToolbarModule, IgxDataChartCoreModule, IgxDataChartCategoryModule, IgxDataChartAnnotationModule, IgxDataChartInteractivityModule, IgxAnnotationLayerProxyModule, IgxDataChartCategoryTrendLineModule } from 'igniteui-angular-charts';
 

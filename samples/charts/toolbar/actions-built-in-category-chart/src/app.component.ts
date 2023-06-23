@@ -3,8 +3,6 @@ import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './
 import { IgxLegendComponent, IgxCategoryChartComponent } from 'igniteui-angular-charts';
 import { IgxToolbarComponent } from 'igniteui-angular-layouts';
 
-
-
 @Component({
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
@@ -32,8 +30,6 @@ export class AppComponent {
         }
         return this._countryRenewableElectricity;
     }
-    
-
 
 }
 

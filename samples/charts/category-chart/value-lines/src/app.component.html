@@ -1,0 +1,48 @@
+<div class="container vertical sample">
+  <div class="options vertical">
+      <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="true">
+          <igx-property-editor-property-description
+          propertyPath="ValueListHandler"
+          name="ValueListEditor"
+          #valueListEditor
+          label="Value List"
+          shouldOverrideDefaultEditor="true"
+          valueType="EnumValue"
+          dropDownValues="Auto, Average, GlobalAverage, GlobalMaximum, GlobalMinimum, Maximum, Minimum"
+          dropDownNames="Auto, Average, GlobalAverage, GlobalMaximum, GlobalMinimum, Maximum, Minimum"
+          primitiveValue="Auto"
+          (changed)="this.editorChangeUpdateValueLines($event)">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  <div class="legend">
+      <igx-legend
+      name="Legend"
+      #legend
+      orientation="Horizontal">
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      name="chart"
+      #chart
+      [dataSource]="countryRenewableElectricity"
+      includedProperties="year, america, europe"
+      chartType="Column"
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      crosshairsDisplayMode="None">
+      </igx-category-chart>
+  </div>
+</div>

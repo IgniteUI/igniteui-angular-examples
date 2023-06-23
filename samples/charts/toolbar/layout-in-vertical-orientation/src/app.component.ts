@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ComponentRenderer, ToolbarDescriptionModule, DataChartToolbarDescriptionModule, DataChartCoreDescriptionModule } from 'igniteui-angular-core';
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
 import { IgxToolbarComponent } from 'igniteui-angular-layouts';
 import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxLineSeriesComponent } from 'igniteui-angular-charts';
@@ -34,18 +33,6 @@ export class AppComponent {
             this._countryRenewableElectricity = new CountryRenewableElectricity();
         }
         return this._countryRenewableElectricity;
-    }
-
-    private _componentRenderer: ComponentRenderer = null;
-    public get renderer(): ComponentRenderer {
-        if (this._componentRenderer == null) {
-            this._componentRenderer = new ComponentRenderer();
-            var context = this._componentRenderer.context;
-            ToolbarDescriptionModule.register(context);
-            DataChartToolbarDescriptionModule.register(context);
-            DataChartCoreDescriptionModule.register(context);
-        }
-        return this._componentRenderer;
     }
 
 }
