@@ -6,17 +6,19 @@
     [target]="chart"
     orientation="Horizontal">
         <igx-tool-action-label
-        >
+        overlayId="ZoomReset"
+        visibility="Collapsed">
         </igx-tool-action-label>
         <igx-tool-action-label
-        >
+        title="Reset"
+        afterId="ZoomOut"
+        iconName="reset"
+        iconCollectionName="ChartToolbarIcons"
+        commandId="ZoomReset">
         </igx-tool-action-label>
         <igx-tool-action-label
-        iconName="MyCustomIcon"
-        iconCollectionName="MyCustomCollection"
-        (onCommand)="this.myCustomAction($event)"
-        name="toolActionLabel1"
-        #toolActionLabel1>
+        overlayId="AnalyzeMenu"
+        visibility="Collapsed">
         </igx-tool-action-label>
     </igx-toolbar>
   </div>

@@ -1,8 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ComponentRenderer, PropertyEditorPanelDescriptionModule, ToolbarDescriptionModule, DataChartToolbarDescriptionModule, NumberAbbreviatorDescriptionModule, DataChartCategoryeDescriptionModule, DataChartCoreDescriptionModule, DataChartInteractivityDescriptionModule, DataChartAnnotationDescriptionModule } from 'igniteui-angular-core';
+import { ComponentRenderer, PropertyEditorPanelDescriptionModule, ToolbarDescriptionModule, DataChartToolbarDescriptionModule, DataChartCoreDescriptionModule, DataChartCategoryDescriptionModule, DataChartAnnotationDescriptionModule, DataChartInteractivityDescriptionModule, AnnotationLayerProxyDescriptionModule, DataChartCategoryTrendLineDescriptionModule } from 'igniteui-angular-core';
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
-import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
-import { IgxToolbarComponent } from 'igniteui-angular-core';
+import { IgxPropertyEditorPanelComponent, IgxToolbarComponent } from 'igniteui-angular-layouts';
 import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxLineSeriesComponent } from 'igniteui-angular-charts';
 
 import { defineAllComponents } from 'igniteui-webcomponents';
@@ -23,8 +22,6 @@ export class AppComponent {
 
     @ViewChild("propertyEditorPanel1", { static: true } )
     private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-    @ViewChild("baseTheme", { static: true } )
-    private baseTheme: IgxPropertyEditorPropertyDescriptionComponent
     @ViewChild("toolbar", { static: true } )
     private toolbar: IgxToolbarComponent
     @ViewChild("chart", { static: true } )
@@ -44,6 +41,7 @@ export class AppComponent {
         }
         return this._countryRenewableElectricity;
     }
+    
 
     private _componentRenderer: ComponentRenderer = null;
     public get renderer(): ComponentRenderer {
@@ -53,11 +51,12 @@ export class AppComponent {
             PropertyEditorPanelDescriptionModule.register(context);
             ToolbarDescriptionModule.register(context);
             DataChartToolbarDescriptionModule.register(context);
-            NumberAbbreviatorDescriptionModule.register(context);
-            DataChartCategoryeDescriptionModule.register(context);
             DataChartCoreDescriptionModule.register(context);
-            DataChartInteractivityDescriptionModule.register(context);
+            DataChartCategoryDescriptionModule.register(context);
             DataChartAnnotationDescriptionModule.register(context);
+            DataChartInteractivityDescriptionModule.register(context);
+            AnnotationLayerProxyDescriptionModule.register(context);
+            DataChartCategoryTrendLineDescriptionModule.register(context);
         }
         return this._componentRenderer;
     }
