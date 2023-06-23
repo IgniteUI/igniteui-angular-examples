@@ -1,0 +1,37 @@
+<div class="container vertical sample">
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  <div class="legend">
+      <igx-legend
+      name="Legend"
+      #legend
+      orientation="Horizontal">
+      </igx-legend>
+  </div>
+  <div class="aboveContent">
+    <igx-toolbar
+    name="Toolbar"
+    #toolbar
+    [target]="chart"
+    orientation="Horizontal">
+    </igx-toolbar>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      name="chart"
+      #chart
+      chartType="Line"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      [dataSource]="countryRenewableElectricity"
+      includedProperties="year, europe, china, america"
+      [legend]="legend"
+      yAxisTitle="TWh"
+      yAxisTitleLeftMargin="10"
+      yAxisTitleRightMargin="5"
+      yAxisLabelLeftMargin="0"
+      computedPlotAreaMarginMode="Series">
+      </igx-category-chart>
+  </div>
+</div>

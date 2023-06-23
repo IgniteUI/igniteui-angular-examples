@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
+import { IgxLegendComponent, IgxCategoryChartComponent } from 'igniteui-angular-charts';
 import { IgxToolbarComponent } from 'igniteui-angular-layouts';
-import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxLineSeriesComponent } from 'igniteui-angular-charts';
+
+
 
 @Component({
     selector: "app-root",
@@ -15,20 +17,12 @@ export class AppComponent {
 
     }
 
+    @ViewChild("legend", { static: true } )
+    private legend: IgxLegendComponent
     @ViewChild("toolbar", { static: true } )
     private toolbar: IgxToolbarComponent
     @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("xAxis", { static: true } )
-    private xAxis: IgxCategoryXAxisComponent
-    @ViewChild("yAxis", { static: true } )
-    private yAxis: IgxNumericYAxisComponent
-    @ViewChild("lineSeries1", { static: true } )
-    private lineSeries1: IgxLineSeriesComponent
-    @ViewChild("lineSeries2", { static: true } )
-    private lineSeries2: IgxLineSeriesComponent
-    @ViewChild("lineSeries3", { static: true } )
-    private lineSeries3: IgxLineSeriesComponent
+    private chart: IgxCategoryChartComponent
 
     private _countryRenewableElectricity: CountryRenewableElectricity = null;
     public get countryRenewableElectricity(): CountryRenewableElectricity {
@@ -38,6 +32,8 @@ export class AppComponent {
         }
         return this._countryRenewableElectricity;
     }
+    
+
 
 }
 

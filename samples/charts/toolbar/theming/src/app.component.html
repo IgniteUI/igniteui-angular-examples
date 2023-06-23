@@ -10,8 +10,6 @@
       #propertyEditorPanel1>
           <igx-property-editor-property-description
           propertyPath="BaseTheme"
-          name="BaseTheme"
-          #baseTheme
           label="Theme"
           shouldOverrideDefaultEditor="true"
           valueType="EnumValue"
@@ -24,7 +22,8 @@
     name="Toolbar"
     #toolbar
     [target]="chart"
-    orientation="Horizontal">
+    orientation="Horizontal"
+    baseTheme="SlingshotDark">
     </igx-toolbar>
   </div>
   <div class="container fill">

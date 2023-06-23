@@ -6,8 +6,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
 
+import { IgxLegendModule, IgxCategoryChartModule, IgxCategoryChartToolbarModule } from 'igniteui-angular-charts';
 import { IgxToolbarModule } from 'igniteui-angular-layouts';
-import { IgxDataChartToolbarModule, IgxDataChartCoreModule, IgxDataChartCategoryModule, IgxDataChartAnnotationModule, IgxDataChartInteractivityModule, IgxAnnotationLayerProxyModule, IgxDataChartCategoryTrendLineModule } from 'igniteui-angular-charts';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -19,14 +19,10 @@ import { IgxDataChartToolbarModule, IgxDataChartCoreModule, IgxDataChartCategory
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
+    IgxLegendModule,
     IgxToolbarModule,
-    IgxDataChartToolbarModule,
-    IgxDataChartCoreModule,
-    IgxDataChartCategoryModule,
-    IgxDataChartAnnotationModule,
-    IgxDataChartInteractivityModule,
-    IgxAnnotationLayerProxyModule,
-    IgxDataChartCategoryTrendLineModule
+    IgxCategoryChartModule,
+    IgxCategoryChartToolbarModule
 ],
   providers: [],
   entryComponents: [],
