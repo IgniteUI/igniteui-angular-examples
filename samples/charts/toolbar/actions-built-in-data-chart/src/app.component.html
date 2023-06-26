@@ -1,15 +1,27 @@
 <div class="container vertical sample">
-  <div class="aboveContent">
-    <igx-toolbar
-    name="Toolbar"
-    #toolbar
-    [target]="chart"
-    orientation="Horizontal">
-    </igx-toolbar>
+  <div class="aboveContentSplit">
+    <div class="aboveContentLeftContaner">
+      <igx-toolbar
+            name="Toolbar"
+            #toolbar
+            [target]="chart"
+            orientation="Horizontal">
+            </igx-toolbar>
+    </div>
+    <div class="aboveContentRightContainer">
+      <igx-toolbar
+      name="Toolbar"
+      #toolbar
+      [target]="chart"
+      orientation="Horizontal">
+      </igx-toolbar>
+    </div>
   </div>
   <div class="container fill">
       <igx-data-chart
       isHorizontalZoomEnabled="true"
+      isVerticalZoomEnabled="true"
+      computedPlotAreaMarginMode="Series"
       name="chart"
       #chart>
           <igx-category-x-axis
@@ -50,6 +62,9 @@
           [dataSource]="countryRenewableElectricity"
           valueMemberPath="china">
           </igx-line-series>
+          <igx-data-tool-tip-layer
+          >
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>
