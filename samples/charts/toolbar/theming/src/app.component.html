@@ -13,7 +13,7 @@
           label="Theme"
           shouldOverrideDefaultEditor="true"
           valueType="EnumValue"
-          primitiveValue="SlingshotDark">
+          primitiveValue="Default">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
@@ -23,11 +23,13 @@
     #toolbar
     [target]="chart"
     orientation="Horizontal"
-    baseTheme="SlingshotDark">
+    baseTheme="Default">
     </igx-toolbar>
   </div>
   <div class="container fill">
       <igx-data-chart
+      computedPlotAreaMarginMode="Series"
+      isVerticalZoomEnabled="true"
       isHorizontalZoomEnabled="true"
       name="chart"
       #chart>

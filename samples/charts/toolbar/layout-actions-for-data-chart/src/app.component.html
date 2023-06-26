@@ -1,30 +1,69 @@
 <div class="container vertical sample">
-  <div class="aboveContent">
-    <igx-toolbar
-    name="Toolbar"
-    #toolbar
-    [target]="chart"
-    orientation="Horizontal">
-        <igx-tool-action-label
-        overlayId="ZoomReset"
-        visibility="Collapsed">
-        </igx-tool-action-label>
-        <igx-tool-action-label
-        title="Reset"
-        afterId="ZoomOut"
-        iconName="reset"
-        iconCollectionName="ChartToolbarIcons"
-        commandId="ZoomReset">
-        </igx-tool-action-label>
-        <igx-tool-action-label
-        overlayId="AnalyzeMenu"
-        visibility="Collapsed">
-        </igx-tool-action-label>
-    </igx-toolbar>
+  <div class="aboveContentSplit">
+    <div class="aboveContentLeftContaner">
+      <igx-toolbar
+            name="Toolbar"
+            #toolbar
+            [target]="chart"
+            orientation="Horizontal"
+            (onCommand)="this.toolbarToggleTooltip($event)">
+                <igx-tool-action-checkbox
+                title="Enable Tooltips"
+                beforeId="ZoomReset"
+                commandId="EnableTooltips">
+                </igx-tool-action-checkbox>
+                <igx-tool-action-label
+                overlayId="ZoomReset"
+                visibility="Collapsed">
+                </igx-tool-action-label>
+                <igx-tool-action-label
+                title="Reset"
+                afterId="ZoomOut"
+                iconName="reset"
+                iconCollectionName="ChartToolbarIcons"
+                commandId="ZoomReset">
+                </igx-tool-action-label>
+                <igx-tool-action-icon-menu
+                overlayId="AnalyzeMenu"
+                visibility="Collapsed">
+                </igx-tool-action-icon-menu>
+            </igx-toolbar>
+    </div>
+    <div class="aboveContentRightContainer">
+      <igx-toolbar
+      name="Toolbar"
+      #toolbar
+      [target]="chart"
+      orientation="Horizontal"
+      (onCommand)="this.toolbarToggleTooltip($event)">
+          <igx-tool-action-checkbox
+          title="Enable Tooltips"
+          beforeId="ZoomReset"
+          commandId="EnableTooltips">
+          </igx-tool-action-checkbox>
+          <igx-tool-action-label
+          overlayId="ZoomReset"
+          visibility="Collapsed">
+          </igx-tool-action-label>
+          <igx-tool-action-label
+          title="Reset"
+          afterId="ZoomOut"
+          iconName="reset"
+          iconCollectionName="ChartToolbarIcons"
+          commandId="ZoomReset">
+          </igx-tool-action-label>
+          <igx-tool-action-icon-menu
+          overlayId="AnalyzeMenu"
+          visibility="Collapsed">
+          </igx-tool-action-icon-menu>
+      </igx-toolbar>
+    </div>
   </div>
   <div class="container fill">
       <igx-data-chart
+      computedPlotAreaMarginMode="Series"
       isHorizontalZoomEnabled="true"
+      isVerticalZoomEnabled="true"
       name="chart"
       #chart>
           <igx-category-x-axis
