@@ -1009,16 +1009,16 @@ function updateIG(cb) {
     // { name:               "igniteui-angular-charts", version: "14.1.0" },  // npm
     let packageUpgrades = [
         // these IG packages are often updated:
-        { name: "igniteui-angular-core"                     , version: "16.1.0-beta.4" },
-        { name: "igniteui-angular-charts"                   , version: "16.1.0-beta.4" },
-        { name: "igniteui-angular-excel"                    , version: "16.1.0-beta.4" },
-        { name: "igniteui-angular-gauges"                   , version: "16.1.0-beta.4" },
-        { name: "igniteui-angular-inputs"                   , version: "16.1.0-beta.4" },
-        { name: "igniteui-angular-layouts"                  , version: "16.1.0-beta.4" },
-        { name: "igniteui-angular-maps"                     , version: "16.1.0-beta.4" },
-        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "16.1.0-beta.4" },
-        { name: "igniteui-angular-spreadsheet"              , version: "16.1.0-beta.4" },
-        { name: "igniteui-angular-datasources"              , version: "16.1.0-beta.4" },
+        { name: "igniteui-angular-core"                     , version: "16.1.0" },
+        { name: "igniteui-angular-charts"                   , version: "16.1.0" },
+        { name: "igniteui-angular-excel"                    , version: "16.1.0" },
+        { name: "igniteui-angular-gauges"                   , version: "16.1.0" },
+        { name: "igniteui-angular-inputs"                   , version: "16.1.0" },
+        { name: "igniteui-angular-layouts"                  , version: "16.1.0" },
+        { name: "igniteui-angular-maps"                     , version: "16.1.0" },
+        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "16.1.0" },
+        { name: "igniteui-angular-spreadsheet"              , version: "16.1.0" },
+        { name: "igniteui-angular-datasources"              , version: "16.1.0" },
         // these IG packages are sometimes updated:
         { name: "igniteui-webcomponents",            version: "4.3.0-beta.0" },
         { name: "igniteui-theming",                  version: "1.4.14" },
