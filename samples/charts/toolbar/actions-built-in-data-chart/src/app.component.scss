@@ -9,13 +9,13 @@ https://static.infragistics.com/xplatform/css/samples/
     margin-left: 10px;
     display: flex;
     flex-grow: 1;
-    justify-content: start;
-    align-items: end;
+    justify-content: flex-start;
+    align-items: flex-end;
 }
 #aboveContentRightContainer {
     margin-right: 10px;
     display: flex;
     flex-grow: 1;
-    justify-content: end;
-    align-items: end;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
