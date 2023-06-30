@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDet
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
 import { IgxToolCommandEventArgs } from 'igniteui-angular-layouts';
 import { IgxDataChartComponent, IgxSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
-import { IgxToolbarComponent } from 'igniteui-angular-layouts';
+import { IgxToolbarComponent, IgxToolActionCheckboxComponent, IgxToolActionLabelComponent, IgxToolActionIconMenuComponent } from 'igniteui-angular-layouts';
 import { IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxLineSeriesComponent } from 'igniteui-angular-charts';
 
 @Component({
@@ -19,6 +19,14 @@ export class AppComponent {
 
     @ViewChild("toolbar", { static: true } )
     private toolbar: IgxToolbarComponent
+    @ViewChild("enableTooltipsLabel", { static: true } )
+    private enableTooltipsLabel: IgxToolActionCheckboxComponent
+    @ViewChild("zoomResetHidden", { static: true } )
+    private zoomResetHidden: IgxToolActionLabelComponent
+    @ViewChild("zoomResetLabel", { static: true } )
+    private zoomResetLabel: IgxToolActionLabelComponent
+    @ViewChild("analyzeMenu", { static: true } )
+    private analyzeMenu: IgxToolActionIconMenuComponent
     @ViewChild("chart", { static: true } )
     private chart: IgxDataChartComponent
     @ViewChild("xAxis", { static: true } )

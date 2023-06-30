@@ -8,15 +8,21 @@
       orientation="Horizontal"
       (onCommand)="this.toolbarToggleTooltip($event)">
           <igx-tool-action-checkbox
+          name="EnableTooltipsLabel"
+          #enableTooltipsLabel
           title="Enable Tooltips"
           beforeId="ZoomReset"
           commandId="EnableTooltips">
           </igx-tool-action-checkbox>
           <igx-tool-action-label
+          name="ZoomResetHidden"
+          #zoomResetHidden
           overlayId="ZoomReset"
           visibility="Collapsed">
           </igx-tool-action-label>
           <igx-tool-action-label
+          name="ZoomResetLabel"
+          #zoomResetLabel
           title="Reset"
           afterId="ZoomOut"
           iconName="reset"
@@ -24,6 +30,8 @@
           commandId="ZoomReset">
           </igx-tool-action-label>
           <igx-tool-action-icon-menu
+          name="AnalyzeMenu"
+          #analyzeMenu
           overlayId="AnalyzeMenu"
           visibility="Collapsed">
           </igx-tool-action-icon-menu>

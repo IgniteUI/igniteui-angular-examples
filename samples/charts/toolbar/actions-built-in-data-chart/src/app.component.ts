@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
 import { IgxToolbarComponent } from 'igniteui-angular-layouts';
-import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxLineSeriesComponent } from 'igniteui-angular-charts';
+import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxLineSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
     selector: "app-root",
@@ -29,6 +29,8 @@ export class AppComponent {
     private lineSeries2: IgxLineSeriesComponent
     @ViewChild("lineSeries3", { static: true } )
     private lineSeries3: IgxLineSeriesComponent
+    @ViewChild("tooltipLayer", { static: true } )
+    private tooltipLayer: IgxDataToolTipLayerComponent
 
     private _countryRenewableElectricity: CountryRenewableElectricity = null;
     public get countryRenewableElectricity(): CountryRenewableElectricity {
