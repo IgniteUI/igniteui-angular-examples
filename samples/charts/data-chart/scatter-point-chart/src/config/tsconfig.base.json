@@ -8,6 +8,8 @@
     "declaration": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "downlevelIteration": true, // required for excel library
     "target": "es2015",
     "typeRoots": [
