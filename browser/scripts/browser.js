@@ -746,14 +746,10 @@ function updateCodeViewer(cb) {
         // console.log(info);
 
         // https://staging.infragistics.com/angular-demos-dv/assets/code-viewer/
-        // zoomslider-overview.json OLD
-        // zoomslider/overview.json NEW
-        // charts/zoomslider/overview.json NEW with group
+        // zoomslider-overview.json OLD format
+        // zoomslider/overview.json NEW format
 
-     // var codeViewPath = outputFolder + info.SampleRoutePathOld + ".json";
-        // var codeViewPath = outputFolder + info.SampleGroup + "/" + info.SampleRoutePathNew + ".json";
         var codeViewPath = outputFolder + info.SampleRoutePathNew + ".json";
-        //var codeViewPath = outputFolder + info.SampleGroup + "/" + info.SampleRoutePathNew + ".json";
         log("generating: " + codeViewPath);
 
         for (const filePath of info.SourceFiles) {
@@ -801,6 +797,10 @@ function updateCodeViewer(cb) {
         codeViewContent += JSON.stringify(sampleFiles, null, ' ');
         codeViewContent += '\r\n}';
 
+        utils.fileSave(codeViewPath, codeViewContent);
+
+        // backward compatible format with sample group to match Blazor/React/WC browsers
+        codeViewPath = outputFolder + info.SampleGroup + "/" + info.SampleRoutePathNew + ".json";
         utils.fileSave(codeViewPath, codeViewContent);
     }
 
