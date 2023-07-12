@@ -751,7 +751,8 @@ function updateCodeViewer(cb) {
         // charts/zoomslider/overview.json NEW with group
 
      // var codeViewPath = outputFolder + info.SampleRoutePathOld + ".json";
-        var codeViewPath = outputFolder + info.SampleGroup + "/" + info.SampleRoutePathNew + ".json";
+        // var codeViewPath = outputFolder + info.SampleGroup + "/" + info.SampleRoutePathNew + ".json";
+        var codeViewPath = outputFolder + info.SampleRoutePathNew + ".json";
         //var codeViewPath = outputFolder + info.SampleGroup + "/" + info.SampleRoutePathNew + ".json";
         log("generating: " + codeViewPath);
 
