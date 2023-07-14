@@ -78,7 +78,11 @@
         <div class="nav-bar horizontal">
             <div class='nav-bar-menu no-selection' (click)="onToggleSidebar()">&#x2630;</div>
             <label class="nav-bar-title"> {{selectedDisplayName}} </label>
-            <label class="nav-bar-version"> {{igVersion}} </label>
+            <a class="nav-bar-version" href="{{selectedRepoPath}}" target="_blank">GITHUB </a>
+            <label class="nav-bar-version"> | </label>
+            <a class="nav-bar-version" href="{{selectedJsonPath}}" target="_blank">JSON </a>
+            <label class="nav-bar-version"> | </label>
+            <label class="nav-bar-version">IG {{igVersion}} </label>
         </div>
         <div class="content">
             <router-outlet></router-outlet>

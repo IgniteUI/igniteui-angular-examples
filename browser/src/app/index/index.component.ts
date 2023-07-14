@@ -26,6 +26,9 @@ export class IndexComponent implements OnInit, AfterViewInit {
     public homeRouteItem: IRouteItem;
     public currentNavItems: INavigationItem[] = [];
     public selectedDisplayName: string;
+    public selectedJsonPath: string;
+    public selectedRepoPath: string;
+
     public searchValue: string = "";
     public drawerState = {
         enableGestures: true,
@@ -59,24 +62,38 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
     }
 
+    public updateNavigationBar(selectedSample: any, sampleRoute?: string) {
+        if (selectedSample) {
+            if (sampleRoute) {
+                this.selectedDisplayName = selectedSample.parentName + " - " + selectedSample.displayName;
+                this.selectedJsonPath = window.location.origin + sampleRoute.replace('/samples/', '/assets/code-viewer/') + ".json";
+                this.selectedRepoPath = "https://github.com/IgniteUI/igniteui-angular-examples/tree/vnext" + sampleRoute;
+            } else {
+                this.selectedDisplayName = selectedSample.parentName + " - " + selectedSample.displayName;
+                this.selectedJsonPath = window.location.href.replace('/samples/', '/assets/code-viewer/') + ".json";
+                this.selectedRepoPath = "https://github.com/IgniteUI/igniteui-angular-examples/tree/vnext" + window.location.pathname;
+            }
+            // console.log(this.selectedJsonPath);
+            // console.log(this.selectedRepoPath);
+        }
+    }
+
     public ngOnInit() {
         // console.log("index ngOnInit");
-        const loadedRouteItem = this.appRoutes.filter(
+        const loadedSample = this.appRoutes.filter(
             (route: any) => route.path === this.router.url)[0];
-        if (loadedRouteItem) {
-            this.selectedDisplayName = loadedRouteItem.displayName;
-        }
+
+        this.updateNavigationBar(loadedSample);
 
         this.router.events.pipe(
             filter((x) => x instanceof NavigationStart)
         ).subscribe((event: NavigationStart) => {
-            console.log("NAV: " + event.url)
-            const routeItem = this.appRoutes.filter(
+            console.log("SB " + event.url);
+            // console.log(window.location);
+            const selectedSample = this.appRoutes.filter(
                 (route: any) => route.path === event.url)[0];
-            if (routeItem) {
-                this.selectedDisplayName = routeItem.displayName;
-            }
 
+            this.updateNavigationBar(selectedSample, event.url);
             // if (event.url !== "/" && !this.navdrawer.pin) {
             //     // Close drawer when selecting a view on mobile (unpinned)
             //     this.navdrawer.close();
@@ -87,10 +104,9 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
         // logging versions of IG packages
         for (const item of BrowserInfo) {
-            // console.log('SB uses v' + item.ver + ' ' + item.name);
             if (item.name.indexOf('igniteui-angular-core') >= 0) {
                 this.igVersion = "v" + item.ver;
-                console.log('SB uses v' + item.ver + ' ' + item.name);
+                console.log('SB v' + item.ver + ' ' + item.name);
             }
         }
     }
@@ -248,7 +264,6 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
     private sidebarExpanded: boolean = true;
     public onToggleSidebar(): void {
-        console.log("onToggleSidebar");
         const sidebar = document.getElementById("sidebar");
         if (sidebar != null) {
             // const sidebarDisplay = sidebar.style.display;

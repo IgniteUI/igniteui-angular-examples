@@ -10,6 +10,6 @@ export class HomeComponent implements OnInit {
     constructor() { }
 
     public ngOnInit() {
-        console.log("ngOnInit HomeComponent");
+        // console.log("SB home ngOnInit");
     }
 }

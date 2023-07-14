@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     constructor(@Inject(DOCUMENT) private document: Document) { }
 
     public ngOnInit() {
-        console.log("ngOnInit AppComponent()");
+        // console.log("SB app ngOnInit");
         this.createThemeStyle();
     }
 
