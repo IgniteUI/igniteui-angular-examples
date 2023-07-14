@@ -15,6 +15,7 @@ const path = require("path");
 const es = require("event-stream");
 const del = require("del");
 const utils = require("./utils.js")
+const stats = require("./stats.js")
 
 const EOL = '\r\n';
 
@@ -294,6 +295,17 @@ function findSamples(cb) {
     });
 
 } exports.findSamples = findSamples;
+
+exports.generateStats = function generateStats(cb) {
+    var combinedSamples = [];
+    for (const info of samplesDatabase) {
+        // console.log(info);
+        var samplePath = info.SourcePath.replace('samples/', '').replace('../','');
+        combinedSamples.push(samplePath);
+        break;
+    }
+    stats.generate(cb, combinedSamples);
+}
 
 // this function is copying source files for individual samples to browser
 // generates modules for samples, routing data, and routing modules
