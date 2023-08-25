@@ -14,8 +14,7 @@
           </igx-category-x-axis>
           <igx-numeric-y-axis
           name="yAxis"
-          #yAxis
-          title="TWh">
+          #yAxis>
           </igx-numeric-y-axis>
           <igx-line-series
           name="LineSeries1"
@@ -29,7 +28,10 @@
           <igx-callout-layer
           name="CalloutLayer1"
           #calloutLayer1
-          isAutoCalloutBehaviorEnabled="true"
+          [dataSource]="countryRenewableCallouts"
+          xMemberPath="index"
+          yMemberPath="value"
+          labelMemberPath="label"
           calloutPaddingLeft="20"
           calloutPaddingRight="20"
           calloutPaddingBottom="10"
