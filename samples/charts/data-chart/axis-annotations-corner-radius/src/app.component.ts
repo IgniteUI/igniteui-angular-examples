@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
-import { CountryRenewableCalloutsItem, CountryRenewableCallouts } from './CountryRenewableCallouts';
 import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxLineSeriesComponent, IgxCalloutLayerComponent, IgxFinalValueLayerComponent, IgxCrosshairLayerComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
@@ -39,15 +38,6 @@ export class AppComponent {
             this._countryRenewableElectricity = new CountryRenewableElectricity();
         }
         return this._countryRenewableElectricity;
-    }
-
-    private _countryRenewableCallouts: CountryRenewableCallouts = null;
-    public get countryRenewableCallouts(): CountryRenewableCallouts {
-        if (this._countryRenewableCallouts == null)
-        {
-            this._countryRenewableCallouts = new CountryRenewableCallouts();
-        }
-        return this._countryRenewableCallouts;
     }
 
 }

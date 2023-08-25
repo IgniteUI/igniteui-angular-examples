@@ -55,7 +55,8 @@
           [dataSource]="roadblocksToSuccess"
           showDefaultTooltip="true"
           isTransitionInEnabled="true"
-          isHighlightingEnabled="true">
+          isHighlightingEnabled="true"
+          markerType="Hidden">
           </igx-bar-series>
           <igx-bar-series
           name="BarSeries2"
@@ -67,15 +68,13 @@
           [dataSource]="roadblocksToSuccess"
           showDefaultTooltip="true"
           isTransitionInEnabled="true"
-          isHighlightingEnabled="true">
+          isHighlightingEnabled="true"
+          markerType="Hidden">
           </igx-bar-series>
           <igx-callout-layer
           name="CalloutLayer1"
           #calloutLayer1
-          [dataSource]="roadblocksToSuccess"
-          yMemberPath="index"
-          xMemberPath="firstChoice"
-          labelMemberPath="firstChoiceLabel"
+          isAutoCalloutBehaviorEnabled="true"
           calloutLeaderBrush="rgba(0, 0, 0, 0)"
           calloutOutline="rgba(0, 0, 0, 0)"
           calloutBackground="rgba(0, 0, 0, 0)"
@@ -87,10 +86,7 @@
           <igx-callout-layer
           name="CalloutLayer2"
           #calloutLayer2
-          [dataSource]="roadblocksToSuccess"
-          yMemberPath="index"
-          xMemberPath="topChoices"
-          labelMemberPath="topChoicesLabel"
+          isAutoCalloutBehaviorEnabled="true"
           calloutLeaderBrush="rgba(0, 0, 0, 0)"
           calloutOutline="rgba(0, 0, 0, 0)"
           calloutBackground="rgba(0, 0, 0, 0)"

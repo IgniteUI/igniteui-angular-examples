@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
-import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxLineSeriesComponent, IgxCalloutLayerComponent } from 'igniteui-angular-charts';
+import { CountryRenewableCalloutsItem, CountryRenewableCallouts } from './CountryRenewableCallouts';
+import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxLineSeriesComponent, IgxCalloutLayerComponent, IgxFinalValueLayerComponent, IgxCrosshairLayerComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
     selector: "app-root",
@@ -24,6 +25,12 @@ export class AppComponent {
     private lineSeries1: IgxLineSeriesComponent
     @ViewChild("calloutLayer1", { static: true } )
     private calloutLayer1: IgxCalloutLayerComponent
+    @ViewChild("finalValueLayer", { static: true } )
+    private finalValueLayer: IgxFinalValueLayerComponent
+    @ViewChild("crosshairLayer", { static: true } )
+    private crosshairLayer: IgxCrosshairLayerComponent
+    @ViewChild("tooltips", { static: true } )
+    private tooltips: IgxDataToolTipLayerComponent
 
     private _countryRenewableElectricity: CountryRenewableElectricity = null;
     public get countryRenewableElectricity(): CountryRenewableElectricity {
@@ -32,6 +39,15 @@ export class AppComponent {
             this._countryRenewableElectricity = new CountryRenewableElectricity();
         }
         return this._countryRenewableElectricity;
+    }
+
+    private _countryRenewableCallouts: CountryRenewableCallouts = null;
+    public get countryRenewableCallouts(): CountryRenewableCallouts {
+        if (this._countryRenewableCallouts == null)
+        {
+            this._countryRenewableCallouts = new CountryRenewableCallouts();
+        }
+        return this._countryRenewableCallouts;
     }
 
 }

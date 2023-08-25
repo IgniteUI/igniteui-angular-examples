@@ -9,7 +9,7 @@
       isHorizontal="true"
       isWrappingEnabled="true">
           <igx-property-editor-property-description
-          propertyPath="AutoCalloutsVisible"
+          propertyPath="CalloutsVisible"
           name="CalloutsVisibleEditor"
           #calloutsVisibleEditor
           label="Callouts Visible"
@@ -31,10 +31,13 @@
       isVerticalZoomEnabled="false"
       includedProperties="month, temperature"
       [dataSource]="temperatureAnnotatedData"
-      autoCalloutsVisible="true"
       crosshairsAnnotationYAxisPrecision="0"
+      [calloutsDataSource]="temperatureAnnotatedData"
+      calloutsVisible="true"
+      calloutsXMemberPath="index"
+      calloutsYMemberPath="temperature"
+      calloutsLabelMemberPath="tempInfo"
       yAxisMaximumValue="35"
-      yAxisTitle="Degrees Celsius"
       yAxisLabelLocation="OutsideRight">
       </igx-category-chart>
   </div>
