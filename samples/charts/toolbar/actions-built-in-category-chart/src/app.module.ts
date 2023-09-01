@@ -11,7 +11,7 @@ import { IgxToolbarModule } from 'igniteui-angular-layouts';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-    AppComponent,
+    AppComponent
 ],
   imports: [
     BrowserModule,
@@ -24,7 +24,6 @@ import { IgxToolbarModule } from 'igniteui-angular-layouts';
     IgxCategoryChartToolbarModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

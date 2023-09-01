@@ -11,7 +11,7 @@ import { IgxDataChartCategoryModule, IgxDataChartInteractivityModule } from 'ign
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-    AppComponent,
+    AppComponent
 ],
   imports: [
     BrowserModule,
@@ -23,7 +23,6 @@ import { IgxDataChartCategoryModule, IgxDataChartInteractivityModule } from 'ign
     IgxDataChartInteractivityModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

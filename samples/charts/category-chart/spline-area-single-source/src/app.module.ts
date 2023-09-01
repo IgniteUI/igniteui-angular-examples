@@ -10,7 +10,7 @@ import { IgxCategoryChartModule } from 'igniteui-angular-charts';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-    AppComponent,
+    AppComponent
 ],
   imports: [
     BrowserModule,
@@ -20,7 +20,6 @@ import { IgxCategoryChartModule } from 'igniteui-angular-charts';
     IgxCategoryChartModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

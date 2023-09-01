@@ -10,7 +10,7 @@ import { IgxDataChartCoreModule, IgxDataChartPolarModule, IgxDataChartPolarCoreM
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-    AppComponent,
+    AppComponent
 ],
   imports: [
     BrowserModule,
@@ -24,7 +24,6 @@ import { IgxDataChartCoreModule, IgxDataChartPolarModule, IgxDataChartPolarCoreM
     IgxDataChartAnnotationModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}
