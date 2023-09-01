@@ -10,7 +10,7 @@ import { IgxDataChartCoreModule, IgxDataChartCategoryModule, IgxDataChartAnnotat
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-    AppComponent,
+    AppComponent
 ],
   imports: [
     BrowserModule,
@@ -24,7 +24,6 @@ import { IgxDataChartCoreModule, IgxDataChartCategoryModule, IgxDataChartAnnotat
     IgxAnnotationLayerProxyModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

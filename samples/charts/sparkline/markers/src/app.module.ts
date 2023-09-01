@@ -11,7 +11,7 @@ import { IgxSparklineModule } from 'igniteui-angular-charts';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-    AppComponent,
+    AppComponent
 ],
   imports: [
     BrowserModule,
@@ -22,7 +22,6 @@ import { IgxSparklineModule } from 'igniteui-angular-charts';
     IgxSparklineModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

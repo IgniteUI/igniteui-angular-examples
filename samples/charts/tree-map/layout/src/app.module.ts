@@ -11,7 +11,7 @@ import { IgxTreemapModule } from 'igniteui-angular-charts';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-    AppComponent,
+    AppComponent
 ],
   imports: [
     BrowserModule,
@@ -22,7 +22,6 @@ import { IgxTreemapModule } from 'igniteui-angular-charts';
     IgxTreemapModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

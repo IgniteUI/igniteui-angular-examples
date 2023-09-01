@@ -11,7 +11,7 @@ import { IgxDataChartToolbarModule, IgxDataChartCoreModule, IgxDataChartCategory
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-    AppComponent,
+    AppComponent
 ],
   imports: [
     BrowserModule,
@@ -27,7 +27,6 @@ import { IgxDataChartToolbarModule, IgxDataChartCoreModule, IgxDataChartCategory
     IgxDataChartCategoryTrendLineModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}
