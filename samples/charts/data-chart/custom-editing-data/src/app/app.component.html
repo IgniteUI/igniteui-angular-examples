@@ -1,0 +1,49 @@
+<div class="container vertical">
+    <div class="container vertical">
+      <div class="legend-title">
+        Line Chart with Editable Values by Dragging Markers Up/Down Directions
+      </div>
+
+      <igx-data-chart #lineChart name="lineChart" height="50%" width="100%" plotAreaMarginLeft="5" plotAreaMarginRight="5" defaultInteraction="none"
+                      isWindowSyncedToVisibleRange="true" isHorizontalZoomEnabled="true" isVerticalZoomEnabled="false" (seriesMouseLeftButtonDown)="onLineChartMouseDown($event.args)"
+                      (plotAreaMouseOver)="onLineChartMouseMove($event.args)" (plotAreaMouseLeftButtonUp)="onLineChartMouseUp($event.args)">
+          <igx-category-x-axis #lineXAxis name="LineXAxis" [dataSource]="lineData" label="Category" labelAngle="0" interval="1"></igx-category-x-axis>
+
+          <igx-numeric-y-axis #lineYAxis name="LineYAxis" labelExtent="30" minimumValue="10" maximumValue="90" labelHorizontalAlignment="left" labelLocation="OutsideRight"></igx-numeric-y-axis>
+
+          <igx-line-series id="lineDataSeries" name="lineSeries" [xAxis]="lineXAxis" [yAxis]="lineYAxis" markerType="Circle" [dataSource]="lineData"
+                           valueMemberPath="DataValue" title="Data Points">
+          </igx-line-series>
+
+          <igx-point-series id="lineEditSeries" name="pointSeries" [xAxis]="lineXAxis" [yAxis]="lineYAxis" markerType="Circle" [dataSource]="lineData"
+                            valueMemberPath="EditingValue" markerOutline="dodgerblue" markerBrush="white" title="Editing Point">
+          </igx-point-series>
+
+          <igx-data-tool-tip-layer id="lineTooltip" name="lineTooltip" valueFormatMaxFractions="1" summary-type="none"></igx-data-tool-tip-layer>
+
+      </igx-data-chart>
+    
+      <div class="legend-title">
+        Scatter Chart with Editable Values by Dragging Markers In All Directions
+      </div>
+
+      <igx-data-chart #scatterChart name="scatterChart" height="50%" width="100%" plotAreaMarginLeft="5" plotAreaMarginRight="5" defaultInteraction="none"
+                      isWindowSyncedToVisibleRange="true" isHorizontalZoomEnabled="true" isVerticalZoomEnabled="false" (seriesMouseLeftButtonDown)="onScatterChartMouseDown($event.args)"
+                      (plotAreaMouseOver)="onScatterChartMouseMove($event.args)" (plotAreaMouseLeftButtonUp)="onScatterChartMouseUp($event.args)">
+          <igx-numeric-x-axis #scatterXAxis name="ScatterXAxis" labelAngle="0"></igx-numeric-x-axis>
+
+          <igx-numeric-y-axis #scatterYAxis name="ScatterYAxis" labelExtent="30" minimumValue="10" maximumValue="90" labelHorizontalAlignment="left" labelLocation="OutsideRight"></igx-numeric-y-axis>
+
+          <igx-scatter-line-series id="scatterDataSeries" name="scatterLineSeries" [xAxis]="scatterXAxis" [yAxis]="scatterYAxis" [dataSource]="scatterData"
+                                   markerType="Circle" xMemberPath="X" yMemberPath="Y" title="Data Points">
+          </igx-scatter-line-series>
+
+          <igx-scatter-series id="scatterEditSeries" name="scatterSeries" [xAxis]="scatterXAxis" [yAxis]="scatterYAxis" markerOutline="dodgerblue" [dataSource]="scatterData"
+                              markerType="circle" xMemberPath="EditingX" yMemberPath="EditingY" title="Editing Point" markerBrush="white">
+          </igx-scatter-series>              
+
+          <igx-data-tool-tip-layer id="scatterTooltip" name="scatterTooltip" valueFormatMaxFractions="1" summary-type="none"></igx-data-tool-tip-layer>
+
+      </igx-data-chart>
+    </div>
+</div>

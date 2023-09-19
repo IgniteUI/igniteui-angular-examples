@@ -1,0 +1,59 @@
+<div class="container vertical">
+    <div class="legend-title">
+        Chart with Custom Drawing Annotations
+    </div>
+    <div class="legend">
+        <igx-legend id="legend" name="Legend" orientation="Horizontal"></igx-legend>
+    </div>
+    <div>
+        <igx-toolbar id="toolbar" name="Toolbar" (onCommand)="onToolbarCommandChanged($event.args)">
+            <igx-tool-action-label name="Draw" beforeId="ZoomReset" title="Draw Modes:"></igx-tool-action-label>
+            <igx-tool-action-label #drawRangeAreaToolAction name="DrawRangeAreaToolAction" beforeId="ZoomReset"
+                                   title="Range Area" commandId="DrawRangeArea">
+            </igx-tool-action-label>                    
+            <igx-tool-action-label #drawSlopeLineToolAction name="DrawSlopeLineToolAction" title="Slope Line"
+                                   beforeId="ZoomReset" commandId="DrawSlopeLine">
+            </igx-tool-action-label>
+            <igx-tool-action-label #drawHorizontalLineToolAction name="DrawHorizontalLineToolAction"
+                                   title="Horizontal Line" beforeId="ZoomReset" commandId="DrawHorizontalLine">
+            </igx-tool-action-label>
+        </igx-toolbar>
+    </div>
+
+    <igx-data-chart #chart height="100%" width="100%" name="Chart" defaultInteraction="None"
+                    isWindowSyncedToVisibleRange="true" isHorizontalZoomEnabled="true" isVerticalZoomEnabled="false"
+                    (plotAreaMouseOver)="onChartMouseOver($event.args)" (plotAreaMouseLeftButtonDown)="onChartMouseLeftButtonDown($event.args)"
+                    (plotAreaMouseLeftButtonUp)="onChartMouseLeftButtonUp($event.args)">
+
+        <igx-category-x-axis #xAxis name="xAxis" label="date" gap="0.25" useClusteringMode="true" [dataSource]="data"
+                             labelAngle="45" [formatLabel]="onFormatXAxisLabel">
+        </igx-category-x-axis>
+
+        <igx-numeric-y-axis #yAxis name="yAxis" labelExtent="70" labelHorizontalAlignment="Left"
+                            labelLocation="OutsideRight" title="Stock Price ($)">
+        </igx-numeric-y-axis>
+
+        <igx-financial-price-series id="financialSeries" [xAxis]="xAxis" [yAxis]="yAxis" [dataSource]="data"
+                                    displayType="Candlestick" highMemberPath="high" lowMemberPath="low" closeMemberPath="close"
+                                    openMemberPath="open" volumeMemberPath="volume" showDefaultTooltip="true" title="Stock Price">
+        </igx-financial-price-series>
+
+        <igx-range-area-series id="rangeAreaSeries" [xAxis]="xAxis" [yAxis]="yAxis" title="Range Area" [dataSource]="rangeAreaData"
+                               areaFillOpacity="0.25" lowMemberPath="low" highMemberPath="high" showDefaultTooltip="false"
+                               dashArray="5 5">
+        </igx-range-area-series>
+
+        <igx-line-series id="slopeLine" [xAxis]="xAxis" [yAxis]="yAxis" markerType="None" title="Slope Line" [dataSource]="slopeLineData"
+                         valueMemberPath="y" thickness="4" dashArray="5, 5">
+        </igx-line-series>
+
+        <igx-line-series id="horizontalLine" [xAxis]="xAxis" [yAxis]="yAxis" title="Horizontal Line" [dataSource]="horizontalLineData"
+                         markerType="None" valueMemberPath="y" thickness="4" brush="red" dashArray="5 5">
+        </igx-line-series>
+
+        <igx-final-value-layer axisAnnotationInterpolatedValuePrecision="0"></igx-final-value-layer>
+
+        <igx-data-tool-tip-layer valueFormatMaxFractions="1"></igx-data-tool-tip-layer>
+    </igx-data-chart>
+
+</div>
