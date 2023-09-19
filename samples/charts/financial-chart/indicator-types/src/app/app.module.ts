@@ -24,7 +24,6 @@ import { FinancialDataService } from "./FinancialDataService";
     IgxLegendModule
 ],
   providers: [FinancialDataService],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

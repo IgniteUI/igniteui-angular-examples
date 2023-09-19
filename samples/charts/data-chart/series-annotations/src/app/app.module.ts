@@ -30,7 +30,6 @@ import { SharedData } from "./SharedData";
     IgxDataChartInteractivityModule
 ],
   providers: [SharedData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

@@ -23,7 +23,6 @@ import { Products } from "./Products";
     IgxGridModule
 ],
   providers: [Products],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

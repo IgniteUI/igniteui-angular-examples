@@ -27,7 +27,6 @@ import { SampleDensityData } from "./SampleDensityData";
     IgxDataChartInteractivityModule
 ],
   providers: [SampleDensityData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

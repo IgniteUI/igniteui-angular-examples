@@ -27,7 +27,6 @@ import { SamplePolarData } from "./SamplePolarData";
     IgxDataChartInteractivityModule
 ],
   providers: [SamplePolarData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

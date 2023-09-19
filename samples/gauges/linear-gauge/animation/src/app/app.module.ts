@@ -24,7 +24,6 @@ import { IgxButtonModule } from "igniteui-angular";
     IgxButtonModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

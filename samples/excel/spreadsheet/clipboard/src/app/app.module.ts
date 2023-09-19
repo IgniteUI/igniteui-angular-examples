@@ -23,7 +23,6 @@ import { IgxSpreadsheetModule } from "igniteui-angular-spreadsheet";
     IgxSpreadsheetModule
 ],
   providers: [ExcelUtility],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

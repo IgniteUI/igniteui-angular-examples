@@ -24,7 +24,6 @@ import { StockDataService } from "./StockDataService";
     IgxLegendModule
 ],
   providers: [StockDataService],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

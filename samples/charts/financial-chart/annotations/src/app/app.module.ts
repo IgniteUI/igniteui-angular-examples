@@ -24,7 +24,6 @@ import { StocksUtility } from "./StocksUtility";
     IgxLegendModule
 ],
   providers: [StocksUtility],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

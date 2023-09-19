@@ -25,7 +25,6 @@ import { IgxDoughnutChartModule, IgxRingSeriesModule, IgxLegendModule, IgxItemLe
     IgxItemLegendModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

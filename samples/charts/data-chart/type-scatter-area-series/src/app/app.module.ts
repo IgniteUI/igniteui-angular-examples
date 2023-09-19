@@ -28,7 +28,6 @@ import { SampleScatterData } from "./SampleScatterData";
     IgxScatterAreaSeriesModule
 ],
   providers: [SampleScatterData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

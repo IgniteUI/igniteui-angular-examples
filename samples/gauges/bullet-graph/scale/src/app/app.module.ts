@@ -21,7 +21,6 @@ import { IgxBulletGraphModule } from "igniteui-angular-gauges";
     IgxBulletGraphModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

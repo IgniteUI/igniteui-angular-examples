@@ -24,7 +24,6 @@ import { IgxPieChartModule, IgxLegendModule, IgxItemLegendModule } from "igniteu
     IgxItemLegendModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

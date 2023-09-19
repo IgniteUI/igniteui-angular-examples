@@ -28,7 +28,6 @@ import { SharedData } from "./SharedData";
     IgxStackedFragmentSeriesModule
 ],
   providers: [SharedData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}
