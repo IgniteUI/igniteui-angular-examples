@@ -22,7 +22,6 @@ import { IgxDataChartInteractivityModule } from "igniteui-angular-charts";
     IgxDataChartInteractivityModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

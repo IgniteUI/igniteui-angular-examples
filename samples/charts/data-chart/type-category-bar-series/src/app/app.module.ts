@@ -26,7 +26,6 @@ import { SampleCategoryData } from "./SampleCategoryData";
     IgxDataChartInteractivityModule
 ],
   providers: [SampleCategoryData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

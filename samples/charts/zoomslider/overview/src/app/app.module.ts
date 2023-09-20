@@ -36,7 +36,6 @@ import { SampleScatterStats } from "./SampleScatterStats";
     IgxBubbleSeriesModule
 ],
   providers: [SampleScatterStats],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

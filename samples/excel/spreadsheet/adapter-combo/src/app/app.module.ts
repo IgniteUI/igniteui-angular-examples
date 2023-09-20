@@ -25,7 +25,6 @@ import { IgxSpreadsheetChartAdapterModule } from "igniteui-angular-spreadsheet-c
     IgxSpreadsheetChartAdapterModule
 ],
   providers: [ExcelUtility],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

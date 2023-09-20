@@ -27,7 +27,6 @@ import { SampleRadialData } from "./SampleRadialData";
     IgxDataChartInteractivityModule
 ],
   providers: [SampleRadialData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

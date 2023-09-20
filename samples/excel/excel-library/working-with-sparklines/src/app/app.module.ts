@@ -25,7 +25,6 @@ import { IgxExcelModule } from "igniteui-angular-excel";
     IgxExcelModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

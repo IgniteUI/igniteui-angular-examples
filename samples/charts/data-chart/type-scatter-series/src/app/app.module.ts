@@ -27,7 +27,6 @@ import { SampleScatterStats } from "./SampleScatterStats";
     IgxLegendModule
 ],
   providers: [SampleScatterStats],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

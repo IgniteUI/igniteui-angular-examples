@@ -26,7 +26,6 @@ import { SharedData } from "./SharedData";
     IgxNumberAbbreviatorModule
 ],
   providers: [SharedData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

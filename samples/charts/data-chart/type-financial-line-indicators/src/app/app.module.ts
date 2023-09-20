@@ -29,7 +29,6 @@ import { SampleFinancialData } from "./SampleFinancialData";
     IgxFinancialPriceSeriesModule
 ],
   providers: [SampleFinancialData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

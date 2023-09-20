@@ -1016,22 +1016,27 @@ function updateSamples(cb) {
 
 function updateIG(cb) {
 
-    // NOTE: change this array with new version of packages and optionally use "@infragistics/" proget prefix, e.g.
-    // "igniteui-angular-charts" instead of "igniteui-angular-charts" e.g.
-    // { name: "igniteui-angular-charts", version: "14.2.0" }, // proget
-    // { name:               "igniteui-angular-charts", version: "14.1.0" },  // npm
+    // cleanup packages to speedup this gulp script
+    // del.sync("./samples/**/node_modules/**/*.*", {force:true});
+    // del.sync("./samples/**/node_modules/**", {force:true});
+    // del.sync("./samples/**/node_modules", {force:true});
+
+    // NOTE: change this array with new version of packages 
+    // and optionally use "@infragistics/" proget prefix, e.g.
+    // { name: "@infragistics/igniteui-angular-charts", version: "23.2.18" }, // PROGET
+    // { name:               "igniteui-angular-charts", version: "14.1.0" },  // NPM
     let packageUpgrades = [
         // these IG packages are often updated:
-        { name: "igniteui-angular-core"                     , version: "16.1.0" },
-        { name: "igniteui-angular-charts"                   , version: "16.1.0" },
-        { name: "igniteui-angular-excel"                    , version: "16.1.0" },
-        { name: "igniteui-angular-gauges"                   , version: "16.1.0" },
-        { name: "igniteui-angular-inputs"                   , version: "16.1.0" },
-        { name: "igniteui-angular-layouts"                  , version: "16.1.0" },
-        { name: "igniteui-angular-maps"                     , version: "16.1.0" },
-        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "16.1.0" },
-        { name: "igniteui-angular-spreadsheet"              , version: "16.1.0" },
-        { name: "igniteui-angular-datasources"              , version: "16.1.0" },
+        { name: "@infragistics/igniteui-angular-core"                     , version: "23.2.18" },
+        { name: "@infragistics/igniteui-angular-charts"                   , version: "23.2.18" },
+        { name: "@infragistics/igniteui-angular-excel"                    , version: "23.2.18" },
+        { name: "@infragistics/igniteui-angular-gauges"                   , version: "23.2.18" },
+        { name: "@infragistics/igniteui-angular-inputs"                   , version: "23.2.18" },
+        { name: "@infragistics/igniteui-angular-layouts"                  , version: "23.2.18" },
+        { name: "@infragistics/igniteui-angular-maps"                     , version: "23.2.18" },
+        { name: "@infragistics/igniteui-angular-spreadsheet-chart-adapter", version: "23.2.18" },
+        { name: "@infragistics/igniteui-angular-spreadsheet"              , version: "23.2.18" },
+        { name: "@infragistics/igniteui-angular-datasources"              , version: "23.2.18" },
         // these IG packages are sometimes updated:
         { name: "igniteui-webcomponents",            version: "4.3.0-beta.0" },
         { name: "igniteui-theming",                  version: "1.4.14" },
@@ -1055,22 +1060,11 @@ function updateIG(cb) {
     // NOTE you can comment out strings in this array to run these function only on a subset of samples
     var packagePaths = [
         './package.json', // browser
-        // '../samples/gauges/bullet-graph/animation/package.json',
-        '../samples/**/package.json',
+        // '../samples/**/package.json',
         // '../samples/charts/**/package.json',
-        // '../samples/editors/**/package.json',
-        // '../samples/excel/**/package.json',
-        // '../samples/gauges/**/package.json',
-        // '../samples/grids/**/package.json',
-        // '../samples/inputs/**/package.json',
-        // '../samples/layouts/**/package.json',
-        // '../samples/maps/**/package.json',
-        // '../samples/menus/**/package.json',
-        // '../samples/notifications/**/package.json',
-        // '../samples/scheduling/**/package.json',
+        '../samples/gauges/**/package.json',
 
-        // '../samples/charts/category-chart/**/package.json',
-        // '../samples/maps/geo-map/type-scatter-bubble-series/package.json',
+        // skip packages in node_modules folders
         '!../samples/**/node_modules/**/package.json',
         '!../samples/**/node_modules/**',
         '!../samples/**/node_modules',
@@ -1080,11 +1074,8 @@ function updateIG(cb) {
     let packageMappings = {};
     for (const item of packageUpgrades) {
         item.id = item.name.replace("@infragistics/", "");
-        let name = item.name.replace("@infragistics/", "");
-        packageMappings[name] = item;
+        packageMappings[item.id] = item;
     }
-
-    // console.log(packageMappings);
 
     let updatedPackages = 0;
     // gulp all package.json files in samples/browser
@@ -1129,7 +1120,7 @@ function updateIG(cb) {
         fileCallback(null, file);
     }))
     .on("end", function() {
-        log("updateIG... done = " + updatedPackages + " files");
+        log("updated: " + updatedPackages + " package files");
         cb();
     });
 

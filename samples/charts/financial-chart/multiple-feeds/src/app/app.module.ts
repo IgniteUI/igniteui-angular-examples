@@ -23,7 +23,6 @@ import { IgxFinancialChartModule, IgxLegendModule } from "igniteui-angular-chart
     IgxLegendModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

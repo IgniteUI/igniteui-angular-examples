@@ -31,7 +31,6 @@ import { SampleFinancialData } from "./SampleFinancialData";
     IgxCategoryXAxisModule
 ],
   providers: [SampleFinancialData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

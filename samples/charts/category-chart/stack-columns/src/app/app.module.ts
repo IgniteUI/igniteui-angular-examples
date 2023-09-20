@@ -23,7 +23,6 @@ import { IgxCategoryChartModule, IgxLegendModule } from "igniteui-angular-charts
     IgxLegendModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

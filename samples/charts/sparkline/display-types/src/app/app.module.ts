@@ -22,7 +22,6 @@ import { IgxSparklineModule } from "igniteui-angular-charts";
     IgxSparklineModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

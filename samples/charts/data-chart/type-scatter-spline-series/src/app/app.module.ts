@@ -27,7 +27,6 @@ import { SampleScatterData } from "./SampleScatterStats";
     IgxDataChartInteractivityModule
 ],
   providers: [SampleScatterData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}
