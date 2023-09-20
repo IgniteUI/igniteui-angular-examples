@@ -41,7 +41,6 @@
     "immediate": "3.2.3",
     "igniteui-angular": "16.0.7",
     "igniteui-theming": "1.4.14",
-    "igniteui-angular-charts": "16.1.0",
     "@infragistics/igniteui-angular-core": "23.2.18",
     "@infragistics/igniteui-angular-charts": "23.2.18",
     "@infragistics/igniteui-angular-excel": "23.2.18",
