@@ -955,6 +955,7 @@ function updateReadme(cb) {
     // "https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/category-chart/annotations?fontsize=14&hidenavigation=1&theme=dark&view=preview&file=/src/app/app.component.html"
     // "https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/category-chart/annotations"
 
+    var changeFilesCount = 0;
     var sandboxRoot = "https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/"
     var readmeTemplate = fs.readFileSync("../samples/templates/ReadMe.md", "utf8");
     for (const sample of samplesDatabase) {
@@ -962,16 +963,29 @@ function updateReadme(cb) {
         let sandboxURL = sandboxRoot + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder;
         sandboxURL += "?fontsize=14&hidenavigation=1&theme=dark&view=preview&file=/src/app.component.html"
 
-        let readmeFile = readmeTemplate + "";
-        readmeFile = readmeFile.replace("{ComponentName}", sample.ControlName);
-        readmeFile = readmeFile.replace("{SandboxUrlEdit}", sandboxURL);
-        readmeFile = readmeFile.replace("{SampleDisplayName}", sample.SampleDisplayName);
-        readmeFile = readmeFile.replace("{SampleFolderPath}", sample.SourcePath);
-        readmeFile = readmeFile.replace("{SampleRoute}", sampleRoute);
+        let readmePath = '../samples/' + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder + "/ReadMe.md";
 
-        let readmeOutput = '../samples/' + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder + "/ReadMe.md";
-        fs.writeFileSync(readmeOutput, readmeFile);
-        // break;
+        let readmeNewFile = readmeTemplate + "";
+        readmeNewFile = readmeNewFile.replace("{ComponentName}", sample.ControlName);
+        readmeNewFile = readmeNewFile.replace("{SandboxUrlEdit}", sandboxURL);
+        readmeNewFile = readmeNewFile.replace("{SampleDisplayName}", sample.SampleDisplayName);
+        readmeNewFile = readmeNewFile.replace("{SampleFolderPath}", sample.SourcePath);
+        readmeNewFile = readmeNewFile.replace("{SampleRoute}", sampleRoute);
+      
+        let readmeOldFile = ""; 
+        if (fs.existsSync(readmePath)) {
+            readmeOldFile = fs.readFileSync(readmePath).toString(); 
+        }
+        
+        if (readmeNewFile !== readmeOldFile) {
+            console.log('UPDATED: ' + readmePath)
+            changeFilesCount++;
+            fs.writeFileSync(readmePath, readmeNewFile);
+        }
+    }
+
+    if (changeFilesCount > 0) {
+        console.log('WARNING: you must commit above ' + changeFilesCount + ' readme files in a pull request')
     }
     cb();
 } exports.updateReadme = updateReadme;
