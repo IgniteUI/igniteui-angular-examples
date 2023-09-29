@@ -1028,6 +1028,17 @@ function updateSamples(cb) {
 } exports.updateSamples = updateSamples;
 
 
+function sortByKeys(dependencies)
+{
+    let keys = Object.keys(dependencies);
+    keys.sort();
+ 
+    var sorted = {};
+    for (const key of keys) {
+        sorted[key] = dependencies[key];
+    }
+    return sorted;
+}
 function updateIG(cb) {
 
     // cleanup packages to speedup this gulp script
@@ -1074,9 +1085,9 @@ function updateIG(cb) {
     // NOTE you can comment out strings in this array to run these function only on a subset of samples
     var packagePaths = [
         './package.json', // browser
-        // '../samples/**/package.json',
+        '../samples/**/package.json',
         // '../samples/charts/**/package.json',
-        '../samples/gauges/**/package.json',
+        // '../samples/gauges/**/package.json',
 
         // skip packages in node_modules folders
         '!../samples/**/node_modules/**/package.json',
@@ -1125,8 +1136,14 @@ function updateIG(cb) {
             }
         }
 
-        if (fileChanged) {
-            let newContent = fileLines.join('\n');
+        let newContent = fileLines.join('\n'); 
+        let jsonPackages = JSON.parse(fileContent);
+        // sort package dependencies by their names
+        jsonPackages.dependencies = sortByKeys(jsonPackages.dependencies);
+        jsonPackages.devDependencies = sortByKeys(jsonPackages.devDependencies); 
+        newContent = JSON.stringify(jsonPackages, null, '  ') + '\n';
+
+        if (fileChanged || fileContent.trim() !== newContent.trim()) {
             updatedPackages++;
             fs.writeFileSync(filePath, newContent);
             log("updated: " + filePath);
