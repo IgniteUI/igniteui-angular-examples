@@ -1052,18 +1052,19 @@ function updateIG(cb) {
     // { name:               "igniteui-angular-charts", version: "14.1.0" },  // NPM
     let packageUpgrades = [
         // these IG packages are often updated:
-        { name: "@infragistics/igniteui-angular-core"                     , version: "23.2.18" },
-        { name: "@infragistics/igniteui-angular-charts"                   , version: "23.2.18" },
-        { name: "@infragistics/igniteui-angular-excel"                    , version: "23.2.18" },
-        { name: "@infragistics/igniteui-angular-gauges"                   , version: "23.2.18" },
-        { name: "@infragistics/igniteui-angular-inputs"                   , version: "23.2.18" },
-        { name: "@infragistics/igniteui-angular-layouts"                  , version: "23.2.18" },
-        { name: "@infragistics/igniteui-angular-maps"                     , version: "23.2.18" },
-        { name: "@infragistics/igniteui-angular-spreadsheet-chart-adapter", version: "23.2.18" },
-        { name: "@infragistics/igniteui-angular-spreadsheet"              , version: "23.2.18" },
-        { name: "@infragistics/igniteui-angular-datasources"              , version: "23.2.18" },
+        { name: "igniteui-angular-core"                     , version: "16.1.2-beta.0" },
+        { name: "igniteui-angular-charts"                   , version: "16.1.2-beta.0" },
+        { name: "igniteui-angular-excel"                    , version: "16.1.2-beta.0" },
+        { name: "igniteui-angular-gauges"                   , version: "16.1.2-beta.0" },
+        { name: "igniteui-angular-inputs"                   , version: "16.1.2-beta.0" },
+        { name: "igniteui-angular-layouts"                  , version: "16.1.2-beta.0" },
+        { name: "igniteui-angular-maps"                     , version: "16.1.2-beta.0" },
+        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "16.1.2-beta.0" },
+        { name: "igniteui-angular-spreadsheet"              , version: "16.1.2-beta.0" },
+        { name: "igniteui-angular-datasources"              , version: "16.1.2-beta.0" },
+        
         // these IG packages are sometimes updated:
-        { name: "igniteui-webcomponents",            version: "4.3.0-beta.0" },
+        { name: "igniteui-webcomponents",            version: "4.5.0-beta.1" },
         { name: "igniteui-theming",                  version: "1.4.14" },
         { name: "igniteui-angular",                  version: "16.0.7" },
         // { name: "@angular/animations",               version: "14.0.4" },
@@ -1137,21 +1138,25 @@ function updateIG(cb) {
         }
 
         let newContent = fileLines.join('\n'); 
-        let jsonPackages = JSON.parse(fileContent);
+        let jsonPackages = JSON.parse(newContent);
         // sort package dependencies by their names
-        jsonPackages.dependencies = sortByKeys(jsonPackages.dependencies);
-        jsonPackages.devDependencies = sortByKeys(jsonPackages.devDependencies); 
-        newContent = JSON.stringify(jsonPackages, null, '  ') + '\n';
+        let sortPackages = sortByKeys(jsonPackages.dependencies);
+        if (JSON.stringify(sortPackages) !== JSON.stringify(jsonPackages.dependencies)) {
+            jsonPackages.dependencies = sortPackages;
+            jsonPackages.devDependencies = sortByKeys(jsonPackages.devDependencies); 
+            newContent = JSON.stringify(jsonPackages, null, '  ') + '\n';
+            fileChanged = true;
+        }
 
-        if (fileChanged || fileContent.trim() !== newContent.trim()) {
+        if (fileChanged) {
             updatedPackages++;
             fs.writeFileSync(filePath, newContent);
-            log("updated: " + filePath);
+            console.log("updated: " + filePath);
         }
         fileCallback(null, file);
     }))
     .on("end", function() {
-        log("updated: " + updatedPackages + " package files");
+        console.log("updated: " + updatedPackages + " package files");
         cb();
     });
 
