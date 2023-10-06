@@ -153,3 +153,21 @@ NOTE this will re-generate the Readme.md file in the new sample
 ## Learn More
 
 To learn more about **Ignite UI for Angular** components, check out the [Angular documentation](https://www.infragistics.com/products/ignite-ui-Angular/Angular/components/general-getting-started.html).
+
+
+# Updating Version of IgniteUI Packages
+
+Perform these steps to update version of **Ignite UI for Angular** packages in all samples. NOTE that the order of these steps is very important.
+
+- open this repo in VS Code
+- open [browser.js](./browser/tasks/browser.js) file
+- navigate to the `updateIG` function
+- change version of **Ignite UI for Angular** packages in the `packageUpgrades` array
+- open terminal window
+- run `cd browser` command
+- run `gulp updateIG` command
+- run `npm install --legacy-peer-deps` command
+- create pull request with your changes
+- open the [Igniteui-xplat-example](https://github.com/IgniteUI/igniteui-xplat-examples) repo in VS Code
+- update version of **Ignite UI for Angular** packages in [Angular template](https://github.com/IgniteUI/igniteui-xplat-examples/blob/23.2.x/editor-templates/Angular/main-template/package.json)
+- create pull request with your changes in [Igniteui-xplat-example](https://github.com/IgniteUI/igniteui-xplat-examples) repo
