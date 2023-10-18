@@ -1,0 +1,65 @@
+<div class="container vertical sample">
+  <div class="legend-title">
+      Highest Grossing Movie Franchises
+  </div>
+  <div class="legend">
+      <igx-data-legend
+      name="Legend"
+      #legend
+      [target]="chart"
+      valueFormatMode="Currency"
+      valueFormatString="${0} Billion">
+      </igx-data-legend>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart>
+          <igx-category-y-axis
+          name="yAxis"
+          #yAxis
+          label="franchise"
+          useEnhancedIntervalManagement="true"
+          enhancedIntervalPreferMoreCategoryLabels="true"
+          [dataSource]="highestGrossingMovies"
+          isInverted="true"
+          gap="0.5"
+          overlap="-0.1">
+          </igx-category-y-axis>
+          <igx-numeric-x-axis
+          name="xAxis"
+          #xAxis
+          title="Billions of U.S. Dollars"
+          labelFormat="{0}B"
+          abbreviateLargeNumbers="false"
+          [labelFormatSpecifiers]="NumberFormatSpecifier1">
+          </igx-numeric-x-axis>
+          <igx-bar-series
+          name="BarSeries1"
+          #barSeries1
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          title="Total Revenue of Franchise"
+          valueMemberPath="totalRevenue"
+          [dataSource]="highestGrossingMovies"
+          showDefaultTooltip="true">
+          </igx-bar-series>
+          <igx-bar-series
+          name="BarSeries2"
+          #barSeries2
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          title="Highest Grossing Movie in Series"
+          valueMemberPath="highestGrossing"
+          [dataSource]="highestGrossingMovies"
+          showDefaultTooltip="true">
+          </igx-bar-series>
+          <igx-data-tool-tip-layer
+          name="Tooltips"
+          #tooltips
+          valueFormatMode="Currency"
+          valueFormatString="${0} Billion">
+          </igx-data-tool-tip-layer>
+      </igx-data-chart>
+  </div>
+</div>
