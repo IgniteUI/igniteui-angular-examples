@@ -1,0 +1,32 @@
+<div class="container vertical sample">
+  <div class="legend-title">
+      Chart with Multiple Selectable Data Columns
+  </div>
+  <div class="legend">
+      <igx-data-legend
+      name="Legend"
+      #legend
+      summaryType="None"
+      valueFormatMaxFractions="0"
+      [target]="chart">
+      </igx-data-legend>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      name="chart"
+      #chart
+      [dataSource]="selectableData"
+      chartType="Column"
+      xAxisOverlap="1"
+      yAxisMinimumValue="0"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      isSeriesHighlightingEnabled="true"
+      finalValueAnnotationsVisible="false"
+      crosshairsAnnotationEnabled="false"
+      dataToolTipSummaryType="None"
+      dataToolTipValueFormatMaxFractions="0"
+      (seriesPointerDown)="this.categoryChartCustomSelectionPointerDown($event)">
+      </igx-category-chart>
+  </div>
+</div>
