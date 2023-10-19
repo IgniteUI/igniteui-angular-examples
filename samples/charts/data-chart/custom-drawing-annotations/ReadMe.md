@@ -1,7 +1,7 @@
 <!-- NOTE: do not change this file because it's auto re-generated from template: -->
 <!-- https://github.com/IgniteUI/igniteui-angular-examples/tree/vnext/samples/templates/ReadMe.md -->
 
-This folder contains Angular application with example of Chart Overview feature using [DataChart](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general-getting-started.html) component.
+This folder contains Angular application with example of Custom Drawing Annotations feature using [DataChart](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general-getting-started.html) component.
 
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -12,10 +12,10 @@ This folder contains Angular application with example of Chart Overview feature 
         <a target="_blank" href="./src/app/app.component.html" rel="noopener noreferrer">
             <img height="40px" style="border-radius: 0rem; max-width: 100%;" alt="View Code" src="https://github.com/IgniteUI/igniteui-blazor-examples/raw/vnext/templates/sample/images/button-code.png"/>
         </a>
-        <a target="_blank" href="https://infragistics.com/angular-demos-dv/samples/charts/data-chart-chart-overview" rel="noopener noreferrer">
+        <a target="_blank" href="https://infragistics.com/angular-demos-dv/samples/charts/data-chart-custom-drawing-annotations" rel="noopener noreferrer">
             <img height="40px" style="border-radius: 0rem; max-width: 100%;" alt="Run Sample" src="https://github.com/IgniteUI/igniteui-blazor-examples/raw/vnext/templates/sample/images/button-run.png"/>
         </a>
-        <a target="_blank" href="https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/data-chart/chart-overview?fontsize=14&hidenavigation=1&theme=dark&view=preview&file=/src/app.component.html" rel="noopener noreferrer">
+        <a target="_blank" href="https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/data-chart/custom-drawing-annotations?fontsize=14&hidenavigation=1&theme=dark&view=preview&file=/src/app.component.html" rel="noopener noreferrer">
             <img height="40px" style="border-radius: 0rem; max-width: 100%;" alt="Run Sample" src="https://github.com/IgniteUI/igniteui-blazor-examples/raw/vnext/templates/sample/images/button-sandbox.png"/>
         </a>
     </body>
@@ -28,7 +28,7 @@ To set up this project locally, execute these commands:
 ```
 git clone https://github.com/IgniteUI/igniteui-angular-examples.git
 cd ./igniteui-angular-examples
-cd ../samples/charts/data-chart/chart-overview
+cd ../samples/charts/data-chart/custom-drawing-annotations
 ```
 
 open above folder in VS Code or type:
@@ -38,7 +38,7 @@ code .
 
 In terminal window, run:
 ```
-npm install
+npm install --legacy-peer-deps
 npm run-script start
 ```
 
