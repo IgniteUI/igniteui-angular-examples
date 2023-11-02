@@ -10,12 +10,13 @@ pr: none
 
 name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 
-resources:
-  repositories:
-    - repository: self
-      type: github
-      ref: eebcb2a
-      name: igniteui-angular-examples
+# TODO: Remove this section this out as soon as the state of the vnext branch is good enough
+#resources:
+#  repositories:
+#    - repository: selfi
+#      type: github
+#      ref: eebcb2a
+#      name: igniteui-angular-examples
   
 
 pool:
