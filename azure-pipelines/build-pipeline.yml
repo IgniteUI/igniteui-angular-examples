@@ -11,12 +11,12 @@ pr: none
 name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 
 # TODO: Remove this section this out as soon as the state of the vnext branch is good enough
-#resources:
-#  repositories:
-#    - repository: selfi
-#      type: github
-#      ref: eebcb2a
-#      name: igniteui-angular-examples
+resources:
+  repositories:
+    - repository: selfi
+      type: github
+      ref: eebcb2a
+      name: igniteui-angular-examples
   
 
 pool:
@@ -31,6 +31,22 @@ jobs:
     inputs:
       targetType: 'inline'
       script: 'Write-Output $pwd'
+
+  - task: NodeTool@0
+    inputs:
+      versionSource: 'spec'
+      versionSpec: '16.x'
+
+  - task: Npm@1
+    inputs:
+      command: 'install'
+      workingDir: '$(Build.SourcesDirectory)\browser'
+
+  - task: Npm@1
+    inputs:
+      command: 'custom'
+      workingDir: '$(Build.SourcesDirectory)\browser'
+      customCommand: 'run build'
 
     # TODO get steps from TFS pipeline. We need to do an npm install for sure
     # explicitly install npx (global?) and igniteui-cli - latest versionS 
