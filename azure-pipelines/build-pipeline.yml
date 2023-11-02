@@ -35,11 +35,13 @@ jobs:
       versionSpec: '16.x'
 
   - task: Npm@1
+    displayName: 'npm install'
     inputs:
       command: 'install'
       workingDir: '$(Build.SourcesDirectory)\browser'
 
   - task: PowerShell@2
+    displayName: 'Apply very special configuration'
     inputs:
       targetType: 'inline'
       script: |
@@ -49,6 +51,7 @@ jobs:
       workingDirectory: '$(Build.SourcesDirectory)\browser'
 
   - task: Npm@1
+    displayName: 'npm run build'
     inputs:
       command: 'custom'
       workingDir: '$(Build.SourcesDirectory)\browser'
