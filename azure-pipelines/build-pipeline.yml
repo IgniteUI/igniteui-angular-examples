@@ -15,7 +15,7 @@ resources:
   repositories:
     - repository: self
       type: github
-      ref: eebcb2a
+      ref: eebcb2a # last known ref where the npm build is successful - need it to verify the newly-developed release process
       name: igniteui-angular-examples
   
 
@@ -26,6 +26,7 @@ jobs:
 - job:
   steps:
   - checkout: self
+    path: igniteui-angular-examples # this is explicitly required by the samples browser build process
 
   - task: PowerShell@2
     inputs:
