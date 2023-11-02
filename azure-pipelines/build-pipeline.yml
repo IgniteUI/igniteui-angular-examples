@@ -24,14 +24,10 @@ pool:
 
 jobs:
 - job:
+  displayName: Build
   steps:
   - checkout: self
     path: igniteui-angular-examples # this is explicitly required by the samples browser build process
-
-  - task: PowerShell@2
-    inputs:
-      targetType: 'inline'
-      script: 'Write-Output $pwd'
 
   - task: NodeTool@0
     inputs:
@@ -42,6 +38,15 @@ jobs:
     inputs:
       command: 'install'
       workingDir: '$(Build.SourcesDirectory)\browser'
+
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: |
+        Write-Output $pwd
+        
+        ((Get-Content -Path package.json -Raw) -replace 'build --configuration production','build --configuration production --base-href=/angular-demos-dv/') | Set-Content -Path package.json
+      workingDirectory: '$(Build.SourcesDirectory)\browser'
 
   - task: Npm@1
     inputs:
