@@ -13,7 +13,7 @@ name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 # TODO: Remove this section this out as soon as the state of the vnext branch is good enough
 resources:
   repositories:
-    - repository: selfi
+    - repository: self
       type: github
       ref: eebcb2a
       name: igniteui-angular-examples
