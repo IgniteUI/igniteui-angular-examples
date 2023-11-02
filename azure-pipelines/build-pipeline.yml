@@ -1,0 +1,33 @@
+trigger:
+  branches:
+    include:
+    - 'vnext'
+    - 'btraykov-azure-pipeline'
+
+# This pipeline is meant to run on changes pushed to the vnext branch only.
+# If it runs on PRs, it will create PRs to the destination repos' vnext branches - we don't want that.
+pr: none
+
+name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
+
+
+pool:
+  name: BuildAgentOnPrem
+
+jobs:
+- job:
+  steps:
+    # TODO get steps from TFS pipeline. We need to do an npm install for sure
+    # explicitly install npx (global?) and igniteui-cli - latest versionS 
+    # use npx to call igniteui-cli to apply the Angular schematic (trial -> licensed)
+    # follow steps & pray to Jesus
+
+    # 1. npm install
+    # 2. gulp updateBrowser
+    # 3. Copy-Item "$rootpath\@infragistics\*" -Destination "$rootpath" -Recurse # Move @infragistics\* folders up
+    # 4. ((Get-Content -Path package.json -Raw) -replace 'build --configuration production','build --configuration production --base-href=/angular-demos-dv/') | Set-Content -Path package.json
+    # 5. npm run build
+
+    # TODO Convert Octopus Deploy deployment to Azure release pipeline & pray to Jesus
+
+    #
