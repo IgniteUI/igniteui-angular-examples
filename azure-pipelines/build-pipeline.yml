@@ -25,6 +25,8 @@ pool:
 jobs:
 - job:
   displayName: Build
+  workspace:
+    clean: all
   steps:
   - checkout: self
     clean: true
