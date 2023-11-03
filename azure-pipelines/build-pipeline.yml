@@ -14,7 +14,7 @@ name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 resources:
   repositories:
     - repository: selfi
-      endpoint: '7826d0cd-89a0-45b7-835e-a43a504431d6'
+      endpoint: 'ESShared'
       type: github
       ref: eebcb2a # last known ref where the npm build is successful - need it to verify the newly-developed release process
       name: igniteui-angular-examples
