@@ -27,6 +27,7 @@ jobs:
   displayName: Build
   steps:
   - checkout: self
+    clean: true
     path: igniteui-angular-examples # this is explicitly required by the samples browser build process
 
   - task: NodeTool@0
