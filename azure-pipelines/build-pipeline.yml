@@ -30,6 +30,7 @@ jobs:
   steps:
   - checkout: self
     clean: true
+    persistCredentials: true
     path: igniteui-angular-examples # this is explicitly required by the samples browser build process
 
   - script: |
