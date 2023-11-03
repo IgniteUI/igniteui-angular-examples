@@ -13,7 +13,7 @@ name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 # TODO: Remove this section this out as soon as the state of the vnext branch is good enough
 resources:
   repositories:
-    - repository: self
+    - repository: selfi
       type: github
       ref: eebcb2a # last known ref where the npm build is successful - need it to verify the newly-developed release process
       name: igniteui-angular-examples
@@ -29,6 +29,12 @@ jobs:
     clean: resources
   steps:
   - checkout: self
+    enabled: false
+    clean: true
+    path: igniteui-angular-examples # this is explicitly required by the samples browser build process
+
+  - checkout: selfi
+    enabled: true
     clean: true
     path: igniteui-angular-examples # this is explicitly required by the samples browser build process
 
