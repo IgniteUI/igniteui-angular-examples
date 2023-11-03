@@ -35,7 +35,7 @@ jobs:
   - script: |
       cd $(build.sourcesdirectory)     
       git reset --hard eebcb2a
-    workingDirectory: $(Build.SourcesDirectory)\igniteui-angular-examples
+    workingDirectory: $(Build.SourcesDirectory)
   - task: NodeTool@0
     inputs:
       versionSource: 'spec'
@@ -45,7 +45,7 @@ jobs:
     displayName: 'npm install'
     inputs:
       command: 'install'
-      workingDir: '$(Build.SourcesDirectory)\igniteui-angular-examples\browser'
+      workingDir: '$(Build.SourcesDirectory)\browser'
 
   - task: PowerShell@2
     displayName: 'Apply very special configuration'
@@ -55,13 +55,13 @@ jobs:
         Write-Output $pwd
         
         ((Get-Content -Path package.json -Raw) -replace 'build --configuration production','build --configuration production --base-href=/angular-demos-dv/') | Set-Content -Path package.json
-      workingDirectory: '$(Build.SourcesDirectory)\igniteui-angular-examples\browser'
+      workingDirectory: '$(Build.SourcesDirectory)\browser'
 
   - task: Npm@1
     displayName: 'npm run build'
     inputs:
       command: 'custom'
-      workingDir: '$(Build.SourcesDirectory)\igniteui-angular-examples\browser'
+      workingDir: '$(Build.SourcesDirectory)\browser'
       customCommand: 'run build'
 
     # TODO get steps from TFS pipeline. We need to do an npm install for sure
