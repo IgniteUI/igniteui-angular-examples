@@ -11,13 +11,12 @@ pr: none
 name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 
 # TODO: Remove this section this out as soon as the state of the vnext branch is good enough
-resources:
-  repositories:
-    - repository: selfi
-      endpoint: 'ESShared'
-      type: github
-      ref: eebcb2a # last known ref where the npm build is successful - need it to verify the newly-developed release process
-      name: igniteui-angular-examples
+#resources:
+#  repositories:
+#    - repository: self
+#      type: github
+#      ref: eebcb2a # last known ref where the npm build is successful - need it to verify the newly-developed release process
+#      name: igniteui-angular-examples
   
 
 pool:
@@ -29,16 +28,14 @@ jobs:
   workspace:
     clean: resources
   steps:
-  - checkout: none
-    enabled: false
+  - checkout: self
     clean: true
     path: igniteui-angular-examples # this is explicitly required by the samples browser build process
 
-  - checkout: selfi
-    enabled: true
-    clean: true
-    path: igniteui-angular-examples # this is explicitly required by the samples browser build process
-
+  - script: |
+      cd $(build.sourcesdirectory)     
+      git reset --hard eebcb2a
+    workingDirectory: $(Build.SourcesDirectory)\igniteui-angular-examples
   - task: NodeTool@0
     inputs:
       versionSource: 'spec'
@@ -48,7 +45,7 @@ jobs:
     displayName: 'npm install'
     inputs:
       command: 'install'
-      workingDir: '$(Build.SourcesDirectory)\browser'
+      workingDir: '$(Build.SourcesDirectory)\igniteui-angular-examples\browser'
 
   - task: PowerShell@2
     displayName: 'Apply very special configuration'
@@ -58,13 +55,13 @@ jobs:
         Write-Output $pwd
         
         ((Get-Content -Path package.json -Raw) -replace 'build --configuration production','build --configuration production --base-href=/angular-demos-dv/') | Set-Content -Path package.json
-      workingDirectory: '$(Build.SourcesDirectory)\browser'
+      workingDirectory: '$(Build.SourcesDirectory)\igniteui-angular-examples\browser'
 
   - task: Npm@1
     displayName: 'npm run build'
     inputs:
       command: 'custom'
-      workingDir: '$(Build.SourcesDirectory)\browser'
+      workingDir: '$(Build.SourcesDirectory)\igniteui-angular-examples\browser'
       customCommand: 'run build'
 
     # TODO get steps from TFS pipeline. We need to do an npm install for sure
