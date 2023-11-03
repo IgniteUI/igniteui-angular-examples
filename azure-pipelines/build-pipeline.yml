@@ -34,8 +34,8 @@ jobs:
     path: igniteui-angular-examples # this is explicitly required by the samples browser build process
 
   - script: |
-      cd $(build.sourcesdirectory)     
-      git reset --hard eebcb2a
+      git fetch --all
+      git checkout eebcb2a
     workingDirectory: $(Build.SourcesDirectory)
   - task: NodeTool@0
     inputs:
