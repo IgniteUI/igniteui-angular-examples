@@ -70,8 +70,8 @@ jobs:
 
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: '$(Pipeline.Workspace)'
-      artifact: '$(Build.SourcesDirectory)\browser\dist'
+      targetPath: '$(Build.SourcesDirectory)\browser\dist'
+      artifact: 'dist'
       publishLocation: 'pipeline'
 
     # TODO get steps from TFS pipeline. We need to do an npm install for sure
