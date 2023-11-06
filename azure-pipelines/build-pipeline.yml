@@ -3,6 +3,7 @@ trigger:
     include:
     - 'vnext'
     - 'btraykov-azure-pipeline'
+    - 'master'
 
 # This pipeline is meant to run on changes pushed to the vnext branch only.
 # If it runs on PRs, it will create PRs to the destination repos' vnext branches - we don't want that.
@@ -11,13 +12,6 @@ pr: none
 name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 
 # TODO: Remove this section this out as soon as the state of the vnext branch is good enough
-#resources:
-#  repositories:
-#    - repository: self
-#      type: github
-#      ref: eebcb2a # last known ref where the npm build is successful - need it to verify the newly-developed release process
-#      name: igniteui-angular-examples
-  
 
 pool:
   name: BuildAgentOnPrem
@@ -35,8 +29,10 @@ jobs:
 
   - script: |
       git fetch --all
-      git checkout eebcb2a
+      git checkout 01c89a2
     workingDirectory: $(Build.SourcesDirectory)
+
+    # eebcb2a - last build-able commit in vnext
   - task: NodeTool@0
     inputs:
       versionSource: 'spec'
@@ -65,10 +61,24 @@ jobs:
       workingDir: '$(Build.SourcesDirectory)\browser'
       customCommand: 'run build'
 
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(Build.SourcesDirectory)\browser'
+      Contents: 'web.config'
+      TargetFolder: '$(Build.SourcesDirectory)\browser\dist'
+      OverWrite: true
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Pipeline.Workspace)'
+      artifact: '$(Build.SourcesDirectory)\browser\dist'
+      publishLocation: 'pipeline'
+
     # TODO get steps from TFS pipeline. We need to do an npm install for sure
     # explicitly install npx (global?) and igniteui-cli - latest versionS 
     # use npx to call igniteui-cli to apply the Angular schematic (trial -> licensed)
     # follow steps & pray to Jesus
+
 
     # 1. npm install
     # 2. gulp updateBrowser
