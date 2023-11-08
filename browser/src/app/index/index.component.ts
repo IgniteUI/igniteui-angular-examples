@@ -8,9 +8,9 @@ import BrowserInfo  from "../../browser-info.json";
 
 // note these section is auto-generated - do not change it:
 // Auto-Insert-Imports-RoutingData-Start
-import { RoutingDataForExcel } from "../../samples/excel/routing-data";
 import { RoutingDataForCharts } from "../../samples/charts/routing-data";
 import { RoutingDataForMaps } from "../../samples/maps/routing-data";
+import { RoutingDataForExcel } from "../../samples/excel/routing-data";
 import { RoutingDataForGauges } from "../../samples/gauges/routing-data";
 
 
@@ -47,9 +47,9 @@ export class IndexComponent implements OnInit, AfterViewInit {
     // note these section is auto-generated - do not change it:
     private modulesRoutes = [
         // Auto-Insert-SamplesRoutingArray-Start
-        { path: "excel", routesData: RoutingDataForExcel },
         { path: "charts", routesData: RoutingDataForCharts },
         { path: "maps", routesData: RoutingDataForMaps },
+        { path: "excel", routesData: RoutingDataForExcel },
         { path: "gauges", routesData: RoutingDataForGauges }
 
 
