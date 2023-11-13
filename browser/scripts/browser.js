@@ -304,6 +304,7 @@ exports.generateStats = function generateStats(cb) {
         combinedSamples.push(samplePath);
         break;
     }
+    combinedSamples.sort();
     stats.generate(cb, combinedSamples);
 }
 
@@ -971,12 +972,12 @@ function updateReadme(cb) {
         readmeNewFile = readmeNewFile.replace("{SampleDisplayName}", sample.SampleDisplayName);
         readmeNewFile = readmeNewFile.replace("{SampleFolderPath}", sample.SourcePath);
         readmeNewFile = readmeNewFile.replace("{SampleRoute}", sampleRoute);
-      
-        let readmeOldFile = ""; 
+
+        let readmeOldFile = "";
         if (fs.existsSync(readmePath)) {
-            readmeOldFile = fs.readFileSync(readmePath).toString(); 
+            readmeOldFile = fs.readFileSync(readmePath).toString();
         }
-        
+
         if (readmeNewFile !== readmeOldFile) {
             console.log('UPDATED: ' + readmePath)
             changeFilesCount++;
@@ -1032,7 +1033,7 @@ function sortByKeys(dependencies)
 {
     let keys = Object.keys(dependencies);
     keys.sort();
- 
+
     var sorted = {};
     for (const key of keys) {
         sorted[key] = dependencies[key];
@@ -1046,7 +1047,7 @@ function updateIG(cb) {
     // del.sync("./samples/**/node_modules/**", {force:true});
     // del.sync("./samples/**/node_modules", {force:true});
 
-    // NOTE: change this array with new version of packages 
+    // NOTE: change this array with new version of packages
     // and optionally use "@infragistics/" proget prefix, e.g.
     // { name: "@infragistics/igniteui-angular-charts", version: "23.2.18" }, // PROGET
     // { name:               "igniteui-angular-charts", version: "14.1.0" },  // NPM
@@ -1062,7 +1063,7 @@ function updateIG(cb) {
         { name: "igniteui-angular-spreadsheet-chart-adapter", version: "16.1.2-beta.0" },
         { name: "igniteui-angular-spreadsheet"              , version: "16.1.2-beta.0" },
         { name: "igniteui-angular-datasources"              , version: "16.1.2-beta.0" },
-        
+
         // these IG packages are sometimes updated:
         { name: "igniteui-webcomponents",            version: "4.5.0-beta.1" },
         { name: "igniteui-theming",                  version: "1.4.14" },
@@ -1137,13 +1138,13 @@ function updateIG(cb) {
             }
         }
 
-        let newContent = fileLines.join('\n'); 
+        let newContent = fileLines.join('\n');
         let jsonPackages = JSON.parse(newContent);
         // sort package dependencies by their names
         let sortPackages = sortByKeys(jsonPackages.dependencies);
         if (JSON.stringify(sortPackages) !== JSON.stringify(jsonPackages.dependencies)) {
             jsonPackages.dependencies = sortPackages;
-            jsonPackages.devDependencies = sortByKeys(jsonPackages.devDependencies); 
+            jsonPackages.devDependencies = sortByKeys(jsonPackages.devDependencies);
             newContent = JSON.stringify(jsonPackages, null, '  ') + '\n';
             fileChanged = true;
         }

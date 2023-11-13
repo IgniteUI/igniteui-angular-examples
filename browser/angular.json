@@ -7,6 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -16,7 +17,10 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js",
+              "hammerjs"
+            ],
             "assets": [
               "src/assets",
               "src/assets/favicon.ico"
@@ -45,7 +49,6 @@
                 }
               ],
               "optimization": true,
-              "aot": true,
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
@@ -74,21 +77,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "my-app:build"
+            "buildTarget": "my-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "my-app:build:production"
+              "buildTarget": "my-app:build:production"
             },
             "es5": {
-              "browserTarget": "my-app:build:es5"
+              "buildTarget": "my-app:build:es5"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "my-app:build"
+            "buildTarget": "my-app:build"
           }
         },
         "test": {
