@@ -48,7 +48,7 @@
     "igniteui-angular-maps": "17.0.0-beta.0",
     "igniteui-angular-spreadsheet": "17.0.0-beta.0",
     "igniteui-angular-spreadsheet-chart-adapter": "17.0.0-beta.0",
-    "igniteui-theming": "^3.0.3",
+    "igniteui-theming": "^3.3.1",
     "igniteui-webcomponents": "4.5.0-beta.1",
     "immediate": "3.2.3",
     "intl": "1.2.5",
