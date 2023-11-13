@@ -6,11 +6,23 @@
 */
 {
   "compilerOptions": {
-    "target": "es2022", 
-    "module": "es2020",
-    "useDefineForClassFields": false
+    "sourceMap": false,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "target": "ES2022", 
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
-
+  "lib": [
+    "ES2022",
+    "dom"
+  ],
+  "useDefineForClassFields": false,
   "files": [],
   "references": [
     {
