@@ -1087,7 +1087,7 @@ function updateIG(cb) {
         { name: "core-js",              version: "3.21.0" },
         { name: "hammerjs",             version: "2.0.8" },
         { name: "intl",                 version: "1.2.5" },
-        { name: "jszip",                version: "3.7.1" },
+        { name: "jszip",                version: "3.8.0" },
         { name: "rxjs",                 version: "6.6.7" },
         { name: "tslib",                version: "2.3.1" },
         { name: "web-animations-js",    version: "2.3.2" },
