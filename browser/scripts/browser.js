@@ -1002,26 +1002,35 @@ function makeDirectoryFor(filePath) {
     // fs.mkdir(sampleOutputFolder + 'src', { recursive: true }, (err) => { if (err) throw err; });
 }
 
+// copies files from samples/templates folder to samples, e.g. charts
 function updateSamples(cb) {
-
     log('updating samples files... ');
 
     var templateFiles = [
-        "/.stackblitzrc",
-        // "/src/environments/environment.ts",
-        // "/src/environments/environment.prod.ts"
+        ".stackblitzrc",
+        "angular.json",
+        "tsconfig.json",
+        "src/environments/environment.ts",
+        "src/environments/environment.prod.ts",
+        "src/config/tsconfig-es5.app.json",
+        "src/config/tsconfig.app.json",
+        "src/config/tsconfig.base.json",
+        "src/config/tsconfig.spec.json",
+        "src/config/tsconfig.worker.json",
+        // "src/main.ts",
+        // "src/index.html",
+        "src/polyfills.ts",
+        // "src/styles.scss",
+        "src/typings.d.ts",
     ];
 
     for (const templatePath of templateFiles) {
-
-        var templateFile = fs.readFileSync("../samples/templates" + templatePath, "utf8");
-
+        var templateFile = fs.readFileSync("../samples/templates/" + templatePath, "utf8");
         for (const sample of samplesDatabase) {
-            let samplePath = '../samples/' + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder;
-
+            let samplePath = '../samples/' + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder + "/";
             let outputPath = samplePath + templatePath;
+            // log(outputPath);
             makeDirectoryFor(outputPath)
-
             fs.writeFileSync(outputPath, templateFile);
         }
     }
@@ -1053,35 +1062,50 @@ function updateIG(cb) {
     // { name:               "igniteui-angular-charts", version: "14.1.0" },  // NPM
     let packageUpgrades = [
         // these IG packages are often updated:
-        { name: "igniteui-angular-core"                     , version: "16.1.2-beta.0" },
-        { name: "igniteui-angular-charts"                   , version: "16.1.2-beta.0" },
-        { name: "igniteui-angular-excel"                    , version: "16.1.2-beta.0" },
-        { name: "igniteui-angular-gauges"                   , version: "16.1.2-beta.0" },
-        { name: "igniteui-angular-inputs"                   , version: "16.1.2-beta.0" },
-        { name: "igniteui-angular-layouts"                  , version: "16.1.2-beta.0" },
-        { name: "igniteui-angular-maps"                     , version: "16.1.2-beta.0" },
-        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "16.1.2-beta.0" },
-        { name: "igniteui-angular-spreadsheet"              , version: "16.1.2-beta.0" },
-        { name: "igniteui-angular-datasources"              , version: "16.1.2-beta.0" },
+        { name: "igniteui-angular-core"                     , version: "17.0.0" },
+        { name: "igniteui-angular-charts"                   , version: "17.0.0" },
+        { name: "igniteui-angular-excel"                    , version: "17.0.0" },
+        { name: "igniteui-angular-gauges"                   , version: "17.0.0" },
+        { name: "igniteui-angular-inputs"                   , version: "17.0.0" },
+        { name: "igniteui-angular-layouts"                  , version: "17.0.0" },
+        { name: "igniteui-angular-maps"                     , version: "17.0.0" },
+        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "17.0.0" },
+        { name: "igniteui-angular-spreadsheet"              , version: "17.0.0" },
+        { name: "igniteui-angular-datasources"              , version: "17.0.0" },
 
         // these IG packages are sometimes updated:
-        { name: "igniteui-webcomponents",            version: "4.5.0-beta.1" },
-        { name: "igniteui-theming",                  version: "1.4.14" },
-        { name: "igniteui-angular",                  version: "16.0.7" },
-        // { name: "@angular/animations",               version: "14.0.4" },
-        // { name: "@angular/common",                   version: "14.0.4" },
-        // { name: "@angular/compiler",                 version: "14.0.4" },
-        // { name: "@angular/core",                     version: "14.0.4" },
-        // { name: "@angular/forms",                    version: "14.0.4" },
-        // { name: "@angular/platform-browser",         version: "14.0.4" },
-        // { name: "@angular/platform-browser-dynamic", version: "14.0.4" },
-        // { name: "core-js", version: "3.21.0"},
+        { name: "igniteui-webcomponents",            version: "4.5.0" },
+        { name: "igniteui-theming",                  version: "3.3.1" },
+        { name: "igniteui-angular",                  version: "17.0.0" },
+        { name: "@angular/animations",               version: "17.0.0" },
+        { name: "@angular/common",                   version: "17.0.0" },
+        { name: "@angular/compiler",                 version: "17.0.0" },
+        { name: "@angular/core",                     version: "17.0.0" },
+        { name: "@angular/forms",                    version: "17.0.0" },
+        { name: "@angular/platform-browser",         version: "17.0.0" },
+        { name: "@angular/platform-browser-dynamic", version: "17.0.0" },
+        // { name: "classlist-js", version: "1.1.20150312" },
+        // { name: "core-js", version: "3.21.0" },
+        // { name: "hammerjs", version: "2.0.8" },
+        // { name: "intl", version: "1.2.5" },
+        // { name: "jszip", version: "3.7.1" },
+        // { name: "rxjs", version: "6.6.7" },
+        // { name: "tslib", version: "2.3.1" },
+        // { name: "web-animations-js", version: "2.3.2" },
+        { name: "zone.js", version: "~0.14.1" },
         //  dev packages:
-        // { name: "@angular-devkit/build-angular", version: "14.0.4"},
-        // { name: "@angular/cli", version: "14.0.4"},
-        // { name: "@angular/compiler-cli", version: "14.0.4"},
-        // { name: "@angular/language-service", version: "14.0.4"},
-        // { name: "typescript", version: "4.7.4"},
+        { name: "@angular/cli",                     version: "17.0.0"},
+        { name: "@angular/compiler-cli",            version: "17.0.0"},
+        { name: "@angular/language-service",        version: "17.0.0"},
+        { name: "@angular-devkit/build-angular",    version: "17.0.0"},
+        // { name: "@types/node",                      version: "14.14.2"},
+        // { name: "codelyzer",                        version: "6.0.2"},
+        // { name: "jasmine-core",                     version: "3.7.1"},
+        // { name: "jasmine-spec-reporter",            version: "~4.2.1"},
+        // { name: "sass.js",                          version: "0.11.1"},
+        // { name: "tslint",                           version: "~6.1.3"},
+        // { name: "ts-node",                          version: "9.1.1"},
+        { name: "typescript",                       version: "5.2.2"},
     ];
 
     // NOTE you can comment out strings in this array to run these function only on a subset of samples
@@ -1264,3 +1288,5 @@ function logVersionIgniteUI(cb) {
     fs.writeFileSync(outputPath, outputText);
     cb();
 } exports.logVersionIgniteUI = logVersionIgniteUI;
+
+
