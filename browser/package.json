@@ -35,7 +35,7 @@
     "ajv": "8.6.2",
     "angular-in-memory-web-api": "0.9.0",
     "classlist.js": "1.1.20150312",
-    "core-js": "2.6.2",
+    "core-js": "3.21.0",
     "file-saver": "2.0.5",
     "hammerjs": "2.0.8",
     "igniteui-angular": "17.0.0",
