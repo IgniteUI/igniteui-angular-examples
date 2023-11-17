@@ -11,7 +11,7 @@ pr: none
 
 name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 
-# TODO: Remove this section this out as soon as the state of the vnext branch is good enough
+# TODO: Remove this section out as soon as the state of the vnext branch is good enough
 
 pool:
   name: BuildAgentOnPrem
@@ -74,18 +74,5 @@ jobs:
       artifact: 'dist'
       publishLocation: 'pipeline'
 
-    # TODO get steps from TFS pipeline. We need to do an npm install for sure
-    # explicitly install npx (global?) and igniteui-cli - latest versionS 
-    # use npx to call igniteui-cli to apply the Angular schematic (trial -> licensed)
-    # follow steps & pray to Jesus
-
-
-    # 1. npm install
-    # 2. gulp updateBrowser
-    # 3. Copy-Item "$rootpath\@infragistics\*" -Destination "$rootpath" -Recurse # Move @infragistics\* folders up
-    # 4. ((Get-Content -Path package.json -Raw) -replace 'build --configuration production','build --configuration production --base-href=/angular-demos-dv/') | Set-Content -Path package.json
-    # 5. npm run build
-
-    # TODO Convert Octopus Deploy deployment to Azure release pipeline & pray to Jesus
-
-    #
+    # TODO Once the project can adhere to the IG Angular schematic, 
+    #  use it or use npx to call igniteui-cli to apply the Angular schematic (trial -> licensed)
