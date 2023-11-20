@@ -11,8 +11,6 @@ pr: none
 
 name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 
-
-
 pool:
   name: BuildAgentOnPrem
 
@@ -27,13 +25,6 @@ jobs:
     persistCredentials: true
     path: igniteui-angular-examples # this is explicitly required by the samples browser build process
 
-# TODO: Remove this section out as soon as the state of the vnext branch is good enough
-#  - script: |
-#      git fetch --all
-#      git checkout 01c89a2
-#    workingDirectory: $(Build.SourcesDirectory)
-
-    # eebcb2a - last build-able commit in vnext
   - task: NodeTool@0
     inputs:
       versionSource: 'spec'
