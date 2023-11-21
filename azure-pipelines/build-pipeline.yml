@@ -1,0 +1,70 @@
+trigger:
+  branches:
+    include:
+    - 'vnext'
+    - 'btraykov-azure-pipeline'
+    - 'master'
+
+# This pipeline is meant to run on changes pushed to the vnext branch only.
+# If it runs on PRs, it will create PRs to the destination repos' vnext branches - we don't want that.
+pr: none
+
+name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
+
+pool:
+  name: BuildAgentOnPrem
+
+jobs:
+- job:
+  displayName: Build
+  workspace:
+    clean: resources
+  steps:
+  - checkout: self
+    clean: true
+    persistCredentials: true
+    path: igniteui-angular-examples # this is explicitly required by the samples browser build process
+
+  - task: NodeTool@0
+    inputs:
+      versionSource: 'spec'
+      versionSpec: '16.x'
+
+  - task: Npm@1
+    displayName: 'npm install'
+    inputs:
+      command: 'install'
+      workingDir: '$(Build.SourcesDirectory)\browser'
+
+  - task: PowerShell@2
+    displayName: 'Apply very special configuration'
+    inputs:
+      targetType: 'inline'
+      script: |
+        Write-Output $pwd
+        
+        ((Get-Content -Path package.json -Raw) -replace 'build --configuration production','build --configuration production --base-href=/angular-demos-dv/') | Set-Content -Path package.json
+      workingDirectory: '$(Build.SourcesDirectory)\browser'
+
+  - task: Npm@1
+    displayName: 'npm run build'
+    inputs:
+      command: 'custom'
+      workingDir: '$(Build.SourcesDirectory)\browser'
+      customCommand: 'run build'
+
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(Build.SourcesDirectory)\browser'
+      Contents: 'web.config'
+      TargetFolder: '$(Build.SourcesDirectory)\browser\dist'
+      OverWrite: true
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Build.SourcesDirectory)\browser\dist'
+      artifact: 'dist'
+      publishLocation: 'pipeline'
+
+    # TODO Once the project can adhere to the IG Angular schematic, 
+    #  use it or use npx to call igniteui-cli to apply the Angular schematic (trial -> licensed)
