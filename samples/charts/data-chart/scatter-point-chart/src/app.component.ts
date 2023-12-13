@@ -9,25 +9,22 @@ import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, Ig
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("legend", { static: true } )
-    private legend: IgxLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("xAxis", { static: true } )
-    private xAxis: IgxNumericXAxisComponent
-    @ViewChild("yAxis", { static: true } )
-    private yAxis: IgxNumericYAxisComponent
-    @ViewChild("scatterSeries1", { static: true } )
-    private scatterSeries1: IgxScatterSeriesComponent
-    @ViewChild("scatterSeries2", { static: true } )
-    private scatterSeries2: IgxScatterSeriesComponent
-
+	@ViewChild("legend", { static: true } )
+	private legend: IgxLegendComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDataChartComponent
+	@ViewChild("xAxis", { static: true } )
+	private xAxis: IgxNumericXAxisComponent
+	@ViewChild("yAxis", { static: true } )
+	private yAxis: IgxNumericYAxisComponent
+	@ViewChild("scatterSeries1", { static: true } )
+	private scatterSeries1: IgxScatterSeriesComponent
+	@ViewChild("scatterSeries2", { static: true } )
+	private scatterSeries2: IgxScatterSeriesComponent
     private _countryDemographicEurope: CountryDemographicEurope = null;
     public get countryDemographicEurope(): CountryDemographicEurope {
         if (this._countryDemographicEurope == null)
@@ -45,6 +42,14 @@ export class AppComponent {
         }
         return this._countryDemographicAfrican;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

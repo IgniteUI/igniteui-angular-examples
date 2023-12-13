@@ -14,21 +14,18 @@ defineAllComponents();
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("propertyEditorPanel1", { static: true } )
-    private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-    @ViewChild("xAxisInvertedEditor", { static: true } )
-    private xAxisInvertedEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("yAxisInvertedEditor", { static: true } )
-    private yAxisInvertedEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
-
+	@ViewChild("propertyEditorPanel1", { static: true } )
+	private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+	@ViewChild("xAxisInvertedEditor", { static: true } )
+	private xAxisInvertedEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("yAxisInvertedEditor", { static: true } )
+	private yAxisInvertedEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxCategoryChartComponent
     private _countryRenewableElectricity: CountryRenewableElectricity = null;
     public get countryRenewableElectricity(): CountryRenewableElectricity {
         if (this._countryRenewableElectricity == null)
@@ -48,6 +45,14 @@ export class AppComponent {
         }
         return this._componentRenderer;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

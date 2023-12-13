@@ -8,25 +8,22 @@ import { IgxDataChartComponent, IgxCategoryYAxisComponent, IgxNumericXAxisCompon
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("yAxis", { static: true } )
-    private yAxis: IgxCategoryYAxisComponent
-    @ViewChild("xAxis", { static: true } )
-    private xAxis: IgxNumericXAxisComponent
-    @ViewChild("categoryHighlightLayer", { static: true } )
-    private categoryHighlightLayer: IgxCategoryHighlightLayerComponent
-    @ViewChild("barSeries1", { static: true } )
-    private barSeries1: IgxBarSeriesComponent
-    @ViewChild("tooltips", { static: true } )
-    private tooltips: IgxDataToolTipLayerComponent
-
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDataChartComponent
+	@ViewChild("yAxis", { static: true } )
+	private yAxis: IgxCategoryYAxisComponent
+	@ViewChild("xAxis", { static: true } )
+	private xAxis: IgxNumericXAxisComponent
+	@ViewChild("categoryHighlightLayer", { static: true } )
+	private categoryHighlightLayer: IgxCategoryHighlightLayerComponent
+	@ViewChild("barSeries1", { static: true } )
+	private barSeries1: IgxBarSeriesComponent
+	@ViewChild("tooltips", { static: true } )
+	private tooltips: IgxDataToolTipLayerComponent
     private _onlineShoppingSearches: OnlineShoppingSearches = null;
     public get onlineShoppingSearches(): OnlineShoppingSearches {
         if (this._onlineShoppingSearches == null)
@@ -35,6 +32,14 @@ export class AppComponent {
         }
         return this._onlineShoppingSearches;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

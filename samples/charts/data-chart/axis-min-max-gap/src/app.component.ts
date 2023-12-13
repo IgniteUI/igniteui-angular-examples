@@ -8,25 +8,22 @@ import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisCompon
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("xAxis", { static: true } )
-    private xAxis: IgxCategoryXAxisComponent
-    @ViewChild("yAxis", { static: true } )
-    private yAxis: IgxNumericYAxisComponent
-    @ViewChild("categoryHighlightLayer", { static: true } )
-    private categoryHighlightLayer: IgxCategoryHighlightLayerComponent
-    @ViewChild("columnSeries1", { static: true } )
-    private columnSeries1: IgxColumnSeriesComponent
-    @ViewChild("tooltips", { static: true } )
-    private tooltips: IgxDataToolTipLayerComponent
-
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDataChartComponent
+	@ViewChild("xAxis", { static: true } )
+	private xAxis: IgxCategoryXAxisComponent
+	@ViewChild("yAxis", { static: true } )
+	private yAxis: IgxNumericYAxisComponent
+	@ViewChild("categoryHighlightLayer", { static: true } )
+	private categoryHighlightLayer: IgxCategoryHighlightLayerComponent
+	@ViewChild("columnSeries1", { static: true } )
+	private columnSeries1: IgxColumnSeriesComponent
+	@ViewChild("tooltips", { static: true } )
+	private tooltips: IgxDataToolTipLayerComponent
     private _temperatureAverageData: TemperatureAverageData = null;
     public get temperatureAverageData(): TemperatureAverageData {
         if (this._temperatureAverageData == null)
@@ -35,6 +32,14 @@ export class AppComponent {
         }
         return this._temperatureAverageData;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 
