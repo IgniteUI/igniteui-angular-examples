@@ -8,17 +8,14 @@ import { IgxDataLegendComponent, IgxCategoryChartComponent } from 'igniteui-angu
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("legend", { static: true } )
-    private legend: IgxDataLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
-
+	@ViewChild("legend", { static: true } )
+	private legend: IgxDataLegendComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxCategoryChartComponent
     private _selectableData: SelectableData = null;
     public get selectableData(): SelectableData {
         if (this._selectableData == null)
@@ -28,34 +25,41 @@ export class AppComponent {
         return this._selectableData;
     }
 
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
 
-    public categoryChartCustomSelectionPointerDown(e: any): void {
+	public ngAfterViewInit(): void
+	{
+	}
 
-        let oldItem = e.args.item as SelectableDataItem;
+	public categoryChartCustomSelectionPointerDown(e: any): void {
 
-        if (oldItem === null) return;
+	    let oldItem = e.args.item as SelectableDataItem;
 
-        let newItem: SelectableDataItem = new SelectableDataItem({
-            category: oldItem.category,
-            dataValue: oldItem.dataValue,
-            selectedValue: oldItem.selectedValue
-        });
+	    if (oldItem === null) return;
 
-        var selectedIndex = -1;
-        for (var i = 0; i < this.selectableData.length; i++) {
-            if (oldItem.category === this.selectableData[i].category) {
-                selectedIndex = i;
-                break;
-            }
-        }
+	    let newItem: SelectableDataItem = new SelectableDataItem({
+	        category: oldItem.category,
+	        dataValue: oldItem.dataValue,
+	        selectedValue: oldItem.selectedValue
+	    });
 
-        if (oldItem.selectedValue === oldItem.dataValue)
-            newItem.selectedValue = null;
-        else
-            newItem.selectedValue = newItem.dataValue;
+	    var selectedIndex = -1;
+	    for (var i = 0; i < this.selectableData.length; i++) {
+	        if (oldItem.category === this.selectableData[i].category) {
+	            selectedIndex = i;
+	            break;
+	        }
+	    }
 
-        this.chart.notifySetItem(this.selectableData, selectedIndex, oldItem, newItem);
-    }
+	    if (oldItem.selectedValue === oldItem.dataValue)
+	        newItem.selectedValue = null;
+	    else
+	        newItem.selectedValue = newItem.dataValue;
+
+	    this.chart.notifySetItem(this.selectableData, selectedIndex, oldItem, newItem);
+	}
 
 }
 

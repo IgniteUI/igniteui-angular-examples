@@ -14,29 +14,26 @@ defineAllComponents();
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("propertyEditorPanel1", { static: true } )
-    private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-    @ViewChild("firstMarkerVisibilityEditor", { static: true } )
-    private firstMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("highMarkerVisibilityEditor", { static: true } )
-    private highMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("lowMarkerVisibilityEditor", { static: true } )
-    private lowMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("negativeMarkerVisibilityEditor", { static: true } )
-    private negativeMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("lastMarkerVisibilityEditor", { static: true } )
-    private lastMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("markerVisibilityEditor", { static: true } )
-    private markerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxSparklineComponent
-
+	@ViewChild("propertyEditorPanel1", { static: true } )
+	private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+	@ViewChild("firstMarkerVisibilityEditor", { static: true } )
+	private firstMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("highMarkerVisibilityEditor", { static: true } )
+	private highMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("lowMarkerVisibilityEditor", { static: true } )
+	private lowMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("negativeMarkerVisibilityEditor", { static: true } )
+	private negativeMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("lastMarkerVisibilityEditor", { static: true } )
+	private lastMarkerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("markerVisibilityEditor", { static: true } )
+	private markerVisibilityEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxSparklineComponent
     private _sparklineProfitData: SparklineProfitData = null;
     public get sparklineProfitData(): SparklineProfitData {
         if (this._sparklineProfitData == null)
@@ -56,6 +53,14 @@ export class AppComponent {
         }
         return this._componentRenderer;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

@@ -8,17 +8,14 @@ import { IgxItemLegendComponent, IgxPieChartComponent } from 'igniteui-angular-c
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("legend", { static: true } )
-    private legend: IgxItemLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxPieChartComponent
-
+	@ViewChild("legend", { static: true } )
+	private legend: IgxItemLegendComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxPieChartComponent
     private _energyGlobalDemand: EnergyGlobalDemand = null;
     public get energyGlobalDemand(): EnergyGlobalDemand {
         if (this._energyGlobalDemand == null)
@@ -27,6 +24,14 @@ export class AppComponent {
         }
         return this._energyGlobalDemand;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

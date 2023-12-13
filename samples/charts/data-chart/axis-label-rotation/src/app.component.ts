@@ -14,27 +14,24 @@ defineAllComponents();
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("propertyEditorPanel1", { static: true } )
-    private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-    @ViewChild("shouldConsiderAutoRotationForInitialLabels", { static: true } )
-    private shouldConsiderAutoRotationForInitialLabels: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("autoMarginAndAngleUpdateMode", { static: true } )
-    private autoMarginAndAngleUpdateMode: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("xAxis", { static: true } )
-    private xAxis: IgxCategoryXAxisComponent
-    @ViewChild("yAxis", { static: true } )
-    private yAxis: IgxNumericYAxisComponent
-    @ViewChild("colSeries1", { static: true } )
-    private colSeries1: IgxColumnSeriesComponent
-
+	@ViewChild("propertyEditorPanel1", { static: true } )
+	private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+	@ViewChild("shouldConsiderAutoRotationForInitialLabels", { static: true } )
+	private shouldConsiderAutoRotationForInitialLabels: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("autoMarginAndAngleUpdateMode", { static: true } )
+	private autoMarginAndAngleUpdateMode: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDataChartComponent
+	@ViewChild("xAxis", { static: true } )
+	private xAxis: IgxCategoryXAxisComponent
+	@ViewChild("yAxis", { static: true } )
+	private yAxis: IgxNumericYAxisComponent
+	@ViewChild("colSeries1", { static: true } )
+	private colSeries1: IgxColumnSeriesComponent
     private _temperatureAverageDataLongLabels: TemperatureAverageDataLongLabels = null;
     public get temperatureAverageDataLongLabels(): TemperatureAverageDataLongLabels {
         if (this._temperatureAverageDataLongLabels == null)
@@ -55,6 +52,14 @@ export class AppComponent {
         }
         return this._componentRenderer;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

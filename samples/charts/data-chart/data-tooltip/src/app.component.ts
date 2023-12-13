@@ -9,29 +9,26 @@ import { IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisCompone
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("xAxis", { static: true } )
-    private xAxis: IgxNumericXAxisComponent
-    @ViewChild("yAxis", { static: true } )
-    private yAxis: IgxNumericYAxisComponent
-    @ViewChild("bubbleSeries1", { static: true } )
-    private bubbleSeries1: IgxBubbleSeriesComponent
-    @ViewChild("sizeScale1", { static: true } )
-    private sizeScale1: IgxSizeScaleComponent
-    @ViewChild("bubbleSeries2", { static: true } )
-    private bubbleSeries2: IgxBubbleSeriesComponent
-    @ViewChild("sizeScale2", { static: true } )
-    private sizeScale2: IgxSizeScaleComponent
-    @ViewChild("dataToolTipLayer", { static: true } )
-    private dataToolTipLayer: IgxDataToolTipLayerComponent
-
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDataChartComponent
+	@ViewChild("xAxis", { static: true } )
+	private xAxis: IgxNumericXAxisComponent
+	@ViewChild("yAxis", { static: true } )
+	private yAxis: IgxNumericYAxisComponent
+	@ViewChild("bubbleSeries1", { static: true } )
+	private bubbleSeries1: IgxBubbleSeriesComponent
+	@ViewChild("sizeScale1", { static: true } )
+	private sizeScale1: IgxSizeScaleComponent
+	@ViewChild("bubbleSeries2", { static: true } )
+	private bubbleSeries2: IgxBubbleSeriesComponent
+	@ViewChild("sizeScale2", { static: true } )
+	private sizeScale2: IgxSizeScaleComponent
+	@ViewChild("dataToolTipLayer", { static: true } )
+	private dataToolTipLayer: IgxDataToolTipLayerComponent
     private _countryDemographicAfrican: CountryDemographicAfrican = null;
     public get countryDemographicAfrican(): CountryDemographicAfrican {
         if (this._countryDemographicAfrican == null)
@@ -49,6 +46,14 @@ export class AppComponent {
         }
         return this._countryDemographicEurope;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

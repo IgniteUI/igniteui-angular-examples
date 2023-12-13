@@ -14,25 +14,22 @@ defineAllComponents();
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("propertyEditorPanel1", { static: true } )
-    private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-    @ViewChild("toolbar", { static: true } )
-    private toolbar: IgxToolbarComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("xAxis", { static: true } )
-    private xAxis: IgxCategoryXAxisComponent
-    @ViewChild("yAxis", { static: true } )
-    private yAxis: IgxNumericYAxisComponent
-    @ViewChild("lineSeries1", { static: true } )
-    private lineSeries1: IgxLineSeriesComponent
-
+	@ViewChild("propertyEditorPanel1", { static: true } )
+	private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+	@ViewChild("toolbar", { static: true } )
+	private toolbar: IgxToolbarComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDataChartComponent
+	@ViewChild("xAxis", { static: true } )
+	private xAxis: IgxCategoryXAxisComponent
+	@ViewChild("yAxis", { static: true } )
+	private yAxis: IgxNumericYAxisComponent
+	@ViewChild("lineSeries1", { static: true } )
+	private lineSeries1: IgxLineSeriesComponent
     private _countryRenewableElectricity: CountryRenewableElectricity = null;
     public get countryRenewableElectricity(): CountryRenewableElectricity {
         if (this._countryRenewableElectricity == null)
@@ -59,6 +56,14 @@ export class AppComponent {
         }
         return this._componentRenderer;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

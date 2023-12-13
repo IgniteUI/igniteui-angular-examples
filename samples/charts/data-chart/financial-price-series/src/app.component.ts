@@ -8,23 +8,20 @@ import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisCompon
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("xAxis", { static: true } )
-    private xAxis: IgxCategoryXAxisComponent
-    @ViewChild("yAxis", { static: true } )
-    private yAxis: IgxNumericYAxisComponent
-    @ViewChild("series1", { static: true } )
-    private series1: IgxFinancialPriceSeriesComponent
-    @ViewChild("tooltip", { static: true } )
-    private tooltip: IgxDataToolTipLayerComponent
-
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDataChartComponent
+	@ViewChild("xAxis", { static: true } )
+	private xAxis: IgxCategoryXAxisComponent
+	@ViewChild("yAxis", { static: true } )
+	private yAxis: IgxNumericYAxisComponent
+	@ViewChild("series1", { static: true } )
+	private series1: IgxFinancialPriceSeriesComponent
+	@ViewChild("tooltip", { static: true } )
+	private tooltip: IgxDataToolTipLayerComponent
     private _stock2Years: Stock2Years = null;
     public get stock2Years(): Stock2Years {
         if (this._stock2Years == null)
@@ -33,6 +30,14 @@ export class AppComponent {
         }
         return this._stock2Years;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

@@ -8,15 +8,12 @@ import { IgxCategoryChartComponent } from 'igniteui-angular-charts';
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
-
+	@ViewChild("chart", { static: true } )
+	private chart: IgxCategoryChartComponent
     private _olympicMedalsTopCountries: OlympicMedalsTopCountries = null;
     public get olympicMedalsTopCountries(): OlympicMedalsTopCountries {
         if (this._olympicMedalsTopCountries == null)
@@ -25,6 +22,14 @@ export class AppComponent {
         }
         return this._olympicMedalsTopCountries;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

@@ -17,21 +17,18 @@ defineAllComponents();
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("legend", { static: true } )
-    private legend: IgxLegendComponent
-    @ViewChild("propertyEditor", { static: true } )
-    private propertyEditor: IgxPropertyEditorPanelComponent
-    @ViewChild("valueListEditor", { static: true } )
-    private valueListEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
-
+	@ViewChild("legend", { static: true } )
+	private legend: IgxLegendComponent
+	@ViewChild("propertyEditor", { static: true } )
+	private propertyEditor: IgxPropertyEditorPanelComponent
+	@ViewChild("valueListEditor", { static: true } )
+	private valueListEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxCategoryChartComponent
     private _countryRenewableElectricity: CountryRenewableElectricity = null;
     public get countryRenewableElectricity(): CountryRenewableElectricity {
         if (this._countryRenewableElectricity == null)
@@ -53,13 +50,21 @@ export class AppComponent {
         return this._componentRenderer;
     }
 
-    public editorChangeUpdateValueLines({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
-        var item = sender as IgxPropertyEditorPropertyDescriptionComponent;
-        var chart = this.chart;
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
 
-        var valueLineType = item.primitiveValue;
-        chart.valueLines = valueLineType;
-    }
+	public ngAfterViewInit(): void
+	{
+	}
+
+	public editorChangeUpdateValueLines({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
+	    var item = sender as IgxPropertyEditorPropertyDescriptionComponent;
+	    var chart = this.chart;
+
+	    var valueLineType = item.primitiveValue;
+	    chart.valueLines = valueLineType;
+	}
 
 }
 

@@ -9,15 +9,12 @@ import { IgxSparklineComponent } from 'igniteui-angular-charts';
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("chart", { static: true } )
-    private chart: IgxSparklineComponent
-
+	@ViewChild("chart", { static: true } )
+	private chart: IgxSparklineComponent
     private _sparklineMixedData: SparklineMixedData = null;
     public get sparklineMixedData(): SparklineMixedData {
         if (this._sparklineMixedData == null)
@@ -37,6 +34,14 @@ export class AppComponent {
         }
         return this._componentRenderer;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

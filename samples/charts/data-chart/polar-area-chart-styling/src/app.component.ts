@@ -8,25 +8,22 @@ import { IgxLegendComponent, IgxDataChartComponent, IgxNumericAngleAxisComponent
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("legend", { static: true } )
-    private legend: IgxLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("angleAxis", { static: true } )
-    private angleAxis: IgxNumericAngleAxisComponent
-    @ViewChild("radiusAxis", { static: true } )
-    private radiusAxis: IgxNumericRadiusAxisComponent
-    @ViewChild("polarAreaSeries1", { static: true } )
-    private polarAreaSeries1: IgxPolarAreaSeriesComponent
-    @ViewChild("polarAreaSeries2", { static: true } )
-    private polarAreaSeries2: IgxPolarAreaSeriesComponent
-
+	@ViewChild("legend", { static: true } )
+	private legend: IgxLegendComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDataChartComponent
+	@ViewChild("angleAxis", { static: true } )
+	private angleAxis: IgxNumericAngleAxisComponent
+	@ViewChild("radiusAxis", { static: true } )
+	private radiusAxis: IgxNumericRadiusAxisComponent
+	@ViewChild("polarAreaSeries1", { static: true } )
+	private polarAreaSeries1: IgxPolarAreaSeriesComponent
+	@ViewChild("polarAreaSeries2", { static: true } )
+	private polarAreaSeries2: IgxPolarAreaSeriesComponent
     private _boatSailingData: BoatSailingData = null;
     public get boatSailingData(): BoatSailingData {
         if (this._boatSailingData == null)
@@ -35,6 +32,14 @@ export class AppComponent {
         }
         return this._boatSailingData;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

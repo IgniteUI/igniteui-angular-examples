@@ -9,19 +9,16 @@ import { IgxDoughnutChartComponent, IgxRingSeriesComponent } from 'igniteui-angu
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDoughnutChartComponent
-    @ViewChild("series1", { static: true } )
-    private series1: IgxRingSeriesComponent
-    @ViewChild("series2", { static: true } )
-    private series2: IgxRingSeriesComponent
-
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDoughnutChartComponent
+	@ViewChild("series1", { static: true } )
+	private series1: IgxRingSeriesComponent
+	@ViewChild("series2", { static: true } )
+	private series2: IgxRingSeriesComponent
     private _calendarSeasons: CalendarSeasons = null;
     public get calendarSeasons(): CalendarSeasons {
         if (this._calendarSeasons == null)
@@ -39,6 +36,14 @@ export class AppComponent {
         }
         return this._calendarMonths;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 
