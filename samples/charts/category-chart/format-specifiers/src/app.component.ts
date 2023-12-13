@@ -25,13 +25,14 @@ export class AppComponent {
         if (this._numberFormatSpecifier1 == null)
         {
             let numberFormatSpecifier1: IgxNumberFormatSpecifier[] = [];
-            var numberFormatSpecifier2 = new IgxNumberFormatSpecifier();
-            numberFormatSpecifier2.style = "currency";
-            numberFormatSpecifier2.currency = "USD";
-            numberFormatSpecifier2.currencyDisplay = "symbol";
-            numberFormatSpecifier2.minimumFractionDigits = 0;
+            var numberFormatSpecifier1 = new IgxNumberFormatSpecifier();
 
-            numberFormatSpecifier1.push(numberFormatSpecifier2)
+            numberFormatSpecifier1.style = "currency";
+            numberFormatSpecifier1.currency = "USD";
+            numberFormatSpecifier1.currencyDisplay = "symbol";
+            numberFormatSpecifier1.minimumFractionDigits = 0;
+
+            numberFormatSpecifier1.push(numberFormatSpecifier1_0)
             this._numberFormatSpecifier1 = numberFormatSpecifier1;
         }
         return this._numberFormatSpecifier1;
