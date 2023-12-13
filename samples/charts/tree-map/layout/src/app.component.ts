@@ -14,25 +14,22 @@ defineAllComponents();
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("propertyEditorPanel1", { static: true } )
-    private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-    @ViewChild("layoutTypeEditor", { static: true } )
-    private layoutTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("layoutOrientationEditor", { static: true } )
-    private layoutOrientationEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("headerDisplayModeEditor", { static: true } )
-    private headerDisplayModeEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("labelVerticalAlignmentEditor", { static: true } )
-    private labelVerticalAlignmentEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("treemap", { static: true } )
-    private treemap: IgxTreemapComponent
-
+	@ViewChild("propertyEditorPanel1", { static: true } )
+	private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+	@ViewChild("layoutTypeEditor", { static: true } )
+	private layoutTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("layoutOrientationEditor", { static: true } )
+	private layoutOrientationEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("headerDisplayModeEditor", { static: true } )
+	private headerDisplayModeEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("labelVerticalAlignmentEditor", { static: true } )
+	private labelVerticalAlignmentEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("treemap", { static: true } )
+	private treemap: IgxTreemapComponent
     private _countyHierarchicalData: CountyHierarchicalData = null;
     public get countyHierarchicalData(): CountyHierarchicalData {
         if (this._countyHierarchicalData == null)
@@ -52,6 +49,14 @@ export class AppComponent {
         }
         return this._componentRenderer;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

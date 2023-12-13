@@ -16,21 +16,18 @@ defineAllComponents();
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("propertyEditor", { static: true } )
-    private propertyEditor: IgxPropertyEditorPanelComponent
-    @ViewChild("chartTypeEditor", { static: true } )
-    private chartTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("markerTypeEditor", { static: true } )
-    private markerTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
-
+	@ViewChild("propertyEditor", { static: true } )
+	private propertyEditor: IgxPropertyEditorPanelComponent
+	@ViewChild("chartTypeEditor", { static: true } )
+	private chartTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("markerTypeEditor", { static: true } )
+	private markerTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxCategoryChartComponent
     private _countryRenewableElectricity: CountryRenewableElectricity = null;
     public get countryRenewableElectricity(): CountryRenewableElectricity {
         if (this._countryRenewableElectricity == null)
@@ -52,13 +49,21 @@ export class AppComponent {
         return this._componentRenderer;
     }
 
-    public editorChangeUpdateMarkerType({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
-        var item = sender as IgxPropertyEditorPropertyDescriptionComponent;
-        var chart = this.chart;
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
 
-        var markerVal = item.primitiveValue;
-        chart.markerTypes = markerVal;
-    }
+	public ngAfterViewInit(): void
+	{
+	}
+
+	public editorChangeUpdateMarkerType({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
+	    var item = sender as IgxPropertyEditorPropertyDescriptionComponent;
+	    var chart = this.chart;
+
+	    var markerVal = item.primitiveValue;
+	    chart.markerTypes = markerVal;
+	}
 
 }
 

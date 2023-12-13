@@ -14,19 +14,16 @@ defineAllComponents();
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("propertyEditorPanel1", { static: true } )
-    private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-    @ViewChild("trendLineTypeEditor", { static: true } )
-    private trendLineTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxSparklineComponent
-
+	@ViewChild("propertyEditorPanel1", { static: true } )
+	private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+	@ViewChild("trendLineTypeEditor", { static: true } )
+	private trendLineTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxSparklineComponent
     private _sparklineMixedData: SparklineMixedData = null;
     public get sparklineMixedData(): SparklineMixedData {
         if (this._sparklineMixedData == null)
@@ -46,6 +43,14 @@ export class AppComponent {
         }
         return this._componentRenderer;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

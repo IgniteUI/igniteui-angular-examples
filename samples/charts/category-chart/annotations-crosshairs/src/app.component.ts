@@ -14,21 +14,18 @@ defineAllComponents();
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("propertyEditor", { static: true } )
-    private propertyEditor: IgxPropertyEditorPanelComponent
-    @ViewChild("crosshairsDisplayModeEditor", { static: true } )
-    private crosshairsDisplayModeEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("crosshairsSnapToDataEditor", { static: true } )
-    private crosshairsSnapToDataEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
-
+	@ViewChild("propertyEditor", { static: true } )
+	private propertyEditor: IgxPropertyEditorPanelComponent
+	@ViewChild("crosshairsDisplayModeEditor", { static: true } )
+	private crosshairsDisplayModeEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("crosshairsSnapToDataEditor", { static: true } )
+	private crosshairsSnapToDataEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxCategoryChartComponent
     private _temperatureAnnotatedData: TemperatureAnnotatedData = null;
     public get temperatureAnnotatedData(): TemperatureAnnotatedData {
         if (this._temperatureAnnotatedData == null)
@@ -48,6 +45,14 @@ export class AppComponent {
         }
         return this._componentRenderer;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

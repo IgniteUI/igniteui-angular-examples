@@ -10,34 +10,30 @@ import { IgxNumberFormatSpecifier } from 'igniteui-angular-core';
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
+	@ViewChild("legend", { static: true } )
+	private legend: IgxDataLegendComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxCategoryChartComponent
+	private _numberFormatSpecifier1: IgxNumberFormatSpecifier[] | null = null;
+	public get numberFormatSpecifier1(): IgxNumberFormatSpecifier[] {
+	    if (this._numberFormatSpecifier1 == null)
+	    {
+	        let numberFormatSpecifier1: IgxNumberFormatSpecifier[] = [];
+	        var numberFormatSpecifier2 = new IgxNumberFormatSpecifier();
+	        numberFormatSpecifier2.style = "currency";
+	        numberFormatSpecifier2.currency = "USD";
+	        numberFormatSpecifier2.currencyDisplay = "symbol";
+	        numberFormatSpecifier2.minimumFractionDigits = 0;
 
-    @ViewChild("legend", { static: true } )
-    private legend: IgxDataLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
-    private _numberFormatSpecifier1: IgxNumberFormatSpecifier[] | null = null;
-    public get numberFormatSpecifier1(): IgxNumberFormatSpecifier[] {
-        if (this._numberFormatSpecifier1 == null)
-        {
-            let numberFormatSpecifier1: IgxNumberFormatSpecifier[] = [];
-            var numberFormatSpecifier1 = new IgxNumberFormatSpecifier();
-
-            numberFormatSpecifier1.style = "currency";
-            numberFormatSpecifier1.currency = "USD";
-            numberFormatSpecifier1.currencyDisplay = "symbol";
-            numberFormatSpecifier1.minimumFractionDigits = 0;
-
-            numberFormatSpecifier1.push(numberFormatSpecifier1_0)
-            this._numberFormatSpecifier1 = numberFormatSpecifier1;
-        }
-        return this._numberFormatSpecifier1;
-    }
-
+	        numberFormatSpecifier1.push(numberFormatSpecifier2)
+	        this._numberFormatSpecifier1 = numberFormatSpecifier1;
+	    }
+	    return this._numberFormatSpecifier1;
+	}
     private _highestGrossingMovies: HighestGrossingMovies = null;
     public get highestGrossingMovies(): HighestGrossingMovies {
         if (this._highestGrossingMovies == null)
@@ -58,6 +54,14 @@ export class AppComponent {
         }
         return this._componentRenderer;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

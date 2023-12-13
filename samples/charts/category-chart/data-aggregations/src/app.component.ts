@@ -14,23 +14,20 @@ defineAllComponents();
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("propertyEditorPanel1", { static: true } )
-    private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-    @ViewChild("initialGroups", { static: true } )
-    private initialGroups: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("initialSummaries", { static: true } )
-    private initialSummaries: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("groupSorts", { static: true } )
-    private groupSorts: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
-
+	@ViewChild("propertyEditorPanel1", { static: true } )
+	private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+	@ViewChild("initialGroups", { static: true } )
+	private initialGroups: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("initialSummaries", { static: true } )
+	private initialSummaries: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("groupSorts", { static: true } )
+	private groupSorts: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxCategoryChartComponent
     private _salesData: SalesData = null;
     public get salesData(): SalesData {
         if (this._salesData == null)
@@ -51,6 +48,14 @@ export class AppComponent {
         }
         return this._componentRenderer;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

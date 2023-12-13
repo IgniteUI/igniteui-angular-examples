@@ -8,17 +8,14 @@ import { IgxDataLegendComponent, IgxFinancialChartComponent } from 'igniteui-ang
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("legend", { static: true } )
-    private legend: IgxDataLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxFinancialChartComponent
-
+	@ViewChild("legend", { static: true } )
+	private legend: IgxDataLegendComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxFinancialChartComponent
     private _multipleStocks: MultipleStocks = null;
     private _multipleStocksFetching: boolean = false;
     public get multipleStocks(): MultipleStocks {
@@ -29,6 +26,14 @@ export class AppComponent {
         }
         return this._multipleStocks;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

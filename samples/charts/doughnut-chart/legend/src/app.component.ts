@@ -8,19 +8,16 @@ import { IgxItemLegendComponent, IgxDoughnutChartComponent, IgxRingSeriesCompone
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("legend", { static: true } )
-    private legend: IgxItemLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDoughnutChartComponent
-    @ViewChild("series", { static: true } )
-    private series: IgxRingSeriesComponent
-
+	@ViewChild("legend", { static: true } )
+	private legend: IgxItemLegendComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDoughnutChartComponent
+	@ViewChild("series", { static: true } )
+	private series: IgxRingSeriesComponent
     private _energyGlobalDemand: EnergyGlobalDemand = null;
     public get energyGlobalDemand(): EnergyGlobalDemand {
         if (this._energyGlobalDemand == null)
@@ -29,6 +26,14 @@ export class AppComponent {
         }
         return this._energyGlobalDemand;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

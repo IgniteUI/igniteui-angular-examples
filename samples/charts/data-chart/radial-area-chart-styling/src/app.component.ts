@@ -8,25 +8,22 @@ import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryAngleAxisComponen
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("legend", { static: true } )
-    private legend: IgxLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("angleAxis", { static: true } )
-    private angleAxis: IgxCategoryAngleAxisComponent
-    @ViewChild("radiusAxis", { static: true } )
-    private radiusAxis: IgxNumericRadiusAxisComponent
-    @ViewChild("radialAreaSeries1", { static: true } )
-    private radialAreaSeries1: IgxRadialAreaSeriesComponent
-    @ViewChild("radialAreaSeries2", { static: true } )
-    private radialAreaSeries2: IgxRadialAreaSeriesComponent
-
+	@ViewChild("legend", { static: true } )
+	private legend: IgxLegendComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDataChartComponent
+	@ViewChild("angleAxis", { static: true } )
+	private angleAxis: IgxCategoryAngleAxisComponent
+	@ViewChild("radiusAxis", { static: true } )
+	private radiusAxis: IgxNumericRadiusAxisComponent
+	@ViewChild("radialAreaSeries1", { static: true } )
+	private radialAreaSeries1: IgxRadialAreaSeriesComponent
+	@ViewChild("radialAreaSeries2", { static: true } )
+	private radialAreaSeries2: IgxRadialAreaSeriesComponent
     private _footballPlayerStats: FootballPlayerStats = null;
     public get footballPlayerStats(): FootballPlayerStats {
         if (this._footballPlayerStats == null)
@@ -35,6 +32,14 @@ export class AppComponent {
         }
         return this._footballPlayerStats;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 
