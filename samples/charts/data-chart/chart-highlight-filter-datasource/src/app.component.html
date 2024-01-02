@@ -1,0 +1,48 @@
+<div class="container vertical sample">
+  <div class="options vertical">
+      <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="DataChart"
+      isHorizontal="true"
+      isWrappingEnabled="true">
+          <igx-property-editor-property-description
+          propertyPath="HighlightedValuesDisplayMode"
+          name="HighlightedValuesDisplayModeEditor"
+          #highlightedValuesDisplayModeEditor
+          label="Highlight Display Mode: "
+          primitiveValue="Hidden">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      shouldAutoExpandMarginForInitialLabels="true"
+      computedPlotAreaMarginMode="Series"
+      name="chart"
+      #chart>
+          <igx-category-x-axis
+          name="xAxis"
+          #xAxis
+          [dataSource]="onlineTrafficHighlightTotals"
+          label="category">
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
+          minimumValue="0"
+          maximumValue="100">
+          </igx-numeric-y-axis>
+          <igx-column-series
+          name="ColumnSeries1"
+          #columnSeries1
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="onlineTrafficHighlightTotals"
+          valueMemberPath="value">
+          </igx-column-series>
+      </igx-data-chart>
+  </div>
+</div>
