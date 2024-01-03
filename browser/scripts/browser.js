@@ -684,6 +684,7 @@ function copySamples(cb) {
         for (let i = autoInsertStart+1; i < autoInsertEnd; i++) {
             appModuleLines[i] = ""; // clearing previously auto-generated inserts
         }
+        appModuleRoutes = appModuleRoutes.sort();
         // adding latest auto-generated inserts for JS files
         appModuleLines[autoInsertStart + 1] = appModuleRoutes.join(',\r\n');
         appModuleContent = appModuleLines.join('\r\n');
