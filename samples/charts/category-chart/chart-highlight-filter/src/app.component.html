@@ -23,7 +23,9 @@
       #chart
       chartType="Column"
       [dataSource]="salesData"
-      initialGroups="MonthName">
+      initialGroups="MonthName"
+      initialHighlightFilter="Country ne 'UK'"
+      highlightedValuesDisplayMode="Hidden">
       </igx-category-chart>
   </div>
 </div>
