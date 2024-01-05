@@ -17,6 +17,7 @@
 /browser/src/samples
 /browser/src/assets/code-viewer/*.json
 /browser/src/assets/samples/*.json
+/browser/src/assets/stats.json
 !/browser/src/assets/samples/meta.json
 !/browser/src/assets/samples/shared.json
 /browser/dist
