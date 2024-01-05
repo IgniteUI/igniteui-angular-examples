@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ComponentRenderer, PropertyEditorPanelDescriptionModule, DataLegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
+import { ComponentRenderer, PropertyEditorPanelDescriptionModule, DataLegendDescriptionModule, CategoryChartDescriptionModule, NumberFormatSpecifierDescriptionModule } from 'igniteui-angular-core';
 import { HighestGrossingMoviesItem, HighestGrossingMovies } from './HighestGrossingMovies';
 import { IgxDataLegendComponent, IgxCategoryChartComponent } from 'igniteui-angular-charts';
 import { IgxNumberFormatSpecifier } from 'igniteui-angular-core';
@@ -51,6 +51,7 @@ export class AppComponent implements AfterViewInit
             PropertyEditorPanelDescriptionModule.register(context);
             DataLegendDescriptionModule.register(context);
             CategoryChartDescriptionModule.register(context);
+            NumberFormatSpecifierDescriptionModule.register(context);
         }
         return this._componentRenderer;
     }

@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 
 import { IgxPropertyEditorPanelModule } from 'igniteui-angular-layouts';
 import { IgxDataLegendModule, IgxCategoryChartModule } from 'igniteui-angular-charts';
+import { IgxNumberFormatSpecifierModule } from 'igniteui-angular-core';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -20,7 +21,8 @@ import { IgxDataLegendModule, IgxCategoryChartModule } from 'igniteui-angular-ch
     FormsModule,
     IgxPropertyEditorPanelModule,
     IgxDataLegendModule,
-    IgxCategoryChartModule
+    IgxCategoryChartModule,
+    IgxNumberFormatSpecifierModule
 ],
   providers: [],
   schemas: []

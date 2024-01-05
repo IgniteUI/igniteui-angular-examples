@@ -16,11 +16,11 @@ export class AppComponent implements AfterViewInit
 
 	public constructor(private _detector: ChangeDetectorRef)
 	{
-		this.toolbarCustomIconOnViewInit();
 	}
 
 	public ngAfterViewInit(): void
 	{
+		this.toolbarCustomIconOnViewInit();
 	}
 
 	public toolbarCustomIconOnViewInit(): void {
