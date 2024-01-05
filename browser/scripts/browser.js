@@ -824,13 +824,19 @@ function updateCodeViewer(cb) {
 } exports.updateCodeViewer = updateCodeViewer;
 
 function cleanSamples() {
-    log("clean samples in browser: " + sampleOutput);
+    log("cleaning up ../samples folder and ./browser/src/samples folder");
     return del([
-          sampleOutput + "*.ts",
-          sampleOutput + "**/*.ts",
-          sampleOutput + "**/*.html",
-          sampleOutput + "**/*.scss",
-          sampleOutput + "**/*.css"
+          sampleOutput + "**/*.*",
+          sampleOutput,
+          "../samples/**/.angular/**/*.*",
+          "../samples/**/.angular",
+          "../samples/**/.git/**/*.*",
+          "../samples/**/.git",
+          "../samples/**/build/**/*.*",
+          "../samples/**/dist/**/*.*",
+          "../samples/**/node_modules/**/*.*",
+          "../samples/**/node_modules",
+          "../samples/**/package-lock.json"
     ],{force: true});
 } exports.cleanSamples = cleanSamples;
 
