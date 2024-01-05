@@ -832,6 +832,8 @@ function cleanSamples() {
           "../samples/**/.angular",
           "../samples/**/.git/**/*.*",
           "../samples/**/.git",
+          "../samples/**/build/**/*.*",
+          "../samples/**/dist/**/*.*",
           "../samples/**/node_modules/**/*.*",
           "../samples/**/node_modules",
           "../samples/**/package-lock.json"

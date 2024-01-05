@@ -6,6 +6,7 @@
 /samples/**/node_modules/
 /samples/**/package-lock.json
 /samples/**/.angular
+/samples/**/.git
 # /samples-tmp/
 # /samples-tmp/**/node_modules/
 
