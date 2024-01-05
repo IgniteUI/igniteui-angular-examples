@@ -163,6 +163,8 @@ function getSampleInfo(samplePath, sampleCallback, sampleFile) {
     info.SourceModuleTS = "";             // e.g. ./samples/charts/data-chart/axis-sharing/src/app.module.ts
     info.SourceDataFiles = [];            // e.g. ./samples/charts/data-chart/axis-sharing/src/SampleFinancialData.ts
     info.SourceFiles = [];  // all above
+    info.ImportsLines = [];
+    info.ImportsModules = [];
 
     // getting path to files in a given sample's source path:
     gulp.src([
