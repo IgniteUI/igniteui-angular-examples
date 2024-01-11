@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, DataChartCoreDescriptionModule, DataChartCategoryDescriptionModule, DataChartInteractivityDescriptionModule } from 'igniteui-angular-core';
 import { OnlineTrafficHighlightTotalsItem, OnlineTrafficHighlightTotals } from './OnlineTrafficHighlightTotals';
+import { OnlineTrafficHighlightDesktopOnlyItem, OnlineTrafficHighlightDesktopOnly } from './OnlineTrafficHighlightDesktopOnly';
 import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxColumnSeriesComponent } from 'igniteui-angular-charts';
 
@@ -37,6 +38,15 @@ export class AppComponent implements AfterViewInit
             this._onlineTrafficHighlightTotals = new OnlineTrafficHighlightTotals();
         }
         return this._onlineTrafficHighlightTotals;
+    }
+
+    private _onlineTrafficHighlightDesktopOnly: OnlineTrafficHighlightDesktopOnly = null;
+    public get onlineTrafficHighlightDesktopOnly(): OnlineTrafficHighlightDesktopOnly {
+        if (this._onlineTrafficHighlightDesktopOnly == null)
+        {
+            this._onlineTrafficHighlightDesktopOnly = new OnlineTrafficHighlightDesktopOnly();
+        }
+        return this._onlineTrafficHighlightDesktopOnly;
     }
 
     private _componentRenderer: ComponentRenderer = null;

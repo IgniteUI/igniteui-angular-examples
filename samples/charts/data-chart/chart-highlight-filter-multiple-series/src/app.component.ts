@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, DataChartCoreDescriptionModule, DataChartCategoryDescriptionModule, DataChartInteractivityDescriptionModule } from 'igniteui-angular-core';
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
+import { CountryRenewableElectricityFilteredItem, CountryRenewableElectricityFiltered } from './CountryRenewableElectricityFiltered';
 import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxColumnSeriesComponent } from 'igniteui-angular-charts';
 
@@ -41,6 +42,15 @@ export class AppComponent implements AfterViewInit
             this._countryRenewableElectricity = new CountryRenewableElectricity();
         }
         return this._countryRenewableElectricity;
+    }
+
+    private _countryRenewableElectricityFiltered: CountryRenewableElectricityFiltered = null;
+    public get countryRenewableElectricityFiltered(): CountryRenewableElectricityFiltered {
+        if (this._countryRenewableElectricityFiltered == null)
+        {
+            this._countryRenewableElectricityFiltered = new CountryRenewableElectricityFiltered();
+        }
+        return this._countryRenewableElectricityFiltered;
     }
 
     private _componentRenderer: ComponentRenderer = null;
