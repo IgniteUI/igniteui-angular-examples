@@ -22,7 +22,8 @@
       shouldAutoExpandMarginForInitialLabels="true"
       computedPlotAreaMarginMode="Series"
       name="chart"
-      #chart>
+      #chart
+      highlightedValuesDisplayMode="Hidden">
           <igx-category-x-axis
           name="xAxis"
           #xAxis
@@ -39,7 +40,8 @@
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           [dataSource]="countryRenewableElectricity"
-          valueMemberPath="europe">
+          valueMemberPath="europe"
+          [highlightedDataSource]="countryRenewableElectricityFiltered">
           </igx-column-series>
           <igx-column-series
           name="ColumnSeries2"
@@ -47,7 +49,8 @@
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           [dataSource]="countryRenewableElectricity"
-          valueMemberPath="china">
+          valueMemberPath="china"
+          [highlightedDataSource]="countryRenewableElectricityFiltered">
           </igx-column-series>
           <igx-column-series
           name="ColumnSeries3"
@@ -55,7 +58,8 @@
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           [dataSource]="countryRenewableElectricity"
-          valueMemberPath="america">
+          valueMemberPath="america"
+          [highlightedDataSource]="countryRenewableElectricityFiltered">
           </igx-column-series>
       </igx-data-chart>
   </div>

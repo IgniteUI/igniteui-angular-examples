@@ -21,6 +21,7 @@
       <igx-data-chart
       shouldAutoExpandMarginForInitialLabels="true"
       computedPlotAreaMarginMode="Series"
+      highlightedValuesDisplayMode="Hidden"
       name="chart"
       #chart>
           <igx-category-x-axis
@@ -41,7 +42,8 @@
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           [dataSource]="olympicMedalsTopCountriesWithTotals"
-          valueMemberPath="total">
+          valueMemberPath="total"
+          highlightedValueMemberPath="america">
           </igx-column-series>
       </igx-data-chart>
   </div>
