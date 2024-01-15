@@ -1,8 +1,11 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
 import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
-import { IgxLegendComponent, IgxCategoryChartComponent } from 'igniteui-angular-charts';
-import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
+import { IgxPropertyEditorPropertyDescriptionChangedEventArgs, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
+import { IgxCategoryChartComponent, MarkerType, MarkerType_$type } from 'igniteui-angular-charts';
+import { EnumUtil } from 'igniteui-angular-core';
+import { IgxLegendComponent } from 'igniteui-angular-charts';
+import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
 
 import { defineAllComponents } from 'igniteui-webcomponents';
 
@@ -55,6 +58,18 @@ export class AppComponent implements AfterViewInit
 
 	public ngAfterViewInit(): void
 	{
+	}
+
+	public editorChangeUpdateYAxisMinimumValue({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
+
+		var yAxisMinimumVal = args.newValue;
+	    this.chart.yAxisMinimumValue = parseInt(yAxisMinimumVal);
+	}
+
+	public editorChangeUpdateYAxisMaximumValue({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
+
+	    var yAxisMaximumVal = args.newValue;
+	    this.chart.yAxisMaximumValue = parseInt(yAxisMaximumVal);
 	}
 
 }
