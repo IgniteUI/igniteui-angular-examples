@@ -6,7 +6,7 @@
 
 # Individual Samples of Angular Components
 
-In this folder, you will find individual **samples** on how to use [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-Angular/Angular/components/general-getting-started.html) components:
+The **samples** folder contains individual examples on how to use [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-Angular/Angular/components/general-getting-started.html) components:
 
 - Charts:
 [Area](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/area-chart),
@@ -33,14 +33,20 @@ In this folder, you will find individual **samples** on how to use [Ignite UI fo
 [Radial Gauges](https://www.infragistics.com/products/ignite-ui-angular/angular/components/radial-gauge.html)
 
 
-## Setup
+## Branches
+
+> **_NOTE:_** You should use [master](https://github.com/IgniteUI/igniteui-angular-examples/tree/master) branch of this repository if you want to run samples on your computer. Use the [vnext](https://github.com/IgniteUI/igniteui-angular-examples/tree/vnext) branch only when you want to contribute new samples to this repository.
+
+## Instructions
+
+Follow these instructions to run individual sample:
 
 - in VS Code, open a folder with existing sample, e.g.
 ```
 ./samples/charts/category-chart/axis-options/
 ```
 
-- type `npm install` command in terminal window
+- type `npm install --legacy-peer-deps` command in terminal window
 
 - type `npm run start` command in terminal window
 

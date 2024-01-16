@@ -9,22 +9,31 @@
 
 # Browser App for Angular Components
 
-This browser application allows you to browse all samples of the [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-Angular/Angular/components/general-getting-started.html) in a single website.
+The **browser** folder contains an Angular app for browsing 500+ examples of [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-Angular/Angular/components/general-getting-started.html) components.
 
-## Setup
-To setup the project run:
 
-```
-npm install
-```
+## Branches
 
-To start the dev server (including IE support) run:
+> **_NOTE:_** You should use [master](https://github.com/IgniteUI/igniteui-angular-examples/tree/master) branch of this repository if you want to run samples on your computer. Use the [vnext](https://github.com/IgniteUI/igniteui-angular-examples/tree/vnext) branch only when you want to contribute new samples to this repository.
 
-```
-npm run start
-```
 
-## Running with the DocFX project
+## Instructions
 
-In order to combine the execution of both [DocFX](https://github.com/IgniteUI/igniteui-docfx) and Ignite UI Angular Samples projects, use `npm run start`.
-After starting both projects you will see the embed samples into the DocFX site builder, under `localhost:port` hostname.
+Follow these instructions to run and browse all samples:
+ 
+- open VS Code as Administrator
+
+- open the folder that contains this repository, e.g. `C:\GitHub\igniteui-angular-examples\`
+
+- select **View** - **Terminal** menu item
+
+- type `npm install --legacy-peer-deps` command in terminal window
+
+This will install required packages and [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general-getting-started) packages
+
+- type `npm run start` command in terminal window to start this application locally
+
+Note this application copies all individually sample projects from [./samples](./samples) to [./browser/src](./browser/src) folder when it is about to start running. Therefore, any changes to [./browser/src](./browser/src) will be overridden on consecutive run of the application.
+
+Wait until the build is completed and then open [http://localhost:4200](http://localhost:4200) in your browser. You should see a website with navigation menu for browning all samples in this repository.
+
