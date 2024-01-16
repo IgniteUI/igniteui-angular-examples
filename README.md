@@ -6,7 +6,7 @@
 
 # Examples of Ignite UI for Angular Components
 
-This repository contains over 400 examples on how to use [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-Angular/Angular/components/general-getting-started.html) components:
+This repository contains an Angular browser app and 500+ examples on how to use [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-Angular/Angular/components/general-getting-started.html) components:
 
 - Charts:
 [Area](https://www.infragistics.com/products/ignite-ui-angular/angular/components/charts/types/area-chart),
@@ -32,6 +32,12 @@ This repository contains over 400 examples on how to use [Ignite UI for Angular]
 [Linear Gauge](https://www.infragistics.com/products/ignite-ui-angular/angular/components/linear-gauge.html),
 [Radial Gauges](https://www.infragistics.com/products/ignite-ui-angular/angular/components/radial-gauge.html)
 
+You can run each sample project individually from the ./samples folder or you can browse all samples in one website from the ./browser folder.
+
+## Branches
+
+> **_NOTE:_** You should use [master](https://github.com/IgniteUI/igniteui-angular-examples/tree/master) branch of this repository if you want to run samples on your computer. Use the [vnext](https://github.com/IgniteUI/igniteui-angular-examples/tree/vnext) branch only when you want to contribute new samples to this repository.
+
 ## Preview
 
 You can preview and browse all samples in this repository by opening our [Angular Samples Browser](https://www.infragistics.com/angular-demos-dv/samples/). Alternatively, you you can view these samples with detailed information in our [Angular Help Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general-getting-started).
@@ -49,13 +55,17 @@ To set up this project locally, clone this repository:
 git clone https://github.com/IgniteUI/igniteui-angular-examples.git
 ```
 
+
 ## Running Individual Sample
+
+- check out the **master** branch
 
 - in VS Code, open a folder with existing sample, e.g.
 ```
 ./samples/charts/category-chart/axis-options/
 ```
-- type `npm install` command in terminal window
+- type `npm install --legacy-peer-deps` command in terminal window
+
 - type `npm run start` command in terminal window
 
 - Wait until the build is completed and then open [http://localhost:4200](http://localhost:4200) in your browser.
@@ -65,11 +75,18 @@ At this point, you should see a website hosted example of [Ignite UI for Angular
 
 ## Running All Samples
 
+- check out the **master** branch
+
 - open VS Code as Administrator
-- open the folder that contains this repository, e.g. `C:\GitHub\igniteui-angular-examples\`
+
+- open the folder that contains this repository, e.g.
+```CMD
+C:\GitHub\igniteui-angular-examples\
+```
+
 - select **View** - **Terminal** menu item
 
-- type `npm install` command in terminal window
+- type `npm install --legacy-peer-deps` command in terminal window
 
 This will install required packages and [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general-getting-started) packages
 
@@ -108,7 +125,7 @@ Wait until the build is completed and then open [http://localhost:4200](http://l
 
 - rename class to the name of .tsx file
 
-- type `npm install` command in terminal window
+- type `npm install --legacy-peer-deps` command in terminal window
 
 - type `npm run start` command in terminal window
 
