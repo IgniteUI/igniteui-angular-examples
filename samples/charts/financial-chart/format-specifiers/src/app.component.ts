@@ -15,8 +15,6 @@ export class AppComponent implements AfterViewInit
 
 	@ViewChild("legend", { static: true } )
 	private legend: IgxDataLegendComponent
-	@ViewChild("chart", { static: true } )
-	private chart: IgxFinancialChartComponent
 	private _numberFormatSpecifier1: IgxNumberFormatSpecifier[] | null = null;
 	public get numberFormatSpecifier1(): IgxNumberFormatSpecifier[] {
 	    if (this._numberFormatSpecifier1 == null)
@@ -26,12 +24,48 @@ export class AppComponent implements AfterViewInit
 	        numberFormatSpecifier2.currency = "EUR";
 	        numberFormatSpecifier2.style = "currency";
 	        numberFormatSpecifier2.locale = "en-GB";
-	        numberFormatSpecifier2.minimumFractionDigits = 0;
+	        numberFormatSpecifier2.minimumFractionDigits = 2;
+	        numberFormatSpecifier2.maximumFractionDigits = 2;
 
 	        numberFormatSpecifier1.push(numberFormatSpecifier2)
 	        this._numberFormatSpecifier1 = numberFormatSpecifier1;
 	    }
 	    return this._numberFormatSpecifier1;
+	}
+	@ViewChild("chart", { static: true } )
+	private chart: IgxFinancialChartComponent
+	private _numberFormatSpecifier3: IgxNumberFormatSpecifier[] | null = null;
+	public get numberFormatSpecifier3(): IgxNumberFormatSpecifier[] {
+	    if (this._numberFormatSpecifier3 == null)
+	    {
+	        let numberFormatSpecifier3: IgxNumberFormatSpecifier[] = [];
+	        var numberFormatSpecifier4 = new IgxNumberFormatSpecifier();
+	        numberFormatSpecifier4.currency = "EUR";
+	        numberFormatSpecifier4.style = "currency";
+	        numberFormatSpecifier4.locale = "en-GB";
+	        numberFormatSpecifier4.minimumFractionDigits = 2;
+	        numberFormatSpecifier4.maximumFractionDigits = 2;
+
+	        numberFormatSpecifier3.push(numberFormatSpecifier4)
+	        this._numberFormatSpecifier3 = numberFormatSpecifier3;
+	    }
+	    return this._numberFormatSpecifier3;
+	}
+	private _numberFormatSpecifier5: IgxNumberFormatSpecifier[] | null = null;
+	public get numberFormatSpecifier5(): IgxNumberFormatSpecifier[] {
+	    if (this._numberFormatSpecifier5 == null)
+	    {
+	        let numberFormatSpecifier5: IgxNumberFormatSpecifier[] = [];
+	        var numberFormatSpecifier6 = new IgxNumberFormatSpecifier();
+	        numberFormatSpecifier6.currency = "EUR";
+	        numberFormatSpecifier6.style = "currency";
+	        numberFormatSpecifier6.locale = "en-GB";
+	        numberFormatSpecifier6.minimumFractionDigits = 0;
+
+	        numberFormatSpecifier5.push(numberFormatSpecifier6)
+	        this._numberFormatSpecifier5 = numberFormatSpecifier5;
+	    }
+	    return this._numberFormatSpecifier5;
 	}
 	private _dateTimeFormatSpecifier1: IgxDateTimeFormatSpecifier[] | null = null;
 	public get dateTimeFormatSpecifier1(): IgxDateTimeFormatSpecifier[] {

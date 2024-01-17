@@ -7,8 +7,8 @@
       name="Legend"
       #legend
       [target]="chart"
-      valueFormatMode="Currency"
-      valueFormatString="${0} Billion">
+      valueFormatString="{0} Billion"
+      [valueFormatSpecifiers]="numberFormatSpecifier1">
       </igx-data-legend>
   </div>
   <div class="container fill">
@@ -32,7 +32,7 @@
           title="Billions of U.S. Dollars"
           labelFormat="{0}B"
           abbreviateLargeNumbers="false"
-          [labelFormatSpecifiers]="numberFormatSpecifier1">
+          [labelFormatSpecifiers]="numberFormatSpecifier3">
           </igx-numeric-x-axis>
           <igx-bar-series
           name="BarSeries1"
@@ -57,8 +57,8 @@
           <igx-data-tool-tip-layer
           name="Tooltips"
           #tooltips
-          valueFormatMode="Currency"
-          valueFormatString="${0} Billion">
+          valueFormatString="{0} Billion"
+          [valueFormatSpecifiers]="numberFormatSpecifier5">
           </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
