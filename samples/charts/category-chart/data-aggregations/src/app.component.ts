@@ -1,8 +1,10 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
 import { SalesData } from './SalesData';
-import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
-import { IgxCategoryChartComponent } from 'igniteui-angular-charts';
+import { IgxPropertyEditorPropertyDescriptionChangedEventArgs, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
+import { IgxCategoryChartComponent, MarkerType, MarkerType_$type } from 'igniteui-angular-charts';
+import { EnumUtil } from 'igniteui-angular-core';
+import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
 
 import { defineAllComponents } from 'igniteui-webcomponents';
 
@@ -55,6 +57,24 @@ export class AppComponent implements AfterViewInit
 
 	public ngAfterViewInit(): void
 	{
+	}
+
+	public editorChangeUpdateInitialGroups({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
+
+	    var intialGroupVal = args.newValue.toString();
+	    chart.initialGroups = intialGroupVal;
+	}
+
+	public editorChangeUpdateInitialSummaries({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
+
+	    var intialSummaryVal = args.newValue.toString();
+	    chart.initialSummaries = intialSummaryVal;
+	}
+
+	public editorChangeUpdateGroupSorts({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
+
+	    var groupSortsVal = args.newValue.toString();
+	    chart.groupSorts = groupSortsVal;
 	}
 
 }
