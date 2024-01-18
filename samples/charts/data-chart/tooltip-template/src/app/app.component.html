@@ -4,21 +4,22 @@
     </div>
     <div class="container">
         <igx-data-chart #chart height="100%" width="100%" [dataSource]="data"
-        isHorizontalZoomEnabled="false" isVerticalZoomEnabled="false">
+        isHorizontalZoomEnabled="false" isVerticalZoomEnabled="false"
+        computedPlotAreaMarginMode="Series">
 
             <igx-category-x-axis #xAxis name="xAxis" label="Country"></igx-category-x-axis>
             <igx-numeric-y-axis #yAxis name="yAxis" minValue=0></igx-numeric-y-axis>
 
-            <igx-column-series name="series1" title="Coal" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Coal"
-              showDefaultTooltip=false [tooltipTemplate]="valueTooltip"></igx-column-series>
-            <igx-column-series name="series2" title="Hydro" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Hydro"
-              showDefaultTooltip=false [tooltipTemplate]="valueTooltip"></igx-column-series>
-            <igx-column-series name="series3" title="Nuclear" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Nuclear"
-              showDefaultTooltip=false [tooltipTemplate]="valueTooltip"></igx-column-series>
-            <igx-column-series name="series4" title="Gas" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Gas"
-              showDefaultTooltip=false [tooltipTemplate]="valueTooltip"></igx-column-series>
-            <igx-column-series name="series5" title="Oil" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Oil"
-              showDefaultTooltip=false [tooltipTemplate]="valueTooltip"></igx-column-series>
+            <!-- <igx-line-series name="series1" title="Coal" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Coal"
+              showDefaultTooltip=false [tooltipTemplate]="valueTooltip"></igx-line-series>
+            <igx-line-series name="series2" title="Hydro" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Hydro"
+              showDefaultTooltip=false [tooltipTemplate]="valueTooltip"></igx-line-series>
+            <igx-line-series name="series3" title="Nuclear" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Nuclear"
+              showDefaultTooltip=false [tooltipTemplate]="valueTooltip"></igx-line-series> -->
+            <igx-line-series name="series4" title="Gas" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Gas"
+              showDefaultTooltip=false [tooltipTemplate]="valueTooltip" [unknownValuePlotting]="unknownValuePlotting"></igx-line-series>
+            <igx-line-series name="series5" title="Oil" [xAxis]="xAxis" [yAxis]="yAxis" valueMemberPath="Oil"
+              showDefaultTooltip=false [tooltipTemplate]="valueTooltip" unknownValuePlotting="LinearInterpolate"></igx-line-series>
           </igx-data-chart>
     </div>
 
