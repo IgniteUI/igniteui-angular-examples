@@ -1,13 +1,13 @@
 <div class="container vertical sample">
   <div class="options vertical">
       <igx-property-editor-panel
+      name="editor"
+      #editor
       [componentRenderer]="renderer"
       [target]="chart"
       descriptionType="CategoryChart"
       isHorizontal="true"
-      isWrappingEnabled="true"
-      name="propertyEditorPanel1"
-      #propertyEditorPanel1>
+      isWrappingEnabled="true">
           <igx-property-editor-property-description
           propertyPath="InitialGroupsHandler"
           name="InitialGroups"
@@ -27,8 +27,6 @@
           label="Initial Summaries"
           valueType="EnumValue"
           shouldOverrideDefaultEditor="true"
-          dropDownNames="Sum(Sales) as Sales, Avg(Sales) as Sales, Min(Sales) as Sales, Max(Sales) as Sales, Count(Sales) as Sales"
-          dropDownValues="Sum(Sales) as Sales, Avg(Sales) as Sales, Min(Sales) as Sales, Max(Sales) as Sales, Count(Sales) as Sales"
           primitiveValue="Sum(Sales) as Sales"
           (changed)="this.editorChangeUpdateInitialSummaries($event)">
           </igx-property-editor-property-description>
@@ -39,8 +37,6 @@
           label="Sort Groups"
           valueType="EnumValue"
           shouldOverrideDefaultEditor="true"
-          dropDownNames="Sales Desc, Sales Asc"
-          dropDownValues="Sales Desc, Sales Asc"
           primitiveValue="Sales Desc"
           (changed)="this.editorChangeUpdateGroupSorts($event)">
           </igx-property-editor-property-description>
