@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
 import { SalesData } from './SalesData';
-import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionChangedEventArgs, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
+import { IgxPropertyEditorPanelComponent, PropertyEditorValueType, IgxPropertyEditorPropertyDescriptionChangedEventArgs, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxCategoryChartComponent, MarkerType, MarkerType_$type } from 'igniteui-angular-charts';
 import { EnumUtil } from 'igniteui-angular-core';
 
@@ -23,10 +23,6 @@ export class AppComponent implements AfterViewInit
 	private editor: IgxPropertyEditorPanelComponent
 	@ViewChild("initialGroups", { static: true } )
 	private initialGroups: IgxPropertyEditorPropertyDescriptionComponent
-	@ViewChild("initialSummaries", { static: true } )
-	private initialSummaries: IgxPropertyEditorPropertyDescriptionComponent
-	@ViewChild("groupSorts", { static: true } )
-	private groupSorts: IgxPropertyEditorPropertyDescriptionComponent
 	@ViewChild("chart", { static: true } )
 	private chart: IgxCategoryChartComponent
     private _salesData: SalesData = null;
@@ -62,13 +58,37 @@ export class AppComponent implements AfterViewInit
 	public propertyEditorInitAggregationsOnViewInit(): void {
 
 	    var editor = this.editor;
-	    var initialSummaries = editor.actualProperties.filter((p) => p.label == "Initial Summaries")[0];
-	    initialSummaries.dropDownNames = ["Sum(Sales) as Sales", "Avg(Sales) as Sales", "Min(Sales) as Sales", "Max(Sales) as Sales", "Count(Sales) as Sales" ];
-	    initialSummaries.dropDownValues = ["Sum(Sales) as Sales", "Avg(Sales) as Sales", "Min(Sales) as Sales", "Max(Sales) as Sales", "Count(Sales) as Sales" ];
+	    var initialSummariesDropdown = new IgxPropertyEditorPropertyDescriptionComponent();
+	    var sortGroupsDropdown = new IgxPropertyEditorPropertyDescriptionComponent();
 
-	    var groupSorts = editor.actualProperties.filter((p) => p.label == "Sort Groups")[0];
-	    groupSorts.dropDownNames = ["Sales Desc", "Sales Asc"];
-	    groupSorts.dropDownValues = ["Sales Desc", "Sales Asc"];
+	    initialSummariesDropdown.label = "Initial Summaries";
+	    initialSummariesDropdown.valueType = PropertyEditorValueType.EnumValue;
+	    initialSummariesDropdown.shouldOverrideDefaultEditor = true;
+	    initialSummariesDropdown.dropDownNames = ["Sum(Sales) as Sales", "Avg(Sales) as Sales", "Min(Sales) as Sales", "Max(Sales) as Sales", "Count(Sales) as Sales" ];
+	    initialSummariesDropdown.dropDownValues = ["Sum(Sales) as Sales", "Avg(Sales) as Sales", "Min(Sales) as Sales", "Max(Sales) as Sales", "Count(Sales) as Sales" ];
+
+	    sortGroupsDropdown.label = "Sort Groups"
+	    sortGroupsDropdown.valueType = PropertyEditorValueType.EnumValue;
+	    sortGroupsDropdown.shouldOverrideDefaultEditor = true;
+	    sortGroupsDropdown.dropDownNames = ["Sales Asc", "Sales Desc"];
+	    sortGroupsDropdown.dropDownValues = ["Sales Asc","Sales Desc"];
+
+	    editor.properties.add(initialSummariesDropdown);
+	    editor.properties.add(sortGroupsDropdown);
+
+	    initialSummariesDropdown.changed.subscribe((event: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }) => {
+
+	        var chart = this.chart;
+	        var intialSummaryVal = event.args.newValue.toString();
+	        chart.initialSummaries = intialSummaryVal;
+	    });
+
+	    sortGroupsDropdown.changed.subscribe((event: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }) => {
+
+	        var chart = this.chart;
+	        var groupSortsVal = event.args.newValue.toString();
+	        chart.groupSorts = groupSortsVal;
+	    });
 	}
 
 	public editorChangeUpdateInitialGroups({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
@@ -76,19 +96,6 @@ export class AppComponent implements AfterViewInit
 	    var chart = this.chart;
 	    var intialGroupVal = args.newValue.toString();
 	    chart.initialGroups = intialGroupVal;
-	}
-
-	public editorChangeUpdateInitialSummaries({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
-
-	    var chart = this.chart;
-	    var intialSummaryVal = args.newValue.toString();
-	    chart.initialSummaries = intialSummaryVal;
-	}
-
-	public editorChangeUpdateGroupSorts({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
-	    var chart = this.chart;
-	    var groupSortsVal = args.newValue.toString();
-	    chart.groupSorts = groupSortsVal;
 	}
 
 }
