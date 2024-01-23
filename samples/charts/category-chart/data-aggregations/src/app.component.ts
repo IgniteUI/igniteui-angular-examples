@@ -92,10 +92,8 @@ export class AppComponent implements AfterViewInit
 	}
 
 	public editorChangeUpdateInitialGroups({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
-
 	    var chart = this.chart;
-	    var intialGroupVal = args.newValue.toString();
-	    chart.initialGroups = intialGroupVal;
+	    chart.initialGroups = args.newValue.toString();
 	}
 
 }
