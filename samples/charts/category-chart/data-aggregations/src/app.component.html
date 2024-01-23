@@ -20,26 +20,6 @@
           primitiveValue="Country"
           (changed)="this.editorChangeUpdateInitialGroups($event)">
           </igx-property-editor-property-description>
-          <igx-property-editor-property-description
-          propertyPath="InitialSummariesHandler"
-          name="InitialSummaries"
-          #initialSummaries
-          label="Initial Summaries"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          primitiveValue="Sum(Sales) as Sales"
-          (changed)="this.editorChangeUpdateInitialSummaries($event)">
-          </igx-property-editor-property-description>
-          <igx-property-editor-property-description
-          propertyPath="GroupSortsHandler"
-          name="GroupSorts"
-          #groupSorts
-          label="Sort Groups"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          primitiveValue="Sales Desc"
-          (changed)="this.editorChangeUpdateGroupSorts($event)">
-          </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
   <div class="legend-title">
