@@ -9,34 +9,39 @@
       isHorizontal="true"
       isWrappingEnabled="true">
           <igx-property-editor-property-description
-          propertyPath="InitialGroupsHandler"
-          name="InitialGroups"
-          #initialGroups
-          label="Initial Groups"
-          valueType="EnumValue"
+          propertyPath="InitialFilterHandler"
+          editorWidth="800"
+          name="InitialFilter"
+          #initialFilter
+          label="Modify Chart Filter"
+          valueType="StringValue"
           shouldOverrideDefaultEditor="true"
-          dropDownNames="Country, Product, MonthName, Year"
-          dropDownValues="Country, Product, MonthName, Year"
-          primitiveValue="Country"
-          (changed)="this.editorChangeUpdateInitialGroups($event)">
+          (changed)="this.editorChangeUpdateInitialFilter($event)">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
   <div class="legend-title">
-      Sales Data Grouped, Summarized, and Sorted
+      Sales Data Filtered Country and Product
+  </div>
+  <div class="legend">
+      <igx-legend
+      name="Legend"
+      #legend
+      orientation="Horizontal">
+      </igx-legend>
   </div>
   <div class="container fill">
       <igx-category-chart
       name="chart"
       #chart
       [dataSource]="salesData"
+      [legend]="legend"
       chartType="Column"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false"
       crosshairsDisplayMode="None"
-      initialGroups="Country"
-      initialSummaries="Sum(Sales) as Sales"
-      groupSorts="Sales Desc">
+      includedProperties="date, grossSales, profit, sales"
+      initialFilter="(startswith(Country, 'B') and endswith(Country, 'l') and contains(Product, 'Royal Oak') and contains(Date, '3/1/20'))">
       </igx-category-chart>
   </div>
 </div>
