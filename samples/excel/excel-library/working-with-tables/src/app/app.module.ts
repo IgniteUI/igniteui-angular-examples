@@ -21,7 +21,6 @@ import { ExcelUtility } from "./ExcelUtility";
     IgxExcelModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

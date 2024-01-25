@@ -8,17 +8,14 @@ import { IgxLegendComponent, IgxCategoryChartComponent } from 'igniteui-angular-
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("legend", { static: true } )
-    private legend: IgxLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
-
+	@ViewChild("legend", { static: true } )
+	private legend: IgxLegendComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxCategoryChartComponent
     private _countryRenewableElectricity: CountryRenewableElectricity = null;
     public get countryRenewableElectricity(): CountryRenewableElectricity {
         if (this._countryRenewableElectricity == null)
@@ -27,6 +24,14 @@ export class AppComponent {
         }
         return this._countryRenewableElectricity;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

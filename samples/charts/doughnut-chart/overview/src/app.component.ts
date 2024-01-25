@@ -8,17 +8,14 @@ import { IgxDoughnutChartComponent, IgxRingSeriesComponent } from 'igniteui-angu
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDoughnutChartComponent
-    @ViewChild("series", { static: true } )
-    private series: IgxRingSeriesComponent
-
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDoughnutChartComponent
+	@ViewChild("series", { static: true } )
+	private series: IgxRingSeriesComponent
     private _companyMarketShares: CompanyMarketShares = null;
     public get companyMarketShares(): CompanyMarketShares {
         if (this._companyMarketShares == null)
@@ -27,6 +24,14 @@ export class AppComponent {
         }
         return this._companyMarketShares;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

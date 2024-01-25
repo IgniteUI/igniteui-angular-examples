@@ -23,7 +23,7 @@
           primitiveValue="BrightenSpecific">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
-          propertyPath="CalloutsVisible"
+          propertyPath="AutoCalloutsVisible"
           name="CalloutsVisibleEditor"
           #calloutsVisibleEditor
           label="Callouts: "
@@ -53,11 +53,7 @@
       isVerticalZoomEnabled="false"
       includedProperties="month, temperature"
       [dataSource]="temperatureAnnotatedData"
-      [calloutsDataSource]="temperatureAnnotatedData"
-      calloutsVisible="true"
-      calloutsXMemberPath="index"
-      calloutsYMemberPath="temperature"
-      calloutsLabelMemberPath="tempInfo"
+      autoCalloutsVisible="true"
       isCategoryHighlightingEnabled="true"
       highlightingMode="BrightenSpecific"
       highlightingBehavior="NearestItemsAndSeries"

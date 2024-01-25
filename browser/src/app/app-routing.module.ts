@@ -23,31 +23,6 @@ export const samplesRoutes: Routes = [
 
     // Auto-Insert-Modules-End
 
-    // {
-    //     data: ["ChartsModule"],
-    //     loadChildren: () => import("./charts/charts.module").then(m => m.ChartsModule),
-    //     path: "charts"
-    // },
-    // {
-    //     data: ["ExcelLibraryModule"],
-    //     loadChildren: () => import("./excel-library/excel-library.module").then(m => m.ExcelLibraryModule),
-    //     path: "excel"
-    // },
-    // {
-    //     data: ["GaugesModule"],
-    //     loadChildren: () => import("./gauges/gauges.module").then(m => m.GaugesModule),
-    //     path: "gauges"
-    // },
-    // {
-    //     data: ["GeoMapModule"],
-    //     loadChildren: () => import("./maps/geo-map.module").then(m => m.GeoMapModule),
-    //     path: "maps"
-    // },
-    // {
-    //     data: ["SpreadsheetModule"],
-    //     loadChildren: () => import("./spreadsheet/spreadsheet.module").then(m => m.SpreadsheetModule),
-    //     path: "excel"
-    // }
 ];
 export const appRoutes: Routes = [
     {

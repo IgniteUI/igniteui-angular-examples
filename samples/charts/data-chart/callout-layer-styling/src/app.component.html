@@ -26,20 +26,21 @@
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           [dataSource]="countryRenewableElectricity"
-          valueMemberPath="america">
+          valueMemberPath="america"
+          brush="rgba(137, 97, 169, 1)"
+          markerOutline="rgba(137, 97, 169, 1)"
+          shouldHideAutoCallouts="false">
           </igx-line-series>
           <igx-callout-layer
           name="CalloutLayer1"
           #calloutLayer1
-          [dataSource]="countryRenewableCallouts"
-          xMemberPath="index"
-          yMemberPath="value"
-          labelMemberPath="label"
-          calloutLeaderBrush="black"
-          calloutOutline="black"
-          calloutBackground="orange"
-          calloutTextColor="black"
-          calloutStrokeThickness="2">
+          isAutoCalloutBehaviorEnabled="true"
+          calloutLeaderBrush="rgba(137, 97, 169, 1)"
+          calloutOutline="rgba(137, 97, 169, 1)"
+          calloutBackground="white"
+          calloutTextColor="rgba(137, 97, 169, 1)"
+          calloutStrokeThickness="1"
+          calloutCollisionMode="Greedy">
           </igx-callout-layer>
       </igx-data-chart>
   </div>

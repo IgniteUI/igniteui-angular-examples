@@ -8,8 +8,6 @@ const chmod = require("gulp-chmod");
 const flatten = require("gulp-flatten");
 const fs = require("fs");
 const path = require("path");
-
-const path = require("path");
 const es = require("event-stream");
 const del = require("del");
 

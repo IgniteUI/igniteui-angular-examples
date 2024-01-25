@@ -163,6 +163,8 @@ function getSampleInfo(samplePath, sampleCallback, sampleFile) {
     info.SourceModuleTS = "";             // e.g. ./samples/charts/data-chart/axis-sharing/src/app.module.ts
     info.SourceDataFiles = [];            // e.g. ./samples/charts/data-chart/axis-sharing/src/SampleFinancialData.ts
     info.SourceFiles = [];  // all above
+    info.ImportsLines = [];
+    info.ImportsModules = [];
 
     // getting path to files in a given sample's source path:
     gulp.src([
@@ -304,6 +306,7 @@ exports.generateStats = function generateStats(cb) {
         combinedSamples.push(samplePath);
         break;
     }
+    combinedSamples.sort();
     stats.generate(cb, combinedSamples);
 }
 
@@ -683,6 +686,7 @@ function copySamples(cb) {
         for (let i = autoInsertStart+1; i < autoInsertEnd; i++) {
             appModuleLines[i] = ""; // clearing previously auto-generated inserts
         }
+        appModuleRoutes = appModuleRoutes.sort();
         // adding latest auto-generated inserts for JS files
         appModuleLines[autoInsertStart + 1] = appModuleRoutes.join(',\r\n');
         appModuleContent = appModuleLines.join('\r\n');
@@ -820,13 +824,19 @@ function updateCodeViewer(cb) {
 } exports.updateCodeViewer = updateCodeViewer;
 
 function cleanSamples() {
-    log("clean samples in browser: " + sampleOutput);
+    log("cleaning up ../samples folder and ./browser/src/samples folder");
     return del([
-          sampleOutput + "*.ts",
-          sampleOutput + "**/*.ts",
-          sampleOutput + "**/*.html",
-          sampleOutput + "**/*.scss",
-          sampleOutput + "**/*.css"
+          sampleOutput + "**/*.*",
+          sampleOutput,
+          "../samples/**/.angular/**/*.*",
+          "../samples/**/.angular",
+          "../samples/**/.git/**/*.*",
+          "../samples/**/.git",
+          "../samples/**/build/**/*.*",
+          "../samples/**/dist/**/*.*",
+          "../samples/**/node_modules/**/*.*",
+          "../samples/**/node_modules",
+          "../samples/**/package-lock.json"
     ],{force: true});
 } exports.cleanSamples = cleanSamples;
 
@@ -955,6 +965,7 @@ function updateReadme(cb) {
     // "https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/category-chart/annotations?fontsize=14&hidenavigation=1&theme=dark&view=preview&file=/src/app/app.component.html"
     // "https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/charts/category-chart/annotations"
 
+    var changeFilesCount = 0;
     var sandboxRoot = "https://codesandbox.io/s/github/IgniteUI/igniteui-angular-examples/tree/master/samples/"
     var readmeTemplate = fs.readFileSync("../samples/templates/ReadMe.md", "utf8");
     for (const sample of samplesDatabase) {
@@ -962,16 +973,29 @@ function updateReadme(cb) {
         let sandboxURL = sandboxRoot + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder;
         sandboxURL += "?fontsize=14&hidenavigation=1&theme=dark&view=preview&file=/src/app.component.html"
 
-        let readmeFile = readmeTemplate + "";
-        readmeFile = readmeFile.replace("{ComponentName}", sample.ControlName);
-        readmeFile = readmeFile.replace("{SandboxUrlEdit}", sandboxURL);
-        readmeFile = readmeFile.replace("{SampleDisplayName}", sample.SampleDisplayName);
-        readmeFile = readmeFile.replace("{SampleFolderPath}", sample.SourcePath);
-        readmeFile = readmeFile.replace("{SampleRoute}", sampleRoute);
+        let readmePath = '../samples/' + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder + "/ReadMe.md";
 
-        let readmeOutput = '../samples/' + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder + "/ReadMe.md";
-        fs.writeFileSync(readmeOutput, readmeFile);
-        // break;
+        let readmeNewFile = readmeTemplate + "";
+        readmeNewFile = readmeNewFile.replace("{ComponentName}", sample.ControlName);
+        readmeNewFile = readmeNewFile.replace("{SandboxUrlEdit}", sandboxURL);
+        readmeNewFile = readmeNewFile.replace("{SampleDisplayName}", sample.SampleDisplayName);
+        readmeNewFile = readmeNewFile.replace("{SampleFolderPath}", sample.SourcePath);
+        readmeNewFile = readmeNewFile.replace("{SampleRoute}", sampleRoute);
+
+        let readmeOldFile = "";
+        if (fs.existsSync(readmePath)) {
+            readmeOldFile = fs.readFileSync(readmePath).toString();
+        }
+
+        if (readmeNewFile !== readmeOldFile) {
+            console.log('UPDATED: ' + readmePath)
+            changeFilesCount++;
+            fs.writeFileSync(readmePath, readmeNewFile);
+        }
+    }
+
+    if (changeFilesCount > 0) {
+        console.log('WARNING: you must commit above ' + changeFilesCount + ' readme files in a pull request')
     }
     cb();
 } exports.updateReadme = updateReadme;
@@ -987,26 +1011,35 @@ function makeDirectoryFor(filePath) {
     // fs.mkdir(sampleOutputFolder + 'src', { recursive: true }, (err) => { if (err) throw err; });
 }
 
+// copies files from samples/templates folder to samples, e.g. charts
 function updateSamples(cb) {
-
     log('updating samples files... ');
 
     var templateFiles = [
-        "/.stackblitzrc",
-        // "/src/environments/environment.ts",
-        // "/src/environments/environment.prod.ts"
+        ".stackblitzrc",
+        "angular.json",
+        "tsconfig.json",
+        "src/environments/environment.ts",
+        "src/environments/environment.prod.ts",
+        "src/config/tsconfig-es5.app.json",
+        "src/config/tsconfig.app.json",
+        "src/config/tsconfig.base.json",
+        "src/config/tsconfig.spec.json",
+        "src/config/tsconfig.worker.json",
+        // "src/main.ts",
+        // "src/index.html",
+        "src/polyfills.ts",
+        // "src/styles.scss",
+        "src/typings.d.ts",
     ];
 
     for (const templatePath of templateFiles) {
-
-        var templateFile = fs.readFileSync("../samples/templates" + templatePath, "utf8");
-
+        var templateFile = fs.readFileSync("../samples/templates/" + templatePath, "utf8");
         for (const sample of samplesDatabase) {
-            let samplePath = '../samples/' + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder;
-
+            let samplePath = '../samples/' + sample.SampleGroup + '/' + sample.SampleControl + "/" + sample.SampleFolder + "/";
             let outputPath = samplePath + templatePath;
+            // log(outputPath);
             makeDirectoryFor(outputPath)
-
             fs.writeFileSync(outputPath, templateFile);
         }
     }
@@ -1014,63 +1047,83 @@ function updateSamples(cb) {
 } exports.updateSamples = updateSamples;
 
 
+function sortByKeys(dependencies)
+{
+    let keys = Object.keys(dependencies);
+    keys.sort();
+
+    var sorted = {};
+    for (const key of keys) {
+        sorted[key] = dependencies[key];
+    }
+    return sorted;
+}
 function updateIG(cb) {
 
-    // NOTE: change this array with new version of packages and optionally use "@infragistics/" proget prefix, e.g.
-    // "igniteui-angular-charts" instead of "igniteui-angular-charts" e.g.
-    // { name: "igniteui-angular-charts", version: "14.2.0" }, // proget
-    // { name:               "igniteui-angular-charts", version: "14.1.0" },  // npm
+    // cleanup packages to speedup this gulp script
+    // del.sync("./samples/**/node_modules/**/*.*", {force:true});
+    // del.sync("./samples/**/node_modules/**", {force:true});
+    // del.sync("./samples/**/node_modules", {force:true});
+
+    // NOTE: change this array with new version of packages
+    // and optionally use "@infragistics/" proget prefix, e.g.
+    // { name: "@infragistics/igniteui-angular-charts", version: "23.2.18" }, // PROGET
+    // { name:               "igniteui-angular-charts", version: "14.1.0" },  // NPM
     let packageUpgrades = [
         // these IG packages are often updated:
-        { name: "igniteui-angular-core"                     , version: "16.1.0" },
-        { name: "igniteui-angular-charts"                   , version: "16.1.0" },
-        { name: "igniteui-angular-excel"                    , version: "16.1.0" },
-        { name: "igniteui-angular-gauges"                   , version: "16.1.0" },
-        { name: "igniteui-angular-inputs"                   , version: "16.1.0" },
-        { name: "igniteui-angular-layouts"                  , version: "16.1.0" },
-        { name: "igniteui-angular-maps"                     , version: "16.1.0" },
-        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "16.1.0" },
-        { name: "igniteui-angular-spreadsheet"              , version: "16.1.0" },
-        { name: "igniteui-angular-datasources"              , version: "16.1.0" },
+        { name: "igniteui-angular-core"                     , version: "17.2.1" },
+        { name: "igniteui-angular-charts"                   , version: "17.2.1" },
+        { name: "igniteui-angular-excel"                    , version: "17.2.1" },
+        { name: "igniteui-angular-gauges"                   , version: "17.2.1" },
+        { name: "igniteui-angular-inputs"                   , version: "17.2.1" },
+        { name: "igniteui-angular-layouts"                  , version: "17.2.1" },
+        { name: "igniteui-angular-maps"                     , version: "17.2.1" },
+        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "17.2.1" },
+        { name: "igniteui-angular-spreadsheet"              , version: "17.2.1" },
+        { name: "igniteui-angular-datasources"              , version: "17.2.1" },
         // these IG packages are sometimes updated:
-        { name: "igniteui-webcomponents",            version: "4.3.0-beta.0" },
-        { name: "igniteui-theming",                  version: "1.4.14" },
-        { name: "igniteui-angular",                  version: "16.0.7" },
-        // { name: "@angular/animations",               version: "14.0.4" },
-        // { name: "@angular/common",                   version: "14.0.4" },
-        // { name: "@angular/compiler",                 version: "14.0.4" },
-        // { name: "@angular/core",                     version: "14.0.4" },
-        // { name: "@angular/forms",                    version: "14.0.4" },
-        // { name: "@angular/platform-browser",         version: "14.0.4" },
-        // { name: "@angular/platform-browser-dynamic", version: "14.0.4" },
-        // { name: "core-js", version: "3.21.0"},
-        //  dev packages:
-        // { name: "@angular-devkit/build-angular", version: "14.0.4"},
-        // { name: "@angular/cli", version: "14.0.4"},
-        // { name: "@angular/compiler-cli", version: "14.0.4"},
-        // { name: "@angular/language-service", version: "14.0.4"},
-        // { name: "typescript", version: "4.7.4"},
+        { name: "igniteui-webcomponents",            version: "4.7.0" },
+        { name: "igniteui-theming",                  version: "3.3.1" },
+        { name: "igniteui-angular",                  version: "17.0.0" },
+        { name: "@angular/animations",               version: "17.0.0" },
+        { name: "@angular/common",                   version: "17.0.0" },
+        { name: "@angular/compiler",                 version: "17.0.0" },
+        { name: "@angular/core",                     version: "17.0.0" },
+        { name: "@angular/forms",                    version: "17.0.0" },
+        { name: "@angular/platform-browser",         version: "17.0.0" },
+        { name: "@angular/platform-browser-dynamic", version: "17.0.0" },
+        { name: "classlist-js",         version: "1.1.20150312" },
+        { name: "core-js",              version: "3.21.0" },
+        { name: "hammerjs",             version: "2.0.8" },
+        { name: "intl",                 version: "1.2.5" },
+        { name: "jszip",                version: "3.8.0" },
+        { name: "rxjs",                 version: "6.6.7" },
+        { name: "tslib",                version: "2.3.1" },
+        { name: "web-animations-js",    version: "2.3.2" },
+        { name: "zone.js",              version: "~0.14.1" },
+        // dev packages:
+        { name: "@angular/cli",                     version: "17.0.0"},
+        { name: "@angular/compiler-cli",            version: "17.0.0"},
+        { name: "@angular/language-service",        version: "17.0.0"},
+        { name: "@angular-devkit/build-angular",    version: "17.0.0"},
+        { name: "@types/node",                      version: "14.14.28"},
+        { name: "codelyzer",                        version: "6.0.2"},
+        { name: "jasmine-core",                     version: "3.7.1"},
+        { name: "jasmine-spec-reporter",            version: "~4.2.1"},
+        { name: "sass.js",                          version: "0.11.1"},
+        { name: "tslint",                           version: "~6.1.3"},
+        { name: "ts-node",                          version: "9.1.1"},
+        { name: "typescript",                       version: "5.2.2"},
     ];
 
     // NOTE you can comment out strings in this array to run these function only on a subset of samples
     var packagePaths = [
         './package.json', // browser
-        // '../samples/gauges/bullet-graph/animation/package.json',
         '../samples/**/package.json',
         // '../samples/charts/**/package.json',
-        // '../samples/editors/**/package.json',
-        // '../samples/excel/**/package.json',
         // '../samples/gauges/**/package.json',
-        // '../samples/grids/**/package.json',
-        // '../samples/inputs/**/package.json',
-        // '../samples/layouts/**/package.json',
-        // '../samples/maps/**/package.json',
-        // '../samples/menus/**/package.json',
-        // '../samples/notifications/**/package.json',
-        // '../samples/scheduling/**/package.json',
 
-        // '../samples/charts/category-chart/**/package.json',
-        // '../samples/maps/geo-map/type-scatter-bubble-series/package.json',
+        // skip packages in node_modules folders
         '!../samples/**/node_modules/**/package.json',
         '!../samples/**/node_modules/**',
         '!../samples/**/node_modules',
@@ -1080,11 +1133,8 @@ function updateIG(cb) {
     let packageMappings = {};
     for (const item of packageUpgrades) {
         item.id = item.name.replace("@infragistics/", "");
-        let name = item.name.replace("@infragistics/", "");
-        packageMappings[name] = item;
+        packageMappings[item.id] = item;
     }
-
-    // console.log(packageMappings);
 
     let updatedPackages = 0;
     // gulp all package.json files in samples/browser
@@ -1120,16 +1170,26 @@ function updateIG(cb) {
             }
         }
 
+        let newContent = fileLines.join('\n');
+        let jsonPackages = JSON.parse(newContent);
+        // sort package dependencies by their names
+        let sortPackages = sortByKeys(jsonPackages.dependencies);
+        if (JSON.stringify(sortPackages) !== JSON.stringify(jsonPackages.dependencies)) {
+            jsonPackages.dependencies = sortPackages;
+            jsonPackages.devDependencies = sortByKeys(jsonPackages.devDependencies);
+            newContent = JSON.stringify(jsonPackages, null, '  ') + '\n';
+            fileChanged = true;
+        }
+
         if (fileChanged) {
-            let newContent = fileLines.join('\n');
             updatedPackages++;
             fs.writeFileSync(filePath, newContent);
-            log("updated: " + filePath);
+            console.log("updated: " + filePath);
         }
         fileCallback(null, file);
     }))
     .on("end", function() {
-        log("updateIG... done = " + updatedPackages + " files");
+        console.log("updated: " + updatedPackages + " package files");
         cb();
     });
 
@@ -1236,3 +1296,5 @@ function logVersionIgniteUI(cb) {
     fs.writeFileSync(outputPath, outputText);
     cb();
 } exports.logVersionIgniteUI = logVersionIgniteUI;
+
+

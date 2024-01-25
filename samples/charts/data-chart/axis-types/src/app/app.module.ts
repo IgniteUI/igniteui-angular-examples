@@ -41,7 +41,6 @@ import { SampleScatterData } from "./SampleScatterData";
     SampleCategoryData,
     SampleScatterData
 ],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

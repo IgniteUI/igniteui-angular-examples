@@ -9,27 +9,24 @@ import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, Ig
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("legend", { static: true } )
-    private legend: IgxLegendComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxDataChartComponent
-    @ViewChild("xAxis", { static: true } )
-    private xAxis: IgxNumericXAxisComponent
-    @ViewChild("yAxis", { static: true } )
-    private yAxis: IgxNumericYAxisComponent
-    @ViewChild("scatterLineSeries1", { static: true } )
-    private scatterLineSeries1: IgxScatterLineSeriesComponent
-    @ViewChild("scatterLineSeries2", { static: true } )
-    private scatterLineSeries2: IgxScatterLineSeriesComponent
-    @ViewChild("dataToolTipLayer", { static: true } )
-    private dataToolTipLayer: IgxDataToolTipLayerComponent
-
+	@ViewChild("legend", { static: true } )
+	private legend: IgxLegendComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxDataChartComponent
+	@ViewChild("xAxis", { static: true } )
+	private xAxis: IgxNumericXAxisComponent
+	@ViewChild("yAxis", { static: true } )
+	private yAxis: IgxNumericYAxisComponent
+	@ViewChild("scatterLineSeries1", { static: true } )
+	private scatterLineSeries1: IgxScatterLineSeriesComponent
+	@ViewChild("scatterLineSeries2", { static: true } )
+	private scatterLineSeries2: IgxScatterLineSeriesComponent
+	@ViewChild("dataToolTipLayer", { static: true } )
+	private dataToolTipLayer: IgxDataToolTipLayerComponent
     private _healthDataForGermany: HealthDataForGermany = null;
     public get healthDataForGermany(): HealthDataForGermany {
         if (this._healthDataForGermany == null)
@@ -47,6 +44,14 @@ export class AppComponent {
         }
         return this._healthDataForFrance;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

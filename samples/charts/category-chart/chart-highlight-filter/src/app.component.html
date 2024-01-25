@@ -1,0 +1,34 @@
+<div class="container vertical sample">
+  <div class="options vertical">
+      <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="true">
+          <igx-property-editor-property-description
+          propertyPath="HighlightedValuesDisplayMode"
+          name="HighlightedValuesDisplayModeEditor"
+          #highlightedValuesDisplayModeEditor
+          label="Highlight Display Mode: "
+          primitiveValue="Hidden">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Sales Filtered by Country
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      name="chart"
+      #chart
+      chartType="Column"
+      [dataSource]="salesData"
+      initialGroups="MonthName"
+      initialHighlightFilter="Country ne 'UK'"
+      highlightedValuesDisplayMode="Hidden">
+      </igx-category-chart>
+  </div>
+</div>

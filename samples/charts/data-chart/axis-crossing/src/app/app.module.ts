@@ -25,7 +25,6 @@ import { IgxDataChartCoreModule, IgxDataChartCategoryModule, IgxDataChartScatter
     IgxLegendModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

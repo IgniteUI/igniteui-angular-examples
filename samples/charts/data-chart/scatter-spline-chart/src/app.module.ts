@@ -10,7 +10,7 @@ import { IgxLegendModule, IgxNumberAbbreviatorModule, IgxDataChartCoreModule, Ig
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-    AppComponent,
+    AppComponent
 ],
   imports: [
     BrowserModule,
@@ -26,7 +26,6 @@ import { IgxLegendModule, IgxNumberAbbreviatorModule, IgxDataChartCoreModule, Ig
     IgxDataChartAnnotationModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

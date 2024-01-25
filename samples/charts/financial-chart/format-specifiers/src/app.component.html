@@ -1,0 +1,32 @@
+<div class="container vertical sample">
+  <div class="legend">
+      <igx-data-legend
+      name="Legend"
+      #legend
+      [target]="chart"
+      includedColumns="Close, Change, Value"
+      excludedColumns="High, Low, Open, Volume"
+      labelDisplayMode="Hidden"
+      valueFormatString="{0}"
+      [valueFormatSpecifiers]="numberFormatSpecifier1">
+      </igx-data-legend>
+  </div>
+  <div class="container fill">
+      <igx-financial-chart
+      name="chart"
+      #chart
+      chartType="Candle"
+      [dataSource]="multipleStocks"
+      dataToolTipValueFormatString="{0}"
+      [dataToolTipValueFormatSpecifiers]="numberFormatSpecifier3"
+      dataToolTipIncludedColumns="Close, Change, Value"
+      dataToolTipHeaderFormatTime="None"
+      zoomSliderType="None"
+      yAxisAbbreviateLargeNumbers="false"
+      yAxisLabelFormat="{0}"
+      [yAxisLabelFormatSpecifiers]="numberFormatSpecifier5"
+      xAxisLabelFormat="{0}"
+      [xAxisLabelFormatSpecifiers]="dateTimeFormatSpecifier1">
+      </igx-financial-chart>
+  </div>
+</div>

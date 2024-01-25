@@ -1,0 +1,44 @@
+<div class="container vertical sample">
+  <div class="options vertical">
+      <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="true">
+          <igx-property-editor-property-description
+          propertyPath="CalloutsVisible"
+          name="CalloutsVisibleEditor"
+          #calloutsVisibleEditor
+          label="Callouts Visible"
+          shouldOverrideDefaultEditor="true"
+          primitiveValue="True">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Average Temperature in Sydney
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      name="chart"
+      #chart
+      chartType="Column"
+      computedPlotAreaMarginMode="Series"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      includedProperties="month, temperature"
+      [dataSource]="temperatureAnnotatedData"
+      crosshairsAnnotationYAxisPrecision="0"
+      [calloutsDataSource]="temperatureAnnotatedData"
+      calloutsVisible="true"
+      calloutsXMemberPath="index"
+      calloutsYMemberPath="temperature"
+      calloutsLabelMemberPath="tempInfo"
+      yAxisMaximumValue="35"
+      yAxisLabelLocation="OutsideRight">
+      </igx-category-chart>
+  </div>
+</div>

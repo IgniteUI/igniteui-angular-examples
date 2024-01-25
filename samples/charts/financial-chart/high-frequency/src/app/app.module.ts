@@ -24,7 +24,6 @@ import { IgxSliderModule } from "igniteui-angular";
     IgxSliderModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

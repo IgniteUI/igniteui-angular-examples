@@ -24,7 +24,6 @@ import { SharedData } from "./SharedData";
     IgxDataChartCategoryModule
 ],
   providers: [SharedData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

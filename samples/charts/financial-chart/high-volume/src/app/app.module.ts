@@ -24,7 +24,6 @@ import { GenerateHourlyPricesService } from "./GenerateHourlyPricesService";
     IgxLegendModule
 ],
   providers: [GenerateHourlyPricesService],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

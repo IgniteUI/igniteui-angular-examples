@@ -21,7 +21,6 @@ import { IgxLinearGaugeModule } from "igniteui-angular-gauges";
     IgxLinearGaugeModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

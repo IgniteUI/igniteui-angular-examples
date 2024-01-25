@@ -10,7 +10,7 @@ import { IgxItemLegendModule, IgxPieChartModule } from 'igniteui-angular-charts'
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-    AppComponent,
+    AppComponent
 ],
   imports: [
     BrowserModule,
@@ -21,7 +21,6 @@ import { IgxItemLegendModule, IgxPieChartModule } from 'igniteui-angular-charts'
     IgxPieChartModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

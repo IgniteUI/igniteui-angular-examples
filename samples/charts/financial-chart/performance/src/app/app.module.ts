@@ -24,7 +24,6 @@ import { GenerateOhlcPricesService } from "./GenerateOhlcPricesService";
     IgxLegendModule
 ],
   providers: [GenerateOhlcPricesService],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

@@ -21,28 +21,36 @@ This folder contains Angular application with example of Clipboard feature using
     </body>
 </html>
 
+## Branches
+
+> **_NOTE:_** You should use [master](https://github.com/IgniteUI/igniteui-angular-examples/tree/master) branch of this repository if you want to run samples on your computer. Use the [vnext](https://github.com/IgniteUI/igniteui-angular-examples/tree/vnext) branch only when you want to contribute new samples to this repository.
+
 ## Instructions
 
-To set up this project locally, execute these commands:
+Follow these instructions to run this example:
+
+
+- clone and navigate to this sample in terminal window
 
 ```
 git clone https://github.com/IgniteUI/igniteui-angular-examples.git
-cd ./igniteui-angular-examples
+git checkout master
 cd ../samples/excel/spreadsheet/clipboard
 ```
+<!-- cd ./igniteui-angular-examples -->
 
-open above folder in VS Code or type:
+- open above folder in VS Code or type:
 ```
 code .
 ```
 
-In terminal window, run:
+- In terminal window, run:
 ```
-npm install
+npm install --legacy-peer-deps
 npm run-script start
 ```
 
-Then open http://localhost:4200/ in your browser
+- open http://localhost:4200/ in your browser
 
 
 ## Learn More

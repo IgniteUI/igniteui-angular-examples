@@ -38,18 +38,16 @@
           showDefaultTooltip="true"
           isTransitionInEnabled="true"
           isHighlightingEnabled="true"
-          brush="rgba(134, 6, 138, 0.647058823529412)"
+          brush="rgba(134, 6, 138, 0.6470588235294118)"
           outline="rgba(133, 6, 138, 1)"
           thickness="2"
-          areaFillOpacity="0.5">
+          areaFillOpacity="0.5"
+          markerType="Hidden">
           </igx-bar-series>
           <igx-callout-layer
           name="CalloutLayer1"
           #calloutLayer1
-          xMemberPath="x"
-          yMemberPath="y"
-          labelMemberPath="label"
-          contentMemberPath="label"
+          isAutoCalloutBehaviorEnabled="true"
           calloutTextColor="rgba(133, 6, 138, 1)"
           calloutBackground="rgba(0, 0, 0, 0)"
           calloutLeaderBrush="rgba(0, 0, 0, 0)"

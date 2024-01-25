@@ -10,7 +10,7 @@ import { IgxLegendModule, IgxDoughnutChartModule } from 'igniteui-angular-charts
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-    AppComponent,
+    AppComponent
 ],
   imports: [
     BrowserModule,
@@ -21,7 +21,6 @@ import { IgxLegendModule, IgxDoughnutChartModule } from 'igniteui-angular-charts
     IgxDoughnutChartModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}

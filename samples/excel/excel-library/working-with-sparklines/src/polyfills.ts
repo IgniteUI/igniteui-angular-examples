@@ -18,36 +18,36 @@
 * BROWSER POLYFILLS
 */
 
-//// import "core-js/es7/object";
+// import "core-js/es7/object";
 
 /** IE10 and IE11 requires the following for NgClass support on SVG elements */
-import "classlist.js";  // run `npm install --save classlist.js`.
+//import "classlist.js";  // run `npm install --save classlist.js`.
 
 /** IE10 and IE11 requires the following for the Reflect API. */
-////import "core-js/es6/reflect";
+// import "core-js/es6/reflect";
 
 /* Evergreen browsers require these. */
 // used for reflect-metadata in JIT. If you use AOT (and only Angular decorators), you can remove.
-////import "core-js/es7/reflect";
+// import "core-js/es7/reflect";
 
 /*
  * Required to support Web Animations `@angular/platform-browser/animations`.
  * Needed for: All but Chrome, Firefox and Opera. http://caniuse.com/#feat=web-animation
  */
-import "web-animations-js";  // run `npm install --save web-animations-js`.
+//import "web-animations-js";  // run `npm install --save web-animations-js`.
 
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
 import "hammerjs/hammer";
-import "zone.js/dist/zone";  // included with Angular CLI.
+import "zone.js";  // included with Angular CLI.
 
 /***************************************************************************************************
  * @angular/animations polyfill
  */
-if (!Element.prototype.matches) {
-    Element.prototype.matches = (Element.prototype as any).msMatchesSelector;
-}
+// if (!Element.prototype.matches) {
+//     Element.prototype.matches = (Element.prototype as any).msMatchesSelector;
+// }
 
 /***************************************************************************************************
  * APPLICATION IMPORTS

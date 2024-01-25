@@ -1,15 +1,15 @@
 <div class="container vertical sample">
   <div class="options vertical">
       <igx-property-editor-panel
+      name="editor"
+      #editor
       [componentRenderer]="renderer"
       [target]="chart"
       descriptionType="CategoryChart"
       isHorizontal="true"
-      isWrappingEnabled="true"
-      name="propertyEditorPanel1"
-      #propertyEditorPanel1>
+      isWrappingEnabled="true">
           <igx-property-editor-property-description
-          propertyPath="InitialGroups"
+          propertyPath="InitialGroupsHandler"
           name="InitialGroups"
           #initialGroups
           label="Initial Groups"
@@ -17,34 +17,13 @@
           shouldOverrideDefaultEditor="true"
           dropDownNames="Country, Product, MonthName, Year"
           dropDownValues="Country, Product, MonthName, Year"
-          primitiveValue="Country">
-          </igx-property-editor-property-description>
-          <igx-property-editor-property-description
-          propertyPath="InitialSummaries"
-          name="InitialSummaries"
-          #initialSummaries
-          label="Initial Summaries"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="Sum(Sales) as Sales, Avg(Sales) as Sales, Min(Sales) as Sales, Max(Sales) as Sales, Count(Sales) as Sales"
-          dropDownValues="Sum(Sales) as Sales, Avg(Sales) as Sales, Min(Sales) as Sales, Max(Sales) as Sales, Count(Sales) as Sales"
-          primitiveValue="Sum(Sales) as Sales">
-          </igx-property-editor-property-description>
-          <igx-property-editor-property-description
-          propertyPath="GroupSorts"
-          name="GroupSorts"
-          #groupSorts
-          label="Sort Groups"
-          valueType="EnumValue"
-          shouldOverrideDefaultEditor="true"
-          dropDownNames="Sales Desc, Sales Asc"
-          dropDownValues="Sales Desc, Sales Asc"
-          primitiveValue="Sales Desc">
+          primitiveValue="Country"
+          (changed)="this.editorChangeUpdateInitialGroups($event)">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
   <div class="legend-title">
-      Renewable Electricity Generated
+      Sales Aggregated by Country and Product
   </div>
   <div class="container fill">
       <igx-category-chart

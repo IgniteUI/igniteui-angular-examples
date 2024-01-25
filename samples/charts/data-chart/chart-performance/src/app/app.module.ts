@@ -25,7 +25,6 @@ import { SharedData } from "./SharedData";
     IgxLegendModule
 ],
   providers: [SharedData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

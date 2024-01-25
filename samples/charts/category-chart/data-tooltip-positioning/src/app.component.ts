@@ -14,23 +14,20 @@ defineAllComponents();
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("propertyEditor", { static: true } )
-    private propertyEditor: IgxPropertyEditorPanelComponent
-    @ViewChild("groupedPositionXEditor", { static: true } )
-    private groupedPositionXEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("groupedPositionYEditor", { static: true } )
-    private groupedPositionYEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("groupingModeEditor", { static: true } )
-    private groupingModeEditor: IgxPropertyEditorPropertyDescriptionComponent
-    @ViewChild("chart", { static: true } )
-    private chart: IgxCategoryChartComponent
-
+	@ViewChild("propertyEditor", { static: true } )
+	private propertyEditor: IgxPropertyEditorPanelComponent
+	@ViewChild("groupedPositionXEditor", { static: true } )
+	private groupedPositionXEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("groupedPositionYEditor", { static: true } )
+	private groupedPositionYEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("groupingModeEditor", { static: true } )
+	private groupingModeEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("chart", { static: true } )
+	private chart: IgxCategoryChartComponent
     private _highestGrossingMovies: HighestGrossingMovies = null;
     public get highestGrossingMovies(): HighestGrossingMovies {
         if (this._highestGrossingMovies == null)
@@ -51,6 +48,14 @@ export class AppComponent {
         }
         return this._componentRenderer;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

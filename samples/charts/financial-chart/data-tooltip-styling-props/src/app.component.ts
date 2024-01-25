@@ -8,15 +8,12 @@ import { IgxFinancialChartComponent } from 'igniteui-angular-charts';
     templateUrl: "./app.component.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
 
-    public constructor(private _detector: ChangeDetectorRef) {
+export class AppComponent implements AfterViewInit
+{
 
-    }
-
-    @ViewChild("chart", { static: true } )
-    private chart: IgxFinancialChartComponent
-
+	@ViewChild("chart", { static: true } )
+	private chart: IgxFinancialChartComponent
     private _stockGoogle: StockGoogle = null;
     public get stockGoogle(): StockGoogle {
         if (this._stockGoogle == null)
@@ -25,6 +22,14 @@ export class AppComponent {
         }
         return this._stockGoogle;
     }
+
+	public constructor(private _detector: ChangeDetectorRef)
+	{
+	}
+
+	public ngAfterViewInit(): void
+	{
+	}
 
 }
 

@@ -27,7 +27,6 @@ import { SampleShapeData } from "./SampleShapeData";
     IgxDataChartScatterModule
 ],
   providers: [SampleShapeData],
-  entryComponents: [],
-  schemas: []
+schemas: []
 })
 export class AppModule {}

@@ -36,6 +36,7 @@ gulp.task('updateBrowser', gulp.series(
     browser.findSamples,
     browser.copySamples,
     browser.updateCodeViewer,
+    browser.updateReadme,
     browser.generateStats,
     // browser.copyBootstrapCss,
 ));
@@ -89,6 +90,7 @@ gulp.task('updateSamples', gulp.series(
     browser.updateSamples
 ));
 
+gulp.task('cleanSamples', browser.cleanSamples);
 
 gulp.task('updateIG', browser.updateIG);
 gulp.task('copyBootstrapCss', browser.copyBootstrapCss);

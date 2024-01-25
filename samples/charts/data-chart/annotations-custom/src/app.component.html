@@ -1,0 +1,64 @@
+<div class="container vertical sample">
+  <div class="legend-title">
+      Renewable Electricity Generated
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart>
+          <igx-category-x-axis
+          name="xAxis"
+          #xAxis
+          [dataSource]="countryRenewableElectricity"
+          label="year">
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis>
+          </igx-numeric-y-axis>
+          <igx-line-series
+          name="LineSeries1"
+          #lineSeries1
+          title="Electricity"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="countryRenewableElectricity"
+          valueMemberPath="america">
+          </igx-line-series>
+          <igx-callout-layer
+          name="CalloutLayer1"
+          #calloutLayer1
+          [dataSource]="countryRenewableCallouts"
+          xMemberPath="index"
+          yMemberPath="value"
+          labelMemberPath="label"
+          calloutPaddingLeft="20"
+          calloutPaddingRight="20"
+          calloutPaddingBottom="10"
+          calloutPaddingTop="10"
+          calloutCornerRadius="5">
+          </igx-callout-layer>
+          <igx-final-value-layer
+          name="FinalValueLayer"
+          #finalValueLayer
+          axisAnnotationBackgroundCornerRadius="10"
+          axisAnnotationPaddingBottom="10"
+          axisAnnotationPaddingTop="10"
+          axisAnnotationPaddingLeft="10"
+          axisAnnotationPaddingRight="10">
+          </igx-final-value-layer>
+          <igx-crosshair-layer
+          name="CrosshairLayer"
+          #crosshairLayer
+          isAxisAnnotationEnabled="true"
+          yAxisAnnotationInterpolatedValuePrecision="0"
+          xAxisAnnotationBackgroundCornerRadius="10"
+          yAxisAnnotationBackgroundCornerRadius="10">
+          </igx-crosshair-layer>
+          <igx-data-tool-tip-layer
+          name="Tooltips"
+          #tooltips>
+          </igx-data-tool-tip-layer>
+      </igx-data-chart>
+  </div>
+</div>

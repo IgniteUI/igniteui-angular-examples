@@ -21,7 +21,6 @@ import { IgxRadialGaugeModule } from "igniteui-angular-gauges";
     IgxRadialGaugeModule
 ],
   providers: [],
-  entryComponents: [],
   schemas: []
 })
 export class AppModule {}
