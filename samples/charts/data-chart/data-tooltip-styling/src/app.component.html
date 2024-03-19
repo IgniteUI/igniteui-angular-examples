@@ -1,0 +1,37 @@
+<div class="container vertical sample">
+  <div class="container fill">
+      <igx-data-chart
+      shouldAutoExpandMarginForInitialLabels="true"
+      computedPlotAreaMarginMode="Series"
+      name="chart"
+      #chart
+      highlightedValuesDisplayMode="Overlay">
+          <igx-category-x-axis
+          name="xAxis"
+          #xAxis
+          [dataSource]="olympicMedalsTopCountriesWithTotals"
+          label="year">
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis>
+          </igx-numeric-y-axis>
+          <igx-column-series
+          name="ColumnSeries1"
+          #columnSeries1
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="olympicMedalsTopCountriesWithTotals"
+          title=""
+          valueMemberPath="total"
+          highlightedValueMemberPath="america"
+          highlightedTitleSuffix="America">
+          </igx-column-series>
+          <igx-data-tool-tip-layer
+          name="DataToolTipLayer"
+          #dataToolTipLayer
+          groupingMode="Grouped">
+          </igx-data-tool-tip-layer>
+      </igx-data-chart>
+  </div>
+</div>
