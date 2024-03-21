@@ -1,38 +1,47 @@
-<div class="container vertical">
-  <div class="legend-title">
-      GDP per Capita vs Population
-  </div>
+<div class="container vertical sample">
   <div class="container fill">
       <igx-data-chart
       name="chart"
-      #chart>
+      #chart
+      chartTitle="Public Debt vs. Population"
+      subtitle="GDP per Capita">
           <igx-numeric-x-axis
-          isLogarithmic="true"
-          abbreviateLargeNumbers="true"
-          title="Population"
           name="xAxis"
-          #xAxis>
+          #xAxis
+          title="Population"
+          isLogarithmic="true"
+          abbreviateLargeNumbers="true">
           </igx-numeric-x-axis>
           <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
+          title="Public Debt"
           isLogarithmic="false"
           abbreviateLargeNumbers="true"
-          title="GDP per Capita"
-          name="yAxis"
-          #yAxis>
+          maximumValue="120">
           </igx-numeric-y-axis>
           <igx-bubble-series
-          radiusMemberPath="population"
+          name="BubbleSeries1"
+          #bubbleSeries1
+          xMemberPath="population"
+          yMemberPath="publicDebt"
+          radiusMemberPath="gdpPerCapita"
+          fillMemberPath="gdpPerCapita"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          xMemberPath="population"
-          yMemberPath="gDP"
+          [dataSource]="worldDebtAndPopulation"
           markerType="Circle"
-          [dataSource]="countryStatsEurope"
-          showDefaultTooltip="true"
-          title="European Countries"
-          name="BubbleSeries1"
-          #bubbleSeries1>
+          showDefaultTooltip="true">
+              <igx-size-scale
+              isLogarithmic="false"
+              minimumValue="5"
+              maximumValue="40">
+              </igx-size-scale>
           </igx-bubble-series>
+          <igx-data-tool-tip-layer
+          name="DataToolTipLayer"
+          #dataToolTipLayer>
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>
