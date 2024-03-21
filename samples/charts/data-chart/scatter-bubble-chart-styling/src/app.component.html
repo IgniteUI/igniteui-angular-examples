@@ -1,51 +1,53 @@
-<div class="container vertical">
+<div class="container vertical sample">
   <div class="legend-title">
       Total Population of Selected Countries
   </div>
   <div class="legend">
       <igx-legend
-      orientation="Horizontal"
       name="Legend"
-      #legend>
+      #legend
+      orientation="Horizontal">
       </igx-legend>
   </div>
   <div class="container fill">
       <igx-data-chart
-      [legend]="legend"
       name="chart"
-      #chart>
+      #chart
+      [legend]="legend">
           <igx-numeric-x-axis
-          isLogarithmic="true"
-          abbreviateLargeNumbers="true"
-          title="Population"
           name="xAxis"
-          #xAxis>
+          #xAxis
+          title="Population"
+          isLogarithmic="true"
+          abbreviateLargeNumbers="true">
           </igx-numeric-x-axis>
           <igx-numeric-y-axis
-          isLogarithmic="true"
-          abbreviateLargeNumbers="true"
-          title="GDP per Capita"
           name="yAxis"
-          #yAxis>
+          #yAxis
+          title="GDP per Capita"
+          isLogarithmic="true"
+          abbreviateLargeNumbers="true">
           </igx-numeric-y-axis>
           <igx-bubble-series
-          radiusMemberPath="population"
+          name="BubbleSeries1"
+          #bubbleSeries1
+          title="African Countries"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           xMemberPath="population"
           yMemberPath="gDP"
-          markerType="Circle"
-          markerThickness="2"
-          markerBrush="rgba(62, 202, 62, 1)"
-          markerOutline="rgba(62, 202, 62, 1)"
+          radiusMemberPath="population"
           [dataSource]="countryStatsAfrica"
+          markerType="Circle"
+          markerOutline="rgba(62, 202, 62, 1)"
+          markerBrush="rgba(69, 179, 224, 1)"
           markerFillOpacity="0.5"
-          showDefaultTooltip="true"
-          title="African Countries"
-          name="BubbleSeries1"
-          #bubbleSeries1>
+          markerThickness="2"
+          showDefaultTooltip="true">
           </igx-bubble-series>
           <igx-bubble-series
+          name="BubbleSeries2"
+          #bubbleSeries2
           title="European Countries"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
@@ -55,13 +57,15 @@
           [dataSource]="countryStatsEurope"
           markerType="Circle"
           markerOutline="rgba(171, 6, 221, 1)"
-          markerBrush="rgba(171, 6, 221, 1)"
+          markerBrush="rgba(135, 156, 235, 1)"
           markerFillOpacity="0.5"
           markerThickness="2"
-          showDefaultTooltip="true"
-          name="BubbleSeries2"
-          #bubbleSeries2>
+          showDefaultTooltip="true">
           </igx-bubble-series>
+          <igx-data-tool-tip-layer
+          name="DataToolTipLayer"
+          #dataToolTipLayer>
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>
