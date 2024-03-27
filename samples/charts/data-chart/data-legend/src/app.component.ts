@@ -51,7 +51,6 @@ export class AppComponent implements AfterViewInit
 	    }
 	    return this._sizeScale2;
 	}
-  
 	@ViewChild("crosshairLayer", { static: true } )
 	private crosshairLayer: IgxCrosshairLayerComponent
     private _countryDemographicAfrican: CountryDemographicAfrican = null;
