@@ -21,12 +21,34 @@ export class AppComponent implements AfterViewInit
 	private yAxis: IgxNumericYAxisComponent
 	@ViewChild("bubbleSeries1", { static: true } )
 	private bubbleSeries1: IgxBubbleSeriesComponent
-	@ViewChild("sizeScale1", { static: true } )
-	private sizeScale1: IgxSizeScaleComponent
+	private  _sizeScale1: IgxSizeScaleComponent | null = null;
+	public get sizeScale1(): IgxSizeScaleComponent {
+	    if (this._sizeScale1 == null)
+	    {
+	        var SizeScale1 = new IgxSizeScaleComponent();
+
+	        SizeScale1.minimumValue = 10;
+	        SizeScale1.maximumValue = 50;
+
+	        this._sizeScale1 = SizeScale1;
+	    }
+	    return this._sizeScale1;
+	}
 	@ViewChild("bubbleSeries2", { static: true } )
 	private bubbleSeries2: IgxBubbleSeriesComponent
-	@ViewChild("sizeScale2", { static: true } )
-	private sizeScale2: IgxSizeScaleComponent
+	private  _sizeScale2: IgxSizeScaleComponent | null = null;
+	public get sizeScale2(): IgxSizeScaleComponent {
+	    if (this._sizeScale2 == null)
+	    {
+	        var SizeScale2 = new IgxSizeScaleComponent();
+
+	        SizeScale2.minimumValue = 10;
+	        SizeScale2.maximumValue = 50;
+
+	        this._sizeScale2 = SizeScale2;
+	    }
+	    return this._sizeScale2;
+	}
 	@ViewChild("dataToolTipLayer", { static: true } )
 	private dataToolTipLayer: IgxDataToolTipLayerComponent
     private _countryDemographicAfrican: CountryDemographicAfrican = null;
