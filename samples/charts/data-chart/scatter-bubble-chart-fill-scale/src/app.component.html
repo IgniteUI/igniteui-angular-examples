@@ -1,0 +1,73 @@
+<div class="container vertical sample">
+  <div class="options vertical">
+      <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="DataChart"
+      isHorizontal="true"
+      isWrappingEnabled="true">
+          <igx-property-editor-property-description
+          name="FillScaleMinimumValueEditor"
+          #fillScaleMinimumValueEditor
+          label="MinimumValue: "
+          valueType="Slider"
+          min="0"
+          max="20000"
+          (changed)="this.scatterBubbleSeriesFillScaleSliderChanged($event)">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          name="FillScaleMaximumValueEditor"
+          #fillScaleMaximumValueEditor
+          label="MaximumValue: "
+          valueType="Slider"
+          min="25000"
+          max="100000"
+          (changed)="this.scatterBubbleSeriesFillScaleSliderChanged($event)">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart
+      isHorizontalZoomEnabled="true"
+      isVerticalZoomEnabled="true"
+      chartTitle="Public Debt vs. Population"
+      subtitle="GDP per Capita">
+          <igx-numeric-x-axis
+          name="xAxis"
+          #xAxis
+          minimumValue="10000"
+          maximumValue="10000000000"
+          isLogarithmic="true"
+          abbreviateLargeNumbers="true"
+          title="Population">
+          </igx-numeric-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
+          isLogarithmic="true"
+          logarithmBase="10"
+          title="Public Debt per GDP">
+          </igx-numeric-y-axis>
+          <igx-bubble-series
+          name="BubbleSeries1"
+          #bubbleSeries1
+          xMemberPath="population"
+          yMemberPath="publicDebt"
+          radiusMemberPath="gdpPerCapita"
+          [radiusScale]="SizeScale1"
+          fillMemberPath="gdpPerCapita"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="worldDebtAndPopulation"
+          markerType="Circle"
+          markerOutline="black"
+          showDefaultTooltip="true"
+          [fillScale]="ValueBrushScale1">
+          </igx-bubble-series>
+      </igx-data-chart>
+  </div>
+</div>
