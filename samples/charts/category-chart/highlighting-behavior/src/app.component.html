@@ -1,0 +1,36 @@
+<div class="container vertical sample">
+  <div class="options vertical">
+      <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="CategoryChart"
+      isHorizontal="true"
+      isWrappingEnabled="true">
+          <igx-property-editor-property-description
+          propertyPath="HighlightingBehavior"
+          name="HighlightingBehaviorEditor"
+          #highlightingBehaviorEditor
+          label="Highlighting Behavior: "
+          primitiveValue="DirectlyOver">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      name="chart"
+      #chart
+      chartType="Column"
+      computedPlotAreaMarginMode="Series"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      [dataSource]="temperatureAnnotatedData"
+      highlightingMode="Brighten"
+      highlightingBehavior="DirectlyOver"
+      crosshairsAnnotationEnabled="false"
+      toolTipType="None"
+      crosshairsDisplayMode="None">
+      </igx-category-chart>
+  </div>
+</div>
