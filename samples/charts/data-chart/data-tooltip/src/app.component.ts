@@ -49,7 +49,6 @@ export class AppComponent implements AfterViewInit
 	    }
 	    return this._sizeScale2;
 	}
-  
 	@ViewChild("dataToolTipLayer", { static: true } )
 	private dataToolTipLayer: IgxDataToolTipLayerComponent
     private _countryDemographicAfrican: CountryDemographicAfrican = null;
