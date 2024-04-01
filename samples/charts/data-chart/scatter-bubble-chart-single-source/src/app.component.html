@@ -1,38 +1,44 @@
-<div class="container vertical">
+<div class="container vertical sample">
   <div class="legend-title">
-      GDP per Capita vs Population
+      Total Population of Selected Countries
   </div>
   <div class="container fill">
       <igx-data-chart
       name="chart"
       #chart>
           <igx-numeric-x-axis
-          isLogarithmic="true"
-          abbreviateLargeNumbers="true"
-          title="Population"
           name="xAxis"
-          #xAxis>
+          #xAxis
+          title="Population"
+          isLogarithmic="true"
+          abbreviateLargeNumbers="true">
           </igx-numeric-x-axis>
           <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
+          title="Public Debt"
           isLogarithmic="false"
           abbreviateLargeNumbers="true"
-          title="GDP per Capita"
-          name="yAxis"
-          #yAxis>
+          maximumValue="120">
           </igx-numeric-y-axis>
           <igx-bubble-series
-          radiusMemberPath="population"
+          name="BubbleSeries1"
+          #bubbleSeries1
+          xMemberPath="population"
+          yMemberPath="publicDebt"
+          radiusMemberPath="gdpPerCapita"
+          [radiusScale]="sizeScale1"
+          fillMemberPath="gdpPerCapita"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
-          xMemberPath="population"
-          yMemberPath="gDP"
+          [dataSource]="worldDebtAndPopulation"
           markerType="Circle"
-          [dataSource]="countryStatsEurope"
-          showDefaultTooltip="true"
-          title="European Countries"
-          name="BubbleSeries1"
-          #bubbleSeries1>
+          showDefaultTooltip="true">
           </igx-bubble-series>
+          <igx-data-tool-tip-layer
+          name="DataToolTipLayer"
+          #dataToolTipLayer>
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>

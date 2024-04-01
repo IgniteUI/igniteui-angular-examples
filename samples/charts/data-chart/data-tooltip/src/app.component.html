@@ -31,16 +31,11 @@
           xMemberPath="deathRate"
           yMemberPath="birthRate"
           radiusMemberPath="population"
+          [radiusScale]="sizeScale1"
           title="Africa"
           radiusMemberAsLegendLabel="Population: "
           xMemberAsLegendLabel="Death Rate: "
           yMemberAsLegendLabel="Birth Rate: ">
-              <igx-size-scale
-              name="SizeScale1"
-              #sizeScale1
-              minimumValue="10"
-              maximumValue="100">
-              </igx-size-scale>
           </igx-bubble-series>
           <igx-bubble-series
           name="BubbleSeries2"
@@ -51,16 +46,11 @@
           xMemberPath="deathRate"
           yMemberPath="birthRate"
           radiusMemberPath="population"
+          [radiusScale]="sizeScale2"
           title="Europe"
           radiusMemberAsLegendLabel="Population: "
           xMemberAsLegendLabel="Death Rate: "
           yMemberAsLegendLabel="Birth Rate: ">
-              <igx-size-scale
-              name="SizeScale2"
-              #sizeScale2
-              minimumValue="10"
-              maximumValue="100">
-              </igx-size-scale>
           </igx-bubble-series>
           <igx-data-tool-tip-layer
           name="DataToolTipLayer"
