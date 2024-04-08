@@ -35,32 +35,33 @@ export class AppComponent implements AfterViewInit
 	private yAxis: IgxNumericYAxisComponent
 	@ViewChild("bubbleSeries1", { static: true } )
 	private bubbleSeries1: IgxBubbleSeriesComponent
-	private  _sizeScale1: IgxSizeScaleComponent | null = null;
-	public get sizeScale1(): IgxSizeScaleComponent {
-	    if (this._sizeScale1 == null)
+	private  _sizeScale11: IgxSizeScaleComponent | null = null;
+	public get sizeScale11(): IgxSizeScaleComponent {
+	    if (this._sizeScale11 == null)
 	    {
-	        var sizeScale1 = new IgxSizeScaleComponent();
-	        sizeScale1.isLogarithmic = false;
-	        sizeScale1.minimumValue = 10;
-	        sizeScale1.maximumValue = 120;
+	        var sizeScale11 = new IgxSizeScaleComponent();
+	        sizeScale11.isLogarithmic = false;
+	        sizeScale11.minimumValue = 10;
+	        sizeScale11.maximumValue = 120;
 
-	        this._sizeScale1 = sizeScale1;
+	        this._sizeScale11 = sizeScale11;
 	    }
-	    return this._sizeScale1;
+	    return this._sizeScale11;
 	}
-	private  _valueBrushScale1: IgxValueBrushScaleComponent | null = null;
-	public get valueBrushScale1(): IgxValueBrushScaleComponent {
-	    if (this._valueBrushScale1 == null)
+	private  _valueBrushScale11: IgxValueBrushScaleComponent | null = null;
+	public get valueBrushScale11(): IgxValueBrushScaleComponent {
+	    if (this._valueBrushScale11 == null)
 	    {
-	        var valueBrushScale1 = new IgxValueBrushScaleComponent();
-	        valueBrushScale1.isLogarithmic = false;
-	        valueBrushScale1.minimumValue = 0;
-	        valueBrushScale1.maximumValue = 100000;
-	        valueBrushScale1.brushes = "rgba(26, 161, 226, 1) rgba(24, 154, 217, 1) rgba(22, 146, 206, 1) rgba(19, 133, 188, 1) rgba(15, 121, 171, 1) rgba(12, 107, 153, 1) rgba(9, 94, 136, 1) rgba(5, 82, 119, 1) rgba(2, 70, 105, 1) rgba(0, 63, 94, 1)";
+	        var valueBrushScale11 = new IgxValueBrushScaleComponent();
 
-	        this._valueBrushScale1 = valueBrushScale1;
+	        valueBrushScale11.isLogarithmic = false;
+	        valueBrushScale11.minimumValue = 0;
+	        valueBrushScale11.maximumValue = 100000;
+	        valueBrushScale11.brushes = "rgba(26, 161, 226, 1) rgba(24, 154, 217, 1) rgba(22, 146, 206, 1) rgba(19, 133, 188, 1) rgba(15, 121, 171, 1) rgba(12, 107, 153, 1) rgba(9, 94, 136, 1) rgba(5, 82, 119, 1) rgba(2, 70, 105, 1) rgba(0, 63, 94, 1)";
+
+	        this._valueBrushScale11 = valueBrushScale11;
 	    }
-	    return this._valueBrushScale1;
+	    return this._valueBrushScale11;
 	}
     private _worldDebtAndPopulation: WorldDebtAndPopulation = null;
     public get worldDebtAndPopulation(): WorldDebtAndPopulation {
