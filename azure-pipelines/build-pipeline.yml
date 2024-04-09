@@ -2,7 +2,6 @@ trigger:
   branches:
     include:
     - 'vnext'
-    - 'btraykov-azure-pipeline'
     - 'master'
 
 # This pipeline is meant to run on changes pushed to the vnext branch only.
@@ -16,6 +15,10 @@ parameters:
   displayName: 'Get verbose output from steps - where configurable'
   type: boolean
   default: false
+- name: shouldCleanPostExectuion
+  displayName: 'Clean all pipeline dirs after the pipeline finishes?'
+  type: boolean
+  default: true
 
 pool:
   name: BuildAgentOnPrem
@@ -76,3 +79,6 @@ jobs:
 
     # TODO Once the project can adhere to the IG Angular schematic, 
     #  use it or use npx to call igniteui-cli to apply the Angular schematic (trial -> licensed)
+
+  - ${{ if eq(parameters.shouldCleanPostExectuion, true) }}:
+    - task: PostBuildCleanup@4
