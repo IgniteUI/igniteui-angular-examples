@@ -1,33 +1,4 @@
 <div class="container vertical sample">
-  <div class="options vertical">
-      <igx-property-editor-panel
-      name="PropertyEditor"
-      #propertyEditor
-      [componentRenderer]="renderer"
-      [target]="chart"
-      descriptionType="DataChart"
-      isHorizontal="true"
-      isWrappingEnabled="true">
-          <igx-property-editor-property-description
-          name="FillScaleMinimumValueEditor"
-          #fillScaleMinimumValueEditor
-          label="MinimumValue: "
-          valueType="Slider"
-          min="0"
-          max="20000"
-          (changed)="this.scatterBubbleSeriesFillScaleSliderChanged($event)">
-          </igx-property-editor-property-description>
-          <igx-property-editor-property-description
-          name="FillScaleMaximumValueEditor"
-          #fillScaleMaximumValueEditor
-          label="MaximumValue: "
-          valueType="Slider"
-          min="25000"
-          max="100000"
-          (changed)="this.scatterBubbleSeriesFillScaleSliderChanged($event)">
-          </igx-property-editor-property-description>
-      </igx-property-editor-panel>
-  </div>
   <div class="container fill">
       <igx-data-chart
       name="chart"
