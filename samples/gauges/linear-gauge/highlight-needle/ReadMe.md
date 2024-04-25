@@ -1,7 +1,7 @@
 <!-- NOTE: do not change this file because it's auto re-generated from template: -->
 <!-- https://github.com/IgniteUI/igniteui-angular-examples/tree/vnext/samples/templates/ReadMe.md -->
 
-This folder contains Angular application with example of highlight needle feature using [LinearGauge](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general-getting-started.html) component.
+This folder contains Angular application with example of Highlight Needle feature using [LinearGauge](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general-getting-started.html) component.
 
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
