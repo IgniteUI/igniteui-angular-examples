@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
-import { SalesData } from './SalesData';
+import { SalesDataItem, SalesData } from './SalesData';
 import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxCategoryChartComponent } from 'igniteui-angular-charts';
 
