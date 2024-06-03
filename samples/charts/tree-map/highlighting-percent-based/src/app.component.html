@@ -1,0 +1,27 @@
+<div class="container vertical sample">
+  <div class="legend-title">
+      Comparing Top Urban Population Percentages between North America & Asia
+  </div>
+  <div class="container fill">
+      <igx-treemap
+      name="treemap"
+      #treemap
+      [dataSource]="countryTopUrbanPopData"
+      parentIdMemberPath="parent"
+      idMemberPath="name"
+      labelMemberPath="name"
+      valueMemberPath="population"
+      highlightedValueMemberPath="urbanPopulation"
+      highlightedValuesDisplayMode="Overlay"
+      fillBrushes="rgba(252, 65, 0, 1) rgba(255, 197, 90, 1) rgba(0, 33, 94, 1) rgba(44, 78, 128, 1)"
+      rootTitle="Continents"
+      headerDisplayMode="Auto"
+      isFillScaleLogarithmic="true"
+      labelVerticalAlignment="Top"
+      parentNodeTopMargin="10"
+      fillScaleMode="Value"
+      textColor="black"
+      textStyle="normal bold 25px Verdana">
+      </igx-treemap>
+  </div>
+</div>
