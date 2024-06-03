@@ -4,19 +4,9 @@
   "newProjectRoot": "projects",
   "projects": {
     "demo": {
-      "projectType": "application",  
-
-      "schematics": {
-    	"@schematics/angular:component": {
-      	"prefix": "app",
-      	"style": "scss"
-    	},
-    	"@schematics/angular:directive": {
-    	  "prefix": "app"
-	},      
-	"root": "",
-	"sourceRoot": "src"
-  }
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -104,5 +94,13 @@
       }
     }
   },
-
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app",
+      "style": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  }
 }
