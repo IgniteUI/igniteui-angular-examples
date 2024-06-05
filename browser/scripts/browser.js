@@ -1338,3 +1338,75 @@ exports.moveAppFiles = function moveAppFiles(cb) {
     });
 
 } 
+ 
+exports.updateCodeSandbox = function updateCodeSandbox(cb) {
+    var appFolders = [];
+    var copyFiles = [
+        "../tests/donut-ava4/.stackblitzrc",
+        "../tests/donut-ava4/.codesandbox/tasks.json",
+        "../tests/donut-ava4/.codesandbox/Dockerfile",
+        "../tests/donut-ava4/tsconfig.app.json",
+        "../tests/donut-ava4/tsconfig.json",
+        "../tests/donut-ava4/angular.json",
+    ];
+    var deleteFiles = [
+        "sandbox.config.json",
+        "/src/config",
+    ];
+    
+    gulp.src( [
+        "../samples/**/package.json", 
+        // "../samples/**/display-osm-imagery/package.json",
+        // "../samples/**/doughnut-chart/overview/package.json", 
+        // "../samples/**/display-heat-imagery/package.json", 
+    ], {allowEmpty: true})
+    .pipe(es.map(function(file, fileCallback) {
+       
+        var fileContent = file.contents.toString();
+        let fileOutput = file.dirname + "\\" + file.basename; 
+        
+        console.log("updating " + fileOutput);
+        fileContent = fileContent.replace('"@angular/animations": "17.0.0"','"@angular/animations": "^17.2.1"');
+        fileContent = fileContent.replace('"@angular/common": "17.0.0"','"@angular/common": "^17.2.1"');
+        fileContent = fileContent.replace('"@angular/compiler": "17.0.0"','"@angular/compiler": "^17.2.1"');
+        fileContent = fileContent.replace('"@angular/core": "17.0.0"','"@angular/core": "^17.2.1"');
+        fileContent = fileContent.replace('"@angular/forms": "17.0.0"','"@angular/forms": "^17.2.1"');
+        fileContent = fileContent.replace('"@angular/platform-browser": "17.0.0"','"@angular/platform-browser": "^17.2.1"');
+        fileContent = fileContent.replace('"@angular/platform-browser-dynamic": "17.0.0"','"@angular/platform-browser-dynamic": "^17.2.1"');
+        fileContent = fileContent.replace('"rxjs": "6.6.7"','"rxjs": "^7.8.1"');
+        fileContent = fileContent.replace('"tslib": "2.3.1"','"tslib": "^2.6.1"');
+        fileContent = fileContent.replace('"zone.js": "~0.14.1"','"zone.js": "~0.14.4"');
+        fileContent = fileContent.replace('"@angular-devkit/build-angular": "17.0.0"','"@angular-devkit/build-angular": "17.2.0"');
+        fileContent = fileContent.replace('"@angular/cli": "17.0.0"','"@angular/cli": "17.2.0"');
+        fileContent = fileContent.replace('"@angular/compiler-cli": "17.0.0"','"@angular/compiler-cli": "17.2.1"');
+        fileContent = fileContent.replace('"@angular/language-service": "17.0.0"','"@angular/language-service": "17.2.1"');
+        fileContent = fileContent.replace('"@types/node": "14.14.28"','"@types/node": "18.17.0"');
+        fileContent = fileContent.replace('"jasmine-core": "3.7.1"','"jasmine-core": "5.1.1"');
+        fileContent = fileContent.replace('"ts-node": "9.1.1"','"ts-node": "10.9.1"');
+        fileContent = fileContent.replace('"typescript": "5.2.2"','"typescript": "5.3.3"');
+        fileContent = fileContent.replace('"hammerjs": "2.0.8"','"hammerjs": "^2.0.8"');
+
+        fs.writeFileSync(fileOutput, fileContent);
+            
+        for (let i = 0; i < deleteFiles.length; i++) {
+            var deletePath = file.dirname + "\\" + deleteFiles[i];
+            console.log("delete " + deletePath); 
+            del([deletePath], {force: true});
+        }
+
+        for (let i = 0; i < copyFiles.length; i++) {
+            var outputPath = copyFiles[i].replace('../tests/donut-ava4/', file.dirname + "/");
+            // del([deletePath], {force: true});
+            console.log("copy " + outputPath);
+            let outputFile = fs.readFileSync(copyFiles[i]).toString();
+            // outputFile = outputFile.replace("/app/", "/");
+            makeDirectoryFor(outputPath);
+            fs.writeFileSync(outputPath, outputFile);
+        }
+         fileCallback(null, file);
+    }))
+    .on("end", function() {
+        cb();
+    });
+
+} 
