@@ -47,6 +47,7 @@ gulp.task('copySamples', gulp.series(browser.findSamples, browser.copySamples));
 
 gulp.task('generateSampleRouting', browser.generateSampleRouting);
 gulp.task('updateCodeViewer', gulp.series(browser.findSamples, browser.updateCodeViewer));
+gulp.task('updateCodeSandbox', browser.updateCodeSandbox);
 gulp.task('listSamples', browser.listSamples);
 gulp.task('moveAppFiles', browser.moveAppFiles);
 
