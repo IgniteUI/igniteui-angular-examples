@@ -10,6 +10,13 @@
 # /samples-tmp/
 # /samples-tmp/**/node_modules/
 
+/tests/**/build/
+/tests/**/dist/
+/tests/**/node_modules/
+/tests/**/package-lock.json
+/tests/**/.angular
+/tests/**/.git
+
 # browser auto-generated files:
 # /porting/**
 # /browser/**
