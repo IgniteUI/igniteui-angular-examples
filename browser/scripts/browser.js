@@ -1351,7 +1351,7 @@ exports.updateCodeSandbox = function updateCodeSandbox(cb) {
     ];
     var deleteFiles = [
         "sandbox.config.json",
-        "/src/config",
+        "src\\config",
     ];
     
     gulp.src( [
