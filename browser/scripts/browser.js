@@ -1298,3 +1298,41 @@ function logVersionIgniteUI(cb) {
 } exports.logVersionIgniteUI = logVersionIgniteUI;
 
 
+// move samples files up one level, e.g. /scr/app/*.* to /scr/*.* 
+exports.moveAppFiles = function moveAppFiles(cb) {
+    var appFolders = [];
+
+    gulp.src(
+        "../samples/**/src/app/*.*", 
+        "../samples/**/type-scatter-symbol-series/src/app/*.*", 
+    {allowEmpty: true})
+    .pipe(es.map(function(file, fileCallback) {
+       
+        var fileContent = file.contents.toString();
+        let fileOutput = file.dirname.replace("\\app", "") + "\\" + file.basename; 
+        
+        if (appFolders.indexOf(file.dirname) < 0) {
+            appFolders.push(file.dirname);
+        }
+        // console.log("" + fileOutput);
+
+        fs.writeFileSync(fileOutput, fileContent);
+         fileCallback(null, file);
+    }))
+    .on("end", function() {
+        
+        console.log(appFolders);
+        console.log("moved " + appFolders.length + " samples from /scr/app/*.* to /scr/*.* ");
+        del(appFolders, {force: true});
+
+        for (let i = 0; i < appFolders.length; i++) {
+            
+            var mainPath = appFolders[i].replace("\\app", "") + "\\main.ts";
+            let mainFile = fs.readFileSync(mainPath).toString();
+            mainFile = mainFile.replace("/app/", "/");
+            fs.writeFileSync(mainPath, mainFile);
+         }
+        cb();
+    });
+
+} 
