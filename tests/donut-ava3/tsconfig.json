@@ -1,15 +1,15 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "importHelpers": true,
+    "module": "esnext",
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "module": "esnext",
     "moduleResolution": "node",
-    "importHelpers": true,
+    "experimentalDecorators": true,
+    "downlevelIteration": true,
     "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
