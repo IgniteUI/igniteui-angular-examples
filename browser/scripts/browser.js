@@ -725,6 +725,7 @@ function copySamples(cb) {
         for (let i = appIndexRoutingImportStart+1; i < appIndexRoutingImportEnd; i++) {
             appIndexLines[i] = ""; // clearing previously auto-generated inserts
         }
+        routingDataImports = routingDataImports.sort();
         // adding latest auto-generated inserts for JS files
         appIndexLines[appIndexRoutingImportStart + 1] = routingDataImports.join('\r\n');
         appIndexChanged = true;
@@ -734,6 +735,7 @@ function copySamples(cb) {
         for (let i = appIndexRoutingArrayStart+1; i < appIndexRoutingArrayEnd; i++) {
             appIndexLines[i] = ""; // clearing previously auto-generated inserts
         }
+        routingDataArray = routingDataArray.sort();
         // adding latest auto-generated inserts for JS files
         appIndexLines[appIndexRoutingArrayStart + 1] = routingDataArray.join(',\r\n');
         appIndexChanged = true;
