@@ -725,6 +725,7 @@ function copySamples(cb) {
         for (let i = appIndexRoutingImportStart+1; i < appIndexRoutingImportEnd; i++) {
             appIndexLines[i] = ""; // clearing previously auto-generated inserts
         }
+        routingDataImports = routingDataImports.sort();
         // adding latest auto-generated inserts for JS files
         appIndexLines[appIndexRoutingImportStart + 1] = routingDataImports.join('\r\n');
         appIndexChanged = true;
@@ -734,6 +735,7 @@ function copySamples(cb) {
         for (let i = appIndexRoutingArrayStart+1; i < appIndexRoutingArrayEnd; i++) {
             appIndexLines[i] = ""; // clearing previously auto-generated inserts
         }
+        routingDataArray = routingDataArray.sort();
         // adding latest auto-generated inserts for JS files
         appIndexLines[appIndexRoutingArrayStart + 1] = routingDataArray.join(',\r\n');
         appIndexChanged = true;
@@ -1071,20 +1073,20 @@ function updateIG(cb) {
     // { name:               "igniteui-angular-charts", version: "14.1.0" },  // NPM
     let packageUpgrades = [
         // these IG packages are often updated:
-        { name: "igniteui-angular-core"                     , version: "17.3.0-beta.0" },
-        { name: "igniteui-angular-charts"                   , version: "17.3.0-beta.0" },
-        { name: "igniteui-angular-excel"                    , version: "17.3.0-beta.0" },
-        { name: "igniteui-angular-gauges"                   , version: "17.3.0-beta.0" },
-        { name: "igniteui-angular-inputs"                   , version: "17.3.0-beta.0" },
-        { name: "igniteui-angular-layouts"                  , version: "17.3.0-beta.0" },
-        { name: "igniteui-angular-maps"                     , version: "17.3.0-beta.0" },
-        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "17.3.0-beta.0" },
-        { name: "igniteui-angular-spreadsheet"              , version: "17.3.0-beta.0" },
-        { name: "igniteui-angular-datasources"              , version: "17.3.0-beta.0" },
+        { name: "igniteui-angular-core"                     , version: "17.3.1-alpha.0" },
+        { name: "igniteui-angular-charts"                   , version: "17.3.1-alpha.0" },
+        { name: "igniteui-angular-excel"                    , version: "17.3.1-alpha.0" },
+        { name: "igniteui-angular-gauges"                   , version: "17.3.1-alpha.0" },
+        { name: "igniteui-angular-inputs"                   , version: "17.3.1-alpha.0" },
+        { name: "igniteui-angular-layouts"                  , version: "17.3.1-alpha.0" },
+        { name: "igniteui-angular-maps"                     , version: "17.3.1-alpha.0" },
+        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "17.3.1-alpha.0" },
+        { name: "igniteui-angular-spreadsheet"              , version: "17.3.1-alpha.0" },
+        { name: "igniteui-angular-datasources"              , version: "17.3.1-alpha.0" },
         // these IG packages are sometimes updated:
-        { name: "igniteui-webcomponents",            version: "4.7.0" },
-        { name: "igniteui-theming",                  version: "3.3.1" },
-        { name: "igniteui-angular",                  version: "17.0.0" },
+        { name: "igniteui-webcomponents",            version: "4.9.0" },
+        { name: "igniteui-theming",                  version: "6.4.0-beta.2" },
+        { name: "igniteui-angular",                  version: "17.2.3" },
         { name: "@angular/animations",               version: "17.0.0" },
         { name: "@angular/common",                   version: "17.0.0" },
         { name: "@angular/compiler",                 version: "17.0.0" },
@@ -1298,3 +1300,113 @@ function logVersionIgniteUI(cb) {
 } exports.logVersionIgniteUI = logVersionIgniteUI;
 
 
+// move samples files up one level, e.g. /scr/app/*.* to /scr/*.* 
+exports.moveAppFiles = function moveAppFiles(cb) {
+    var appFolders = [];
+
+    gulp.src(
+        "../samples/**/src/app/*.*", 
+        "../samples/**/type-scatter-symbol-series/src/app/*.*", 
+    {allowEmpty: true})
+    .pipe(es.map(function(file, fileCallback) {
+       
+        var fileContent = file.contents.toString();
+        let fileOutput = file.dirname.replace("\\app", "") + "\\" + file.basename; 
+        
+        if (appFolders.indexOf(file.dirname) < 0) {
+            appFolders.push(file.dirname);
+        }
+        // console.log("" + fileOutput);
+
+        fs.writeFileSync(fileOutput, fileContent);
+         fileCallback(null, file);
+    }))
+    .on("end", function() {
+        
+        console.log(appFolders);
+        console.log("moved " + appFolders.length + " samples from /scr/app/*.* to /scr/*.* ");
+        del(appFolders, {force: true});
+
+        for (let i = 0; i < appFolders.length; i++) {
+            
+            var mainPath = appFolders[i].replace("\\app", "") + "\\main.ts";
+            let mainFile = fs.readFileSync(mainPath).toString();
+            mainFile = mainFile.replace("/app/", "/");
+            fs.writeFileSync(mainPath, mainFile);
+         }
+        cb();
+    });
+
+} 
+ 
+exports.updateCodeSandbox = function updateCodeSandbox(cb) {
+    var appFolders = [];
+    var copyFiles = [
+        "../tests/donut-ava4/.stackblitzrc",
+        "../tests/donut-ava4/.codesandbox/tasks.json",
+        "../tests/donut-ava4/.codesandbox/Dockerfile",
+        "../tests/donut-ava4/tsconfig.app.json",
+        "../tests/donut-ava4/tsconfig.json",
+        "../tests/donut-ava4/angular.json",
+    ];
+    var deleteFiles = [
+        "sandbox.config.json",
+        "src\\config",
+    ];
+    
+    gulp.src( [
+        "../samples/**/package.json", 
+        // "../samples/**/display-osm-imagery/package.json",
+        // "../samples/**/doughnut-chart/overview/package.json", 
+        // "../samples/**/display-heat-imagery/package.json", 
+    ], {allowEmpty: true})
+    .pipe(es.map(function(file, fileCallback) {
+       
+        var fileContent = file.contents.toString();
+        let fileOutput = file.dirname + "\\" + file.basename; 
+        
+        console.log("updating " + fileOutput);
+        fileContent = fileContent.replace('"@angular/animations": "17.0.0"','"@angular/animations": "^17.2.1"');
+        fileContent = fileContent.replace('"@angular/common": "17.0.0"','"@angular/common": "^17.2.1"');
+        fileContent = fileContent.replace('"@angular/compiler": "17.0.0"','"@angular/compiler": "^17.2.1"');
+        fileContent = fileContent.replace('"@angular/core": "17.0.0"','"@angular/core": "^17.2.1"');
+        fileContent = fileContent.replace('"@angular/forms": "17.0.0"','"@angular/forms": "^17.2.1"');
+        fileContent = fileContent.replace('"@angular/platform-browser": "17.0.0"','"@angular/platform-browser": "^17.2.1"');
+        fileContent = fileContent.replace('"@angular/platform-browser-dynamic": "17.0.0"','"@angular/platform-browser-dynamic": "^17.2.1"');
+        fileContent = fileContent.replace('"rxjs": "6.6.7"','"rxjs": "^7.8.1"');
+        fileContent = fileContent.replace('"tslib": "2.3.1"','"tslib": "^2.6.1"');
+        fileContent = fileContent.replace('"zone.js": "~0.14.1"','"zone.js": "~0.14.4"');
+        fileContent = fileContent.replace('"@angular-devkit/build-angular": "17.0.0"','"@angular-devkit/build-angular": "17.2.0"');
+        fileContent = fileContent.replace('"@angular/cli": "17.0.0"','"@angular/cli": "17.2.0"');
+        fileContent = fileContent.replace('"@angular/compiler-cli": "17.0.0"','"@angular/compiler-cli": "17.2.1"');
+        fileContent = fileContent.replace('"@angular/language-service": "17.0.0"','"@angular/language-service": "17.2.1"');
+        fileContent = fileContent.replace('"@types/node": "14.14.28"','"@types/node": "18.17.0"');
+        fileContent = fileContent.replace('"jasmine-core": "3.7.1"','"jasmine-core": "5.1.1"');
+        fileContent = fileContent.replace('"ts-node": "9.1.1"','"ts-node": "10.9.1"');
+        fileContent = fileContent.replace('"typescript": "5.2.2"','"typescript": "5.3.3"');
+        fileContent = fileContent.replace('"hammerjs": "2.0.8"','"hammerjs": "^2.0.8"');
+
+        fs.writeFileSync(fileOutput, fileContent);
+            
+        for (let i = 0; i < deleteFiles.length; i++) {
+            var deletePath = file.dirname + "\\" + deleteFiles[i];
+            console.log("delete " + deletePath); 
+            del([deletePath], {force: true});
+        }
+
+        for (let i = 0; i < copyFiles.length; i++) {
+            var outputPath = copyFiles[i].replace('../tests/donut-ava4/', file.dirname + "/");
+            // del([deletePath], {force: true});
+            console.log("copy " + outputPath);
+            let outputFile = fs.readFileSync(copyFiles[i]).toString();
+            // outputFile = outputFile.replace("/app/", "/");
+            makeDirectoryFor(outputPath);
+            fs.writeFileSync(outputPath, outputFile);
+        }
+         fileCallback(null, file);
+    }))
+    .on("end", function() {
+        cb();
+    });
+
+} 

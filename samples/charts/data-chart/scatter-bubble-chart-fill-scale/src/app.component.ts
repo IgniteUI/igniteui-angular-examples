@@ -1,15 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ComponentRenderer, NumberAbbreviatorDescriptionModule, DataChartCoreDescriptionModule, DataChartScatterDescriptionModule, DataChartScatterCoreDescriptionModule, DataChartInteractivityDescriptionModule, DataChartAnnotationDescriptionModule, PropertyEditorPanelDescriptionModule } from 'igniteui-angular-core';
-import { WorldDebtAndPopulationItem, WorldDebtAndPopulation } from './WorldDebtAndPopulation';
-import { IgxPropertyEditorPropertyDescriptionChangedEventArgs, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
-import { IgxBubbleSeriesComponent } from 'igniteui-angular-charts';
-import { EnumUtil } from 'igniteui-angular-core';
-import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
-import { IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxSizeScaleComponent, IgxValueBrushScaleComponent } from 'igniteui-angular-charts';
-
-import { defineAllComponents } from 'igniteui-webcomponents';
-
-defineAllComponents();
+import { ComponentRenderer, NumberAbbreviatorDescriptionModule, DataChartCoreDescriptionModule, DataChartScatterDescriptionModule, DataChartScatterCoreDescriptionModule, DataChartInteractivityDescriptionModule, DataChartAnnotationDescriptionModule } from 'igniteui-angular-core';
+import { WorldStatsItem, WorldStats } from './WorldStats';
+import { IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent, IgxSizeScaleComponent, IgxValueBrushScaleComponent } from 'igniteui-angular-charts';
 
 @Component({
     selector: "app-root",
@@ -21,12 +13,6 @@ defineAllComponents();
 export class AppComponent implements AfterViewInit
 {
 
-	@ViewChild("propertyEditor", { static: true } )
-	private propertyEditor: IgxPropertyEditorPanelComponent
-	@ViewChild("fillScaleMinimumValueEditor", { static: true } )
-	private fillScaleMinimumValueEditor: IgxPropertyEditorPropertyDescriptionComponent
-	@ViewChild("fillScaleMaximumValueEditor", { static: true } )
-	private fillScaleMaximumValueEditor: IgxPropertyEditorPropertyDescriptionComponent
 	@ViewChild("chart", { static: true } )
 	private chart: IgxDataChartComponent
 	@ViewChild("xAxis", { static: true } )
@@ -62,13 +48,13 @@ export class AppComponent implements AfterViewInit
 	    }
 	    return this._valueBrushScale1;
 	}
-    private _worldDebtAndPopulation: WorldDebtAndPopulation = null;
-    public get worldDebtAndPopulation(): WorldDebtAndPopulation {
-        if (this._worldDebtAndPopulation == null)
+    private _worldStats: WorldStats = null;
+    public get worldStats(): WorldStats {
+        if (this._worldStats == null)
         {
-            this._worldDebtAndPopulation = new WorldDebtAndPopulation();
+            this._worldStats = new WorldStats();
         }
-        return this._worldDebtAndPopulation;
+        return this._worldStats;
     }
 
     private _componentRenderer: ComponentRenderer = null;
@@ -82,7 +68,6 @@ export class AppComponent implements AfterViewInit
             DataChartScatterCoreDescriptionModule.register(context);
             DataChartInteractivityDescriptionModule.register(context);
             DataChartAnnotationDescriptionModule.register(context);
-            PropertyEditorPanelDescriptionModule.register(context);
         }
         return this._componentRenderer;
     }
@@ -93,19 +78,6 @@ export class AppComponent implements AfterViewInit
 
 	public ngAfterViewInit(): void
 	{
-	}
-
-	public scatterBubbleSeriesFillScaleSliderChanged({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
-	    let series: IgxBubbleSeriesComponent = this.chart.actualSeries[0] as IgxBubbleSeriesComponent;
-
-	    let fillScale = (series.fillScale as any);
-
-	    if(args.newValue >= 25000){
-	        fillScale.maximumValue = args.newValue;
-	    }
-	    else{
-	        fillScale.minimumValue = args.newValue;
-	    }
 	}
 
 }

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { WorldDebtAndPopulationItem, WorldDebtAndPopulation } from './WorldDebtAndPopulation';
+import { WorldStatsItem, WorldStats } from './WorldStats';
 import { IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent, IgxSizeScaleComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
@@ -35,13 +35,13 @@ export class AppComponent implements AfterViewInit
 	}
 	@ViewChild("dataToolTipLayer", { static: true } )
 	private dataToolTipLayer: IgxDataToolTipLayerComponent
-    private _worldDebtAndPopulation: WorldDebtAndPopulation = null;
-    public get worldDebtAndPopulation(): WorldDebtAndPopulation {
-        if (this._worldDebtAndPopulation == null)
+    private _worldStats: WorldStats = null;
+    public get worldStats(): WorldStats {
+        if (this._worldStats == null)
         {
-            this._worldDebtAndPopulation = new WorldDebtAndPopulation();
+            this._worldStats = new WorldStats();
         }
-        return this._worldDebtAndPopulation;
+        return this._worldStats;
     }
 
 	public constructor(private _detector: ChangeDetectorRef)

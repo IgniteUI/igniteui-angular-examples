@@ -39,9 +39,9 @@ jobs:
   - task: Npm@1
     displayName: 'npm install'
     inputs:
-      command: 'install'
+      command: 'custom'
       workingDir: '$(Build.SourcesDirectory)\browser'
-      verbose: ${{ parameters.isVerbose }}
+      customCommand: 'install --legacy-peer-deps'
 
   - task: PowerShell@2
     displayName: 'Apply very special configuration'

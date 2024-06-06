@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, CategoryChartDescriptionModule } from 'igniteui-angular-core';
-import { SalesData } from './SalesData';
+import { ContinentsBirthRateItem, ContinentsBirthRate } from './ContinentsBirthRate';
 import { IgxPropertyEditorPropertyDescriptionChangedEventArgs, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxCategoryChartComponent, MarkerType, MarkerType_$type } from 'igniteui-angular-charts';
 import { EnumUtil } from 'igniteui-angular-core';
@@ -29,13 +29,13 @@ export class AppComponent implements AfterViewInit
 	private initialFilter: IgxPropertyEditorPropertyDescriptionComponent
 	@ViewChild("chart", { static: true } )
 	private chart: IgxCategoryChartComponent
-    private _salesData: SalesData = null;
-    public get salesData(): SalesData {
-        if (this._salesData == null)
+    private _continentsBirthRate: ContinentsBirthRate = null;
+    public get continentsBirthRate(): ContinentsBirthRate {
+        if (this._continentsBirthRate == null)
         {
-            this._salesData = new SalesData();
+            this._continentsBirthRate = new ContinentsBirthRate();
         }
-        return this._salesData;
+        return this._continentsBirthRate;
     }
 
     private _componentRenderer: ComponentRenderer = null;
@@ -58,11 +58,11 @@ export class AppComponent implements AfterViewInit
 	{
 	}
 
-	public editorChangeUpdateInitialFilter({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
+	public editorChangeDataFilter({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionChangedEventArgs }): void {
 
 	    var chart = this.chart;
-	    var intialFilterVal = args.newValue.toString();
-	    chart.initialFilter = intialFilterVal;
+	    var filter = args.newValue.toString();
+	    chart.initialFilter = "(contains(Year," + "'" + filter + "'" + "))";
 	}
 
 }
