@@ -1,0 +1,68 @@
+<div class="container vertical sample">
+  <div class="legend">
+      <igx-data-legend
+      name="Legend"
+      #legend
+      [target]="chart"
+      groupRowVisible="true">
+      </igx-data-legend>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      shouldAutoExpandMarginForInitialLabels="true"
+      computedPlotAreaMarginMode="Series"
+      name="chart"
+      #chart
+      highlightedValuesDisplayMode="Overlay">
+          <igx-category-x-axis
+          name="xAxis"
+          #xAxis
+          [dataSource]="olympicMedalsTopCountriesWithTotals"
+          label="year">
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis>
+          </igx-numeric-y-axis>
+          <igx-column-series
+          name="ColumnSeries1"
+          #columnSeries1
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="olympicMedalsTopCountriesWithTotals"
+          title="America"
+          valueMemberPath="america"
+          dataLegendGroup="Olympic Medals"
+          highlightedValuesDataLegendGroup="Gold Medals"
+          highlightedValueMemberPath="americaGold"
+          highlightedTitleSuffix="">
+          </igx-column-series>
+          <igx-column-series
+          name="ColumnSeries2"
+          #columnSeries2
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="olympicMedalsTopCountriesWithTotals"
+          title="China"
+          valueMemberPath="china"
+          dataLegendGroup="Olympic Medals"
+          highlightedValuesDataLegendGroup="Gold Medals"
+          highlightedValueMemberPath="chinaGold"
+          highlightedTitleSuffix="">
+          </igx-column-series>
+          <igx-column-series
+          name="ColumnSeries3"
+          #columnSeries3
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="olympicMedalsTopCountriesWithTotals"
+          title="Russia"
+          valueMemberPath="russia"
+          dataLegendGroup="Olympic Medals"
+          highlightedValuesDataLegendGroup="Gold Medals"
+          highlightedValueMemberPath="russiaGold"
+          highlightedTitleSuffix="">
+          </igx-column-series>
+      </igx-data-chart>
+  </div>
+</div>
