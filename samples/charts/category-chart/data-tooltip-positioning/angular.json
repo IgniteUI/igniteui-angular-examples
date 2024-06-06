@@ -101,7 +101,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "assets": [ 
+            "assets": [
               "src/assets"
             ],
             "inlineStyleLanguage": "scss",
