@@ -1094,6 +1094,7 @@ function updateIG(cb) {
         { name: "@angular/forms",                    version: "18.0.2" },
         { name: "@angular/platform-browser",         version: "18.0.2" },
         { name: "@angular/platform-browser-dynamic", version: "18.0.2" },
+        { name: "@types/hammerjs",                   version: "2.0.40" },
         { name: "classlist-js",         version: "1.1.20150312" },
         { name: "core-js",              version: "3.21.0" },
         { name: "hammerjs",             version: "2.0.8" },
