@@ -1,0 +1,25 @@
+<div class="container vertical sample">
+  <div class="legend-title">
+      Average Temperature Range in New York
+  </div>
+  <div class="container fill">
+      <igx-category-chart
+      name="chart"
+      #chart
+      chartType="Column"
+      [dataSource]="temperatureAverageData"
+      yAxisTitle="Temperature in Degrees Celsius"
+      yAxisTitleLeftMargin="10"
+      yAxisTitleRightMargin="5"
+      yAxisLabelLeftMargin="0"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      crosshairsDisplayMode="None"
+      toolTipType="None"
+      selectionMode="SelectionColorFill"
+      selectionBehavior="Auto"
+      selectionBrush="purple"
+      focusBrush="purple">
+      </igx-category-chart>
+  </div>
+</div>
