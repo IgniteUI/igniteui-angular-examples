@@ -1,7 +1,7 @@
 // tslint:disable:max-line-length
 import { NgModule } from "@angular/core";
 import { NavigationStart, Router, RouterModule, Routes } from "@angular/router";
-import "rxjs/add/operator/filter";
+import { filter } from 'rxjs/operators';
 import { HomeComponent } from "./home/home.component";
 import { FallbackComponent } from "./fallback/fallback.component";
 import { DocsLayoutComponent } from "./index/docs-layout.component";
@@ -61,8 +61,9 @@ export class AppRoutingModule {
         //     }
         // }
 
-        router.events
-            .filter((event) => event instanceof NavigationStart)
+        router.events.pipe(
+            filter((event) => event instanceof NavigationStart)
+        )
             .subscribe((event: NavigationStart) => {
                 // console.log("app nav: " + event.url)
                 this.setOverflow(event.url);
