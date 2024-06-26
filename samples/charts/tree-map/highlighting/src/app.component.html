@@ -1,9 +1,22 @@
 <div class="container vertical sample">
-  <div class="options horizontal">
-    <select (change)="onHighlightingModeChange($event)">
-        <option>Brighten</option>
-        <option>FadeOthers</option>
-    </select>
+  <div class="options vertical">
+      <igx-property-editor-panel
+      name="PropertyEditor"
+      #propertyEditor
+      [componentRenderer]="renderer"
+      [target]="treemap"
+      descriptionType="Treemap"
+      isHorizontal="true"
+      isWrappingEnabled="true">
+          <igx-property-editor-property-description
+          propertyPath="HighlightingMode"
+          name="HighlightedModeEditor"
+          #highlightedModeEditor
+          label="Highlighting Mode: "
+          primitiveValue="Brighten"
+          dropDownValues="Brighten, FadeOthers">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
   </div>
   <div class="legend-title">
       Comparing Population of Countries
@@ -29,8 +42,7 @@
       parentNodeRightPadding="0"
       parentNodeTopPadding="0"
       outline="black"
-      strokeThickness="1"
-      highlightingMode="Brighten">
+      strokeThickness="1">
       </igx-treemap>
   </div>
 </div>
