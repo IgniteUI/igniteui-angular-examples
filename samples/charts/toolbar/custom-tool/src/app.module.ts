@@ -5,6 +5,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
+import { IgxLegendModule, IgxCategoryChartModule, IgxCategoryChartToolbarModule } from 'igniteui-angular-charts';
 import { IgxToolbarModule } from 'igniteui-angular-layouts';
 
 @NgModule({
@@ -17,7 +18,10 @@ import { IgxToolbarModule } from 'igniteui-angular-layouts';
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
-    IgxToolbarModule
+    IgxLegendModule,
+    IgxToolbarModule,
+    IgxCategoryChartModule,
+    IgxCategoryChartToolbarModule
 ],
   providers: [],
   schemas: []
