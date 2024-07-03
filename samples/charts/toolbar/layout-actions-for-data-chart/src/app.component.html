@@ -2,7 +2,7 @@
   <div class="aboveContentSplit">
     <div class="aboveContentLeftContainer">
       <igx-toolbar
-      name="Toolbar"
+      name="toolbar"
       #toolbar
       [target]="chart"
       orientation="Horizontal"
@@ -15,13 +15,13 @@
           commandId="EnableTooltips">
           </igx-tool-action-checkbox>
           <igx-tool-action-label
-          name="ZoomResetHidden"
+          name="zoomResetHidden"
           #zoomResetHidden
           overlayId="ZoomReset"
           visibility="Collapsed">
           </igx-tool-action-label>
           <igx-tool-action-label
-          name="ZoomResetLabel"
+          name="zoomResetLabel"
           #zoomResetLabel
           title="Reset"
           afterId="ZoomOut"
@@ -62,7 +62,7 @@
           labelLocation="OutsideRight">
           </igx-numeric-y-axis>
           <igx-line-series
-          name="LineSeries1"
+          name="lineSeries1"
           #lineSeries1
           title="Electricity"
           [xAxis]="xAxis"
