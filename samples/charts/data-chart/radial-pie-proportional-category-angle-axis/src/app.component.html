@@ -1,0 +1,41 @@
+<div class="container vertical sample">
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false">
+          <igx-proportional-category-angle-axis
+          name="angleAxis"
+          #angleAxis
+          [dataSource]="radialProportionalData"
+          label="label"
+          valueMemberPath="value"
+          gap="0"
+          othersCategoryText="Others"
+          othersCategoryThreshold="55"
+          othersCategoryType="Number">
+          </igx-proportional-category-angle-axis>
+          <igx-numeric-radius-axis
+          name="radiusAxis"
+          #radiusAxis
+          minimumValue="0"
+          maximumValue="100">
+          </igx-numeric-radius-axis>
+          <igx-radial-pie-series
+          name="RadialPieSeries1"
+          #radialPieSeries1
+          [dataSource]="radialProportionalData"
+          [angleAxis]="angleAxis"
+          [valueAxis]="radiusAxis"
+          valueMemberPath="value"
+          showDefaultTooltip="false"
+          useItemWiseColors="true"
+          legendRadialLabelMode="LabelAndValueAndPercentage"
+          markerType="None"
+          title="Categories">
+          </igx-radial-pie-series>
+      </igx-data-chart>
+  </div>
+</div>
