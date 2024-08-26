@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { EnergyGlobalDemandItem, EnergyGlobalDemand } from './EnergyGlobalDemand';
-import { IgxDataPieChartComponent } from 'igniteui-angular-core';
+import { IgxDataPieChartComponent } from 'igniteui-angular-charts';
 
 @Component({
     selector: "app-root",
