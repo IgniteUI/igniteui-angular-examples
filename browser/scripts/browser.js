@@ -1116,7 +1116,7 @@ function updateIG(cb) {
         { name: "sass.js",                          version: "0.11.1"},
         { name: "tslint",                           version: "~6.1.3"},
         { name: "ts-node",                          version: "10.9.1"},
-        { name: "typescript",                       version: "5.4.5"},
+        { name: "typescript",                       version: "5.5.4"},
     ];
 
     // NOTE you can comment out strings in this array to run these function only on a subset of samples
