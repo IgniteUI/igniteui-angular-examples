@@ -1,20 +1,28 @@
 <div class="container vertical sample">
+  <div class="legend-title">
+      Hydro Consumption in 2019
+  </div>
+  <div class="legend">
+      <igx-legend
+      name="legend"
+      #legend
+      orientation="Horizontal">
+      </igx-legend>
+  </div>
   <div class="container fill">
       <igx-data-chart
       name="chart"
       #chart
+      [legend]="legend"
       isHorizontalZoomEnabled="false"
       isVerticalZoomEnabled="false">
           <igx-proportional-category-angle-axis
           name="angleAxis"
           #angleAxis
-          [dataSource]="radialProportionalData"
-          label="label"
-          valueMemberPath="value"
-          gap="0"
-          othersCategoryText="Others"
-          othersCategoryThreshold="55"
-          othersCategoryType="Number">
+          [dataSource]="energyRenewableConsumption"
+          label="location"
+          valueMemberPath="hydro"
+          gap="0">
           </igx-proportional-category-angle-axis>
           <igx-numeric-radius-axis
           name="radiusAxis"
@@ -25,16 +33,18 @@
           <igx-radial-pie-series
           name="RadialPieSeries1"
           #radialPieSeries1
-          [dataSource]="radialProportionalData"
+          [dataSource]="energyRenewableConsumption"
           [angleAxis]="angleAxis"
           [valueAxis]="radiusAxis"
-          valueMemberPath="value"
+          valueMemberPath="hydro"
           showDefaultTooltip="false"
           useItemWiseColors="true"
-          legendRadialLabelMode="LabelAndValueAndPercentage"
-          markerType="None"
-          title="Categories">
+          title="Hydro Consumption">
           </igx-radial-pie-series>
+          <igx-data-tool-tip-layer
+          name="dataToolTipLayer"
+          #dataToolTipLayer>
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>
