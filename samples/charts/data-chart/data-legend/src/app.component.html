@@ -6,21 +6,15 @@
       <igx-data-legend
       name="legend"
       #legend
-      [target]="chart">
+      [target]="chart"
+      unitsText="%"
+      includedColumns="BirthRate, DeathRate">
       </igx-data-legend>
   </div>
   <div class="container fill">
       <igx-data-chart
       name="chart"
       #chart>
-          <igx-numeric-x-axis
-          name="xAxis"
-          #xAxis
-          title="Death Rate"
-          interval="1"
-          minimumValue="4"
-          maximumValue="16">
-          </igx-numeric-x-axis>
           <igx-numeric-y-axis
           name="yAxis"
           #yAxis
@@ -29,6 +23,14 @@
           minimumValue="0"
           maximumValue="60">
           </igx-numeric-y-axis>
+          <igx-numeric-x-axis
+          name="xAxis"
+          #xAxis
+          title="Death Rate"
+          interval="1"
+          minimumValue="4"
+          maximumValue="16">
+          </igx-numeric-x-axis>
           <igx-bubble-series
           name="bubbleSeries1"
           #bubbleSeries1

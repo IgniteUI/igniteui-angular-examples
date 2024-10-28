@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CountryDemographicAfricanItem, CountryDemographicAfrican } from './CountryDemographicAfrican';
 import { CountryDemographicEuropeItem, CountryDemographicEurope } from './CountryDemographicEurope';
-import { IgxDataLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent, IgxSizeScaleComponent, IgxCrosshairLayerComponent } from 'igniteui-angular-charts';
+import { IgxDataLegendComponent, IgxDataChartComponent, IgxNumericYAxisComponent, IgxNumericXAxisComponent, IgxBubbleSeriesComponent, IgxSizeScaleComponent, IgxCrosshairLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
     selector: "app-root",
@@ -17,10 +17,10 @@ export class AppComponent implements AfterViewInit
 	private legend: IgxDataLegendComponent
 	@ViewChild("chart", { static: true } )
 	private chart: IgxDataChartComponent
-	@ViewChild("xAxis", { static: true } )
-	private xAxis: IgxNumericXAxisComponent
 	@ViewChild("yAxis", { static: true } )
 	private yAxis: IgxNumericYAxisComponent
+	@ViewChild("xAxis", { static: true } )
+	private xAxis: IgxNumericXAxisComponent
 	@ViewChild("bubbleSeries1", { static: true } )
 	private bubbleSeries1: IgxBubbleSeriesComponent
 	private  _sizeScale1: IgxSizeScaleComponent | null = null;
