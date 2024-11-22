@@ -1084,7 +1084,7 @@ function updateIG(cb) {
         { name: "igniteui-angular-spreadsheet"              , version: "18.1.0" },
         { name: "igniteui-angular-datasources"              , version: "18.1.0" },
         // these IG packages are sometimes updated:
-        { name: "igniteui-webcomponents",            version: "4.11.1" },
+        { name: "igniteui-webcomponents",            version: "5.1.1" },
         { name: "igniteui-theming",                  version: "11.0.0" },
         { name: "igniteui-angular",                  version: "18.1.7" },
         { name: "@angular/animations",               version: "18.2.1" },
