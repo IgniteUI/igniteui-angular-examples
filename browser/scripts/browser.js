@@ -1063,60 +1063,60 @@ function sortByKeys(dependencies)
 function updateIG(cb) {
 
     // cleanup packages to speedup this gulp script
-    // del.sync("./samples/**/node_modules/**/*.*", {force:true});
-    // del.sync("./samples/**/node_modules/**", {force:true});
-    // del.sync("./samples/**/node_modules", {force:true});
+    del.sync("./samples/**/node_modules/**/*.*", {force:true});
+    del.sync("./samples/**/node_modules/**", {force:true});
+    del.sync("./samples/**/node_modules", {force:true});
 
     // NOTE: change this array with new version of packages
     // and optionally use "@infragistics/" proget prefix, e.g.
-    // { name: "@infragistics/igniteui-angular-charts", version: "23.2.18" }, // PROGET
-    // { name:               "igniteui-angular-charts", version: "14.1.0" },  // NPM
+    // { version: "23.2.18", name: "@infragistics/igniteui-angular-charts" }, // PROGET
+    // { version: "14.1.0",  name:               "igniteui-angular-charts" },  // NPM
     let packageUpgrades = [
         // these IG packages are often updated:
-        { name: "igniteui-angular-core"                     , version: "18.1.0" },
-        { name: "igniteui-angular-charts"                   , version: "18.1.0" },
-        { name: "igniteui-angular-excel"                    , version: "18.1.0" },
-        { name: "igniteui-angular-gauges"                   , version: "18.1.0" },
-        { name: "igniteui-angular-inputs"                   , version: "18.1.0" },
-        { name: "igniteui-angular-layouts"                  , version: "18.1.0" },
-        { name: "igniteui-angular-maps"                     , version: "18.1.0" },
-        { name: "igniteui-angular-spreadsheet-chart-adapter", version: "18.1.0" },
-        { name: "igniteui-angular-spreadsheet"              , version: "18.1.0" },
-        { name: "igniteui-angular-datasources"              , version: "18.1.0" },
+        { version: "18.1.0", name: "igniteui-angular-core" },
+        { version: "18.1.0", name: "igniteui-angular-charts" },
+        { version: "18.1.0", name: "igniteui-angular-excel" },
+        { version: "18.1.0", name: "igniteui-angular-gauges" },
+        { version: "18.1.0", name: "igniteui-angular-inputs" },
+        { version: "18.1.0", name: "igniteui-angular-layouts" },
+        { version: "18.1.0", name: "igniteui-angular-maps" },
+        { version: "18.1.0", name: "igniteui-angular-spreadsheet-chart-adapter"  },
+        { version: "18.1.0", name: "igniteui-angular-spreadsheet" },
+        { version: "18.1.0", name: "igniteui-angular-datasources" },
         // these IG packages are sometimes updated:
-        { name: "igniteui-webcomponents",            version: "5.1.1" },
-        { name: "igniteui-theming",                  version: "11.0.0" },
-        { name: "igniteui-angular",                  version: "18.1.7" },
-        { name: "@angular/animations",               version: "18.2.1" },
-        { name: "@angular/common",                   version: "18.2.1" },
-        { name: "@angular/compiler",                 version: "18.2.1" },
-        { name: "@angular/core",                     version: "18.2.1" },
-        { name: "@angular/forms",                    version: "18.2.1" },
-        { name: "@angular/platform-browser",         version: "18.2.1" },
-        { name: "@angular/platform-browser-dynamic", version: "18.2.1" },
-        { name: "@types/hammerjs",                   version: "2.0.40" },
-        { name: "classlist-js",         version: "1.1.20150312" },
-        { name: "core-js",              version: "3.21.0" },
-        { name: "hammerjs",             version: "2.0.8" },
-        { name: "intl",                 version: "1.2.5" },
-        { name: "jszip",                version: "3.8.0" },
-        { name: "rxjs",                 version: "7.8.1" },
-        { name: "tslib",                version: "2.6.1" },
-        { name: "web-animations-js",    version: "2.3.2" },
-        { name: "zone.js",              version: "~0.14.4" },
+        { version: "5.1.1" , name: "igniteui-webcomponents" },
+        { version: "11.0.0", name: "igniteui-theming" },
+        { version: "18.1.7", name: "igniteui-angular" },
+        { version: "18.2.1", name: "@angular/animations" },
+        { version: "18.2.1", name: "@angular/common" },
+        { version: "18.2.1", name: "@angular/compiler" },
+        { version: "18.2.1", name: "@angular/core" },
+        { version: "18.2.1", name: "@angular/forms" },
+        { version: "18.2.1", name: "@angular/platform-browser" },
+        { version: "18.2.1", name: "@angular/platform-browser-dynamic" },
+        { version: "2.0.40", name: "@types/hammerjs" },
+        { version: "1.1.20150312", name: "classlist-js" },
+        { version: "3.21.0" , name: "core-js" },
+        { version: "2.0.8"  , name: "hammerjs" },
+        { version: "1.2.5"  , name: "intl" },
+        { version: "3.8.0"  , name: "jszip" },
+        { version: "7.8.1"  , name: "rxjs" },
+        { version: "2.6.1"  , name: "tslib" },
+        { version: "2.3.2"  , name: "web-animations-js",     },
+        { version: "~0.14.4", name: "zone.js" },
         // dev packages:
-        { name: "@angular/cli",                     version: "18.2.1"},
-        { name: "@angular/compiler-cli",            version: "18.2.1"},
-        { name: "@angular/language-service",        version: "18.2.1"},
-        { name: "@angular-devkit/build-angular",    version: "18.2.1"},
-        { name: "@types/node",                      version: "18.17.0"},
-        { name: "codelyzer",                        version: "6.0.2"},
-        { name: "jasmine-core",                     version: "5.1.1"},
-        { name: "jasmine-spec-reporter",            version: "~4.2.1"},
-        { name: "sass.js",                          version: "0.11.1"},
-        { name: "tslint",                           version: "~6.1.3"},
-        { name: "ts-node",                          version: "10.9.1"},
-        { name: "typescript",                       version: "5.5.4"},
+        { version: "18.2.1" , name: "@angular/cli" },
+        { version: "18.2.1" , name: "@angular/compiler-cli" },
+        { version: "18.2.1" , name: "@angular/language-service" },
+        { version: "18.2.1" , name: "@angular-devkit/build-angular" },
+        { version: "18.17.0", name: "@types/node" },
+        { version: "6.0.2"  , name: "codelyzer" },
+        { version: "5.1.1"  , name: "jasmine-core" },
+        { version: "~4.2.1" , name: "jasmine-spec-reporter" },
+        { version: "0.11.1" , name: "sass.js" },
+        { version: "~6.1.3" , name: "tslint" },
+        { version: "10.9.1" , name: "ts-node" },
+        { version: "5.5.4"  , name: "typescript" },
     ];
 
     // NOTE you can comment out strings in this array to run these function only on a subset of samples
