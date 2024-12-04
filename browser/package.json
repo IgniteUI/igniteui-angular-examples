@@ -7,7 +7,7 @@
     "ng": "ng",
     "update": "ng update",
     "build": "gulp updateBrowser --max_old_space_size=12192 && gulp overwrite-package-json && node --max_old_space_size=12192 node_modules/@angular/cli/bin/ng build --configuration production --progress=true",
-    "start": "gulp updateBrowser --max_old_space_size=12192 && node --max_old_space_size=12192 node_modules/@angular/cli/bin/ng serve --configuration es5 -o",
+    "start": "gulp updateBrowser && node_modules/@angular/cli/bin/ng serve --configuration es5 -o",
     "startProd": "gulp updateBrowser --max_old_space_size=12192 && node --max_old_space_size=12192 node_modules/@angular/cli/bin/ng serve --configuration production --configuration es5 -o --progress=true",
     "start:es5": "node --max_old_space_size=12192 node_modules/@angular/cli/bin/ng serve -o",
     "startHost": "node --max_old_space_size=12192 node_modules/@angular/cli/bin/ng serve --configuration es5 -o",
@@ -38,7 +38,7 @@
     "core-js": "3.21.0",
     "file-saver": "2.0.5",
     "hammerjs": "2.0.8",
-    "igniteui-angular": "18.1.7",
+    "igniteui-angular": "19.0.1",
     "igniteui-angular-charts": "18.1.0",
     "igniteui-angular-core": "18.1.0",
     "igniteui-angular-excel": "18.1.0",
@@ -48,7 +48,7 @@
     "igniteui-angular-maps": "18.1.0",
     "igniteui-angular-spreadsheet": "18.1.0",
     "igniteui-angular-spreadsheet-chart-adapter": "18.1.0",
-    "igniteui-theming": "11.0.0",
+    "igniteui-theming": "14.3.0",
     "igniteui-webcomponents": "5.1.1",
     "immediate": "3.2.3",
     "intl": "1.2.5",
@@ -90,6 +90,6 @@
     "sass.js": "0.11.1",
     "ts-node": "10.9.1",
     "tslint": "~6.1.3",
-    "typescript": "5.5.4"
+    "typescript": "5.7.2"
   }
 }
