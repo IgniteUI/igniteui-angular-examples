@@ -14,6 +14,8 @@
     "module": "ES2022",
     "moduleResolution": "node",
     "importHelpers": true,
+    "lib": ["es2017", "dom", "DOM.Iterable"],
+    "skipLibCheck": true,
     "typeRoots": [
       "node_modules/@types"
     ]
