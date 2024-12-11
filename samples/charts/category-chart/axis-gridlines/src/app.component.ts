@@ -22,6 +22,10 @@ export class AppComponent implements AfterViewInit
 	private legend: IgxLegendComponent
 	@ViewChild("propertyEditorPanel1", { static: true } )
 	private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+	@ViewChild("xAxisStroke", { static: true } )
+	private xAxisStroke: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("xAxisMajorStroke", { static: true } )
+	private xAxisMajorStroke: IgxPropertyEditorPropertyDescriptionComponent
 	@ViewChild("yAxisStroke", { static: true } )
 	private yAxisStroke: IgxPropertyEditorPropertyDescriptionComponent
 	@ViewChild("yAxisMajorStroke", { static: true } )

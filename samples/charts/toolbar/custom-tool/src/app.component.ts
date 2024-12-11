@@ -17,6 +17,8 @@ export class AppComponent implements AfterViewInit
 	private legend: IgxLegendComponent
 	@ViewChild("toolbar", { static: true } )
 	private toolbar: IgxToolbarComponent
+	@ViewChild("customIconName", { static: true } )
+	private customIconName: IgxToolActionLabelComponent
 	@ViewChild("chart", { static: true } )
 	private chart: IgxCategoryChartComponent
     private _countryRenewableElectricity: CountryRenewableElectricity = null;
