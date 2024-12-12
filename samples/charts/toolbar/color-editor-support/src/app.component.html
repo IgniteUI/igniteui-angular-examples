@@ -1,0 +1,51 @@
+<div class="container vertical sample">
+  <div class="aboveContentSplit">
+    <div class="aboveContentLeftContainer">
+      <igx-toolbar
+      name="toolbar"
+      #toolbar
+      [target]="chart"
+      (onCommand)="this.colorEditorToggleSeriesBrush($event)">
+          <igx-tool-action-color-editor
+          title="Series Brush"
+          name="colorEditorTool"
+          #colorEditorTool
+          commandId="ToggleSeriesBrush">
+          </igx-tool-action-color-editor>
+      </igx-toolbar>
+    </div>
+    <div class="aboveContentRightContainer">
+      <!-- insert aboveContentRight -->
+      <!-- end aboveContentRight -->
+    </div>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      isHorizontalZoomEnabled="true"
+      name="chart"
+      #chart>
+          <igx-category-x-axis
+          name="xAxis"
+          #xAxis
+          [dataSource]="countryRenewableElectricity"
+          label="year">
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
+          title="TWh"
+          labelLocation="OutsideRight">
+          </igx-numeric-y-axis>
+          <igx-line-series
+          name="lineSeries1"
+          #lineSeries1
+          title="Electricity"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="countryRenewableElectricity"
+          valueMemberPath="america"
+          markerType="None">
+          </igx-line-series>
+      </igx-data-chart>
+  </div>
+</div>
