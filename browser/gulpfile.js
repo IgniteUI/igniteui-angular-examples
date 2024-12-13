@@ -54,7 +54,11 @@ gulp.task('moveAppFiles', browser.moveAppFiles);
 gulp.task("overwrite-package-json", (done) => {
     const packagesPaths = [
         "./node_modules/igniteui-angular-charts/package.json",
+        "./node_modules/igniteui-angular-grids/package.json",
+        "./node_modules/igniteui-angular-dashboards/package.json",
         "./node_modules/igniteui-angular-core/package.json",
+        "./node_modules/igniteui-angular-inputs/package.json",
+        "./node_modules/igniteui-angular-layouts/package.json",
         "./node_modules/igniteui-angular-excel/package.json",
         "./node_modules/igniteui-angular-gauges/package.json",
         "./node_modules/igniteui-angular-spreadsheet/package.json",

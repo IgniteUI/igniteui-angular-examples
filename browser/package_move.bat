@@ -6,6 +6,10 @@ IF EXIST @infragistics\igniteui-angular-charts (
  MOVE /y @infragistics\igniteui-angular-charts igniteui-angular-charts
 ) 
 
+IF EXIST @infragistics\igniteui-angular-dashboards (
+ MOVE /y @infragistics\igniteui-angular-dashboards igniteui-angular-dashboards
+) 
+
 IF EXIST @infragistics\igniteui-angular-core (
  MOVE /y @infragistics\igniteui-angular-core igniteui-angular-core
 ) 
