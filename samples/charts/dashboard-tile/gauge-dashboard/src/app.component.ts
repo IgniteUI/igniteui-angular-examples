@@ -16,11 +16,11 @@ export class AppComponent implements AfterViewInit
 
 	public constructor(private _detector: ChangeDetectorRef)
 	{
-		this.dashboardTileGaugeOnInit();
 	}
 
 	public ngAfterViewInit(): void
 	{
+		this.dashboardTileGaugeOnInit();
 	}
 
 	public dashboardTileGaugeOnInit(): void {
