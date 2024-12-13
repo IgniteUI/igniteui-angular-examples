@@ -12,7 +12,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "aot": false,
+            "aot": true,
             "progress": true,
             "outputPath": {
               "base": "dist"
@@ -43,7 +43,7 @@
           },
           "configurations": {
             "production": {
-              "aot": false,
+              "aot": true,
               "budgets": [
                 {
                   "type": "anyComponentStyle",

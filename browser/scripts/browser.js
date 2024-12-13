@@ -1073,16 +1073,16 @@ function updateIG(cb) {
     // { version: "14.1.0",  name:               "igniteui-angular-charts" },  // NPM
     let packageUpgrades = [
         // these IG packages are often updated:
-        { version: "18.1.0", name: "igniteui-angular-core" },
-        { version: "18.1.0", name: "igniteui-angular-charts" },
-        { version: "18.1.0", name: "igniteui-angular-excel" },
-        { version: "18.1.0", name: "igniteui-angular-gauges" },
-        { version: "18.1.0", name: "igniteui-angular-inputs" },
-        { version: "18.1.0", name: "igniteui-angular-layouts" },
-        { version: "18.1.0", name: "igniteui-angular-maps" },
-        { version: "18.1.0", name: "igniteui-angular-spreadsheet-chart-adapter"  },
-        { version: "18.1.0", name: "igniteui-angular-spreadsheet" },
-        { version: "18.1.0", name: "igniteui-angular-datasources" },
+        { version: "18.2.0-beta.0", name: "igniteui-angular-core" },
+        { version: "18.2.0-beta.0", name: "igniteui-angular-charts" },
+        { version: "18.2.0-beta.0", name: "igniteui-angular-excel" },
+        { version: "18.2.0-beta.0", name: "igniteui-angular-gauges" },
+        { version: "18.2.0-beta.0", name: "igniteui-angular-inputs" },
+        { version: "18.2.0-beta.0", name: "igniteui-angular-layouts" },
+        { version: "18.2.0-beta.0", name: "igniteui-angular-maps" },
+        { version: "18.2.0-beta.0", name: "igniteui-angular-spreadsheet-chart-adapter"  },
+        { version: "18.2.0-beta.0", name: "igniteui-angular-spreadsheet" },
+        { version: "18.2.0-beta.0", name: "igniteui-angular-datasources" },
         // these IG packages are sometimes updated:
         { version: "5.1.1" , name: "igniteui-webcomponents" },
         { version: "11.0.0", name: "igniteui-theming" },
