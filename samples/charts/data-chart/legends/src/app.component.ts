@@ -5,6 +5,7 @@ import { IgxNumericYAxisComponent } from "igniteui-angular-charts";
 import { SharedData } from "./SharedData";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

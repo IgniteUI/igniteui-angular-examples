@@ -3,6 +3,7 @@ import { IgxGeographicMapComponent } from "igniteui-angular-maps";
 import { IgRect } from "igniteui-angular-core";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

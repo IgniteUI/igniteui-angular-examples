@@ -5,6 +5,7 @@ import { DataTemplateMeasureInfo, DataTemplateRenderInfo } from "igniteui-angula
 import { WorldLocations } from "./WorldLocations";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

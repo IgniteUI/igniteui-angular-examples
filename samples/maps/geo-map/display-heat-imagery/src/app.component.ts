@@ -6,6 +6,7 @@ import { IgxGeographicTileSeriesComponent } from "igniteui-angular-maps";
 import { IgxTileGeneratorMapImagery } from "igniteui-angular-maps";
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",

@@ -2,6 +2,7 @@ import { Component, ViewChild } from "@angular/core";
 import { IgxDataChartComponent } from "igniteui-angular-charts";
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"

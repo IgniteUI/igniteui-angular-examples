@@ -20,6 +20,7 @@ export class LocalService {
 }
 
 @Component({
+    standalone: false,
     providers: [LocalService],
     selector: "app-root",
     styleUrls: ["./app.component.scss"],

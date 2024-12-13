@@ -4,6 +4,7 @@ import { IgxGeographicMapComponent } from "igniteui-angular-maps";
 import { EsriStyle, EsriUtility } from "./EsriUtility";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

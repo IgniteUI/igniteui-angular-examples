@@ -16,6 +16,7 @@ import { IgxLegendComponent } from "igniteui-angular-charts";
 import { SamplePolarData } from "./SamplePolarData";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

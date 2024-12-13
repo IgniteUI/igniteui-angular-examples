@@ -7,6 +7,7 @@ import { IgxSizeScaleComponent } from "igniteui-angular-charts";
 import { SampleScatterStats } from "./SampleScatterStats";
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"

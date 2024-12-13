@@ -4,6 +4,7 @@ import { IgxRingSeriesComponent } from "igniteui-angular-charts";
 import { IgxSliceClickEventArgs } from "igniteui-angular-charts";
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"

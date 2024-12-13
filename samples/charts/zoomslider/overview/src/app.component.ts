@@ -12,6 +12,7 @@ import { IgxRectChangedEventArgs } from "igniteui-angular-core";
 import { SampleScatterStats } from "./SampleScatterStats";
 
 @Component({
+    standalone: false,
     providers: [ SampleScatterStats ],
     selector: "app-root",
     styleUrls: ["./app.component.scss"],

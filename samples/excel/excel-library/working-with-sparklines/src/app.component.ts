@@ -6,6 +6,7 @@ import { Workbook } from "igniteui-angular-excel";
 import { ExcelUtility } from "./ExcelUtility";
 
 @Component({
+    standalone: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
