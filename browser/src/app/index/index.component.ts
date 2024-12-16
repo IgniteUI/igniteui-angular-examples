@@ -11,6 +11,7 @@ import BrowserInfo  from "../../browser-info.json";
 import { RoutingDataForCharts } from "../../samples/charts/routing-data";
 import { RoutingDataForExcel } from "../../samples/excel/routing-data";
 import { RoutingDataForGauges } from "../../samples/gauges/routing-data";
+import { RoutingDataForInputs } from "../../samples/inputs/routing-data";
 import { RoutingDataForMaps } from "../../samples/maps/routing-data";
 
 
@@ -19,7 +20,8 @@ import { RoutingDataForMaps } from "../../samples/maps/routing-data";
 @Component({
     selector: "app-index",
     styleUrls: ["./index.component.scss"],
-    templateUrl: "./index.component.html"
+    templateUrl: "./index.component.html",
+    standalone: false
 })
 export class IndexComponent implements OnInit, AfterViewInit {
 
@@ -50,6 +52,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
         { path: "charts", routesData: RoutingDataForCharts },
         { path: "excel", routesData: RoutingDataForExcel },
         { path: "gauges", routesData: RoutingDataForGauges },
+        { path: "inputs", routesData: RoutingDataForInputs },
         { path: "maps", routesData: RoutingDataForMaps }
 
 

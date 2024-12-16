@@ -8,12 +8,13 @@
   "compilerOptions": {
     "sourceMap": false,
     "declaration": false,
-    "downlevelIteration": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "target": "ES2022", 
     "module": "ES2022",
     "moduleResolution": "node",
     "importHelpers": true,
+    "useDefineForClassFields": false,
     "typeRoots": [
       "node_modules/@types"
     ]
@@ -22,7 +23,6 @@
     "ES2022",
     "dom"
   ],
-  "useDefineForClassFields": false,
   "files": [],
   "references": [
     {

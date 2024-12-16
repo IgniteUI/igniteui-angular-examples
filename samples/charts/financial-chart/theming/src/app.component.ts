@@ -6,6 +6,7 @@ import { IgxFinancialChartComponent } from "igniteui-angular-charts";
 import { StockDataService } from "./StockDataService";
 
 @Component({
+    standalone: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ StockDataService ],
     selector: "app-root",

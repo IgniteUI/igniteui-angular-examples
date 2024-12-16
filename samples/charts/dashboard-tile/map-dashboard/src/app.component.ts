@@ -3,6 +3,7 @@ import { WorldCitiesItem, WorldCities } from './WorldCities';
 import { IgxDashboardTileComponent } from 'igniteui-angular-dashboards';
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",

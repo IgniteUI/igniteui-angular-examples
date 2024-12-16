@@ -18,6 +18,7 @@ export const samplesRoutes: Routes = [
     { path: "charts", data: ["SamplesForCharts"], loadChildren: () => import("../samples/charts/samples-modules").then(m => m.SamplesForCharts) },
     { path: "excel", data: ["SamplesForExcel"], loadChildren: () => import("../samples/excel/samples-modules").then(m => m.SamplesForExcel) },
     { path: "gauges", data: ["SamplesForGauges"], loadChildren: () => import("../samples/gauges/samples-modules").then(m => m.SamplesForGauges) },
+    { path: "inputs", data: ["SamplesForInputs"], loadChildren: () => import("../samples/inputs/samples-modules").then(m => m.SamplesForInputs) },
     { path: "maps", data: ["SamplesForMaps"], loadChildren: () => import("../samples/maps/samples-modules").then(m => m.SamplesForMaps) }
 
 

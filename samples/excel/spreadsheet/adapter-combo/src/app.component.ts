@@ -9,6 +9,7 @@ import { AxisGroup, AxisPosition, AxisType, CellReferenceMode, ChartTitle, Chart
     WorksheetTableColumnArea, XValues } from "igniteui-angular-excel";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

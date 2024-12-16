@@ -14,6 +14,7 @@ import { IgxRadialPieSeriesComponent } from "igniteui-angular-charts";
 import { SampleRadialData } from "./SampleRadialData";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

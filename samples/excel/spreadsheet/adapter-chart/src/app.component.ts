@@ -7,6 +7,7 @@ import { Worksheet } from "igniteui-angular-excel";
 import { WorksheetCell } from "igniteui-angular-excel";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

@@ -3,6 +3,7 @@ import { IgxDoughnutChartComponent } from "igniteui-angular-charts";
 import { IgxRingSeriesComponent } from "igniteui-angular-charts";
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"

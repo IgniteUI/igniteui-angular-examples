@@ -3,6 +3,7 @@ import { IgxFinancialChartComponent } from "igniteui-angular-charts";
 import { FinancialDataService } from "./FinancialDataService";
 
 @Component({
+    standalone: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ FinancialDataService ],
     selector: "app-root",

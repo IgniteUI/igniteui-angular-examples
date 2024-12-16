@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { IgxColorEditorComponent } from 'igniteui-angular-dashboards';
+import { IgxColorEditorComponent } from 'igniteui-angular-inputs';
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",

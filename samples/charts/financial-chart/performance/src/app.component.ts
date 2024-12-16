@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { GenerateOhlcPricesService } from "./GenerateOhlcPricesService";
 
 @Component({
+    standalone: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ GenerateOhlcPricesService ],
     selector: "app-root",

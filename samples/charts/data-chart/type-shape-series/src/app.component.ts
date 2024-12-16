@@ -7,6 +7,7 @@ import { IgxScatterPolylineSeriesComponent } from "igniteui-angular-charts";
 import { SampleShapeData } from "./SampleShapeData";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

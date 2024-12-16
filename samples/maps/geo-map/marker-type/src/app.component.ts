@@ -4,6 +4,7 @@ import { IgxGeographicMapComponent, IgxGeographicSymbolSeriesComponent } from "i
 import { WorldLocations } from "./WorldLocations";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

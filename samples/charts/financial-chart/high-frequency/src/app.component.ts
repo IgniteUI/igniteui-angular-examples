@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, N
 import { IgxFinancialChartComponent } from "igniteui-angular-charts";
 
 @Component({
+    standalone: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],

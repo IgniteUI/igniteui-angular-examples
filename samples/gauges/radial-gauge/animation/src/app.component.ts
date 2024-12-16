@@ -9,6 +9,7 @@ import { RadialGaugePivotShape } from "igniteui-angular-gauges";
 import { RadialGaugeScaleOversweepShape } from "igniteui-angular-gauges";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"
