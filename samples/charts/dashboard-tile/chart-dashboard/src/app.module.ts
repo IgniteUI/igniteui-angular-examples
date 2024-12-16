@@ -17,7 +17,6 @@ import { IgxDashboardTileModule, IgxDataChartDashboardTileModule, IgxGeographicM
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
-    IgxGridModule,
     IgxDashboardTileModule,
     IgxDataChartDashboardTileModule,
     IgxGeographicMapDashboardTileModule,
