@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "update": "ng update",
-    "build": "gulp updateBrowser --max_old_space_size=12192 && gulp overwrite-package-json && node --max_old_space_size=12192 node_modules/@angular/cli/bin/ng build --configuration production --progress=true",
+    "build": "gulp updateBrowser && gulp overwrite-package-json && ng build --configuration production --progress=true",
     "start": "gulp updateBrowser --max_old_space_size=12192 && node --max_old_space_size=12192 node_modules/@angular/cli/bin/ng serve --configuration es5 -o",
     "startProd": "gulp updateBrowser --max_old_space_size=12192 && node --max_old_space_size=12192 node_modules/@angular/cli/bin/ng serve --configuration production --configuration es5 -o --progress=true",
     "start:es5": "node --max_old_space_size=12192 node_modules/@angular/cli/bin/ng serve -o",
