@@ -4,7 +4,6 @@ import { CountryDemographicAfricanItem, CountryDemographicAfrican } from './Coun
 import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxScatterSeriesComponent } from 'igniteui-angular-charts';
 
 @Component({
-    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",

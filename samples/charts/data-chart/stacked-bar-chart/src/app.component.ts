@@ -3,7 +3,6 @@ import { EnergyRenewableConsumptionItem, EnergyRenewableConsumption } from './En
 import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryYAxisComponent, IgxNumericXAxisComponent, IgxStackedBarSeriesComponent, IgxStackedFragmentSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
-    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",

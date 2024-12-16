@@ -4,7 +4,6 @@ import { HealthDataForFranceItem, HealthDataForFrance } from './HealthDataForFra
 import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxScatterLineSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
-    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",

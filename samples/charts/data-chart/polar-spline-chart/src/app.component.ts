@@ -3,7 +3,6 @@ import { BoatSailingDataItem, BoatSailingData } from './BoatSailingData';
 import { IgxDataChartComponent, IgxNumericAngleAxisComponent, IgxNumericRadiusAxisComponent, IgxPolarSplineSeriesComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
-    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",

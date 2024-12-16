@@ -4,7 +4,6 @@ import { CountryDemographicEuropeItem, CountryDemographicEurope } from './Countr
 import { IgxDataLegendComponent, IgxDataChartComponent, IgxNumericYAxisComponent, IgxNumericXAxisComponent, IgxBubbleSeriesComponent, IgxSizeScaleComponent, IgxCrosshairLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
-    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",

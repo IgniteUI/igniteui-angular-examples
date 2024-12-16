@@ -4,7 +4,6 @@ import { IgxDataLegendComponent, IgxFinancialChartComponent } from 'igniteui-ang
 import { IgxNumberFormatSpecifier, IgxDateTimeFormatSpecifier } from 'igniteui-angular-core';
 
 @Component({
-    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",

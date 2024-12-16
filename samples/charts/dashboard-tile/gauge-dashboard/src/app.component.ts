@@ -2,7 +2,6 @@ import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDet
 import { IgxDashboardTileComponent } from 'igniteui-angular-dashboards';
 
 @Component({
-    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",
@@ -17,11 +16,11 @@ export class AppComponent implements AfterViewInit
 
 	public constructor(private _detector: ChangeDetectorRef)
 	{
-		this.dashboardTileGaugeOnInit();
 	}
 
 	public ngAfterViewInit(): void
 	{
+		this.dashboardTileGaugeOnInit();
 	}
 
 	public dashboardTileGaugeOnInit(): void {
