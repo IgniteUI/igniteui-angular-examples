@@ -5,7 +5,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
-import { IgxXIconModule } from 'igniteui-angular-inputs';
 import { IgxToolbarModule, IgxToolActionComboModule, IgxToolActionColorEditorModule } from 'igniteui-angular-layouts';
 import { IgxDataChartToolbarModule, IgxDataLegendModule, IgxNumberAbbreviatorModule, IgxDataChartCategoryModule, IgxDataChartCoreModule, IgxDataChartAnnotationModule, IgxDataChartInteractivityModule } from 'igniteui-angular-charts';
 
@@ -19,7 +18,6 @@ import { IgxDataChartToolbarModule, IgxDataLegendModule, IgxNumberAbbreviatorMod
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
-    IgxXIconModule,
     IgxToolbarModule,
     IgxToolActionComboModule,
     IgxToolActionColorEditorModule,
