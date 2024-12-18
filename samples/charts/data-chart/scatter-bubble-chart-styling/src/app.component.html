@@ -1,75 +1,50 @@
 <div class="container vertical sample">
-  <div class="legend-title">
-      Total Population of Selected Countries
-  </div>
-  <div class="legend">
-      <igx-legend
-      name="legend"
-      #legend
-      orientation="Horizontal">
-      </igx-legend>
-  </div>
   <div class="container fill">
       <igx-data-chart
       name="chart"
       #chart
-      [legend]="legend">
+      chartTitle="Population vs. Public Debt vs. GDP"
+      titleTopMargin="10"
+      titleBottomMargin="0">
           <igx-numeric-x-axis
           name="xAxis"
           #xAxis
           title="Population"
+          minimumValue="100"
+          maximumValue="10000000000"
           isLogarithmic="true"
           abbreviateLargeNumbers="true">
           </igx-numeric-x-axis>
           <igx-numeric-y-axis
           name="yAxis"
           #yAxis
-          title="GDP per Capita"
-          titleLeftMargin="5"
+          title="Public Debt per GDP (%)"
+          titleLeftMargin="10"
           isLogarithmic="true"
-          abbreviateLargeNumbers="true">
+          abbreviateLargeNumbers="true"
+          maximumValue="1000">
           </igx-numeric-y-axis>
           <igx-bubble-series
           name="bubbleSeries1"
           #bubbleSeries1
-          title="African Countries"
+          title="Country"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           xMemberPath="population"
-          yMemberPath="gDP"
-          radiusMemberPath="workedHours"
+          yMemberPath="publicDebt"
+          radiusMemberPath="gdpPerPerson"
+          yMemberAsLegendUnit="%"
+          yMemberAsLegendLabel="Debt"
           xMemberAsLegendLabel="Population"
-          yMemberAsLegendLabel="GDP"
-          radiusMemberAsLegendLabel="Worked Hours"
-          [dataSource]="countryStatsAfrica"
+          radiusMemberAsLegendLabel="GDP"
+          [dataSource]="worldStats"
           markerType="Circle"
-          markerOutline="rgba(2, 158, 30, 1)"
-          markerBrush="rgba(2, 158, 30, 1)"
+          markerOutline="black"
+          markerBrush="rgba(67, 162, 250, 1)"
           markerFillOpacity="0.5"
           markerThickness="1"
           showDefaultTooltip="true"
           [radiusScale]="sizeScale1">
-          </igx-bubble-series>
-          <igx-bubble-series
-          name="bubbleSeries2"
-          #bubbleSeries2
-          title="European Countries"
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          xMemberPath="population"
-          yMemberPath="gDP"
-          radiusMemberPath="workedHours"
-          xMemberAsLegendLabel="Population"
-          yMemberAsLegendLabel="GDP"
-          radiusMemberAsLegendLabel="Worked Hours"
-          [dataSource]="countryStatsEurope"
-          markerType="Circle"
-          markerOutline="rgba(95, 2, 171, 1)"
-          markerBrush="rgba(95, 2, 171, 1)"
-          markerFillOpacity="0.5"
-          markerThickness="1"
-          showDefaultTooltip="true"
-          [radiusScale]="sizeScale2">
           </igx-bubble-series>
           <igx-data-tool-tip-layer
           name="dataToolTipLayer"
@@ -84,9 +59,12 @@
           unitsTextMarginBottom="1"
           unitsTextMarginRight="5"
           valueTextMarginLeft="10"
-          labelTextMarginLeft="5"
+          labelTextMarginLeft="1"
           groupingMode="Grouped"
-          layoutMode="Vertical">
+          layoutMode="Vertical"
+          badgeShape="Hidden"
+          includedColumns="X, Y, Radius"
+          headerRowVisible="false">
           </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>

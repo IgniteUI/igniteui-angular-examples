@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CountryStatsAfricaItem, CountryStatsAfrica } from './CountryStatsAfrica';
 import { CountryStatsEuropeItem, CountryStatsEurope } from './CountryStatsEurope';
-import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent, IgxSizeScaleComponent } from 'igniteui-angular-charts';
+import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent, IgxSizeScaleComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
     standalone: false,
@@ -52,6 +52,8 @@ export class AppComponent implements AfterViewInit
 	    }
 	    return this._sizeScale2;
 	}
+	@ViewChild("dataToolTipLayer", { static: true } )
+	private dataToolTipLayer: IgxDataToolTipLayerComponent
     private _countryStatsAfrica: CountryStatsAfrica = null;
     public get countryStatsAfrica(): CountryStatsAfrica {
         if (this._countryStatsAfrica == null)
