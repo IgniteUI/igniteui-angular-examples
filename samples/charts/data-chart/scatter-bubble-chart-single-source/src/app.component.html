@@ -16,9 +16,9 @@
           <igx-numeric-y-axis
           name="yAxis"
           #yAxis
-          title="Public Debt"
+          title="Public Debt per GDP (%)"
+          titleLeftMargin="5"
           isLogarithmic="false"
-          abbreviateLargeNumbers="true"
           maximumValue="120">
           </igx-numeric-y-axis>
           <igx-bubble-series
@@ -29,6 +29,9 @@
           radiusMemberPath="gdpPerPerson"
           [radiusScale]="sizeScale1"
           fillMemberPath="gdpPerPerson"
+          xMemberAsLegendLabel="Population"
+          yMemberAsLegendLabel="Debt"
+          radiusMemberAsLegendLabel="GDP"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           [dataSource]="worldStats"

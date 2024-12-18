@@ -24,9 +24,10 @@
           <igx-numeric-y-axis
           name="yAxis"
           #yAxis
-          title="GDP per Capita"
-          isLogarithmic="true"
-          abbreviateLargeNumbers="true">
+          title="Public Debt per GDP (%)"
+          titleLeftMargin="5"
+          isLogarithmic="false"
+          maximumValue="120">
           </igx-numeric-y-axis>
           <igx-bubble-series
           name="bubbleSeries1"
@@ -35,8 +36,11 @@
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           xMemberPath="population"
-          yMemberPath="gDP"
-          radiusMemberPath="population"
+          yMemberPath="publicDebt"
+          radiusMemberPath="gdpPerPerson"
+          xMemberAsLegendLabel="Population"
+          yMemberAsLegendLabel="Debt"
+          radiusMemberAsLegendLabel="GDP"
           [dataSource]="countryStatsAfrica"
           markerType="Circle"
           showDefaultTooltip="true"
@@ -49,8 +53,11 @@
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           xMemberPath="population"
-          yMemberPath="gDP"
-          radiusMemberPath="population"
+          yMemberPath="publicDebt"
+          radiusMemberPath="gdpPerPerson"
+          xMemberAsLegendLabel="Population"
+          yMemberAsLegendLabel="Debt"
+          radiusMemberAsLegendLabel="GDP"
           [dataSource]="countryStatsEurope"
           markerType="Circle"
           showDefaultTooltip="true"
