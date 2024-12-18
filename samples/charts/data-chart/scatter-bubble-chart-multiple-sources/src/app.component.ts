@@ -31,7 +31,7 @@ export class AppComponent implements AfterViewInit
 	        var sizeScale1 = new IgxSizeScaleComponent();
 	        sizeScale1.isLogarithmic = false;
 	        sizeScale1.minimumValue = 10;
-	        sizeScale1.maximumValue = 50;
+	        sizeScale1.maximumValue = 80;
 
 	        this._sizeScale1 = sizeScale1;
 	    }
@@ -46,7 +46,7 @@ export class AppComponent implements AfterViewInit
 	        var sizeScale2 = new IgxSizeScaleComponent();
 	        sizeScale2.isLogarithmic = false;
 	        sizeScale2.minimumValue = 10;
-	        sizeScale2.maximumValue = 50;
+	        sizeScale2.maximumValue = 80;
 
 	        this._sizeScale2 = sizeScale2;
 	    }

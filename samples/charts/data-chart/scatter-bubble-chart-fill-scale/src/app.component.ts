@@ -29,7 +29,7 @@ export class AppComponent implements AfterViewInit
 	        var sizeScale1 = new IgxSizeScaleComponent();
 	        sizeScale1.isLogarithmic = false;
 	        sizeScale1.minimumValue = 10;
-	        sizeScale1.maximumValue = 120;
+	        sizeScale1.maximumValue = 80;
 
 	        this._sizeScale1 = sizeScale1;
 	    }
@@ -41,9 +41,9 @@ export class AppComponent implements AfterViewInit
 	    {
 	        var valueBrushScale1 = new IgxValueBrushScaleComponent();
 	        valueBrushScale1.isLogarithmic = false;
-	        valueBrushScale1.minimumValue = 0;
+	        valueBrushScale1.minimumValue = 500;
 	        valueBrushScale1.maximumValue = 260000;
-	        valueBrushScale1.brushes = ["rgba(137, 181, 250, 1)", "rgba(20, 108, 247, 1)", "rgba(82, 144, 242, 1)"];
+	        valueBrushScale1.brushes = ["rgba(150, 189, 250, 1)", "rgba(111, 164, 247, 1)", "rgba(82, 144, 242, 1)", "rgba(19, 94, 212, 1)"];
 
 	        this._valueBrushScale1 = valueBrushScale1;
 	    }
