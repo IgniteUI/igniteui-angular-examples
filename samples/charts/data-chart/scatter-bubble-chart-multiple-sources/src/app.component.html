@@ -24,10 +24,11 @@
           <igx-numeric-y-axis
           name="yAxis"
           #yAxis
-          title="Public Debt per GDP (%)"
-          titleLeftMargin="5"
-          isLogarithmic="false"
-          maximumValue="120">
+          title="GDP per Capita"
+          maximumValue="1000000"
+          titleLeftMargin="10"
+          isLogarithmic="true"
+          abbreviateLargeNumbers="true">
           </igx-numeric-y-axis>
           <igx-bubble-series
           name="bubbleSeries1"
@@ -36,11 +37,11 @@
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           xMemberPath="population"
-          yMemberPath="publicDebt"
-          radiusMemberPath="gdpPerPerson"
+          yMemberPath="gDP"
+          radiusMemberPath="workedHours"
           xMemberAsLegendLabel="Population"
-          yMemberAsLegendLabel="Debt"
-          radiusMemberAsLegendLabel="GDP"
+          yMemberAsLegendLabel="GDP"
+          radiusMemberAsLegendLabel="Work Hours"
           [dataSource]="countryStatsAfrica"
           markerType="Circle"
           showDefaultTooltip="true"
@@ -53,16 +54,33 @@
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           xMemberPath="population"
-          yMemberPath="publicDebt"
-          radiusMemberPath="gdpPerPerson"
+          yMemberPath="gDP"
+          radiusMemberPath="workedHours"
           xMemberAsLegendLabel="Population"
-          yMemberAsLegendLabel="Debt"
-          radiusMemberAsLegendLabel="GDP"
+          yMemberAsLegendLabel="GDP"
+          radiusMemberAsLegendLabel="Work Hours"
           [dataSource]="countryStatsEurope"
           markerType="Circle"
           showDefaultTooltip="true"
           [radiusScale]="sizeScale2">
           </igx-bubble-series>
+          <igx-data-tool-tip-layer
+          name="dataToolTipLayer"
+          #dataToolTipLayer
+          valueRowMarginTop="1"
+          labelTextMarginTop="1"
+          titleTextMarginTop="1"
+          unitsTextMarginTop="1"
+          valueRowMarginBottom="1"
+          labelTextMarginBottom="1"
+          titleTextMarginBottom="1"
+          unitsTextMarginBottom="1"
+          unitsTextMarginRight="5"
+          valueTextMarginLeft="10"
+          labelTextMarginLeft="1"
+          groupingMode="Grouped"
+          layoutMode="Vertical">
+          </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>
 </div>
