@@ -1077,6 +1077,7 @@ function updateIG(cb) {
         { version: "18.2.0", name: "igniteui-angular-charts" },
         { version: "18.2.0", name: "igniteui-angular-excel" },
         { version: "18.2.0", name: "igniteui-angular-gauges" },
+        { version: "18.2.0", name: "igniteui-angular-grids" },
         { version: "18.2.0", name: "igniteui-angular-inputs" },
         { version: "18.2.0", name: "igniteui-angular-layouts" },
         { version: "18.2.0", name: "igniteui-angular-maps" },
