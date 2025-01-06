@@ -65,12 +65,12 @@ jobs:
     inputs:
       SourceFolder: '$(Build.SourcesDirectory)\browser'
       Contents: 'web.config'
-      TargetFolder: '$(Build.SourcesDirectory)\browser\dist'
+      TargetFolder: '$(Build.SourcesDirectory)\dist\browser'
       OverWrite: true
 
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: '$(Build.SourcesDirectory)\browser\dist'
+      targetPath: '$(Build.SourcesDirectory)\dist\browser'
       artifact: 'dist'
       publishLocation: 'pipeline'
 
