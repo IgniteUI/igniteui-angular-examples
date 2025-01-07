@@ -70,7 +70,7 @@ jobs:
 
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: '$(Build.SourcesDirectory)browser\dist\browser'
+      targetPath: '$(Build.SourcesDirectory)\browser\dist\browser'
       artifact: 'dist'
       publishLocation: 'pipeline'
 
