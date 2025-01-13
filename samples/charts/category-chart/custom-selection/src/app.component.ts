@@ -1,8 +1,10 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { SelectableDataItem, SelectableData } from './SelectableData';
-import { IgxDataLegendComponent, IgxCategoryChartComponent } from 'igniteui-angular-charts';
+import { IgxCategoryChartComponent, IgxDomainChartSeriesPointerEventArgs } from 'igniteui-angular-charts';
+import { IgxDataLegendComponent } from 'igniteui-angular-charts';
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",
@@ -33,9 +35,11 @@ export class AppComponent implements AfterViewInit
 	{
 	}
 
-	public categoryChartCustomSelectionPointerDown(e: any): void {
+	public categoryChartCustomSelectionPointerDown({ sender, args }: { sender: any, args: IgxDomainChartSeriesPointerEventArgs }): void {
 
-	    let oldItem = e.args.item as SelectableDataItem;
+	    var chart = this.chart;
+	    var selectableData = chart.dataSource as SelectableData;
+	let oldItem = args.item as SelectableDataItem;
 
 	    if (oldItem === null) return;
 
@@ -46,8 +50,8 @@ export class AppComponent implements AfterViewInit
 	    });
 
 	    var selectedIndex = -1;
-	    for (var i = 0; i < this.selectableData.length; i++) {
-	        if (oldItem.category === this.selectableData[i].category) {
+	    for (var i = 0; i < selectableData.length; i++) {
+	        if (oldItem.category === selectableData[i].category) {
 	            selectedIndex = i;
 	            break;
 	        }
@@ -58,7 +62,7 @@ export class AppComponent implements AfterViewInit
 	    else
 	        newItem.selectedValue = newItem.dataValue;
 
-	    this.chart.notifySetItem(this.selectableData, selectedIndex, oldItem, newItem);
+	    chart.notifySetItem(selectableData, selectedIndex, oldItem, newItem);
 	}
 
 }

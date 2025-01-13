@@ -1,34 +1,41 @@
 <div class="container vertical sample">
-  <div class="legend-title">
-      Total Population of Selected Countries
-  </div>
   <div class="container fill">
       <igx-data-chart
       name="chart"
-      #chart>
+      #chart
+      chartTitle="Population vs. Public Debt vs. GDP"
+      titleTopMargin="10"
+      titleBottomMargin="0">
           <igx-numeric-x-axis
           name="xAxis"
           #xAxis
           title="Population"
+          minimumValue="100"
+          maximumValue="10000000000"
           isLogarithmic="true"
           abbreviateLargeNumbers="true">
           </igx-numeric-x-axis>
           <igx-numeric-y-axis
           name="yAxis"
           #yAxis
-          title="Public Debt"
-          isLogarithmic="false"
+          title="Public Debt per GDP (%)"
+          titleLeftMargin="10"
+          isLogarithmic="true"
           abbreviateLargeNumbers="true"
-          maximumValue="120">
+          maximumValue="1000">
           </igx-numeric-y-axis>
           <igx-bubble-series
-          name="BubbleSeries1"
+          name="bubbleSeries1"
           #bubbleSeries1
           xMemberPath="population"
           yMemberPath="publicDebt"
           radiusMemberPath="gdpPerPerson"
           [radiusScale]="sizeScale1"
-          fillMemberPath="gdpPerPerson"
+          title="Country"
+          yMemberAsLegendUnit="%"
+          yMemberAsLegendLabel="Debt"
+          xMemberAsLegendLabel="Population"
+          radiusMemberAsLegendLabel="GDP"
           [xAxis]="xAxis"
           [yAxis]="yAxis"
           [dataSource]="worldStats"
@@ -36,8 +43,22 @@
           showDefaultTooltip="true">
           </igx-bubble-series>
           <igx-data-tool-tip-layer
-          name="DataToolTipLayer"
-          #dataToolTipLayer>
+          name="dataToolTipLayer"
+          #dataToolTipLayer
+          valueRowMarginTop="1"
+          labelTextMarginTop="1"
+          titleTextMarginTop="1"
+          unitsTextMarginTop="1"
+          valueRowMarginBottom="1"
+          labelTextMarginBottom="1"
+          titleTextMarginBottom="1"
+          unitsTextMarginBottom="1"
+          unitsTextMarginRight="5"
+          valueTextMarginLeft="10"
+          labelTextMarginLeft="1"
+          layoutMode="Vertical"
+          badgeShape="Hidden"
+          headerRowVisible="false">
           </igx-data-tool-tip-layer>
       </igx-data-chart>
   </div>

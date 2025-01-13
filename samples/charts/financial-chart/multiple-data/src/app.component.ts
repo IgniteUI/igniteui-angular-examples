@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { FinancialDataService } from "./FinancialDataService";
 
 @Component({
+    standalone: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ FinancialDataService ],
     selector: "app-root",

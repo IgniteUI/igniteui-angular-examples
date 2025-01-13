@@ -15,6 +15,7 @@ import { SampleFinancialData } from "./SampleFinancialData";
 import { SampleScatterData } from "./SampleScatterData";
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"

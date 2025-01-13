@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { GenerateHourlyPricesService } from "./GenerateHourlyPricesService";
 
 @Component({
+    standalone: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ GenerateHourlyPricesService ],
     selector: "app-root",

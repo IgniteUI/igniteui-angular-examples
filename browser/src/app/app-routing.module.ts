@@ -1,7 +1,7 @@
 // tslint:disable:max-line-length
 import { NgModule } from "@angular/core";
 import { NavigationStart, Router, RouterModule, Routes } from "@angular/router";
-import "rxjs/add/operator/filter";
+import { filter } from 'rxjs/operators';
 import { HomeComponent } from "./home/home.component";
 import { FallbackComponent } from "./fallback/fallback.component";
 import { DocsLayoutComponent } from "./index/docs-layout.component";
@@ -18,6 +18,7 @@ export const samplesRoutes: Routes = [
     { path: "charts", data: ["SamplesForCharts"], loadChildren: () => import("../samples/charts/samples-modules").then(m => m.SamplesForCharts) },
     { path: "excel", data: ["SamplesForExcel"], loadChildren: () => import("../samples/excel/samples-modules").then(m => m.SamplesForExcel) },
     { path: "gauges", data: ["SamplesForGauges"], loadChildren: () => import("../samples/gauges/samples-modules").then(m => m.SamplesForGauges) },
+    { path: "inputs", data: ["SamplesForInputs"], loadChildren: () => import("../samples/inputs/samples-modules").then(m => m.SamplesForInputs) },
     { path: "maps", data: ["SamplesForMaps"], loadChildren: () => import("../samples/maps/samples-modules").then(m => m.SamplesForMaps) }
 
 
@@ -61,8 +62,9 @@ export class AppRoutingModule {
         //     }
         // }
 
-        router.events
-            .filter((event) => event instanceof NavigationStart)
+        router.events.pipe(
+            filter((event) => event instanceof NavigationStart)
+        )
             .subscribe((event: NavigationStart) => {
                 // console.log("app nav: " + event.url)
                 this.setOverflow(event.url);

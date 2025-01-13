@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { SampleFinancialData } from "./SampleFinancialData";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

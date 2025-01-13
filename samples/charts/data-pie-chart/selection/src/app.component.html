@@ -1,0 +1,39 @@
+<div class="container vertical sample">
+  <div class="options vertical">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="DataPieChart"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="propertyEditorPanel1"
+      #propertyEditorPanel1>
+          <igx-property-editor-property-description
+          propertyPath="SelectionBehavior"
+          label="Selection Behavior: "
+          primitiveValue="PerDataItemSingleSelect">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          propertyPath="SelectionMode"
+          label="Selection Mode: "
+          primitiveValue="Brighten">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Global Electricity Demand by Energy Use
+  </div>
+  <div class="container fill">
+      <igx-data-pie-chart
+      name="chart"
+      #chart
+      [dataSource]="energyGlobalDemand"
+      highlightingMode="None"
+      selectionMode="Brighten"
+      selectionBehavior="PerDataItemSingleSelect"
+      selectionBrush="dodgerblue"
+      focusBrush="black"
+      thickness="3">
+      </igx-data-pie-chart>
+  </div>
+</div>

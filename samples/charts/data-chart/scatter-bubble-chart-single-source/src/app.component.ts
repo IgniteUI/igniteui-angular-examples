@@ -3,6 +3,7 @@ import { WorldStatsItem, WorldStats } from './WorldStats';
 import { IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent, IgxSizeScaleComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",
@@ -27,7 +28,7 @@ export class AppComponent implements AfterViewInit
 	        var sizeScale1 = new IgxSizeScaleComponent();
 	        sizeScale1.isLogarithmic = false;
 	        sizeScale1.minimumValue = 10;
-	        sizeScale1.maximumValue = 50;
+	        sizeScale1.maximumValue = 80;
 
 	        this._sizeScale1 = sizeScale1;
 	    }

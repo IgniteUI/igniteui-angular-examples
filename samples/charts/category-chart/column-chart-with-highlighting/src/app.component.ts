@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ViewChild } from "@angular/core";
 import { IgxCategoryChartComponent } from "igniteui-angular-charts";
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"

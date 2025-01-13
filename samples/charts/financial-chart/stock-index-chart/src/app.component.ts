@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { StockIndexDataService } from "./StockIndexDataService";
 
 @Component({
+    standalone: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ StockIndexDataService ],
     selector: "app-root",

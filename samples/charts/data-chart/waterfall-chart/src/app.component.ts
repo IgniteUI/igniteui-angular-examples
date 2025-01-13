@@ -3,6 +3,7 @@ import { CompanyIncomeDataItem, CompanyIncomeData } from './CompanyIncomeData';
 import { IgxDataChartComponent, IgxCategoryXAxisComponent, IgxNumericYAxisComponent, IgxWaterfallSeriesComponent } from 'igniteui-angular-charts';
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",

@@ -3,6 +3,7 @@ import { IgxGeographicHighDensityScatterSeriesComponent } from "igniteui-angular
 import { IgxGeographicMapComponent } from "igniteui-angular-maps";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

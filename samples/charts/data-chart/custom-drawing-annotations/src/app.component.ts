@@ -5,6 +5,7 @@ import { StocksHistory } from "./StocksHistory";
 import { IgxToolCommandEventArgs, IgxToolActionLabelComponent } from "igniteui-angular-layouts";
 
 @Component({
+    standalone: false,
     providers: [ StocksHistory ],
     selector: "app-root",
     styleUrls: ["./app.component.scss"],

@@ -9,7 +9,8 @@ import { MarkerType } from "igniteui-angular-charts";
 import { SampleScatterStats } from "./SampleScatterStats";
 
 @Component({
-    providers: [ SampleScatterStats ],
+   standalone: false,
+   providers: [ SampleScatterStats ],
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"

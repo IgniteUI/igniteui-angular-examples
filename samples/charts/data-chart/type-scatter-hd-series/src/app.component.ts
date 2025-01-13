@@ -6,6 +6,7 @@ import { IgxHighDensityScatterSeriesComponent } from "igniteui-angular-charts";
 import { SampleDensityData } from "./SampleDensityData";
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"

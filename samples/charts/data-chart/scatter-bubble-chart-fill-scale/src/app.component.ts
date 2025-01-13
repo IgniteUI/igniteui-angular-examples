@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, NumberAbbreviatorDescriptionModule, DataChartCoreDescriptionModule, DataChartScatterDescriptionModule, DataChartScatterCoreDescriptionModule, DataChartInteractivityDescriptionModule, DataChartAnnotationDescriptionModule } from 'igniteui-angular-core';
 import { WorldStatsItem, WorldStats } from './WorldStats';
-import { IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent, IgxSizeScaleComponent, IgxValueBrushScaleComponent } from 'igniteui-angular-charts';
+import { IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent, IgxSizeScaleComponent, IgxValueBrushScaleComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",
@@ -28,7 +29,7 @@ export class AppComponent implements AfterViewInit
 	        var sizeScale1 = new IgxSizeScaleComponent();
 	        sizeScale1.isLogarithmic = false;
 	        sizeScale1.minimumValue = 10;
-	        sizeScale1.maximumValue = 120;
+	        sizeScale1.maximumValue = 80;
 
 	        this._sizeScale1 = sizeScale1;
 	    }
@@ -40,14 +41,16 @@ export class AppComponent implements AfterViewInit
 	    {
 	        var valueBrushScale1 = new IgxValueBrushScaleComponent();
 	        valueBrushScale1.isLogarithmic = false;
-	        valueBrushScale1.minimumValue = 0;
-	        valueBrushScale1.maximumValue = 100000;
-	        valueBrushScale1.brushes = ["rgba(26, 161, 226, 1)", "rgba(24, 154, 217, 1)", "rgba(22, 146, 206, 1)", "rgba(19, 133, 188, 1)", "rgba(15, 121, 171, 1)", "rgba(12, 107, 153, 1)", "rgba(9, 94, 136, 1)", "rgba(5, 82, 119, 1)", "rgba(2, 70, 105, 1)", "rgba(0, 63, 94, 1)"];
+	        valueBrushScale1.minimumValue = 500;
+	        valueBrushScale1.maximumValue = 260000;
+	        valueBrushScale1.brushes = ["rgba(150, 189, 250, 1)", "rgba(111, 164, 247, 1)", "rgba(82, 144, 242, 1)", "rgba(19, 94, 212, 1)"];
 
 	        this._valueBrushScale1 = valueBrushScale1;
 	    }
 	    return this._valueBrushScale1;
 	}
+	@ViewChild("dataToolTipLayer", { static: true } )
+	private dataToolTipLayer: IgxDataToolTipLayerComponent
     private _worldStats: WorldStats = null;
     public get worldStats(): WorldStats {
         if (this._worldStats == null)

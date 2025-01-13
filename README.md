@@ -172,19 +172,17 @@ NOTE this will re-generate the Readme.md file in the new sample
 To learn more about **Ignite UI for Angular** components, check out the [Angular documentation](https://www.infragistics.com/products/ignite-ui-Angular/Angular/components/general-getting-started.html).
 
 
-# Updating Version of IgniteUI Packages
+## Updating Packages in Samples
 
-Perform these steps to update version of **Ignite UI for Angular** packages in all samples. NOTE that the order of these steps is very important.
+NOTE Do NOT find replace version of packages in package.json files. 
 
 - open this repo in VS Code
 - open [browser.js](./browser/tasks/browser.js) file
 - navigate to the `updateIG` function
-- change version of **Ignite UI for Angular** packages in the `packageUpgrades` array
+- update version of packages in `packageUpgrades` array
 - open terminal window
 - run `cd browser` command
-- run `gulp updateIG` command
+- run the `gulp updateIG` command
 - run `npm install --legacy-peer-deps` command
-- create pull request with your changes
-- open the [Igniteui-xplat-example](https://github.com/IgniteUI/igniteui-xplat-examples) repo in VS Code
-- update version of **Ignite UI for Angular** packages in [Angular template](https://github.com/IgniteUI/igniteui-xplat-examples/blob/23.2.x/editor-templates/Angular/main-template/package.json)
-- create pull request with your changes in [Igniteui-xplat-example](https://github.com/IgniteUI/igniteui-xplat-examples) repo
+- create AND merge a pull request with changes in all package.json files in this repository
+- create 2nd pull request with similar changes in `/editor-templates/angular/main-template/package.json` of the [igniteui-xplat-examples](https://github.com/IgniteUI/igniteui-xplat-examples) repository.

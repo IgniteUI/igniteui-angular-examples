@@ -3,6 +3,7 @@ import { IgxCategoryChartComponent } from "igniteui-angular-charts";
 import { ToolTipType } from "igniteui-angular-charts";
 
 @Component({
+    standalone: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],

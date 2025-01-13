@@ -3,6 +3,7 @@ import { IgxSpreadsheetComponent } from "igniteui-angular-spreadsheet";
 import { ExcelUtility } from "./ExcelUtility";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

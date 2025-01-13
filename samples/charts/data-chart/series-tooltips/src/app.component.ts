@@ -6,6 +6,7 @@ import { IgxCategoryToolTipLayerComponent } from "igniteui-angular-charts";
 import { IgxItemToolTipLayerComponent } from "igniteui-angular-charts";
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"

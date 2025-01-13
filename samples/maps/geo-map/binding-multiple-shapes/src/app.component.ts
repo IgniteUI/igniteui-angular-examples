@@ -6,6 +6,7 @@ import { IgxGeographicShapeSeriesComponent } from "igniteui-angular-maps";
 import { IgxGeographicSymbolSeriesComponent } from "igniteui-angular-maps";
 
 @Component({
+  standalone: false,
   selector: "app-root",
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"

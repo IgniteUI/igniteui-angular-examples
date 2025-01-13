@@ -3,6 +3,7 @@ import { IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisCompone
 import { EditableDataSource } from "./EditableDataSource";
 
 @Component({
+    standalone: false,
     providers: [ EditableDataSource ],
     selector: "app-root",
     styleUrls: ["./app.component.scss"],

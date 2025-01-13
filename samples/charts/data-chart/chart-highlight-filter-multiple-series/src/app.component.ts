@@ -10,6 +10,7 @@ import { defineAllComponents } from 'igniteui-webcomponents';
 defineAllComponents();
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",

@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CountryStatsAfricaItem, CountryStatsAfrica } from './CountryStatsAfrica';
 import { CountryStatsEuropeItem, CountryStatsEurope } from './CountryStatsEurope';
-import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent, IgxSizeScaleComponent } from 'igniteui-angular-charts';
+import { IgxLegendComponent, IgxDataChartComponent, IgxNumericXAxisComponent, IgxNumericYAxisComponent, IgxBubbleSeriesComponent, IgxSizeScaleComponent, IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html",
@@ -30,7 +31,7 @@ export class AppComponent implements AfterViewInit
 	        var sizeScale1 = new IgxSizeScaleComponent();
 	        sizeScale1.isLogarithmic = false;
 	        sizeScale1.minimumValue = 10;
-	        sizeScale1.maximumValue = 50;
+	        sizeScale1.maximumValue = 80;
 
 	        this._sizeScale1 = sizeScale1;
 	    }
@@ -45,12 +46,14 @@ export class AppComponent implements AfterViewInit
 	        var sizeScale2 = new IgxSizeScaleComponent();
 	        sizeScale2.isLogarithmic = false;
 	        sizeScale2.minimumValue = 10;
-	        sizeScale2.maximumValue = 50;
+	        sizeScale2.maximumValue = 80;
 
 	        this._sizeScale2 = sizeScale2;
 	    }
 	    return this._sizeScale2;
 	}
+	@ViewChild("dataToolTipLayer", { static: true } )
+	private dataToolTipLayer: IgxDataToolTipLayerComponent
     private _countryStatsAfrica: CountryStatsAfrica = null;
     public get countryStatsAfrica(): CountryStatsAfrica {
         if (this._countryStatsAfrica == null)

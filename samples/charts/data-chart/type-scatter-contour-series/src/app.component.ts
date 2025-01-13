@@ -8,6 +8,7 @@ import { IgxScatterContourSeriesComponent } from "igniteui-angular-charts";
 import { IgxValueBrushScaleComponent } from "igniteui-angular-charts";
 
 @Component({
+    standalone: false,
     selector: "app-root",
     styleUrls: ["./app.component.scss"],
     templateUrl: "./app.component.html"

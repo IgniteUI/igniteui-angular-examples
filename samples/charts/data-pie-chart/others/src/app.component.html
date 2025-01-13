@@ -1,0 +1,43 @@
+<div class="container vertical sample">
+  <div class="options vertical">
+      <igx-property-editor-panel
+      [componentRenderer]="renderer"
+      [target]="chart"
+      descriptionType="DataPieChart"
+      isHorizontal="true"
+      isWrappingEnabled="true"
+      name="propertyEditorPanel1"
+      #propertyEditorPanel1>
+          <igx-property-editor-property-description
+          propertyPath="OthersCategoryType"
+          label="Others Type: "
+          primitiveValue="Number">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          propertyPath="OthersCategoryThreshold"
+          label="Others Threshold: "
+          shouldOverrideDefaultEditor="true"
+          valueType="Slider"
+          min="0"
+          max="40">
+          </igx-property-editor-property-description>
+          <igx-property-editor-property-description
+          propertyPath="OthersCategoryText"
+          label="Others Text: ">
+          </igx-property-editor-property-description>
+      </igx-property-editor-panel>
+  </div>
+  <div class="legend-title">
+      Global Electricity Demand by Energy Use
+  </div>
+  <div class="container fill">
+      <igx-data-pie-chart
+      name="chart"
+      #chart
+      [dataSource]="energyGlobalDemand"
+      othersCategoryText="Others"
+      othersCategoryType="Number"
+      othersCategoryThreshold="5">
+      </igx-data-pie-chart>
+  </div>
+</div>
