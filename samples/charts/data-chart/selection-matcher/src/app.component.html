@@ -1,0 +1,74 @@
+<div class="container vertical sample">
+  <div class="legend-title">
+      Renewable Energy Consumption
+  </div>
+  <div class="legend">
+      <igx-legend
+      name="legend"
+      #legend
+      orientation="Horizontal">
+      </igx-legend>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart
+      [legend]="legend"
+      isHorizontalZoomEnabled="false"
+      isVerticalZoomEnabled="false"
+      selectionMode="SelectionColorFill"
+      selectionBehavior="Auto"
+      selectionBrush="orange">
+          <igx-category-y-axis
+          name="yAxis"
+          #yAxis
+          [dataSource]="energyRenewableConsumption"
+          label="location"
+          isInverted="true">
+          </igx-category-y-axis>
+          <igx-numeric-x-axis
+          name="xAxis"
+          #xAxis
+          minimumValue="0"
+          title="TWh">
+          </igx-numeric-x-axis>
+          <igx-stacked-100-bar-series
+          name="stacked100BarSeries"
+          #stacked100BarSeries
+          [dataSource]="energyRenewableConsumption"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          showDefaultTooltip="true"
+          areaFillOpacity="1">
+              <igx-stacked-fragment-series
+              name="s1"
+              #s1
+              valueMemberPath="hydro"
+              title="Hydro">
+              </igx-stacked-fragment-series>
+              <igx-stacked-fragment-series
+              name="s2"
+              #s2
+              valueMemberPath="wind"
+              title="Wind">
+              </igx-stacked-fragment-series>
+              <igx-stacked-fragment-series
+              name="s3"
+              #s3
+              valueMemberPath="solar"
+              title="Solar">
+              </igx-stacked-fragment-series>
+              <igx-stacked-fragment-series
+              name="s4"
+              #s4
+              valueMemberPath="other"
+              title="Other">
+              </igx-stacked-fragment-series>
+          </igx-stacked-100-bar-series>
+          <igx-data-tool-tip-layer
+          name="dataToolTipLayer"
+          #dataToolTipLayer>
+          </igx-data-tool-tip-layer>
+      </igx-data-chart>
+  </div>
+</div>
