@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, DataPieChartDescriptionModule, ItemLegendDescriptionModule } from 'igniteui-angular-core';
 import { EnergyGlobalDemandItem, EnergyGlobalDemand } from './EnergyGlobalDemand';
+import { IgxPropertyEditorPropertyDescriptionButtonClickEventArgs } from 'igniteui-angular-layouts';
+import { XamDomainChart } from 'igniteui-angular-charts';
 import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxDataPieChartComponent } from 'igniteui-angular-charts';
 
@@ -21,8 +23,8 @@ export class AppComponent implements AfterViewInit
 
 	@ViewChild("propertyEditorPanel1", { static: true } )
 	private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-	@ViewChild("selectionBehavior", { static: true } )
-	private selectionBehavior: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("propertyEditorPropertyDescription1", { static: true } )
+	private propertyEditorPropertyDescription1: IgxPropertyEditorPropertyDescriptionComponent
 	@ViewChild("chart", { static: true } )
 	private chart: IgxDataPieChartComponent
     private _energyGlobalDemand: EnergyGlobalDemand = null;
@@ -52,6 +54,11 @@ export class AppComponent implements AfterViewInit
 
 	public ngAfterViewInit(): void
 	{
+	}
+
+	public editorButtonReplayTransitionInDomain({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionButtonClickEventArgs }): void {
+	    var chart = this.chart;
+	    chart.replayTransitionIn();
 	}
 
 }
