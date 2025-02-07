@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { LocalDataItem, LocalData } from './SampleData';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, DataPieChartDescriptionModule, ItemLegendDescriptionModule } from 'igniteui-angular-core';
-import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
+import { EnergyGlobalDemandItem, EnergyGlobalDemand } from './EnergyGlobalDemand';
+import { IgxPropertyEditorPropertyDescriptionButtonClickEventArgs } from 'igniteui-angular-layouts';
+import { XamDomainChart } from 'igniteui-angular-charts';
+import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxDataPieChartComponent } from 'igniteui-angular-charts';
 
 import { defineAllComponents } from 'igniteui-webcomponents';
@@ -21,15 +23,17 @@ export class AppComponent implements AfterViewInit
 
 	@ViewChild("propertyEditorPanel1", { static: true } )
 	private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+	@ViewChild("propertyEditorPropertyDescription1", { static: true } )
+	private propertyEditorPropertyDescription1: IgxPropertyEditorPropertyDescriptionComponent
 	@ViewChild("chart", { static: true } )
 	private chart: IgxDataPieChartComponent
-    private _localData: LocalData = null;
-    public get localData(): LocalData {
-        if (this._localData == null)
+    private _energyGlobalDemand: EnergyGlobalDemand = null;
+    public get energyGlobalDemand(): EnergyGlobalDemand {
+        if (this._energyGlobalDemand == null)
         {
-            this._localData = new LocalData();
+            this._energyGlobalDemand = new EnergyGlobalDemand();
         }
-        return this._localData;
+        return this._energyGlobalDemand;
     }
 
     private _componentRenderer: ComponentRenderer = null;
@@ -50,6 +54,11 @@ export class AppComponent implements AfterViewInit
 
 	public ngAfterViewInit(): void
 	{
+	}
+
+	public editorButtonReplayTransitionInDomain({ sender, args }: { sender: any, args: IgxPropertyEditorPropertyDescriptionButtonClickEventArgs }): void {
+	    var chart = this.chart;
+	    chart.replayTransitionIn();
 	}
 
 }
