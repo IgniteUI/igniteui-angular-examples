@@ -11,19 +11,21 @@
           <igx-property-editor-property-description
           propertyPath="OthersCategoryType"
           label="Others Type: "
-          primitiveValue="Number">
+          primitiveValue="Number"
+          valueType="EnumValue">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
           propertyPath="OthersCategoryThreshold"
           label="Others Threshold: "
-          shouldOverrideDefaultEditor="true"
           valueType="Slider"
           min="0"
-          max="40">
+          max="50"
+          primitiveValue="15">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
           propertyPath="OthersCategoryText"
-          label="Others Text: ">
+          label="Others Text: "
+          valueType="StringValue">
           </igx-property-editor-property-description>
       </igx-property-editor-panel>
   </div>
@@ -34,10 +36,9 @@
       <igx-data-pie-chart
       name="chart"
       #chart
-      [dataSource]="energyGlobalDemand"
-      othersCategoryText="Others"
+      [dataSource]="dataPieData"
       othersCategoryType="Number"
-      othersCategoryThreshold="5">
+      othersCategoryThreshold="15">
       </igx-data-pie-chart>
   </div>
 </div>
