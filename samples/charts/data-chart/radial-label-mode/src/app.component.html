@@ -2,14 +2,14 @@
   <div class="options vertical">
       <igx-property-editor-panel
       [componentRenderer]="renderer"
-      [target]="angleAxis"
-      descriptionType="CategoryAngleAxis"
+      [target]="chart"
+      descriptionType="DataChart"
       isHorizontal="true"
       isWrappingEnabled="true"
       name="propertyEditorPanel1"
       #propertyEditorPanel1>
           <igx-property-editor-property-description
-          propertyPath="LabelExtent"
+          propertyPath="Axes[0 as CategoryAngleAxis].LabelExtent"
           name="LabelExtent"
           #labelExtent
           label="Label Extent"
@@ -21,7 +21,7 @@
           step="1">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
-          propertyPath="LabelMode"
+          propertyPath="Axes[0 as CategoryAngleAxis].LabelMode"
           name="LabelMode"
           #labelMode
           label="LabelMode"

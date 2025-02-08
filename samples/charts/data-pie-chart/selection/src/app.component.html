@@ -9,8 +9,14 @@
       name="propertyEditorPanel1"
       #propertyEditorPanel1>
           <igx-property-editor-property-description
-          propertyPath="SelectionBehavior"
           label="Selection Behavior: "
+          valueType="EnumValue"
+          propertyPath="SelectionBehavior"
+          name="SelectionBehavior"
+          #selectionBehavior
+          shouldOverrideDefaultEditor="true"
+          dropDownNames="PerDataItemSingleSelect, PerDataItemMultiSelect"
+          dropDownValues="PerDataItemSingleSelect, PerDataItemMultiSelect"
           primitiveValue="PerDataItemSingleSelect">
           </igx-property-editor-property-description>
           <igx-property-editor-property-description
