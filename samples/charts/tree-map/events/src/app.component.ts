@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit , ChangeDetectorRef} from "@angular/core";
 import { TreemapNodePointerEventArgs } from "igniteui-angular-charts";
 
 @Component({
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     public HoveredNodeParent : string;
     public HoveredNodeValue : string;
 
-    constructor() {
+    constructor(private cdr: ChangeDetectorRef) {
     }
 
     public onNodePointerEnter(args: TreemapNodePointerEventArgs) {
@@ -29,20 +29,24 @@ export class AppComponent implements OnInit {
         if (item.Parent == null) {
             this.HoveredNodeParent = "Countries";
             this.HoveredNodeName = item.Name;
-            this.HoveredNodeValue = "None";
+            this.HoveredNodeValue = "None";            
         }
         else {
             const population = (item.Pop / 1000000).toString();
             this.HoveredNodeParent = item.Parent;
             this.HoveredNodeName = item.Name;
-            this.HoveredNodeValue = population;
+            this.HoveredNodeValue = population;           
         }
+        this.cdr.detectChanges();
+
     }
 
     public onNodePointerLeave(args: TreemapNodePointerEventArgs) {
+   
         this.HoveredNodeParent = "None";
         this.HoveredNodeName   = "None";
         this.HoveredNodeValue  = "None";
+        this.cdr.detectChanges();
     }
 
     public onNodePointerPressed(args: TreemapNodePointerEventArgs) {
@@ -54,6 +58,7 @@ export class AppComponent implements OnInit {
             this.SelectedNodeName = item.Name;
             this.SelectedNodeParent = "Countries";
             this.SelectedNodeValue  = "None";
+        
         }
         else
         {
@@ -61,7 +66,9 @@ export class AppComponent implements OnInit {
             this.SelectedNodeValue  = population;
             this.SelectedNodeName   = item.Name;
             this.SelectedNodeParent = item.Parent;
+          
         }
+        this.cdr.detectChanges();
     }
 
     ngOnInit(): void {
