@@ -4,21 +4,21 @@
             <label style="margin-left: 0.25rem; margin-right: 1.0rem">Treemap Hovered Node's</label>
             <!-- this label displays info about currently hovered item in Treemap -->
             <label style="margin-left: 0.5rem">Parent:</label>
-            <label class="options label" style="width: 3rem; font-weight: 800" [(textContent)]="HoveredNodeParent"></label>
+            <label class="options label" style="width: 3rem; font-weight: 800" >{{HoveredNodeParent}}</label>
             <label style="margin-left: 1.5rem">Name:</label>
-            <label style="width: 5rem; font-weight: 800" [textContent]="HoveredNodeName"></label>
+            <label style="width: 5rem; font-weight: 800" >{{HoveredNodeName}}</label>
             <label style="margin-left: 1.5rem">Value:</label>
-            <label style="width: 5rem; font-weight: 800" [textContent]="HoveredNodeValue"></label>
+            <label style="width: 5rem; font-weight: 800">{{HoveredNodeValue}}</label>
         </div>
         <div class="options horizontal">
             <label style="margin-left: 0.25rem; margin-right: 1.0rem">Treemap Selected Node's</label>
             <!-- this label displays info about currently selected item in Treemap -->
             <label style="margin-left: 0.5rem">Parent:</label>
-            <label style="width: 3rem; font-weight: 800" [textContent]="SelectedNodeParent"></label>
+            <label style="width: 3rem; font-weight: 800">{{SelectedNodeParent}}</label>
             <label style="margin-left: 1.5rem">Name:</label>
-            <label style="width: 5rem; font-weight: 800" [textContent]="SelectedNodeName"></label>
+            <label style="width: 5rem; font-weight: 800">{{SelectedNodeName}}</label>
             <label style="margin-left: 1.5rem">Value:</label>
-            <label style="width: 5rem; font-weight: 800" [textContent]="SelectedNodeValue"></label>
+            <label style="width: 5rem; font-weight: 800" >{{SelectedNodeValue}}</label>
         </div>
     </div>
 
@@ -33,10 +33,10 @@
                  parentIdMemberPath="Parent"
                  idMemberPath="Name"
                  labelMemberPath="Name"
-                 valueMemberPath="Pop"
+                 valueMemberPath="Pop"                 
                  (nodePointerEnter)="onNodePointerEnter($event.args)"
-                 (nodePointerEnter)="onNodePointerLeave($event.args)"
-                 (nodePointerEnter)="onNodePointerPressed($event.args)"
+                 (nodePointerLeave)="onNodePointerLeave($event.args)"
+                 (nodePointerPressed)="onNodePointerPressed($event.args)"
                  headerDisplayMode="Overlay"
                  fillBrushes="#299e41, #4e62cf, #5e359c"
                  isFillScaleLogarithmic="true"

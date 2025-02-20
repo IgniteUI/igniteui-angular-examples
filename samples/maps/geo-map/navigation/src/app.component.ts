@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, TemplateRef, ViewChild, ChangeDetectorRef } from "@angular/core";
 import { IgxArcGISOnlineMapImagery  } from "igniteui-angular-maps";
 import { IgxGeographicMapComponent } from "igniteui-angular-maps";
-import { EsriUtility, EsriStyle } from "./EsriUtility";
 import { MapUtility, MapRegion } from "./MapUtility";
 import { IgxRectChangedEventArgs } from "igniteui-angular-core";
 
@@ -67,12 +66,7 @@ export class AppComponent implements AfterViewInit {
 
             this.geoMap.zoomToGeographic({ left: -134.5, top: 16.5, width: 70.0, height: 37.0 });
 
-            const tileSource = new IgxArcGISOnlineMapImagery();
-            tileSource.mapServerUri = EsriUtility.getUri(EsriStyle.WorldOceansMap);
-            this.geoMap.backgroundContent = tileSource;
-            this.geoMap.windowPositionHorizontal = 0.1;
-            this.geoMap.windowPositionVertical = 0.1;
-            this.geoMap.windowScale = 0.1;
+         
         }
     }
 
@@ -109,6 +103,7 @@ export class AppComponent implements AfterViewInit {
     }
 
     public onMapMouseMove = (e: any) => {
+
         const bounds = e.target.getBoundingClientRect();
         const relativeCoordinate = {
             x: e.clientX - bounds.left,
