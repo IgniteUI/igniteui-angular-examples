@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, DataPieChartDescriptionModule, ItemLegendDescriptionModule } from 'igniteui-angular-core';
 import { EnergyGlobalDemandItem, EnergyGlobalDemand } from './EnergyGlobalDemand';
-import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
+import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxDataPieChartComponent } from 'igniteui-angular-charts';
 
 import { defineAllComponents } from 'igniteui-webcomponents';
@@ -21,6 +21,10 @@ export class AppComponent implements AfterViewInit
 
 	@ViewChild("propertyEditorPanel1", { static: true } )
 	private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+	@ViewChild("highlightingModeEditor", { static: true } )
+	private highlightingModeEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("highlightingBehaviorEditor", { static: true } )
+	private highlightingBehaviorEditor: IgxPropertyEditorPropertyDescriptionComponent
 	@ViewChild("chart", { static: true } )
 	private chart: IgxDataPieChartComponent
     private _energyGlobalDemand: EnergyGlobalDemand = null;
