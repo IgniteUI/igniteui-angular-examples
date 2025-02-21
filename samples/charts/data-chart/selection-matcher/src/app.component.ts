@@ -58,7 +58,7 @@ export class AppComponent implements AfterViewInit
 
 		var chart = this.chart;
 
-		this._timer = setInterval(() => {
+		this._timer = setTimeout(() => {
 			var data = this.energyRenewableConsumption;
 			let matcher: IgxSeriesMatcher = new IgxSeriesMatcher();
 

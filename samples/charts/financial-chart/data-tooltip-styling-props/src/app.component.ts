@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { StockGoogleItem, StockGoogle } from './StockGoogle';
+import { StockGoogle } from './StockGoogle';
 import { IgxFinancialChartComponent } from 'igniteui-angular-charts';
 
 @Component({

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ComponentRenderer, PropertyEditorPanelDescriptionModule, DataPieChartDescriptionModule, ItemLegendDescriptionModule } from 'igniteui-angular-core';
 import { DataPieDataItem, DataPieData } from './DataPieData';
-import { IgxPropertyEditorPanelComponent } from 'igniteui-angular-layouts';
+import { IgxPropertyEditorPanelComponent, IgxPropertyEditorPropertyDescriptionComponent } from 'igniteui-angular-layouts';
 import { IgxDataPieChartComponent } from 'igniteui-angular-charts';
 
 import { defineAllComponents } from 'igniteui-webcomponents';
@@ -21,6 +21,12 @@ export class AppComponent implements AfterViewInit
 
 	@ViewChild("propertyEditorPanel1", { static: true } )
 	private propertyEditorPanel1: IgxPropertyEditorPanelComponent
+	@ViewChild("othersCategoryTypeEditor", { static: true } )
+	private othersCategoryTypeEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("othersCategoryThresholdEditor", { static: true } )
+	private othersCategoryThresholdEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("othersCategoryTextEditor", { static: true } )
+	private othersCategoryTextEditor: IgxPropertyEditorPropertyDescriptionComponent
 	@ViewChild("chart", { static: true } )
 	private chart: IgxDataPieChartComponent
     private _dataPieData: DataPieData = null;

@@ -21,8 +21,10 @@ export class AppComponent implements AfterViewInit
 
 	@ViewChild("propertyEditorPanel1", { static: true } )
 	private propertyEditorPanel1: IgxPropertyEditorPanelComponent
-	@ViewChild("selectionBehavior", { static: true } )
-	private selectionBehavior: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("selectionBehaviorEditor", { static: true } )
+	private selectionBehaviorEditor: IgxPropertyEditorPropertyDescriptionComponent
+	@ViewChild("selectionModeEditor", { static: true } )
+	private selectionModeEditor: IgxPropertyEditorPropertyDescriptionComponent
 	@ViewChild("chart", { static: true } )
 	private chart: IgxDataPieChartComponent
     private _energyGlobalDemand: EnergyGlobalDemand = null;
