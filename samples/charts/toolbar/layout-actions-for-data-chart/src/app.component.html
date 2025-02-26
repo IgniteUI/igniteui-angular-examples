@@ -6,20 +6,42 @@
       #toolbar
       [target]="chart"
       orientation="Horizontal"
-      (onCommand)="this.toolbarToggleTooltip($event)">
-          <igx-tool-action-checkbox
-          name="EnableTooltipsLabel"
-          #enableTooltipsLabel
-          title="Enable Tooltips"
-          beforeId="ZoomReset"
-          commandId="EnableTooltips">
-          </igx-tool-action-checkbox>
-          <igx-tool-action-label
-          name="zoomResetHidden"
-          #zoomResetHidden
-          overlayId="ZoomReset"
-          visibility="Collapsed">
-          </igx-tool-action-label>
+      (onCommand)="this.toolbarToggleAnnotations($event)">
+          <igx-tool-action-icon-menu
+          name="MenuForSubPanelTool"
+          #menuForSubPanelTool
+          iconCollectionName="ChartToolbarIcons"
+          iconName="analyze">
+              <igx-tool-action-group-header
+              name="SubPanelGroup"
+              #subPanelGroup
+              closeOnExecute="true"
+              title="Visualizations"
+              subtitle="Layers">
+              </igx-tool-action-group-header>
+              <igx-tool-action-sub-panel
+              name="CustomSubPanelTools"
+              #customSubPanelTools>
+                  <igx-tool-action-checkbox
+                  name="EnableTooltipsLabel"
+                  #enableTooltipsLabel
+                  title="Enable Tooltips"
+                  commandId="EnableTooltips">
+                  </igx-tool-action-checkbox>
+                  <igx-tool-action-checkbox
+                  name="EnableCrosshairsLabel"
+                  #enableCrosshairsLabel
+                  title="Enable Crosshairs"
+                  commandId="EnableCrosshairs">
+                  </igx-tool-action-checkbox>
+                  <igx-tool-action-checkbox
+                  name="EnableFinalValuesLabel"
+                  #enableFinalValuesLabel
+                  title="Enable Final Values"
+                  commandId="EnableFinalValues">
+                  </igx-tool-action-checkbox>
+              </igx-tool-action-sub-panel>
+          </igx-tool-action-icon-menu>
           <igx-tool-action-label
           name="zoomResetLabel"
           #zoomResetLabel
@@ -27,7 +49,14 @@
           afterId="ZoomOut"
           iconName="reset"
           iconCollectionName="ChartToolbarIcons"
-          commandId="ZoomReset">
+          commandId="ZoomReset"
+          isHighlighted="true">
+          </igx-tool-action-label>
+          <igx-tool-action-label
+          name="zoomResetHidden"
+          #zoomResetHidden
+          overlayId="ZoomReset"
+          visibility="Collapsed">
           </igx-tool-action-label>
           <igx-tool-action-icon-menu
           name="AnalyzeMenu"
@@ -35,6 +64,12 @@
           overlayId="AnalyzeMenu"
           visibility="Collapsed">
           </igx-tool-action-icon-menu>
+          <igx-tool-action-label
+          name="CopyMenu"
+          #copyMenu
+          overlayId="CopyMenu"
+          visibility="Collapsed">
+          </igx-tool-action-label>
       </igx-toolbar>
     </div>
     <div class="aboveContentRightContainer">
