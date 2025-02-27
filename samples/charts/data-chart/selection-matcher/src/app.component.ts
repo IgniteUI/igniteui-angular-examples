@@ -69,11 +69,12 @@ export class AppComponent implements AfterViewInit
 			selection.matcher = matcher;
 			chart.selectedSeriesItems.add(selection);
 
+			let matcher2: IgxSeriesMatcher = new IgxSeriesMatcher();
 			let selection2: IgxChartSelection = new IgxChartSelection();
 			selection2.item = data[2];
-			matcher.memberPath = "wind";
-			matcher.memberPathType = "ValueMemberPath";
-			selection2.matcher = matcher;
+			matcher2.memberPath = "wind";
+			matcher2.memberPathType = "ValueMemberPath";
+			selection2.matcher = matcher2;
 
 			chart.selectedSeriesItems.add(selection2);
 
