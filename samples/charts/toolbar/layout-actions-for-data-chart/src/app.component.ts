@@ -67,7 +67,7 @@ export class AppComponent implements AfterViewInit
 	{
 	}
 
-	public ToolbarToggleAnnotations({ sender, args }: { sender: any, args: IgxToolCommandEventArgs }): void {
+	public toolbarToggleAnnotations({ sender, args }: { sender: any, args: IgxToolCommandEventArgs }): void {
 	    var target = this.chart;
 	    switch (args.command.commandId)
 		{
