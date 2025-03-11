@@ -10,7 +10,7 @@
     "tasks": {
         "node node_modules/@angular/cli/bin/ng serve -o --disable-host-check": {
             "name": "Start Project",
-            "command": "node node_modules/@angular/cli/bin/ng serve -o --disable-host-check",
+            "command": "node --max_old_space_size=12192 node_modules/@angular/cli/bin/ng serve -o --disable-host-check",
             "runAtStart": true
         }
     }
