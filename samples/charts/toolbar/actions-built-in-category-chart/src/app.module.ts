@@ -7,7 +7,7 @@ import { AppComponent } from "./app.component";
 
 import { IgxLegendModule, IgxCategoryChartModule, IgxCategoryChartToolbarModule } from 'igniteui-angular-charts';
 import { IgxToolbarModule } from 'igniteui-angular-layouts';
-import { IgxCheckboxListModule } from 'igniteui-angular-grids';
+import { IgxCheckboxListModule } from 'igniteui-angular-data-grids';
 
 @NgModule({
   bootstrap: [AppComponent],
