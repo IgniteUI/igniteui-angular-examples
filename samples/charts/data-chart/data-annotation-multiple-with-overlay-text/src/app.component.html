@@ -1,0 +1,84 @@
+<div class="container vertical sample">
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart
+      plotAreaMarginBottom="50"
+      chartTitle="This sample demonstrates the DataAnnotationSliceLayer with overlay text compared against the value layers in the DataChart.">
+          <igx-category-x-axis
+          name="xAxis"
+          #xAxis
+          [dataSource]="stockTesla"
+          label="date"
+          labelLeftMargin="0"
+          labelTopMargin="5"
+          labelRightMargin="0"
+          labelBottomMargin="15">
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
+          labelExtent="60"
+          labelHorizontalAlignment="Center"
+          labelLeftMargin="0"
+          labelTopMargin="0"
+          labelRightMargin="5"
+          labelBottomMargin="0"
+          minimumValue="0"
+          maximumValue="550">
+          </igx-numeric-y-axis>
+          <igx-line-series
+          name="series1"
+          #series1
+          title="Stock Price"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [dataSource]="stockTesla"
+          valueMemberPath="open"
+          showDefaultTooltip="true"
+          markerType="None"
+          brush="black">
+          </igx-line-series>
+          <igx-value-overlay
+          name="valueOverlay"
+          #valueOverlay
+          value="435"
+          brush="green"
+          isAxisAnnotationEnabled="true"
+          thickness="2"
+          dashArray="2, 4"
+          [axis]="yAxis"
+          overlayText="OverlayText on ValueOverlay"
+          overlayTextLocation="OutsideBottomCenter">
+          </igx-value-overlay>
+          <igx-value-layer
+          name="valueLayer"
+          #valueLayer
+          valueMode="Average"
+          brush="purple"
+          thickness="2"
+          dashArray="2, 4"
+          [targetAxis]="yAxis"
+          isAxisAnnotationEnabled="true"
+          overlayText="OverlayText on ValueLayer (Average)"
+          overlayTextLocation="OutsideBottomCenter">
+          </igx-value-layer>
+          <igx-data-annotation-slice-layer
+          name="AnnoLayer"
+          #annoLayer
+          [dataSource]="annotationData"
+          [targetAxis]="yAxis"
+          brush="green"
+          annotationTextColor="white"
+          annotationLabelMemberPath="label"
+          annotationValueMemberPath="value"
+          overlayTextMemberPath="label"
+          overlayTextVerticalMargin="20"
+          overlayTextHorizontalMargin="0"
+          overlayTextLocation="OutsideBottomCenter"
+          overlayText="OverlayText on DataAnnotationSliceLayer"
+          thickness="2">
+          </igx-data-annotation-slice-layer>
+      </igx-data-chart>
+  </div>
+</div>
