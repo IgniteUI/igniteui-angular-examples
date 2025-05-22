@@ -181,7 +181,6 @@ var lintPackageNames = [
     'igniteui-angular-inputs',
     'igniteui-angular-layouts',
     'igniteui-angular-data-grids',
-    'igniteui-angular-grids',
     'igniteui-angular-excel',
     'igniteui-angular-gauges',
     'igniteui-angular-maps',

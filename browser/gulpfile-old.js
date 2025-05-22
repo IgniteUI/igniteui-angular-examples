@@ -144,7 +144,6 @@ function logSamples(done) {
 gulp.task("overwrite-package-json", (done) => {
     const packagesPaths = [
         "./node_modules/igniteui-angular-charts/package.json",
-        "./node_modules/igniteui-angular-grids/package.json",
         "./node_modules/igniteui-angular-data-grids/package.json",
         "./node_modules/igniteui-angular-dashboards/package.json",
         "./node_modules/igniteui-angular-core/package.json",

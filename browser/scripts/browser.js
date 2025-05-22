@@ -1077,6 +1077,7 @@ function updateIG(cb) {
         { version: "19.1.0-beta.0", name: "igniteui-angular-charts" },
         { version: "19.1.0-beta.0", name: "igniteui-angular-excel" },
         { version: "19.1.0-beta.0", name: "igniteui-angular-gauges" },
+        { version: "19.1.0-beta.0", name: "igniteui-angular-data-grids" },
         { version: "19.0.1", name: "igniteui-angular-grids" },
         { version: "19.1.0-beta.0", name: "igniteui-angular-inputs" },
         { version: "19.1.0-beta.0", name: "igniteui-angular-layouts" },
