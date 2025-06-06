@@ -18,8 +18,8 @@ IF EXIST @infragistics\igniteui-angular-gauges (
  MOVE /y @infragistics\igniteui-angular-gauges igniteui-angular-gauges
 ) 
 
-IF EXIST @infragistics\igniteui-angular-grids (
- MOVE /y @infragistics\igniteui-angular-grids igniteui-angular-grids
+IF EXIST @infragistics\igniteui-angular-data-grids (
+ MOVE /y @infragistics\igniteui-angular-data-grids igniteui-angular-data-grids
 )
  
 IF EXIST @infragistics\igniteui-angular-excel (
