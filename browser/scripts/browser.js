@@ -83,6 +83,8 @@ var sampleSourcePaths = [
     // sampleRoot + 'maps/**/display-heat-imagery/package.json',
     // sampleRoot + 'excel/**/operations-on-workbooks/package.json',
     // sampleRoot + 'charts/zoomslider/overview/package.json',
+    // sampleRoot + 'charts/data-chart/data-annotation-multiple-with-stocks/package.json',
+    // sampleRoot + 'charts/data-chart/axis-annotations/package.json',
 
     // include samples for specific components
     // sampleRoot + 'charts/category-chart/**/package.json',
@@ -761,6 +763,7 @@ function updateCodeViewer(cb) {
     // generating code viewer files (.json) for each sample
     for (const info of samplesDatabase) {
         var sampleFiles = [];
+        var dataFiles = [];
         // console.log(info);
 
         // https://staging.infragistics.com/angular-demos-dv/assets/code-viewer/
@@ -776,31 +779,61 @@ function updateCodeViewer(cb) {
                 isMain: true,
             };
 
+            codeViewItem.path = filePath;
+
             if (filePath.indexOf(".scss") > 0) {
                 codeViewItem.fileExtension = 'scss';
                 codeViewItem.fileHeader = 'scss';
+                codeViewItem.content = utils.fileRead(filePath);
+                sampleFiles.push(codeViewItem);
             }
             else if (filePath.indexOf(".module.ts") > 0) {
                 codeViewItem.fileExtension = 'ts';
                 codeViewItem.fileHeader = 'modules';
+                codeViewItem.content = utils.fileRead(filePath);
+                sampleFiles.push(codeViewItem);
             }
             else if (filePath.indexOf(".component.ts") > 0) {
                 codeViewItem.fileExtension = 'ts';
                 codeViewItem.fileHeader = 'ts';
-            }
-            else if (filePath.indexOf(".ts") > 0) {
-                codeViewItem.fileExtension = 'ts';
-                codeViewItem.fileHeader = "DATA";
+                codeViewItem.content = utils.fileRead(filePath);
+                sampleFiles.push(codeViewItem);
             }
             else if (filePath.indexOf(".html") > 0) {
                 codeViewItem.fileExtension = 'html';
                 codeViewItem.fileHeader = 'html';
+                codeViewItem.content = utils.fileRead(filePath);
+                sampleFiles.push(codeViewItem);
+            }
+            else if (filePath.indexOf(".ts") > 0) {
+                codeViewItem.fileExtension = 'ts';
+                codeViewItem.fileHeader = "DATA";
+                codeViewItem.content = utils.fileRead(filePath);
+                dataFiles.push(codeViewItem);
+            }
+        }
+
+        if (dataFiles.length === 1) {
+            sampleFiles.push(dataFiles[0]);
+        } else if (dataFiles.length > 1) {
+            var dataPath = dataFiles[0].path;
+            var dataFolder = dataPath.substring(0, dataPath.lastIndexOf("/"));
+
+            var dataContent = "// NOTE this file contains multiple data sources:\r\n";
+            for (let i = 0; i < dataFiles.length; i++) {
+                const data = dataFiles[i];
+                dataContent += "\r\n\r\n" + "// Data Source #" + (i+1) + "\r\n";
+                dataContent += data.content + "\r\n";
             }
 
-            codeViewItem.path = filePath;
-            codeViewItem.content = utils.fileRead(filePath);
-
-            sampleFiles.push(codeViewItem);
+            var codeViewData = {}; 
+            codeViewData.isMain = true,
+            codeViewData.hasRelativeAssetsUrls = false,
+            codeViewData.fileExtension = 'ts';
+            codeViewData.fileHeader = "DATA";
+            codeViewData.path = dataFolder + "/" + "DataSources.ts";
+            codeViewData.content = dataContent
+            sampleFiles.push(codeViewData);
         }
 
         var packageInfo = {};
@@ -1073,29 +1106,29 @@ function updateIG(cb) {
     // { version: "14.1.0",  name:               "igniteui-angular-charts" },  // NPM
     let packageUpgrades = [
         // these IG packages are often updated:
-        { version: "19.1.0", name: "igniteui-angular-core" },
-        { version: "19.1.0", name: "igniteui-angular-charts" },
-        { version: "19.1.0", name: "igniteui-angular-excel" },
-        { version: "19.1.0", name: "igniteui-angular-gauges" },
-        { version: "19.1.0", name: "igniteui-angular-data-grids" },
-        { version: "19.1.0", name: "igniteui-angular-inputs" },
-        { version: "19.1.0", name: "igniteui-angular-layouts" },
-        { version: "19.1.0", name: "igniteui-angular-maps" },
-        { version: "19.1.0", name: "igniteui-angular-spreadsheet-chart-adapter"  },
-        { version: "19.1.0", name: "igniteui-angular-spreadsheet" },
-        { version: "19.1.0", name: "igniteui-angular-datasources" },
-        { version: "19.1.0", name: "igniteui-angular-dashboards" },
+        { version: "20.0.0", name: "igniteui-angular-core" },
+        { version: "20.0.0", name: "igniteui-angular-charts" },
+        { version: "20.0.0", name: "igniteui-angular-excel" },
+        { version: "20.0.0", name: "igniteui-angular-gauges" },
+        { version: "20.0.0", name: "igniteui-angular-data-grids" },
+        { version: "20.0.0", name: "igniteui-angular-inputs" },
+        { version: "20.0.0", name: "igniteui-angular-layouts" },
+        { version: "20.0.0", name: "igniteui-angular-maps" },
+        { version: "20.0.0", name: "igniteui-angular-spreadsheet-chart-adapter"  },
+        { version: "20.0.0", name: "igniteui-angular-spreadsheet" },
+        { version: "20.0.0", name: "igniteui-angular-datasources" },
+        { version: "20.0.0", name: "igniteui-angular-dashboards" },
         // these IG packages are sometimes updated:
-        { version: "5.2.4" , name: "igniteui-webcomponents" },
-        { version: "15.1.1", name: "igniteui-theming" },
-        { version: "19.1.0", name: "igniteui-angular" },
-        { version: "19.0.4", name: "@angular/animations" },
-        { version: "19.0.4", name: "@angular/common" },
-        { version: "19.0.4", name: "@angular/compiler" },
-        { version: "19.0.4", name: "@angular/core" },
-        { version: "19.0.4", name: "@angular/forms" },
-        { version: "19.0.4", name: "@angular/platform-browser" },
-        { version: "19.0.4", name: "@angular/platform-browser-dynamic" },
+        { version: "6.0.0" , name: "igniteui-webcomponents" },
+        { version: "18.1.0", name: "igniteui-theming" },
+        { version: "20.0.0-rc.0", name: "igniteui-angular" },
+        { version: "20.0.1", name: "@angular/animations" },
+        { version: "20.0.1", name: "@angular/common" },
+        { version: "20.0.1", name: "@angular/compiler" },
+        { version: "20.0.1", name: "@angular/core" },
+        { version: "20.0.1", name: "@angular/forms" },
+        { version: "20.0.1", name: "@angular/platform-browser" },
+        { version: "20.0.1", name: "@angular/platform-browser-dynamic" },
         { version: "2.0.40", name: "@types/hammerjs" },
         { version: "1.1.20150312", name: "classlist-js" },
         { version: "3.21.0" , name: "core-js" },
@@ -1107,10 +1140,10 @@ function updateIG(cb) {
         { version: "2.3.2"  , name: "web-animations-js",     },
         { version: "~0.15.0", name: "zone.js" },
         // dev packages:
-        { version: "19.0.4" , name: "@angular/cli" },
-        { version: "19.0.4" , name: "@angular/compiler-cli" },
-        { version: "19.0.4" , name: "@angular/language-service" },
-        { version: "19.0.4" , name: "@angular-devkit/build-angular" },
+        { version: "20.0.1" , name: "@angular/cli" },
+        { version: "20.0.1" , name: "@angular/compiler-cli" },
+        { version: "20.0.1" , name: "@angular/language-service" },
+        { version: "20.0.1" , name: "@angular-devkit/build-angular" },
         { version: "18.17.0", name: "@types/node" },
         { version: "6.0.2"  , name: "codelyzer" },
         { version: "5.1.1"  , name: "jasmine-core" },
@@ -1118,7 +1151,7 @@ function updateIG(cb) {
         { version: "0.11.1" , name: "sass.js" },
         { version: "~6.1.3" , name: "tslint" },
         { version: "10.9.1" , name: "ts-node" },
-        { version: "5.6.3"  , name: "typescript" },
+        { version: "5.8.3"  , name: "typescript" },
     ];
 
     // NOTE you can comment out strings in this array to run these function only on a subset of samples

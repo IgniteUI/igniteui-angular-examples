@@ -34,7 +34,7 @@ jobs:
   - task: NodeTool@0
     inputs:
       versionSource: 'spec'
-      versionSpec: '18.x'
+      versionSpec: '20.19.0'
 
   - task: Npm@1
     displayName: 'npm install'
