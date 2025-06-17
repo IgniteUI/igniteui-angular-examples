@@ -83,6 +83,8 @@ var sampleSourcePaths = [
     // sampleRoot + 'maps/**/display-heat-imagery/package.json',
     // sampleRoot + 'excel/**/operations-on-workbooks/package.json',
     // sampleRoot + 'charts/zoomslider/overview/package.json',
+    // sampleRoot + 'charts/data-chart/data-annotation-multiple-with-stocks/package.json',
+    // sampleRoot + 'charts/data-chart/axis-annotations/package.json',
 
     // include samples for specific components
     // sampleRoot + 'charts/category-chart/**/package.json',
@@ -761,6 +763,7 @@ function updateCodeViewer(cb) {
     // generating code viewer files (.json) for each sample
     for (const info of samplesDatabase) {
         var sampleFiles = [];
+        var dataFiles = [];
         // console.log(info);
 
         // https://staging.infragistics.com/angular-demos-dv/assets/code-viewer/
@@ -776,31 +779,58 @@ function updateCodeViewer(cb) {
                 isMain: true,
             };
 
+            codeViewItem.path = filePath;
+
             if (filePath.indexOf(".scss") > 0) {
                 codeViewItem.fileExtension = 'scss';
                 codeViewItem.fileHeader = 'scss';
+                codeViewItem.content = utils.fileRead(filePath);
+                sampleFiles.push(codeViewItem);
             }
             else if (filePath.indexOf(".module.ts") > 0) {
                 codeViewItem.fileExtension = 'ts';
                 codeViewItem.fileHeader = 'modules';
+                codeViewItem.content = utils.fileRead(filePath);
+                sampleFiles.push(codeViewItem);
             }
             else if (filePath.indexOf(".component.ts") > 0) {
                 codeViewItem.fileExtension = 'ts';
                 codeViewItem.fileHeader = 'ts';
-            }
-            else if (filePath.indexOf(".ts") > 0) {
-                codeViewItem.fileExtension = 'ts';
-                codeViewItem.fileHeader = "DATA";
+                codeViewItem.content = utils.fileRead(filePath);
+                sampleFiles.push(codeViewItem);
             }
             else if (filePath.indexOf(".html") > 0) {
                 codeViewItem.fileExtension = 'html';
                 codeViewItem.fileHeader = 'html';
+                codeViewItem.content = utils.fileRead(filePath);
+                sampleFiles.push(codeViewItem);
             }
+            else if (filePath.indexOf(".ts") > 0) {
+                codeViewItem.fileExtension = 'ts';
+                codeViewItem.fileHeader = "DATA";
+                codeViewItem.content = utils.fileRead(filePath);
+                dataFiles.push(codeViewItem);
+            }
+        }
 
-            codeViewItem.path = filePath;
-            codeViewItem.content = utils.fileRead(filePath);
+        if (dataFiles.length === 1) {
+            sampleFiles.push(dataFiles[0]);
+        } else if (dataFiles.length > 1) {
+            var filePath = dataFiles[0].path;
+            var fileFolder = filePath.substring(0, filePath.lastIndexOf("/"));
 
-            sampleFiles.push(codeViewItem);
+            var codeViewData = {}; 
+            codeViewData.isMain = true,
+            codeViewData.hasRelativeAssetsUrls = false,
+            codeViewData.fileExtension = 'ts';
+            codeViewData.fileHeader = "DATA";
+            codeViewData.path = fileFolder + "/" + "DataSources.ts";
+
+            codeViewData.content = "// NOTE this file contains multiple data sources:\r\n\r\n";
+            for (const data of dataFiles) {
+                codeViewData.content += data.content + "\r\n";
+            }
+            sampleFiles.push(codeViewData);
         }
 
         var packageInfo = {};
