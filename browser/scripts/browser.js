@@ -816,20 +816,23 @@ function updateCodeViewer(cb) {
         if (dataFiles.length === 1) {
             sampleFiles.push(dataFiles[0]);
         } else if (dataFiles.length > 1) {
-            var filePath = dataFiles[0].path;
-            var fileFolder = filePath.substring(0, filePath.lastIndexOf("/"));
+            var dataPath = dataFiles[0].path;
+            var dataFolder = dataPath.substring(0, dataPath.lastIndexOf("/"));
+
+            var dataContent = "// NOTE this file contains multiple data sources:\r\n";
+            for (let i = 0; i < dataFiles.length; i++) {
+                const data = dataFiles[i];
+                dataContent += "\r\n\r\n" + "// Data Source #" + (i+1) + "\r\n";
+                dataContent += data.content + "\r\n";
+            }
 
             var codeViewData = {}; 
             codeViewData.isMain = true,
             codeViewData.hasRelativeAssetsUrls = false,
             codeViewData.fileExtension = 'ts';
             codeViewData.fileHeader = "DATA";
-            codeViewData.path = fileFolder + "/" + "DataSources.ts";
-
-            codeViewData.content = "// NOTE this file contains multiple data sources:\r\n\r\n";
-            for (const data of dataFiles) {
-                codeViewData.content += data.content + "\r\n";
-            }
+            codeViewData.path = dataFolder + "/" + "DataSources.ts";
+            codeViewData.content = dataContent
             sampleFiles.push(codeViewData);
         }
 
