@@ -1119,7 +1119,7 @@ function updateIG(cb) {
         { version: "20.0.0", name: "igniteui-angular-datasources" },
         { version: "20.0.0", name: "igniteui-angular-dashboards" },
         // these IG packages are sometimes updated:
-        { version: "6.0.0" , name: "igniteui-webcomponents" },
+        { version: "6.1.0" , name: "igniteui-webcomponents" },
         { version: "18.1.0", name: "igniteui-theming" },
         { version: "20.0.0-rc.0", name: "igniteui-angular" },
         { version: "20.0.1", name: "@angular/animations" },
