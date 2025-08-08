@@ -1,0 +1,65 @@
+<div class="container vertical sample">
+  <div class="legend">
+      <igx-data-legend
+      name="legend"
+      #legend
+      [target]="chart"
+      headerRowVisible="true"
+      summaryType="None"
+      valueRowVisible="true"
+      valueTextColor="rgba(0, 0, 0, 0)"
+      headerText="European Renewable Energy (2009-2018)">
+      </igx-data-legend>
+  </div>
+  <div class="container fill">
+      <igx-data-chart
+      name="chart"
+      #chart
+      computedPlotAreaMarginMode="Series"
+      [legend]="legend">
+          <igx-category-x-axis
+          name="xAxis"
+          #xAxis
+          [dataSource]="countryRenewableElectricity"
+          labelLocation="OutsideBottom"
+          label="year">
+          </igx-category-x-axis>
+          <igx-numeric-y-axis
+          name="yAxis"
+          #yAxis
+          labelLocation="OutsideLeft">
+          </igx-numeric-y-axis>
+          <igx-line-series
+          name="lineSeries1"
+          #lineSeries1
+          title="EU Energy"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          markerType="Circle"
+          [dataSource]="countryRenewableElectricity"
+          valueMemberPath="europe"
+          showDefaultTooltip="true">
+          </igx-line-series>
+          <igx-trend-line-layer
+          name="trendLine1"
+          #trendLine1
+          title="Logarithmic Trend"
+          useIndex="true"
+          trendLineType="LogarithmicFit"
+          trendLinePeriod="10"
+          useLegend="true"
+          legendItemBadgeMode="MatchSeries">
+          </igx-trend-line-layer>
+          <igx-trend-line-layer
+          name="trendLine2"
+          #trendLine2
+          title="Cubic Trend"
+          useIndex="true"
+          trendLineType="CubicFit"
+          trendLinePeriod="10"
+          useLegend="true"
+          legendItemBadgeMode="MatchSeries">
+          </igx-trend-line-layer>
+      </igx-data-chart>
+  </div>
+</div>
