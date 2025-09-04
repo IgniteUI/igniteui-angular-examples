@@ -1,0 +1,35 @@
+<button igxButton="contained" igxRipple="white" (click)="form.open()">Enter your Azure Key</button>
+
+<igx-dialog #form>
+    <igx-dialog-title>
+        <div class="dialog-container">
+            <igx-icon>vpn_key</igx-icon>
+            <div class="dialog-title">Azure Map Authentication</div>
+        </div>
+    </igx-dialog-title>
+
+    <form class="keyInForm">
+        <igx-input-group>
+            <label igxLabel for="azurekey">Azure Key</label>
+            <input igxInput id="azurekey" type="text" #azureKeyInput [value]="apiKey"/>
+        </igx-input-group>
+    </form>
+
+    <div igxDialogActions>
+        <button igxButton (click)="form.close()">CANCEL</button>
+        <button igxButton (click)="applyApiKey(azureKeyInput.value); form.close()">SUBMIT</button>
+    </div>
+</igx-dialog>
+
+<div class="container horizontal">
+    <igx-geographic-map #map
+        width="100%"
+        height="100%"
+        zoomable="true">
+    </igx-geographic-map>
+    <igx-geographic-map #map2
+        width="100%"
+        height="100%"
+        zoomable="true">
+    </igx-geographic-map>
+</div>
