@@ -16,6 +16,7 @@ export class AppComponent implements AfterViewInit {
 
     @ViewChild("map", { static: true })
     public map: IgxGeographicMapComponent;
+    @ViewChild("map2", { static: true })
     public map2: IgxGeographicMapComponent;
     public apiKey: string;
     public form!: IgxDialogComponent;
