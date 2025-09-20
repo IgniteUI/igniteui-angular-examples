@@ -41,7 +41,7 @@ jobs:
     inputs:
       command: 'custom'
       workingDir: '$(Build.SourcesDirectory)\browser'
-      customCommand: 'install --legacy-peer-deps'
+      customCommand: 'install'
 
   - task: PowerShell@2
     displayName: 'Apply very special configuration'
