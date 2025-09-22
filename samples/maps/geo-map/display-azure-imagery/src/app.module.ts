@@ -4,7 +4,7 @@ import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
-import { IgxAzureMapsMapImageryModule, IgxGeographicMapModule } from "igniteui-angular-maps";
+import { IgxAzureMapsImageryModule, IgxGeographicMapModule } from "igniteui-angular-maps";
 import { IgxDataChartInteractivityModule } from "igniteui-angular-charts";
 import { IgxDialogModule, IgxIconModule, IgxInputGroupModule } from "igniteui-angular";
 
@@ -20,7 +20,7 @@ import { IgxDialogModule, IgxIconModule, IgxInputGroupModule } from "igniteui-an
     CommonModule,
     FormsModule,
     IgxGeographicMapModule,
-    IgxAzureMapsMapImageryModule,
+    IgxAzureMapsImageryModule,
     IgxDataChartInteractivityModule,
     IgxDialogModule, 
     IgxInputGroupModule,
