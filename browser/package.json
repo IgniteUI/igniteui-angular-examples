@@ -36,7 +36,7 @@
     "@types/file-saver": "2.0.5",
     "@types/hammerjs": "2.0.40",
     "ajv": "8.6.2",
-    "angular-in-memory-web-api": "0.9.0",
+    "angular-in-memory-web-api": "0.20.0",
     "classlist.js": "1.1.20150312",
     "core-js": "3.21.0",
     "file-saver": "2.0.5",

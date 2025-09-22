@@ -1,0 +1,18 @@
+:host {
+    display: inline;
+    padding: 16px;
+}
+
+.keyInForm {
+    igx-input-group + igx-input-group {
+        margin-top: 24px;
+    }
+}
+
+.dialog-container{
+    display: flex;
+
+    igx-icon {
+        margin-right: 8px;
+    }
+}
