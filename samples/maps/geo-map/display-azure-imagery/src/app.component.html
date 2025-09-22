@@ -1,7 +1,7 @@
 <div class="options horizontal">
-        <button class="button" igxButton="contained" igxRipple="white" (click)="form.open()">Enter your Azure Key</button>
+    <button class="button" igxButton="contained" igxRipple="white" (click)="form.open()">Enter your Azure Key</button> <h2>* Note, if no key is entered, an image will be shown reflecting what the map will look like.</h2>
 </div>  
-    
+
 <igx-dialog #form>
     <igx-dialog-title>
         <div class="dialog-container">
@@ -18,20 +18,25 @@
     </form>
 
     <div igxDialogActions>
-        <button igxButton (click)="form.close()">CANCEL</button>
-        <button igxButton (click)="applyApiKey(azureKeyInput.value); form.close()">SUBMIT</button>
+        <button igxButton (click)="form.close();">CANCEL</button>
+        <button igxButton (click)="form.close(); this.showImages = false; applyApiKey(azureKeyInput.value);  ">SUBMIT</button>
     </div>
 </igx-dialog>
 
 <div class="container horizontal">
+    <!-- Images -->
+    <img *ngIf="showImages" src="assets/azure_satellite.png" alt="Satellite View" width="100%">
+    <img *ngIf="showImages" src="assets/azure_road.png" alt="Road View" width="100%">
+
+    <!-- Maps -->
     <igx-geographic-map #map
-        width="100%"
-        height="100%"
+        width="90%"
+        height="90%"
         zoomable="true">
     </igx-geographic-map>
     <igx-geographic-map #map2
-        width="100%"
-        height="100%"
+        width="90%"
+        height="90%"
         zoomable="true">
     </igx-geographic-map>
 </div>
