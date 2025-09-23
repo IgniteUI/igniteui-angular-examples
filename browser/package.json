@@ -7,7 +7,7 @@
     "ng": "ng",
     "update": "ng update",
     "build": "gulp updateBrowser && gulp overwrite-package-json && ng build --configuration production --progress=true",
-    "start": "gulp updateBrowser && ng serve --configuration es5 -o",
+    "start": "ng serve --configuration es5 -o",
     "startProd": "gulp updateBrowser && ng serve --configuration production --configuration es5 -o --progress=true",
     "start:es5": "ng serve -o",
     "startHost": "ng serve --configuration es5 -o",
