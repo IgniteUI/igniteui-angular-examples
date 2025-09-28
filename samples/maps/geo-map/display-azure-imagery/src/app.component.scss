@@ -1,26 +1,89 @@
-:host {
-    display: inline;
-    padding: 16px;
+/* Overall container centers everything like WC */
+.container.sample.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  margin-top: 10px;
+  font-family: 'Titillium Web', sans-serif;
 }
 
-.keyInForm {
-    igx-input-group + igx-input-group {
-        margin-top: 24px;
-    }
+/* Controls row: button + select + preview thumbnail */
+.controls-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 0rem;
+
+  button[igxButton] {
+    min-width: 240px;
+  }
+
+  igx-select {
+    width: 240px;
+  }
+
+  .preview-current img {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    object-fit: cover;
+    border-radius: 4px;
+  }
 }
 
-.dialog-container{
-    display: flex;
+/* Map container centers map/placeholder like WC */
+.map-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
 
-    igx-icon {
-        margin-right: 8px;
-    }
+  .placeholder {
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+
+  igx-geographic-map {
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+  }
 }
 
-.hidden {
-  display: none;
+/* Dialog header and content spacing */
+.dialog-header {
+  padding-bottom: 0.5rem;
+  text-align: left;
 }
 
-.show {
-  display: inline;
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  input[type='text'] {
+    padding: 0.4rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+}
+
+/* Dialog actions: buttons on right side */
+.dialog-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+
+  button {
+    min-width: 80px;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+  }
 }
