@@ -1,12 +1,10 @@
 <div class="container sample center" 
      style="flex-direction:column; align-items:center; gap:2px;">
 
-  <!-- Button + Select on the same line -->
-  <div class="controls-row" style="display:flex; gap:8px; align-items:center;">
-    <!-- Button opens the API key dialog -->
+  <!-- Controls row stays above the map -->
+  <div class="controls-row">
     <button igxButton="contained" (click)="openDialog()">Enter your Azure Maps API Key</button>
 
-    <!-- Select map style -->
     <igx-select #styleSelect
                 placeholder="Choose Azure Imagery"
                 [(ngModel)]="selectedStyle"
@@ -42,15 +40,11 @@
     </form>
   </igx-dialog>
 
-  <!-- Map container -->
-  <div class="map-container" style="width:100%; display:flex; justify-content:center; margin-top:2px;">
-  <!-- Show placeholder image on top -->
-  <img *ngIf="!apiKey" class="placeholder" [src]="previewImageSrc" alt="Map Imagery"
-       style="position:absolute; z-index:1; width:100%; height:500px; object-fit:cover;" />
-
-  <!-- Always render map underneath -->
-  <igx-geographic-map #map [height]="'500px'" [width]="'100%'" style="position:relative; z-index:0;" [hidden]="isMapHidden">
-    <igx-geographic-tile-series #tileSeries></igx-geographic-tile-series>
-  </igx-geographic-map>
-</div>
+  <!-- Map container with fixed height -->
+  <div class="map-container">
+    <img *ngIf="!apiKey" class="placeholder" [src]="previewImageSrc" alt="Map Imagery" />
+    <igx-geographic-map #map [hidden]="isMapHidden">
+      <igx-geographic-tile-series #tileSeries></igx-geographic-tile-series>
+    </igx-geographic-map>
+  </div>
 </div>
