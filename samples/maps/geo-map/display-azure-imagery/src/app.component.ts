@@ -67,6 +67,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     // We'll initialize tile imagery after the user sets the API key
+    // Open dialog automatically after view initializes
+    setTimeout(() => {
+      if (this.dialog) {
+        this.dialog.open();
+      }
+    });
   }
 
   public openDialog() {
