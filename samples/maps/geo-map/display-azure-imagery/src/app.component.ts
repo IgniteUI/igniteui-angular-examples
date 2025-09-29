@@ -36,6 +36,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   public styleOptions: string[] = [];
   public selectedStyle!: string;
   public previewImageSrc: string = '';
+  public isMapHidden = true;
 
   public styleConfig: Record<string, { placeholder: string; background?: AzureMapsImageryStyle; zoom: () => void }> = {
     Satellite: { placeholder: "https://static.infragistics.com/xplatform/images/browsers/azure-maps/azure_satellite.png", zoom: () => this.zoomUS() },
@@ -105,13 +106,17 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.azureBackground.apiKey = key;
   }
 
+  showMap() {
+    this.isMapHidden = false;
+  } 
+
   public onSubmit(form: NgForm) {
     const key = this.apiKeyInputValue;
     if (!key) return;
 
     this.setApiKey(key);
     if (this.selectedStyle) this.updateAzureMap(this.selectedStyle);
-
+    this.showMap();
     // Close the dialog first, then reset form after a tick
     setTimeout(() => {
       this.dialog.close();

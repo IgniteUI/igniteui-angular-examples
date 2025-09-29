@@ -49,7 +49,7 @@
        style="position:absolute; z-index:1; width:100%; height:500px; object-fit:cover;" />
 
   <!-- Always render map underneath -->
-  <igx-geographic-map #map [height]="'500px'" [width]="'100%'" style="position:relative; z-index:0;">
+  <igx-geographic-map #map [height]="'500px'" [width]="'100%'" style="position:relative; z-index:0;" [hidden]="isMapHidden">
     <igx-geographic-tile-series #tileSeries></igx-geographic-tile-series>
   </igx-geographic-map>
 </div>
