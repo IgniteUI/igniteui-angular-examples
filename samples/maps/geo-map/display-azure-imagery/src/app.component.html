@@ -18,7 +18,7 @@
   </div>
 
   <!-- Azure Key Dialog with Form -->
-  <igx-dialog #dialog [modal]="true" [width]="'400px'" [height]="'auto'">
+  <igx-dialog #dialog class="custom-dialog">
     <form #keyForm="ngForm" (ngSubmit)="onSubmit(keyForm)">
       <div class="dialog-header">
         <h3>Azure Key</h3>
