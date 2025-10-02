@@ -1,0 +1,69 @@
+@use 'igniteui-angular/theming' as *;
+@forward 'igniteui-angular/theming';
+
+$palette: $light-material-palette;
+$schema: $light-material-schema;
+
+$default-palette: $palette;
+
+$green-palette: palette(
+    $primary: #09f,
+    $secondary: #72da67,
+    $surface: #333,
+    $info: #1377d5,
+    $success: #4eb862,
+    $warn: #fbb13c,
+    $error: #ff134a,
+);
+
+$gray-btn-color: color($green-palette, 'gray', 800);
+
+// Specifies large size for all components to match the previous defaults
+// This may not be needed for your project. Please consult https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/update-guide for more details.
+:root {
+    --ig-size: var(--ig-size-large);
+}
+
+/* autoprefixer grid: on */
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+}
+
+@include core();
+@include typography();
+@include theme(
+    $palette: $palette,
+    $schema: $schema
+);
+
+:root {
+    @include palette($palette);
+}
+
+.light-theme {
+    @include light-theme($palette);
+}
+
+.dark-theme {
+    background: #333;
+    color: #fff;
+    @include dark-theme(
+        $palette: $green-palette
+    );
+
+    .grid-chart-contextmenu-wrapper {
+        @include fluent-dark-theme($fluent-excel-palette);
+    }
+}
+
+.fin-dark-theme {
+    @include dark-theme($green-palette);
+    background: #333;
+
+    ::-moz-placeholder {
+        opacity: 1;
+    }
+}

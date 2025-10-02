@@ -44,6 +44,7 @@ gulp.task('updateBrowser', gulp.series(
 // NOTE you can call each function in terminal: "gulp findSamples"
 gulp.task('findSamples', browser.findSamples);
 gulp.task('copySamples', gulp.series(browser.findSamples, browser.copySamples));
+gulp.task('gitAcceptCurrent', browser.gitAcceptCurrent);
 
 gulp.task('generateSampleRouting', browser.generateSampleRouting);
 gulp.task('updateCodeViewer', gulp.series(browser.findSamples, browser.updateCodeViewer));

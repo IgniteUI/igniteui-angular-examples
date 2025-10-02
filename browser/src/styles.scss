@@ -20,6 +20,28 @@
         'sparkline',
     ));
 
+.keyInForm {
+    igx-input-group + igx-input-group {
+        margin-top: 24px;
+    }
+}
+
+.dialog-container{
+    display: flex;
+
+    igx-icon {
+        margin-right: 8px;
+    }
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: inline;
+}
+
 // IMPORTANT: Prior to Ignite UI for Angular version 13 use:
 // @import 'igniteui-angular/lib/core/styles/themes/index';
 // @include igx-core();
