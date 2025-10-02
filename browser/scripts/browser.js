@@ -1093,6 +1093,79 @@ function sortByKeys(dependencies)
     }
     return sorted;
 }
+
+function gitAcceptCurrent(cb) {
+
+     var packagePaths = [
+        // './package.json', // browser
+        '../samples/**/package.json',
+        // '../samples/charts/category-chart/column-chart-multiple-sources/package.json',
+        // '../samples/charts/**/package.json',
+        // '../samples/gauges/**/package.json',
+
+        // skip packages in node_modules folders
+        '!../samples/**/node_modules/**/package.json',
+        '!../samples/**/node_modules/**',
+        '!../samples/**/node_modules',
+    ];
+
+    let updatedPackages = 0;
+    // gulp all package.json files in samples/browser
+    gulp.src(packagePaths, {allowEmpty: true})
+    .pipe(es.map(function(file, fileCallback) {
+        // let filePath = file.dirname + "/" + file.basename;
+
+        var filePath = file.dirname + "\\" + file.basename
+
+        var fileContent = file.contents.toString();
+        var fileLines = fileContent.split('\n');
+
+        var fileChanged = false;
+
+        var gitCurrentTag = "<<<<<<< HEAD\r\n";
+        var gitIncomingTag = ">>>>>>> master\r\n";
+        
+        var gitCurrentStart = fileContent.indexOf(gitCurrentTag);
+        var gitCurrentEnd = fileContent.indexOf("=======");
+        var gitIncomingStart = fileContent.indexOf("=======");
+        var gitIncomingEnd = fileContent.indexOf(gitIncomingTag);
+
+        if (gitCurrentStart > 0 && gitIncomingStart > 0 && gitIncomingEnd){
+            // var current = fileContent.substring(gitCurrentStart, gitCurrentEnd);
+            var incoming = fileContent.substring(gitIncomingStart, gitIncomingEnd);
+            // console.log("current");
+            // console.log(current);
+            // console.log("incoming");
+            // console.log(incoming);
+            fileContent = fileContent.replace(incoming, "");        
+            fileContent = fileContent.replace(gitCurrentTag, "");
+            fileContent = fileContent.replace(gitIncomingTag, "");
+
+                // console.log("fileContent");
+                // console.log(fileContent); 
+            fs.writeFileSync(filePath, fileContent);
+                
+            console.log("changed " + filePath);
+        } 
+        else {
+
+        }
+
+        // if (fileChanged) {
+        //     updatedPackages++;
+        //     // fs.writeFileSync(filePath, newContent);
+        //     console.log("updated: " + filePath);
+        // }
+        fileCallback(null, file);
+    }))
+    .on("end", function() {
+        console.log("git updated: " + updatedPackages + " package files");
+        cb();
+    });
+
+} exports.gitAcceptCurrent = gitAcceptCurrent;
+
+
 function updateIG(cb) {
 
     // cleanup packages to speedup this gulp script
