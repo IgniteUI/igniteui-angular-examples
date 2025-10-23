@@ -1,70 +1,77 @@
 :host {
-    display: inline;
-    padding: 0px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 0;
 }
 
-.keyInForm {
-    igx-input-group + igx-input-group {
-        margin-top: 24px;
-    }
+/* === Controls === */
+.controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10; /* stay above map */
+  padding: 8px 0;
 }
 
-.dialog-container{
-    display: flex;
-
-    igx-icon {
-        margin-right: 8px;
-    }
+/* === Map Container === */
+.map-container {
+  flex: 1 1 auto; /* expand to fill available space */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
+/* Map expands full width/height */
+.map-container igx-geographic-map {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* === Placeholder Image === */
+.map-container img.placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 950px;
+  max-width: 900px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  z-index: 1;
+  pointer-events: none; /* clicks go through */
+}
+
+/* === Utility Classes === */
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .show {
-  display: inline;
+  display: inline !important;
+}
+
+.dialog-container {
+  display: flex;
+  align-items: center;
+
+  igx-icon {
+    margin-right: 8px;
+  }
 }
 
 ::ng-deep igx-dialog.custom-dialog {
   width: 400px;
   height: auto;
-}
-
-/* === Map layout fixes for iframe === */
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Controls always on top */
-.controls-row {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  position: relative;
-  z-index: 10; /* ensures above map */
-}
-
-/* Map container fixed height */
-.map-container {
-  position: relative;
-  width: 100%;
-  height: 100%; /* same as React sample */
-  z-index: 0;
-}
-
-/* Placeholder image overlays map but lets clicks through */
-.map-container img.placeholder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  object-fit: cover;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.img.placeholder {
-  height: 500px;
 }
