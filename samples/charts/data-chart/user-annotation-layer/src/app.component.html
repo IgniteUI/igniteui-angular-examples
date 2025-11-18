@@ -1,0 +1,72 @@
+<div class="container vertical sample">
+  <div class="aboveContentSplit">
+    <div class="aboveContentLeftContainer">
+      <igx-toolbar
+      name="toolbar"
+      #toolbar
+      [target]="chart"
+      orientation="Horizontal">
+      </igx-toolbar>
+    </div>
+  </div>
+  <div class="container fill">
+    <igx-data-chart 
+    isHorizontalZoomEnabled="true" 
+    isVerticalZoomEnabled="true" 
+    computedPlotAreaMarginMode="Series"
+      name="chart" #chart isUserAnnotationsEnabled="true" 
+      (userAnnotationInformationRequested)="onUserAnnotationInformationRequested($event)"
+      (userAnnotationToolTipContentUpdating)="onUserAnnotationTooltipContentUpdating($event)">
+      <igx-category-x-axis name="xAxis" #xAxis [dataSource]="countryRenewableElectricity" label="year">
+      </igx-category-x-axis>
+      <igx-numeric-y-axis name="yAxis" #yAxis title="TWh" labelLocation="OutsideRight">
+      </igx-numeric-y-axis>
+
+      <igx-line-series name="lineSeries1" #lineSeries1 title="Electricity" [xAxis]="xAxis" [yAxis]="yAxis"
+        [dataSource]="countryRenewableElectricity" valueMemberPath="america">
+      </igx-line-series>
+      <igx-line-series name="LineSeries2" #lineSeries2 title="Electricity" [xAxis]="xAxis" [yAxis]="yAxis"
+        [dataSource]="countryRenewableElectricity" valueMemberPath="europe">
+      </igx-line-series>
+      <igx-line-series name="LineSeries3" #lineSeries3 title="Electricity" [xAxis]="xAxis" [yAxis]="yAxis"
+        [dataSource]="countryRenewableElectricity" valueMemberPath="china">
+      </igx-line-series>      
+    </igx-data-chart>
+  
+    <div class="container vertical annotationPopup" id="annotationPopup"
+    style="position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 13rem;
+    height: 19rem;
+    background-color: white;
+    border: 1px black solid;
+    border-radius: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;">
+      <div>
+        <label>Label:</label>
+        <input #annotationInput name="annotationInput" display-type="text" style="width: calc(100% - 0.4rem);">
+      </div>
+    
+      <div>
+        <label>Details:</label>
+        <textarea #annotationTextArea name="annotationTextArea" style="width: calc(100% - 0.25rem);height: 3rem;resize: none;"></textarea>
+      </div>
+    
+      <div>
+        <label>Badge Color:</label>
+        <igx-color-editor #annotationBadgeColorEditor name="annotationBadgeColorEditor" value="red"></igx-color-editor>
+    
+        <label>Main Color:</label>
+        <igx-color-editor #annotationMainColorEditor name="annotationMainColorEditor" value="red"></igx-color-editor>
+      </div>
+    
+      <div class="container horizontal" style="height: auto; place-content: space-between; align-items: center; padding: 0.25rem;">
+        <button (click)="onDoneBtnClick()" id="doneButton">Done</button>
+        <button (click)="onCancelBtnClick()" id="cancelButton">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

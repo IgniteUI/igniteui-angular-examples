@@ -1,0 +1,113 @@
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
+import { IgxToolbarComponent } from 'igniteui-angular-layouts';
+import { IgxColorEditorComponent } from 'igniteui-angular-inputs';
+
+import { IgxDataChartComponent, IgxCategoryXAxisComponent, 
+    IgxNumericYAxisComponent, IgxLineSeriesComponent, 
+	IgxUserAnnotationInformation,
+    IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
+
+@Component({
+    standalone: false,
+    selector: "app-root",
+    styleUrls: ["./app.component.scss"],
+    templateUrl: "./app.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+
+export class AppComponent implements AfterViewInit
+{
+
+    @ViewChild("toolbar", { static: true } )
+    private toolbar: IgxToolbarComponent
+    @ViewChild("chart", { static: true } )
+    private chart: IgxDataChartComponent
+    @ViewChild("xAxis", { static: true } )
+    private xAxis: IgxCategoryXAxisComponent
+    @ViewChild("yAxis", { static: true } )
+    private yAxis: IgxNumericYAxisComponent
+    @ViewChild("lineSeries1", { static: true } )
+    private lineSeries1: IgxLineSeriesComponent
+    @ViewChild("lineSeries2", { static: true } )
+    private lineSeries2: IgxLineSeriesComponent
+    @ViewChild("lineSeries3", { static: true } )
+    private lineSeries3: IgxLineSeriesComponent
+    @ViewChild("tooltipLayer", { static: true } )
+    private tooltipLayer: IgxDataToolTipLayerComponent
+
+    @ViewChild("annotationBadgeColorEditor", { static: true } )
+    private annotationBadgeColorEditor: IgxColorEditorComponent
+    @ViewChild("annotationMainColorEditor", { static: true } )
+    private annotationMainColorEditor: IgxColorEditorComponent
+
+    private currentAnnotationInfo: IgxUserAnnotationInformation;
+
+	//https://github.com/IgniteUI/igniteui-wc-examples/blob/vnext/samples/charts/data-chart/user-annotation-layer/src/index.ts
+
+    private _countryRenewableElectricity: CountryRenewableElectricity = null;
+    public get countryRenewableElectricity(): CountryRenewableElectricity {
+        if (this._countryRenewableElectricity == null)
+        {
+            this._countryRenewableElectricity = new CountryRenewableElectricity();
+        }
+        return this._countryRenewableElectricity;
+    }
+
+    public constructor(private _detector: ChangeDetectorRef)
+    {
+        this.onUserAnnotationInformationRequested = this.onUserAnnotationInformationRequested.bind(this);
+        this.onUserAnnotationTooltipContentUpdating = this.onUserAnnotationTooltipContentUpdating.bind(this);
+        this.onDoneBtnClick = this.onDoneBtnClick.bind(this);
+    }
+
+    public onUserAnnotationInformationRequested(e: any) {
+		console.log("onUserAnnotation InformationRequested");
+		this.currentAnnotationInfo = e.args.annotationInfo;
+        this.toggleDialogState(true);
+    }
+
+    public onUserAnnotationTooltipContentUpdating(e: any) {
+		console.log("onUserAnnotation TooltipContentUpdating");
+    }
+
+    public onDoneBtnClick() {
+		console.log("onDoneBtnClick");
+		
+        this.currentAnnotationInfo.label = "LBL"; //this.annotationInput.value;
+        this.currentAnnotationInfo.annotationData = "DESC"; //this.annotationTextArea.value;
+        this.currentAnnotationInfo.mainColor = this.annotationMainColorEditor.value;
+        this.currentAnnotationInfo.badgeColor = this.annotationBadgeColorEditor.value;
+ 
+        this.chart.finishAnnotationFlow(this.currentAnnotationInfo);
+
+        this.toggleDialogState(false);
+    }
+
+    public onCancelBtnClick() {
+		console.log("onCancelBtnClick");
+        this.toggleDialogState(false);
+    }
+
+    public toggleDialogState(open: boolean) {
+		console.log("toggleDialogState");
+        var popup = document.getElementById('annotationPopup') as HTMLDivElement;
+        
+        if (open) {
+            popup.style.display = "block";
+        }
+        else {
+            popup.style.display = "none";
+        }
+    }
+
+    public ngAfterViewInit(): void
+    {
+
+		// this.annotationBadgeColorEditor.iconColor = "green";
+		// this.annotationBadgeColorEditor.textColor = "green";
+
+    }
+
+}
+
