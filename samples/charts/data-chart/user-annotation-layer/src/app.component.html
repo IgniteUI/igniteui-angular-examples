@@ -1,0 +1,71 @@
+<div class="container vertical sample">
+  <div style="display: flex; flex-direction: row">
+    <div style="margin-left: 1.25rem;">
+      <igx-toolbar
+      name="toolbar"
+      #toolbar
+      [target]="chart"
+      orientation="Horizontal">
+      </igx-toolbar>
+    </div>
+  </div>
+  <div class="container fill">
+    <igx-data-chart 
+    isHorizontalZoomEnabled="true" 
+    isVerticalZoomEnabled="true" 
+    computedPlotAreaMarginMode="Series"
+      name="chart" #chart isUserAnnotationsEnabled="true" 
+      (userAnnotationInformationRequested)="onUserAnnotationInformationRequested($event)"
+      (userAnnotationToolTipContentUpdating)="onUserAnnotationTooltipContentUpdating($event)">
+      <igx-category-x-axis name="xAxis" #xAxis [dataSource]="countryRenewableElectricity" label="year">
+      </igx-category-x-axis>
+      <igx-numeric-y-axis name="yAxis" #yAxis title="TWh" labelLocation="OutsideRight">
+      </igx-numeric-y-axis>
+
+      <igx-line-series name="lineSeries1" #lineSeries1 title="Electricity" [xAxis]="xAxis" [yAxis]="yAxis"
+        [dataSource]="countryRenewableElectricity" valueMemberPath="america">
+      </igx-line-series>
+      <igx-line-series name="LineSeries2" #lineSeries2 title="Electricity" [xAxis]="xAxis" [yAxis]="yAxis"
+        [dataSource]="countryRenewableElectricity" valueMemberPath="europe">
+      </igx-line-series>
+      <igx-line-series name="LineSeries3" #lineSeries3 title="Electricity" [xAxis]="xAxis" [yAxis]="yAxis"
+        [dataSource]="countryRenewableElectricity" valueMemberPath="china">
+      </igx-line-series>
+    </igx-data-chart>
+  
+    <div class="container vertical options" id="annotationPopup"
+    style="position: fixed; display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 13rem;
+    height: 21rem;
+    background-color: white;
+    border: 1px black solid;
+    border-radius: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    box-shadow: 0.05rem 0.05rem 0.5rem 0.05rem gray;">
+
+      <label>Label:</label>
+      <input #annotationInput name="annotationInput" display-type="text" style="width: calc(100% - 0.4rem);"
+      [(ngModel)]="annotationLabel">
+
+      <label>Details:</label>
+      <textarea #annotationTextArea name="annotationTextArea" style="width: calc(100% - 0.25rem); height: 4rem; resize: none;"
+      [(ngModel)]="annotationDetails">
+      </textarea>
+    
+      <label>Badge Color:</label>
+      <igx-color-editor #annotationBadgeColorEditor name="annotationBadgeColorEditor" value="black"></igx-color-editor>
+    
+      <label>Main Color:</label>
+      <igx-color-editor #annotationMainColorEditor name="annotationMainColorEditor" value="black"></igx-color-editor>
+
+      <div class="container horizontal" style="height: auto; justify-content: center; align-items: center; padding: 1rem; gap: 1rem;">
+        <button (click)="onDoneBtnClick()" id="doneButton">Done</button>
+        <button (click)="onCancelBtnClick()" id="cancelButton">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
