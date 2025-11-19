@@ -1,12 +1,9 @@
 import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { CountryRenewableElectricityItem, CountryRenewableElectricity } from './CountryRenewableElectricity';
+import { CountryRenewableElectricity } from './CountryRenewableElectricity';
 import { IgxToolbarComponent } from 'igniteui-angular-layouts';
 import { IgxColorEditorComponent } from 'igniteui-angular-inputs';
 
-import { IgxDataChartComponent, IgxCategoryXAxisComponent, 
-    IgxNumericYAxisComponent, IgxLineSeriesComponent, 
-	IgxUserAnnotationInformation,
-    IgxDataToolTipLayerComponent } from 'igniteui-angular-charts';
+import { IgxDataChartComponent, IgxUserAnnotationInformation } from 'igniteui-angular-charts';
 
 @Component({
     standalone: false,
@@ -18,32 +15,20 @@ import { IgxDataChartComponent, IgxCategoryXAxisComponent,
 
 export class AppComponent implements AfterViewInit
 {
-
     @ViewChild("toolbar", { static: true } )
     private toolbar: IgxToolbarComponent
     @ViewChild("chart", { static: true } )
     private chart: IgxDataChartComponent
-    @ViewChild("xAxis", { static: true } )
-    private xAxis: IgxCategoryXAxisComponent
-    @ViewChild("yAxis", { static: true } )
-    private yAxis: IgxNumericYAxisComponent
-    @ViewChild("lineSeries1", { static: true } )
-    private lineSeries1: IgxLineSeriesComponent
-    @ViewChild("lineSeries2", { static: true } )
-    private lineSeries2: IgxLineSeriesComponent
-    @ViewChild("lineSeries3", { static: true } )
-    private lineSeries3: IgxLineSeriesComponent
-    @ViewChild("tooltipLayer", { static: true } )
-    private tooltipLayer: IgxDataToolTipLayerComponent
 
     @ViewChild("annotationBadgeColorEditor", { static: true } )
     private annotationBadgeColorEditor: IgxColorEditorComponent
     @ViewChild("annotationMainColorEditor", { static: true } )
     private annotationMainColorEditor: IgxColorEditorComponent
 
-    private currentAnnotationInfo: IgxUserAnnotationInformation;
+    private annotationInfo: IgxUserAnnotationInformation;
 
-	//https://github.com/IgniteUI/igniteui-wc-examples/blob/vnext/samples/charts/data-chart/user-annotation-layer/src/index.ts
+    public annotationLabel: string = "Enter Label";
+    public annotationDetails: string = "Enter Details";
 
     private _countryRenewableElectricity: CountryRenewableElectricity = null;
     public get countryRenewableElectricity(): CountryRenewableElectricity {
@@ -59,54 +44,70 @@ export class AppComponent implements AfterViewInit
         this.onUserAnnotationInformationRequested = this.onUserAnnotationInformationRequested.bind(this);
         this.onUserAnnotationTooltipContentUpdating = this.onUserAnnotationTooltipContentUpdating.bind(this);
         this.onDoneBtnClick = this.onDoneBtnClick.bind(this);
+        this.onInitializeToolbar = this.onInitializeToolbar.bind(this);
+    }
+
+    public ngAfterViewInit(): void
+    {
+        window.setTimeout(() => this.onInitializeToolbar(), 1000);
+    }
+
+    public onInitializeToolbar() {
+        for (let toolbarMenu of this.toolbar.actualActions) {
+            if (toolbarMenu.actionId === "AnnotationMenu") {
+                toolbarMenu.openSubMenu();
+            }
+        }
     }
 
     public onUserAnnotationInformationRequested(e: any) {
-		console.log("onUserAnnotation InformationRequested");
-		this.currentAnnotationInfo = e.args.annotationInfo;
+        this.annotationInfo = e.args.annotationInfo;
+
         this.toggleDialogState(true);
     }
 
     public onUserAnnotationTooltipContentUpdating(e: any) {
-		console.log("onUserAnnotation TooltipContentUpdating");
+        var details = e.args.annotationInfo.annotationData;
+
+        if (e.args.content.children.length == 0) {
+            var element = document.createElement("div");
+            element.textContent = details;
+            element.style = "color: white";
+            e.args.content.appendChild(element);
+        }
+        else {
+            var element: HTMLDivElement = e.args.content.children[0];
+            element.textContent = details;
+        }
     }
 
     public onDoneBtnClick() {
-		console.log("onDoneBtnClick");
-		
-        this.currentAnnotationInfo.label = "LBL"; //this.annotationInput.value;
-        this.currentAnnotationInfo.annotationData = "DESC"; //this.annotationTextArea.value;
-        this.currentAnnotationInfo.mainColor = this.annotationMainColorEditor.value;
-        this.currentAnnotationInfo.badgeColor = this.annotationBadgeColorEditor.value;
+
+        this.annotationInfo.label = this.annotationLabel;
+        this.annotationInfo.annotationData = this.annotationDetails;
+        this.annotationInfo.mainColor = this.annotationMainColorEditor.value;
+        this.annotationInfo.badgeColor = this.annotationBadgeColorEditor.value;
  
-        this.chart.finishAnnotationFlow(this.currentAnnotationInfo);
+        this.chart.finishAnnotationFlow(this.annotationInfo);
 
         this.toggleDialogState(false);
     }
 
     public onCancelBtnClick() {
-		console.log("onCancelBtnClick");
+        this.chart.cancelAnnotationFlow(this.annotationInfo.annotationId);
+
         this.toggleDialogState(false);
     }
 
     public toggleDialogState(open: boolean) {
-		console.log("toggleDialogState");
         var popup = document.getElementById('annotationPopup') as HTMLDivElement;
-        
+
         if (open) {
-            popup.style.display = "block";
+            popup.style.display = "flex";
         }
         else {
             popup.style.display = "none";
         }
-    }
-
-    public ngAfterViewInit(): void
-    {
-
-		// this.annotationBadgeColorEditor.iconColor = "green";
-		// this.annotationBadgeColorEditor.textColor = "green";
-
     }
 
 }

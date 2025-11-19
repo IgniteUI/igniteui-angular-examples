@@ -1,6 +1,6 @@
 <div class="container vertical sample">
-  <div class="aboveContentSplit">
-    <div class="aboveContentLeftContainer">
+  <div style="display: flex; flex-direction: row">
+    <div style="margin-left: 1.25rem;">
       <igx-toolbar
       name="toolbar"
       #toolbar
@@ -30,40 +30,39 @@
       </igx-line-series>
       <igx-line-series name="LineSeries3" #lineSeries3 title="Electricity" [xAxis]="xAxis" [yAxis]="yAxis"
         [dataSource]="countryRenewableElectricity" valueMemberPath="china">
-      </igx-line-series>      
+      </igx-line-series>
     </igx-data-chart>
   
-    <div class="container vertical annotationPopup" id="annotationPopup"
-    style="position: fixed;
+    <div class="container vertical options" id="annotationPopup"
+    style="position: fixed; display: none;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 13rem;
-    height: 19rem;
+    height: 21rem;
     background-color: white;
     border: 1px black solid;
     border-radius: 0.25rem;
     padding-left: 0.5rem;
-    padding-right: 0.5rem;">
-      <div>
-        <label>Label:</label>
-        <input #annotationInput name="annotationInput" display-type="text" style="width: calc(100% - 0.4rem);">
-      </div>
+    padding-right: 0.5rem;
+    box-shadow: 0.05rem 0.05rem 0.5rem 0.05rem gray;">
+
+      <label>Label:</label>
+      <input #annotationInput name="annotationInput" display-type="text" style="width: calc(100% - 0.4rem);"
+      [(ngModel)]="annotationLabel">
+
+      <label>Details:</label>
+      <textarea #annotationTextArea name="annotationTextArea" style="width: calc(100% - 0.25rem); height: 4rem; resize: none;"
+      [(ngModel)]="annotationDetails">
+      </textarea>
     
-      <div>
-        <label>Details:</label>
-        <textarea #annotationTextArea name="annotationTextArea" style="width: calc(100% - 0.25rem);height: 3rem;resize: none;"></textarea>
-      </div>
+      <label>Badge Color:</label>
+      <igx-color-editor #annotationBadgeColorEditor name="annotationBadgeColorEditor" value="black"></igx-color-editor>
     
-      <div>
-        <label>Badge Color:</label>
-        <igx-color-editor #annotationBadgeColorEditor name="annotationBadgeColorEditor" value="red"></igx-color-editor>
-    
-        <label>Main Color:</label>
-        <igx-color-editor #annotationMainColorEditor name="annotationMainColorEditor" value="red"></igx-color-editor>
-      </div>
-    
-      <div class="container horizontal" style="height: auto; place-content: space-between; align-items: center; padding: 0.25rem;">
+      <label>Main Color:</label>
+      <igx-color-editor #annotationMainColorEditor name="annotationMainColorEditor" value="black"></igx-color-editor>
+
+      <div class="container horizontal" style="height: auto; justify-content: center; align-items: center; padding: 1rem; gap: 1rem;">
         <button (click)="onDoneBtnClick()" id="doneButton">Done</button>
         <button (click)="onCancelBtnClick()" id="cancelButton">Cancel</button>
       </div>
