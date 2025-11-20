@@ -19,7 +19,7 @@
       (userAnnotationToolTipContentUpdating)="onUserAnnotationTooltipContentUpdating($event)">
       <igx-category-x-axis name="xAxis" #xAxis [dataSource]="countryRenewableElectricity" label="year">
       </igx-category-x-axis>
-      <igx-numeric-y-axis name="yAxis" #yAxis title="TWh" labelLocation="OutsideRight">
+      <igx-numeric-y-axis name="yAxis" #yAxis title="TWh" >
       </igx-numeric-y-axis>
 
       <igx-line-series name="lineSeries1" #lineSeries1 title="Electricity" [xAxis]="xAxis" [yAxis]="yAxis"
