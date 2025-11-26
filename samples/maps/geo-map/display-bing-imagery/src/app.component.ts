@@ -1,41 +1,59 @@
-import { AfterViewInit, Component, ViewChild } from "@angular/core";
-import { BingMapsImageryStyle } from "igniteui-angular-maps";
-import { IgxBingMapsMapImagery } from "igniteui-angular-maps";
-import { IgxGeographicMapComponent } from "igniteui-angular-maps";
-import { MapUtility } from "./MapUtility";
-
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import {
+    IgxGeographicMapComponent,
+    IgxBingMapsMapImagery,
+    BingMapsImageryStyle
+} from 'igniteui-angular-maps';
+import {
+  IgxDialogComponent,
+  IgxSelectComponent
+} from 'igniteui-angular';
 @Component({
-  standalone: false,
-  selector: "app-root",
-  styleUrls: ["./app.component.scss"],
-  templateUrl: "./app.component.html"
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  standalone: false
 })
 
 export class AppComponent implements AfterViewInit {
 
-    @ViewChild("map", { static: true })
-    public map: IgxGeographicMapComponent;
+    @ViewChild('geoMap', { static: false })
+    public geoMap!: IgxGeographicMapComponent;
 
-    constructor() {
+    @ViewChild('dialog', { static: true })
+    public keyDialog: any;
+
+    public bingKey: string = "";
+
+    ngAfterViewInit(): void {
+        setTimeout(() => this.keyDialog.open(), 200);
     }
 
-    public ngAfterViewInit(): void {
-        const tileSource = new IgxBingMapsMapImagery();
-        tileSource.apiKey = MapUtility.getBingKey();
-        tileSource.imageryStyle = BingMapsImageryStyle.AerialWithLabels;
-        let tileUri = tileSource.actualBingImageryRestUri;
+    public openKeyDialog(): void {
+        this.keyDialog.open();
+    }
 
-        // resolving BingMaps uri based on HTTP protocol of hosting website
-        const isHttpSecured = window.location.toString().startsWith("https:");
-        if (isHttpSecured) {
-            tileUri = tileUri.replace("http:", "https:");
-        } else {
-            tileUri = tileUri.replace("https:", "http:");
-        }
-        tileSource.bingImageryRestUri = tileUri;
+    public closeKeyDialog(): void {
+        this.keyDialog.close();
+    }
 
-        this.map.backgroundContent = tileSource;
-        
-        this.map.updateZoomWindow({ left: 0.2, top: 0.1, width: 0.7, height: 0.7});        
+    public onKeyDialogClosed(): void {
+        if (!this.bingKey.trim()) return;
+        this.applyImagery();
+    }
+
+    private applyImagery(): void {
+        const imagery = new IgxBingMapsMapImagery();
+        imagery.apiKey = this.bingKey;
+        imagery.imageryStyle = BingMapsImageryStyle.AerialWithLabels;
+
+        this.geoMap.backgroundContent = imagery;
+
+        this.geoMap.zoomToGeographic({
+            left: -124.77,
+            top: 49.38,
+            width: (124.77 - 66.95),
+            height: (49.38 - 24.52)
+        });
     }
 }
