@@ -64,7 +64,7 @@ git clone https://github.com/IgniteUI/igniteui-angular-examples.git
 ```
 ./samples/charts/category-chart/axis-options/
 ```
-- type `npm install --legacy-peer-deps` command in terminal window
+- type `npm install` command in terminal window
 
 - type `npm run start` command in terminal window
 
@@ -86,7 +86,7 @@ C:\GitHub\igniteui-angular-examples\
 
 - select **View** - **Terminal** menu item
 
-- type `npm install --legacy-peer-deps` command in terminal window
+- type `npm install` command in terminal window
 
 This will install required packages and [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general-getting-started) packages
 
@@ -125,7 +125,7 @@ Wait until the build is completed and then open [http://localhost:4200](http://l
 
 - rename class to the name of .tsx file
 
-- type `npm install --legacy-peer-deps` command in terminal window
+- type `npm install` command in terminal window
 
 - type `npm run start` command in terminal window
 
@@ -183,6 +183,6 @@ NOTE Do NOT find replace version of packages in package.json files.
 - open terminal window
 - run `cd browser` command
 - run the `gulp updateIG` command
-- run `npm install --legacy-peer-deps` command
+- run `npm install` command
 - create AND merge a pull request with changes in all package.json files in this repository
 - create 2nd pull request with similar changes in `/editor-templates/angular/main-template/package.json` of the [igniteui-xplat-examples](https://github.com/IgniteUI/igniteui-xplat-examples) repository.

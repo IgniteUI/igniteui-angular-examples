@@ -1,0 +1,50 @@
+<div class="container sample center" 
+     style="flex-direction:column; align-items:center; gap:2px;">
+
+  <!-- Controls row stays above the map -->
+  <div class="controls-row">
+    <button igxButton="contained" (click)="openDialog()">Enter your Azure Maps API Key</button>
+
+    <igx-select #styleSelect
+                placeholder="Choose Azure Imagery"
+                [(ngModel)]="selectedStyle"
+                (selectionChanging)="onStyleChange($event.newSelection?.value)">
+      <igx-select-item *ngFor="let s of styleOptions" [value]="s">
+        <span>{{ s }}</span>
+      </igx-select-item>
+    </igx-select>
+  </div>
+
+  <!-- Azure Key Dialog with Form -->
+  <igx-dialog #dialog class="custom-dialog">
+    <form #keyForm="ngForm" (ngSubmit)="onSubmit(keyForm)">
+      <div class="dialog-header">
+        <h3>Azure Key</h3>
+      </div>
+
+      <div class="dialog-content" style="display:flex; flex-direction:column; gap:12px;">
+        <label for="azureKeyInput">An image will remain visible when no key is entered.</label>
+        <input
+          id="azureKeyInput"
+          name="azureKeyInput"
+          [(ngModel)]="apiKeyInputValue"
+          type="text"
+          placeholder="Enter your key"
+          required />
+      </div>
+
+      <div class="dialog-actions" style="display:flex; justify-content:flex-end; gap:8px; margin-top:1rem;">
+        <button type="button" (click)="onReset(keyForm)">Clear</button>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </igx-dialog>
+
+  <!-- Map container with fixed height -->
+  <div class="map-container">
+    <img *ngIf="!apiKey" class="placeholder" [src]="previewImageSrc" alt="Map Imagery" />
+    <igx-geographic-map #map [hidden]="isMapHidden">
+      <igx-geographic-tile-series #tileSeries></igx-geographic-tile-series>
+    </igx-geographic-map>
+  </div>
+</div>

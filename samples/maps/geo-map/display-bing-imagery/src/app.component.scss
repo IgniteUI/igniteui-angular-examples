@@ -1,3 +1,34 @@
-/* styles are loaded the Shared CSS file located at:
-https://static.infragistics.com/xplatform/css/samples/
-*/
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+/* === Controls === */
+.controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10; /* stay above map */
+  padding: 8px 0;
+}
+
+
+.dialog-container {
+  display: flex;
+  align-items: center;
+
+  igx-icon {
+    margin-right: 8px;
+  }
+}
+
+::ng-deep igx-dialog.custom-dialog {
+  width: 400px;
+  height: auto;
+}
