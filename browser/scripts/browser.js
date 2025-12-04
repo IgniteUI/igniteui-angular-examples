@@ -73,18 +73,53 @@ function getOutputPath(dirPath) {
 
 // NOTE you can comment out strings in this array to run these function only on a subset of samples
 var sampleSourcePaths = [
-    // include samples for all components
+    // include samples for all components:
     sampleRoot + '**/package.json',
 
+    // include samples for individual components:
     // sampleRoot + 'charts/doughnut-chart/overview/package.json',
+    // sampleRoot + 'charts/pie-chart/legend/package.json',
     // sampleRoot + 'charts/category-chart/area-chart-multiple-sources/package.json',
     // sampleRoot + 'gauges/**/measures/package.json',
     // sampleRoot + 'charts/sparkline/grid/package.json',
+    // sampleRoot + 'charts/sparkline/markers/package.json',
     // sampleRoot + 'maps/**/display-heat-imagery/package.json',
     // sampleRoot + 'excel/**/operations-on-workbooks/package.json',
     // sampleRoot + 'charts/zoomslider/overview/package.json',
     // sampleRoot + 'charts/data-chart/data-annotation-multiple-with-stocks/package.json',
     // sampleRoot + 'charts/data-chart/axis-annotations/package.json',
+    // sampleRoot + 'charts/data-chart/data-legend-grouping/package.json',
+    // sampleRoot + 'charts/data-chart/data-legend-styling/package.json',
+    // sampleRoot + 'charts/data-chart/data-tooltip/package.json',
+
+    // include samples for data-chart:
+    // sampleRoot + 'charts/data-chart/annotations-custom/package.json',
+    // sampleRoot + 'charts/data-chart/callout-layer-styling/package.json',
+    // sampleRoot + 'charts/data-chart/composite-chart/package.json',
+    // sampleRoot + 'charts/data-chart/column-chart-styling/package.json',
+    // sampleRoot + 'charts/data-chart/format-specifiers/package.json',
+    // sampleRoot + 'charts/data-chart/financial-price-series/package.json',
+    // sampleRoot + 'charts/data-chart/final-value-layer-styling/package.json', 
+    // sampleRoot + 'charts/data-chart/legends/package.json',
+    // sampleRoot + 'charts/data-chart/selection-matcher/package.json',
+    // sampleRoot + 'charts/data-chart/tooltip-template/package.json',
+    // sampleRoot + 'charts/data-chart/transition-event/package.json',
+    // sampleRoot + 'charts/data-chart/trendline-layer/package.json',
+    // sampleRoot + 'charts/data-chart/waterfall-chart/package.json',
+    // sampleRoot + 'charts/data-chart/user-annotation-layer/package.json', 
+    // sampleRoot + 'charts/data-chart/axis*/package.json',
+    // sampleRoot + 'charts/data-chart/bar*/package.json',
+    // sampleRoot + 'charts/data-chart/chart*/package.json',
+    // sampleRoot + 'charts/data-chart/custom*/package.json',
+    // sampleRoot + 'charts/data-chart/data*/package.json',
+    // sampleRoot + 'charts/data-chart/dash*/package.json',
+    // sampleRoot + 'charts/data-chart/polar*/package.json',
+    // sampleRoot + 'charts/data-chart/radial*/package.json',
+    // sampleRoot + 'charts/data-chart/range*/package.json',
+    // sampleRoot + 'charts/data-chart/scatter*/package.json',
+    // sampleRoot + 'charts/data-chart/series*/package.json',
+    // sampleRoot + 'charts/data-chart/stacked*/package.json',
+    // sampleRoot + 'charts/data-chart/type*/package.json',
 
     // include samples for specific components
     // sampleRoot + 'charts/category-chart/**/package.json',
