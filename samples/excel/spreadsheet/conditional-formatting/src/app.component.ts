@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   constructor() { }
 
   public ngOnInit() {
-      const excelFile = "https://static.infragistics.com/xplatform/excel/ConditionalData.xlsx";
+      const excelFile = "https://dl.infragistics.com/x/excel/ConditionalData.xlsx";
 
       ExcelUtility.loadFromUrl(excelFile).then((w) => {
           this.spreadsheet.workbook = w;

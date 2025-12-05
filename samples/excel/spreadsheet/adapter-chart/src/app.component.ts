@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   public ngOnInit() {
       this.spreadsheet.chartAdapter = new SpreadsheetChartAdapter();
 
-      const excelFile = "https://static.infragistics.com/xplatform/excel/ChartData.xlsx";
+      const excelFile = "https://dl.infragistics.com/x/excel/ChartData.xlsx";
       ExcelUtility.loadFromUrl(excelFile).then((w) => {
           this.spreadsheet.workbook = w;
 

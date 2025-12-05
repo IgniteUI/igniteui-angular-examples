@@ -9,7 +9,7 @@ export class Products {
         "Samsung Monitor", "Asus Monitor", "LG Monitor", "HP Monitor"
     ];
 
-    public static countries: string[] = ["USA", "UK", "France", "Canada", "Poland",
+    public static countries: string[] = ["United-States", "United-Kingdom", "France", "Canada", "Poland",
             "Denmark", "Croatia", "Australia", "Seychelles",
             "Sweden", "Germany", "Japan", "Ireland",
             "Barbados", "Jamaica", "Cuba", "Spain"

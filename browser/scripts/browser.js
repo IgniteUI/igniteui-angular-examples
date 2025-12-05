@@ -1377,8 +1377,8 @@ function updateBootstrap(cb) {
 
             let htmlPath = file.dirname.replace("\\app","") + "\\index.html"
             let htmlContent = fs.readFileSync(htmlPath).toString();
-            let oldLink = '<link href="https://static.infragistics.com/xplatform/css/samples/shared.v8.css" rel="stylesheet">'
-            let newLink = '<link href="https://static.infragistics.com/xplatform/css/themes/light/bootstrap.css" rel="stylesheet">'
+            let oldLink = '<link href="https://dl.infragistics.com/x/css/samples/shared.v8.css" rel="stylesheet">'
+            let newLink = '<link href="https://dl.infragistics.com/x/css/themes/light/bootstrap.css" rel="stylesheet">'
 
             let newContent = htmlContent.replace(oldLink, oldLink + "\n  " + newLink);
             newContent = newContent.replace(newLink + "\n  " + newLink, newLink);
@@ -1392,8 +1392,8 @@ function updateBootstrap(cb) {
 
         // let htmlPath = file.dirname.replace("\\app","") + "\\index.html"
         // let htmlContent = fs.readFileSync(htmlPath).toString();
-        // let oldLink = '<link href="https://static.infragistics.com/xplatform/css/samples/themes/light/bootstrap.css" rel="stylesheet">'
-        // let newLink = '<link href="https://static.infragistics.com/xplatform/css/samples/themes/light/bootstrap.css" rel="stylesheet">'
+        // let oldLink = '<link href="https://dl.infragistics.com/x/css/samples/themes/light/bootstrap.css" rel="stylesheet">'
+        // let newLink = '<link href="https://dl.infragistics.com/x/css/samples/themes/light/bootstrap.css" rel="stylesheet">'
         // let newContent = htmlContent.replace(oldLink, newLink);
         // newContent = htmlContent.replace(newLink + "\n  " + newLink, newLink);
         // fs.writeFileSync(htmlPath, newContent);
