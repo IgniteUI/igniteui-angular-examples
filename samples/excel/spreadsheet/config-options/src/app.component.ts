@@ -93,7 +93,7 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit() {
-      const excelFile = "https://static.infragistics.com/xplatform/excel/SalesData.xlsx";
+      const excelFile = "https://dl.infragistics.com/x/excel/SalesData.xlsx";
 
       ExcelUtility.loadFromUrl(excelFile).then((w) => {
           this.spreadsheet.workbook = w;
