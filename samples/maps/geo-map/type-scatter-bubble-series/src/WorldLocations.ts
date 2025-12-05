@@ -408,7 +408,7 @@ export class WorldLocations {
             pop: 1.325,
             lat: 50.1058959960938,
             lon: 14.4565200805664,
-            country: "Czech Repub",
+            country: "Czechia",
             name: "Prague"
         },
         {
@@ -448,7 +448,7 @@ export class WorldLocations {
             pop: 0.450,
             lat: 49.2029800415039,
             lon: 16.6162452697754,
-            country: "Czech Repub",
+            country: "Czechia",
             name: "Brno"
         },
         {
