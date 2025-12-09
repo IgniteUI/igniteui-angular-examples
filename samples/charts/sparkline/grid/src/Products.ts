@@ -86,7 +86,7 @@ export class Products {
     }
 
     public static getCountryFlag(country: string): string {
-        return "https://github.com/HUSSAR-mtrela/geo-data/raw/master/flags/" + country + ".png";
+        return "https://dl.infragistics.com/x/img/flags/" + country + ".png";
     }
 
     public static getRandomDate(): Date {
