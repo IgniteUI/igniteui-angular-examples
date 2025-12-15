@@ -165,7 +165,7 @@ export class SampleScatterStats {
         data.push(new Country("CUB", 11270957, 0, 1780, 9, "Cuba", "North America"));
         data.push(new Country("CUW", 152056, 0, 0, 138, "Curacao", "North America"));
         data.push(new Country("CYP", 1128994, 26352, 37812, 94, "Cyprus", "Europe"));
-        data.push(new Country("CZE", 10510785, 18690, 8260, 123, "Czech Republic", "Europe"));
+        data.push(new Country("CZE", 10510785, 18690, 8260, 123, "Czechia", "Europe"));
         data.push(new Country("DNK", 5591572, 56364, 101084, 116, "Denmark", "Europe"));
         data.push(new Country("DJI", 859652, 1575, 573, 20, "Djibouti", "Africa"));
         data.push(new Country("DMA", 71684, 6913, 3000, 148, "Dominica", "North America"));
@@ -177,7 +177,7 @@ export class SampleScatterStats {
         data.push(new Country("ERI", 6130922, 504, 195, 3, "Eritrea", "Africa"));
         data.push(new Country("EST", 1325016, 16887, 16944, 127, "Estonia", "Europe"));
         data.push(new Country("ETH", 91728849, 467, 51, 8, "Ethiopia", "Africa"));
-        data.push(new Country("EUU", 505640311, 32917, 0, 118, "Euroean Union", "Europe"));
+        data.push(new Country("EUU", 505640311, 32917, 0, 118, "European Union", "Europe"));
         data.push(new Country("FRO", 49506, 0, 0, 120, "Faeroe Islands", "Europe"));
         data.push(new Country("FJI", 874742, 4613, 150, 81, "Fiji", "Oceania"));
         data.push(new Country("FIN", 5413971, 45649, 68960, 156, "Finland", "Europe"));

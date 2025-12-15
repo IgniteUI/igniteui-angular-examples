@@ -9,7 +9,7 @@ export class Products {
         "Samsung Monitor", "Asus Monitor", "LG Monitor", "HP Monitor"
     ];
 
-    public static countries: string[] = ["USA", "UK", "France", "Canada", "Poland",
+    public static countries: string[] = ["United-States", "United-Kingdom", "France", "Canada", "Poland",
             "Denmark", "Croatia", "Australia", "Seychelles",
             "Sweden", "Germany", "Japan", "Ireland",
             "Barbados", "Jamaica", "Cuba", "Spain"
@@ -86,7 +86,7 @@ export class Products {
     }
 
     public static getCountryFlag(country: string): string {
-        return "https://github.com/HUSSAR-mtrela/geo-data/raw/master/flags/" + country + ".png";
+        return "https://dl.infragistics.com/x/img/flags/" + country + ".png";
     }
 
     public static getRandomDate(): Date {

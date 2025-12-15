@@ -152,7 +152,7 @@ export class WorldLocations {
             pop: 1.650,
             lat: 53.8999366760254,
             lon: 27.5755672454834,
-            country: "Byelarus",
+            country: "Belarus",
             name: "Minsk"
         },
         {
@@ -408,7 +408,7 @@ export class WorldLocations {
             pop: 1.325,
             lat: 50.1058959960938,
             lon: 14.4565200805664,
-            country: "Czech Repub",
+            country: "Czechia",
             name: "Prague"
         },
         {
@@ -448,7 +448,7 @@ export class WorldLocations {
             pop: 0.450,
             lat: 49.2029800415039,
             lon: 16.6162452697754,
-            country: "Czech Repub",
+            country: "Czechia",
             name: "Brno"
         },
         {
@@ -1080,7 +1080,7 @@ export class WorldLocations {
             pop: 15.850,
             lat: 37.542350769043,
             lon: 126.935249328613,
-            country: "Korea Rep",
+            country: "South-Korea",
             name: "Seoul"
         },
         {
@@ -1168,7 +1168,7 @@ export class WorldLocations {
             pop: 2.206,
             lat: 35.8635368347168,
             lon: 128.591384887695,
-            country: "Korea Rep",
+            country: "South-Korea",
             name: "Taegu"
         },
         {
@@ -1224,7 +1224,7 @@ export class WorldLocations {
             pop: 3.800,
             lat: 35.1578674316406,
             lon: 129.0546875,
-            country: "Korea Rep",
+            country: "South-Korea",
             name: "Pusan"
         },
         {
@@ -3040,7 +3040,7 @@ export class WorldLocations {
             pop: 1.604,
             lat: 37.5894508361816,
             lon: 126.767440795898,
-            country: "Korea Rep",
+            country: "South-Korea",
             name: "Inch`on"
         },
         {
