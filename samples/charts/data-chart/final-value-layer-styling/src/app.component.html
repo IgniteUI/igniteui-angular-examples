@@ -2,7 +2,7 @@
     <div class="options vertical">
         <label id="legendTitle">Renewable Energy Generated</label>
     </div>
-    <igx-data-chart height="100%" width="100%" >
+    <igx-data-chart height="100%" width="100%" computedPlotAreaMarginMode="Series">
         <igx-category-x-axis #xAxis [dataSource]="data" label="Year"></igx-category-x-axis>
         <igx-numeric-y-axis #yAxis title="TWh" labelLocation="OutsideRight"></igx-numeric-y-axis>
 
