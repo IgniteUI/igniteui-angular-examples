@@ -9,7 +9,7 @@ import { Component, HostListener, Inject, OnInit, DOCUMENT } from "@angular/core
 export class AppComponent implements OnInit {
     public title = "Samples";
     private theme = "default-theme";
-    private styleElem: HTMLStyleElement;
+    private styleElem: HTMLStyleElement | undefined;
     private typefacesLoaded = ["Titillium Web", "Roboto"];
     private typefaceUrl = "https://fonts.googleapis.com/css?family=";
 
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     }
 
     @HostListener("window:message", ["$event"])
-    private onMessage(e: MessageEvent) {
+    public onMessage(e: MessageEvent) {
         if (e.origin === e.data.origin && typeof e.data.themeStyle === "string") {
             this.styleElem.textContent = e.data.themeStyle;
             const typeface = window.getComputedStyle(this.document.body).fontFamily.replace(/\"/g, "");
