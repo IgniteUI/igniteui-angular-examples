@@ -23,7 +23,9 @@ export class AppComponent implements OnInit {
     @HostListener("window:message", ["$event"])
     private onMessage(e: MessageEvent) {
         if (e.origin === e.data.origin && typeof e.data.themeStyle === "string") {
-            this.styleElem.textContent = e.data.themeStyle;
+            if (this.styleElem) {
+                this.styleElem.textContent = e.data.themeStyle;
+            }
             const typeface = window.getComputedStyle(this.document.body).fontFamily.replace(/\"/g, "");
             if (!(typeface.match(/,/g) || []).length &&
                 !this.typefacesLoaded.includes(typeface)) {
