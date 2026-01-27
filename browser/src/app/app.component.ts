@@ -9,11 +9,11 @@ import { Component, HostListener, Inject, OnInit, DOCUMENT } from "@angular/core
 export class AppComponent implements OnInit {
     public title = "Samples";
     private theme = "default-theme";
-    private styleElem: HTMLStyleElement;
+    private styleElem: HTMLStyleElement | null = null;
     private typefacesLoaded = ["Titillium Web", "Roboto"];
     private typefaceUrl = "https://fonts.googleapis.com/css?family=";
 
-    constructor(@Inject(DOCUMENT) private document: Document) { }
+    constructor(@Inject(DOCUMENT) private document: Document) {}
 
     public ngOnInit() {
         // console.log("SB app ngOnInit");
@@ -21,9 +21,11 @@ export class AppComponent implements OnInit {
     }
 
     @HostListener("window:message", ["$event"])
-    private onMessage(e: MessageEvent) {
+    protected onMessage(e: MessageEvent) {
         if (e.origin === e.data.origin && typeof e.data.themeStyle === "string") {
-            this.styleElem.textContent = e.data.themeStyle;
+            if (this.styleElem) {
+                this.styleElem.textContent = e.data.themeStyle;
+            }
             const typeface = window.getComputedStyle(this.document.body).fontFamily.replace(/\"/g, "");
             if (!(typeface.match(/,/g) || []).length &&
                 !this.typefacesLoaded.includes(typeface)) {

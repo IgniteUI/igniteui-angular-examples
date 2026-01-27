@@ -7,7 +7,7 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": false,
     "declaration": false,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "downlevelIteration": true, // required for excel library

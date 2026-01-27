@@ -1,8 +1,9 @@
 import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { RouterModule } from "@angular/router";
 import {
     IgxButtonModule, IgxIconModule, IgxInputGroupModule,
     IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule
@@ -14,14 +15,17 @@ import { DocsLayoutComponent } from "./index/docs-layout.component";
 import { IndexComponent } from "./index/index.component";
 import { FallbackComponent } from './fallback/fallback.component';
 
-@NgModule({ bootstrap: [AppComponent],
+@NgModule({ 
+    bootstrap: [AppComponent],
     declarations: [
         AppComponent,
         HomeComponent,
         DocsLayoutComponent,
         IndexComponent,
         FallbackComponent
-    ], imports: [AppRoutingModule,
+    ], 
+    imports: [AppRoutingModule,
+        RouterModule,
         IgxRippleModule,
         IgxNavbarModule,
         IgxNavigationDrawerModule,
@@ -31,5 +35,8 @@ import { FallbackComponent } from './fallback/fallback.component';
         BrowserModule,
         BrowserAnimationsModule,
         IgxButtonModule,
-        FormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        FormsModule], 
+    providers: [provideHttpClient(withInterceptorsFromDi())],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
 export class AppModule { }
