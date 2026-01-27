@@ -20,9 +20,7 @@
     ],
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "resolvePackageJsonExports": false,
-    "resolvePackageJsonImports": false
+    "skipLibCheck": true
   },
   "lib": [
     "ES2022",
