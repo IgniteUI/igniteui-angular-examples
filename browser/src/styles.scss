@@ -1,28 +1,24 @@
-// TEMPORARY: Ignite UI theming disabled due to Sass 1.97.1 compatibility issues
-// with igniteui-angular 21.0.8 and Angular 21. Components will use default styles
-// until igniteui-angular releases a version compatible with Angular 21 / Sass 1.97.1.
-//
-// @use "igniteui-angular/theming" as *;
-// @include core();
-// /* autoprefixer grid:on */
-// // @include theme($default-palette);
-// @include theme(
-//     $palette: $default-palette,
-//     //     $schema: $default-schema,
-//     $exclude: (
-//         'bullet-graph',
-//         'linear-gauge',
-//         'radial-gauge',
-//         'category-chart',
-//         'data-chart',
-//         'doughnut-chart',
-//         'financial-chart',
-//         'funnel-chart',
-//         'geo-map',
-//         'pie-chart',
-//         'shape-chart',
-//         'sparkline',
-//     ));
+@use "igniteui-angular/theming" as *;
+@include core();
+/* autoprefixer grid:on */
+// @include theme($default-palette);
+@include theme(
+    $palette: $default-palette,
+    //     $schema: $default-schema,
+    $exclude: (
+        'bullet-graph',
+        'linear-gauge',
+        'radial-gauge',
+        'category-chart',
+        'data-chart',
+        'doughnut-chart',
+        'financial-chart',
+        'funnel-chart',
+        'geo-map',
+        'pie-chart',
+        'shape-chart',
+        'sparkline',
+    ));
 
 .keyInForm {
     igx-input-group + igx-input-group {
