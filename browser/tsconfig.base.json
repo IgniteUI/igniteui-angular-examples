@@ -8,7 +8,6 @@
     "sourceMap": false,
     "declaration": false,
     "moduleResolution": "bundler",
-    "skipLibCheck": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "downlevelIteration": true, // required for excel library
@@ -20,10 +19,6 @@
       "ES2022",
       "dom"
     ],
-    "useDefineForClassFields": false,
-    "resolvePackageJsonExports": true,
-    "resolvePackageJsonImports": true,
-    "noImplicitAny": false,
-    "strict": false
+    "useDefineForClassFields": false
   }
 }

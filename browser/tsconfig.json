@@ -17,10 +17,7 @@
     "useDefineForClassFields": false,
     "typeRoots": [
       "node_modules/@types"
-    ],
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true
+    ]
   },
   "lib": [
     "ES2022",
