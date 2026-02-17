@@ -1,0 +1,76 @@
+name: Build
+
+# This workflow is meant to run on changes pushed to the vnext branch only.
+# If it runs on PRs, it will create PRs to the destination repos' vnext branches - we don't want that.
+on:
+  push:
+    branches:
+      - vnext
+      - master
+  workflow_dispatch:
+    inputs:
+      isVerbose:
+        description: 'Get verbose output from steps - where configurable'
+        required: false
+        type: boolean
+        default: false
+      shouldCleanPostExecution:
+        description: 'Clean all pipeline dirs after the pipeline finishes?'
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          clean: true
+          persist-credentials: true
+          path: igniteui-angular-examples
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.19.0'
+      
+      - name: Install npm dependencies
+        run: npm install
+        working-directory: ./igniteui-angular-examples/browser
+      
+      - name: Apply very special configuration
+        shell: bash
+        run: |
+          echo "Current directory: $(pwd)"
+          sed -i 's/build --configuration production/build --configuration production --base-href=\/angular-demos-dv\//g' package.json
+        working-directory: ./igniteui-angular-examples/browser
+      
+      - name: Build project
+        run: |
+          if [ "${{ github.event.inputs.isVerbose }}" == "true" ]; then
+            npm run build --verbose
+          else
+            npm run build
+          fi
+        working-directory: ./igniteui-angular-examples/browser
+      
+      - name: Copy web.config to dist
+        run: |
+          cp web.config dist/browser/
+        working-directory: ./igniteui-angular-examples/browser
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: ./igniteui-angular-examples/browser/dist/browser
+      
+      - name: Clean workspace
+        if: ${{ github.event.inputs.shouldCleanPostExecution == 'true' || github.event_name == 'push' }}
+        run: |
+          cd ${{ github.workspace }}
+          echo "Cleaning workspace..."
+          # Cleanup is handled automatically by GitHub Actions after the workflow completes
