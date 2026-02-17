@@ -68,9 +68,5 @@ jobs:
           name: dist
           path: ./igniteui-angular-examples/browser/dist/browser
       
-      - name: Clean workspace
-        if: ${{ github.event.inputs.shouldCleanPostExecution == 'true' || github.event_name == 'push' }}
-        run: |
-          cd ${{ github.workspace }}
-          echo "Cleaning workspace..."
-          # Cleanup is handled automatically by GitHub Actions after the workflow completes
+      # Note: Workspace cleanup is handled automatically by GitHub Actions after the workflow completes
+      # The shouldCleanPostExecution parameter is retained for compatibility but has no effect in GitHub Actions
