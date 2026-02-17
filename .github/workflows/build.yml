@@ -14,11 +14,6 @@ on:
         required: false
         type: boolean
         default: false
-      shouldCleanPostExecution:
-        description: 'Clean all pipeline dirs after the pipeline finishes?'
-        required: false
-        type: boolean
-        default: true
 
 jobs:
   build:
@@ -69,6 +64,4 @@ jobs:
         with:
           name: dist
           path: ./igniteui-angular-examples/browser/dist/browser
-      
-      # Note: Workspace cleanup is handled automatically by GitHub Actions after the workflow completes
-      # The shouldCleanPostExecution parameter is retained for compatibility but has no effect in GitHub Actions
+          retention-days: 1
