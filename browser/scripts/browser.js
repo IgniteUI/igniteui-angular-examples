@@ -29,12 +29,17 @@ const repoName     = "igniteui-angular-examples";
 const sampleRoot   = '../samples/';    // /samples/
 const sampleOutput = './src/samples/'; // /browser/src/samples/
 
-// C:\REPOS\GitInternalDocs\igniteui-angular-examples\samples\charts\data-chart\axis-sharing
-// returns                                         ../samples/charts/data-chart/axis-sharing
+// C:\REPOS\...\samples\charts\data-chart\axis-sharing
+// /home/runner/work/.../samples/charts/data-chart/axis-sharing
+// returns ../samples/charts/data-chart/axis-sharing
 function getSamplePath(dirPath) {
-    var ret = dirPath.split(repoName)[1];
-    ret = ".." + ret.split("\\").join("/");
-    return ret;
+    const normalized = path.normalize(dirPath);
+    const segments = normalized.split(path.sep);
+    const samplesIdx = segments.lastIndexOf('samples');
+    if (samplesIdx < 0) {
+        throw new Error("Cannot locate 'samples' folder in path: " + dirPath);
+    }
+    return ['..'].concat(segments.slice(samplesIdx)).join('/');
 }
 
 // C:\REPOS\GitInternalDocs\igniteui-angular-examples\samples\charts\data-chart\axis-sharing
