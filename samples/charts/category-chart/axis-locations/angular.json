@@ -6,31 +6,10 @@
     "demo": {
       "schematics": {
         "@schematics/angular:component": {
-          "prefix": "app",
-          "style": "scss",
-          "type": "component"
+          "style": "scss"
         },
-        "@schematics/angular:directive": {
-          "prefix": "app",
-          "type": "directive"
-        },
-        "@schematics/angular:service": {
-          "type": "service"
-        },
-        "@schematics/angular:guard": {
-          "typeSeparator": "."
-        },
-        "@schematics/angular:interceptor": {
-          "typeSeparator": "."
-        },
-        "@schematics/angular:module": {
-          "typeSeparator": "."
-        },
-        "@schematics/angular:pipe": {
-          "typeSeparator": "."
-        },
-        "@schematics/angular:resolver": {
-          "typeSeparator": "."
+        "@schematics/angular:application": {
+          "strict": true
         }
       },
       "root": "",
@@ -57,7 +36,7 @@
             ],
             "scripts": [],
             "stylePreprocessorOptions": {
-              "includePaths": [ "node_modules/" ]
+              "includePaths": ["node_modules/"]
             }
           },
           "configurations": {
@@ -122,18 +101,19 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "assets": [
+            "assets": [ 
               "src/assets"
             ],
             "inlineStyleLanguage": "scss",
             "stylePreprocessorOptions": {
-              "includePaths": [ "node_modules/" ]
+              "includePaths": ["node_modules/"]
             }
           }
         }
       }
     }
   },
+  "defaultProject": "demo",
   "cli": {
     "analytics": false
   }
