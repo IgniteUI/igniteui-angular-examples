@@ -1,4 +1,4 @@
-import { Component, HostListener, Inject, OnInit, DOCUMENT } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
     selector: "app-docs-layout",

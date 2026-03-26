@@ -8,6 +8,9 @@
       "node"
     ]
   },
+  "angularCompilerOptions": {
+    "strictTemplates": false
+  },
   "files": [
     "../test.ts",
     "../polyfills.ts"

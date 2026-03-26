@@ -7,6 +7,9 @@
     "baseUrl": "./",
     "types": []
   },
+  "angularCompilerOptions": {
+    "strictTemplates": false
+  },
   "files": [
     "main.ts",
     "polyfills.ts"
