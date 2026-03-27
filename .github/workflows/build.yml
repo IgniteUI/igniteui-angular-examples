@@ -14,10 +14,41 @@ on:
         required: false
         type: boolean
         default: false
+      platform:
+        description: 'Technology platform to build (all = every platform in the matrix)'
+        required: false
+        type: choice
+        default: all
+        options:
+          - all
+          - angular
+          - blazor
+          - react
+          - wc
+      locale:
+        description: 'Locale to build for (all = every locale in the matrix)'
+        required: false
+        type: choice
+        default: all
+        options:
+          - all
+          - en
+          - ja
 
 jobs:
   build:
+    strategy:
+      matrix:
+        platform: [angular, blazor, react, wc]
+        locale: [en, ja]
     runs-on: ubuntu-latest
+    if: >
+      (github.event_name != 'workflow_dispatch' ||
+       github.event.inputs.platform == 'all' ||
+       github.event.inputs.platform == matrix.platform) &&
+      (github.event_name != 'workflow_dispatch' ||
+       github.event.inputs.locale == 'all' ||
+       github.event.inputs.locale == matrix.locale)
     permissions:
       contents: read
     
@@ -27,12 +58,13 @@ jobs:
         with:
           clean: true
           persist-credentials: true
+          lfs: true
           path: igniteui-angular-examples
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.19.0'
+          node-version: '20'
       
       - name: Install npm dependencies
         run: npm install
@@ -48,9 +80,9 @@ jobs:
       - name: Build project
         run: |
           if [ "${{ github.event.inputs.isVerbose }}" == "true" ]; then
-            npm run build --verbose
+            npm run build:${{ matrix.platform }}:${{ matrix.locale }} --verbose
           else
-            npm run build
+            npm run build:${{ matrix.platform }}:${{ matrix.locale }}
           fi
         working-directory: ./igniteui-angular-examples/browser
       
