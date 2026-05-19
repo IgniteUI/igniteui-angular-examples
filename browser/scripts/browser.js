@@ -99,14 +99,14 @@ var sampleSourcePaths = [
     // sampleRoot + 'charts/data-chart/column-chart-styling/package.json',
     // sampleRoot + 'charts/data-chart/format-specifiers/package.json',
     // sampleRoot + 'charts/data-chart/financial-price-series/package.json',
-    // sampleRoot + 'charts/data-chart/final-value-layer-styling/package.json', 
+    // sampleRoot + 'charts/data-chart/final-value-layer-styling/package.json',
     // sampleRoot + 'charts/data-chart/legends/package.json',
     // sampleRoot + 'charts/data-chart/selection-matcher/package.json',
     // sampleRoot + 'charts/data-chart/tooltip-template/package.json',
     // sampleRoot + 'charts/data-chart/transition-event/package.json',
     // sampleRoot + 'charts/data-chart/trendline-layer/package.json',
     // sampleRoot + 'charts/data-chart/waterfall-chart/package.json',
-    // sampleRoot + 'charts/data-chart/user-annotation-layer/package.json', 
+    // sampleRoot + 'charts/data-chart/user-annotation-layer/package.json',
     // sampleRoot + 'charts/data-chart/axis*/package.json',
     // sampleRoot + 'charts/data-chart/bar*/package.json',
     // sampleRoot + 'charts/data-chart/chart*/package.json',
@@ -861,7 +861,7 @@ function updateCodeViewer(cb) {
                 dataContent += data.content + "\r\n";
             }
 
-            var codeViewData = {}; 
+            var codeViewData = {};
             codeViewData.isMain = true,
             codeViewData.hasRelativeAssetsUrls = false,
             codeViewData.fileExtension = 'ts';
@@ -1159,7 +1159,7 @@ function gitAcceptCurrent(cb) {
 
         var gitCurrentTag = "<<<<<<< HEAD\r\n";
         var gitIncomingTag = ">>>>>>> master\r\n";
-        
+
         var gitCurrentStart = fileContent.indexOf(gitCurrentTag);
         var gitCurrentEnd = fileContent.indexOf("=======");
         var gitIncomingStart = fileContent.indexOf("=======");
@@ -1172,16 +1172,16 @@ function gitAcceptCurrent(cb) {
             // console.log(current);
             // console.log("incoming");
             // console.log(incoming);
-            fileContent = fileContent.replace(incoming, "");        
+            fileContent = fileContent.replace(incoming, "");
             fileContent = fileContent.replace(gitCurrentTag, "");
             fileContent = fileContent.replace(gitIncomingTag, "");
 
                 // console.log("fileContent");
-                // console.log(fileContent); 
+                // console.log(fileContent);
             fs.writeFileSync(filePath, fileContent);
-                
+
             console.log("changed " + filePath);
-        } 
+        }
         else {
 
         }
@@ -1214,21 +1214,21 @@ function updateIG(cb) {
     // { version: "14.1.0",  name:               "igniteui-angular-charts" },  // NPM
     let packageUpgrades = [
         // these IG packages are often updated:
-        { version: "21.0.1-beta.0", name: "igniteui-angular-core" },
-        { version: "21.0.1-beta.0", name: "igniteui-angular-charts" },
-        { version: "21.0.1-beta.0", name: "igniteui-angular-excel" },
-        { version: "21.0.1-beta.0", name: "igniteui-angular-gauges" },
-        { version: "21.0.1-beta.0", name: "igniteui-angular-data-grids" },
-        { version: "21.0.1-beta.0", name: "igniteui-angular-inputs" },
-        { version: "21.0.1-beta.0", name: "igniteui-angular-layouts" },
-        { version: "21.0.1-beta.0", name: "igniteui-angular-maps" },
-        { version: "21.0.1-beta.0", name: "igniteui-angular-spreadsheet-chart-adapter"  },
-        { version: "21.0.1-beta.0", name: "igniteui-angular-spreadsheet" },
-        { version: "21.0.1-beta.0", name: "igniteui-angular-datasources" },
-        { version: "21.0.1-beta.0", name: "igniteui-angular-dashboards" },
+        { version: "21.1.0-beta.0", name: "igniteui-angular-core" },
+        { version: "21.1.0-beta.0", name: "igniteui-angular-charts" },
+        { version: "21.1.0-beta.0", name: "igniteui-angular-excel" },
+        { version: "21.1.0-beta.0", name: "igniteui-angular-gauges" },
+        { version: "21.1.0-beta.0", name: "igniteui-angular-data-grids" },
+        { version: "21.1.0-beta.0", name: "igniteui-angular-inputs" },
+        { version: "21.1.0-beta.0", name: "igniteui-angular-layouts" },
+        { version: "21.1.0-beta.0", name: "igniteui-angular-maps" },
+        { version: "21.1.0-beta.0", name: "igniteui-angular-spreadsheet-chart-adapter"  },
+        { version: "21.1.0-beta.0", name: "igniteui-angular-spreadsheet" },
+        { version: "21.1.0-beta.0", name: "igniteui-angular-datasources" },
+        { version: "21.1.0-beta.0", name: "igniteui-angular-dashboards" },
         // these IG packages are sometimes updated:
-        { version: "6.3.1" , name: "igniteui-webcomponents" },
-        { version: "21.0.8", name: "igniteui-angular" },
+        { version: "7.1.3" , name: "igniteui-webcomponents" },
+        { version: "21.2.3", name: "igniteui-angular" },
         { version: "21.1.1", name: "@angular/animations" },
         { version: "21.1.1", name: "@angular/common" },
         { version: "21.1.1", name: "@angular/compiler" },
@@ -1443,19 +1443,19 @@ function logVersionIgniteUI(cb) {
 } exports.logVersionIgniteUI = logVersionIgniteUI;
 
 
-// move samples files up one level, e.g. /scr/app/*.* to /scr/*.* 
+// move samples files up one level, e.g. /scr/app/*.* to /scr/*.*
 exports.moveAppFiles = function moveAppFiles(cb) {
     var appFolders = [];
 
     gulp.src(
-        "../samples/**/src/app/*.*", 
-        "../samples/**/type-scatter-symbol-series/src/app/*.*", 
+        "../samples/**/src/app/*.*",
+        "../samples/**/type-scatter-symbol-series/src/app/*.*",
     {allowEmpty: true})
     .pipe(es.map(function(file, fileCallback) {
-       
+
         var fileContent = file.contents.toString();
-        let fileOutput = file.dirname.replace("\\app", "") + "\\" + file.basename; 
-        
+        let fileOutput = file.dirname.replace("\\app", "") + "\\" + file.basename;
+
         if (appFolders.indexOf(file.dirname) < 0) {
             appFolders.push(file.dirname);
         }
@@ -1465,13 +1465,13 @@ exports.moveAppFiles = function moveAppFiles(cb) {
          fileCallback(null, file);
     }))
     .on("end", function() {
-        
+
         console.log(appFolders);
         console.log("moved " + appFolders.length + " samples from /scr/app/*.* to /scr/*.* ");
         del(appFolders, {force: true});
 
         for (let i = 0; i < appFolders.length; i++) {
-            
+
             var mainPath = appFolders[i].replace("\\app", "") + "\\main.ts";
             let mainFile = fs.readFileSync(mainPath).toString();
             mainFile = mainFile.replace("/app/", "/");
@@ -1480,8 +1480,8 @@ exports.moveAppFiles = function moveAppFiles(cb) {
         cb();
     });
 
-} 
- 
+}
+
 exports.updateCodeSandbox = function updateCodeSandbox(cb) {
     var appFolders = [];
     var copyFiles = [
@@ -1496,18 +1496,18 @@ exports.updateCodeSandbox = function updateCodeSandbox(cb) {
         "sandbox.config.json",
         "src\\config",
     ];
-    
+
     gulp.src( [
-        "../samples/**/package.json", 
+        "../samples/**/package.json",
         // "../samples/**/display-osm-imagery/package.json",
-        // "../samples/**/doughnut-chart/overview/package.json", 
-        // "../samples/**/display-heat-imagery/package.json", 
+        // "../samples/**/doughnut-chart/overview/package.json",
+        // "../samples/**/display-heat-imagery/package.json",
     ], {allowEmpty: true})
     .pipe(es.map(function(file, fileCallback) {
-       
+
         var fileContent = file.contents.toString();
-        let fileOutput = file.dirname + "\\" + file.basename; 
-        
+        let fileOutput = file.dirname + "\\" + file.basename;
+
         console.log("updating " + fileOutput);
         fileContent = fileContent.replace('"@angular/animations": "17.0.0"','"@angular/animations": "^17.2.1"');
         fileContent = fileContent.replace('"@angular/common": "17.0.0"','"@angular/common": "^17.2.1"');
@@ -1530,10 +1530,10 @@ exports.updateCodeSandbox = function updateCodeSandbox(cb) {
         fileContent = fileContent.replace('"hammerjs": "2.0.8"','"hammerjs": "^2.0.8"');
 
         fs.writeFileSync(fileOutput, fileContent);
-            
+
         for (let i = 0; i < deleteFiles.length; i++) {
             var deletePath = file.dirname + "\\" + deleteFiles[i];
-            console.log("delete " + deletePath); 
+            console.log("delete " + deletePath);
             del([deletePath], {force: true});
         }
 
@@ -1552,4 +1552,4 @@ exports.updateCodeSandbox = function updateCodeSandbox(cb) {
         cb();
     });
 
-} 
+}
