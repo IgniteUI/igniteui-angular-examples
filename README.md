@@ -81,7 +81,7 @@ At this point, you should see a website hosted example of [Ignite UI for Angular
 
 - open the folder that contains this repository, e.g.
 ```CMD
-C:\GitHub\igniteui-angular-examples\
+C:\GitHub\igniteui-angular-examples\browser\
 ```
 
 - select **View** - **Terminal** menu item
