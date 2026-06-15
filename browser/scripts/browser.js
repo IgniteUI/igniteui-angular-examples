@@ -1227,7 +1227,7 @@ function updateIG(cb) {
         { version: "22.0.0-alpha.0", name: "igniteui-angular-datasources" },
         { version: "22.0.0-alpha.0", name: "igniteui-angular-dashboards" },
         // these IG packages are sometimes updated:
-        { version: "7.1.3" , name: "igniteui-webcomponents" },
+        { version: "7.2.2" , name: "igniteui-webcomponents" },
         { version: "22.0.0-beta.2", name: "igniteui-angular" },
         { version: "22.0.1", name: "@angular/animations" },
         { version: "22.0.1", name: "@angular/common" },
