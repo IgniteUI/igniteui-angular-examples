@@ -66,7 +66,7 @@ class CalloutCategoryDataParser extends Array {
         this.categoryData = categoryData;
     }
 
-    public parseForCalloutData = function() {
+    public parseForCalloutData = () => {
         let minItem: WeatherMeasure = null;
         let maxItem: WeatherMeasure = null;
         let minVal: number = Number.MAX_VALUE;

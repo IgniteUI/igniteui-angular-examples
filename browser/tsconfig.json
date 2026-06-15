@@ -6,15 +6,19 @@
 */
 {
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "sourceMap": false,
     "declaration": false,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "target": "es2022", 
+    "target": "es2022",
     "module": "esnext",
     "moduleResolution": "node",
+    "rootDir": ".",
     "importHelpers": true,
     "useDefineForClassFields": false,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
     "typeRoots": [
       "node_modules/@types"
     ]
