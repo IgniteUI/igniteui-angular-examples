@@ -814,7 +814,7 @@ function updateCodeViewer(cb) {
                 isMain: true,
             };
 
-            codeViewItem.path = filePath;
+            codeViewItem.path = filePath.replace(info.SourcePath + "/", "");
 
             if (filePath.indexOf(".scss") > 0) {
                 codeViewItem.fileExtension = 'scss';
@@ -876,6 +876,30 @@ function updateCodeViewer(cb) {
         packageInfo.path = "package.json";
         packageInfo.content = utils.fileRead(info.SourcePath + "/package.json");
         sampleFiles.push(packageInfo);
+
+        // Add Angular boilerplate files needed for StackBlitz sdk.openProject() to boot the app.
+        var boilerplateFiles = [
+            "angular.json",
+            "tsconfig.json",
+            "tsconfig.app.json",
+            "src/index.html",
+            "src/main.ts",
+            "src/polyfills.ts",
+            "src/styles.scss",
+            "src/environments/environment.ts",
+            "src/environments/environment.prod.ts",
+        ];
+        for (const bFile of boilerplateFiles) {
+            var bPath = info.SourcePath + "/" + bFile;
+            if (fs.existsSync(bPath)) {
+                sampleFiles.push({
+                    path: bFile,
+                    content: utils.fileRead(bPath),
+                    isMain: false,
+                    hasRelativeAssetsUrls: false,
+                });
+            }
+        }
 
         var codeViewContent = '{\r\n';
         codeViewContent += '"addTsConfig": false,\r\n';
