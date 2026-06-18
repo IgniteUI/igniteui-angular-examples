@@ -177,7 +177,7 @@ To learn more about **Ignite UI for Angular** components, check out the [Angular
 NOTE Do NOT find replace version of packages in package.json files. 
 
 - open this repo in VS Code
-- open [browser.js](./browser/tasks/browser.js) file
+- open [browser.js](./browser/scripts/browser.js) file
 - navigate to the `updateIG` function
 - update version of packages in `packageUpgrades` array
 - open terminal window
