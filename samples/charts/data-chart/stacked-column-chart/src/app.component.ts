@@ -13,8 +13,7 @@ import { IgxLegendComponent, IgxDataChartComponent, IgxCategoryXAxisComponent, I
 export class AppComponent implements AfterViewInit
 {
 
-	@ViewChild("legend", { static: true } )
-	private legend: IgxLegendComponent
+	
 	@ViewChild("chart", { static: true } )
 	private chart: IgxDataChartComponent
 	@ViewChild("xAxis", { static: true } )
