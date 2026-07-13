@@ -32,7 +32,8 @@ const sampleOutput = './src/samples/'; // /browser/src/samples/
 // C:\REPOS\GitInternalDocs\igniteui-angular-examples\samples\charts\data-chart\axis-sharing
 // returns                                         ../samples/charts/data-chart/axis-sharing
 function getSamplePath(dirPath) {
-    var ret = dirPath.split(repoName)[1];
+    var idx = dirPath.lastIndexOf(repoName);
+    var ret = dirPath.substring(idx + repoName.length);
     ret = ".." + ret.split("\\").join("/");
     return ret;
 }
