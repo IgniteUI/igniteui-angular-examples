@@ -1,9 +1,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strict": false,
     "importHelpers": true,
     "module": "esnext",
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": false,
     "declaration": false,
@@ -11,7 +11,6 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "downlevelIteration": true,
     "target": "es2022",
     "typeRoots": [
       "node_modules/@types"

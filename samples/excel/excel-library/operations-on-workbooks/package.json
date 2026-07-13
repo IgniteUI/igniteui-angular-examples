@@ -7,22 +7,22 @@
     "lint": "ng lint"
   },
   "dependencies": {
-    "@angular/animations": "21.1.1",
-    "@angular/common": "21.1.1",
-    "@angular/compiler": "21.1.1",
-    "@angular/core": "21.1.1",
-    "@angular/forms": "21.1.1",
-    "@angular/platform-browser": "21.1.1",
-    "@angular/platform-browser-dynamic": "21.1.1",
+    "@angular/animations": "22.0.1",
+    "@angular/common": "22.0.1",
+    "@angular/compiler": "22.0.1",
+    "@angular/core": "22.0.1",
+    "@angular/forms": "22.0.1",
+    "@angular/platform-browser": "22.0.1",
+    "@angular/platform-browser-dynamic": "22.0.1",
     "@types/file-saver": "2.0.5",
     "@types/hammerjs": "2.0.46",
     "classlist.js": "1.1.20150312",
     "core-js": "3.21.0",
     "file-saver": "2.0.5",
     "hammerjs": "2.0.8",
-    "igniteui-angular": "21.2.3",
-    "igniteui-angular-core": "21.1.0",
-    "igniteui-angular-excel": "21.1.0",
+    "igniteui-angular": "22.0.2",
+    "igniteui-angular-core": "22.0.0",
+    "igniteui-angular-excel": "22.0.0",
     "intl": "1.2.5",
     "jszip": "3.8.0",
     "rxjs": "7.8.1",
@@ -31,10 +31,10 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "21.1.1",
-    "@angular/cli": "21.1.1",
-    "@angular/compiler-cli": "21.1.1",
-    "@angular/language-service": "21.1.1",
+    "@angular-devkit/build-angular": "22.0.1",
+    "@angular/cli": "22.0.1",
+    "@angular/compiler-cli": "22.0.1",
+    "@angular/language-service": "22.0.1",
     "@types/node": "18.17.0",
     "codelyzer": "6.0.2",
     "jasmine-core": "5.1.1",
@@ -42,6 +42,6 @@
     "sass.js": "0.11.1",
     "ts-node": "10.9.1",
     "tslint": "~6.1.3",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   }
 }

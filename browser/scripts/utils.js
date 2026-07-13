@@ -188,8 +188,8 @@ var lintPackageNames = [
     'igniteui-angular-spreadsheet-chart-adapter'
 ];
 function lintSourceCode(content)  {
-    for (const package of lintPackageNames) {
-        content = replace(content, "'" + package + "'", '"' + package + '"');
+    for (const pkg of lintPackageNames) {
+        content = replace(content, "'" + pkg + "'", '"' + pkg + '"');
     }
     return content;
 } exports.lintSourceCode = lintSourceCode;

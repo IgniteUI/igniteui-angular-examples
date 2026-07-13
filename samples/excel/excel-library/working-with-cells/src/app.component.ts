@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, Injector, OnInit, ViewChild, ViewContainerRef } from "@angular/core";
+import { Component, OnInit, ViewChild, ViewContainerRef } from "@angular/core";
 import { CellReferenceMode } from "igniteui-angular-excel";
 import { WorksheetMergedCellsRegion } from "igniteui-angular-excel";
 import { FormattedString } from "igniteui-angular-excel";
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     public selectedRegion: string;
     public cellFeatures: string[];
 
-    constructor(private resolver: ComponentFactoryResolver, private injector: Injector) {
+    constructor() {
     }
 
     public ngOnInit() {

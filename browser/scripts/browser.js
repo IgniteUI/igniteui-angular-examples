@@ -266,8 +266,8 @@ function getSampleModules(fileContent, info) {
             if (importLine.indexOf(',') >= 0) {
                 //var importModules = importLine.replace('import {');
 
-                var package = importLine.split(' from ')[1];
-                //console.log( package );
+                var pkg = importLine.split(' from ')[1];
+                //console.log( pkg );
 
                 var words = importLine.split(' ');
                 for (const word of words) {
@@ -285,7 +285,7 @@ function getSampleModules(fileContent, info) {
                                 info.ImportsModules.push(module);
                          //   console.log(module);
 
-                            info.ImportsLines.push('import { ' + module + ' } from ' + package + ';');
+                            info.ImportsLines.push('import { ' + module + ' } from ' + pkg + ';');
                         }
                     }
                 }
@@ -1238,28 +1238,28 @@ function updateIG(cb) {
     // { version: "14.1.0",  name:               "igniteui-angular-charts" },  // NPM
     let packageUpgrades = [
         // these IG packages are often updated:
-        { version: "21.1.0", name: "igniteui-angular-core" },
-        { version: "21.1.0", name: "igniteui-angular-charts" },
-        { version: "21.1.0", name: "igniteui-angular-excel" },
-        { version: "21.1.0", name: "igniteui-angular-gauges" },
-        { version: "21.1.0", name: "igniteui-angular-data-grids" },
-        { version: "21.1.0", name: "igniteui-angular-inputs" },
-        { version: "21.1.0", name: "igniteui-angular-layouts" },
-        { version: "21.1.0", name: "igniteui-angular-maps" },
-        { version: "21.1.0", name: "igniteui-angular-spreadsheet-chart-adapter"  },
-        { version: "21.1.0", name: "igniteui-angular-spreadsheet" },
-        { version: "21.1.0", name: "igniteui-angular-datasources" },
-        { version: "21.1.0", name: "igniteui-angular-dashboards" },
+        { version: "22.0.0", name: "igniteui-angular-core" },
+        { version: "22.0.0", name: "igniteui-angular-charts" },
+        { version: "22.0.0", name: "igniteui-angular-excel" },
+        { version: "22.0.0", name: "igniteui-angular-gauges" },
+        { version: "22.0.0", name: "igniteui-angular-data-grids" },
+        { version: "22.0.0", name: "igniteui-angular-inputs" },
+        { version: "22.0.0", name: "igniteui-angular-layouts" },
+        { version: "22.0.0", name: "igniteui-angular-maps" },
+        { version: "22.0.0", name: "igniteui-angular-spreadsheet-chart-adapter"  },
+        { version: "22.0.0", name: "igniteui-angular-spreadsheet" },
+        { version: "22.0.0", name: "igniteui-angular-datasources" },
+        { version: "22.0.0", name: "igniteui-angular-dashboards" },
         // these IG packages are sometimes updated:
-        { version: "7.2.1" , name: "igniteui-webcomponents" },
-        { version: "21.2.3", name: "igniteui-angular" },
-        { version: "21.1.1", name: "@angular/animations" },
-        { version: "21.1.1", name: "@angular/common" },
-        { version: "21.1.1", name: "@angular/compiler" },
-        { version: "21.1.1", name: "@angular/core" },
-        { version: "21.1.1", name: "@angular/forms" },
-        { version: "21.1.1", name: "@angular/platform-browser" },
-        { version: "21.1.1", name: "@angular/platform-browser-dynamic" },
+        { version: "7.2.4" , name: "igniteui-webcomponents" },
+        { version: "22.0.2", name: "igniteui-angular" },
+        { version: "22.0.1", name: "@angular/animations" },
+        { version: "22.0.1", name: "@angular/common" },
+        { version: "22.0.1", name: "@angular/compiler" },
+        { version: "22.0.1", name: "@angular/core" },
+        { version: "22.0.1", name: "@angular/forms" },
+        { version: "22.0.1", name: "@angular/platform-browser" },
+        { version: "22.0.1", name: "@angular/platform-browser-dynamic" },
         { version: "2.0.46", name: "@types/hammerjs" },
         { version: "1.1.20150312", name: "classlist-js" },
         { version: "3.21.0" , name: "core-js" },
@@ -1271,10 +1271,10 @@ function updateIG(cb) {
         { version: "2.3.2"  , name: "web-animations-js",     },
         { version: "~0.15.0", name: "zone.js" },
         // dev packages:
-        { version: "21.1.1" , name: "@angular/cli" },
-        { version: "21.1.1" , name: "@angular/compiler-cli" },
-        { version: "21.1.1" , name: "@angular/language-service" },
-        { version: "21.1.1" , name: "@angular-devkit/build-angular" },
+        { version: "22.0.1" , name: "@angular/cli" },
+        { version: "22.0.1" , name: "@angular/compiler-cli" },
+        { version: "22.0.1" , name: "@angular/language-service" },
+        { version: "22.0.1" , name: "@angular-devkit/build-angular" },
         { version: "18.17.0", name: "@types/node" },
         { version: "6.0.2"  , name: "codelyzer" },
         { version: "5.1.1"  , name: "jasmine-core" },
@@ -1282,7 +1282,7 @@ function updateIG(cb) {
         { version: "0.11.1" , name: "sass.js" },
         { version: "~6.1.3" , name: "tslint" },
         { version: "10.9.1" , name: "ts-node" },
-        { version: "5.9.3"  , name: "typescript" },
+        { version: "6.0.3"  , name: "typescript" },
     ];
 
     // NOTE you can comment out strings in this array to run these function only on a subset of samples
@@ -1446,8 +1446,8 @@ function logVersionIgniteUI(cb) {
             let packageName = packagePair[0].trim();
 
             console.log('>> using package: ' + packageVersion + ' ' + packageName);
-            let package = { ver: packageVersion, name: packageName };
-            igPackages.push(package);
+            let pkg = { ver: packageVersion, name: packageName };
+            igPackages.push(pkg);
         }
     }
 
