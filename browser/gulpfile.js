@@ -5,7 +5,6 @@ const fs = require("fs");
 const path = require("path");
 const es = require('event-stream');
 const del = require('del');
-const argv = require("yargs").argv;
 const fsExtra = require("fs-extra");
 const tsNode = require('ts-node').register({
     transpileOnly: true,
