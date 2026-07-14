@@ -49,7 +49,7 @@ function generate(cb, samplesInBrowser) {
         //log("getting: " + file.dirname);
         // saving info for each samples in samplesDatabase
         // log("sample: " + file.dirname);
-        var samplePath = file.dirname.toString().split('\\samples\\')[1].split('\\').join('/');
+        var samplePath = file.dirname.toString().replace(/\\/g, '/').split('/samples/')[1];
         sampleStats[samplePath] = { browser: false, xplat: false, path: samplePath,  }
 
         fileCallback(null, file);

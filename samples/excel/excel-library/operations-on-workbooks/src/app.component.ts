@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, Injector, OnInit, ViewChild, ViewContainerRef } from "@angular/core";
+import { Component, OnInit, ViewChild, ViewContainerRef } from "@angular/core";
 import { IgxGridComponent } from "igniteui-angular";
 import { TextFormatMode } from "igniteui-angular-excel";
 import { Workbook } from "igniteui-angular-excel";
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     public worksheetTables: string[];
     public selectedTable: string;
 
-    constructor(private resolver: ComponentFactoryResolver, private injector: Injector) {
+    constructor() {
     }
 
     public ngOnInit() {
@@ -213,8 +213,7 @@ export class AppComponent implements OnInit {
                 data.push(row);
             }
 
-            const gridFactory = this.resolver.resolveComponentFactory(IgxGridComponent);
-            const gridRef = this.gridContainerRef.createComponent(gridFactory);
+            const gridRef = this.gridContainerRef.createComponent(IgxGridComponent);
             gridRef.instance.autoGenerate = true;
             gridRef.instance.data = data;
         }

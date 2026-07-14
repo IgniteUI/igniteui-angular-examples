@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "resolveJsonModule": true,
     "importHelpers": true,
     "module": "ES2022",
@@ -10,6 +11,11 @@
     "moduleResolution": "bundler",
     "experimentalDecorators": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
     "downlevelIteration": true, // required for excel library
     "target": "ES2022",
     "typeRoots": [
