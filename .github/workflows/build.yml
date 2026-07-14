@@ -32,7 +32,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.0.0'
+          node-version: '22.22.3'
       
       - name: Install npm dependencies
         run: npm install
