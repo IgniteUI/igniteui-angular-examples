@@ -517,7 +517,11 @@ function copySamples(cb) {
                 log("generating sample:  " + fileOutput); // + ' from ' + filePath );
                 fileContent = fileContent.replace('class AppComponent', 'class ' + info.SampleClassName);
             }
-            else if (filePath.indexOf('app.') < 0) {
+            else if (filePath.indexOf('app.') < 0 &&
+                     filePath.indexOf('.ts') > 0 &&
+                     filePath.indexOf('/main.ts') < 0 &&
+                     filePath.indexOf('/polyfills.ts') < 0 &&
+                     filePath.indexOf('/typings.d.ts') < 0) {
                 //var dataPath = fileOutput.replace('.ts', '');
                 var dataName = fileName.replace('.ts', '');
                 var dataPath = './' +  info.SampleFolder + '/' + dataName;
