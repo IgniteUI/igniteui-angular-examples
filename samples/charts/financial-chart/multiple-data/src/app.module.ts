@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 
 import { IgxFinancialChartModule, IgxLegendModule } from "igniteui-angular-charts";
-import { FinancialDataService } from "./FinancialDataService";
 
 
 @NgModule({
@@ -23,7 +22,7 @@ import { FinancialDataService } from "./FinancialDataService";
     IgxFinancialChartModule,
     IgxLegendModule
 ],
-  providers: [FinancialDataService],
+  providers: [],
 schemas: []
 })
 export class AppModule {}
