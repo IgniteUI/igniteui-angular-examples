@@ -8,11 +8,24 @@ import BrowserInfo  from "../../browser-info.json";
 
 // note these section is auto-generated - do not change it:
 // Auto-Insert-Imports-RoutingData-Start
-import { RoutingDataForCharts } from "../../samples/charts/routing-data";
-import { RoutingDataForExcel } from "../../samples/excel/routing-data";
-import { RoutingDataForGauges } from "../../samples/gauges/routing-data";
-import { RoutingDataForInputs } from "../../samples/inputs/routing-data";
-import { RoutingDataForMaps } from "../../samples/maps/routing-data";
+// import { RoutingDataForCharts } from "../../samples/charts/routing-data";
+// import { RoutingDataForExcel } from "../../samples/excel/routing-data";
+// import { RoutingDataForGauges } from "../../samples/gauges/routing-data";
+// import { RoutingDataForInputs } from "../../samples/inputs/routing-data";
+// import { RoutingDataForMaps } from "../../samples/maps/routing-data";
+
+export const RoutingDataForCharts = {
+
+    "data-chart/stacked-column-chart": { displayName: "Stacked Column Chart", parentName: "DataChart", showLink: true },
+    "data-chart-stacked-column-chart": { displayName: "Stacked Column Chart", parentName: "DataChart", showLink: false },
+    "data-chart/stacked-line-chart": { displayName: "Stacked Line Chart", parentName: "DataChart", showLink: true },
+    "data-chart-stacked-line-chart": { displayName: "Stacked Line Chart", parentName: "DataChart", showLink: false },
+    // "data-chart/stacked-spline-chart": { displayName: "Stacked Spline Chart", parentName: "DataChart", showLink: true },
+    // "data-chart-stacked-spline-chart": { displayName: "Stacked Spline Chart", parentName: "DataChart", showLink: false },
+    // "data-chart/stacked-spline-area-chart": { displayName: "Stacked Spline Area Chart", parentName: "DataChart", showLink: true },
+    // "data-chart-stacked-spline-area-chart": { displayName: "Stacked Spline Area Chart", parentName: "DataChart", showLink: false },
+    
+};
 
 
 // Auto-Insert-Imports-RoutingData-End
@@ -50,10 +63,10 @@ export class IndexComponent implements OnInit, AfterViewInit {
     private modulesRoutes = [
         // Auto-Insert-SamplesRoutingArray-Start
         { path: "charts", routesData: RoutingDataForCharts },
-        { path: "excel", routesData: RoutingDataForExcel },
-        { path: "gauges", routesData: RoutingDataForGauges },
-        { path: "inputs", routesData: RoutingDataForInputs },
-        { path: "maps", routesData: RoutingDataForMaps }
+        // { path: "excel", routesData: RoutingDataForExcel },
+        // { path: "gauges", routesData: RoutingDataForGauges },
+        // { path: "inputs", routesData: RoutingDataForInputs },
+        // { path: "maps", routesData: RoutingDataForMaps }
 
 
         // Auto-Insert-SamplesRoutingArray-End
