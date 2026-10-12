@@ -23,14 +23,14 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           clean: true
           persist-credentials: true
           path: igniteui-angular-examples
       
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '22.22.3'
       
@@ -60,7 +60,7 @@ jobs:
         working-directory: ./igniteui-angular-examples/browser
       
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: dist
           path: ./igniteui-angular-examples/browser/dist/browser
