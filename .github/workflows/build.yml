@@ -30,7 +30,7 @@ jobs:
           path: igniteui-angular-examples
       
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: '22.22.3'
       
@@ -60,7 +60,7 @@ jobs:
         working-directory: ./igniteui-angular-examples/browser
       
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: dist
           path: ./igniteui-angular-examples/browser/dist/browser
